@@ -1,2 +1,2 @@
 # docs
-That's the docs repository
+That's the Brubotics docs repository
