@@ -1,2 +1,2 @@
 # docs
-That's the docs repo
+That's the docs repository
