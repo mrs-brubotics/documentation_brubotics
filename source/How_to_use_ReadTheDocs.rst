@@ -15,16 +15,28 @@ and `ReStructuredText primer <https://www.sphinx-doc.org/en/master/usage/restruc
 As said in the chapter `Getting started with Sphinx <https://docs.readthedocs.io/en/stable/intro/getting-started-with-sphinx.html#>`__, you have to open ``index.html`` in your web browser
 to see your documentation. This file should be located here: ``build/html``.
 
+It can be easier for you to code your website by using Visual Studio Code with an extension called reStructuredText wich is useful to previsualize your website and it has a syntax highlighting tool.
+
 1.3 How to edit the ReadTheDocs website
 ---------------------------------------
 
 The only files you need to modify are ``conf.py`` and all the ``.rst`` files in the ``source`` folder. Once you want to update your documentation, use the following commands from your
 directory:
 
-.. code-block:: shell
+* Before all, we recommend you to run this command to update your local repository and get the newest code : ::
+    
+    git pull
 
-    git commit "Name_of_your_commit_"
+* To check what files wich have been updated since the last commit you cand use that command : ::
+
+    git status
+
+* To update your repository, adapt and run these commands
+
+ .. code-block:: shell
+
     git add "name_of_modified_files"
+    git commit -m "Name_of_your_commit_"
     git push
 
 Please refer to section :ref:`2.5 <2.5>` to understand why we use these commands.

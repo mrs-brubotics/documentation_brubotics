@@ -156,3 +156,10 @@ In order to freeze the file as it is when you create the permalink, you need to 
    Figure 2.5: Modification to the link to always highlight the intended lines
 
 You can see that the link at the top changed to always refer to this version of the file.
+
+1.7 Working with Visual Studio Code
+-----------------------------------
+
+We highly recommend you to use `Visual Studio Code <https://code.visualstudio.com/>`__ for Ubuntu. It is easier to view and edit code with syntax highlighting tools. 
+You just need to install extension depending on what kind of file you are working e.g. ``.cpp``, ``.py`` etc.
+Set visual studio code as the default program to open files (right-click on the file and select "open with other application")
