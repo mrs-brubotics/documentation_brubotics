@@ -1,7 +1,7 @@
 
 
 <!DOCTYPE html>
-<html class="writer-html4" lang="en" >
+<html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8" />
   
@@ -13,6 +13,8 @@
   
   <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
 
   
   
@@ -29,10 +31,10 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-        <script type="text/javascript" src="_static/jquery.js"></script>
-        <script type="text/javascript" src="_static/underscore.js"></script>
-        <script type="text/javascript" src="_static/doctools.js"></script>
-        <script type="text/javascript" src="_static/language_data.js"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
     
     <script type="text/javascript" src="_static/js/theme.js"></script>
 
@@ -86,9 +88,9 @@
             
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="Authors.html">0. Authors</a></li>
-<li class="toctree-l1"><a class="reference internal" href="How_to_use_ReadTheDocs.html">1. How to use ReadTheDocs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Introduction.html">1. Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Prerequisites.html">2. Prerequisites</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Introduction_to_MRS_Software_Extensions.html">3.  Introduction to MRS Software Extensions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Introduction_to_MRS_Software_Extensions.html">3. Introduction to MRS Software Extensions</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">4. Workspace Git configuration</a></li>
 </ul>
 
@@ -158,48 +160,44 @@
            <div itemprop="articleBody">
             
   <div class="section" id="workspace-git-configuration">
-<h1>4. Workspace Git configuration<a class="headerlink" href="#workspace-git-configuration" title="Permalink to this headline">¶</a></h1>
+<span id="id1"></span><h1>4. Workspace Git configuration<a class="headerlink" href="#workspace-git-configuration" title="Permalink to this headline">¶</a></h1>
 <p>In this chapter we will let you know some important things about our Github.</p>
-<p>To install our software from our github, please refer to the <a class="reference external" href="https://github.com/mrs-brubotics/droneswarm_brubotics/blob/master/README.md">README.md</a> file available in our github.
-These commands will install droneswarm_brubotics into your work space and install the associated ros packages.</p>
+<p>To install our software from our github, please refer to the <a class="reference external" href="https://github.com/mrs-brubotics/droneswarm_brubotics/blob/master/README.md">README.md</a> file
+available in our github. These commands will install droneswarm_brubotics into your work space and install the associated ROS packages.</p>
 <p>We always try to organize our <a class="reference external" href="https://github.com/mrs-brubotics">MRS Brubotics github</a> like the <a class="reference external" href="https://github.com/ctu-mrs">CTU MRS github</a>.
-We have a main github folder droneswarm_brubotics which contains the gitman configurations.
-There we can link our ROS packages:</p>
+We have a main github folder droneswarm_brubotics which contains the gitman configurations. There we can link our ROS packages:</p>
 <ul class="simple">
-<li><a class="reference external" href="https://github.com/mrs-brubotics/controllers_brubotics">controllers_brubotics</a>: contains customized controller definitions from Brubotics.</li>
-<li><a class="reference external" href="https://github.com/mrs-brubotics/trackers_brubotics">trackers_brubotics</a>: contains customized tracker definitions from Brubotics.</li>
-<li><a class="reference external" href="https://github.com/mrs-brubotics/testing_brubotics">testing_brubotics</a>: contains simulation tmux scripts, custom configs and customized worlds</li>
+<li><p><a class="reference external" href="https://github.com/mrs-brubotics/controllers_brubotics">controllers_brubotics</a>: contains customized controller definitions from Brubotics.</p></li>
+<li><p><a class="reference external" href="https://github.com/mrs-brubotics/trackers_brubotics">trackers_brubotics</a>: contains customized tracker definitions from Brubotics.</p></li>
+<li><p><a class="reference external" href="https://github.com/mrs-brubotics/testing_brubotics">testing_brubotics</a>: contains simulation tmux scripts, custom configs and customized worlds</p></li>
 </ul>
 <p>There are also other repositories in our github:</p>
 <ul class="simple">
-<li><a class="reference external" href="https://github.com/mrs-brubotics/MatlabGraphs">MatlabGraphs</a>: to plot graphs from simulations. This folder contains matlab files to allow a new user to follow Chapter ?. You can find it indroneswarm_brubotics/useful_files.</li>
+<li><p><a class="reference external" href="https://github.com/mrs-brubotics/MatlabGraphs">MatlabGraphs</a>: to plot graphs from simulations. This folder contains matlab files to allow a new user to follow Chapter ?. You can find it indroneswarm_brubotics/useful_files.</p></li>
 </ul>
 <p>To add a new ROS package into droneswarm_brubotics you have to update the <a class="reference external" href="https://github.com/mrs-brubotics/droneswarm_brubotics/blob/master/.gitman.yml">gitman.yml</a> as it isexplained in Section ??, except here we use ssh links and not https.
 To update the different files you have several options depending on what you want to do:</p>
 <ul>
-<li><p class="first">You want to update all the code from mrs_workspace and from workspace.  Use <a class="reference external" href="https://github.com/mrs-brubotics/droneswarm_brubotics/blob/master/script/pull_all.sh">pull_all.sh</a> ondroneswarm_brubotics/script. [Recommended]</p>
-</li>
-<li><p class="first">You want to update only mrs_workspace refer yourself to ??.</p>
-</li>
-<li><p class="first">You want to update only brubotics code, go to droneswarm_brubotics and execute :</p>
+<li><p>You want to update all the code from mrs_workspace and from workspace.  Use <a class="reference external" href="https://github.com/mrs-brubotics/droneswarm_brubotics/blob/master/script/pull_all.sh">pull_all.sh</a> ondroneswarm_brubotics/script. [Recommended]</p></li>
+<li><p>You want to update only mrs_workspace refer yourself to ??.</p></li>
+<li><p>You want to update only brubotics code, go to droneswarm_brubotics and execute :</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">pull</span>
 <span class="n">gitman</span> <span class="n">install</span>
 </pre></div>
 </div>
 </li>
-<li><p class="first">You want to update specific folder use in this folder :</p>
+<li><p>You want to update specific folder use in this folder :</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">pull</span>
 </pre></div>
 </div>
 </li>
-<li><p class="first">If you want to restore mrs code as it was at the beginning, without brubotics code you can use <a class="reference external" href="https://github.com/mrs-brubotics/droneswarm_brubotics/blob/master/script/restore_mrs_basic_installation.sh">script/restore_mrs_basic_installation.sh</a>. Another option is to reinstall everything from scratch [recommended].</p>
-</li>
+<li><p>If you want to restore mrs code as it was at the beginning, without brubotics code you can use <a class="reference external" href="https://github.com/mrs-brubotics/droneswarm_brubotics/blob/master/script/restore_mrs_basic_installation.sh">script/restore_mrs_basic_installation.sh</a>. Another option is to reinstall everything from scratch [recommended].</p></li>
 </ul>
 <p>In <code class="docutils literal notranslate"><span class="pre">droneswarm_brubotics/shell_additions</span></code>, you will find <a class="reference external" href="https://github.com/mrs-brubotics/droneswarm_brubotics/blob/master/shell_additions/shell_additions.sh">shell_additions.sh</a>, which allows you to use the <code class="docutils literal notranslate"><span class="pre">waitBeforeGoTofunction</span></code>.
 This is a bash function which we use in our <a class="reference external" href="https://github.com/mrs-brubotics/testing_brubotics/blob/3f2411da291461cd5396b1925a7c3fd28840176f/tmux_scripts/one_drone_graphs/session.yml#L18">session.yaml</a> to get automated movement of the drone in our simulation.</p>
 <div class="admonition important">
-<p class="first admonition-title">Important</p>
-<p class="last">Finally in <code class="docutils literal notranslate"><span class="pre">script</span></code>, you can find <a class="reference external" href="https://github.com/mrs-brubotics/droneswarm_brubotics/blob/master/script/overwrite_mrs_files.sh">overwrite_mrs_files.sh</a> and <a class="reference external" href="https://github.com/mrs-brubotics/droneswarm_brubotics/blob/master/script/restore_mrs_files.sh">restore_mrs_files.sh</a> which are use to disable safety features, as explained in Section ??.</p>
+<p class="admonition-title">Important</p>
+<p>Finally in <code class="docutils literal notranslate"><span class="pre">script</span></code>, you can find <a class="reference external" href="https://github.com/mrs-brubotics/droneswarm_brubotics/blob/master/script/overwrite_mrs_files.sh">overwrite_mrs_files.sh</a> and <a class="reference external" href="https://github.com/mrs-brubotics/droneswarm_brubotics/blob/master/script/restore_mrs_files.sh">restore_mrs_files.sh</a> which are use to disable safety features, as explained in Section ??.</p>
 </div>
 </div>
 
@@ -216,7 +214,7 @@ This is a bash function which we use in our <a class="reference external" href="
 
   <div role="contentinfo">
     <p>
-        &#169; Copyright 2021, Jonathan VOGT.
+        &#169; Copyright 2021, BruBotics.
 
     </p>
   </div>

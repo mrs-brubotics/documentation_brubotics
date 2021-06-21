@@ -1,14 +1,18 @@
+.. _4. Workspace Git configuration:
+
 4. Workspace Git configuration
 ==============================
 
+.. role:: raw-html(raw)
+    :format: html
+
 In this chapter we will let you know some important things about our Github.
 
-To install our software from our github, please refer to the `README.md <https://github.com/mrs-brubotics/droneswarm_brubotics/blob/master/README.md>`__ file available in our github.
-These commands will install droneswarm_brubotics into your work space and install the associated ros packages.
+To install our software from our github, please refer to the `README.md <https://github.com/mrs-brubotics/droneswarm_brubotics/blob/master/README.md>`__ file
+available in our github. These commands will install droneswarm_brubotics into your work space and install the associated ROS packages.
 
 We always try to organize our `MRS Brubotics github <https://github.com/mrs-brubotics>`__ like the `CTU MRS github <https://github.com/ctu-mrs>`__. 
-We have a main github folder droneswarm_brubotics which contains the gitman configurations. 
-There we can link our ROS packages:
+We have a main github folder droneswarm_brubotics which contains the gitman configurations. There we can link our ROS packages:
 
 • `controllers_brubotics <https://github.com/mrs-brubotics/controllers_brubotics>`__: contains customized controller definitions from Brubotics.
 
