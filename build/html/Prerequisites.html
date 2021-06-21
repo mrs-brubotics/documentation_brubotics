@@ -39,8 +39,8 @@
     
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="4. Introduction to MRS Software Extensions" href="Introduction_to_MRS_Software_Extensions.html" />
-    <link rel="prev" title="DroneSwarmTutorial" href="index.html" /> 
+    <link rel="next" title="3. Introduction to MRS Software Extensions" href="Introduction_to_MRS_Software_Extensions.html" />
+    <link rel="prev" title="1. How to use ReadTheDocs" href="How_to_use_ReadTheDocs.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -86,11 +86,14 @@
             
             
               <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="Authors.html">0. Authors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="How_to_use_ReadTheDocs.html">1. How to use ReadTheDocs</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">2. Prerequisites</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#hardware-minimum-requirements">2.1 Hardware minimum requirements</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#pc-specs">2.1.1 PC Specs</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#ubuntu-partition">2.1.2 Ubuntu partition</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#prepare-ubuntu">2.1.3 Prepare Ubuntu</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#install-ubuntu">2.1.4 Install Ubuntu</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#mrs-workspace-installation">2.2 MRS workspace installation</a></li>
@@ -100,7 +103,8 @@
 <li class="toctree-l2"><a class="reference internal" href="#how-to-use-github-permalinks">2.6 How to use github permalinks</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="Introduction_to_MRS_Software_Extensions.html">4.  Introduction to MRS Software Extensions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Introduction_to_MRS_Software_Extensions.html">3. Introduction to MRS Software Extensions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Workspace_git_configuration.html">4. Workspace Git configuration</a></li>
 </ul>
 
             
@@ -180,29 +184,41 @@ requirement is needed, and which configuration is recommended.</p>
 <div class="section" id="pc-specs">
 <h3>2.1.1 PC Specs<a class="headerlink" href="#pc-specs" title="Permalink to this headline">¶</a></h3>
 <p>Before dealing with the Ubuntu partition, we have to talk about your minimum PC configuration. Here you can see the general PC specs used by the four interns during the project:</p>
-<div class="figure align-center" id="id2">
+<div class="figure align-center" id="id3">
 <a class="reference internal image-reference" href="Intern_PC_specs.png"><img alt="Intern_PC_specs.png" src="Intern_PC_specs.png" style="width: 800px;" /></a>
 <p class="caption"><span class="caption-text">Figure 2.1: Intern PC specs</span></p>
 </div>
 <p>However, this configuration above could not be enough when we have to launch simulations that need a lot of resources from our PC. We may have issues with the spawn and takeoff of the UAV
 later. That is why we rather recommend this kind of PC specs:</p>
-<div class="figure align-center" id="id3">
+<div class="figure align-center" id="id4">
 <a class="reference internal image-reference" href="Bryan_PC_specs.png"><img alt="Bryan_PC_specs.png" src="Bryan_PC_specs.png" style="width: 800px;" /></a>
 <p class="caption"><span class="caption-text">Figure 2.2: Bryan Convens PC specs</span></p>
 </div>
 <p>This type of configuration is better for simulation launch. We rather recommend a PC with a processor in this category. Indeed, the CPU performance will have a significant impact on the
 build of the packages in your workspace, and the proper launch of your simulation when you will need to launch more than three UAV.</p>
-<p>Note: Keep in mind that some issues with your simulation will not be related to your PC configuration. We had issues with the launch of many UAV, due to the lack of code optimization.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Keep in mind that some issues with your simulation will not be related to your PC configuration. We had issues with the launch of many UAV, due to the lack of code optimization.</p>
+</div>
 </div>
 <div class="section" id="ubuntu-partition">
 <h3>2.1.2 Ubuntu partition<a class="headerlink" href="#ubuntu-partition" title="Permalink to this headline">¶</a></h3>
 <p>Then, we can talk about the Ubuntu partition. You will need a minimum <strong>50GB</strong> partition on your PC to install this partition.</p>
-<p>Note: The Ubuntu 18.04 version will not be updated in the future. That is why the ctu-mrs team is adapting their work for the 20.04 version (more detail <a class="reference external" href="https://github.com/ctu-mrs/mrs_uav_system/issues/9">here</a>). However, it is still possible today to work with the 18.04 version without any issue.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The Ubuntu 18.04 version will not be updated in the future. That is why the ctu-mrs team is adapting their work for the 20.04 version (more detail <a class="reference external" href="https://github.com/ctu-mrs/mrs_uav_system/issues/9">here</a>). However, it is still possible today to work with the 18.04 version without any issue.</p>
+</div>
 <p>That is why we recommend to install the Ubuntu 18.04 version until the change on 20.04 have been made.</p>
-<p>To install this OS, please refer to the the <a class="reference external" href="https://ubuntu.com/tutorials/install-ubuntu-desktop#1-overview">Ubuntu install documentation</a>.</p>
 </div>
 <div class="section" id="prepare-ubuntu">
 <h3>2.1.3 Prepare Ubuntu<a class="headerlink" href="#prepare-ubuntu" title="Permalink to this headline">¶</a></h3>
+<p>To install Ubuntu, you will first need to get a bootable USB stick [Recommended] or a dvd.</p>
+<p>To create the bootable usb disk you can follow <a class="reference external" href="https://ubuntu.com/tutorials/create-a-usb-stick-on-windows#3-usb-selection">these steps</a>
+if you are running on Windows and <a class="reference external" href="https://ubuntu.com/tutorials/create-a-usb-stick-on-ubuntu#5-confirm-usb-device">these</a> if you are running on Ubuntu</p>
+</div>
+<div class="section" id="install-ubuntu">
+<h3>2.1.4 Install Ubuntu<a class="headerlink" href="#install-ubuntu" title="Permalink to this headline">¶</a></h3>
+<p>To install this OS, please refer to the the <a class="reference external" href="https://ubuntu.com/tutorials/install-ubuntu-desktop#1-overview">Ubuntu install documentation</a>.</p>
 </div>
 </div>
 <div class="section" id="mrs-workspace-installation">
@@ -210,7 +226,14 @@ build of the packages in your workspace, and the proper launch of your simulatio
 <p>One you have your Ubuntu partition, next step will be to install the MRS workspace from the <a class="reference external" href="https://github.com/ctu-mrs/mrs_uav_system">CTU-MRS github</a>. Just follow the instructions on
 this website in the “<a class="reference external" href="https://github.com/ctu-mrs/mrs_uav_system#i-have-a-fresh-ubuntu-1804-and-want-it-quick-and-easy">I have a fresh Ubuntu 18.04 and want it quick and easy</a>” part. We
 highly recommend to install the MRS Linux environment setup for been able to configure your Linux partition for the MRS workspace. For more detail about the workspace configuration, refer to
-ref{Introduction to MRS}.</p>
+<a class="reference internal" href="Introduction_to_MRS_Software_Extensions.html#id1"><span class="std std-ref">Introduction to MRS</span></a>.</p>
+<div class="admonition danger">
+<p class="first admonition-title">Danger</p>
+<p>You may encounter an issue to build the MRS packages. If the build fails, you can try in the <code class="docutils literal notranslate"><span class="pre">mrs_workspace</span></code> file the command:</p>
+<div class="last highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">catkin</span> <span class="n">build</span> <span class="o">-</span><span class="n">j2</span>
+</pre></div>
+</div>
+</div>
 </div>
 <div class="section" id="working-with-ros">
 <h2>2.3 Working with ROS<a class="headerlink" href="#working-with-ros" title="Permalink to this headline">¶</a></h2>
@@ -221,7 +244,7 @@ from Jonathan Cacace.</p>
 <div class="section" id="working-with-tmux-session">
 <h2>2.4 Working with Tmux session<a class="headerlink" href="#working-with-tmux-session" title="Permalink to this headline">¶</a></h2>
 <p>Tmux is a powerful tool with ROS and Linux. It allows you to setup a complete and custom session for your simulation for instance, or been able to custom your terminal as you want. Your will
-be able to use this tool if you have install the MRS Linux environment setup as recommented in section <a class="reference internal" href="#id1"><span class="std std-ref">2.2 MRS workspace installation</span></a> Multiple commands could be used to navigate in the tmux session. We can find
+be able to use this tool if you have install the MRS Linux environment setup as recommented in section <a class="reference internal" href="#id1"><span class="std std-ref">2.2</span></a>. Multiple commands could be used to navigate in the tmux session. We can find
 a complete data-sheet of the tmux commands in the <a class="reference external" href="https://drive.google.com/drive/folders/1mCFhz56bAgA8XrwsXxz6VisY9S4GDYLP">MRS lab ROS platform Cheat Sheet</a> and in the <a class="reference external" href="http://manpages.ubuntu.com/manpages/trusty/man1/tmux.1.html">Ubuntu Tmux
 documentation</a>. The following tmux commands are the most important ones to navigate in the tmux session without any issue:</p>
 <ul class="simple">
@@ -231,11 +254,14 @@ documentation</a>. The following tmux commands are the most important ones to na
 <li>&lt;Ctrl-a and[]&gt;: Scrolling in the current window</li>
 <li>&lt;Ctrl-t&gt;: New tmux window in the current session</li>
 </ul>
-<p>Note: The official tmux documentation use &lt;Ctrl+b and [‘key’]&gt; format. In our case, &lt;Ctrl-a and [‘key’]&gt; is the good way to issue the command. It’s also possble that you get different
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The official tmux documentation use &lt;Ctrl+b and [‘key’]&gt; format. In our case, &lt;Ctrl-a and [‘key’]&gt; is the good way to issue the command. It’s also possble that you get different
 shortcut, you can easily remap command into ~/.tmux.conf.</p>
 </div>
+</div>
 <div class="section" id="working-with-git">
-<h2>2.5 Working with Git<a class="headerlink" href="#working-with-git" title="Permalink to this headline">¶</a></h2>
+<span id="id2"></span><h2>2.5 Working with Git<a class="headerlink" href="#working-with-git" title="Permalink to this headline">¶</a></h2>
 <p>If you are new at git, first take a look at <a class="reference external" href="https://guides.github.com/introduction/git-handbook/#basic-git">basic commands</a>. We can base our usage of git on the team on this <a class="reference external" href="https://learngitbranching.js.org">tutorial</a> or the <a class="reference external" href="https://www.coursera.org/learn/version-control-with-git">git tutorial advised by Bryan</a>. Here are some useful commands:</p>
 <ul class="simple">
 <li>git branch &lt;branchname&gt;: Creates a new working branch independent of the master. Before committing, make sure you are on your branch and not in the master with git checkout &lt;branchname&gt;.
@@ -253,19 +279,19 @@ timeline of the repository, the other branch is not preserved.</li>
 <div class="section" id="how-to-use-github-permalinks">
 <h2>2.6 How to use github permalinks<a class="headerlink" href="#how-to-use-github-permalinks" title="Permalink to this headline">¶</a></h2>
 <p>A Github permalink is an interesting way to refer to some lines of a code, here is how to create one. For example in the file <a class="reference external" href="https://github.com/mrs-brubotics/MatlabGraphs/blob/master/control_manager.cpp">control_manager.cpp</a>, if you want to highlight the line 5, you need to click on the 5 line number:</p>
-<div class="figure align-center" id="id4">
+<div class="figure align-center" id="id5">
 <a class="reference internal image-reference" href="canvas1.png"><img alt="canvas1.png" src="canvas1.png" style="width: 800px;" /></a>
 <p class="caption"><span class="caption-text">Figure 2.3: Generation of a link to highlight the line 5</span></p>
 </div>
 <p>You can see in the link at the top that the 5 line is highlighted in the permalink. If you want to highlight from the line 5 to the line 7, you need to hold the “MAJ” key and to click on
 the line 7:</p>
-<div class="figure align-center" id="id5">
+<div class="figure align-center" id="id6">
 <a class="reference internal image-reference" href="canvas2.png"><img alt="canvas2.png" src="canvas2.png" style="width: 800px;" /></a>
 <p class="caption"><span class="caption-text">Figure 2.4: Generation of a link to highlight the lines from 5 to 7</span></p>
 </div>
 <p>You can see in the link at the top that the lines from 5 to 7 are highlighted in the permalink. With this link, if the file is updated, you may refer to lines which are not the desired ones.
 In order to freeze the file as it is when you create the permalink, you need to press the “y” key after the lines are highlighted:</p>
-<div class="figure align-center" id="id6">
+<div class="figure align-center" id="id7">
 <a class="reference internal image-reference" href="canvas3.png"><img alt="canvas3.png" src="canvas3.png" style="width: 800px;" /></a>
 <p class="caption"><span class="caption-text">Figure 2.5: Modification to the link to always highlight the intended lines</span></p>
 </div>
@@ -279,8 +305,8 @@ In order to freeze the file as it is when you create the permalink, you need to 
           </div>
           <footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-        <a href="Introduction_to_MRS_Software_Extensions.html" class="btn btn-neutral float-right" title="4. Introduction to MRS Software Extensions" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
-        <a href="index.html" class="btn btn-neutral float-left" title="DroneSwarmTutorial" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="Introduction_to_MRS_Software_Extensions.html" class="btn btn-neutral float-right" title="3. Introduction to MRS Software Extensions" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="How_to_use_ReadTheDocs.html" class="btn btn-neutral float-left" title="1. How to use ReadTheDocs" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
 
   <hr/>

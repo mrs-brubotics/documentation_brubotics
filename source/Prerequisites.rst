@@ -48,12 +48,21 @@ Then, we can talk about the Ubuntu partition. You will need a minimum **50GB** p
 
 That is why we recommend to install the Ubuntu 18.04 version until the change on 20.04 have been made.
 
-To install this OS, please refer to the the `Ubuntu install documentation <https://ubuntu.com/tutorials/install-ubuntu-desktop#1-overview>`__.
+
 
 2.1.3 Prepare Ubuntu
 ^^^^^^^^^^^^^^^^^^^^
 
+To install Ubuntu, you will first need to get a bootable USB stick [Recommended] or a dvd. 
 
+
+To create the bootable usb disk you can follow `these steps <https://ubuntu.com/tutorials/create-a-usb-stick-on-windows#3-usb-selection>`__
+if you are running on Windows and `these <https://ubuntu.com/tutorials/create-a-usb-stick-on-ubuntu#5-confirm-usb-device>`__ if you are running on Ubuntu
+
+2.1.4 Install Ubuntu
+^^^^^^^^^^^^^^^^^^^^
+
+To install this OS, please refer to the the `Ubuntu install documentation <https://ubuntu.com/tutorials/install-ubuntu-desktop#1-overview>`__.
 
 .. _2.2:
 
@@ -63,7 +72,14 @@ To install this OS, please refer to the the `Ubuntu install documentation <https
 One you have your Ubuntu partition, next step will be to install the MRS workspace from the `CTU-MRS github <https://github.com/ctu-mrs/mrs_uav_system>`__. Just follow the instructions on
 this website in the "`I have a fresh Ubuntu 18.04 and want it quick and easy <https://github.com/ctu-mrs/mrs_uav_system#i-have-a-fresh-ubuntu-1804-and-want-it-quick-and-easy>`__" part. We
 highly recommend to install the MRS Linux environment setup for been able to configure your Linux partition for the MRS workspace. For more detail about the workspace configuration, refer to
-\ref{Introduction to MRS}.
+:ref:`Introduction to MRS <3>`.
+
+.. danger::
+   You may encounter an issue to build the MRS packages. If the build fails, you can try in the ``mrs_workspace`` file the command: ::
+      
+      catkin build -j2
+   
+   
 
 2.3 Working with ROS
 --------------------

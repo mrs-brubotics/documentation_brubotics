@@ -19,8 +19,8 @@
 # -- Project information -----------------------------------------------------
 
 project = u'DroneSwarmTutorial'
-copyright = u'2021, Jonathan VOGT'
-author = u'Jonathan VOGT'
+copyright = u'2021, BruBotics'
+author = u'BruBotics'
 
 # The short X.Y version
 version = u''
