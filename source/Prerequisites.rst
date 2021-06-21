@@ -1,4 +1,3 @@
-
 2. Prerequisites
 ================
 
@@ -35,15 +34,17 @@ later. That is why we rather recommend this kind of PC specs:
 This type of configuration is better for simulation launch. We rather recommend a PC with a processor in this category. Indeed, the CPU performance will have a significant impact on the
 build of the packages in your workspace, and the proper launch of your simulation when you will need to launch more than three UAV.
 
-Note: Keep in mind that some issues with your simulation will not be related to your PC configuration. We had issues with the launch of many UAV, due to the lack of code optimization.
+.. note::
+   Keep in mind that some issues with your simulation will not be related to your PC configuration. We had issues with the launch of many UAV, due to the lack of code optimization.
 
 2.1.2 Ubuntu partition
 ^^^^^^^^^^^^^^^^^^^^^^
 
 Then, we can talk about the Ubuntu partition. You will need a minimum **50GB** partition on your PC to install this partition.
 
-Note: The Ubuntu 18.04 version will not be updated in the future. That is why the ctu-mrs team is adapting their work for the 20.04 version (more detail `here <https://github.com/ctu-mrs/mrs
-_uav_system/issues/9>`__). However, it is still possible today to work with the 18.04 version without any issue.
+.. note::
+   The Ubuntu 18.04 version will not be updated in the future. That is why the ctu-mrs team is adapting their work for the 20.04 version (more detail `here <https://github.com/ctu-mrs/mrs
+   _uav_system/issues/9>`__). However, it is still possible today to work with the 18.04 version without any issue.
 
 That is why we recommend to install the Ubuntu 18.04 version until the change on 20.04 have been made.
 
@@ -75,7 +76,7 @@ from Jonathan Cacace.
 -----------------------------
 
 Tmux is a powerful tool with ROS and Linux. It allows you to setup a complete and custom session for your simulation for instance, or been able to custom your terminal as you want. Your will
-be able to use this tool if you have install the MRS Linux environment setup as recommented in section :ref:`2.2` Multiple commands could be used to navigate in the tmux session. We can find
+be able to use this tool if you have install the MRS Linux environment setup as recommented in section :ref:`2.2 <2.2>`. Multiple commands could be used to navigate in the tmux session. We can find
 a complete data-sheet of the tmux commands in the `MRS lab ROS platform Cheat Sheet <https://drive.google.com/drive/folders/1mCFhz56bAgA8XrwsXxz6VisY9S4GDYLP>`__ and in the `Ubuntu Tmux
 documentation <http://manpages.ubuntu.com/manpages/trusty/man1/tmux.1.html>`__. The following tmux commands are the most important ones to navigate in the tmux session without any issue:
 
@@ -85,8 +86,11 @@ documentation <http://manpages.ubuntu.com/manpages/trusty/man1/tmux.1.html>`__. 
 * <Ctrl-a and[]>: Scrolling in the current window
 * <Ctrl-t>: New tmux window in the current session
   
-Note: The official tmux documentation use <Ctrl+b and ['key']> format. In our case, <Ctrl-a and ['key']> is the good way to issue the command. It's also possble that you get different
-shortcut, you can easily remap command into ~/.tmux.conf.
+.. note:: 
+   The official tmux documentation use <Ctrl+b and ['key']> format. In our case, <Ctrl-a and ['key']> is the good way to issue the command. It's also possble that you get different
+   shortcut, you can easily remap command into ~/.tmux.conf.
+
+.. _2.5:
 
 2.5 Working with Git
 --------------------
