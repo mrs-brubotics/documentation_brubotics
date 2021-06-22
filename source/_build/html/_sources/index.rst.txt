@@ -12,3 +12,4 @@ Contents
    Prerequisites
    Introduction_to_MRS_Software_Extensions
    Workspace_git_configuration
+   How_to_use_ReadTheDocs

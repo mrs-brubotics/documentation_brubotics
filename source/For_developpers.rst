@@ -1,3 +1,9 @@
+For developpers
+===============
+
+.. role:: raw-html(raw)
+    :format: html
+
 2.8 How to use ReadTheDocs
 --------------------------
 

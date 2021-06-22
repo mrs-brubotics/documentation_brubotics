@@ -91,58 +91,26 @@ if you are running on Windows and `these <https://ubuntu.com/tutorials/create-a-
 
 To install this OS, please refer to the the `Ubuntu install documentation <https://ubuntu.com/tutorials/install-ubuntu-desktop#1-overview>`__.
 
-.. _2.2_MRS_workspace_installation:
-
-2.2 MRS workspace installation
-------------------------------
-
-Once you have your Ubuntu partition, next step will be to install the MRS workspace from the `CTU-MRS github <https://github.com/ctu-mrs/mrs_uav_system>`__.
-Just follow the instructions on this website in the "`I have a fresh Ubuntu 18.04 and want it quick and easy <https://github.com/ctu-mrs/mrs_uav_system#i-have-a-fresh-ubuntu-1804-and-want-it-quick-and-easy>`__"
-part. We highly recommend to install the MRS Linux environment setup for been able to configure your Linux partition for the MRS workspace. For more detail about
-the workspace configuration, refer to :ref:`Introduction to MRS <3. Introduction to MRS Software Extensions>`.
-
-.. warning::
-   You may encounter an issue to build the MRS packages. If the build fails, you can try in the ``mrs_workspace`` file the following command: ::
-      
-      catkin build -j2
-   
-   
-2.3 Working with ROS
+2.2 Working with ROS
 --------------------
 
 MRS bases its work on the use of ROS, a framework widely used in robotics. We strongly recommend that you inquire about. You can find useful tutorial on `ROS wiki <http://wiki.ros.org/>`__.
 We also recommend *Mastering ROS for ROBOTICS Programming*, by Lentin Joseph ans Jonathan Cacace, chapter 1, 2, 3, 4 and 7 - `here <https://github.com/jocacace>`__ you will find the github
 from Jonathan Cacace.
 
-2.4 Working with Tmux session
------------------------------
+2.3 Working with Visual Studio Code
+-----------------------------------
 
-Tmux is a powerful tool with ROS and Linux. It allows you to setup a complete and custom session for your simulation for instance, or been able to custom your
-terminal as you want. Your will be able to use this tool if you have install the MRS Linux environment setup as recommented in section :ref:`2.2 <2.2_MRS_workspace_installation>`.
-Multiple commands could be used to navigate in the tmux session. We can find a complete data-sheet of the tmux commands in the `MRS lab ROS platform Cheat Sheet <https://drive.google.com/drive/folders/1mCFhz56bAgA8XrwsXxz6VisY9S4GDYLP>`__
-and in the `Ubuntu Tmux documentation <http://manpages.ubuntu.com/manpages/trusty/man1/tmux.1.html>`__. The following tmux commands are the most important ones
-to navigate in the tmux session without any issue:
+We highly recommend you to use `Visual Studio Code <https://code.visualstudio.com/>`__ for Ubuntu. It is easier to view and edit code with syntax highlighting
+tools. You just need to install extension depending on what kind of file you are working e.g. ``.cpp``, ``.py`` etc. Set visual studio code as the default
+program to open files (right-click on the file and select "open with other application").
 
-* ``<Ctrl-a and k>``: Killing tmux session (and also the simulation)
-* ``<Ctrl-a and n>``: Navigation between tmux windows
-* ``<Ctrl-a and number>``: Navigate to the wanted terminal
-* ``<Ctrl-a and arrows>``: Navigation between windows in the same terminal
-* ``<Ctrl-a and w>``: Listing tmux windows
-* ``<Ctrl-a and[>``: Scrolling in the current window
-* ``<Ctrl-t>``: New tmux window in the current session
-  
-.. note:: 
-   The official tmux documentation use ``<Ctrl+b and ['key']>`` format. In our case, ``<Ctrl-a and ['key']>`` is the good way to issue the command. It's also possble
-   that you get different shortcut, you can easily remap command into ``~/.tmux.conf``.
+.. _2.4 Working with Git:
 
-:raw-html:`<font color="Tomato">[TODO: check summer school shortcuts and add here, check MRS cheatsheet]BC</font>`
-
-.. _2.5 Working with Git:
-
-2.5 Working with Git
+2.4 Working with Git
 --------------------
 
-2.5.1 Git bascis
+2.4.1 Git basics
 ^^^^^^^^^^^^^^^^
 
 If you are new at git, first take a look at `basic commands <https://guides.github.com/introduction/git-handbook/#basic-git>`__. We can base our usage of git on
@@ -177,7 +145,7 @@ Similar to cherry-pick, it allows the reorganization of commits from the current
 
 **Reverts the folder to the latest commit and throws all changes away**
 
-2.5.2 Setup your ssh key in Git
+2.4.2 Setup your ssh key in Git
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 We recommend you to setup your ssh key in Github, it's an easy thing that can avoid you some problems that are hard to understand.
@@ -193,8 +161,8 @@ To verify your configuration file, you can run the same commands but like this :
 
 Now, you can follow `these steps <https://docs.github.com/en/github/authenticating-to-github/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent#generating-a-new-ssh-key>`__ to setup your SSH key in Github.
 
-2.6 How to use github permalinks
---------------------------------
+2.4.3 How to use github permalinks
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 A Github permalink is an interesting way to refer to some lines of a code, here is how to create one. For example in the file `control_manager.cpp <https://github.com/mrs-brubotics/
 MatlabGraphs/blob/master/control_manager.cpp>`__, if you want to highlight the line 5, you need to click on the 5 line number:
@@ -230,56 +198,63 @@ research on control and navigation of aerial robots.]BC</font>` :raw-html:`<font
 very specific project.]BC</font>` :raw-html:`<font color="Tomato">[this report is explained for newcomers in robot software development.]BC</font>`
 :raw-html:`<font color="Tomato">[explain the outline of the report. what will be discussed in each chapter.]BC</font>`
 
-2.7 Working with Visual Studio Code
------------------------------------
+.. _2.5_Working_with_Tmux_session:
 
-We highly recommend you to use `Visual Studio Code <https://code.visualstudio.com/>`__ for Ubuntu. It is easier to view and edit code with syntax highlighting
-tools. You just need to install extension depending on what kind of file you are working e.g. ``.cpp``, ``.py`` etc. Set visual studio code as the default
-program to open files (right-click on the file and select "open with other application").
+2.5 Working with Tmux session
+-----------------------------
 
-2.8 How to use ReadTheDocs
---------------------------
+Tmux is a powerful tool with ROS and Linux. It allows you to setup a complete and custom session for your simulation for instance, or been able to custom your
+terminal as you want. Your will be able to use this tool if you have install the MRS Linux environment setup as recommented in section :ref:`2.6.1 <2.6.1_MRS_workspace_installation>`.
+Multiple commands could be used to navigate in the tmux session. We can find a complete data-sheet of the tmux commands in the `MRS lab ROS platform Cheat Sheet <https://drive.google.com/drive/folders/1mCFhz56bAgA8XrwsXxz6VisY9S4GDYLP>`__
+and in the `Ubuntu Tmux documentation <http://manpages.ubuntu.com/manpages/trusty/man1/tmux.1.html>`__. The following tmux commands are the most important ones
+to navigate in the tmux session without any issue:
 
-In this chapter, we will explain the basics of ReadTheDocs.
+* ``<Ctrl-a and k>``: Killing tmux session (and also the simulation)
+* ``<Ctrl-a and n>``: Navigation between tmux windows
+* ``<Ctrl-a and number>``: Navigate to the wanted terminal
+* ``<Ctrl-a and arrows>``: Navigation between windows in the same terminal
+* ``<Ctrl-a and w>``: Listing tmux windows
+* ``<Ctrl-a and[>``: Scrolling in the current window
+* ``<Ctrl-t>``: New tmux window in the current session
 
-2.8.1 How to produce the ReadTheDocs website
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.. note::
+   You don't need to press Ctrl-a-k at the same time, you need to press Ctrl-a and then after k or n, etc.
 
-To create this tutorial, we used a documentation generator called Sphinx and reStructuredText. We refered to the `ReadTheDocs Documentation <https://docs.readthedocs.io/en/stable/index.html#>`__
-and `ReStructuredText primer <https://www.sphinx-doc.org/en/master/usage/restructuredtext/basics.html>`__.
+.. note:: 
+   The official tmux documentation use ``<Ctrl+b and ['key']>`` format. In our case, ``<Ctrl-a and ['key']>`` is the good way to issue the command. It's also possble
+   that you get different shortcut, you can easily remap command into ``~/.tmux.conf``.
 
-2.8.2 How to open the ReadTheDocs website
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-Before all, run this command in your directory: ::
+:raw-html:`<font color="Tomato">[TODO: check summer school shortcuts and add here, check MRS cheatsheet]BC</font>`
 
-   make thml
+2.6 How to use CTU-MRS system
+-----------------------------
 
-Then, as said in the chapter `Getting started with Sphinx <https://docs.readthedocs.io/en/stable/intro/getting-started-with-sphinx.html#>`__, you have to open ``index.html``
-in your web browser to see your documentation. This file should be located here: ``build/html``.
+.. _2.6.1_MRS_workspace_installation:
 
-It can be easier for you to code your website by using Visual Studio Code with an extension called reStructuredText wich is useful to previsualize your website and it
-has a syntax highlighting tool.
+2.6.1 MRS workspace installation
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-2.8.3 How to edit the ReadTheDocs website
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Once you have your Ubuntu partition, next step will be to install the MRS workspace from the `CTU-MRS github <https://github.com/ctu-mrs/mrs_uav_system>`__.
+Just follow the instructions on this website in the "`I have a fresh Ubuntu 18.04 and want it quick and easy <https://github.com/ctu-mrs/mrs_uav_system#i-have-a-fresh-ubuntu-1804-and-want-it-quick-and-easy>`__"
+part. We highly recommend to install the MRS Linux environment setup for been able to configure your Linux partition for the MRS workspace. For more detail about
+the workspace configuration, refer to :ref:`Introduction to MRS <3. Introduction to MRS Software Extensions>`.
 
-The only files you need to modify are ``conf.py`` and all the ``.rst`` files in the ``source`` folder. Once you want to update your documentation, use the following
-commands from your directory:
+.. warning::
+   You may encounter an issue to build the MRS packages. If the build fails, you can try in the ``mrs_workspace`` file the following command: ::
+      
+      catkin build -j2
 
-* Before all, we recommend you to run this command to update your local repository and get the newest code : ::
-    
-    git pull
+2.6.2 Use CTU-MRS system
+^^^^^^^^^^^^^^^^^^^^^^^^
 
-* To check what files wich have been updated since the last commit you can use that command : ::
+We suggest you to read the `CTU-MRS documentation <https://ctu-mrs.github.io/>`__ to learn how to use the CTU-MRS system.
 
-    git status
+In the documentation, you will do the simulation of one drone with gps, remember that you can use the :ref:`Tmux commands <2.5_Working_with_Tmux_session>` to navigate through different terminals.
 
-* To update your repository, adapt and run these commands
+Also, you can try to launch other simulation created by CTU-MRS group, you can go to the ``~/mrs_workspace/src/simulation/example_tmux_scripts/`` folder, run the ``ls``  command 
+to see the name of the different simulation, then you can run : ::
 
- .. code-block:: shell
+   cd "DESIRED SIMULATION"
+   ./start.sh
 
-    git add (use tab key and type the first letter of the files to commit or use git add -A to directly stage all files)
-    git commit -m "Provide a clear explanation of your commit. People who did not make the change should understand the issue you solved."
-    git push
-
-Please refer to section :ref:`2.5 <2.5 Working with Git>` to understand why we use these commands.
+It will launch Tmux session and Gazebo. It depends on your pc specs but you may not be able to run all the simulation.
