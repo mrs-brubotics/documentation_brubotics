@@ -125,7 +125,9 @@ to navigate in the tmux session without any issue:
 
 * ``<Ctrl-a and k>``: Killing tmux session (and also the simulation)
 * ``<Ctrl-a and n>``: Navigation between tmux windows
-* ``<Ctrl-a and w>``: Listinfg tmux windows
+* ``<Ctrl-a and number>``: Navigate to the wanted terminal
+* ``<Ctrl-a and arrows>``: Navigation between windows in the same terminal
+* ``<Ctrl-a and w>``: Listing tmux windows
 * ``<Ctrl-a and[>``: Scrolling in the current window
 * ``<Ctrl-t>``: New tmux window in the current session
   
