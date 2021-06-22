@@ -114,6 +114,9 @@ to navigate in the tmux session without any issue:
 2.5 Working with Git
 --------------------
 
+2.5.1 Git bascis
+^^^^^^^^^^^^^^^^
+
 If you are new at git, first take a look at `basic commands <https://guides.github.com/introduction/git-handbook/#basic-git>`__. We can base our usage of git on
 the team on this `tutorial <https://learngitbranching.js.org>`_ or the `git tutorial advised by Bryan <https://www.coursera.org/learn/version-control-with-git>`__.
 Here are some useful commands: ::
@@ -146,6 +149,21 @@ Similar to cherry-pick, it allows the reorganization of commits from the current
 
 **Reverts the folder to the latest commit and throws all changes away**
 
+2.5.2 Setup your ssh key in Git
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+We recommend you to setup your ssh key in Github, it's an easy thing that can avoid you some problems that are hard to understand.
+Also, you will need to setup your email and your name by using these commands : ::
+
+   git config --global user.name "FIRST_NAME LAST_NAME"
+   git config --global user.email "MY_NAME@example.com"
+
+To verify your configuration file, you can run the same commands but like this : ::
+
+   git config --global user.name
+   git config --global user.email
+
+Now, you can follow `these steps <https://docs.github.com/en/github/authenticating-to-github/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent#generating-a-new-ssh-key>`__ to setup your SSH key in Github.
 
 2.6 How to use github permalinks
 --------------------------------
