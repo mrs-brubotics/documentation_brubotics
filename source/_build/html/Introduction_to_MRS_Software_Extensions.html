@@ -161,9 +161,9 @@
   <div class="section" id="introduction-to-mrs-software-extensions">
 <span id="id1"></span><h1>3. Introduction to MRS Software Extensions<a class="headerlink" href="#introduction-to-mrs-software-extensions" title="Permalink to this headline">¶</a></h1>
 <p>In this chapter we will present you how to install BruBotics MRS Software.</p>
-<p>In the previous part we learned how the default CTU MRS software is constructed and how it can beused. In this part, we will learn how we can use the mrs uav
-system as a starting point to quickly test ourown UAV algorithms. We will show in a tutorial style how to do this step by step. The reader is strongly advised
-to follow the explanations in this report by simultaneously trying out the examples that can befound on our github. You learn and remember more by trying
+<p>In the previous part we learned how the default CTU MRS software is constructed and how it can be used. In this part, we will learn how we can use the mrs uav
+system as a starting point to quickly test our own UAV algorithms. We will show in a tutorial style how to do this step by step. The reader is strongly advised
+to follow the explanations in this report by simultaneously trying out the examples that can be found on our github. You learn and remember more by trying
 yourself.</p>
 <div class="admonition important">
 <p class="first admonition-title">Important</p>
@@ -174,31 +174,30 @@ explain how to reproduce it. It might be a bug to be solved.</p>
 in mind:</p>
 <ul class="simple">
 <li>Remember that many researchers (Brubotics and CTU) will update the software and this document. In case of ideas to start building new software, <span class="raw-html"><font color="Red">first discuss
-your ideas and problems with those researchers</font></span>. The same holds when you encounter problems to be solved. Also know that you canask questions by opening a new
-issue on the MRS github (visible by everyone) or our github (private, not visible by everyone) or send en email to the contributors of the projects. <span class="raw-html"><font color="Red">So don’t
+your ideas and problems with those researchers</font></span>. The same holds when you encounter problems to be solved. Also know that you can ask questions by
+opening a new issue on the MRS github (visible by everyone) or our github (private, not visible by everyone) or send en email to the contributors of the projects. <span class="raw-html"><font color="Red">So don’t
 reinvent the wheel, instead ask advice to the creators to lose less time and learn more.</font></span></li>
-<li>Our software is based and heavily dependent on the software of the CTU MRS group. :raw-html:<a href="#id2"><span class="problematic" id="id3">`</span></a>&lt;font color=”Red”&gt;Therefore it is very important to have pulled the latest CTU MRS software</li>
-</ul>
-<dl class="docutils">
-<dt>(&lt;/font&gt;`see <a class="reference internal" href="Workspace_git_configuration.html#workspace-git-configuration"><span class="std std-ref">Chapter 4</span></a> <span class="raw-html"><font color="Red">) before pushing your new code to our github. Same can be said for code on our github</font></span>. Make a habit to update CTU MRS software and our</dt>
-<dd>MRS brubotics software <span class="raw-html"><font color="Red">each day</font></span> you work on the project and right beforeyou do final tests of your software stack and the git push. Also try to at least <span class="raw-html"><font color="Red">twice
+<li>Our software is based and heavily dependent on the software of the CTU MRS group. <span class="raw-html"><font color="Red">Therefore it is very important to have pulled the latest CTU MRS software
+(see</font></span> <a class="reference internal" href="Workspace_git_configuration.html#workspace-git-configuration"><span class="std std-ref">Chapter 4</span></a> <span class="raw-html"><font color="Red">) before pushing your new code to our github. Same can be said for code on our github</font></span>. Make a habit to update CTU MRS software and our
+MRS brubotics software <span class="raw-html"><font color="Red">each day</font></span> you work on the project and right before you do final tests of your software stack and the git push. Also try to at least <span class="raw-html"><font color="Red">twice
 per month</font></span> delete all code from your PC and do a fresh installation of all the software. Since you pushed it on git, it means it should be working again, hence
-it’s a good test.</dd>
-</dl>
-<ul class="simple">
-<li>Before you push commits to our github always make sure the software is tested and confirmed “working properly” by all your team members. For each running project
-it is advised to work onseparate git branches per project.</li>
+it’s a good test.</li>
+<li>Before you push commits to our github always make sure the software is tested and confirmed “working properly” by all your team members. For each running
+project it is advised to work on separate git branches per project. <span class="raw-html"><font color="Tomato">[todo by Bryan: I think we could also setup a pull request
+to figure out how that works improve first. Qo i can check work of students and accept if is ok, reject and say what they have to change.]BC</font></span></li>
 <li>When starting developing your own software you should directly start writing in this part a tutorialstyle documentation about it. First discuss with the
-responsible researchers (e.g. Bryan) where to best place your content and create a logic structure it in this report. You should write as if youwrite a tutorial
-for people with very basic ROS knowledge. Explain for each task how you createdyour software step by step. Do it similar as the ROS book you read, by guiding the
-reader step bystep. Make sure it is clear how to reproduce the experiment, what to launch, which parameters toset, etc. Better to give more details than to
-explain things too high-level. This does not mean you have to copy paste all code in here.</li>
+responsible researchers (e.g. Bryan) where to best place your content and create a logic structure it in this report. You should write as if youwrite a
+tutorial for people with very basic ROS knowledge. Explain for each task how you createdyour software step by step. Do it similar as the ROS book you read, by
+guiding the reader step bystep. Make sure it is clear how to reproduce the experiment, what to launch, which parameters toset, etc. Better to give more details
+than to explain things too high-level. This does not mean you have to copy paste all code in here. <span class="raw-html"><font color="Tomato">[we should specify how they
+should refer to code: via links, to commits, a test package of our own?]BC</font></span></li>
 <li>Since this software and documentation is continuously updated, it is important to regularly retestif your software still works as expected and if your tutorial
-content is up to date with the software.Make a habit to regularly check for new issues and code changes in the CTU MRS software, sincethey will affect your code
-too.</li>
-<li>If you think the tutorial or software that you did not develop yourself could be improved in someway, put your comment here and discuss first with Bryan.
-For software changes, please open a newissue first in which you explain the bug and your idea. For smaller changes in the tutorial content,do not delete the
-original content, but reformulate the part using your initials. Bryan will regularly go through thereport to accept or decline these changes.</li>
+content is up to date with the software. Make a habit to regularly check for new issues and code changes in the CTU MRS software, since they will affect your
+code too.</li>
+<li>If you think the tutorial or software that you did not develop yourself could be improved in some way, put your comment here and discuss first with Bryan.
+For software changes, please open a new issue first in which you explain the bug and your idea. For smaller changes in the tutorial content,do not delete the
+original content, but reformulate the part using your initials (e.g. <span class="raw-html"><font color="Tomato">["I reformulate the part like this. I like it more because of
+these reasons."]BC</font></span>). Bryan will regularly go through thereport to accept or decline these changes.</li>
 </ul>
 </div>
 
