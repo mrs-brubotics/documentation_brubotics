@@ -7,7 +7,7 @@ First, clone this repository in a folder:
 ```
 git clone https://github.com/mrs-brubotics/documentation_brubotics.git
 ```
-Then, run this command from the ´documentation_brubotics´ folder:
+Then, run this command from the `documentation_brubotics` folder:
 ```
 make html
 ```
