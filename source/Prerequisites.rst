@@ -4,6 +4,28 @@
 .. role:: raw-html(raw)
     :format: html
 
+:raw-html:`<font color="Tomato">[explain in a logic chronology which background knowledge is required to understand the core for this report. Assume an absolute beginner
+in robot software development. So think about what you knew before the internship and write here what is required in logic order. Give links to tutorials you followed
+(and you think are good to learn the required skills/concepts)]BC</font>`
+
+Example template:
+first you need to know this. Good tutorial are this (add link) and this (add link). Very important concepts are blablabla.
+Then this.
+Then this.
+..
+
+:raw-html:`<font color="Teal">[Explain here the basic knowledge you need to do this project. Use the references and write down the extra information you need to know or
+extra things you have to do besides the explanation in a book or website you are referring to.]KM</font>`
+
+:raw-html:`<font color="Tomato">[Each missing tutorial you think is a must to follow can be put here.]BC</font>` :raw-html:`<font color="Tomato">[don't forget to cite
+papers important to be read before you can start with the rest of this report]BC</font>`
+
+:raw-html:`<font color="Tomato">[Maybe also important to explain which hardware and software is required or recommended. E.g. give the best and worse specs of your PC
+for simulation. Ubuntu 18.04 with at least 50GB disk space. Better to use a good desktop machine for simulation. need/ tested with ROS melodic and matlab simulink 2020a.
+etc etc]BC</font>`
+
+:raw-html:`<font color="Tomato">[I moved some sections here since this is required prior knowledge before starting to understand the MRS documentation.]BC</font>`
+
 In this chapter, we will talk about the minimum knowledge we need to understand this report. You will find in this chapter documentation links and tutorials
 needed to better start with the rest of the report. Some concepts and skills from other tutorials are not indicated in the basic documentation from 
 `MRS website <https://ctu-mrs.github.io>`__ and ROS documentation. That is why we will add more information about the basic information and minimum requirements
@@ -57,6 +79,8 @@ That is why we recommend to install the Ubuntu 18.04 version until the change on
 2.1.3 Prepare Ubuntu
 ^^^^^^^^^^^^^^^^^^^^
 
+:raw-html:`<font color="Tomato">[Matlab]BC</font>` :raw-html:`<font color="Tomato">[Micorosdt visual studio code editor set as default]BC</font>`
+
 To install Ubuntu, you will first need to get a bootable USB stick [Recommended] or a dvd. 
 
 To create the bootable usb disk you can follow `these steps <https://ubuntu.com/tutorials/create-a-usb-stick-on-windows#3-usb-selection>`__
@@ -108,6 +132,8 @@ to navigate in the tmux session without any issue:
 .. note:: 
    The official tmux documentation use ``<Ctrl+b and ['key']>`` format. In our case, ``<Ctrl-a and ['key']>`` is the good way to issue the command. It's also possble
    that you get different shortcut, you can easily remap command into ``~/.tmux.conf``.
+
+:raw-html:`<font color="Tomato">[TODO: check summer school shortcuts and add here, check MRS cheatsheet]BC</font>`
 
 .. _2.5 Working with Git:
 
@@ -197,6 +223,11 @@ which are not the desired ones. In order to freeze the file as it is when you cr
 
 You can see that the link at the top changed to always refer to this version of the file.
 
+:raw-html:`<font color="Tomato">[The idea of this report is to provide a detailed tutorial on how the use and understand the MRS software and how this is extended for
+research on control and navigation of aerial robots.]BC</font>` :raw-html:`<font color="Tomato">[From this report you create something similar as the ROS book, but for a
+very specific project.]BC</font>` :raw-html:`<font color="Tomato">[this report is explained for newcomers in robot software development.]BC</font>`
+:raw-html:`<font color="Tomato">[explain the outline of the report. what will be discussed in each chapter.]BC</font>`
+
 2.7 Working with Visual Studio Code
 -----------------------------------
 
@@ -217,17 +248,21 @@ and `ReStructuredText primer <https://www.sphinx-doc.org/en/master/usage/restruc
 
 2.8.2 How to open the ReadTheDocs website
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Before all, run this command in your directory: ::
 
-As said in the chapter `Getting started with Sphinx <https://docs.readthedocs.io/en/stable/intro/getting-started-with-sphinx.html#>`__, you have to open ``index.html`` in your web browser
-to see your documentation. This file should be located here: ``build/html``.
+   make thml
 
-It can be easier for you to code your website by using Visual Studio Code with an extension called reStructuredText wich is useful to previsualize your website and it has a syntax highlighting tool.
+Then, as said in the chapter `Getting started with Sphinx <https://docs.readthedocs.io/en/stable/intro/getting-started-with-sphinx.html#>`__, you have to open ``index.html``
+in your web browser to see your documentation. This file should be located here: ``build/html``.
+
+It can be easier for you to code your website by using Visual Studio Code with an extension called reStructuredText wich is useful to previsualize your website and it
+has a syntax highlighting tool.
 
 2.8.3 How to edit the ReadTheDocs website
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The only files you need to modify are ``conf.py`` and all the ``.rst`` files in the ``source`` folder. Once you want to update your documentation, use the following commands from your
-directory:
+The only files you need to modify are ``conf.py`` and all the ``.rst`` files in the ``source`` folder. Once you want to update your documentation, use the following
+commands from your directory:
 
 * Before all, we recommend you to run this command to update your local repository and get the newest code : ::
     
