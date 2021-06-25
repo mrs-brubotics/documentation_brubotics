@@ -110,7 +110,7 @@ program to open files (right-click on the file and select "open with other appli
 2.4 Working with Git
 --------------------
 
-2.4.1 Git bascis
+2.4.1 Git basics
 ^^^^^^^^^^^^^^^^
 
 If you are new at git, first take a look at `basic commands <https://guides.github.com/introduction/git-handbook/#basic-git>`__. We can base our usage of git on

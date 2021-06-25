@@ -43,7 +43,7 @@ kind of minimum setup requirement is needed, and which configuration is recommen
 Before dealing with the Ubuntu partition, we have to talk about your minimum PC configuration. Here you can see the general PC specs used by the four interns
 during the project:
 
-.. figure:: Intern_PC_specs.png
+.. figure:: _static/Intern_PC_specs.png
    :width: 800
    :align: center
 
@@ -52,7 +52,7 @@ during the project:
 However, this configuration above could not be enough when we have to launch simulations that need a lot of resources from our PC. We may have issues with the
 spawn and takeoff of the UAV later. That is why we rather recommend this kind of PC specs:
 
-.. figure:: Bryan_PC_specs.png
+.. figure:: _static/Bryan_PC_specs.png
    :width: 800
    :align: center
 
@@ -167,7 +167,7 @@ Now, you can follow `these steps <https://docs.github.com/en/github/authenticati
 A Github permalink is an interesting way to refer to some lines of a code, here is how to create one. For example in the file `control_manager.cpp <https://github.com/mrs-brubotics/
 MatlabGraphs/blob/master/control_manager.cpp>`__, if you want to highlight the line 5, you need to click on the 5 line number:
 
-.. figure:: canvas1.png
+.. figure:: _static/canvas1.png
    :width: 800
    :align: center
 
@@ -176,7 +176,7 @@ MatlabGraphs/blob/master/control_manager.cpp>`__, if you want to highlight the l
 You can see in the link at the top that the 5 line is highlighted in the permalink. If you want to highlight from the line 5 to the line 7, you need to hold the
 "MAJ" key and to click on the line 7:
 
-.. figure:: canvas2.png
+.. figure:: _static/canvas2.png
    :width: 800
    :align: center
 
@@ -185,7 +185,7 @@ You can see in the link at the top that the 5 line is highlighted in the permali
 You can see in the link at the top that the lines from 5 to 7 are highlighted in the permalink. With this link, if the file is updated, you may refer to lines
 which are not the desired ones. In order to freeze the file as it is when you create the permalink, you need to press the "y" key after the lines are highlighted:
 
-.. figure:: canvas3.png
+.. figure:: _static/canvas3.png
    :width: 800
    :align: center
 

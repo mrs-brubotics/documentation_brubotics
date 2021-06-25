@@ -88,7 +88,6 @@
             
             
               <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="Authors.html">0. Authors</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Introduction.html">1. Introduction</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">2. Prerequisites</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#hardware-minimum-requirements">2.1 Hardware minimum requirements</a><ul>
@@ -98,22 +97,25 @@
 <li class="toctree-l3"><a class="reference internal" href="#install-ubuntu">2.1.4 Install Ubuntu</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#mrs-workspace-installation">2.2 MRS workspace installation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#working-with-ros">2.3 Working with ROS</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#working-with-tmux-session">2.4 Working with Tmux session</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#working-with-git">2.5 Working with Git</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#how-to-use-github-permalinks">2.6 How to use github permalinks</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#working-with-visual-studio-code">2.7 Working with Visual Studio Code</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#how-to-use-readthedocs">2.8 How to use ReadTheDocs</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#how-to-produce-the-readthedocs-website">2.8.1 How to produce the ReadTheDocs website</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#how-to-open-the-readthedocs-website">2.8.2 How to open the ReadTheDocs website</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#how-to-edit-the-readthedocs-website">2.8.3 How to edit the ReadTheDocs website</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#working-with-ros">2.2 Working with ROS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#working-with-visual-studio-code">2.3 Working with Visual Studio Code</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#working-with-git">2.4 Working with Git</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#git-basics">2.4.1 Git basics</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#setup-your-ssh-key-in-git">2.4.2 Setup your ssh key in Git</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#how-to-use-github-permalinks">2.4.3 How to use github permalinks</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#working-with-tmux-session">2.5 Working with Tmux session</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#how-to-use-ctu-mrs-system">2.6 How to use CTU-MRS system</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#mrs-workspace-installation">2.6.1 MRS workspace installation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#use-ctu-mrs-system">2.6.2 Use CTU-MRS system</a></li>
 </ul>
 </li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="Introduction_to_MRS_Software_Extensions.html">3. Introduction to MRS Software Extensions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Workspace_git_configuration.html">4. Workspace Git configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="For_developers.html">For developers</a></li>
 </ul>
 
             
@@ -183,6 +185,22 @@
             
   <div class="section" id="prerequisites">
 <h1>2. Prerequisites<a class="headerlink" href="#prerequisites" title="Permalink to this headline">¶</a></h1>
+<p><span class="raw-html"><font color="Tomato">[explain in a logic chronology which background knowledge is required to understand the core for this report. Assume an absolute beginner
+in robot software development. So think about what you knew before the internship and write here what is required in logic order. Give links to tutorials you followed
+(and you think are good to learn the required skills/concepts)]BC</font></span></p>
+<p>Example template:
+first you need to know this. Good tutorial are this (add link) and this (add link). Very important concepts are blablabla.
+Then this.
+Then this.
+..</p>
+<p><span class="raw-html"><font color="Teal">[Explain here the basic knowledge you need to do this project. Use the references and write down the extra information you need to know or
+extra things you have to do besides the explanation in a book or website you are referring to.]KM</font></span></p>
+<p><span class="raw-html"><font color="Tomato">[Each missing tutorial you think is a must to follow can be put here.]BC</font></span> <span class="raw-html"><font color="Tomato">[don't forget to cite
+papers important to be read before you can start with the rest of this report]BC</font></span></p>
+<p><span class="raw-html"><font color="Tomato">[Maybe also important to explain which hardware and software is required or recommended. E.g. give the best and worse specs of your PC
+for simulation. Ubuntu 18.04 with at least 50GB disk space. Better to use a good desktop machine for simulation. need/ tested with ROS melodic and matlab simulink 2020a.
+etc etc]BC</font></span></p>
+<p><span class="raw-html"><font color="Tomato">[I moved some sections here since this is required prior knowledge before starting to understand the MRS documentation.]BC</font></span></p>
 <p>In this chapter, we will talk about the minimum knowledge we need to understand this report. You will find in this chapter documentation links and tutorials
 needed to better start with the rest of the report. Some concepts and skills from other tutorials are not indicated in the basic documentation from
 <a class="reference external" href="https://ctu-mrs.github.io">MRS website</a> and ROS documentation. That is why we will add more information about the basic information and minimum requirements
@@ -195,15 +213,15 @@ kind of minimum setup requirement is needed, and which configuration is recommen
 <h3>2.1.1 PC Specs<a class="headerlink" href="#pc-specs" title="Permalink to this headline">¶</a></h3>
 <p>Before dealing with the Ubuntu partition, we have to talk about your minimum PC configuration. Here you can see the general PC specs used by the four interns
 during the project:</p>
-<div class="figure align-center" id="id3">
-<a class="reference internal image-reference" href="Intern_PC_specs.png"><img alt="Intern_PC_specs.png" src="Intern_PC_specs.png" style="width: 800px;" /></a>
-<p class="caption"><span class="caption-text">Figure 2.1: Intern PC specs</span><a class="headerlink" href="#id3" title="Permalink to this image">¶</a></p>
+<div class="figure align-center" id="id4">
+<a class="reference internal image-reference" href="_images/Intern_PC_specs.png"><img alt="_images/Intern_PC_specs.png" src="_images/Intern_PC_specs.png" style="width: 800px;" /></a>
+<p class="caption"><span class="caption-text">Figure 2.1: Intern PC specs</span><a class="headerlink" href="#id4" title="Permalink to this image">¶</a></p>
 </div>
 <p>However, this configuration above could not be enough when we have to launch simulations that need a lot of resources from our PC. We may have issues with the
 spawn and takeoff of the UAV later. That is why we rather recommend this kind of PC specs:</p>
-<div class="figure align-center" id="id4">
-<a class="reference internal image-reference" href="Bryan_PC_specs.png"><img alt="Bryan_PC_specs.png" src="Bryan_PC_specs.png" style="width: 800px;" /></a>
-<p class="caption"><span class="caption-text">Figure 2.2: Bryan Convens PC specs</span><a class="headerlink" href="#id4" title="Permalink to this image">¶</a></p>
+<div class="figure align-center" id="id5">
+<a class="reference internal image-reference" href="_images/Bryan_PC_specs.png"><img alt="_images/Bryan_PC_specs.png" src="_images/Bryan_PC_specs.png" style="width: 800px;" /></a>
+<p class="caption"><span class="caption-text">Figure 2.2: Bryan Convens PC specs</span><a class="headerlink" href="#id5" title="Permalink to this image">¶</a></p>
 </div>
 <p>This type of configuration is better for simulation launch. We rather recommend a PC with a processor in this category. Indeed, the CPU performance will have a
 significant impact on the build of the packages in your workspace, and the proper launch of your simulation when you will need to launch more than three UAV.</p>
@@ -225,6 +243,7 @@ of code optimization.</p>
 </div>
 <div class="section" id="prepare-ubuntu">
 <h3>2.1.3 Prepare Ubuntu<a class="headerlink" href="#prepare-ubuntu" title="Permalink to this headline">¶</a></h3>
+<p><span class="raw-html"><font color="Tomato">[Matlab]BC</font></span> <span class="raw-html"><font color="Tomato">[Micorosdt visual studio code editor set as default]BC</font></span></p>
 <p>To install Ubuntu, you will first need to get a bootable USB stick [Recommended] or a dvd.</p>
 <p>To create the bootable usb disk you can follow <a class="reference external" href="https://ubuntu.com/tutorials/create-a-usb-stick-on-windows#3-usb-selection">these steps</a>
 if you are running on Windows and <a class="reference external" href="https://ubuntu.com/tutorials/create-a-usb-stick-on-ubuntu#5-confirm-usb-device">these</a> if you are running on Ubuntu.</p>
@@ -234,48 +253,22 @@ if you are running on Windows and <a class="reference external" href="https://ub
 <p>To install this OS, please refer to the the <a class="reference external" href="https://ubuntu.com/tutorials/install-ubuntu-desktop#1-overview">Ubuntu install documentation</a>.</p>
 </div>
 </div>
-<div class="section" id="mrs-workspace-installation">
-<span id="id1"></span><h2>2.2 MRS workspace installation<a class="headerlink" href="#mrs-workspace-installation" title="Permalink to this headline">¶</a></h2>
-<p>Once you have your Ubuntu partition, next step will be to install the MRS workspace from the <a class="reference external" href="https://github.com/ctu-mrs/mrs_uav_system">CTU-MRS github</a>.
-Just follow the instructions on this website in the “<a class="reference external" href="https://github.com/ctu-mrs/mrs_uav_system#i-have-a-fresh-ubuntu-1804-and-want-it-quick-and-easy">I have a fresh Ubuntu 18.04 and want it quick and easy</a>”
-part. We highly recommend to install the MRS Linux environment setup for been able to configure your Linux partition for the MRS workspace. For more detail about
-the workspace configuration, refer to <a class="reference internal" href="Introduction_to_MRS_Software_Extensions.html#introduction-to-mrs-software-extensions"><span class="std std-ref">Introduction to MRS</span></a>.</p>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>You may encounter an issue to build the MRS packages. If the build fails, you can try in the <code class="docutils literal notranslate"><span class="pre">mrs_workspace</span></code> file the following command:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">catkin</span> <span class="n">build</span> <span class="o">-</span><span class="n">j2</span>
-</pre></div>
-</div>
-</div>
-</div>
 <div class="section" id="working-with-ros">
-<h2>2.3 Working with ROS<a class="headerlink" href="#working-with-ros" title="Permalink to this headline">¶</a></h2>
+<h2>2.2 Working with ROS<a class="headerlink" href="#working-with-ros" title="Permalink to this headline">¶</a></h2>
 <p>MRS bases its work on the use of ROS, a framework widely used in robotics. We strongly recommend that you inquire about. You can find useful tutorial on <a class="reference external" href="http://wiki.ros.org/">ROS wiki</a>.
 We also recommend <em>Mastering ROS for ROBOTICS Programming</em>, by Lentin Joseph ans Jonathan Cacace, chapter 1, 2, 3, 4 and 7 - <a class="reference external" href="https://github.com/jocacace">here</a> you will find the github
 from Jonathan Cacace.</p>
 </div>
-<div class="section" id="working-with-tmux-session">
-<h2>2.4 Working with Tmux session<a class="headerlink" href="#working-with-tmux-session" title="Permalink to this headline">¶</a></h2>
-<p>Tmux is a powerful tool with ROS and Linux. It allows you to setup a complete and custom session for your simulation for instance, or been able to custom your
-terminal as you want. Your will be able to use this tool if you have install the MRS Linux environment setup as recommented in section <a class="reference internal" href="#mrs-workspace-installation"><span class="std std-ref">2.2</span></a>.
-Multiple commands could be used to navigate in the tmux session. We can find a complete data-sheet of the tmux commands in the <a class="reference external" href="https://drive.google.com/drive/folders/1mCFhz56bAgA8XrwsXxz6VisY9S4GDYLP">MRS lab ROS platform Cheat Sheet</a>
-and in the <a class="reference external" href="http://manpages.ubuntu.com/manpages/trusty/man1/tmux.1.html">Ubuntu Tmux documentation</a>. The following tmux commands are the most important ones
-to navigate in the tmux session without any issue:</p>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">&lt;Ctrl-a</span> <span class="pre">and</span> <span class="pre">k&gt;</span></code>: Killing tmux session (and also the simulation)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">&lt;Ctrl-a</span> <span class="pre">and</span> <span class="pre">n&gt;</span></code>: Navigation between tmux windows</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">&lt;Ctrl-a</span> <span class="pre">and</span> <span class="pre">w&gt;</span></code>: Listinfg tmux windows</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">&lt;Ctrl-a</span> <span class="pre">and[&gt;</span></code>: Scrolling in the current window</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">&lt;Ctrl-t&gt;</span></code>: New tmux window in the current session</p></li>
-</ul>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>The official tmux documentation use <code class="docutils literal notranslate"><span class="pre">&lt;Ctrl+b</span> <span class="pre">and</span> <span class="pre">['key']&gt;</span></code> format. In our case, <code class="docutils literal notranslate"><span class="pre">&lt;Ctrl-a</span> <span class="pre">and</span> <span class="pre">['key']&gt;</span></code> is the good way to issue the command. It’s also possble
-that you get different shortcut, you can easily remap command into <code class="docutils literal notranslate"><span class="pre">~/.tmux.conf</span></code>.</p>
-</div>
+<div class="section" id="working-with-visual-studio-code">
+<h2>2.3 Working with Visual Studio Code<a class="headerlink" href="#working-with-visual-studio-code" title="Permalink to this headline">¶</a></h2>
+<p>We highly recommend you to use <a class="reference external" href="https://code.visualstudio.com/">Visual Studio Code</a> for Ubuntu. It is easier to view and edit code with syntax highlighting
+tools. You just need to install extension depending on what kind of file you are working e.g. <code class="docutils literal notranslate"><span class="pre">.cpp</span></code>, <code class="docutils literal notranslate"><span class="pre">.py</span></code> etc. Set visual studio code as the default
+program to open files (right-click on the file and select “open with other application”).</p>
 </div>
 <div class="section" id="working-with-git">
-<span id="id2"></span><h2>2.5 Working with Git<a class="headerlink" href="#working-with-git" title="Permalink to this headline">¶</a></h2>
+<span id="id1"></span><h2>2.4 Working with Git<a class="headerlink" href="#working-with-git" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="git-basics">
+<h3>2.4.1 Git basics<a class="headerlink" href="#git-basics" title="Permalink to this headline">¶</a></h3>
 <p>If you are new at git, first take a look at <a class="reference external" href="https://guides.github.com/introduction/git-handbook/#basic-git">basic commands</a>. We can base our usage of git on
 the team on this <a class="reference external" href="https://learngitbranching.js.org">tutorial</a> or the <a class="reference external" href="https://www.coursera.org/learn/version-control-with-git">git tutorial advised by Bryan</a>.
 Here are some useful commands:</p>
@@ -308,72 +301,101 @@ timeline of the repository, the other branch is not preserved.</p>
 </div>
 <p><strong>Reverts the folder to the latest commit and throws all changes away</strong></p>
 </div>
+<div class="section" id="setup-your-ssh-key-in-git">
+<h3>2.4.2 Setup your ssh key in Git<a class="headerlink" href="#setup-your-ssh-key-in-git" title="Permalink to this headline">¶</a></h3>
+<p>We recommend you to setup your ssh key in Github, it’s an easy thing that can avoid you some problems that are hard to understand.
+Also, you will need to setup your email and your name by using these commands :</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">config</span> <span class="o">--</span><span class="k">global</span> <span class="n">user</span><span class="o">.</span><span class="n">name</span> <span class="s2">&quot;FIRST_NAME LAST_NAME&quot;</span>
+<span class="n">git</span> <span class="n">config</span> <span class="o">--</span><span class="k">global</span> <span class="n">user</span><span class="o">.</span><span class="n">email</span> <span class="s2">&quot;MY_NAME@example.com&quot;</span>
+</pre></div>
+</div>
+<p>To verify your configuration file, you can run the same commands but like this :</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">config</span> <span class="o">--</span><span class="k">global</span> <span class="n">user</span><span class="o">.</span><span class="n">name</span>
+<span class="n">git</span> <span class="n">config</span> <span class="o">--</span><span class="k">global</span> <span class="n">user</span><span class="o">.</span><span class="n">email</span>
+</pre></div>
+</div>
+<p>Now, you can follow <a class="reference external" href="https://docs.github.com/en/github/authenticating-to-github/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent#generating-a-new-ssh-key">these steps</a> to setup your SSH key in Github.</p>
+</div>
 <div class="section" id="how-to-use-github-permalinks">
-<h2>2.6 How to use github permalinks<a class="headerlink" href="#how-to-use-github-permalinks" title="Permalink to this headline">¶</a></h2>
+<h3>2.4.3 How to use github permalinks<a class="headerlink" href="#how-to-use-github-permalinks" title="Permalink to this headline">¶</a></h3>
 <p>A Github permalink is an interesting way to refer to some lines of a code, here is how to create one. For example in the file <a class="reference external" href="https://github.com/mrs-brubotics/MatlabGraphs/blob/master/control_manager.cpp">control_manager.cpp</a>, if you want to highlight the line 5, you need to click on the 5 line number:</p>
-<div class="figure align-center" id="id5">
-<a class="reference internal image-reference" href="canvas1.png"><img alt="canvas1.png" src="canvas1.png" style="width: 800px;" /></a>
-<p class="caption"><span class="caption-text">Figure 2.3: Generation of a link to highlight the line 5</span><a class="headerlink" href="#id5" title="Permalink to this image">¶</a></p>
+<div class="figure align-center" id="id6">
+<a class="reference internal image-reference" href="_images/canvas1.png"><img alt="_images/canvas1.png" src="_images/canvas1.png" style="width: 800px;" /></a>
+<p class="caption"><span class="caption-text">Figure 2.3: Generation of a link to highlight the line 5</span><a class="headerlink" href="#id6" title="Permalink to this image">¶</a></p>
 </div>
 <p>You can see in the link at the top that the 5 line is highlighted in the permalink. If you want to highlight from the line 5 to the line 7, you need to hold the
 “MAJ” key and to click on the line 7:</p>
-<div class="figure align-center" id="id6">
-<a class="reference internal image-reference" href="canvas2.png"><img alt="canvas2.png" src="canvas2.png" style="width: 800px;" /></a>
-<p class="caption"><span class="caption-text">Figure 2.4: Generation of a link to highlight the lines from 5 to 7</span><a class="headerlink" href="#id6" title="Permalink to this image">¶</a></p>
+<div class="figure align-center" id="id7">
+<a class="reference internal image-reference" href="_images/canvas2.png"><img alt="_images/canvas2.png" src="_images/canvas2.png" style="width: 800px;" /></a>
+<p class="caption"><span class="caption-text">Figure 2.4: Generation of a link to highlight the lines from 5 to 7</span><a class="headerlink" href="#id7" title="Permalink to this image">¶</a></p>
 </div>
 <p>You can see in the link at the top that the lines from 5 to 7 are highlighted in the permalink. With this link, if the file is updated, you may refer to lines
 which are not the desired ones. In order to freeze the file as it is when you create the permalink, you need to press the “y” key after the lines are highlighted:</p>
-<div class="figure align-center" id="id7">
-<a class="reference internal image-reference" href="canvas3.png"><img alt="canvas3.png" src="canvas3.png" style="width: 800px;" /></a>
-<p class="caption"><span class="caption-text">Figure 2.5: Modification to the link to always highlight the intended lines</span><a class="headerlink" href="#id7" title="Permalink to this image">¶</a></p>
+<div class="figure align-center" id="id8">
+<a class="reference internal image-reference" href="_images/canvas3.png"><img alt="_images/canvas3.png" src="_images/canvas3.png" style="width: 800px;" /></a>
+<p class="caption"><span class="caption-text">Figure 2.5: Modification to the link to always highlight the intended lines</span><a class="headerlink" href="#id8" title="Permalink to this image">¶</a></p>
 </div>
 <p>You can see that the link at the top changed to always refer to this version of the file.</p>
+<p><span class="raw-html"><font color="Tomato">[The idea of this report is to provide a detailed tutorial on how the use and understand the MRS software and how this is extended for
+research on control and navigation of aerial robots.]BC</font></span> <span class="raw-html"><font color="Tomato">[From this report you create something similar as the ROS book, but for a
+very specific project.]BC</font></span> <span class="raw-html"><font color="Tomato">[this report is explained for newcomers in robot software development.]BC</font></span>
+<span class="raw-html"><font color="Tomato">[explain the outline of the report. what will be discussed in each chapter.]BC</font></span></p>
 </div>
-<div class="section" id="working-with-visual-studio-code">
-<h2>2.7 Working with Visual Studio Code<a class="headerlink" href="#working-with-visual-studio-code" title="Permalink to this headline">¶</a></h2>
-<p>We highly recommend you to use <a class="reference external" href="https://code.visualstudio.com/">Visual Studio Code</a> for Ubuntu. It is easier to view and edit code with syntax highlighting
-tools. You just need to install extension depending on what kind of file you are working e.g. <code class="docutils literal notranslate"><span class="pre">.cpp</span></code>, <code class="docutils literal notranslate"><span class="pre">.py</span></code> etc. Set visual studio code as the default
-program to open files (right-click on the file and select “open with other application”).</p>
 </div>
-<div class="section" id="how-to-use-readthedocs">
-<h2>2.8 How to use ReadTheDocs<a class="headerlink" href="#how-to-use-readthedocs" title="Permalink to this headline">¶</a></h2>
-<p>In this chapter, we will explain the basics of ReadTheDocs.</p>
-<div class="section" id="how-to-produce-the-readthedocs-website">
-<h3>2.8.1 How to produce the ReadTheDocs website<a class="headerlink" href="#how-to-produce-the-readthedocs-website" title="Permalink to this headline">¶</a></h3>
-<p>To create this tutorial, we used a documentation generator called Sphinx and reStructuredText. We refered to the <a class="reference external" href="https://docs.readthedocs.io/en/stable/index.html#">ReadTheDocs Documentation</a>
-and <a class="reference external" href="https://www.sphinx-doc.org/en/master/usage/restructuredtext/basics.html">ReStructuredText primer</a>.</p>
-</div>
-<div class="section" id="how-to-open-the-readthedocs-website">
-<h3>2.8.2 How to open the ReadTheDocs website<a class="headerlink" href="#how-to-open-the-readthedocs-website" title="Permalink to this headline">¶</a></h3>
-<p>As said in the chapter <a class="reference external" href="https://docs.readthedocs.io/en/stable/intro/getting-started-with-sphinx.html#">Getting started with Sphinx</a>, you have to open <code class="docutils literal notranslate"><span class="pre">index.html</span></code> in your web browser
-to see your documentation. This file should be located here: <code class="docutils literal notranslate"><span class="pre">build/html</span></code>.</p>
-<p>It can be easier for you to code your website by using Visual Studio Code with an extension called reStructuredText wich is useful to previsualize your website and it has a syntax highlighting tool.</p>
-</div>
-<div class="section" id="how-to-edit-the-readthedocs-website">
-<h3>2.8.3 How to edit the ReadTheDocs website<a class="headerlink" href="#how-to-edit-the-readthedocs-website" title="Permalink to this headline">¶</a></h3>
-<p>The only files you need to modify are <code class="docutils literal notranslate"><span class="pre">conf.py</span></code> and all the <code class="docutils literal notranslate"><span class="pre">.rst</span></code> files in the <code class="docutils literal notranslate"><span class="pre">source</span></code> folder. Once you want to update your documentation, use the following commands from your
-directory:</p>
-<ul>
-<li><p>Before all, we recommend you to run this command to update your local repository and get the newest code :</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">pull</span>
-</pre></div>
-</div>
-</li>
-<li><p>To check what files wich have been updated since the last commit you can use that command :</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">status</span>
-</pre></div>
-</div>
-</li>
-<li><p>To update your repository, adapt and run these commands</p></li>
+<div class="section" id="working-with-tmux-session">
+<span id="id2"></span><h2>2.5 Working with Tmux session<a class="headerlink" href="#working-with-tmux-session" title="Permalink to this headline">¶</a></h2>
+<p>Tmux is a powerful tool with ROS and Linux. It allows you to setup a complete and custom session for your simulation for instance, or been able to custom your
+terminal as you want. Your will be able to use this tool if you have install the MRS Linux environment setup as recommented in section <a class="reference internal" href="#mrs-workspace-installation"><span class="std std-ref">2.6.1</span></a>.
+Multiple commands could be used to navigate in the tmux session. We can find a complete data-sheet of the tmux commands in the <a class="reference external" href="https://drive.google.com/drive/folders/1mCFhz56bAgA8XrwsXxz6VisY9S4GDYLP">MRS lab ROS platform Cheat Sheet</a>
+and in the <a class="reference external" href="http://manpages.ubuntu.com/manpages/trusty/man1/tmux.1.html">Ubuntu Tmux documentation</a>. The following tmux commands are the most important ones
+to navigate in the tmux session without any issue:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">&lt;Ctrl-a</span> <span class="pre">and</span> <span class="pre">k&gt;</span></code>: Killing tmux session (and also the simulation)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&lt;Ctrl-a</span> <span class="pre">and</span> <span class="pre">n&gt;</span></code>: Navigation between tmux windows</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&lt;Ctrl-a</span> <span class="pre">and</span> <span class="pre">number&gt;</span></code>: Navigate to the wanted terminal</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&lt;Ctrl-a</span> <span class="pre">and</span> <span class="pre">arrows&gt;</span></code>: Navigation between windows in the same terminal</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&lt;Ctrl-a</span> <span class="pre">and</span> <span class="pre">w&gt;</span></code>: Listing tmux windows</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&lt;Ctrl-a</span> <span class="pre">and[&gt;</span></code>: Scrolling in the current window</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&lt;Ctrl-t&gt;</span></code>: New tmux window in the current session</p></li>
 </ul>
-<blockquote>
-<div><div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>git add <span class="o">(</span>use tab key and <span class="nb">type</span> the first letter of the files to commit or use git add -A to directly stage all files<span class="o">)</span>
-git commit -m <span class="s2">&quot;Provide a clear explanation of your commit. People who did not make the change should understand the issue you solved.&quot;</span>
-git push
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You don’t need to press Ctrl-a-k at the same time, you need to press Ctrl-a and then after k or n, etc.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The official tmux documentation use <code class="docutils literal notranslate"><span class="pre">&lt;Ctrl+b</span> <span class="pre">and</span> <span class="pre">['key']&gt;</span></code> format. In our case, <code class="docutils literal notranslate"><span class="pre">&lt;Ctrl-a</span> <span class="pre">and</span> <span class="pre">['key']&gt;</span></code> is the good way to issue the command. It’s also possble
+that you get different shortcut, you can easily remap command into <code class="docutils literal notranslate"><span class="pre">~/.tmux.conf</span></code>.</p>
+</div>
+<p><span class="raw-html"><font color="Tomato">[TODO: check summer school shortcuts and add here, check MRS cheatsheet]BC</font></span></p>
+</div>
+<div class="section" id="how-to-use-ctu-mrs-system">
+<h2>2.6 How to use CTU-MRS system<a class="headerlink" href="#how-to-use-ctu-mrs-system" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="mrs-workspace-installation">
+<span id="id3"></span><h3>2.6.1 MRS workspace installation<a class="headerlink" href="#mrs-workspace-installation" title="Permalink to this headline">¶</a></h3>
+<p>Once you have your Ubuntu partition, next step will be to install the MRS workspace from the <a class="reference external" href="https://github.com/ctu-mrs/mrs_uav_system">CTU-MRS github</a>.
+Just follow the instructions on this website in the “<a class="reference external" href="https://github.com/ctu-mrs/mrs_uav_system#i-have-a-fresh-ubuntu-1804-and-want-it-quick-and-easy">I have a fresh Ubuntu 18.04 and want it quick and easy</a>”
+part. We highly recommend to install the MRS Linux environment setup for been able to configure your Linux partition for the MRS workspace. For more detail about
+the workspace configuration, refer to <a class="reference internal" href="Introduction_to_MRS_Software_Extensions.html#introduction-to-mrs-software-extensions"><span class="std std-ref">Introduction to MRS</span></a>.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>You may encounter an issue to build the MRS packages. If the build fails, you can try in the <code class="docutils literal notranslate"><span class="pre">mrs_workspace</span></code> file the following command:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">catkin</span> <span class="n">build</span> <span class="o">-</span><span class="n">j2</span>
 </pre></div>
 </div>
-</div></blockquote>
-<p>Please refer to section <a class="reference internal" href="#working-with-git"><span class="std std-ref">2.5</span></a> to understand why we use these commands.</p>
+</div>
+</div>
+<div class="section" id="use-ctu-mrs-system">
+<h3>2.6.2 Use CTU-MRS system<a class="headerlink" href="#use-ctu-mrs-system" title="Permalink to this headline">¶</a></h3>
+<p>We suggest you to read the <a class="reference external" href="https://ctu-mrs.github.io/">CTU-MRS documentation</a> to learn how to use the CTU-MRS system.</p>
+<p>In the documentation, you will do the simulation of one drone with gps, remember that you can use the <a class="reference internal" href="#working-with-tmux-session"><span class="std std-ref">Tmux commands</span></a> to navigate through different terminals.</p>
+<p>Also, you can try to launch other simulation created by CTU-MRS group, you can go to the <code class="docutils literal notranslate"><span class="pre">~/mrs_workspace/src/simulation/example_tmux_scripts/</span></code> folder, run the <code class="docutils literal notranslate"><span class="pre">ls</span></code>  command
+to see the name of the different simulation, then you can run :</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="s2">&quot;DESIRED SIMULATION&quot;</span>
+<span class="o">./</span><span class="n">start</span><span class="o">.</span><span class="n">sh</span>
+</pre></div>
+</div>
+<p>It will launch Tmux session and Gazebo. It depends on your pc specs but you may not be able to run all the simulation.</p>
 </div>
 </div>
 </div>

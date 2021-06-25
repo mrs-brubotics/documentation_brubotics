@@ -41,6 +41,7 @@
     
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="For developers" href="For_developers.html" />
     <link rel="prev" title="3. Introduction to MRS Software Extensions" href="Introduction_to_MRS_Software_Extensions.html" /> 
 </head>
 
@@ -87,11 +88,11 @@
             
             
               <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="Authors.html">0. Authors</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Introduction.html">1. Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Prerequisites.html">2. Prerequisites</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Introduction_to_MRS_Software_Extensions.html">3. Introduction to MRS Software Extensions</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">4. Workspace Git configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="For_developers.html">For developers</a></li>
 </ul>
 
             
@@ -163,22 +164,32 @@
 <span id="id1"></span><h1>4. Workspace Git configuration<a class="headerlink" href="#workspace-git-configuration" title="Permalink to this headline">¶</a></h1>
 <p>In this chapter we will let you know some important things about our Github.</p>
 <p>To install our software from our github, please refer to the <a class="reference external" href="https://github.com/mrs-brubotics/droneswarm_brubotics/blob/master/README.md">README.md</a> file
-available in our github. These commands will install droneswarm_brubotics into your work space and install the associated ROS packages.</p>
+available in our github. <span class="raw-html"><font color="Tomato">[in the next chapter i had the problem that the sourcing line: source GIT_PATH/droneswarm_brubotics/shell_additions/shell_additions.sh
+was not automatically added so chapter 8 could not be tested. Check if it is the case for you if not add this line manually to your bashrc file]BC</font></span></p>
+<p>These commands will install <code class="docutils literal notranslate"><span class="pre">droneswarm_brubotics</span></code> into your work space and install the associated ROS packages.</p>
 <p>We always try to organize our <a class="reference external" href="https://github.com/mrs-brubotics">MRS Brubotics github</a> like the <a class="reference external" href="https://github.com/ctu-mrs">CTU MRS github</a>.
 We have a main github folder droneswarm_brubotics which contains the gitman configurations. There we can link our ROS packages:</p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://github.com/mrs-brubotics/controllers_brubotics">controllers_brubotics</a>: contains customized controller definitions from Brubotics.</p></li>
 <li><p><a class="reference external" href="https://github.com/mrs-brubotics/trackers_brubotics">trackers_brubotics</a>: contains customized tracker definitions from Brubotics.</p></li>
 <li><p><a class="reference external" href="https://github.com/mrs-brubotics/testing_brubotics">testing_brubotics</a>: contains simulation tmux scripts, custom configs and customized worlds</p></li>
+<li><p><span class="raw-html"><font color="Tomato">[Please update this list when a new ros package is added to github]BC</font></span></p></li>
 </ul>
 <p>There are also other repositories in our github:</p>
 <ul class="simple">
-<li><p><a class="reference external" href="https://github.com/mrs-brubotics/MatlabGraphs">MatlabGraphs</a>: to plot graphs from simulations. This folder contains matlab files to allow a new user to follow Chapter ?. You can find it indroneswarm_brubotics/useful_files.</p></li>
+<li><p><a class="reference external" href="https://github.com/mrs-brubotics/MatlabGraphs">MatlabGraphs</a>: to plot graphs from simulations. This folder contains matlab files to allow a new user to follow
+Chapter ?. You can find it indroneswarm_brubotics/useful_files.</p></li>
+<li><p><span class="raw-html"><font color="Tomato">[not updated]BC</font></span> <a class="reference external" href="https://github.com/mrs-brubotics/crazyflie_model_brubotics">Crazyflie model Brubotics</a>, which contains 3D
+models we will implement not done yet <span class="raw-html"><font color="Tomato">[you can start with this only after D-ERG works on f450 swarm.]BC</font></span> <span class="raw-html"><font color="Tomato">[this
+will be a task for new students.]BC</font></span> <span class="raw-html"><font color="Tomato">[xwewill need the model of the new drone, will be tsk for Zakaria and Frank]BC</font></span>
+<span class="raw-html"><font color="Tomato">[Same for tethered collaborative drones]BC</font></span></p></li>
+<li><p><span class="raw-html"><font color="Tomato">[Please update this list when a new github folder is added to github]BC</font></span></p></li>
 </ul>
-<p>To add a new ROS package into droneswarm_brubotics you have to update the <a class="reference external" href="https://github.com/mrs-brubotics/droneswarm_brubotics/blob/master/.gitman.yml">gitman.yml</a> as it isexplained in Section ??, except here we use ssh links and not https.
-To update the different files you have several options depending on what you want to do:</p>
+<p>To add a new ROS package into droneswarm_brubotics you have to update the <a class="reference external" href="https://github.com/mrs-brubotics/droneswarm_brubotics/blob/master/.gitman.yml">gitman.yml</a>
+as it is explained in Section ??, except here we use ssh links and not https. To update the different files you have several options depending on what you want to do:</p>
 <ul>
-<li><p>You want to update all the code from mrs_workspace and from workspace.  Use <a class="reference external" href="https://github.com/mrs-brubotics/droneswarm_brubotics/blob/master/script/pull_all.sh">pull_all.sh</a> ondroneswarm_brubotics/script. [Recommended]</p></li>
+<li><p>You want to update all the code from mrs_workspace and from workspace. Use <a class="reference external" href="https://github.com/mrs-brubotics/droneswarm_brubotics/blob/master/script/pull_all.sh">pull_all.sh</a>
+on <code class="docutils literal notranslate"><span class="pre">droneswarm_brubotics/script</span></code>. [Recommended]</p></li>
 <li><p>You want to update only mrs_workspace refer yourself to ??.</p></li>
 <li><p>You want to update only brubotics code, go to droneswarm_brubotics and execute :</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">pull</span>
@@ -191,14 +202,41 @@ To update the different files you have several options depending on what you wan
 </pre></div>
 </div>
 </li>
-<li><p>If you want to restore mrs code as it was at the beginning, without brubotics code you can use <a class="reference external" href="https://github.com/mrs-brubotics/droneswarm_brubotics/blob/master/script/restore_mrs_basic_installation.sh">script/restore_mrs_basic_installation.sh</a>. Another option is to reinstall everything from scratch [recommended].</p></li>
 </ul>
-<p>In <code class="docutils literal notranslate"><span class="pre">droneswarm_brubotics/shell_additions</span></code>, you will find <a class="reference external" href="https://github.com/mrs-brubotics/droneswarm_brubotics/blob/master/shell_additions/shell_additions.sh">shell_additions.sh</a>, which allows you to use the <code class="docutils literal notranslate"><span class="pre">waitBeforeGoTofunction</span></code>.
-This is a bash function which we use in our <a class="reference external" href="https://github.com/mrs-brubotics/testing_brubotics/blob/3f2411da291461cd5396b1925a7c3fd28840176f/tmux_scripts/one_drone_graphs/session.yml#L18">session.yaml</a> to get automated movement of the drone in our simulation.</p>
+<p>I do not figure yet how to update all the submodule by doing a single git pull -which is remap to <code class="docutils literal notranslate"><span class="pre">gitman</span> <span class="pre">install</span></code>- on droneswarm_brubotics, but you can use <code class="docutils literal notranslate"><span class="pre">gitman</span>
+<span class="pre">update</span></code>. <span class="raw-html"><font color="Tomato">[any updates on this?]BC</font></span> I think I understand how they do this, in fact on gitman.yaml I refer to other github folder
+by targeting master, on mrs, they targeting commit so, they have to always update their gitman.yalm when they push a commit <span class="raw-html"><font color="Tomato">[i am not
+really following what this implies to the solution we have now]BC</font></span>
+The main point here is that people will just have to install droneswarm_brubotics to get access to our entire project. And with gitman we can work each on a specific
+package without affecting each other.</p>
+<p><span class="raw-html"><font color="Tomato">[make the reader clear when it needs to change stuff in the mrs_workspace and when in the workspace folder. Try to minimize the changes
+required in the workspace folder.]BC</font></span> Yes, now we are able to add new content in our workspace without making any changes in the mrs_workpsace <span class="raw-html"><font color="Tomato">[is
+this still true?]BC</font></span> unfortunately no, we have to modify mrs files to disable all safety features.</p>
+<p>If you want to restore mrs code as it was at the beginning, without brubotics code you can use <a class="reference external" href="https://github.com/mrs-brubotics/droneswarm_brubotics/blob/master/script/restore_mrs_basic_installation.sh">script/restore_mrs_basic_installation.sh</a>.
+Another option is to reinstall everything from scratch [recommended].</p>
+<p>In <code class="docutils literal notranslate"><span class="pre">droneswarm_brubotics/shell_additions</span></code>, you will find <a class="reference external" href="https://github.com/mrs-brubotics/droneswarm_brubotics/blob/master/shell_additions/shell_additions.sh">shell_additions.sh</a>,
+which allows you to use the <code class="docutils literal notranslate"><span class="pre">waitBeforeGoTofunction</span></code>. This is a bash function which we use in our <a class="reference external" href="https://github.com/mrs-brubotics/testing_brubotics/blob/3f2411da291461cd5396b1925a7c3fd28840176f/tmux_scripts/one_drone_graphs/session.yml#L18">session.yaml</a>
+to get automated movement of the drone in our simulation.</p>
 <div class="admonition important">
 <p class="admonition-title">Important</p>
-<p>Finally in <code class="docutils literal notranslate"><span class="pre">script</span></code>, you can find <a class="reference external" href="https://github.com/mrs-brubotics/droneswarm_brubotics/blob/master/script/overwrite_mrs_files.sh">overwrite_mrs_files.sh</a> and <a class="reference external" href="https://github.com/mrs-brubotics/droneswarm_brubotics/blob/master/script/restore_mrs_files.sh">restore_mrs_files.sh</a> which are use to disable safety features, as explained in Section ??.</p>
+<p>Finally in <code class="docutils literal notranslate"><span class="pre">script</span></code>, you can find <a class="reference external" href="https://github.com/mrs-brubotics/droneswarm_brubotics/blob/master/script/overwrite_mrs_files.sh">overwrite_mrs_files.sh</a> and
+<a class="reference external" href="https://github.com/mrs-brubotics/droneswarm_brubotics/blob/master/script/restore_mrs_files.sh">restore_mrs_files.sh</a> which are use to disable safety features, as
+explained in Section ??.</p>
 </div>
+<p><span class="raw-html"><font color="Tomato">[What about the changes you have to make in the control managers package to allow to use our controllers? Is there a part of code to be
+manually added/changed to the uav mangers of CTU each time you start from scratch. If you pull they manger code, is the added lines still there?]BC</font></span>
+<span class="raw-html"><font color="Tomato">[write here part that if installation does not work make sure you have SSH key setup, see section 3.1. needed to do this on lenovo and
+nuc. See picture error nuc1. also explain tip how to show hidden fies to fidn ssh key manually]BC</font></span>
+<span class="raw-html"><font color="Tomato">[i replaced part of interns here. check what to do with it:]BC</font></span> The interns packages are link to this folder which contains all
+the work of the Brubotics interns. We automated the following steps with the <strong>pull_all.sh</strong> and <strong>install.sh</strong> commands when we update the <strong>droneswarm_brubotics</strong>
+folder.</p>
+<p><span class="raw-html"><font color="Tomato">[explain here shortly how to stage,commit and push]BC</font></span></p>
+<p><span class="raw-html"><font color="Tomato">[TODO: everyone needs to watch (click watch buttom) the packages of MRS controllers, managers, trackers to make sure if something is changed, we do it too]BC</font></span></p>
+<p><span class="raw-html"><font color="Tomato">[why we did NOT fork? because it requires repo to be public So one option would be to use a fork explained</font></span> <a class="reference external" href="https://docs.github.com/en/github/getting-started-with-github/fork-a-repo">here</a>
+<span class="raw-html"><font color="Tomato">. It is unclear to me if github still requires both repos (so CTU and brubotics) to be public (since we want to keep our private). But i
+found also</font></span> <a class="reference external" href="https://gist.github.com/0xjac/85097472043b697ab57ba1b1c7530274">this link</a> <span class="raw-html"><font color="Tomato">where it seems to be possible for
+private repo too. Read all comments since it might be even possible directly from github today. This command is applicable all interns, so  please all read it and
+discuss in group. I think this is really important to check in more detail. Please update me after your discussion, then we can decide what's best to do.]BC</font></span></p>
 </div>
 
 
@@ -207,6 +245,7 @@ This is a bash function which we use in our <a class="reference external" href="
           </div>
           <footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="For_developers.html" class="btn btn-neutral float-right" title="For developers" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
         <a href="Introduction_to_MRS_Software_Extensions.html" class="btn btn-neutral float-left" title="3. Introduction to MRS Software Extensions" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
 
