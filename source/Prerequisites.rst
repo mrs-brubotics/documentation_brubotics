@@ -244,6 +244,8 @@ the workspace configuration, refer to :ref:`Introduction to MRS <3. Introduction
       
       catkin build -j2
 
+   It can not work at the the first time, but you can re-try it.
+
 2.6.2 Use CTU-MRS system
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
