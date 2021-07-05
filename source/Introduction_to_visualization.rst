@@ -1,6 +1,9 @@
 5. Introduction to visualization
 ================================
 
+.. role:: raw-html(raw)
+    :format: html
+
 In this chapter, we will introduce you to the visualization on Rviz. It is a great tool for ROS, used by many to debug codes or to have some nice
 visualization of your simulations.
 
@@ -57,13 +60,10 @@ It will show you the different simulation that you can test. You can do it by us
 The bumper simulation is an example of advanced task that you can do on Rviz. It is made by a plugin created from scratch.
 It represents a huge work to create these type of visualization but it shows you the diversity of possibilities.
 
-5.2 How Rviz works ?
+5.2 How RViz works ?
 --------------------
 
-5.2.1 Launching Rviz
-^^^^^^^^^^^^^^^^^^^^
-
-To run a simulation, you will use the ``start.sh`` file wich will ask to the ``session.yml`` what ``.launch`` file are going to be runned.
+To run a simulation, you will use the ``start.sh`` file wich will ask to the ``session.yml`` what ``.launch`` file are going to be runned. 
 A ``.yml`` looks like this:
 
 .. figure:: _static/yml_file.png
@@ -79,18 +79,19 @@ files.
 
 You can generate a ``.rviz`` file, which save your RViz configuration, by clicking in RViz on ``File->Save config as``.
 
-5.2.2 Visualization of the UAV
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+5.3 D-ERG strategies
+--------------------
 
-5.2 Our work
-------------
-
-We wanted to visualize what it is computed by the D-ERG tracker of BruBotics, especially in the simulation that you can run with these commands: ::
+We want to visualize what it is computed by the D-ERG tracker of BruBotics, especially in the `2_two_drones_D-ERG simulation <https://github.com/mrs-brubotics/testing_brubotics/tree/master/tmux_scripts/bryan/2_two_drones_D-ERG>`__ 
+that you can run with these commands: ::
 
     cd ~workspace/src/droneswarm_brubotics/ros_packages/testing_brubotics/tmux_scripts/2_two_drones_D-ERG/
     ./start.sh
 
-We had several D-ERG strategies to illustrate. This is the first one:
+We have several D-ERG (Distributed Explicit Reference Governor) strategies to illustrate. For more advanced explanations, watch `this video <https://www.youtube.com/watch?v=le6WSeyTXNU>`__
+
+5.3.1 D-ERG strategy 0
+^^^^^^^^^^^^^^^^^^^^^^
 
 .. figure:: _static/DERG-0.png
    :width: 500
@@ -101,4 +102,79 @@ We had several D-ERG strategies to illustrate. This is the first one:
 * p\ :sub:`k`\: current pose of the UAV
 * p̂\ :sub:`k`\: desired reference pose
 * p\ :sub:`k`\ :sup:`v`\: applied reference pose 
+* R\ :sub:`a`\: drone's radius
 
+Communicate: p\ :sub:`k`\
+
+Sphere can **translate**.
+
+:raw-html:`<font color="RoyalBlue">[Explanations of how we did it.]JV</font>`
+
+5.3.2 D-ERG strategy 1
+^^^^^^^^^^^^^^^^^^^^^^
+
+.. figure:: _static/DERG-1.png
+   :width: 500
+   :align: center
+
+   Figure 5.7: D-ERG strategy 1
+
+Communicate: p\ :sub:`k`\, p\ :sub:`k`\ :sup:`v`
+
+Tube can **translate** and **rotate**.
+
+5.3.3 D-ERG strategy 2
+^^^^^^^^^^^^^^^^^^^^^^
+
+.. figure:: _static/DERG-2.png
+   :width: 500
+   :align: center
+
+   Figure 5.8: D-ERG strategy 2
+
+Communicate: p\ :sub:`k`\, p\ :sub:`k`\ :sup:`v`
+
+Tube can **translate**, **rotate** and **change length**.
+
+5.3.4 D-ERG strategy 3
+^^^^^^^^^^^^^^^^^^^^^^
+
+.. figure:: _static/DERG-3.png
+   :width: 500
+   :align: center
+
+   Figure 5.9: D-ERG strategy 3
+
+Communicate: p\ :sub:`k`\, p\ :sub:`k`\ :sup:`v`, S\ :sub:`a,min`\ :sup:`⊥`
+
+Tube can **translate**, **rotate**, **change length and width**. The witfh (radius) is the minimal one for a tube with error directed longitudinal axis.
+
+5.3.5 D-ERG strategy 4
+^^^^^^^^^^^^^^^^^^^^^^
+
+.. figure:: _static/DERG-4.png
+   :width: 500
+   :align: center
+
+   Figure 5.10: D-ERG strategy 4
+
+Communicate: p\ :sub:`k`\ :sup:`0`, p\ :sub:`k`\ :sup:`1`, S\ :sub:`a,min`\ :sup:`⊥`
+
+Tube and cylinder can **translate**, **rotate**, **change length and width**. The width (radius) and the length are the minimal one for a tube with error directed
+longitudinal axis.
+
+5.3.6 D-ERG strategy 5
+^^^^^^^^^^^^^^^^^^^^^^
+
+.. figure:: _static/DERG-5.png
+   :width: 500
+   :align: center
+
+   Figure 5.11: D-ERG strategy 5
+
+This final strategy permits to calculate the minimal distance between 2 drones.
+
+5.4 Our work
+------------
+
+:raw-html:`<font color="RoyalBlue">[Explanations of how we did it.]JV</font>`

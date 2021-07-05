@@ -92,12 +92,16 @@
 <li class="toctree-l1"><a class="reference internal" href="Workspace_git_configuration.html">4. Workspace Git configuration</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">5. Introduction to visualization</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#the-beginning">5.1 The beginning</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#how-rviz-works">5.2 How Rviz works ?</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#launching-rviz">5.2.1 Launching Rviz</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#visualization-of-the-uav">5.2.2 Visualization of the UAV</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#how-rviz-works">5.2 How RViz works ?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#our-work">5.3 Our work</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#d-erg-strategy-0">5.3.1 D-ERG strategy 0</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#d-erg-strategy-1">5.3.2 D-ERG strategy 1</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#d-erg-strategy-2">5.3.3 D-ERG strategy 2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#d-erg-strategy-3">5.3.4 D-ERG strategy 3</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#d-erg-strategy-4">5.3.5 D-ERG strategy 4</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#d-erg-strategy-5">5.3.6 D-ERG strategy 5</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#our-work">5.2 Our work</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="For_developers.html">For developers</a></li>
@@ -214,9 +218,7 @@ You will need to use these commands:</p>
 It represents a huge work to create these type of visualization but it shows you the diversity of possibilities.</p>
 </div>
 <div class="section" id="how-rviz-works">
-<h2>5.2 How Rviz works ?<a class="headerlink" href="#how-rviz-works" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="launching-rviz">
-<h3>5.2.1 Launching Rviz<a class="headerlink" href="#launching-rviz" title="Permalink to this headline">¶</a></h3>
+<h2>5.2 How RViz works ?<a class="headerlink" href="#how-rviz-works" title="Permalink to this headline">¶</a></h2>
 <p>To run a simulation, you will use the <code class="docutils literal notranslate"><span class="pre">start.sh</span></code> file wich will ask to the <code class="docutils literal notranslate"><span class="pre">session.yml</span></code> what <code class="docutils literal notranslate"><span class="pre">.launch</span></code> file are going to be runned.
 A <code class="docutils literal notranslate"><span class="pre">.yml</span></code> looks like this:</p>
 <div class="figure align-center" id="id5">
@@ -229,18 +231,18 @@ the configuration of Rviz, like what is displayed. On the <code class="docutils 
 files.</p>
 <p>You can generate a <code class="docutils literal notranslate"><span class="pre">.rviz</span></code> file, which save your RViz configuration, by clicking in RViz on <code class="docutils literal notranslate"><span class="pre">File-&gt;Save</span> <span class="pre">config</span> <span class="pre">as</span></code>.</p>
 </div>
-<div class="section" id="visualization-of-the-uav">
-<h3>5.2.2 Visualization of the UAV<a class="headerlink" href="#visualization-of-the-uav" title="Permalink to this headline">¶</a></h3>
-</div>
-</div>
 <div class="section" id="our-work">
-<h2>5.2 Our work<a class="headerlink" href="#our-work" title="Permalink to this headline">¶</a></h2>
-<p>We wanted to visualize what it is computed by the D-ERG tracker of BruBotics, especially in the simulation that you can run with these commands:</p>
+<h2>5.3 Our work<a class="headerlink" href="#our-work" title="Permalink to this headline">¶</a></h2>
+<p>We want to visualize what it is computed by the D-ERG tracker of BruBotics, especially in the <a class="reference external" href="https://github.com/mrs-brubotics/testing_brubotics/tree/master/tmux_scripts/bryan/2_two_drones_D-ERG">2_two_drones_D-ERG simulation</a>
+that you can run with these commands:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="o">~</span><span class="n">workspace</span><span class="o">/</span><span class="n">src</span><span class="o">/</span><span class="n">droneswarm_brubotics</span><span class="o">/</span><span class="n">ros_packages</span><span class="o">/</span><span class="n">testing_brubotics</span><span class="o">/</span><span class="n">tmux_scripts</span><span class="o">/</span><span class="mi">2</span><span class="n">_two_drones_D</span><span class="o">-</span><span class="n">ERG</span><span class="o">/</span>
 <span class="o">./</span><span class="n">start</span><span class="o">.</span><span class="n">sh</span>
 </pre></div>
 </div>
-<p>We had several D-ERG strategies to illustrate. This is the first one:</p>
+<p>We have several D-ERG (Distributed Explicit Reference Governor) strategies to illustrate.</p>
+<div class="section" id="d-erg-strategy-0">
+<h3>5.3.1 D-ERG strategy 0<a class="headerlink" href="#d-erg-strategy-0" title="Permalink to this headline">¶</a></h3>
+<p>For more advanced explanations, watch <a class="reference external" href="https://www.youtube.com/watch?v=le6WSeyTXNU">this video</a></p>
 <div class="figure align-center" id="id6">
 <a class="reference internal image-reference" href="_images/DERG-0.png"><img alt="_images/DERG-0.png" src="_images/DERG-0.png" style="width: 500px;" /></a>
 <p class="caption"><span class="caption-text">Figure 5.6: D-ERG strategy 0</span></p>
@@ -249,7 +251,56 @@ files.</p>
 <li>p<sub>k</sub>: current pose of the UAV</li>
 <li>p̂<sub>k</sub>: desired reference pose</li>
 <li>p<sub>k</sub><sup>v</sup>: applied reference pose</li>
+<li>R<sub>a</sub>: drone’s radius</li>
 </ul>
+<p>Communicate: p<sub>k</sub></p>
+<p>Sphere can <strong>translate</strong>.</p>
+<p><span class="raw-html"><font color="RoyalBlue">[Explanations of how we did it.]JV</font></span></p>
+</div>
+<div class="section" id="d-erg-strategy-1">
+<h3>5.3.2 D-ERG strategy 1<a class="headerlink" href="#d-erg-strategy-1" title="Permalink to this headline">¶</a></h3>
+<div class="figure align-center" id="id7">
+<a class="reference internal image-reference" href="_images/DERG-1.png"><img alt="_images/DERG-1.png" src="_images/DERG-1.png" style="width: 500px;" /></a>
+<p class="caption"><span class="caption-text">Figure 5.7: D-ERG strategy 1</span></p>
+</div>
+<p>Communicate: p<sub>k</sub>, p<sub>k</sub><sup>v</sup></p>
+<p>Tube can <strong>translate</strong> and <strong>rotate</strong>.</p>
+</div>
+<div class="section" id="d-erg-strategy-2">
+<h3>5.3.3 D-ERG strategy 2<a class="headerlink" href="#d-erg-strategy-2" title="Permalink to this headline">¶</a></h3>
+<div class="figure align-center" id="id8">
+<a class="reference internal image-reference" href="_images/DERG-2.png"><img alt="_images/DERG-2.png" src="_images/DERG-2.png" style="width: 500px;" /></a>
+<p class="caption"><span class="caption-text">Figure 5.8: D-ERG strategy 2</span></p>
+</div>
+<p>Communicate: p<sub>k</sub>, p<sub>k</sub><sup>v</sup></p>
+<p>Tube can <strong>translate</strong>, <strong>rotate</strong> and <strong>change length</strong>.</p>
+</div>
+<div class="section" id="d-erg-strategy-3">
+<h3>5.3.4 D-ERG strategy 3<a class="headerlink" href="#d-erg-strategy-3" title="Permalink to this headline">¶</a></h3>
+<div class="figure align-center" id="id9">
+<a class="reference internal image-reference" href="_images/DERG-3.png"><img alt="_images/DERG-3.png" src="_images/DERG-3.png" style="width: 500px;" /></a>
+<p class="caption"><span class="caption-text">Figure 5.9: D-ERG strategy 3</span></p>
+</div>
+<p>Communicate: p<sub>k</sub>, p<sub>k</sub><sup>v</sup>, S<sub>a,min</sub><sup>⊥</sup></p>
+<p>Tube can <strong>translate</strong>, <strong>rotate</strong>, <strong>change length and width</strong>. The witfh (radius) is the minimal one for a tube with error directed longitudinal axis.</p>
+</div>
+<div class="section" id="d-erg-strategy-4">
+<h3>5.3.5 D-ERG strategy 4<a class="headerlink" href="#d-erg-strategy-4" title="Permalink to this headline">¶</a></h3>
+<div class="figure align-center" id="id10">
+<a class="reference internal image-reference" href="_images/DERG-4.png"><img alt="_images/DERG-4.png" src="_images/DERG-4.png" style="width: 500px;" /></a>
+<p class="caption"><span class="caption-text">Figure 5.10: D-ERG strategy 4</span></p>
+</div>
+<p>Communicate: p<sub>k</sub><sup>0</sup>, p<sub>k</sub><sup>1</sup>, S<sub>a,min</sub><sup>⊥</sup></p>
+<p>Tube and cylinder can <strong>translate</strong>, <strong>rotate</strong>, <strong>change length and width</strong>. The width (radius) and the length are the minimal one for a tube with error directed
+longitudinal axis.</p>
+</div>
+<div class="section" id="d-erg-strategy-5">
+<h3>5.3.6 D-ERG strategy 5<a class="headerlink" href="#d-erg-strategy-5" title="Permalink to this headline">¶</a></h3>
+<div class="figure align-center" id="id11">
+<a class="reference internal image-reference" href="_images/DERG-5.png"><img alt="_images/DERG-5.png" src="_images/DERG-5.png" style="width: 500px;" /></a>
+<p class="caption"><span class="caption-text">Figure 5.11: D-ERG strategy 5</span></p>
+</div>
+</div>
 </div>
 </div>
 
