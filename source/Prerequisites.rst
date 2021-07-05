@@ -95,7 +95,7 @@ To install this OS, please refer to the the `Ubuntu install documentation <https
 --------------------
 
 MRS bases its work on the use of ROS, a framework widely used in robotics. We strongly recommend that you inquire about. You can find useful tutorial on `ROS wiki <http://wiki.ros.org/>`__.
-We also recommend *Mastering ROS for ROBOTICS Programming*, by Lentin Joseph ans Jonathan Cacace, chapter 1, 2, 3, 4 and 7 - `here <https://github.com/jocacace>`__ you will find the github
+We also recommend `Mastering ROS for ROBOTICS Programming <https://drive.google.com/file/d/1URHQAuDK1JT6X-8AUVfGe2xsPoZxqJsY/view>`__, by Lentin Joseph ans Jonathan Cacace, chapter 1, 2, 3, 4 and 7 - `here <https://github.com/jocacace>`__ you will find the github
 from Jonathan Cacace.
 
 2.3 Working with Visual Studio Code

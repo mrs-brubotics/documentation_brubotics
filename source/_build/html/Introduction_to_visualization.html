@@ -1,0 +1,291 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>5. Introduction to visualization &mdash; DroneSwarmTutorial 0.0.1 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="For developers" href="For_developers.html" />
+    <link rel="prev" title="4. Workspace Git configuration" href="Workspace_git_configuration.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> DroneSwarmTutorial
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="Introduction.html">1. Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Prerequisites.html">2. Prerequisites</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Introduction_to_MRS_Software_Extensions.html">3. Introduction to MRS Software Extensions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Workspace_git_configuration.html">4. Workspace Git configuration</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">5. Introduction to visualization</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#the-beginning">5.1 The beginning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#how-rviz-works">5.2 How Rviz works ?</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#launching-rviz">5.2.1 Launching Rviz</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#our-work">5.2 Our work</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="For_developers.html">For developers</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">DroneSwarmTutorial</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>5. Introduction to visualization</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="_sources/Introduction_to_visualization.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="introduction-to-visualization">
+<h1>5. Introduction to visualization<a class="headerlink" href="#introduction-to-visualization" title="Permalink to this headline">¶</a></h1>
+<p>In this chapter we will introduce you to the visualization on Rviz. It is a great tool for ROS, used by many to debug code or to have some nice
+visualization of your simulations.</p>
+<div class="section" id="the-beginning">
+<h2>5.1 The beginning<a class="headerlink" href="#the-beginning" title="Permalink to this headline">¶</a></h2>
+<p>First, especially if you never run any simulation using Rviz, we recommand you to try some CTU MRS simulation.
+To do that you can run these commands:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="o">~/</span><span class="n">mrs_workspace</span><span class="o">/</span><span class="n">src</span><span class="o">/</span><span class="n">simulation</span><span class="o">/</span><span class="n">example_tmux_scripts</span><span class="o">/</span><span class="n">one_drone_gps</span>
+<span class="o">./</span><span class="n">stat</span><span class="o">.</span><span class="n">sh</span>
+</pre></div>
+</div>
+<p>The Rviz window will open after after gazebo and it look like that :</p>
+<div class="figure align-center" id="id1">
+<a class="reference internal image-reference" href="_images/one_drone_rviz.png"><img alt="_images/one_drone_rviz.png" src="_images/one_drone_rviz.png" style="width: 800px;" /></a>
+<p class="caption"><span class="caption-text">Figure 5.1: Rviz window</span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
+</div>
+<p>You can see arrows, poses, UAV frames in this simple visualization.
+For these simple tasks you only need to click on the add button and subscribe to the topic you want to visualize.</p>
+<div class="figure align-center" id="id2">
+<a class="reference internal image-reference" href="_images/add_button.png"><img alt="_images/add_button.png" src="_images/add_button.png" style="width: 500px;" /></a>
+<p class="caption"><span class="caption-text">Figure 5.2: Add button</span><a class="headerlink" href="#id2" title="Permalink to this image">¶</a></p>
+</div>
+<div class="figure align-center" id="id3">
+<a class="reference internal image-reference" href="_images/topic_window.png"><img alt="_images/topic_window.png" src="_images/topic_window.png" style="width: 800px;" /></a>
+<p class="caption"><span class="caption-text">Figure 5.3: Topic window</span><a class="headerlink" href="#id3" title="Permalink to this image">¶</a></p>
+</div>
+<p>You can also use the 2D Nav Goal button to choose a position and a heading to go for the UAV.</p>
+<div class="figure align-center" id="id4">
+<a class="reference internal image-reference" href="_images/navgoal_button.png"><img alt="_images/navgoal_button.png" src="_images/navgoal_button.png" style="width: 500px;" /></a>
+<p class="caption"><span class="caption-text">Figure 5.4: Navigation goal button</span><a class="headerlink" href="#id4" title="Permalink to this image">¶</a></p>
+</div>
+<p>Next, you can run some simulations which use dedicated plugins for one specific task.
+You will need to use these commands:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="o">~/</span><span class="n">mrs_workspace</span><span class="o">/</span><span class="n">src</span><span class="o">/</span><span class="n">uav_core</span><span class="o">/</span><span class="n">ros_packages</span><span class="o">/</span><span class="n">mrs_uav_testing</span><span class="o">/</span><span class="n">tmux</span>
+<span class="n">ls</span>
+</pre></div>
+</div>
+<p>It will show you the different simulation that you can test. You can do it by using <code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">./&quot;directory_of_the_simulation&quot;</span></code> and running:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">start</span><span class="o">.</span><span class="n">sh</span>
+</pre></div>
+</div>
+<p>The bumper simulation is an example of advanced task that you can do on Rviz, it is made by a plugin created from scratch.
+It represent a huge work to create these type of visualization but it shows you the diversity of possibilities.</p>
+</div>
+<div class="section" id="how-rviz-works">
+<h2>5.2 How Rviz works ?<a class="headerlink" href="#how-rviz-works" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="launching-rviz">
+<h3>5.2.1 Launching Rviz<a class="headerlink" href="#launching-rviz" title="Permalink to this headline">¶</a></h3>
+<p>To run a simulation, you will use the <code class="docutils literal notranslate"><span class="pre">start.sh</span></code> file wich will ask to the <code class="docutils literal notranslate"><span class="pre">session.yml</span></code> what <code class="docutils literal notranslate"><span class="pre">.launch</span></code> file are going to be runned.
+A <code class="docutils literal notranslate"><span class="pre">.yml</span></code> looks like this :</p>
+<div class="figure align-center" id="id5">
+<a class="reference internal image-reference" href="_images/yml_file.png"><img alt="_images/yml_file.png" src="_images/yml_file.png" style="width: 800px;" /></a>
+<p class="caption"><span class="caption-text">Figure 5.5: .yml file</span><a class="headerlink" href="#id5" title="Permalink to this image">¶</a></p>
+</div>
+<p>You can see that there is an Rviz part.
+The first line ask for the <code class="docutils literal notranslate"><span class="pre">rviz.launch</span></code> file which is used to choose the <code class="docutils literal notranslate"><span class="pre">.rviz</span></code> file that you want to use. This type of file is used to save
+the configuration of Rviz, like what is displayed. On the testing_brubotics package there is the <code class="docutils literal notranslate"><span class="pre">rviz</span></code> directory which contains all the <code class="docutils literal notranslate"><span class="pre">.rviz</span></code> files.</p>
+<p>You can generate a <code class="docutils literal notranslate"><span class="pre">.rviz</span></code> file, which save your Rviz configuration, by clicking in Rviz on <code class="docutils literal notranslate"><span class="pre">File-&gt;Save</span> <span class="pre">config</span> <span class="pre">as</span></code>.</p>
+</div>
+</div>
+<div class="section" id="our-work">
+<h2>5.2 Our work<a class="headerlink" href="#our-work" title="Permalink to this headline">¶</a></h2>
+<p>We wanted to visualize what it is computed by the D-ERG tracker of BruBotics especially in the simulation that you can run with these commands:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="o">~</span><span class="n">workspace</span><span class="o">/</span><span class="n">src</span><span class="o">/</span><span class="n">droneswarm_brubotics</span><span class="o">/</span><span class="n">ros_packages</span><span class="o">/</span><span class="n">testing_brubotics</span><span class="o">/</span><span class="n">tmux_scripts</span><span class="o">/</span><span class="mi">2</span><span class="n">_two_drones_D</span><span class="o">-</span><span class="n">ERG</span><span class="o">/</span>
+<span class="o">./</span><span class="n">start</span><span class="o">.</span><span class="n">sh</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="For_developers.html" class="btn btn-neutral float-right" title="For developers" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="Workspace_git_configuration.html" class="btn btn-neutral float-left" title="4. Workspace Git configuration" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, BruBotics.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
