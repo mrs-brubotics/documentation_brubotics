@@ -3,16 +3,16 @@ Documentation developed by the summer 2021 BruBotics interns.
 
 ## How to visualize our documentation?
 
-First, clone this repository in the folder of your chance:
+First, clone this repository in the folder of your choice:
 ```
 git clone https://github.com/mrs-brubotics/documentation_brubotics.git
 ```
-Then, you will need to install sphinx ( we recommand you to use the pip3 installer):
-If you are running on Ubuntu 18.04 :
+Then, you will need to install sphinx (we recommand you to use the pip3 installer).
+If you are running on Ubuntu 18.04, use:
 ```
 pip3 install sphinx
 ```
-If you are running on Ubuntu 20.04 :
+If you are running on Ubuntu 20.04, use:
 ```
 sudo apt-get install python3-sphinx
 ```
