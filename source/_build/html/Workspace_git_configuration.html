@@ -1,7 +1,7 @@
 
 
 <!DOCTYPE html>
-<html class="writer-html5" lang="en" >
+<html class="writer-html4" lang="en" >
 <head>
   <meta charset="utf-8" />
   
@@ -13,8 +13,6 @@
   
   <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
 
   
   
@@ -31,10 +29,10 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-        <script src="_static/jquery.js"></script>
-        <script src="_static/underscore.js"></script>
-        <script src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
     
     <script type="text/javascript" src="_static/js/theme.js"></script>
 
@@ -171,34 +169,36 @@ was not automatically added so chapter 8 could not be tested. Check if it is the
 <p>We always try to organize our <a class="reference external" href="https://github.com/mrs-brubotics">MRS Brubotics github</a> like the <a class="reference external" href="https://github.com/ctu-mrs">CTU MRS github</a>.
 We have a main github folder droneswarm_brubotics which contains the gitman configurations. There we can link our ROS packages:</p>
 <ul class="simple">
-<li><p><a class="reference external" href="https://github.com/mrs-brubotics/controllers_brubotics">controllers_brubotics</a>: contains customized controller definitions from Brubotics.</p></li>
-<li><p><a class="reference external" href="https://github.com/mrs-brubotics/trackers_brubotics">trackers_brubotics</a>: contains customized tracker definitions from Brubotics.</p></li>
-<li><p><a class="reference external" href="https://github.com/mrs-brubotics/testing_brubotics">testing_brubotics</a>: contains simulation tmux scripts, custom configs and customized worlds</p></li>
-<li><p><span class="raw-html"><font color="Tomato">[Please update this list when a new ros package is added to github]BC</font></span></p></li>
+<li><a class="reference external" href="https://github.com/mrs-brubotics/controllers_brubotics">controllers_brubotics</a>: contains customized controller definitions from Brubotics.</li>
+<li><a class="reference external" href="https://github.com/mrs-brubotics/trackers_brubotics">trackers_brubotics</a>: contains customized tracker definitions from Brubotics.</li>
+<li><a class="reference external" href="https://github.com/mrs-brubotics/testing_brubotics">testing_brubotics</a>: contains simulation tmux scripts, custom configs and customized worlds</li>
+<li><span class="raw-html"><font color="Tomato">[Please update this list when a new ros package is added to github]BC</font></span></li>
 </ul>
 <p>There are also other repositories in our github:</p>
 <ul class="simple">
-<li><p><a class="reference external" href="https://github.com/mrs-brubotics/MatlabGraphs">MatlabGraphs</a>: to plot graphs from simulations. This folder contains matlab files to allow a new user to follow
-Chapter ?. You can find it indroneswarm_brubotics/useful_files.</p></li>
-<li><p><span class="raw-html"><font color="Tomato">[not updated]BC</font></span> <a class="reference external" href="https://github.com/mrs-brubotics/crazyflie_model_brubotics">Crazyflie model Brubotics</a>, which contains 3D
+<li><a class="reference external" href="https://github.com/mrs-brubotics/MatlabGraphs">MatlabGraphs</a>: to plot graphs from simulations. This folder contains matlab files to allow a new user to follow
+Chapter ?. You can find it indroneswarm_brubotics/useful_files.</li>
+<li><span class="raw-html"><font color="Tomato">[not updated]BC</font></span> <a class="reference external" href="https://github.com/mrs-brubotics/crazyflie_model_brubotics">Crazyflie model Brubotics</a>, which contains 3D
 models we will implement not done yet <span class="raw-html"><font color="Tomato">[you can start with this only after D-ERG works on f450 swarm.]BC</font></span> <span class="raw-html"><font color="Tomato">[this
 will be a task for new students.]BC</font></span> <span class="raw-html"><font color="Tomato">[xwewill need the model of the new drone, will be tsk for Zakaria and Frank]BC</font></span>
-<span class="raw-html"><font color="Tomato">[Same for tethered collaborative drones]BC</font></span></p></li>
-<li><p><span class="raw-html"><font color="Tomato">[Please update this list when a new github folder is added to github]BC</font></span></p></li>
+<span class="raw-html"><font color="Tomato">[Same for tethered collaborative drones]BC</font></span></li>
+<li><span class="raw-html"><font color="Tomato">[Please update this list when a new github folder is added to github]BC</font></span></li>
 </ul>
 <p>To add a new ROS package into droneswarm_brubotics you have to update the <a class="reference external" href="https://github.com/mrs-brubotics/droneswarm_brubotics/blob/master/.gitman.yml">gitman.yml</a>
 as it is explained in Section ??, except here we use ssh links and not https. To update the different files you have several options depending on what you want to do:</p>
 <ul>
-<li><p>You want to update all the code from mrs_workspace and from workspace. Use <a class="reference external" href="https://github.com/mrs-brubotics/droneswarm_brubotics/blob/master/script/pull_all.sh">pull_all.sh</a>
-on <code class="docutils literal notranslate"><span class="pre">droneswarm_brubotics/script</span></code>. [Recommended]</p></li>
-<li><p>You want to update only mrs_workspace refer yourself to ??.</p></li>
-<li><p>You want to update only brubotics code, go to droneswarm_brubotics and execute :</p>
+<li><p class="first">You want to update all the code from mrs_workspace and from workspace. Use <a class="reference external" href="https://github.com/mrs-brubotics/droneswarm_brubotics/blob/master/script/pull_all.sh">pull_all.sh</a>
+on <code class="docutils literal notranslate"><span class="pre">droneswarm_brubotics/script</span></code>. [Recommended]</p>
+</li>
+<li><p class="first">You want to update only mrs_workspace refer yourself to ??.</p>
+</li>
+<li><p class="first">You want to update only brubotics code, go to droneswarm_brubotics and execute :</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">pull</span>
 <span class="n">gitman</span> <span class="n">install</span>
 </pre></div>
 </div>
 </li>
-<li><p>You want to update specific folder use in this folder :</p>
+<li><p class="first">You want to update specific folder use in this folder :</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">pull</span>
 </pre></div>
 </div>
@@ -219,8 +219,8 @@ Another option is to reinstall everything from scratch [recommended].</p>
 which allows you to use the <code class="docutils literal notranslate"><span class="pre">waitBeforeGoTofunction</span></code>. This is a bash function which we use in our <a class="reference external" href="https://github.com/mrs-brubotics/testing_brubotics/blob/3f2411da291461cd5396b1925a7c3fd28840176f/tmux_scripts/one_drone_graphs/session.yml#L18">session.yaml</a>
 to get automated movement of the drone in our simulation.</p>
 <div class="admonition important">
-<p class="admonition-title">Important</p>
-<p>Finally in <code class="docutils literal notranslate"><span class="pre">script</span></code>, you can find <a class="reference external" href="https://github.com/mrs-brubotics/droneswarm_brubotics/blob/master/script/overwrite_mrs_files.sh">overwrite_mrs_files.sh</a> and
+<p class="first admonition-title">Important</p>
+<p class="last">Finally in <code class="docutils literal notranslate"><span class="pre">script</span></code>, you can find <a class="reference external" href="https://github.com/mrs-brubotics/droneswarm_brubotics/blob/master/script/overwrite_mrs_files.sh">overwrite_mrs_files.sh</a> and
 <a class="reference external" href="https://github.com/mrs-brubotics/droneswarm_brubotics/blob/master/script/restore_mrs_files.sh">restore_mrs_files.sh</a> which are use to disable safety features, as
 explained in Section ??.</p>
 </div>

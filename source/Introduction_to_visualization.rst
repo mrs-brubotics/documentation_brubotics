@@ -1,28 +1,28 @@
 5. Introduction to visualization
 ================================
 
-In this chapter we will introduce you to the visualization on Rviz. It is a great tool for ROS, used by many to debug code or to have some nice
+In this chapter, we will introduce you to the visualization on Rviz. It is a great tool for ROS, used by many to debug codes or to have some nice
 visualization of your simulations.
 
 5.1 The beginning
 -----------------
 
-First, especially if you never run any simulation using Rviz, we recommand you to try some CTU MRS simulation.
+First, especially if you have never runned any simulation using Rviz, we recommand you to try some CTU MRS simulation.
 To do that you can run these commands: ::
 
     cd ~/mrs_workspace/src/simulation/example_tmux_scripts/one_drone_gps
-    ./stat.sh
+    ./start.sh
 
-The Rviz window will open after after gazebo and it look like that :
+The Rviz window will open after Gazebo and it looks like this:
 
 .. figure:: _static/one_drone_rviz.png
    :width: 800
    :align: center
 
-   Figure 5.1: Rviz window
+   Figure 5.1: RViz window
 
-You can see arrows, poses, UAV frames in this simple visualization.
-For these simple tasks you only need to click on the add button and subscribe to the topic you want to visualize.
+You can see arrows, poses and UAV frames in this simple visualization.
+For these simple tasks, you only need to click on the add button and subscribe to the topic you want to visualize.
 
 .. figure:: _static/add_button.png
    :width: 500
@@ -54,8 +54,8 @@ It will show you the different simulation that you can test. You can do it by us
 
     ./start.sh
 
-The bumper simulation is an example of advanced task that you can do on Rviz, it is made by a plugin created from scratch.
-It represent a huge work to create these type of visualization but it shows you the diversity of possibilities.
+The bumper simulation is an example of advanced task that you can do on Rviz. It is made by a plugin created from scratch.
+It represents a huge work to create these type of visualization but it shows you the diversity of possibilities.
 
 5.2 How Rviz works ?
 --------------------
@@ -64,7 +64,7 @@ It represent a huge work to create these type of visualization but it shows you 
 ^^^^^^^^^^^^^^^^^^^^
 
 To run a simulation, you will use the ``start.sh`` file wich will ask to the ``session.yml`` what ``.launch`` file are going to be runned.
-A ``.yml`` looks like this :
+A ``.yml`` looks like this:
 
 .. figure:: _static/yml_file.png
    :width: 800
@@ -74,19 +74,31 @@ A ``.yml`` looks like this :
 
 You can see that there is an Rviz part. 
 The first line ask for the ``rviz.launch`` file which is used to choose the ``.rviz`` file that you want to use. This type of file is used to save
-the configuration of Rviz, like what is displayed. On the testing_brubotics package there is the ``rviz`` directory which contains all the ``.rviz`` files.
+the configuration of Rviz, like what is displayed. On the ``testing_brubotics`` package, there is the ``rviz`` directory which contains all the ``.rviz``
+files.
 
-You can generate a ``.rviz`` file, which save your Rviz configuration, by clicking in Rviz on ``File->Save config as``.
+You can generate a ``.rviz`` file, which save your RViz configuration, by clicking in RViz on ``File->Save config as``.
 
-5.2.2 visualization of the UAV
+5.2.2 Visualization of the UAV
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 5.2 Our work
 ------------
 
-We wanted to visualize what it is computed by the D-ERG tracker of BruBotics especially in the simulation that you can run with these commands: ::
+We wanted to visualize what it is computed by the D-ERG tracker of BruBotics, especially in the simulation that you can run with these commands: ::
 
     cd ~workspace/src/droneswarm_brubotics/ros_packages/testing_brubotics/tmux_scripts/2_two_drones_D-ERG/
     ./start.sh
 
+We had several D-ERG strategies to illustrate. This is the first one:
+
+.. figure:: _static/DERG-0.png
+   :width: 500
+   :align: center
+
+   Figure 5.6: D-ERG strategy 0
+
+* p\ :sub:`k`\: current pose of the UAV
+* p̂\ :sub:`k`\: desired reference pose
+* p\ :sub:`k`\ :sup:`v`\: applied reference pose 
 

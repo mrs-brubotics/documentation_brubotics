@@ -246,17 +246,18 @@ the workspace configuration, refer to :ref:`Introduction to MRS <3. Introduction
 
    It can not work at the the first time, but you can re-try it.
 
-2.6.2 Use CTU-MRS system
+2.6.2 CTU-MRS system use
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
 We suggest you to read the `CTU-MRS documentation <https://ctu-mrs.github.io/>`__ to learn how to use the CTU-MRS system.
 
-In the documentation, you will do the simulation of one drone with gps, remember that you can use the :ref:`Tmux commands <2.5_Working_with_Tmux_session>` to navigate through different terminals.
+In this documentation, you will do the simulation of one drone with gps. Remember that you can use the :ref:`Tmux commands <2.5_Working_with_Tmux_session>`
+to navigate through different terminals.
 
-Also, you can try to launch other simulation created by CTU-MRS group, you can go to the ``~/mrs_workspace/src/simulation/example_tmux_scripts/`` folder, run the ``ls``  command 
-to see the name of the different simulation, then you can run : ::
+Also, you can try to launch others simulations created by CTU-MRS group. Go to the ``~/mrs_workspace/src/simulation/example_tmux_scripts/`` folder and
+run the ``ls`` command to see the name of the different simulations. Then you can run: ::
 
    cd "DESIRED SIMULATION"
    ./start.sh
 
-It will launch Tmux session and Gazebo. It depends on your pc specs but you may not be able to run all the simulation.
+It will launch a Tmux session and Gazebo. It depends on your PC specs but you may not be able to run all the simulation, especially multi-drones ones.
