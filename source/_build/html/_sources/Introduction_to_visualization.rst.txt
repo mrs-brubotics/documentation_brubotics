@@ -90,6 +90,9 @@ that you can run with these commands: ::
 
 We have several D-ERG (Distributed Explicit Reference Governor) strategies to illustrate. For more advanced explanations, watch `this video <https://www.youtube.com/watch?v=le6WSeyTXNU>`__
 
+.. _5.3.1_DERG_strategy_0:
+
+
 5.3.1 D-ERG strategy 0
 ^^^^^^^^^^^^^^^^^^^^^^
 
@@ -246,3 +249,15 @@ This file will define properly the frames id.
 
 Finally, create a ``src`` folder in your ``visualization_brubotics`` package and copy/paste the ``mrs_rviz_plugins/src/rviz_interface`` folder in it.
 It contains 2 ``.cpp`` files which define who the CTU RViz tools work.
+
+5.5 Our work
+------------
+
+In order to visualize how the :ref:`D-ERG strategy 0 <5.3.1_DERG_strategy_0>` works, we first need to change ``data/f450.xml`` file. The error sphere has a constant radius so
+it is easy: you just need to add a link like this:
+
+.. figure:: _static/f450.png
+   :width: 800
+   :align: center
+
+   Figure 5.13: f450.xml file

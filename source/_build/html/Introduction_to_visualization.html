@@ -111,6 +111,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#src-folder">5.4.6 src folder</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="#our-work">5.5 Our work</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="For_developers.html">For developers</a></li>
@@ -250,7 +251,7 @@ that you can run with these commands:</p>
 </div>
 <p>We have several D-ERG (Distributed Explicit Reference Governor) strategies to illustrate. For more advanced explanations, watch <a class="reference external" href="https://www.youtube.com/watch?v=le6WSeyTXNU">this video</a></p>
 <div class="section" id="d-erg-strategy-0">
-<h3>5.3.1 D-ERG strategy 0<a class="headerlink" href="#d-erg-strategy-0" title="Permalink to this headline">¶</a></h3>
+<span id="derg-strategy-0"></span><h3>5.3.1 D-ERG strategy 0<a class="headerlink" href="#d-erg-strategy-0" title="Permalink to this headline">¶</a></h3>
 <div class="figure align-center" id="id7">
 <a class="reference internal image-reference" href="_images/DERG-0.png"><img alt="_images/DERG-0.png" src="_images/DERG-0.png" style="width: 500px;" /></a>
 <p class="caption"><span class="caption-text">Figure 5.6: D-ERG strategy 0</span></p>
@@ -365,6 +366,15 @@ This file will define properly the frames id.</p>
 <span id="id1"></span><h3>5.4.6 src folder<a class="headerlink" href="#src-folder" title="Permalink to this headline">¶</a></h3>
 <p>Finally, create a <code class="docutils literal notranslate"><span class="pre">src</span></code> folder in your <code class="docutils literal notranslate"><span class="pre">visualization_brubotics</span></code> package and copy/paste the <code class="docutils literal notranslate"><span class="pre">mrs_rviz_plugins/src/rviz_interface</span></code> folder in it.
 It contains 2 <code class="docutils literal notranslate"><span class="pre">.cpp</span></code> files which define who the CTU RViz tools work.</p>
+</div>
+</div>
+<div class="section" id="our-work">
+<h2>5.5 Our work<a class="headerlink" href="#our-work" title="Permalink to this headline">¶</a></h2>
+<p>In order to visualize how the <a class="reference internal" href="#derg-strategy-0"><span class="std std-ref">D-ERG strategy 0</span></a> works, we first need to change <code class="docutils literal notranslate"><span class="pre">data/f450.xml</span></code> file. The error sphere has a constant radius so
+it is easy: you just need to add a link like this:</p>
+<div class="figure align-center" id="id15">
+<a class="reference internal image-reference" href="_images/f450.png"><img alt="_images/f450.png" src="_images/f450.png" style="width: 800px;" /></a>
+<p class="caption"><span class="caption-text">Figure 5.13: f450.xml file</span></p>
 </div>
 </div>
 </div>

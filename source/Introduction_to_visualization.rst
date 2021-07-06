@@ -79,100 +79,7 @@ files.
 
 You can generate a ``.rviz`` file, which save your RViz configuration, by clicking in RViz on ``File->Save config as``.
 
-5.3 D-ERG strategies
---------------------
-
-We want to visualize what it is computed by the D-ERG tracker of BruBotics, especially in the `2_two_drones_D-ERG simulation <https://github.com/mrs-brubotics/testing_brubotics/tree/master/tmux_scripts/bryan/2_two_drones_D-ERG>`__ 
-that you can run with these commands: ::
-
-    cd ~workspace/src/droneswarm_brubotics/ros_packages/testing_brubotics/tmux_scripts/2_two_drones_D-ERG/
-    ./start.sh
-
-We have several D-ERG (Distributed Explicit Reference Governor) strategies to illustrate. For more advanced explanations, watch `this video <https://www.youtube.com/watch?v=le6WSeyTXNU>`__
-
-5.3.1 D-ERG strategy 0
-^^^^^^^^^^^^^^^^^^^^^^
-
-.. figure:: _static/DERG-0.png
-   :width: 500
-   :align: center
-
-   Figure 5.6: D-ERG strategy 0
-
-* p\ :sub:`k`\: current pose of the UAV
-* p̂\ :sub:`k`\: desired reference pose
-* p\ :sub:`k`\ :sup:`v`\: applied reference pose 
-* R\ :sub:`a`\: drone's radius
-
-Communicate: p\ :sub:`k`\
-
-Sphere can **translate**.
-
-5.3.2 D-ERG strategy 1
-^^^^^^^^^^^^^^^^^^^^^^
-
-.. figure:: _static/DERG-1.png
-   :width: 500
-   :align: center
-
-   Figure 5.7: D-ERG strategy 1
-
-Communicate: p\ :sub:`k`\, p\ :sub:`k`\ :sup:`v`
-
-Tube can **translate** and **rotate**.
-
-5.3.3 D-ERG strategy 2
-^^^^^^^^^^^^^^^^^^^^^^
-
-.. figure:: _static/DERG-2.png
-   :width: 500
-   :align: center
-
-   Figure 5.8: D-ERG strategy 2
-
-Communicate: p\ :sub:`k`\, p\ :sub:`k`\ :sup:`v`
-
-Tube can **translate**, **rotate** and **change length**.
-
-5.3.4 D-ERG strategy 3
-^^^^^^^^^^^^^^^^^^^^^^
-
-.. figure:: _static/DERG-3.png
-   :width: 500
-   :align: center
-
-   Figure 5.9: D-ERG strategy 3
-
-Communicate: p\ :sub:`k`\, p\ :sub:`k`\ :sup:`v`, S\ :sub:`a,min`\ :sup:`⊥`
-
-Tube can **translate**, **rotate**, **change length and width**. The witfh (radius) is the minimal one for a tube with error directed longitudinal axis.
-
-5.3.5 D-ERG strategy 4
-^^^^^^^^^^^^^^^^^^^^^^
-
-.. figure:: _static/DERG-4.png
-   :width: 500
-   :align: center
-
-   Figure 5.10: D-ERG strategy 4
-
-Communicate: p\ :sub:`k`\ :sup:`0`, p\ :sub:`k`\ :sup:`1`, S\ :sub:`a,min`\ :sup:`⊥`
-
-Tube and cylinder can **translate**, **rotate**, **change length and width**. The width (radius) and the length are the minimal one for a tube with error directed
-longitudinal axis.
-
-5.3.6 D-ERG strategy 5
-^^^^^^^^^^^^^^^^^^^^^^
-
-.. figure:: _static/DERG-5.png
-   :width: 500
-   :align: center
-
-   Figure 5.11: D-ERG strategy 5
-
-This final strategy permits to calculate the minimal distance between 2 drones.
-
-5.4 Structure of the visualization_brubotics package
+5.3 Structure of the visualization_brubotics package
 ----------------------------------------------------
 
 We have developed a `visualization package <https://github.com/mrs-brubotics/visualization_brubotics>`__ which permits to visualize on RViz the previous
@@ -194,7 +101,7 @@ At the end (line 223), you should see a RViz part. If it is commented, uncomment
 
    Figure 5.12: session.yml file of the 2_two_drones_D-ERG simulation
 
-5.4.1 launch folder
+5.3.1 launch folder
 ^^^^^^^^^^^^^^^^^^^
 
 Now, create a ``launch`` folder in your ``visualization_brubotics`` package and copy/paste the ``mrs_uav_testing/launch/rviz.launch`` file.
@@ -214,26 +121,26 @@ This file will launch the 2 UAV on the RViz window.
 Go in the ``launch`` folder from ``mrs_rviz_plugins``, copy the ``rviz_interface`` folder and paste it in your ``visualization_brubotics/launch``
 folder. You will be able to use tools developed by CTU like the "2D Nav Goal" after you did :ref:`these steps <5.4.6_src_folder>`.
 
-5.4.2 rviz folder
+5.3.2 rviz folder
 ^^^^^^^^^^^^^^^^^
 
 Create a ``rviz`` folder in your ``visualization_brubotics`` package. Copy/paste the ``mrs_uav_testing/rviz/default_simulation.rviz`` in it. 
 Create a ``avoidance_test.rviz file``, copy the text from `our existing file <https://github.com/mrs-brubotics/visualization_brubotics/blob/main/rviz/avoidance_test.rviz>`__
 and paste it in the file you just have created. It will allow you to directly see on RViz what is interesting to visualize.
 
-5.4.3 data folder
+5.3.3 data folder
 ^^^^^^^^^^^^^^^^^
 
 For this step, you only have to copy/paste the entire ``mrs_rviz_plugins/data`` folder in your ``visualization_brubotics`` package. This folder contains the
 description of the UAV models.
 
-5.4.4 scripts folder
+5.3.4 scripts folder
 ^^^^^^^^^^^^^^^^^^^^
 
 Create a ``scripts`` folder in your ``visualization_brubotics`` package and copy/paste the ``mrs_rviz_plugins/scripts/generate_robot_model_xml.py`` file in it.
 This script will generate a ``robot_model`` that you will be able to visualize on RViz.
 
-5.4.5 config folder
+5.3.5 config folder
 ^^^^^^^^^^^^^^^^^^^
 
 Create a ``config`` folder in your ``visualization_brubotics`` package and copy/paste the ``mrs_uav_testing/config/tf_connector_avoidance.yaml`` in it.
@@ -241,8 +148,113 @@ This file will define properly the frames id.
 
 .. _5.4.6_src_folder:
 
-5.4.6 src folder
+5.3.6 src folder
 ^^^^^^^^^^^^^^^^
 
 Finally, create a ``src`` folder in your ``visualization_brubotics`` package and copy/paste the ``mrs_rviz_plugins/src/rviz_interface`` folder in it.
 It contains 2 ``.cpp`` files which define who the CTU RViz tools work.
+
+5.4 Our work: D-ERG visualization
+---------------------------------
+
+We want to visualize what it is computed by the D-ERG tracker of BruBotics, especially in the `2_two_drones_D-ERG simulation <https://github.com/mrs-brubotics/testing_brubotics/tree/master/tmux_scripts/bryan/2_two_drones_D-ERG>`__ 
+that you can run with these commands: ::
+
+    cd ~workspace/src/droneswarm_brubotics/ros_packages/testing_brubotics/tmux_scripts/2_two_drones_D-ERG/
+    ./start.sh
+
+We have several D-ERG (Distributed Explicit Reference Governor) strategies to illustrate. For more advanced explanations, watch `this video <https://www.youtube.com/watch?v=le6WSeyTXNU>`__
+
+5.4.1 D-ERG strategy 0
+^^^^^^^^^^^^^^^^^^^^^^
+
+.. figure:: _static/DERG-0.png
+   :width: 500
+   :align: center
+
+   Figure 5.6: D-ERG strategy 0
+
+* p\ :sub:`k`\: current pose of the UAV
+* p̂\ :sub:`k`\: desired reference pose
+* p\ :sub:`k`\ :sup:`v`\: applied reference pose 
+* R\ :sub:`a`\: drone's radius
+
+Communicate: p\ :sub:`k`\
+
+Sphere can **translate**.
+
+In order to visualize how it works, we first need to change ``data/f450.xml`` file. The error sphere has a constant radius so it is easy: you just need to add a marker like this:
+
+.. figure:: _static/f450.png
+   :width: 800
+   :align: center
+
+   Figure 5.13: f450.xml file
+
+:raw-html:`<font color="RoyalBlue">[TODO: explanations about how to visualize the path, the applied pose and desired reference pose]JV</font>`
+
+5.4.2 D-ERG strategy 1
+^^^^^^^^^^^^^^^^^^^^^^
+
+.. figure:: _static/DERG-1.png
+   :width: 500
+   :align: center
+
+   Figure 5.7: D-ERG strategy 1
+
+Communicate: p\ :sub:`k`\, p\ :sub:`k`\ :sup:`v`
+
+Tube can **translate** and **rotate**.
+
+To visualize a pill, we need to create a plugin because this display type is not available on RViz. But this is not trivial at all.
+
+5.4.3 D-ERG strategy 2
+^^^^^^^^^^^^^^^^^^^^^^
+
+.. figure:: _static/DERG-2.png
+   :width: 500
+   :align: center
+
+   Figure 5.8: D-ERG strategy 2
+
+Communicate: p\ :sub:`k`\, p\ :sub:`k`\ :sup:`v`
+
+Tube can **translate**, **rotate** and **change length**.
+
+5.4.4 D-ERG strategy 3
+^^^^^^^^^^^^^^^^^^^^^^
+
+.. figure:: _static/DERG-3.png
+   :width: 500
+   :align: center
+
+   Figure 5.9: D-ERG strategy 3
+
+Communicate: p\ :sub:`k`\, p\ :sub:`k`\ :sup:`v`, S\ :sub:`a,min`\ :sup:`⊥`
+
+Tube can **translate**, **rotate**, **change length and width**. The witfh (radius) is the minimal one for a tube with error directed longitudinal axis.
+
+5.4.5 D-ERG strategy 4
+^^^^^^^^^^^^^^^^^^^^^^
+
+.. figure:: _static/DERG-4.png
+   :width: 500
+   :align: center
+
+   Figure 5.10: D-ERG strategy 4
+
+Communicate: p\ :sub:`k`\ :sup:`0`, p\ :sub:`k`\ :sup:`1`, S\ :sub:`a,min`\ :sup:`⊥`
+
+Tube and cylinder can **translate**, **rotate**, **change length and width**. The width (radius) and the length are the minimal one for a tube with error directed
+longitudinal axis.
+
+5.4.6 D-ERG strategy 5
+^^^^^^^^^^^^^^^^^^^^^^
+
+.. figure:: _static/DERG-5.png
+   :width: 500
+   :align: center
+
+   Figure 5.11: D-ERG strategy 5
+
+This final strategy permits to calculate the minimal distance between 2 drones.
