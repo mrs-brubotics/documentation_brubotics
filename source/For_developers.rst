@@ -7,13 +7,17 @@ For developers
 Definition of authors' comments
 -------------------------------
 
-The following syntax allow you to write a comment in color with your initials: ::
+The following syntax allow you to write a comment in color with your initials:
+
+.. code-block:: html
 
     :raw-html:`<font color="Name_of_the_color">[This is a comment.]INITIALS</font>`
 
 You can hind a list of available colors `here <https://htmlcolors.com/color-names>`__.
 
-Don't forget to add these 2 lines at the top of your ``.rst`` file, just under the header: ::
+Don't forget to add these 2 lines at the top of your ``.rst`` file, just under the header:
+
+.. code-block:: html
 
     .. role:: raw-html(raw)
         :format: html
@@ -56,20 +60,24 @@ website. It has a syntax highlighting tool.
 The only files you need to modify are ``conf.py`` and all the ``.rst`` files in the ``source`` folder. Once you want to update your documentation, use the following
 commands from your directory:
 
-* Before all, we recommend you to run this command to update your local repository and get the newest code : ::
+* Before all, we recommend you to run this command to update your local repository and get the newest code:
     
-    git pull
+    .. code-block:: shell    
 
-* To check what files wich have been updated since the last commit you can use that command : ::
+        git pull
 
-    git status
+* To check what files wich have been updated since the last commit you can use that command:
+
+    .. code-block:: shell
+
+        git status
 
 * To update your repository, adapt and run these commands
 
- .. code-block:: shell
+    .. code-block:: shell
 
-    git add (use tab key and type the first letter of the files to commit or use git add -A to directly stage all files)
-    git commit -m "Provide a clear explanation of your commit. People who did not make the change should understand the issue you solved."
-    git push
+        git add (use tab key and type the first letter of the files to commit or use git add -A to directly stage all files)
+        git commit -m "Provide a clear explanation of your commit. People who did not make the change should understand the issue you solved."
+        git push
 
 Please refer to section :ref:`2.4 <2.4 Working with Git>` to understand why we use these commands.
