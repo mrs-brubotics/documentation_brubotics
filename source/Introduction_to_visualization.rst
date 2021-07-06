@@ -157,8 +157,9 @@ It contains 2 ``.cpp`` files which define who the CTU RViz tools work.
 5.4 Our work: D-ERG visualization
 ---------------------------------
 
-We want to visualize what it is computed by the D-ERG tracker of BruBotics, especially in the `2_two_drones_D-ERG simulation <https://github.com/mrs-brubotics/testing_brubotics/tree/master/tmux_scripts/bryan/2_two_drones_D-ERG>`__ 
-that you can run with these commands: ::
+We want to visualize what it is computed by the `D-ERG tracker <https://github.com/mrs-brubotics/trackers_brubotics/blob/master/src/dergbryan_tracker/dergbryan_tracker.cpp>`__ of
+BruBotics, especially in the `2_two_drones_D-ERG simulation <https://github.com/mrs-brubotics/testing_brubotics/tree/master/tmux_scripts/bryan/2_two_drones_D-ERG>`__ that you can
+run with these commands: ::
 
     cd ~workspace/src/droneswarm_brubotics/ros_packages/testing_brubotics/tmux_scripts/2_two_drones_D-ERG/
     ./start.sh
