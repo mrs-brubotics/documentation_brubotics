@@ -24,7 +24,7 @@ The Rviz window will open after Gazebo and it looks like this:
    :width: 800
    :align: center
 
-   Figure 5.1: RViz window
+   Figure 5.1: RViz window with CTU visualization
 
 You can see arrows, poses and UAV frames in this simple visualization.
 For these simple tasks, you only need to click on the add button and subscribe to the topic you want to visualize.
@@ -103,11 +103,11 @@ This command creates a ``CMakeLists.txt`` file and a ``package.xml`` file.
 Then, go to the ``session.yml`` file of the `2_two_drones_D-ERG simulation <https://github.com/mrs-brubotics/testing_brubotics/tree/master/tmux_scripts/bryan/2_two_drones_D-ERG>`__.
 At the end (line 223), you should see a RViz part. If it is commented, uncomment it. Modify these lines so it looks lite this: ::
 
-   - rviz:
-       layout: tiled
-       panes:
-         - waitForControl; roslaunch mrs_uav_testing rviz.launch
-         - waitForControl; roslaunch mrs_rviz_plugins load_robot.launch
+- rviz:
+    layout: tiled
+    panes:
+      - waitForControl; roslaunch visualization_brubotics rviz.launch name:=avoidance_test
+      - waitForControl; roslaunch visualization_brubotics load_robot.launch
   
 5.3.1 launch folder
 ^^^^^^^^^^^^^^^^^^^
@@ -275,6 +275,8 @@ Tube can **translate** and **rotate**.
 
 To visualize a pill, we need to create a plugin because this display type is not available on RViz. But this is not trivial at all.
 
+:raw-html:`<font color="RoyalBlue">[TODO: explanations about how to do it]JV</font>`
+
 5.4.3 D-ERG strategy 2
 ^^^^^^^^^^^^^^^^^^^^^^
 
@@ -288,6 +290,8 @@ Communicate: p\ :sub:`k`\, p\ :sub:`k`\ :sup:`v`
 
 Tube can **translate**, **rotate** and **change length**.
 
+:raw-html:`<font color="RoyalBlue">[TODO: explanations about how to do it]JV</font>`
+
 5.4.4 D-ERG strategy 3
 ^^^^^^^^^^^^^^^^^^^^^^
 
@@ -300,6 +304,8 @@ Tube can **translate**, **rotate** and **change length**.
 Communicate: p\ :sub:`k`\, p\ :sub:`k`\ :sup:`v`, S\ :sub:`a,min`\ :sup:`⊥`
 
 Tube can **translate**, **rotate**, **change length and width**. The witfh (radius) is the minimal one for a tube with error directed longitudinal axis.
+
+:raw-html:`<font color="RoyalBlue">[TODO: explanations about how to do it]JV</font>`
 
 5.4.5 D-ERG strategy 4
 ^^^^^^^^^^^^^^^^^^^^^^
@@ -315,6 +321,8 @@ Communicate: p\ :sub:`k`\ :sup:`0`, p\ :sub:`k`\ :sup:`1`, S\ :sub:`a,min`\ :sup
 Tube and cylinder can **translate**, **rotate**, **change length and width**. The width (radius) and the length are the minimal one for a tube with error directed
 longitudinal axis.
 
+:raw-html:`<font color="RoyalBlue">[TODO: explanations about how to do it]JV</font>`
+
 5.4.6 D-ERG strategy 5
 ^^^^^^^^^^^^^^^^^^^^^^
 
@@ -325,3 +333,5 @@ longitudinal axis.
    Figure 5.11: D-ERG strategy 5
 
 This final strategy permits to calculate the minimal distance between 2 drones.
+
+:raw-html:`<font color="RoyalBlue">[TODO: explanations about how to do it]JV</font>`
