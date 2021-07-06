@@ -93,13 +93,22 @@
 <li class="toctree-l1 current"><a class="current reference internal" href="#">5. Introduction to visualization</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#the-beginning">5.1 The beginning</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#how-rviz-works">5.2 How RViz works ?</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#our-work">5.3 Our work</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#d-erg-strategies">5.3 D-ERG strategies</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#d-erg-strategy-0">5.3.1 D-ERG strategy 0</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#d-erg-strategy-1">5.3.2 D-ERG strategy 1</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#d-erg-strategy-2">5.3.3 D-ERG strategy 2</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#d-erg-strategy-3">5.3.4 D-ERG strategy 3</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#d-erg-strategy-4">5.3.5 D-ERG strategy 4</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#d-erg-strategy-5">5.3.6 D-ERG strategy 5</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#structure-of-the-visualization-brubotics-package">5.4 Structure of the visualization_brubotics package</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#launch-folder">5.4.1 launch folder</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#rviz-folder">5.4.2 rviz folder</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#data-folder">5.4.3 data folder</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#scripts-folder">5.4.4 scripts folder</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#config-folder">5.4.5 config folder</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#src-folder">5.4.6 src folder</a></li>
 </ul>
 </li>
 </ul>
@@ -185,22 +194,22 @@ To do that you can run these commands:</p>
 </pre></div>
 </div>
 <p>The Rviz window will open after Gazebo and it looks like this:</p>
-<div class="figure align-center" id="id1">
+<div class="figure align-center" id="id2">
 <a class="reference internal image-reference" href="_images/one_drone_rviz.png"><img alt="_images/one_drone_rviz.png" src="_images/one_drone_rviz.png" style="width: 800px;" /></a>
 <p class="caption"><span class="caption-text">Figure 5.1: RViz window</span></p>
 </div>
 <p>You can see arrows, poses and UAV frames in this simple visualization.
 For these simple tasks, you only need to click on the add button and subscribe to the topic you want to visualize.</p>
-<div class="figure align-center" id="id2">
+<div class="figure align-center" id="id3">
 <a class="reference internal image-reference" href="_images/add_button.png"><img alt="_images/add_button.png" src="_images/add_button.png" style="width: 500px;" /></a>
 <p class="caption"><span class="caption-text">Figure 5.2: Add button</span></p>
 </div>
-<div class="figure align-center" id="id3">
+<div class="figure align-center" id="id4">
 <a class="reference internal image-reference" href="_images/topic_window.png"><img alt="_images/topic_window.png" src="_images/topic_window.png" style="width: 800px;" /></a>
 <p class="caption"><span class="caption-text">Figure 5.3: Topic window</span></p>
 </div>
 <p>You can also use the 2D Nav Goal button to choose a position and a heading to go for the UAV.</p>
-<div class="figure align-center" id="id4">
+<div class="figure align-center" id="id5">
 <a class="reference internal image-reference" href="_images/navgoal_button.png"><img alt="_images/navgoal_button.png" src="_images/navgoal_button.png" style="width: 500px;" /></a>
 <p class="caption"><span class="caption-text">Figure 5.4: Navigation goal button</span></p>
 </div>
@@ -221,7 +230,7 @@ It represents a huge work to create these type of visualization but it shows you
 <h2>5.2 How RViz works ?<a class="headerlink" href="#how-rviz-works" title="Permalink to this headline">¶</a></h2>
 <p>To run a simulation, you will use the <code class="docutils literal notranslate"><span class="pre">start.sh</span></code> file wich will ask to the <code class="docutils literal notranslate"><span class="pre">session.yml</span></code> what <code class="docutils literal notranslate"><span class="pre">.launch</span></code> file are going to be runned.
 A <code class="docutils literal notranslate"><span class="pre">.yml</span></code> looks like this:</p>
-<div class="figure align-center" id="id5">
+<div class="figure align-center" id="id6">
 <a class="reference internal image-reference" href="_images/yml_file.png"><img alt="_images/yml_file.png" src="_images/yml_file.png" style="width: 800px;" /></a>
 <p class="caption"><span class="caption-text">Figure 5.5: .yml file</span></p>
 </div>
@@ -231,19 +240,18 @@ the configuration of Rviz, like what is displayed. On the <code class="docutils 
 files.</p>
 <p>You can generate a <code class="docutils literal notranslate"><span class="pre">.rviz</span></code> file, which save your RViz configuration, by clicking in RViz on <code class="docutils literal notranslate"><span class="pre">File-&gt;Save</span> <span class="pre">config</span> <span class="pre">as</span></code>.</p>
 </div>
-<div class="section" id="our-work">
-<h2>5.3 Our work<a class="headerlink" href="#our-work" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="d-erg-strategies">
+<h2>5.3 D-ERG strategies<a class="headerlink" href="#d-erg-strategies" title="Permalink to this headline">¶</a></h2>
 <p>We want to visualize what it is computed by the D-ERG tracker of BruBotics, especially in the <a class="reference external" href="https://github.com/mrs-brubotics/testing_brubotics/tree/master/tmux_scripts/bryan/2_two_drones_D-ERG">2_two_drones_D-ERG simulation</a>
 that you can run with these commands:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="o">~</span><span class="n">workspace</span><span class="o">/</span><span class="n">src</span><span class="o">/</span><span class="n">droneswarm_brubotics</span><span class="o">/</span><span class="n">ros_packages</span><span class="o">/</span><span class="n">testing_brubotics</span><span class="o">/</span><span class="n">tmux_scripts</span><span class="o">/</span><span class="mi">2</span><span class="n">_two_drones_D</span><span class="o">-</span><span class="n">ERG</span><span class="o">/</span>
 <span class="o">./</span><span class="n">start</span><span class="o">.</span><span class="n">sh</span>
 </pre></div>
 </div>
-<p>We have several D-ERG (Distributed Explicit Reference Governor) strategies to illustrate.</p>
+<p>We have several D-ERG (Distributed Explicit Reference Governor) strategies to illustrate. For more advanced explanations, watch <a class="reference external" href="https://www.youtube.com/watch?v=le6WSeyTXNU">this video</a></p>
 <div class="section" id="d-erg-strategy-0">
 <h3>5.3.1 D-ERG strategy 0<a class="headerlink" href="#d-erg-strategy-0" title="Permalink to this headline">¶</a></h3>
-<p>For more advanced explanations, watch <a class="reference external" href="https://www.youtube.com/watch?v=le6WSeyTXNU">this video</a></p>
-<div class="figure align-center" id="id6">
+<div class="figure align-center" id="id7">
 <a class="reference internal image-reference" href="_images/DERG-0.png"><img alt="_images/DERG-0.png" src="_images/DERG-0.png" style="width: 500px;" /></a>
 <p class="caption"><span class="caption-text">Figure 5.6: D-ERG strategy 0</span></p>
 </div>
@@ -255,11 +263,10 @@ that you can run with these commands:</p>
 </ul>
 <p>Communicate: p<sub>k</sub></p>
 <p>Sphere can <strong>translate</strong>.</p>
-<p><span class="raw-html"><font color="RoyalBlue">[Explanations of how we did it.]JV</font></span></p>
 </div>
 <div class="section" id="d-erg-strategy-1">
 <h3>5.3.2 D-ERG strategy 1<a class="headerlink" href="#d-erg-strategy-1" title="Permalink to this headline">¶</a></h3>
-<div class="figure align-center" id="id7">
+<div class="figure align-center" id="id8">
 <a class="reference internal image-reference" href="_images/DERG-1.png"><img alt="_images/DERG-1.png" src="_images/DERG-1.png" style="width: 500px;" /></a>
 <p class="caption"><span class="caption-text">Figure 5.7: D-ERG strategy 1</span></p>
 </div>
@@ -268,7 +275,7 @@ that you can run with these commands:</p>
 </div>
 <div class="section" id="d-erg-strategy-2">
 <h3>5.3.3 D-ERG strategy 2<a class="headerlink" href="#d-erg-strategy-2" title="Permalink to this headline">¶</a></h3>
-<div class="figure align-center" id="id8">
+<div class="figure align-center" id="id9">
 <a class="reference internal image-reference" href="_images/DERG-2.png"><img alt="_images/DERG-2.png" src="_images/DERG-2.png" style="width: 500px;" /></a>
 <p class="caption"><span class="caption-text">Figure 5.8: D-ERG strategy 2</span></p>
 </div>
@@ -277,7 +284,7 @@ that you can run with these commands:</p>
 </div>
 <div class="section" id="d-erg-strategy-3">
 <h3>5.3.4 D-ERG strategy 3<a class="headerlink" href="#d-erg-strategy-3" title="Permalink to this headline">¶</a></h3>
-<div class="figure align-center" id="id9">
+<div class="figure align-center" id="id10">
 <a class="reference internal image-reference" href="_images/DERG-3.png"><img alt="_images/DERG-3.png" src="_images/DERG-3.png" style="width: 500px;" /></a>
 <p class="caption"><span class="caption-text">Figure 5.9: D-ERG strategy 3</span></p>
 </div>
@@ -286,7 +293,7 @@ that you can run with these commands:</p>
 </div>
 <div class="section" id="d-erg-strategy-4">
 <h3>5.3.5 D-ERG strategy 4<a class="headerlink" href="#d-erg-strategy-4" title="Permalink to this headline">¶</a></h3>
-<div class="figure align-center" id="id10">
+<div class="figure align-center" id="id11">
 <a class="reference internal image-reference" href="_images/DERG-4.png"><img alt="_images/DERG-4.png" src="_images/DERG-4.png" style="width: 500px;" /></a>
 <p class="caption"><span class="caption-text">Figure 5.10: D-ERG strategy 4</span></p>
 </div>
@@ -296,10 +303,68 @@ longitudinal axis.</p>
 </div>
 <div class="section" id="d-erg-strategy-5">
 <h3>5.3.6 D-ERG strategy 5<a class="headerlink" href="#d-erg-strategy-5" title="Permalink to this headline">¶</a></h3>
-<div class="figure align-center" id="id11">
+<div class="figure align-center" id="id12">
 <a class="reference internal image-reference" href="_images/DERG-5.png"><img alt="_images/DERG-5.png" src="_images/DERG-5.png" style="width: 500px;" /></a>
 <p class="caption"><span class="caption-text">Figure 5.11: D-ERG strategy 5</span></p>
 </div>
+<p>This final strategy permits to calculate the minimal distance between 2 drones.</p>
+</div>
+</div>
+<div class="section" id="structure-of-the-visualization-brubotics-package">
+<h2>5.4 Structure of the visualization_brubotics package<a class="headerlink" href="#structure-of-the-visualization-brubotics-package" title="Permalink to this headline">¶</a></h2>
+<p>We have developed a <a class="reference external" href="https://github.com/mrs-brubotics/visualization_brubotics">visualization package</a> which permits to visualize on RViz the previous
+strategies in the <a class="reference external" href="https://github.com/mrs-brubotics/testing_brubotics/tree/master/tmux_scripts/bryan/2_two_drones_D-ERG">2_two_drones_D-ERG simulation</a>.
+This package is based on the <a class="reference external" href="https://github.com/ctu-mrs/mrs_rviz_plugins">mrs_rviz_plugins</a> structure. We will explain you how to reproduce it.</p>
+<p>First, create a new package in <code class="docutils literal notranslate"><span class="pre">workspace/src_droneswarm_brubotics/ros_packages</span></code> with:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">catkin_create_pkg</span> <span class="n">visualization_brubotics</span>
+</pre></div>
+</div>
+<p>This command creates a <code class="docutils literal notranslate"><span class="pre">CMakeLists.txt</span></code> file and a <code class="docutils literal notranslate"><span class="pre">package.xml</span></code> file.</p>
+<p>Then, go to the <code class="docutils literal notranslate"><span class="pre">session.yml</span></code> file of the <a class="reference external" href="https://github.com/mrs-brubotics/testing_brubotics/tree/master/tmux_scripts/bryan/2_two_drones_D-ERG">2_two_drones_D-ERG simulation</a>.
+At the end (line 223), you should see a RViz part. If it is commented, uncomment it. Modify these lines so it looks lite this:</p>
+<div class="figure align-center" id="id13">
+<a class="reference internal image-reference" href="_images/yaml_file.png"><img alt="_images/yaml_file.png" src="_images/yaml_file.png" style="width: 800px;" /></a>
+<p class="caption"><span class="caption-text">Figure 5.12: session.yml file of the 2_two_drones_D-ERG simulation</span></p>
+</div>
+<div class="section" id="launch-folder">
+<h3>5.4.1 launch folder<a class="headerlink" href="#launch-folder" title="Permalink to this headline">¶</a></h3>
+<p>Now, create a <code class="docutils literal notranslate"><span class="pre">launch</span></code> folder in your <code class="docutils literal notranslate"><span class="pre">visualization_brubotics</span></code> package and copy/paste the <code class="docutils literal notranslate"><span class="pre">mrs_uav_testing/launch/rviz.launch</span></code> file.
+Open it and change <code class="docutils literal notranslate"><span class="pre">mrs_uav_testing</span></code> by <code class="docutils literal notranslate"><span class="pre">visualization_brubotics</span></code>. This file permits to open a RViz window when you will start the <a class="reference external" href="https://github.com/mrs-brubotics/testing_brubotics/tree/master/tmux_scripts/bryan/2_two_drones_D-ERG">2_two_drones_D-ERG simulation</a>.</p>
+<p>Copy/paste the <code class="docutils literal notranslate"><span class="pre">mrs_uav_testing/launch/tf_connector_avoidance.launch</span></code> file in your <code class="docutils literal notranslate"><span class="pre">launch</span></code> folder and rename it <code class="docutils literal notranslate"><span class="pre">load_robot.launch</span></code>. Open it and make the
+following changes:</p>
+<div class="figure align-center" id="id14">
+<a class="reference internal image-reference" href="_images/load_robot.png"><img alt="_images/load_robot.png" src="_images/load_robot.png" style="width: 800px;" /></a>
+<p class="caption"><span class="caption-text">Figure 5.13: load_robot.launch file</span></p>
+</div>
+<p>This file will launch the 2 UAV on the RViz window.</p>
+<p>Go in the <code class="docutils literal notranslate"><span class="pre">launch</span></code> folder from <code class="docutils literal notranslate"><span class="pre">mrs_rviz_plugins</span></code>, copy the <code class="docutils literal notranslate"><span class="pre">rviz_interface</span></code> folder and paste it in your <code class="docutils literal notranslate"><span class="pre">visualization_brubotics/launch</span></code>
+folder. You will be able to use tools developed by CTU like the “2D Nav Goal” after you did <a class="reference internal" href="#src-folder"><span class="std std-ref">these steps</span></a>.</p>
+</div>
+<div class="section" id="rviz-folder">
+<h3>5.4.2 rviz folder<a class="headerlink" href="#rviz-folder" title="Permalink to this headline">¶</a></h3>
+<p>Create a <code class="docutils literal notranslate"><span class="pre">rviz</span></code> folder in your <code class="docutils literal notranslate"><span class="pre">visualization_brubotics</span></code> package. Copy/paste the <code class="docutils literal notranslate"><span class="pre">mrs_uav_testing/rviz/default_simulation.rviz</span></code> in it.
+Create a <code class="docutils literal notranslate"><span class="pre">avoidance_test.rviz</span> <span class="pre">file</span></code>, copy the text from <a class="reference external" href="https://github.com/mrs-brubotics/visualization_brubotics/blob/main/rviz/avoidance_test.rviz">our existing file</a>
+and paste it in the file you just have created. It will allow you to directly see on RViz what is interesting to visualize.</p>
+</div>
+<div class="section" id="data-folder">
+<h3>5.4.3 data folder<a class="headerlink" href="#data-folder" title="Permalink to this headline">¶</a></h3>
+<p>For this step, you only have to copy/paste the entire <code class="docutils literal notranslate"><span class="pre">mrs_rviz_plugins/data</span></code> folder in your <code class="docutils literal notranslate"><span class="pre">visualization_brubotics</span></code> package. This folder contains the
+description of the UAV models.</p>
+</div>
+<div class="section" id="scripts-folder">
+<h3>5.4.4 scripts folder<a class="headerlink" href="#scripts-folder" title="Permalink to this headline">¶</a></h3>
+<p>Create a <code class="docutils literal notranslate"><span class="pre">scripts</span></code> folder in your <code class="docutils literal notranslate"><span class="pre">visualization_brubotics</span></code> package and copy/paste the <code class="docutils literal notranslate"><span class="pre">mrs_rviz_plugins/scripts/generate_robot_model_xml.py</span></code> file in it.
+This script will generate a <code class="docutils literal notranslate"><span class="pre">robot_model</span></code> that you will be able to visualize on RViz.</p>
+</div>
+<div class="section" id="config-folder">
+<h3>5.4.5 config folder<a class="headerlink" href="#config-folder" title="Permalink to this headline">¶</a></h3>
+<p>Create a <code class="docutils literal notranslate"><span class="pre">config</span></code> folder in your <code class="docutils literal notranslate"><span class="pre">visualization_brubotics</span></code> package and copy/paste the <code class="docutils literal notranslate"><span class="pre">mrs_uav_testing/config/tf_connector_avoidance.yaml</span></code> in it.
+This file will define properly the frames id.</p>
+</div>
+<div class="section" id="src-folder">
+<span id="id1"></span><h3>5.4.6 src folder<a class="headerlink" href="#src-folder" title="Permalink to this headline">¶</a></h3>
+<p>Finally, create a <code class="docutils literal notranslate"><span class="pre">src</span></code> folder in your <code class="docutils literal notranslate"><span class="pre">visualization_brubotics</span></code> package and copy/paste the <code class="docutils literal notranslate"><span class="pre">mrs_rviz_plugins/src/rviz_interface</span></code> folder in it.
+It contains 2 <code class="docutils literal notranslate"><span class="pre">.cpp</span></code> files which define who the CTU RViz tools work.</p>
 </div>
 </div>
 </div>
