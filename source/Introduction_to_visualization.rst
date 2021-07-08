@@ -30,13 +30,13 @@ You can see arrows, poses and UAV frames in this simple visualization.
 For these simple tasks, you only need to click on the add button and subscribe to the topic you want to visualize.
 
 .. figure:: _static/add_button.png
-   :width: 500
+   :width: 400
    :align: center
 
    Figure 5.2: Add button
 
 .. figure:: _static/topic_window.png
-   :width: 800
+   :width: 400
    :align: center
 
    Figure 5.3: Topic window
@@ -44,7 +44,7 @@ For these simple tasks, you only need to click on the add button and subscribe t
 You can also use the 2D Nav Goal button to choose a position and a heading to go for the UAV.
 
 .. figure:: _static/navgoal_button.png
-   :width: 500
+   :width: 400
    :align: center
 
    Figure 5.4: Navigation goal button
@@ -228,12 +228,12 @@ We have several D-ERG (Distributed Explicit Reference Governor) strategies to il
 
    Figure 5.6: D-ERG strategy 0
 
-* p\ :sub:`k`\: current pose of the UAV
-* p̂\ :sub:`k`\: desired reference pose
-* p\ :sub:`k`\ :sup:`v`\: applied reference pose 
-* R\ :sub:`a`\: drone's radius
+* :math:`p_{k}`: current pose of the UAV
+* :math:`p̂_{k}`: desired reference pose
+* :math:`p_{k}^{v}`: applied reference pose 
+* :math:`R_{a}`: drone's radius
 
-Communicate: p\ :sub:`k`\
+Communicate: :math:`p_{k}`
 
 Sphere can **translate**.
 
@@ -269,7 +269,7 @@ In order to visualize how it works, we first need to change ``data/f450.xml`` fi
 
    Figure 5.7: D-ERG strategy 1
 
-Communicate: p\ :sub:`k`\, p\ :sub:`k`\ :sup:`v`
+Communicate: :math:`p_{k}`, :math:`p_{k}^{v}`
 
 Tube can **translate** and **rotate**.
 
@@ -286,7 +286,7 @@ To visualize a pill, we need to create a plugin because this display type is not
 
    Figure 5.8: D-ERG strategy 2
 
-Communicate: p\ :sub:`k`\, p\ :sub:`k`\ :sup:`v`
+Communicate: :math:`p_{k}`, :math:`p_{k}^{v}`
 
 Tube can **translate**, **rotate** and **change length**.
 
@@ -301,7 +301,7 @@ Tube can **translate**, **rotate** and **change length**.
 
    Figure 5.9: D-ERG strategy 3
 
-Communicate: p\ :sub:`k`\, p\ :sub:`k`\ :sup:`v`, S\ :sub:`a,min`\ :sup:`⊥`
+Communicate: :math:`p_{k}`, :math:`p_{k}^{v}`, :math:`S_{a,min}^{⊥}`
 
 Tube can **translate**, **rotate**, **change length and width**. The witfh (radius) is the minimal one for a tube with error directed longitudinal axis.
 
@@ -316,7 +316,7 @@ Tube can **translate**, **rotate**, **change length and width**. The witfh (radi
 
    Figure 5.10: D-ERG strategy 4
 
-Communicate: p\ :sub:`k`\ :sup:`0`, p\ :sub:`k`\ :sup:`1`, S\ :sub:`a,min`\ :sup:`⊥`
+Communicate: :math:`p_{k}^{0}`, :math:`p_{k}^{1}`, :math:`S_{a,min}^{⊥}`
 
 Tube and cylinder can **translate**, **rotate**, **change length and width**. The width (radius) and the length are the minimal one for a tube with error directed
 longitudinal axis.
