@@ -1,11 +1,9 @@
 DroneSwarmTutorial
 ==================
 
-Contents
-^^^^^^^^
-
 .. toctree::
    :maxdepth: 4
+   :caption: Contents:
 
    Introduction
    Prerequisites

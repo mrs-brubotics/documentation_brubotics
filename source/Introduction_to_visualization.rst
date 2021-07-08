@@ -18,7 +18,7 @@ To do that you can run these commands:
    cd ~/mrs_workspace/src/simulation/example_tmux_scripts/one_drone_gps
    ./start.sh
 
-The Rviz window will open after Gazebo and it looks like this:
+The RViz window will open after Gazebo and it looks like this:
 
 .. figure:: _static/one_drone_rviz.png
    :width: 800
