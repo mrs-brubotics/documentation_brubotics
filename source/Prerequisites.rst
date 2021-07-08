@@ -157,10 +157,10 @@ Similar to cherry-pick, it allows the reorganization of commits from the current
 
 **Reverts the folder to the latest commit and throws all changes away**
 
-2.4.2 Setup your ssh key in Git
+2.4.2 Setup your SSH key in Git
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-We recommend you to setup your ssh key in Github, it's an easy thing that can avoid you some problems that are hard to understand.
+We recommend you to setup your SSH key in Github, it's an easy thing that can avoid you some problems that are hard to understand.
 Also, you will need to setup your email and your name by using these commands:
 
 .. code-block:: shell
@@ -175,7 +175,8 @@ To verify your configuration file, you can run the same commands but like this:
    git config --global user.name
    git config --global user.email
 
-Now, you can follow `these steps <https://docs.github.com/en/github/authenticating-to-github/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent#generating-a-new-ssh-key>`__ to setup your SSH key in Github.
+Now, you can follow `these steps <https://docs.github.com/en/github/authenticating-to-github/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent#generating-a-new-ssh-key>`__
+to setup your SSH key in Github.
 
 2.4.3 How to use github permalinks
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
