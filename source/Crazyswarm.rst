@@ -15,6 +15,11 @@ At the third step, you might get this error:
 
 .. code-block:: shell
 
-    Insert the error
+    E: Unable to locate package gcc-arm-embedded
     
 To solve this issue, you juste have to remove ``gcc-arm-embedded`` from the command.
+
+6.2 Configuration
+-----------------
+
+To install the Crazyflie Client, we recomment you to do it with the *Ubuntu Software application*. Then, refer to its `User Guide <https://www.bitcraze.io/documentation/repository/crazyflie-clients-python/master/userguides/userguide_client/>`__.
