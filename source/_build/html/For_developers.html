@@ -33,13 +33,14 @@
         <script type="text/javascript" src="_static/underscore.js"></script>
         <script type="text/javascript" src="_static/doctools.js"></script>
         <script type="text/javascript" src="_static/language_data.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
     <script type="text/javascript" src="_static/js/theme.js"></script>
 
     
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="prev" title="5. Introduction to visualization" href="Introduction_to_visualization.html" /> 
+    <link rel="prev" title="6. Crazyswarm" href="Crazyswarm.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -84,12 +85,14 @@
               
             
             
-              <ul class="current">
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="Introduction.html">1. Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Prerequisites.html">2. Prerequisites</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Introduction_to_MRS_Software_Extensions.html">3. Introduction to MRS Software Extensions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Workspace_git_configuration.html">4. Workspace Git configuration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Introduction_to_visualization.html">5. Introduction to visualization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Crazyswarm.html">6. Crazyswarm</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">For developers</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#definition-of-authors-comments">Definition of authors’ comments</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#how-to-use-readthedocs">How to use ReadTheDocs ?</a><ul>
@@ -172,13 +175,13 @@
 <div class="section" id="definition-of-authors-comments">
 <h2>Definition of authors’ comments<a class="headerlink" href="#definition-of-authors-comments" title="Permalink to this headline">¶</a></h2>
 <p>The following syntax allow you to write a comment in color with your initials:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>:raw-html:`&lt;font color=&quot;Name_of_the_color&quot;&gt;[This is a comment.]INITIALS&lt;/font&gt;`
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span>:raw-html:`<span class="p">&lt;</span><span class="nt">font</span> <span class="na">color</span><span class="o">=</span><span class="s">&quot;Name_of_the_color&quot;</span><span class="p">&gt;</span>[This is a comment.]INITIALS<span class="p">&lt;/</span><span class="nt">font</span><span class="p">&gt;</span>`
 </pre></div>
 </div>
 <p>You can hind a list of available colors <a class="reference external" href="https://htmlcolors.com/color-names">here</a>.</p>
 <p>Don’t forget to add these 2 lines at the top of your <code class="docutils literal notranslate"><span class="pre">.rst</span></code> file, just under the header:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">..</span> <span class="n">role</span><span class="p">::</span> <span class="n">raw</span><span class="o">-</span><span class="n">html</span><span class="p">(</span><span class="n">raw</span><span class="p">)</span>
-    <span class="p">:</span><span class="nb">format</span><span class="p">:</span> <span class="n">html</span>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span>.. role:: raw-html(raw)
+    :format: html
 </pre></div>
 </div>
 <p>You can see here the definition and the rendering of the current author’s comments:</p>
@@ -208,19 +211,21 @@ website. It has a syntax highlighting tool.</p>
 <p>The only files you need to modify are <code class="docutils literal notranslate"><span class="pre">conf.py</span></code> and all the <code class="docutils literal notranslate"><span class="pre">.rst</span></code> files in the <code class="docutils literal notranslate"><span class="pre">source</span></code> folder. Once you want to update your documentation, use the following
 commands from your directory:</p>
 <ul>
-<li><p class="first">Before all, we recommend you to run this command to update your local repository and get the newest code :</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">pull</span>
+<li><p class="first">Before all, we recommend you to run this command to update your local repository and get the newest code:</p>
+<blockquote>
+<div><div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>git pull
 </pre></div>
 </div>
+</div></blockquote>
 </li>
-<li><p class="first">To check what files wich have been updated since the last commit you can use that command :</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">status</span>
+<li><p class="first">To check what files wich have been updated since the last commit you can use that command:</p>
+<blockquote>
+<div><div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>git status
 </pre></div>
 </div>
+</div></blockquote>
 </li>
 <li><p class="first">To update your repository, adapt and run these commands</p>
-</li>
-</ul>
 <blockquote>
 <div><div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>git add <span class="o">(</span>use tab key and <span class="nb">type</span> the first letter of the files to commit or use git add -A to directly stage all files<span class="o">)</span>
 git commit -m <span class="s2">&quot;Provide a clear explanation of your commit. People who did not make the change should understand the issue you solved.&quot;</span>
@@ -228,6 +233,8 @@ git push
 </pre></div>
 </div>
 </div></blockquote>
+</li>
+</ul>
 <p>Please refer to section <a class="reference internal" href="Prerequisites.html#working-with-git"><span class="std std-ref">2.4</span></a> to understand why we use these commands.</p>
 </div>
 </div>
@@ -239,7 +246,7 @@ git push
           </div>
           <footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-        <a href="Introduction_to_visualization.html" class="btn btn-neutral float-left" title="5. Introduction to visualization" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="Crazyswarm.html" class="btn btn-neutral float-left" title="6. Crazyswarm" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
 
   <hr/>

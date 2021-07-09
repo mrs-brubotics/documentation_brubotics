@@ -11,30 +11,32 @@ visualization of your simulations.
 -----------------
 
 First, especially if you have never runned any simulation using Rviz, we recommand you to try some CTU MRS simulation.
-To do that you can run these commands: ::
+To do that you can run these commands:
 
-    cd ~/mrs_workspace/src/simulation/example_tmux_scripts/one_drone_gps
-    ./start.sh
+.. code-block:: shell
 
-The Rviz window will open after Gazebo and it looks like this:
+   cd ~/mrs_workspace/src/simulation/example_tmux_scripts/one_drone_gps
+   ./start.sh
+
+The RViz window will open after Gazebo and it looks like this:
 
 .. figure:: _static/one_drone_rviz.png
    :width: 800
    :align: center
 
-   Figure 5.1: RViz window
+   Figure 5.1: RViz window with CTU visualization
 
 You can see arrows, poses and UAV frames in this simple visualization.
 For these simple tasks, you only need to click on the add button and subscribe to the topic you want to visualize.
 
 .. figure:: _static/add_button.png
-   :width: 500
+   :width: 400
    :align: center
 
    Figure 5.2: Add button
 
 .. figure:: _static/topic_window.png
-   :width: 800
+   :width: 400
    :align: center
 
    Figure 5.3: Topic window
@@ -42,20 +44,24 @@ For these simple tasks, you only need to click on the add button and subscribe t
 You can also use the 2D Nav Goal button to choose a position and a heading to go for the UAV.
 
 .. figure:: _static/navgoal_button.png
-   :width: 500
+   :width: 400
    :align: center
 
    Figure 5.4: Navigation goal button
 
 Next, you can run some simulations which use dedicated plugins for one specific task.
-You will need to use these commands: ::
+You will need to use these commands:
 
-    cd ~/mrs_workspace/src/uav_core/ros_packages/mrs_uav_testing/tmux
-    ls
+.. code-block:: shell
 
-It will show you the different simulation that you can test. You can do it by using ``cd ./"directory_of_the_simulation"`` and running: ::
+   cd ~/mrs_workspace/src/uav_core/ros_packages/mrs_uav_testing/tmux
+   ls
 
-    ./start.sh
+It will show you the different simulation that you can test. You can do it by using ``cd ./"directory_of_the_simulation"`` and running:
+
+.. code-block:: shell
+
+   ./start.sh
 
 The bumper simulation is an example of advanced task that you can do on Rviz. It is made by a plugin created from scratch.
 It represents a huge work to create these type of visualization but it shows you the diversity of possibilities.
@@ -86,25 +92,25 @@ We have developed a `visualization package <https://github.com/mrs-brubotics/vis
 strategies in the `2_two_drones_D-ERG simulation <https://github.com/mrs-brubotics/testing_brubotics/tree/master/tmux_scripts/bryan/2_two_drones_D-ERG>`__.
 This package is based on the `mrs_rviz_plugins <https://github.com/ctu-mrs/mrs_rviz_plugins>`__ structure. We will explain you how to reproduce it.
 
-First, create a new package in ``workspace/src_droneswarm_brubotics/ros_packages`` with: ::
+First, create a new package in ``workspace/src_droneswarm_brubotics/ros_packages`` with:
+
+.. code-block:: shell
 
    catkin_create_pkg visualization_brubotics
 
 This command creates a ``CMakeLists.txt`` file and a ``package.xml`` file.
 
 Then, go to the ``session.yml`` file of the `2_two_drones_D-ERG simulation <https://github.com/mrs-brubotics/testing_brubotics/tree/master/tmux_scripts/bryan/2_two_drones_D-ERG>`__.
-At the end (line 223), you should see a RViz part. If it is commented, uncomment it. Modify these lines so it looks lite this:
-
-.. code-block:: rviz
+At the end (line 223), you should see a RViz part. If it is commented, uncomment it. Modify these lines so it looks lite this: ::
 
    - rviz:
-       layout: tiled
-       panes:
-         - waitForControl; roslaunch mrs_uav_testing rviz.launch
-         - waitForControl; roslaunch mrs_rviz_plugins load_robot.launch
+      layout: tiled
+      panes:
+        - waitForControl; roslaunch visualization_brubotics rviz.launch name:=avoidance_test
+        - waitForControl; roslaunch visualization_brubotics load_robot.launch
   
-5.3.1 launch folder
-^^^^^^^^^^^^^^^^^^^
+5.3.1 `launch folder <https://github.com/mrs-brubotics/visualization_brubotics/tree/main/launch>`__
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Now, create a ``launch`` folder in your ``visualization_brubotics`` package and copy/paste the ``mrs_uav_testing/launch/rviz.launch`` file.
 Open it and change ``mrs_uav_testing`` by ``visualization_brubotics``. This file permits to open a RViz window when you will start the `2_two_drones_D-ERG simulation <https://github.com/mrs-brubotics/testing_brubotics/tree/master/tmux_scripts/bryan/2_two_drones_D-ERG>`__.
@@ -166,35 +172,35 @@ This file will launch the 2 UAV on the RViz window.
 Go in the ``launch`` folder from ``mrs_rviz_plugins``, copy the ``rviz_interface`` folder and paste it in your ``visualization_brubotics/launch``
 folder. You will be able to use tools developed by CTU like the "2D Nav Goal" after you did :ref:`these steps <5.4.6_src_folder>`.
 
-5.3.2 rviz folder
-^^^^^^^^^^^^^^^^^
+5.3.2 `rviz folder <https://github.com/mrs-brubotics/visualization_brubotics/tree/main/rviz>`__
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Create a ``rviz`` folder in your ``visualization_brubotics`` package. Copy/paste the ``mrs_uav_testing/rviz/default_simulation.rviz`` in it. 
 Create a ``avoidance_test.rviz file``, copy the text from `our existing file <https://github.com/mrs-brubotics/visualization_brubotics/blob/main/rviz/avoidance_test.rviz>`__
 and paste it in the file you just have created. It will allow you to directly see on RViz what is interesting to visualize.
 
-5.3.3 data folder
-^^^^^^^^^^^^^^^^^
+5.3.3 `data folder <https://github.com/mrs-brubotics/visualization_brubotics/tree/main/data>`__
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 For this step, you only have to copy/paste the entire ``mrs_rviz_plugins/data`` folder in your ``visualization_brubotics`` package. This folder contains the
 description of the UAV models.
 
-5.3.4 scripts folder
-^^^^^^^^^^^^^^^^^^^^
+5.3.4 `scripts folder <https://github.com/mrs-brubotics/visualization_brubotics/tree/main/scripts>`__
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Create a ``scripts`` folder in your ``visualization_brubotics`` package and copy/paste the ``mrs_rviz_plugins/scripts/generate_robot_model_xml.py`` file in it.
 This script will generate a ``robot_model`` that you will be able to visualize on RViz.
 
-5.3.5 config folder
-^^^^^^^^^^^^^^^^^^^
+5.3.5 `config folder <https://github.com/mrs-brubotics/visualization_brubotics/tree/main/config>`__
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Create a ``config`` folder in your ``visualization_brubotics`` package and copy/paste the ``mrs_uav_testing/config/tf_connector_avoidance.yaml`` in it.
 This file will define properly the frames id.
 
 .. _5.4.6_src_folder:
 
-5.3.6 src folder
-^^^^^^^^^^^^^^^^
+5.3.6 `src folder <https://github.com/mrs-brubotics/visualization_brubotics/tree/main/src>`__
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Finally, create a ``src`` folder in your ``visualization_brubotics`` package and copy/paste the ``mrs_rviz_plugins/src/rviz_interface`` folder in it.
 It contains 2 ``.cpp`` files which define who the CTU RViz tools work.
@@ -222,22 +228,35 @@ We have several D-ERG (Distributed Explicit Reference Governor) strategies to il
 
    Figure 5.6: D-ERG strategy 0
 
-* p\ :sub:`k`\: current pose of the UAV
-* p̂\ :sub:`k`\: desired reference pose
-* p\ :sub:`k`\ :sup:`v`\: applied reference pose 
-* R\ :sub:`a`\: drone's radius
+* :math:`p_{k}`: current pose of the UAV
+* :math:`p̂_{k}`: desired reference pose
+* :math:`p_{k}^{v}`: applied reference pose 
+* :math:`R_{a}`: drone's radius
 
-Communicate: p\ :sub:`k`\
+Communicate: :math:`p_{k}`
 
 Sphere can **translate**.
 
 In order to visualize how it works, we first need to change ``data/f450.xml`` file. The error sphere has a constant radius so it is easy: you just need to add a marker like this:
 
-.. figure:: _static/f450.png
-   :width: 800
-   :align: center
+.. code-block:: xml
 
-   Figure 5.13: f450.xml file
+   <link name="[REPLACEME]uav_name[/REPLACEME]/uav_marker">
+     <!-- UAV specific-color marker -->
+     <visual>
+       <origin xyz="0 0 -70e-3" rpy="0 0 0" />
+       <geometry>
+         <cylinder radius="370e-3" length="220e-3" />
+       </geometry>
+       <material name="UAVSpecificColor" />
+     </visual>
+     <visual>
+       <origin xyz="0 0 -70e-3" rpy="0 0 0" />
+       <geometry>
+         <sphere radius="1.5" />
+       </geometry>
+       <material name="UAVSpecificColor" />
+     </visual>
 
 :raw-html:`<font color="RoyalBlue">[TODO: explanations about how to visualize the path, the applied pose and desired reference pose]JV</font>`
 
@@ -250,11 +269,13 @@ In order to visualize how it works, we first need to change ``data/f450.xml`` fi
 
    Figure 5.7: D-ERG strategy 1
 
-Communicate: p\ :sub:`k`\, p\ :sub:`k`\ :sup:`v`
+Communicate: :math:`p_{k}`, :math:`p_{k}^{v}`
 
 Tube can **translate** and **rotate**.
 
 To visualize a pill, we need to create a plugin because this display type is not available on RViz. But this is not trivial at all.
+
+:raw-html:`<font color="RoyalBlue">[TODO: explanations about how to do it]JV</font>`
 
 5.4.3 D-ERG strategy 2
 ^^^^^^^^^^^^^^^^^^^^^^
@@ -265,9 +286,11 @@ To visualize a pill, we need to create a plugin because this display type is not
 
    Figure 5.8: D-ERG strategy 2
 
-Communicate: p\ :sub:`k`\, p\ :sub:`k`\ :sup:`v`
+Communicate: :math:`p_{k}`, :math:`p_{k}^{v}`
 
 Tube can **translate**, **rotate** and **change length**.
+
+:raw-html:`<font color="RoyalBlue">[TODO: explanations about how to do it]JV</font>`
 
 5.4.4 D-ERG strategy 3
 ^^^^^^^^^^^^^^^^^^^^^^
@@ -278,9 +301,11 @@ Tube can **translate**, **rotate** and **change length**.
 
    Figure 5.9: D-ERG strategy 3
 
-Communicate: p\ :sub:`k`\, p\ :sub:`k`\ :sup:`v`, S\ :sub:`a,min`\ :sup:`⊥`
+Communicate: :math:`p_{k}`, :math:`p_{k}^{v}`, :math:`S_{a,min}^{⊥}`
 
 Tube can **translate**, **rotate**, **change length and width**. The witfh (radius) is the minimal one for a tube with error directed longitudinal axis.
+
+:raw-html:`<font color="RoyalBlue">[TODO: explanations about how to do it]JV</font>`
 
 5.4.5 D-ERG strategy 4
 ^^^^^^^^^^^^^^^^^^^^^^
@@ -291,10 +316,12 @@ Tube can **translate**, **rotate**, **change length and width**. The witfh (radi
 
    Figure 5.10: D-ERG strategy 4
 
-Communicate: p\ :sub:`k`\ :sup:`0`, p\ :sub:`k`\ :sup:`1`, S\ :sub:`a,min`\ :sup:`⊥`
+Communicate: :math:`p_{k}^{0}`, :math:`p_{k}^{1}`, :math:`S_{a,min}^{⊥}`
 
 Tube and cylinder can **translate**, **rotate**, **change length and width**. The width (radius) and the length are the minimal one for a tube with error directed
 longitudinal axis.
+
+:raw-html:`<font color="RoyalBlue">[TODO: explanations about how to do it]JV</font>`
 
 5.4.6 D-ERG strategy 5
 ^^^^^^^^^^^^^^^^^^^^^^
@@ -306,3 +333,5 @@ longitudinal axis.
    Figure 5.11: D-ERG strategy 5
 
 This final strategy permits to calculate the minimal distance between 2 drones.
+
+:raw-html:`<font color="RoyalBlue">[TODO: explanations about how to do it]JV</font>`

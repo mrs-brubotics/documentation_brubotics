@@ -33,6 +33,7 @@
         <script type="text/javascript" src="_static/underscore.js"></script>
         <script type="text/javascript" src="_static/doctools.js"></script>
         <script type="text/javascript" src="_static/language_data.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
     <script type="text/javascript" src="_static/js/theme.js"></script>
 
@@ -85,7 +86,8 @@
               
             
             
-              <ul class="current">
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="Introduction.html">1. Introduction</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">2. Prerequisites</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#hardware-minimum-requirements">2.1 Hardware minimum requirements</a><ul>
@@ -99,7 +101,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#working-with-visual-studio-code">2.3 Working with Visual Studio Code</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#working-with-git">2.4 Working with Git</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#git-basics">2.4.1 Git basics</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#setup-your-ssh-key-in-git">2.4.2 Setup your ssh key in Git</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#setup-your-ssh-key-in-git">2.4.2 Setup your SSH key in Git</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#how-to-use-github-permalinks">2.4.3 How to use github permalinks</a></li>
 </ul>
 </li>
@@ -114,6 +116,7 @@
 <li class="toctree-l1"><a class="reference internal" href="Introduction_to_MRS_Software_Extensions.html">3. Introduction to MRS Software Extensions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Workspace_git_configuration.html">4. Workspace Git configuration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Introduction_to_visualization.html">5. Introduction to visualization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Crazyswarm.html">6. Crazyswarm</a></li>
 <li class="toctree-l1"><a class="reference internal" href="For_developers.html">For developers</a></li>
 </ul>
 
@@ -271,49 +274,50 @@ program to open files (right-click on the file and select “open with other app
 <p>If you are new at git, first take a look at <a class="reference external" href="https://guides.github.com/introduction/git-handbook/#basic-git">basic commands</a>. We can base our usage of git on
 the team on this <a class="reference external" href="https://learngitbranching.js.org">tutorial</a> or the <a class="reference external" href="https://www.coursera.org/learn/version-control-with-git">git tutorial advised by Bryan</a>.
 Here are some useful commands:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">branch</span> <span class="o">&lt;</span><span class="n">branchname</span><span class="o">&gt;</span>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>git branch &lt;branchname&gt;
 </pre></div>
 </div>
 <p>Creates a new working branch independent of the master. Before committing, make sure you are on your branch and not in the master
 with <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">checkout</span> <span class="pre">&lt;branchname&gt;</span></code>. You can also use <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">-b</span> <span class="pre">checkout</span> <span class="pre">&lt;branchname&gt;</span></code> in order to create new branch and directly work on it.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">merge</span> <span class="o">&lt;</span><span class="n">branchname</span><span class="o">&gt;</span>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>git merge &lt;branchname&gt;
 </pre></div>
 </div>
 <p>Merges two branches, preserving the barnch structure. Be careful when merging branches: even though Git has mechanisms to make merging
 seamless and simple, it can result in loss of important parts of the code. Some text editors, like <a class="reference external" href="https://atom.io/">Atom</a> and <a class="reference external" href="https://code.visualstudio.com/">VSCode</a>
 provide useful tools to work with git and help prevent loss of information on merges.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">rebase</span> <span class="o">&lt;</span><span class="n">branchname</span><span class="o">&gt;</span>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>git rebase &lt;branchname&gt;
 </pre></div>
 </div>
 <p>Combines two branches and <strong>deletes</strong> one of them, usually the one that is not the master. All the commit history is transferred to the other branch, and in the
 timeline of the repository, the other branch is not preserved.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">cherry</span><span class="o">-</span><span class="n">pick</span> <span class="o">&lt;</span><span class="n">commitID1</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">commitID2</span><span class="o">&gt;</span> <span class="o">...</span>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>git cherry-pick &lt;commitID1&gt; &lt;commitID2&gt; ...
 </pre></div>
 </div>
 <p>Applies the selected commit from one branch to another.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">rebase</span> <span class="o">-</span><span class="n">i</span> <span class="n">HEAD</span><span class="o">~&lt;</span><span class="n">numberofselectedcommit</span><span class="o">&gt;</span>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>git rebase -i HEAD~&lt;numberofselectedcommit&gt;
 </pre></div>
 </div>
 <p>Similar to cherry-pick, it allows the reorganization of commits from the current branch.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">stash</span>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>git stash
 </pre></div>
 </div>
 <p><strong>Reverts the folder to the latest commit and throws all changes away</strong></p>
 </div>
 <div class="section" id="setup-your-ssh-key-in-git">
-<h3>2.4.2 Setup your ssh key in Git<a class="headerlink" href="#setup-your-ssh-key-in-git" title="Permalink to this headline">¶</a></h3>
-<p>We recommend you to setup your ssh key in Github, it’s an easy thing that can avoid you some problems that are hard to understand.
-Also, you will need to setup your email and your name by using these commands :</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">config</span> <span class="o">--</span><span class="k">global</span> <span class="n">user</span><span class="o">.</span><span class="n">name</span> <span class="s2">&quot;FIRST_NAME LAST_NAME&quot;</span>
-<span class="n">git</span> <span class="n">config</span> <span class="o">--</span><span class="k">global</span> <span class="n">user</span><span class="o">.</span><span class="n">email</span> <span class="s2">&quot;MY_NAME@example.com&quot;</span>
+<h3>2.4.2 Setup your SSH key in Git<a class="headerlink" href="#setup-your-ssh-key-in-git" title="Permalink to this headline">¶</a></h3>
+<p>We recommend you to setup your SSH key in Github, it’s an easy thing that can avoid you some problems that are hard to understand.
+Also, you will need to setup your email and your name by using these commands:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>git config --global user.name <span class="s2">&quot;FIRST_NAME LAST_NAME&quot;</span>
+git config --global user.email <span class="s2">&quot;MY_NAME@example.com&quot;</span>
 </pre></div>
 </div>
-<p>To verify your configuration file, you can run the same commands but like this :</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">config</span> <span class="o">--</span><span class="k">global</span> <span class="n">user</span><span class="o">.</span><span class="n">name</span>
-<span class="n">git</span> <span class="n">config</span> <span class="o">--</span><span class="k">global</span> <span class="n">user</span><span class="o">.</span><span class="n">email</span>
+<p>To verify your configuration file, you can run the same commands but like this:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>git config --global user.name
+git config --global user.email
 </pre></div>
 </div>
-<p>Now, you can follow <a class="reference external" href="https://docs.github.com/en/github/authenticating-to-github/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent#generating-a-new-ssh-key">these steps</a> to setup your SSH key in Github.</p>
+<p>Now, you can follow <a class="reference external" href="https://docs.github.com/en/github/authenticating-to-github/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent#generating-a-new-ssh-key">these steps</a>
+to setup your SSH key in Github.</p>
 </div>
 <div class="section" id="how-to-use-github-permalinks">
 <h3>2.4.3 How to use github permalinks<a class="headerlink" href="#how-to-use-github-permalinks" title="Permalink to this headline">¶</a></h3>
@@ -379,7 +383,7 @@ the workspace configuration, refer to <a class="reference internal" href="Introd
 <div class="admonition warning">
 <p class="first admonition-title">Warning</p>
 <p>You may encounter an issue to build the MRS packages. If the build fails, you can try in the <code class="docutils literal notranslate"><span class="pre">mrs_workspace</span></code> file the following command:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">catkin</span> <span class="n">build</span> <span class="o">-</span><span class="n">j2</span>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>catkin build -j2
 </pre></div>
 </div>
 <p class="last">It can not work at the the first time, but you can re-try it.</p>
@@ -392,8 +396,8 @@ the workspace configuration, refer to <a class="reference internal" href="Introd
 to navigate through different terminals.</p>
 <p>Also, you can try to launch others simulations created by CTU-MRS group. Go to the <code class="docutils literal notranslate"><span class="pre">~/mrs_workspace/src/simulation/example_tmux_scripts/</span></code> folder and
 run the <code class="docutils literal notranslate"><span class="pre">ls</span></code> command to see the name of the different simulations. Then you can run:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="s2">&quot;DESIRED SIMULATION&quot;</span>
-<span class="o">./</span><span class="n">start</span><span class="o">.</span><span class="n">sh</span>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> <span class="s2">&quot;DESIRED SIMULATION&quot;</span>
+./start.sh
 </pre></div>
 </div>
 <p>It will launch a Tmux session and Gazebo. It depends on your PC specs but you may not be able to run all the simulation, especially multi-drones ones.</p>

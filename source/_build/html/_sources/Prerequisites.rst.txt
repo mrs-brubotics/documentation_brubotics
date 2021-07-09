@@ -115,51 +115,68 @@ program to open files (right-click on the file and select "open with other appli
 
 If you are new at git, first take a look at `basic commands <https://guides.github.com/introduction/git-handbook/#basic-git>`__. We can base our usage of git on
 the team on this `tutorial <https://learngitbranching.js.org>`_ or the `git tutorial advised by Bryan <https://www.coursera.org/learn/version-control-with-git>`__.
-Here are some useful commands: ::
+Here are some useful commands:
+
+.. code-block:: shell
 
    git branch <branchname> 
 
 Creates a new working branch independent of the master. Before committing, make sure you are on your branch and not in the master
-with ``git checkout <branchname>``. You can also use ``git -b checkout <branchname>`` in order to create new branch and directly work on it. ::
+with ``git checkout <branchname>``. You can also use ``git -b checkout <branchname>`` in order to create new branch and directly work on it.
+
+.. code-block:: shell
 
    git merge <branchname>
 
 Merges two branches, preserving the barnch structure. Be careful when merging branches: even though Git has mechanisms to make merging
 seamless and simple, it can result in loss of important parts of the code. Some text editors, like `Atom <https://atom.io/>`__ and `VSCode <https://code.visualstudio.com/>`__
-provide useful tools to work with git and help prevent loss of information on merges. ::
+provide useful tools to work with git and help prevent loss of information on merges.
+
+.. code-block:: shell
 
    git rebase <branchname>
 
 Combines two branches and **deletes** one of them, usually the one that is not the master. All the commit history is transferred to the other branch, and in the
-timeline of the repository, the other branch is not preserved. ::
+timeline of the repository, the other branch is not preserved.
+
+.. code-block:: shell
 
    git cherry-pick <commitID1> <commitID2> ...
 
-Applies the selected commit from one branch to another. ::
+Applies the selected commit from one branch to another.
+
+.. code-block:: shell
 
    git rebase -i HEAD~<numberofselectedcommit>
    
-Similar to cherry-pick, it allows the reorganization of commits from the current branch. ::
+Similar to cherry-pick, it allows the reorganization of commits from the current branch.
+
+.. code-block:: shell
 
    git stash
 
 **Reverts the folder to the latest commit and throws all changes away**
 
-2.4.2 Setup your ssh key in Git
+2.4.2 Setup your SSH key in Git
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-We recommend you to setup your ssh key in Github, it's an easy thing that can avoid you some problems that are hard to understand.
-Also, you will need to setup your email and your name by using these commands : ::
+We recommend you to setup your SSH key in Github, it's an easy thing that can avoid you some problems that are hard to understand.
+Also, you will need to setup your email and your name by using these commands:
+
+.. code-block:: shell
 
    git config --global user.name "FIRST_NAME LAST_NAME"
    git config --global user.email "MY_NAME@example.com"
 
-To verify your configuration file, you can run the same commands but like this : ::
+To verify your configuration file, you can run the same commands but like this:
+
+.. code-block:: shell
 
    git config --global user.name
    git config --global user.email
 
-Now, you can follow `these steps <https://docs.github.com/en/github/authenticating-to-github/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent#generating-a-new-ssh-key>`__ to setup your SSH key in Github.
+Now, you can follow `these steps <https://docs.github.com/en/github/authenticating-to-github/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent#generating-a-new-ssh-key>`__
+to setup your SSH key in Github.
 
 2.4.3 How to use github permalinks
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -240,7 +257,9 @@ part. We highly recommend to install the MRS Linux environment setup for been ab
 the workspace configuration, refer to :ref:`Introduction to MRS <3. Introduction to MRS Software Extensions>`.
 
 .. warning::
-   You may encounter an issue to build the MRS packages. If the build fails, you can try in the ``mrs_workspace`` file the following command: ::
+   You may encounter an issue to build the MRS packages. If the build fails, you can try in the ``mrs_workspace`` file the following command:
+
+   .. code-block:: shell
       
       catkin build -j2
 
@@ -255,7 +274,9 @@ In this documentation, you will do the simulation of one drone with gps. Remembe
 to navigate through different terminals.
 
 Also, you can try to launch others simulations created by CTU-MRS group. Go to the ``~/mrs_workspace/src/simulation/example_tmux_scripts/`` folder and
-run the ``ls`` command to see the name of the different simulations. Then you can run: ::
+run the ``ls`` command to see the name of the different simulations. Then you can run:
+
+.. code-block:: shell
 
    cd "DESIRED SIMULATION"
    ./start.sh

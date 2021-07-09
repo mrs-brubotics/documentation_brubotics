@@ -45,14 +45,18 @@ as it is explained in Section ??, except here we use ssh links and not https. To
 
 * You want to update only mrs_workspace refer yourself to ??.
 
-* You want to update only brubotics code, go to droneswarm_brubotics and execute : :: 
+* You want to update only brubotics code, go to droneswarm_brubotics and execute:
 
-	git pull 
-	gitman install
+  .. code-block:: shell
 
-* You want to update specific folder use in this folder : ::
+	  git pull 
+	  gitman install
+
+* You want to update specific folder use in this folder:
+
+  .. code-block:: shell
     
-	git pull
+	  git pull
 
 I do not figure yet how to update all the submodule by doing a single git pull -which is remap to ``gitman install``- on droneswarm_brubotics, but you can use ``gitman
 update``. :raw-html:`<font color="Tomato">[any updates on this?]BC</font>` I think I understand how they do this, in fact on gitman.yaml I refer to other github folder

@@ -1,7 +1,7 @@
 DroneSwarmTutorial
 ==================
 
-`We can include some text here`
+*We can include some text here*
 
 .. toctree::
    :maxdepth: 4
