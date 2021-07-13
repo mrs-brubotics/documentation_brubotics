@@ -95,6 +95,11 @@
 <li class="toctree-l1"><a class="reference internal" href="Introduction_to_visualization.html">5. Introduction to visualization</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">6. Crazyswarm</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#installation">6.1 Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#configuration">6.2 Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#vicon">6.3 Vicon</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#working-principle">6.3.1 Working principle</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="For_developers.html">For developers</a></li>
@@ -174,10 +179,64 @@
 Please refer to the <em>Physical Robots and Simulation</em> part. Don’t forget to replace what is between brackets in the commands.</p>
 <p>To switch between Python2 and Python3 on Ubuntu 20.04, please ckeck <a class="reference external" href="https://www.fosslinux.com/39384/switching-between-python-2-and-3-versions-on-ubuntu-20-04.htm">this website</a>.</p>
 <p>At the third step, you might get this error:</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>Insert the error
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>E: Unable to locate package gcc-arm-embedded
 </pre></div>
 </div>
-<p>To solve this issue, you juste have to remove <code class="docutils literal notranslate"><span class="pre">gcc-arm-embedded</span></code> from the command.</p>
+<p>To solve this issue, you just have to remove <code class="docutils literal notranslate"><span class="pre">gcc-arm-embedded</span></code> from the command.</p>
+<p>To install the Crazyflie Client, we recommend you to do it with the <em>Ubuntu Software application</em>.</p>
+</div>
+<div class="section" id="configuration">
+<h2>6.2 Configuration<a class="headerlink" href="#configuration" title="Permalink to this headline">¶</a></h2>
+<p>Now, configuration is needed before flying. You should refer to this <a class="reference external" href="https://www.bitcraze.io/documentation/repository/crazyflie-clients-python/master/userguides/userguide_client/">user guide</a>
+to <a class="reference external" href="https://www.bitcraze.io/documentation/repository/crazyflie-clients-python/master/userguides/userguide_client/#firmware-upgrade">update the firmware</a> (it
+is also good for you if you read <a class="reference external" href="https://crazyswarm.readthedocs.io/en/latest/configuration.html#">this</a>).</p>
+<p>If you can’t connect to the CF, you probably need to run this command:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> crazyswarm/crazyflie-lib-python/examples
+python3 write-eeprom.py
+</pre></div>
+</div>
+<p>You could get this error as a result:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>Scanning interfaces <span class="k">for</span> Crazyflies...
+Cannot find a Crazyradio Dongle
+Crazyflies found:
+No Crazyflies found, cannot run example
+Traceback <span class="o">(</span>most recent call last<span class="o">)</span>:
+  File <span class="s2">&quot;write-eeprom.py&quot;</span>, line <span class="m">148</span>, in &lt;module&gt;
+     <span class="k">while</span> le.is_connected:
+NameError: name <span class="s1">&#39;le&#39;</span> is not defined
+</pre></div>
+</div>
+<p>If so, set the USB permissions as described <a class="reference external" href="https://www.bitcraze.io/documentation/repository/crazyflie-lib-python/master/installation/usb_permissions/">here</a>.</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> crazyswarm/crazyflie-lib-python/examples
+python3 write-eeprom.py
+</pre></div>
+</div>
+</div>
+<div class="section" id="vicon">
+<h2>6.3 Vicon<a class="headerlink" href="#vicon" title="Permalink to this headline">¶</a></h2>
+<p>Vicon is a developer of motion capture products and services for the life science, entertainment, and engineering industries. Motion capture (mocap) is the
+process of recording the movement of objects or people. The technology originated in the life science market for gait analysis but is now used widely by VFX
+studios, sports therapists, neuroscientists, and for validation and control of computer vision and robotics.
+More information about Vicon can be found on <a class="reference external" href="https://www.vicon.com">Vicon website</a>.</p>
+<div class="section" id="working-principle">
+<h3>6.3.1 Working principle<a class="headerlink" href="#working-principle" title="Permalink to this headline">¶</a></h3>
+<p>The Vicon motion capture system is a passive optical system. This technique uses retroreflective markers that are tracked by the infrared cameras by reflecting
+the light that is generated near the cameras’ lens. The camera’s threshold can be adjusted so only the bright reflective markers will be sampled, ignoring
+skin and fabric.</p>
+<p>The set of infrared cameras are placed around the to-be-captured area and are more or less pointing to the center of this area as depicted in Fig. 2.1. The
+goal is that the markers in the captured volume can be seen by as many cameras as possible. We need at least two cameras to know the position of one marker,
+but it is recommended to use as many cameras as possible, because the more cameras can capture a marker, the higher the accuracy of that marker’s position and
+the lower the possibility the position of that marker is lost. If we only use markers on the floor (i.e. in a 2D plane) without people or objects around so
+that the markers can never be occluded, we can use only 3 cameras and have good results. In more difficult situations with markers evolving in 3D, people or
+objects hiding one of the cameras, the number of cameras needed can increase quickly.</p>
+<p>In the R&amp;MM lab we are using 6 cameras. This is ok for the experiments we have executed. For experiments where full coverage around the to-be-captured subject
+is required, more cameras will be needed.</p>
+<div class="figure align-center" id="id1">
+<a class="reference internal image-reference" href="_images/Vicon_working_principle.png"><img alt="_images/Vicon_working_principle.png" src="_images/Vicon_working_principle.png" style="width: 800px;" /></a>
+<p class="caption"><span class="caption-text">Fig. 6.1: Vicon Working principle</span></p>
+</div>
+<p>More information can be found <a class="reference external" href="https://www.vicon.com/what-is-motion-capture">here</a>.</p>
+</div>
 </div>
 </div>
 

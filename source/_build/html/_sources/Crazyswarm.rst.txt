@@ -1,6 +1,9 @@
 6. Crazyswarm
 =============
 
+.. role:: raw-html(raw)
+    :format: html
+
 *This chapter will move on to another documentation.*
 
 6.1 Installation
@@ -15,6 +18,75 @@ At the third step, you might get this error:
 
 .. code-block:: shell
 
-    Insert the error
+    E: Unable to locate package gcc-arm-embedded
     
-To solve this issue, you juste have to remove ``gcc-arm-embedded`` from the command.
+To solve this issue, you just have to remove ``gcc-arm-embedded`` from the command.
+
+To install the Crazyflie Client, we recommend you to do it with the *Ubuntu Software application*.
+
+6.2 Configuration
+-----------------
+
+Now, configuration is needed before flying. You should refer to this `user guide <https://www.bitcraze.io/documentation/repository/crazyflie-clients-python/master/userguides/userguide_client/>`__
+to `update the firmware <https://www.bitcraze.io/documentation/repository/crazyflie-clients-python/master/userguides/userguide_client/#firmware-upgrade>`__ (it
+is also good for you if you read `this <https://crazyswarm.readthedocs.io/en/latest/configuration.html#>`__).
+
+If you can't connect to the CF, you probably need to run this command:
+
+.. code-block:: shell
+
+    cd crazyswarm/crazyflie-lib-python/examples
+    python3 write-eeprom.py
+
+You could get this error as a result:
+
+.. code-block:: shell
+
+    Scanning interfaces for Crazyflies...
+    Cannot find a Crazyradio Dongle
+    Crazyflies found:
+    No Crazyflies found, cannot run example
+    Traceback (most recent call last):
+      File "write-eeprom.py", line 148, in <module>
+         while le.is_connected:
+    NameError: name 'le' is not defined
+
+If so, set the USB permissions as described `here <https://www.bitcraze.io/documentation/repository/crazyflie-lib-python/master/installation/usb_permissions/>`__.
+
+.. code-block:: shell
+
+    cd crazyswarm/crazyflie-lib-python/examples
+    python3 write-eeprom.py
+
+6.3 Vicon
+---------
+
+Vicon is a developer of motion capture products and services for the life science, entertainment, and engineering industries. Motion capture (mocap) is the
+process of recording the movement of objects or people. The technology originated in the life science market for gait analysis but is now used widely by VFX
+studios, sports therapists, neuroscientists, and for validation and control of computer vision and robotics.
+More information about Vicon can be found on `Vicon website <https://www.vicon.com>`__.
+
+6.3.1 Working principle
+^^^^^^^^^^^^^^^^^^^^^^^
+
+The Vicon motion capture system is a passive optical system. This technique uses retroreflective markers that are tracked by the infrared cameras by reflecting
+the light that is generated near the cameras’ lens. The camera’s threshold can be adjusted so only the bright reflective markers will be sampled, ignoring
+skin and fabric.
+
+The set of infrared cameras are placed around the to-be-captured area and are more or less pointing to the center of this area as depicted in Fig. 2.1. The
+goal is that the markers in the captured volume can be seen by as many cameras as possible. We need at least two cameras to know the position of one marker,
+but it is recommended to use as many cameras as possible, because the more cameras can capture a marker, the higher the accuracy of that marker’s position and
+the lower the possibility the position of that marker is lost. If we only use markers on the floor (i.e. in a 2D plane) without people or objects around so
+that the markers can never be occluded, we can use only 3 cameras and have good results. In more difficult situations with markers evolving in 3D, people or
+objects hiding one of the cameras, the number of cameras needed can increase quickly.
+
+In the R&MM lab we are using 6 cameras. This is ok for the experiments we have executed. For experiments where full coverage around the to-be-captured subject
+is required, more cameras will be needed.
+
+.. figure:: _static/Vicon_working_principle.png
+   :width: 800
+   :align: center
+
+   Fig. 6.1: Vicon Working principle
+
+More information can be found `here <https://www.vicon.com/what-is-motion-capture>`__.
