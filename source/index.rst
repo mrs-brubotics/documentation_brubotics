@@ -7,6 +7,7 @@ DroneSwarmTutorial
    :maxdepth: 4
    :caption: Contents:
 
+   Information for internal collaborators
    Introduction
    Prerequisites
    Introduction_to_MRS_Software_Extensions

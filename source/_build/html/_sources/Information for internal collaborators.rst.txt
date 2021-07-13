@@ -17,7 +17,6 @@ A good documentation:
     * automatically teaches the new collaborator and does not require additional help from an expert to reproduce the results;
     * does NOT look like a scientific paper or a PhD / MA thesis report. The focus of a tutorial is on the pratical setup and implementation aspects to reproduce experiments and not on the analysis of the research results;
     * is never finished and can always be improved.
-
 Remember, the better you document your work in this tutorial, the easier you will get help from others and the more chance your high-quality research will be used in the end!
 
 

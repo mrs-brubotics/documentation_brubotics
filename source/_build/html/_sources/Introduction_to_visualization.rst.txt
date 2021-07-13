@@ -22,6 +22,7 @@ The RViz window will open after Gazebo and it looks like this:
 
 .. figure:: _static/one_drone_rviz.png
    :width: 800
+   :alt: alternate text
    :align: center
 
    Figure 5.1: RViz window with CTU visualization
@@ -31,12 +32,14 @@ For these simple tasks, you only need to click on the add button and subscribe t
 
 .. figure:: _static/add_button.png
    :width: 400
+   :alt: alternate text
    :align: center
 
    Figure 5.2: Add button
 
 .. figure:: _static/topic_window.png
    :width: 400
+   :alt: alternate text
    :align: center
 
    Figure 5.3: Topic window
@@ -45,6 +48,7 @@ You can also use the 2D Nav Goal button to choose a position and a heading to go
 
 .. figure:: _static/navgoal_button.png
    :width: 400
+   :alt: alternate text
    :align: center
 
    Figure 5.4: Navigation goal button
@@ -74,6 +78,7 @@ A ``.yml`` looks like this:
 
 .. figure:: _static/yml_file.png
    :width: 800
+   :alt: alternate text
    :align: center
 
    Figure 5.5: .yml file
@@ -224,6 +229,7 @@ We have several D-ERG (Distributed Explicit Reference Governor) strategies to il
 
 .. figure:: _static/DERG-0.png
    :width: 500
+   :alt: alternate text
    :align: center
 
    Figure 5.6: D-ERG strategy 0
@@ -265,6 +271,7 @@ In order to visualize how it works, we first need to change ``data/f450.xml`` fi
 
 .. figure:: _static/DERG-1.png
    :width: 500
+   :alt: alternate text
    :align: center
 
    Figure 5.7: D-ERG strategy 1
@@ -282,6 +289,7 @@ To visualize a pill, we need to create a plugin because this display type is not
 
 .. figure:: _static/DERG-2.png
    :width: 500
+   :alt: alternate text
    :align: center
 
    Figure 5.8: D-ERG strategy 2
@@ -297,6 +305,7 @@ Tube can **translate**, **rotate** and **change length**.
 
 .. figure:: _static/DERG-3.png
    :width: 500
+   :alt: alternate text
    :align: center
 
    Figure 5.9: D-ERG strategy 3
@@ -312,6 +321,7 @@ Tube can **translate**, **rotate**, **change length and width**. The witfh (radi
 
 .. figure:: _static/DERG-4.png
    :width: 500
+   :alt: alternate text
    :align: center
 
    Figure 5.10: D-ERG strategy 4
@@ -328,6 +338,7 @@ longitudinal axis.
 
 .. figure:: _static/DERG-5.png
    :width: 500
+   :alt: alternate text
    :align: center
 
    Figure 5.11: D-ERG strategy 5

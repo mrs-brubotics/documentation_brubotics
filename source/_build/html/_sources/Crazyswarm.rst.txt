@@ -84,7 +84,7 @@ In the R&MM lab we are using 10 cameras. This is ok for the experiments we have 
 is required, more cameras will be needed.
 
 .. figure:: _static/Vicon_working_principle.png
-   :width: 800
+   :alt: alternate text
    :align: center
 
    Fig. 6.1: Vicon Working principle
@@ -105,7 +105,7 @@ The placement of the cameras really depends on the experiment we want to carry o
 the future it could be useful to have all of them on tripod to be able to change their places easily and quickly.
 
 .. figure:: _static/Vicon_cameras.png
-   :width: 800
+   :alt: alternate text
    :align: center
 
    Fig. 6.2: Vicon cameras
@@ -121,7 +121,7 @@ synchronized triggering of your third-party devices.
 More information can be found `here <https://www.vicon.com/products/vicon-devices/lock-sync-box>`__.
 
 .. figure:: _static/Sync_box.png
-   :width: 800
+   :alt: alternate text
    :align: center
 
    Fig. 6.3: Cameras connected to the synch box
@@ -146,8 +146,7 @@ they can compute the position relative to each other.
 More information can be found `here <https://www.vicon.com/products/vicon-devices/calibration>`__.
 
 .. figure:: _static/Active_wand.png
-   :height: 400
-   :width: 400
+   :alt: alternate text
    :align: center
 
    Fig. 6.4: Active Wand
@@ -159,7 +158,7 @@ rigid object we need at least 3 markers. The position of the markers w.r.t. each
 triangle.
 
 .. figure:: _static/Markers.png
-   :width: 400
+   :alt: alternate text
    :align: center
 
    Fig. 6.5: Markers
@@ -193,27 +192,14 @@ More information can be found `here <https://www.vicon.com/faqs/operating-system
 ^^^^^^^^^^^^^^
 
 Vicon offers several software packages, each of them for `different applications <https://www.vicon.com/products/software>`__.
-Two of them are explained below.
-
-6.3.3.1 Nexus
-
-`Nexus <https://www.vicon.com/products/software/nexus>`__ is the software that is already available in the lab. Other researchers are using Nexus in order to
-capture body motion. We will explain later how to use it. We also used it for our experiments.
-
-.. figure:: _static/Nexus.png
-   :width: 800
-   :align: center
-
-   Fig. 6.6: Nexus
-
-6.3.3.2 Tracker
-
+Two of them are explained beheight: 400
+:width: 400
 `Tracker <https://www.vicon.com/products/software/tracker>`__ is designed for engineering applications. It can be used for robot tracking, human factors
 engineering, design method optimization, virtual engineering, and previsualization to virtual reality. It looks better to use for the experiments we execute,
 but we were also able to use Nexus.
 
 .. figure:: _static/Tracker.png
-   :width: 800
+   :alt: alternate text
    :align: center
 
    Fig. 6.7: Tracker
@@ -237,7 +223,6 @@ During using of the Vicon sometimes cameras blink red, it means the camera pose 
 the capture.
 
 .. figure:: _static/System_preparation_menu.png
-   :width: 400
    :alt: alternate text
    :align: center
 
