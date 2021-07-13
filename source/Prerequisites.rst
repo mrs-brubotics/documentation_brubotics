@@ -45,6 +45,7 @@ during the project:
 
 .. figure:: _static/Intern_PC_specs.png
    :width: 800
+   :alt: alternate text
    :align: center
 
    Figure 2.1: Intern PC specs
@@ -54,6 +55,7 @@ spawn and takeoff of the UAV later. That is why we rather recommend this kind of
 
 .. figure:: _static/Bryan_PC_specs.png
    :width: 800
+   :alt: alternate text
    :align: center
 
    Figure 2.2: Bryan Convens PC specs
@@ -186,6 +188,7 @@ MatlabGraphs/blob/master/control_manager.cpp>`__, if you want to highlight the l
 
 .. figure:: _static/canvas1.png
    :width: 800
+   :alt: alternate text
    :align: center
 
    Figure 2.3: Generation of a link to highlight the line 5
@@ -195,6 +198,7 @@ You can see in the link at the top that the 5 line is highlighted in the permali
 
 .. figure:: _static/canvas2.png
    :width: 800
+   :alt: alternate text
    :align: center
 
    Figure 2.4: Generation of a link to highlight the lines from 5 to 7
@@ -204,6 +208,7 @@ which are not the desired ones. In order to freeze the file as it is when you cr
 
 .. figure:: _static/canvas3.png
    :width: 800
+   :alt: alternate text
    :align: center
 
    Figure 2.5: Modification to the link to always highlight the intended lines
