@@ -228,5 +228,45 @@ the capture.
 
    Fig. 6.8: Example of system preparation menu
 
-6.3.4 New part
-^^^^^^^^^^^^^^
+?. Creating an object
+^^^^^^^^^^^^^^^^^^^^^
+
+To create an object on Vicon Nexus, first create a subject like this:
+
+.. figure:: _static/Create_subject.png
+   :alt: alternate text
+   :align: center
+
+   Fig. 6.9: Creating a subject
+
+Then create segments:
+
+.. figure:: _static/Create_segments.png
+   :alt: alternate text
+   :align: center
+
+   Fig. 6.10: Creating segments
+
+Select the markers of the CF:
+
+.. figure:: _static/Select_markers.png
+   :alt: alternate text
+   :align: center
+
+   Fig. 6.11: Selecting markers
+
+Then click on *create*:
+
+.. figure:: _static/Create_object.png
+   :alt: alternate text
+   :align: center
+
+   Fig. 6.12: Creating the object
+
+Normally the object has been created and it looks like this:
+
+.. figure:: _static/Object.png
+   :alt: alternate text
+   :align: center
+
+   Fig. 6.13: Object

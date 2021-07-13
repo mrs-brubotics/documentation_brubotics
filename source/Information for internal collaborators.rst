@@ -14,12 +14,12 @@ Before you can do research efficiently, and demonstrate your ideas on real robot
 We encourage all beginners to first go through the tutorials listed below as to build sufficient expertise with this framework and all the related concepts and tools.
 
 ?.2 Learning the Skills
------------------
+-----------------------
 It is advised to learn the skills step by step in the order as listed below. 
 Please contact your supervisor if you have questions (e.g. which points you could possibly skip or if things don't work as expected from the tutorial).
 
 ?.2.1 Communication
------------------
+-------------------
 A good communication between the student and the supervisor is key to achieve good research results on time.
 
 Some guidelines:
@@ -32,7 +32,7 @@ Some guidelines:
     * If you and your supervisor don't know the answer to some issue, ask your questions (if related) on the issues (e.g. github issues) of the framework you are using. Formulate these questions clearly, but don't make them too long. Outside collaborators might have no clue (as oppsoded to yourself and your supervisor) what you are trying to do.
 
 ?.2.2 The Tutorial Documentation
------------------
+--------------------------------
 We ask all collaborators to document their research (also what does NOT work is valuable!) in easy-to-read and well-explained tutorials.
 Moreover we ask them to improve the unclear or wrong parts of the existing tutorials while they go through them.
 
@@ -49,7 +49,7 @@ Take a look at the files in this repository. If you understand the syntax of the
 Note: Most of the documentation (this repo) and all code can be found on github. Also provide your gmail account to your advisor and request access to the google drive since some information is only available there.
     
 ?.2.3 The Scientific Research Report
------------------
+------------------------------------
 Everything related to the actual scientific research questions, the followed research methodology, the research results, discussions and conclusions will be contained in the scientific research report (e.g. the paper, the thesis).
     * Create your scientific report in the requested template. Please contact your supervisor since they might have example templates to start from.
     * Preferably use the online overleaf Latex editor https://www.overleaf.com/ and share the report with your supervisor.
@@ -64,7 +64,7 @@ Some guidelines:
     * Be critical. Question yourself if the results you obtained are plausible and if not what might be wrong.
     
 ?.2.4 Setting Up your Ubutnu Machine
------------------
+------------------------------------
 Working on advanced robot simulators (e.g. Gazebo) and algorithms requires decent computational hardware (i.e. CPU, GPU specs).
 We have several computers available in the lab, but these have to be reserved since they are mainly used when working on the real robot hardware.
 
@@ -77,23 +77,24 @@ Once you decided on a machine:
     * Install on Matlab and Simulink version 2020b. See doc in google drive, since you might get some non trivial issues.
 
 ?.2.5 Git Version Control
------------------
+-------------------------
+
     * Create a github account and email me your name on github. I will give you access to our code.
     * Learn git by following \href{https://www.coursera.org/learn/version-control-with-git}{this free tutorial}. Make sure you follow the tutorial from the command line / terminal window (not the GUI). This will allow you to effectively improve your software and work in a team. 
     * You will further use git during the project. Remember to keep your commits structured by having multiple commits for each small task you code. Try to push your code on github once a day so everyone is up-to-date with your developments.
     * Test if your code works before commiting anything!
 
 ?.2.6 C++ Software Development
------------------
+------------------------------
 Follow this \href{https://www.youtube.com/watch?v=vLnPwxZdW4Y}{quick C++ tutorial for beginners}. No need to do things, just follow it.
 
 
 ?.2.7 ROS Software Development
------------------
+------------------------------
 Learn the basics and intermediate ROS concepts and tools by reading and testing the examples in the \emph{Mastering ROS for Robotics Programming} and its related github which can be found in our google drive. Read the following chapters in this book: ch1, ch2, ch3, ch4, NOT ch5, ch6, ch7, ch8 (nodelets very important), ch15. Although the books is written for ROS kinetic, just use ROS melodic on Ubuntu 18.
  
 ?.2.8 The CTU MRS Framework
------------------
+---------------------------
 TODO REFER TO SECTION ON THIS!
 
 The software framework you will use during the project is based on \href{https://ctu-mrs.github.io/}{the MRS UAV system code from CTU Prague}. 
@@ -104,7 +105,7 @@ The software framework you will use during the project is based on \href{https:/
     * Read the paper of mrs uav system https://link.springer.com/article/10.1007/s10846-021-01383-5
 
 ?.2.9 Our droneswarm_brubotics Framework
------------------
+----------------------------------------
 Read the relevant parts of our tutorial to learn to use the droneswarm_brubotics framework.
 Please help us to improve the tutorual. If you struggled on some parts it means it was not writtin sufficiently well. 
 Don't forget to commit your changes when updates this tutorial!
