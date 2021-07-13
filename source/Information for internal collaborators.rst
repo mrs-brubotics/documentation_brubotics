@@ -11,10 +11,10 @@ Before you can do high-quality research, you need to acquire - quite a LOT of sk
 We encourage all beginners to first go through the tutorials below as to build sufficient expertise with this framework.
 Moreover we encourge all collaborators to document their research (also what does NOT work!) in well-explained tutorials and to improve the unclear or wrong parts of the existing tutorials. 
 A good documentation:
-- is a tutorial-style report which allows seemless reproducability of research results;
-- automatically teaches the student and does not require additional help from an expert to reproduce the results;
-- does NOT look like a scientific paper or a PhD / MA2 thesis report. The focus of a tutorial is on the pratical setup and implementation aspects to reproduce experiments and not on the analysis of the research results;
-- is never finished and can always be improved.
+    * is a tutorial-style report which allows seemless reproducability of research results;
+    * automatically teaches the student and does not require additional help from an expert to reproduce the results;
+    * does NOT look like a scientific paper or a PhD / MA2 thesis report. The focus of a tutorial is on the pratical setup and implementation aspects to reproduce experiments and not on the analysis of the research results;
+    * is never finished and can always be improved.
 Remember, the better you document your work in this tutorial, the easier you can get help from others and the more change your higher-quality research will be used in the end!
 
 
