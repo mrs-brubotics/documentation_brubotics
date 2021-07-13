@@ -98,6 +98,10 @@
 <li class="toctree-l2"><a class="reference internal" href="#configuration">6.2 Configuration</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#vicon">6.3 Vicon</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#working-principle">6.3.1 Working principle</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#hardware">6.3.2 Hardware</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#software">6.3.3 Software</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#calibration-of-the-vicon-system">6.3.3 Calibration of the Vicon System</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#new-part">6.3.4 New part</a></li>
 </ul>
 </li>
 </ul>
@@ -223,19 +227,127 @@ More information about Vicon can be found on <a class="reference external" href=
 <p>The Vicon motion capture system is a passive optical system. This technique uses retroreflective markers that are tracked by the infrared cameras by reflecting
 the light that is generated near the cameras’ lens. The camera’s threshold can be adjusted so only the bright reflective markers will be sampled, ignoring
 skin and fabric.</p>
-<p>The set of infrared cameras are placed around the to-be-captured area and are more or less pointing to the center of this area as depicted in Fig. 2.1. The
+<p>The set of infrared cameras are placed around the to-be-captured area and are more or less pointing to the center of this area as depicted in Fig. 6.1. The
 goal is that the markers in the captured volume can be seen by as many cameras as possible. We need at least two cameras to know the position of one marker,
 but it is recommended to use as many cameras as possible, because the more cameras can capture a marker, the higher the accuracy of that marker’s position and
 the lower the possibility the position of that marker is lost. If we only use markers on the floor (i.e. in a 2D plane) without people or objects around so
 that the markers can never be occluded, we can use only 3 cameras and have good results. In more difficult situations with markers evolving in 3D, people or
 objects hiding one of the cameras, the number of cameras needed can increase quickly.</p>
-<p>In the R&amp;MM lab we are using 6 cameras. This is ok for the experiments we have executed. For experiments where full coverage around the to-be-captured subject
+<p>In the R&amp;MM lab we are using 10 cameras. This is ok for the experiments we have executed. For experiments where full coverage around the to-be-captured subject
 is required, more cameras will be needed.</p>
 <div class="figure align-center" id="id1">
 <a class="reference internal image-reference" href="_images/Vicon_working_principle.png"><img alt="_images/Vicon_working_principle.png" src="_images/Vicon_working_principle.png" style="width: 800px;" /></a>
 <p class="caption"><span class="caption-text">Fig. 6.1: Vicon Working principle</span></p>
 </div>
 <p>More information can be found <a class="reference external" href="https://www.vicon.com/what-is-motion-capture">here</a>.</p>
+</div>
+<div class="section" id="hardware">
+<h3>6.3.2 Hardware<a class="headerlink" href="#hardware" title="Permalink to this headline">¶</a></h3>
+<p>6.3.2.1 Cameras</p>
+<p>At the R&amp;MM lab there are ten Vero v2.2 cameras with a resolution of 1280*1024 pixels and a frame rate of 250fps. The higher the resolution of the camera, the
+preciser the positioning of the markers and the more details you can obtain from the markers which is interesting when using very small markers placed close to
+each other. The higher the frame rate, the easier to track the quick movements of the markers, which is also needed to use position of markers in a feedback
+loop with high sampling time.</p>
+<p>The placement of the cameras really depends on the experiment we want to carry out. In the lab the cameras can be placed onto the walls and on a tripods. In
+the future it could be useful to have all of them on tripod to be able to change their places easily and quickly.</p>
+<div class="figure align-center" id="id2">
+<a class="reference internal image-reference" href="_images/Vicon_cameras.png"><img alt="_images/Vicon_cameras.png" src="_images/Vicon_cameras.png" style="width: 800px;" /></a>
+<p class="caption"><span class="caption-text">Fig. 6.2: Vicon cameras</span></p>
+</div>
+<p>6.3.2.2 Sync box</p>
+<p>As can be seen in Fig. 2.1, all cameras and the PC are connected to the synch box in order to get data coming from cameras and sending this to the PC. The sync
+box provides a single communication point between the cameras and the (Vicon) PC. If you’re not integrating third-party equipment like reference video or force
+plates into your system, this could be as simple as a POE switch. The real difference with the various sync boxes offered by manufacturers comes when you need
+to integrate fully synchronized third-party devices or require time-code. Vicon’s Lock+ sync box offer many features such as Timecode, Genlock, VESA and
+synchronized triggering of your third-party devices.</p>
+<p>More information can be found <a class="reference external" href="https://www.vicon.com/products/vicon-devices/lock-sync-box">here</a>.</p>
+<div class="figure align-center" id="id3">
+<a class="reference internal image-reference" href="_images/Sync_box.png"><img alt="_images/Sync_box.png" src="_images/Sync_box.png" style="width: 800px;" /></a>
+<p class="caption"><span class="caption-text">Fig. 6.3: Cameras connected to the synch box</span></p>
+</div>
+<p>6.3.2.3 Active wand</p>
+<p>Before using Vicon we need to calibrate the Vicon system in order that the cameras know their location relative to each other.</p>
+<p>Before starting with the calibration, we first have to mask all reflective elements (e.g. the cameras themselves, maybe clothes or shoes with that reflect
+infrared light) in the Vicon room, so no reflective markers that you will use may be visible for the cameras. To start the calibration, press start in the
+<em>Calibrate Camera</em> menu. Thereafter, start waving the wand in the room. The system will acquire many frames and after having captured more than 2000 frames for
+each camera the calibration is finished. There are two operating modes for different light condition. This means you can calibrate your motion capture cameras
+whether you are inside or outside in the brilliant sunshine. To optimize the process, the active wand automatically synchronizes itself by the use of a
+photo-diode.</p>
+<p>The precision and repeatability of your data is dependent on your system calibration. The LEDs on Vicon’s Active Wand are machined placed and precision
+engineered to give you a more precise overall calibration. The Active Wand calibrates both optical and video cameras while accounting for sensor edge
+distortion at the same time, to ensure synchronized overlay across your entire volume. Notice that better results will be obtained when the active wand is
+visible to as many cameras as possible during the waving process. The more cameras see the waving movement of the active wand at a certain time, the better
+they can compute the position relative to each other.</p>
+<p>More information can be found <a class="reference external" href="https://www.vicon.com/products/vicon-devices/calibration">here</a>.</p>
+<div class="figure align-center" id="id4">
+<a class="reference internal image-reference" href="_images/Active_wand.png"><img alt="_images/Active_wand.png" src="_images/Active_wand.png" style="width: 400px; height: 400px;" /></a>
+<p class="caption"><span class="caption-text">Fig. 6.4: Active Wand</span></p>
+</div>
+<p>6.3.2.4 Reflective Markers</p>
+<p>The reflective markers are placed on objects or on the body in order to detect their position. In order to detect pose (i.e position and orientation) of a
+rigid object we need at least 3 markers. The position of the markers w.r.t. each other needs to be asymmetrical, in other words you may not form an equilateral
+triangle.</p>
+<div class="figure align-center" id="id5">
+<a class="reference internal image-reference" href="_images/Markers.png"><img alt="_images/Markers.png" src="_images/Markers.png" style="width: 400px;" /></a>
+<p class="caption"><span class="caption-text">Fig. 6.5: Markers</span></p>
+</div>
+<p>6.3.2.5 Computer</p>
+<p>The computer gives us the possibility to drive the Vicon system, calibrate, organize data capture, set parameters. Since the capture and display of motion
+capture data is a highly demanding task for a PC and the real-time data processing asks a lot of the processor, the recommended specifications of the computer
+are:
+* Dell Precision XL Tower 5820</p>
+<ul class="simple">
+<li>Intel Xeon Processor W-2123 (3.6GHz, 3.9GHz Turbo, 4C, 8.25M Cache)</li>
+<li>16GB (2x8GB) 2666MHz DDR4 RDIMM ECC</li>
+<li>2 x 2TB 3.5inch Serial ATA (7,200 Rpm) Hard Drive</li>
+<li>Non RAID</li>
+<li>8x Slimline DVD+/-RW Drive</li>
+<li>2 GB NVIDIA Quadro P600</li>
+<li>Windows 10 Pro English</li>
+<li>INTEL ETHERNET i350 T4 SERVER ADAPTER RJ45 PCI−E – to connect Vicon System</li>
+</ul>
+<p>More information can be found <a class="reference external" href="https://www.vicon.com/faqs/operating-systems-and-pc-specification/what-is-the-recommended-pc-specification-to-run-my-vicon-tracker-system">here</a>.</p>
+</div>
+<div class="section" id="software">
+<h3>6.3.3 Software<a class="headerlink" href="#software" title="Permalink to this headline">¶</a></h3>
+<p>Vicon offers several software packages, each of them for <a class="reference external" href="https://www.vicon.com/products/software">different applications</a>.
+Two of them are explained below.</p>
+<p>6.3.3.1 Nexus</p>
+<p><a class="reference external" href="https://www.vicon.com/products/software/nexus">Nexus</a> is the software that is already available in the lab. Other researchers are using Nexus in order to
+capture body motion. We will explain later how to use it. We also used it for our experiments.</p>
+<div class="figure align-center" id="id6">
+<a class="reference internal image-reference" href="_images/Nexus.png"><img alt="_images/Nexus.png" src="_images/Nexus.png" style="width: 800px;" /></a>
+<p class="caption"><span class="caption-text">Fig. 6.6: Nexus</span></p>
+</div>
+<p>6.3.3.2 Tracker</p>
+<p><a class="reference external" href="https://www.vicon.com/products/software/tracker">Tracker</a> is designed for engineering applications. It can be used for robot tracking, human factors
+engineering, design method optimization, virtual engineering, and previsualization to virtual reality. It looks better to use for the experiments we execute,
+but we were also able to use Nexus.</p>
+<div class="figure align-center" id="id7">
+<a class="reference internal image-reference" href="_images/Tracker.png"><img alt="_images/Tracker.png" src="_images/Tracker.png" style="width: 800px;" /></a>
+<p class="caption"><span class="caption-text">Fig. 6.7: Tracker</span></p>
+</div>
+</div>
+<div class="section" id="calibration-of-the-vicon-system">
+<h3>6.3.3 Calibration of the Vicon System<a class="headerlink" href="#calibration-of-the-vicon-system" title="Permalink to this headline">¶</a></h3>
+<p>The <em>Mask cameras</em> function is used to make camera don’t care about area where infrared signal is not significant. Because vicon can believed there are markers
+in this area but it is not the case. So when we use this function we have to be sure no markers are in the vision field of cameras.</p>
+<p>Then, check that the cameras look in the direction where your Crazyflies will move. When it is good, you can <em>Start</em> to <em>Aim Cameras</em>.</p>
+<p>In order to calibrate the cameras, press <em>Start</em> in the <em>Calibrate Cameras</em> menu and wave with the active wand in the to-be-captured area, i.e. where you want to
+detect reflection markers. You should draw “∞” forms. In <em>Show Advances</em>, you must have at least <em>Refinement frames: 2000</em>. Cameras are blinking during this
+process and are all turned green when the process is finished.</p>
+<p>In order to set the origin of the Vicon system, click <em>Start</em> in the <em>Set Volume Origin</em> menu. We usually use the active wand, but there are also others methods in
+advanced options. Leave the active wand where you want (make sure it is in the camera view of all cameras) and press <em>Set the origin</em>. Now your Vicon system is
+ready to use. To calibrate the system we can also adjust the focal of cameras.
+During using of the Vicon sometimes cameras blink red, it means the camera pose has changed. Most of the time it is only due to vibration so it do not affect
+the capture.</p>
+<div class="figure align-center" id="id8">
+<a class="reference internal image-reference" href="_images/System_preparation_menu.png"><img alt="alternate text" src="_images/System_preparation_menu.png" style="width: 400px;" /></a>
+<p class="caption"><span class="caption-text">Fig. 6.8: Example of system preparation menu</span></p>
+</div>
+</div>
+<div class="section" id="new-part">
+<h3>6.3.4 New part<a class="headerlink" href="#new-part" title="Permalink to this headline">¶</a></h3>
 </div>
 </div>
 </div>
