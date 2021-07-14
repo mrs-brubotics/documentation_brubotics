@@ -227,8 +227,11 @@ the capture.
    :align: center
 
    Fig. 6.8: Example of system preparation menu
+   
+6.3.4 Marker Arrangements
+^^^^^^^^^^^^^^^^^^^^^^^^^
 
-?. Creating an object
+6.3.5 Creating an object
 ^^^^^^^^^^^^^^^^^^^^^
 
 To create an object on Vicon Nexus, first create a subject like this:
@@ -270,3 +273,6 @@ Normally the object has been created and it looks like this:
    :align: center
 
    Fig. 6.13: Object
+
+6.3.6 Get Vicon data on Ubuntu desktop
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
