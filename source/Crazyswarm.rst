@@ -20,9 +20,14 @@ At the third step, you might get this error:
 
     E: Unable to locate package gcc-arm-embedded
     
-To solve this issue, you just have to remove ``gcc-arm-embedded`` from the command.
+Indeed, the ``gcc-arm-embedded`` toolchain was used in Ubuntu 14.04, 16.04 and 18.04. So run this command instead:
 
-To install the Crazyflie Client, we recommend you to do it with the *Ubuntu Software application*.
+.. code-block:: shell
+
+   sudo apt-get install make gcc-arm-none-eabi
+
+To install the Crazyflie Client, we recommend you to follow `these steps <https://www.bitcraze.io/documentation/repository/crazyflie-clients-python/master/installation/install/>`__
+(Prerequisites installation and Installing from source).
 
 6.2 Configuration
 -----------------
@@ -217,7 +222,15 @@ detect reflection markers. You should draw "∞" forms. In *Show Advances*, you 
 process and are all turned green when the process is finished.
 
 In order to set the origin of the Vicon system, click *Start* in the *Set Volume Origin* menu. We usually use the active wand, but there are also others methods in
-advanced options. Leave the active wand where you want (make sure it is in the camera view of all cameras) and press *Set the origin*. Now your Vicon system is
+advanced options.
+
+.. figure:: _static/Set_volume_origin.png
+   :alt: alternate text
+   :align: center
+
+   Fig. 6.8: Origin volume setting with the Vicon wand
+
+Leave the active wand where you want (make sure it is in the camera view of all cameras) and press *Set the origin*. Now your Vicon system is
 ready to use. To calibrate the system we can also adjust the focal of cameras.
 During using of the Vicon sometimes cameras blink red, it means the camera pose has changed. Most of the time it is only due to vibration so it do not affect
 the capture.
@@ -226,13 +239,13 @@ the capture.
    :alt: alternate text
    :align: center
 
-   Fig. 6.8: Example of system preparation menu
+   Fig. 6.9: Example of system preparation menu
    
 6.3.4 Marker Arrangements
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
 6.3.5 Creating an object
-^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^
 
 To create an object on Vicon Nexus, first create a subject like this:
 
@@ -240,7 +253,7 @@ To create an object on Vicon Nexus, first create a subject like this:
    :alt: alternate text
    :align: center
 
-   Fig. 6.9: Creating a subject
+   Fig. 6.10: Creating a subject
 
 Then create segments:
 
@@ -248,7 +261,7 @@ Then create segments:
    :alt: alternate text
    :align: center
 
-   Fig. 6.10: Creating segments
+   Fig. 6.11: Creating segments
 
 Select the markers of the CF:
 
@@ -256,7 +269,7 @@ Select the markers of the CF:
    :alt: alternate text
    :align: center
 
-   Fig. 6.11: Selecting markers
+   Fig. 6.12: Selecting markers
 
 Then click on *create*:
 
@@ -264,7 +277,7 @@ Then click on *create*:
    :alt: alternate text
    :align: center
 
-   Fig. 6.12: Creating the object
+   Fig. 6.13: Creating the object
 
 Normally the object has been created and it looks like this:
 
@@ -272,7 +285,7 @@ Normally the object has been created and it looks like this:
    :alt: alternate text
    :align: center
 
-   Fig. 6.13: Object
+   Fig. 6.14: Object
 
 6.3.6 Get Vicon data on Ubuntu desktop
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
