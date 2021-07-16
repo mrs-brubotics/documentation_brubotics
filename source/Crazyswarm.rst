@@ -36,6 +36,10 @@ Now, configuration is needed before flying. You should refer to this `user guide
 to `update the firmware <https://www.bitcraze.io/documentation/repository/crazyflie-clients-python/master/userguides/userguide_client/#firmware-upgrade>`__ (it
 is also good for you if you read `this <https://crazyswarm.readthedocs.io/en/latest/configuration.html#>`__).
 
+.. important::
+
+   To set up the radio communication, be careful to the radio bandwith. Select 2MBits/s.
+
 If you can't connect to the CF, you probably need to run this command:
 
 .. code-block:: shell
