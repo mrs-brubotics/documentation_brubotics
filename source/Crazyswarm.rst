@@ -294,35 +294,35 @@ Normally the object has been created and it looks like this:
    :align: center
 
    Fig. 6.14: Object
-
-   6.3.6 Get Vicon data on Ubuntu desktop
-   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
    
 6.3.6 Get Vicon data on Ubuntu desktop
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Create an ethernet connection between your Linux computer and the Windows computer.
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+6.3.6.1 Create an ethernet connection between your Linux computer and the Windows computer.
 
-This is the global way to set an Ethernet connection, at the end of this section, you can follow a simpler way to do it but it is not available for 
+This is the global way to set an Ethernet connection. At the end of this section, you can follow a simpler way to do it but it is not available for 
 all Ubuntu configuation.
 
 1. On Windows
-   1. Check current IP for example Start, ``cmd`` to open a terminal, run ``ipconfig``
+   
+   1. Check current IP: start ``cmd`` to open a terminal and run ``ipconfig``
    2. Write down the current IP(s) to compare later
    
 2. Attach the Ethernet cable to both machines so they are now physically connected to each other.
 
 3. On Windows
-   1. Get the new IP: Start, ``cmd`` to open a command prompt, run ``ipconfig``
-   2. comparing with your previously copied IPs, see which new IP appears, and copy it down for example it may resemble: 169.254.123.101.
+   
+   1. Get the new IP: start ``cmd`` to open a command prompt and run ``ipconfig``
+   2. Comparing with your previously copied IPs, see which new IP appears, and copy it down. For example it may resemble: 169.254.123.101.
    
 4. On Ubuntu
-   1. Get to the network manager, for example click status bar network icon
+   
+   1. Go to the network manager, for example click status bar network icon
    2. Edit Connections
    3. Choose Wired type
-   4. Create a new wired connection, naming it something you'll recognize such as ``Wired connection VUB``
+   4. Create a new wired connection, naming it something you will recognize such as ``Wired connection VUB``
    5. Under iPv4, use these settings
+   
       1. Method: Manual. Otherwise default Automatic (DHCP) does not let you set an IP
       2. Address: 169.254.123.105. The point is to use same IP except for last segment to be on the same subnet so if one is a.b.c.101 then you should be a.b.c.105 for example
       3. Netmask: 255.255.0.0
@@ -336,22 +336,30 @@ On Ubuntu 20.04 for example, you can do that easily.
 
 1. Attach the Ethernet cable between the two computers.
 2. Go to the network manager 
-Test
-^^^^
+
+6.3.6.2 Test
 
 So now you should have, for example:
 
-    Windows: 169.254.123.101
-    Ubuntu: 169.254.123.105
+Windows: 169.254.123.101
+Ubuntu: 169.254.123.105
 
-You can test on an Ubuntu terminal the command ``ping "Windows IP address"``. On Windows you can test with ``cmd`` and ``ping "Ubuntu address"``
+You can test on an Ubuntu terminal the command:
+
+.. code-block:: shell
+   
+   ping "Windows IP address"
+   
+On Windows you can test with:
+
+.. code-block:: shell
+
+   cmd
+   ping "Ubuntu address"
 
 It will return that if the connection is setted correctly :
 
 
-Set the Vicon Bridge to make a wireless connection between Windows and Ubuntu computers.
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-
-
+6.3.6.3 Set the Vicon Bridge to make a wireless connection between Windows and Ubuntu computers.
 
