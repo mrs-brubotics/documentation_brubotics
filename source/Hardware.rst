@@ -13,6 +13,7 @@
 ?.? Step-by-step Procedure for Preparations Prior to Autonomous Field Experiments
 --------------------------
     * Prepare the scrips for the real hardware tests.
+    * Charge everything: transmitter, RTK base, drone batteries.
 
 
 
