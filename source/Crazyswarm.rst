@@ -32,13 +32,15 @@ To install the Crazyflie Client, we recommend you to follow `these steps <https:
 6.2 Configuration
 -----------------
 
-Now, configuration is needed before flying. You should refer to this `user guide <https://www.bitcraze.io/documentation/repository/crazyflie-clients-python/master/userguides/userguide_client/>`__
-to `update the firmware <https://www.bitcraze.io/documentation/repository/crazyflie-clients-python/master/userguides/userguide_client/#firmware-upgrade>`__ (it
-is also good for you if you read `this <https://crazyswarm.readthedocs.io/en/latest/configuration.html#>`__).
+Now, `configuration <https://crazyswarm.readthedocs.io/en/latest/configuration.html#configuration>`__ is needed before flying.
+
+The first step is to `set up the radio communication <https://crazyswarm.readthedocs.io/en/latest/configuration.html#set-up-radio-communication>`__.
 
 .. important::
 
    To set up the radio communication, be careful to the radio bandwith. Select 2MBits/s.
+
+Then, `update <https://crazyswarm.readthedocs.io/en/latest/configuration.html#update-firmware>`__ the firmware of your Crazyflies and Crazyradios.
 
 If you can't connect to the CF, you probably need to run this command:
 
@@ -66,6 +68,8 @@ If so, set the USB permissions as described `here <https://www.bitcraze.io/docum
 
     cd crazyswarm/crazyflie-lib-python/examples
     python3 write-eeprom.py
+
+We use the Vicon motion capture system and duplicated marker arrangements so you must select the correct tabs to `adjust configuation files <https://crazyswarm.readthedocs.io/en/latest/configuration.html#adjust-configuration-files>`__.
 
 6.3 Vicon
 ---------
