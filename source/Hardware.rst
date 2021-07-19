@@ -10,7 +10,13 @@
 -----------------
 
 
-?.? Step-by-step Procedure
+?.? Step-by-step Procedure for Preparations Prior to Autonomous Field Experiments
+--------------------------
+    * Prepare the scrips for the real hardware tests.
+
+
+
+?.? Step-by-step Procedure Autonomous Field Experiments
 --------------------------
 
 
@@ -51,3 +57,6 @@
       * Replug the Pixhawk.
       * Replug the Reach M2 and follow the standard steps to get RTK FIX.
   * When you have an RTK fix, on the right of the status tab should be displayed 'L1_int'.
+  * When the odometry is correct the safety pilot can takeoff the drone. 
+        * The same procedure as for manual flight with some differences.
+        * After the drone is ARMED and the props start spinning, toggle the OFFBOARD switch. Immediately set the throttle to a value of the hover thrust (e.g. 57%). The latter is important when taking back manual control so the drone does not fall down. After a few sconds the thrust will increase and the drone will takeoff. 
