@@ -42,7 +42,7 @@ The first step is to `set up the radio communication <https://crazyswarm.readthe
 
 Then, `update <https://crazyswarm.readthedocs.io/en/latest/configuration.html#update-firmware>`__ the firmware of your Crazyflies and Crazyradios.
 
-If you can't connect to the CF, you probably need to run this command:
+If you can't connect to the CF, you probably need to run this command with the drone turned on and connected via USB:
 
 .. code-block:: shell
 
@@ -62,7 +62,8 @@ You could get this error as a result:
          while le.is_connected:
     NameError: name 'le' is not defined
 
-If so, set the USB permissions as described `here <https://www.bitcraze.io/documentation/repository/crazyflie-lib-python/master/installation/usb_permissions/>`__.
+If so, set the USB permissions as described `here <https://www.bitcraze.io/documentation/repository/crazyflie-lib-python/master/installation/usb_permissions/>`__. Then,
+run again these commands:
 
 .. code-block:: shell
 
