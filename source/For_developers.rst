@@ -81,3 +81,7 @@ commands from your directory:
     git push
 
 Please refer to section :ref:`2.4 <2.4 Working with Git>` to understand why we use these commands.
+
+.. note::
+    When visualizing the documentation after running ``make html``, you may not see every chapters in the left tab. That's probably because you modify the ``index.rst``
+    file. To fix this, you need to save every ``.rst`` file.
