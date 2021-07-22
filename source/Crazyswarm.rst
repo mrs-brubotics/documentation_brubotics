@@ -224,17 +224,21 @@ but we were also able to use Nexus.
 6.3.3 Calibration of the Vicon System
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-* The *Mask cameras* function is used to make camera don’t care about area where infrared signal is not significant. Because vicon can believed there are markers
-  in this area but it is not the case. So when we use this function we have to be sure no markers are in the vision field of cameras. 
-
-* Point the cameras to provide roughly the required coverage. If needed, you can change the local length and others parameters. When it is good, you can
-  *Start* to *Aim Cameras*.
+Before anything else, you must check if the attitude, the FOV (Field Of View), the depth of field and the aperture are correctly set to optimize the recording of
+movements in the to-be-captured area.
 
 .. image:: _static/Volume.png
    :alt: alternate text
 
 .. image:: _static/Adjust.png
    :alt: alternate text
+
+Then, you can start the calibration process:
+
+* The *Mask cameras* function is used to make camera don’t care about area where infrared signal is not significant. Because vicon can believed there are markers
+  in this area but it is not the case. So when we use this function we have to be sure no markers are in the vision field of cameras. 
+
+* Point the cameras to provide roughly the required coverage. When it is good, you can *Start* to *Aim Cameras*.
 
 * Press *Start* in the *Calibrate Cameras* menu and wave with the active wand by drawing "∞" forms in the to-be-captured area, i.e. where you want to
   detect reflection markers. In *Show Advances*, you must have at least *Refinement frames: 2000*. Cameras are blinking during this
@@ -263,7 +267,7 @@ but we were also able to use Nexus.
 6.3.4 Marker Arrangements
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
-We use the following marker arrangement for all our Crazyflies:
+We use the same marker arrangement as the USC ACT Lab propose in their documentation:
 
 .. figure:: _static/CF.png
    :alt: alternate text
@@ -315,6 +319,9 @@ Normally the object has been created and it looks like this:
    :align: center
 
    Fig. 6.15: Object
+
+.. note::
+   We do not know why but when saving a new subject, it sometimes unsaves the objects already saved.
    
 6.3.6 Get Vicon data on Ubuntu desktop
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

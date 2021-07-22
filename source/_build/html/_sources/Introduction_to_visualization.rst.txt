@@ -106,7 +106,9 @@ First, create a new package in ``workspace/src_droneswarm_brubotics/ros_packages
 This command creates a ``CMakeLists.txt`` file and a ``package.xml`` file.
 
 Then, go to the ``session.yml`` file of the `2_two_drones_D-ERG simulation <https://github.com/mrs-brubotics/testing_brubotics/tree/master/tmux_scripts/bryan/2_two_drones_D-ERG>`__.
-At the end (line 223), you should see a RViz part. If it is commented, uncomment it. Modify these lines so it looks lite this: ::
+At the end (line 223), you should see a RViz part. If it is commented, uncomment it. Modify these lines so it looks lite this:
+
+.. code-block:: shell
 
    - rviz:
       layout: tiled

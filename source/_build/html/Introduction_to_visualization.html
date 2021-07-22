@@ -88,6 +88,7 @@
             
               <p class="caption"><span class="caption-text">Contents:</span></p>
 <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="Information for internal collaborators.html">?. Information for Internal Collaborators</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Introduction.html">1. Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Prerequisites.html">2. Prerequisites</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Introduction_to_MRS_Software_Extensions.html">3. Introduction to MRS Software Extensions</a></li>
@@ -255,11 +256,11 @@ This package is based on the <a class="reference external" href="https://github.
 <p>This command creates a <code class="docutils literal notranslate"><span class="pre">CMakeLists.txt</span></code> file and a <code class="docutils literal notranslate"><span class="pre">package.xml</span></code> file.</p>
 <p>Then, go to the <code class="docutils literal notranslate"><span class="pre">session.yml</span></code> file of the <a class="reference external" href="https://github.com/mrs-brubotics/testing_brubotics/tree/master/tmux_scripts/bryan/2_two_drones_D-ERG">2_two_drones_D-ERG simulation</a>.
 At the end (line 223), you should see a RViz part. If it is commented, uncomment it. Modify these lines so it looks lite this:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">-</span> <span class="n">rviz</span><span class="p">:</span>
-   <span class="n">layout</span><span class="p">:</span> <span class="n">tiled</span>
-   <span class="n">panes</span><span class="p">:</span>
-     <span class="o">-</span> <span class="n">waitForControl</span><span class="p">;</span> <span class="n">roslaunch</span> <span class="n">visualization_brubotics</span> <span class="n">rviz</span><span class="o">.</span><span class="n">launch</span> <span class="n">name</span><span class="p">:</span><span class="o">=</span><span class="n">avoidance_test</span>
-     <span class="o">-</span> <span class="n">waitForControl</span><span class="p">;</span> <span class="n">roslaunch</span> <span class="n">visualization_brubotics</span> <span class="n">load_robot</span><span class="o">.</span><span class="n">launch</span>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>- rviz:
+   layout: tiled
+   panes:
+     - waitForControl<span class="p">;</span> roslaunch visualization_brubotics rviz.launch name:<span class="o">=</span>avoidance_test
+     - waitForControl<span class="p">;</span> roslaunch visualization_brubotics load_robot.launch
 </pre></div>
 </div>
 <div class="section" id="launch-folder">

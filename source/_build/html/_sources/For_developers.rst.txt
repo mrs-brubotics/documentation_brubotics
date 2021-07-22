@@ -62,22 +62,22 @@ commands from your directory:
 
 * Before all, we recommend you to run this command to update your local repository and get the newest code:
     
-    .. code-block:: shell    
+.. code-block:: shell    
 
-        git pull
+    git pull
 
 * To check what files wich have been updated since the last commit you can use that command:
 
-    .. code-block:: shell
+.. code-block:: shell
 
-        git status
+    git status
 
 * To update your repository, adapt and run these commands
 
-    .. code-block:: shell
+.. code-block:: shell
 
-        git add (use tab key and type the first letter of the files to commit or use git add -A to directly stage all files)
-        git commit -m "Provide a clear explanation of your commit. People who did not make the change should understand the issue you solved."
-        git push
+    git add (use tab key and type the first letter of the files to commit or use git add -A to directly stage all files)
+    git commit -m "Provide a clear explanation of your commit. People who did not make the change should understand the issue you solved."
+    git push
 
 Please refer to section :ref:`2.4 <2.4 Working with Git>` to understand why we use these commands.
