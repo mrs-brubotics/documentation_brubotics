@@ -108,6 +108,9 @@ More information can be found `here <https://www.vicon.com/what-is-motion-captur
 6.3.2 Hardware
 ^^^^^^^^^^^^^^
 
+.. image:: _static/Hardware.png
+   :alt: alternate text
+
 6.3.2.1 Cameras
 
 At the R&MM lab there are ten Vero v2.2 cameras with a resolution of 1280*1024 pixels and a frame rate of 250fps. The higher the resolution of the camera, the
@@ -221,17 +224,24 @@ but we were also able to use Nexus.
 6.3.3 Calibration of the Vicon System
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The *Mask cameras* function is used to make camera don’t care about area where infrared signal is not significant. Because vicon can believed there are markers
-in this area but it is not the case. So when we use this function we have to be sure no markers are in the vision field of cameras. 
+* The *Mask cameras* function is used to make camera don’t care about area where infrared signal is not significant. Because vicon can believed there are markers
+  in this area but it is not the case. So when we use this function we have to be sure no markers are in the vision field of cameras. 
 
-Then, check that the cameras look in the direction where your Crazyflies will move. When it is good, you can *Start* to *Aim Cameras*.
+* Point the cameras to provide roughly the required coverage. If needed, you can change the local length and others parameters. When it is good, you can
+  *Start* to *Aim Cameras*.
 
-In order to calibrate the cameras, press *Start* in the *Calibrate Cameras* menu and wave with the active wand in the to-be-captured area, i.e. where you want to
-detect reflection markers. You should draw "∞" forms. In *Show Advances*, you must have at least *Refinement frames: 2000*. Cameras are blinking during this
-process and are all turned green when the process is finished.
+.. image:: _static/Volume.png
+   :alt: alternate text
 
-In order to set the origin of the Vicon system, click *Start* in the *Set Volume Origin* menu. We usually use the active wand, but there are also others methods in
-advanced options.
+.. image:: _static/Adjust.png
+   :alt: alternate text
+
+* Press *Start* in the *Calibrate Cameras* menu and wave with the active wand by drawing "∞" forms in the to-be-captured area, i.e. where you want to
+  detect reflection markers. In *Show Advances*, you must have at least *Refinement frames: 2000*. Cameras are blinking during this
+  process and are all turned green when the process is finished.
+
+* In order to set the origin of the Vicon system, click *Start* in the *Set Volume Origin* menu. We usually use the active wand, but there are also others methods in
+  advanced options.
 
 .. figure:: _static/Set_volume_origin.png
    :alt: alternate text
@@ -239,10 +249,10 @@ advanced options.
 
    Fig. 6.8: Origin volume setting with the Vicon wand
 
-Leave the active wand where you want (make sure it is in the camera view of all cameras) and press *Set the origin*. Now your Vicon system is
-ready to use. To calibrate the system we can also adjust the focal of cameras.
-During using of the Vicon sometimes cameras blink red, it means the camera pose has changed. Most of the time it is only due to vibration so it do not affect
-the capture.
+* Leave the active wand where you want (make sure it is in the camera view of all cameras) and press *Set the origin*. Now your Vicon system is
+  ready to use. To calibrate the system we can also adjust the focal of cameras.
+  During using of the Vicon sometimes cameras blink red, it means the camera pose has changed. Most of the time it is only due to vibration so it do not affect
+  the capture.
 
 .. figure:: _static/System_preparation_menu.png
    :alt: alternate text
@@ -253,6 +263,16 @@ the capture.
 6.3.4 Marker Arrangements
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
+We use the following marker arrangement for all our Crazyflies:
+
+.. figure:: _static/CF.png
+   :alt: alternate text
+   :align: center
+
+   Fig. 6.10: Marker arrangement
+
+Markers are fixed using double-sided tape.
+
 6.3.5 Creating an object
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -262,7 +282,7 @@ To create an object on Vicon Nexus, first create a subject like this:
    :alt: alternate text
    :align: center
 
-   Fig. 6.10: Creating a subject
+   Fig. 6.11: Creating a subject
 
 Then create segments:
 
@@ -270,7 +290,7 @@ Then create segments:
    :alt: alternate text
    :align: center
 
-   Fig. 6.11: Creating segments
+   Fig. 6.12: Creating segments
 
 Select the markers of the CF:
 
@@ -278,7 +298,7 @@ Select the markers of the CF:
    :alt: alternate text
    :align: center
 
-   Fig. 6.12: Selecting markers
+   Fig. 6.13: Selecting markers
 
 Then click on *create*:
 
@@ -286,7 +306,7 @@ Then click on *create*:
    :alt: alternate text
    :align: center
 
-   Fig. 6.13: Creating the object
+   Fig. 6.14: Creating the object
 
 Normally the object has been created and it looks like this:
 
@@ -294,7 +314,7 @@ Normally the object has been created and it looks like this:
    :alt: alternate text
    :align: center
 
-   Fig. 6.14: Object
+   Fig. 6.15: Object
    
 6.3.6 Get Vicon data on Ubuntu desktop
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
