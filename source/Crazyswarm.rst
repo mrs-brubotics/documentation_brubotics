@@ -26,50 +26,7 @@ Indeed, the ``gcc-arm-embedded`` toolchain was used in Ubuntu 14.04, 16.04 and 1
 To install the Crazyflie Client, we recommend you to follow `these steps <https://www.bitcraze.io/documentation/repository/crazyflie-clients-python/master/installation/install/>`__
 (Prerequisites installation and Installing from source).
 
-6.2 Configuration
------------------
-
-Now, `configuration <https://crazyswarm.readthedocs.io/en/latest/configuration.html#configuration>`__ is needed before flying.
-
-The first step is to `set up the radio communication <https://crazyswarm.readthedocs.io/en/latest/configuration.html#set-up-radio-communication>`__.
-
-.. important::
-
-   To set up the radio communication, be careful to the radio bandwith. Select 2MBits/s.
-
-Then, `update <https://crazyswarm.readthedocs.io/en/latest/configuration.html#update-firmware>`__ the firmware of your Crazyflies and Crazyradios.
-
-If you can't connect to the CF, you probably need to run this command with the drone turned on and connected via USB:
-
-.. code-block:: shell
-
-    cd crazyswarm/crazyflie-lib-python/examples
-    python3 write-eeprom.py
-
-You could get this error as a result:
-
-.. code-block:: shell
-
-    Scanning interfaces for Crazyflies...
-    Cannot find a Crazyradio Dongle
-    Crazyflies found:
-    No Crazyflies found, cannot run example
-    Traceback (most recent call last):
-      File "write-eeprom.py", line 148, in <module>
-         while le.is_connected:
-    NameError: name 'le' is not defined
-
-If so, set the USB permissions as described `here <https://www.bitcraze.io/documentation/repository/crazyflie-lib-python/master/installation/usb_permissions/>`__. Then,
-run again these commands:
-
-.. code-block:: shell
-
-    cd crazyswarm/crazyflie-lib-python/examples
-    python3 write-eeprom.py
-
-We use the Vicon motion capture system and duplicated marker arrangements so you must select the correct tabs to `adjust configuation files <https://crazyswarm.readthedocs.io/en/latest/configuration.html#adjust-configuration-files>`__.
-
-6.3 Vicon
+6.2 Vicon
 ---------
 
 Vicon is a developer of motion capture products and services for the life science, entertainment, and engineering industries. Motion capture (mocap) is the
@@ -77,7 +34,7 @@ process of recording the movement of objects or people. The technology originate
 studios, sports therapists, neuroscientists, and for validation and control of computer vision and robotics.
 More information about Vicon can be found on `Vicon website <https://www.vicon.com>`__.
 
-6.3.1 Working principle
+6.2.1 Working principle
 ^^^^^^^^^^^^^^^^^^^^^^^
 
 The Vicon motion capture system is a passive optical system. This technique uses retroreflective markers that are tracked by the infrared cameras by reflecting
@@ -102,13 +59,13 @@ is required, more cameras will be needed.
 
 More information can be found `here <https://www.vicon.com/what-is-motion-capture>`__.
 
-6.3.2 Hardware
+6.2.2 Hardware
 ^^^^^^^^^^^^^^
 
 .. image:: _static/Hardware.png
    :alt: alternate text
 
-6.3.2.1 Cameras
+6.2.2.1 Cameras
 
 At the R&MM lab there are ten Vero v2.2 cameras with a resolution of 1280*1024 pixels and a frame rate of 250fps. The higher the resolution of the camera, the
 preciser the positioning of the markers and the more details you can obtain from the markers which is interesting when using very small markers placed close to
@@ -124,7 +81,7 @@ the future it could be useful to have all of them on tripod to be able to change
 
    Fig. 6.2: Vicon cameras
 
-6.3.2.2 Sync box
+6.2.2.2 Sync box
 
 As can be seen in Fig. 2.1, all cameras and the PC are connected to the synch box in order to get data coming from cameras and sending this to the PC. The sync
 box provides a single communication point between the cameras and the (Vicon) PC. If you’re not integrating third-party equipment like reference video or force
@@ -140,7 +97,7 @@ More information can be found `here <https://www.vicon.com/products/vicon-device
 
    Fig. 6.3: Cameras connected to the synch box
 
-6.3.2.3 Active wand
+6.2.2.3 Active wand
 
 Before using Vicon we need to calibrate the Vicon system in order that the cameras know their location relative to each other.
 
@@ -165,7 +122,7 @@ More information can be found `here <https://www.vicon.com/products/vicon-device
 
    Fig. 6.4: Active Wand
 
-6.3.2.4 Reflective Markers
+6.2.2.4 Reflective Markers
 
 The reflective markers are placed on objects or on the body in order to detect their position. In order to detect pose (i.e position and orientation) of a
 rigid object we need at least 3 markers. The position of the markers w.r.t. each other needs to be asymmetrical, in other words you may not form an equilateral
@@ -177,7 +134,7 @@ triangle.
 
    Fig. 6.5: Markers
 
-6.3.2.5 Computer
+6.2.2.5 Computer
 
 The computer gives us the possibility to drive the Vicon system, calibrate, organize data capture, set parameters. Since the capture and display of motion
 capture data is a highly demanding task for a PC and the real-time data processing asks a lot of the processor, the recommended specifications of the computer
@@ -202,7 +159,7 @@ are:
 
 More information can be found `here <https://www.vicon.com/faqs/operating-systems-and-pc-specification/what-is-the-recommended-pc-specification-to-run-my-vicon-tracker-system>`__.
 
-6.3.3 Software
+6.2.3 Software
 ^^^^^^^^^^^^^^
 
 Vicon offers several software packages, each of them for `different applications <https://www.vicon.com/products/software>`__.
@@ -218,7 +175,7 @@ but we were also able to use Nexus.
 
    Fig. 6.7: Tracker
 
-6.3.3 Calibration of the Vicon System
+6.2.3 Calibration of the Vicon System
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Before anything else, you must check if the attitude, the FOV (Field Of View), the depth of field and the aperture are correctly set to optimize the recording of
@@ -261,20 +218,30 @@ Then, you can start the calibration process:
 
    Fig. 6.9: Example of system preparation menu
    
-6.3.4 Marker Arrangements
+6.2.4 Marker Arrangements
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
 We use the same marker arrangement as the USC ACT Lab propose in their documentation:
 
 .. figure:: _static/CF.png
    :alt: alternate text
+   :width: 500
    :align: center
 
    Fig. 6.10: Marker arrangement
 
+But our drones look like this: 
+
+.. figure:: _static/CF2.png
+   :alt: alternate text
+   :width: 500
+   :align: center
+
+   Fig. 6.11: Our drones
+
 Markers are fixed using double-sided tape.
 
-6.3.5 Creating an object
+6.2.5 Creating an object
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
 To create an object on Vicon Nexus, first create a subject like this:
@@ -283,7 +250,7 @@ To create an object on Vicon Nexus, first create a subject like this:
    :alt: alternate text
    :align: center
 
-   Fig. 6.11: Creating a subject
+   Fig. 6.12: Creating a subject
 
 Then create segments:
 
@@ -291,7 +258,7 @@ Then create segments:
    :alt: alternate text
    :align: center
 
-   Fig. 6.12: Creating segments
+   Fig. 6.13: Creating segments
 
 Select the markers of the CF:
 
@@ -299,7 +266,7 @@ Select the markers of the CF:
    :alt: alternate text
    :align: center
 
-   Fig. 6.13: Selecting markers
+   Fig. 6.14: Selecting markers
 
 Then click on *create*:
 
@@ -307,7 +274,7 @@ Then click on *create*:
    :alt: alternate text
    :align: center
 
-   Fig. 6.14: Creating the object
+   Fig. 6.15: Creating the object
 
 Normally the object has been created and it looks like this:
 
@@ -315,17 +282,17 @@ Normally the object has been created and it looks like this:
    :alt: alternate text
    :align: center
 
-   Fig. 6.15: Object
+   Fig. 6.16: Object
 
 .. note::
    We do not know why but when saving a new subject, it sometimes unsaves the objects already saved.
    
-6.3.6 Get Vicon data on Ubuntu desktop
+6.2.6 Get Vicon data on Ubuntu desktop
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 :blue:`[TODO.]JV`
 
-6.3.6.1 Create an ethernet connection between your Linux computer and the Windows computer.
+6.2.6.1 Create an ethernet connection between your Linux computer and the Windows computer.
 
 :blue:`[TODO: add extra explanations about the right IP adress, the last segment of the IP address and the not working ping.]JV`
 
@@ -366,7 +333,7 @@ On Ubuntu 20.04 for example, you can do that easily.
 1. Attach the Ethernet cable between the two computers.
 2. Go to the network manager 
 
-6.3.6.2 Test
+6.2.6.2 Test
 
 So now you should have, for example:
 
@@ -384,13 +351,13 @@ On Windows you can test with:
 .. code-block:: shell
 
    cmd
-   ping "Ubuntu address"
+   ping "Ubuntu IP address"
 
 It will return that if the connection is setted correctly :
 
 :blue:`[TODO: add what is written]JV`
 
-6.3.6.3 Set the Vicon Bridge to make a wireless connection between Windows and Ubuntu computers.
+6.2.6.3 Set the Vicon Bridge to make a wireless connection between Windows and Ubuntu computers.
 
 In order to use the Vicon system with ROS enabled robots, the `Vicon bridge <http://wiki.ros.org/vicon_bridge>`__ has to be installed:
 
@@ -409,3 +376,46 @@ We need to set parameters in the vicon.launch file:
    <param name="datastream_hostport"value="vicon:801"type="str"/>
    //into
    <param name="datastream_hostport"value="PC−IP−adress:801"type="str"/>
+
+6.3 Configuration
+-----------------
+   
+Now, `configuration <https://crazyswarm.readthedocs.io/en/latest/configuration.html#configuration>`__ is needed before flying.
+   
+The first step is to `set up the radio communication <https://crazyswarm.readthedocs.io/en/latest/configuration.html#set-up-radio-communication>`__.
+   
+.. important::
+   
+   To set up the radio communication, be careful to the radio bandwith. Select 2MBits/s.
+   
+Then, `update <https://crazyswarm.readthedocs.io/en/latest/configuration.html#update-firmware>`__ the firmware of your Crazyflies and Crazyradios.
+   
+If you can't connect to the CF, you probably need to run this command with the drone turned on and connected via USB:
+   
+.. code-block:: shell
+   
+   cd crazyswarm/crazyflie-lib-python/examples
+   python3 write-eeprom.py
+   
+You could get this error as a result:
+   
+.. code-block:: shell
+   
+   Scanning interfaces for Crazyflies...
+   Cannot find a Crazyradio Dongle
+   Crazyflies found:
+   No Crazyflies found, cannot run example
+   Traceback (most recent call last):
+   File "write-eeprom.py", line 148, in <module>
+   while le.is_connected:
+   NameError: name 'le' is not defined
+   
+If so, set the USB permissions as described `here <https://www.bitcraze.io/documentation/repository/crazyflie-lib-python/master/installation/usb_permissions/>`__. Then,
+run again these commands:
+   
+.. code-block:: shell
+   
+   cd crazyswarm/crazyflie-lib-python/examples
+   python3 write-eeprom.py
+   
+We use the **Vicon** motion capture system and **duplicated marker arrangements** so you must select the correct tabs to `adjust configuation files <https://crazyswarm.readthedocs.io/en/latest/configuration.html#adjust-configuration-files>`__.
