@@ -392,4 +392,20 @@ It will return that if the connection is setted correctly :
 
 6.3.6.3 Set the Vicon Bridge to make a wireless connection between Windows and Ubuntu computers.
 
-:blue:`[TODO.]JV`
+In order to use the Vicon system with ROS enabled robots, the `Vicon bridge <http://wiki.ros.org/vicon_bridge>`__ has to be installed:
+
+.. code-block:: shell
+
+   cd ~/catkin_ws/src
+   git clone https://github.com/ethz-asl/vicon_bridge.git
+   cd ..
+   catkin_make
+
+We need to set parameters in the vicon.launch file:
+
+.. code-block:: html
+
+   //change this line
+   <param name="datastream_hostport"value="vicon:801"type="str"/>
+   //into
+   <param name="datastream_hostport"value="PC−IP−adress:801"type="str"/>
