@@ -1,9 +1,6 @@
 For developers
 ===============
 
-.. role:: raw-html(raw)
-    :format: html
-
 Definition of authors' comments
 -------------------------------
 
@@ -11,28 +8,26 @@ The following syntax allow you to write a comment in color with your initials:
 
 .. code-block:: html
 
-    :raw-html:`<font color="Name_of_the_color">[This is a comment.]INITIALS</font>`
+    :red:`[This is a comment.]INITIALS`
 
-You can hind a list of available colors `here <https://htmlcolors.com/color-names>`__.
+And it will appear like this:
 
-Don't forget to add these 2 lines at the top of your ``.rst`` file, just under the header:
+:navy:`[This is a comment.]INITIALS`
 
-.. code-block:: html
-
-    .. role:: raw-html(raw)
-        :format: html
+The available colors are: :gray:`gray`, :silver:`silver`, :maroon:`maroon`, :red:`red`, :magenta:`magenta`, :fuchsia:`fuchsia`, :pink:`pink`, :orange:`orange`,
+:yellow:`yellow`, :lime:`lime`, :green:`green`, :olive:`olive`, :teal:`teal`, :cyan:`cyan`, :aqua:`aqua`, :blue:`blue`, :navy:`navy`, :purple:`purple`.
 
 You can see here the definition and the rendering of the current author's comments:
 
-:raw-html:`<font color="Tomato">[This is a comment from Bryan Convens.]BC</font>`
+:red:`This is a comment from Bryan Convens.]BC`
     
-:raw-html:`<font color="Teal">[This is a comment from Kelly Merckaert.]KM</font>`
+:teal:`<font color="Teal">[This is a comment from Kelly Merckaert.]KM`
     
-:raw-html:`<font color="Maroon">[This is a comment from Zakaria Lakeel.]ZL</font>`
+:maroon:`[This is a comment from Zakaria Lakeel.]ZL`
     
-:raw-html:`<font color="LimeGreen">[This is a comment from Titouan Tyack.]TT</font>`
+:lime:`<font color="LimeGreen">[This is a comment from Titouan Tyack.]TT`
     
-:raw-html:`<font color="RoyalBlue">[This is a comment from Jonathan Vogt.]JV</font>`
+:blue:`[This is a comment from Jonathan Vogt.]JV`
 
 How to use ReadTheDocs ?
 ------------------------
@@ -81,3 +76,7 @@ commands from your directory:
     git push
 
 Please refer to section :ref:`2.4 <2.4 Working with Git>` to understand why we use these commands.
+
+.. note::
+    When visualizing the documentation after running ``make html``, you may not see every chapters in the left tab. That's probably because you modify the ``index.rst``
+    file. To fix this, you need to save every ``.rst`` file.

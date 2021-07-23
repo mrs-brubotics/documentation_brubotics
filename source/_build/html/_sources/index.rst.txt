@@ -8,6 +8,7 @@ DroneSwarmTutorial
    :caption: Contents:
 
    Information for internal collaborators
+   Hardware
    Introduction
    Prerequisites
    Introduction_to_MRS_Software_Extensions
@@ -15,3 +16,4 @@ DroneSwarmTutorial
    Introduction_to_visualization
    Crazyswarm
    For_developers
+   

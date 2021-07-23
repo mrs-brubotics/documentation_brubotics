@@ -3,9 +3,6 @@
 ?. Information for Internal Collaborators
 ==========================================
 
-.. role:: raw-html(raw)
-    :format: html
-
 ?.1 Introduction
 -----------------
 Welcome internal collaborators (i.e. internal or visiting researchers, MA students)!

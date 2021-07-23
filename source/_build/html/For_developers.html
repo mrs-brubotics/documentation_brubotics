@@ -13,6 +13,7 @@
   
   <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/hack.css" type="text/css" />
 
   
   
@@ -88,6 +89,7 @@
               <p class="caption"><span class="caption-text">Contents:</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="Information for internal collaborators.html">?. Information for Internal Collaborators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Hardware.html">?. Hardware</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Introduction.html">1. Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Prerequisites.html">2. Prerequisites</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Introduction_to_MRS_Software_Extensions.html">3. Introduction to MRS Software Extensions</a></li>
@@ -176,21 +178,19 @@
 <div class="section" id="definition-of-authors-comments">
 <h2>Definition of authors’ comments<a class="headerlink" href="#definition-of-authors-comments" title="Permalink to this headline">¶</a></h2>
 <p>The following syntax allow you to write a comment in color with your initials:</p>
-<div class="highlight-html notranslate"><div class="highlight"><pre><span></span>:raw-html:`<span class="p">&lt;</span><span class="nt">font</span> <span class="na">color</span><span class="o">=</span><span class="s">&quot;Name_of_the_color&quot;</span><span class="p">&gt;</span>[This is a comment.]INITIALS<span class="p">&lt;/</span><span class="nt">font</span><span class="p">&gt;</span>`
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span>:red:`[This is a comment.]INITIALS`
 </pre></div>
 </div>
-<p>You can hind a list of available colors <a class="reference external" href="https://htmlcolors.com/color-names">here</a>.</p>
-<p>Don’t forget to add these 2 lines at the top of your <code class="docutils literal notranslate"><span class="pre">.rst</span></code> file, just under the header:</p>
-<div class="highlight-html notranslate"><div class="highlight"><pre><span></span>.. role:: raw-html(raw)
-    :format: html
-</pre></div>
-</div>
+<p>And it will appear like this:</p>
+<p><span class="navy">[This is a comment.]INITIALS</span></p>
+<p>The available colors are: <span class="gray">gray</span>, <span class="silver">silver</span>, <span class="maroon">maroon</span>, <span class="red">red</span>, <span class="magenta">magenta</span>, <span class="fuchsia">fuchsia</span>, <span class="pink">pink</span>, <span class="orange">orange</span>,
+<span class="yellow">yellow</span>, <span class="lime">lime</span>, <span class="green">green</span>, <span class="olive">olive</span>, <span class="teal">teal</span>, <span class="cyan">cyan</span>, <span class="aqua">aqua</span>, <span class="blue">blue</span>, <span class="navy">navy</span>, <span class="purple">purple</span>.</p>
 <p>You can see here the definition and the rendering of the current author’s comments:</p>
-<p><span class="raw-html"><font color="Tomato">[This is a comment from Bryan Convens.]BC</font></span></p>
-<p><span class="raw-html"><font color="Teal">[This is a comment from Kelly Merckaert.]KM</font></span></p>
-<p><span class="raw-html"><font color="Maroon">[This is a comment from Zakaria Lakeel.]ZL</font></span></p>
-<p><span class="raw-html"><font color="LimeGreen">[This is a comment from Titouan Tyack.]TT</font></span></p>
-<p><span class="raw-html"><font color="RoyalBlue">[This is a comment from Jonathan Vogt.]JV</font></span></p>
+<p><span class="red">This is a comment from Bryan Convens.]BC</span></p>
+<p><span class="teal">&lt;font color=”Teal”&gt;[This is a comment from Kelly Merckaert.]KM</span></p>
+<p><span class="maroon">[This is a comment from Zakaria Lakeel.]ZL</span></p>
+<p><span class="lime">&lt;font color=”LimeGreen”&gt;[This is a comment from Titouan Tyack.]TT</span></p>
+<p><span class="blue">[This is a comment from Jonathan Vogt.]JV</span></p>
 </div>
 <div class="section" id="how-to-use-readthedocs">
 <h2>How to use ReadTheDocs ?<a class="headerlink" href="#how-to-use-readthedocs" title="Permalink to this headline">¶</a></h2>
@@ -232,6 +232,11 @@ git push
 </pre></div>
 </div>
 <p>Please refer to section <a class="reference internal" href="Prerequisites.html#working-with-git"><span class="std std-ref">2.4</span></a> to understand why we use these commands.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">When visualizing the documentation after running <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">html</span></code>, you may not see every chapters in the left tab. That’s probably because you modify the <code class="docutils literal notranslate"><span class="pre">index.rst</span></code>
+file. To fix this, you need to save every <code class="docutils literal notranslate"><span class="pre">.rst</span></code> file.</p>
+</div>
 </div>
 </div>
 </div>

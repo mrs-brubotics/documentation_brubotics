@@ -13,6 +13,7 @@
   
   <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/hack.css" type="text/css" />
 
   
   
@@ -89,6 +90,7 @@
               <p class="caption"><span class="caption-text">Contents:</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="Information for internal collaborators.html">?. Information for Internal Collaborators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Hardware.html">?. Hardware</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Introduction.html">1. Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Prerequisites.html">2. Prerequisites</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Introduction_to_MRS_Software_Extensions.html">3. Introduction to MRS Software Extensions</a></li>
@@ -205,7 +207,7 @@ Please refer to the <em>Physical Robots and Simulation</em> part. Don’t forget
 <p class="last">To set up the radio communication, be careful to the radio bandwith. Select 2MBits/s.</p>
 </div>
 <p>Then, <a class="reference external" href="https://crazyswarm.readthedocs.io/en/latest/configuration.html#update-firmware">update</a> the firmware of your Crazyflies and Crazyradios.</p>
-<p>If you can’t connect to the CF, you probably need to run this command:</p>
+<p>If you can’t connect to the CF, you probably need to run this command with the drone turned on and connected via USB:</p>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> crazyswarm/crazyflie-lib-python/examples
 python3 write-eeprom.py
 </pre></div>
@@ -221,7 +223,8 @@ Traceback <span class="o">(</span>most recent call last<span class="o">)</span>:
 NameError: name <span class="s1">&#39;le&#39;</span> is not defined
 </pre></div>
 </div>
-<p>If so, set the USB permissions as described <a class="reference external" href="https://www.bitcraze.io/documentation/repository/crazyflie-lib-python/master/installation/usb_permissions/">here</a>.</p>
+<p>If so, set the USB permissions as described <a class="reference external" href="https://www.bitcraze.io/documentation/repository/crazyflie-lib-python/master/installation/usb_permissions/">here</a>. Then,
+run again these commands:</p>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> crazyswarm/crazyflie-lib-python/examples
 python3 write-eeprom.py
 </pre></div>
@@ -255,6 +258,7 @@ is required, more cameras will be needed.</p>
 </div>
 <div class="section" id="hardware">
 <h3>6.3.2 Hardware<a class="headerlink" href="#hardware" title="Permalink to this headline">¶</a></h3>
+<img alt="alternate text" src="_images/Hardware.png" />
 <p>6.3.2.1 Cameras</p>
 <p>At the R&amp;MM lab there are ten Vero v2.2 cameras with a resolution of 1280*1024 pixels and a frame rate of 250fps. The higher the resolution of the camera, the
 preciser the positioning of the markers and the more details you can obtain from the markers which is interesting when using very small markers placed close to
@@ -335,22 +339,31 @@ but we were also able to use Nexus.</p>
 </div>
 <div class="section" id="calibration-of-the-vicon-system">
 <h3>6.3.3 Calibration of the Vicon System<a class="headerlink" href="#calibration-of-the-vicon-system" title="Permalink to this headline">¶</a></h3>
-<p>The <em>Mask cameras</em> function is used to make camera don’t care about area where infrared signal is not significant. Because vicon can believed there are markers
-in this area but it is not the case. So when we use this function we have to be sure no markers are in the vision field of cameras.</p>
-<p>Then, check that the cameras look in the direction where your Crazyflies will move. When it is good, you can <em>Start</em> to <em>Aim Cameras</em>.</p>
-<p>In order to calibrate the cameras, press <em>Start</em> in the <em>Calibrate Cameras</em> menu and wave with the active wand in the to-be-captured area, i.e. where you want to
-detect reflection markers. You should draw “∞” forms. In <em>Show Advances</em>, you must have at least <em>Refinement frames: 2000</em>. Cameras are blinking during this
-process and are all turned green when the process is finished.</p>
-<p>In order to set the origin of the Vicon system, click <em>Start</em> in the <em>Set Volume Origin</em> menu. We usually use the active wand, but there are also others methods in
-advanced options.</p>
+<p>Before anything else, you must check if the attitude, the FOV (Field Of View), the depth of field and the aperture are correctly set to optimize the recording of
+movements in the to-be-captured area.</p>
+<img alt="alternate text" src="_images/Volume.png" />
+<img alt="alternate text" src="_images/Adjust.png" />
+<p>Then, you can start the calibration process:</p>
+<ul class="simple">
+<li>The <em>Mask cameras</em> function is used to make camera don’t care about area where infrared signal is not significant. Because vicon can believed there are markers
+in this area but it is not the case. So when we use this function we have to be sure no markers are in the vision field of cameras.</li>
+<li>Point the cameras to provide roughly the required coverage. When it is good, you can <em>Start</em> to <em>Aim Cameras</em>.</li>
+<li>Press <em>Start</em> in the <em>Calibrate Cameras</em> menu and wave with the active wand by drawing “∞” forms in the to-be-captured area, i.e. where you want to
+detect reflection markers. In <em>Show Advances</em>, you must have at least <em>Refinement frames: 2000</em>. Cameras are blinking during this
+process and are all turned green when the process is finished.</li>
+<li>In order to set the origin of the Vicon system, click <em>Start</em> in the <em>Set Volume Origin</em> menu. We usually use the active wand, but there are also others methods in
+advanced options.</li>
+</ul>
 <div class="figure align-center" id="id7">
 <img alt="alternate text" src="_images/Set_volume_origin.png" />
 <p class="caption"><span class="caption-text">Fig. 6.8: Origin volume setting with the Vicon wand</span></p>
 </div>
-<p>Leave the active wand where you want (make sure it is in the camera view of all cameras) and press <em>Set the origin</em>. Now your Vicon system is
+<ul class="simple">
+<li>Leave the active wand where you want (make sure it is in the camera view of all cameras) and press <em>Set the origin</em>. Now your Vicon system is
 ready to use. To calibrate the system we can also adjust the focal of cameras.
 During using of the Vicon sometimes cameras blink red, it means the camera pose has changed. Most of the time it is only due to vibration so it do not affect
-the capture.</p>
+the capture.</li>
+</ul>
 <div class="figure align-center" id="id8">
 <img alt="alternate text" src="_images/System_preparation_menu.png" />
 <p class="caption"><span class="caption-text">Fig. 6.9: Example of system preparation menu</span></p>
@@ -358,38 +371,50 @@ the capture.</p>
 </div>
 <div class="section" id="marker-arrangements">
 <h3>6.3.4 Marker Arrangements<a class="headerlink" href="#marker-arrangements" title="Permalink to this headline">¶</a></h3>
+<p>We use the same marker arrangement as the USC ACT Lab propose in their documentation:</p>
+<div class="figure align-center" id="id9">
+<img alt="alternate text" src="_images/CF.png" />
+<p class="caption"><span class="caption-text">Fig. 6.10: Marker arrangement</span></p>
+</div>
+<p>Markers are fixed using double-sided tape.</p>
 </div>
 <div class="section" id="creating-an-object">
 <h3>6.3.5 Creating an object<a class="headerlink" href="#creating-an-object" title="Permalink to this headline">¶</a></h3>
 <p>To create an object on Vicon Nexus, first create a subject like this:</p>
-<div class="figure align-center" id="id9">
+<div class="figure align-center" id="id10">
 <img alt="alternate text" src="_images/Create_subject.png" />
-<p class="caption"><span class="caption-text">Fig. 6.10: Creating a subject</span></p>
+<p class="caption"><span class="caption-text">Fig. 6.11: Creating a subject</span></p>
 </div>
 <p>Then create segments:</p>
-<div class="figure align-center" id="id10">
+<div class="figure align-center" id="id11">
 <img alt="alternate text" src="_images/Create_segments.png" />
-<p class="caption"><span class="caption-text">Fig. 6.11: Creating segments</span></p>
+<p class="caption"><span class="caption-text">Fig. 6.12: Creating segments</span></p>
 </div>
 <p>Select the markers of the CF:</p>
-<div class="figure align-center" id="id11">
+<div class="figure align-center" id="id12">
 <img alt="alternate text" src="_images/Select_markers.png" />
-<p class="caption"><span class="caption-text">Fig. 6.12: Selecting markers</span></p>
+<p class="caption"><span class="caption-text">Fig. 6.13: Selecting markers</span></p>
 </div>
 <p>Then click on <em>create</em>:</p>
-<div class="figure align-center" id="id12">
+<div class="figure align-center" id="id13">
 <img alt="alternate text" src="_images/Create_object.png" />
-<p class="caption"><span class="caption-text">Fig. 6.13: Creating the object</span></p>
+<p class="caption"><span class="caption-text">Fig. 6.14: Creating the object</span></p>
 </div>
 <p>Normally the object has been created and it looks like this:</p>
-<div class="figure align-center" id="id13">
+<div class="figure align-center" id="id14">
 <img alt="alternate text" src="_images/Object.png" />
-<p class="caption"><span class="caption-text">Fig. 6.14: Object</span></p>
+<p class="caption"><span class="caption-text">Fig. 6.15: Object</span></p>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">We do not know why but when saving a new subject, it sometimes unsaves the objects already saved.</p>
 </div>
 </div>
 <div class="section" id="get-vicon-data-on-ubuntu-desktop">
 <h3>6.3.6 Get Vicon data on Ubuntu desktop<a class="headerlink" href="#get-vicon-data-on-ubuntu-desktop" title="Permalink to this headline">¶</a></h3>
+<p><span class="raw-html"><font color="RoyalBlue">[TODO]JV</font></span></p>
 <p>6.3.6.1 Create an ethernet connection between your Linux computer and the Windows computer.</p>
+<p><span class="raw-html"><font color="RoyalBlue">[TODO: add extra explanations about the right IP adress, the last segment of the IP address and the not working ping.]JV</font></span></p>
 <p>This is the global way to set an Ethernet connection. At the end of this section, you can follow a simpler way to do it but it is not available for
 all Ubuntu configuation.</p>
 <ol class="arabic simple">
@@ -438,12 +463,13 @@ Ubuntu: 169.254.123.105</p>
 </pre></div>
 </div>
 <p>On Windows you can test with:</p>
-<div class="highlight-Windows notranslate"><div class="highlight"><pre><span></span>cmd
-ping &quot;Ubuntu address&quot;
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>cmd
+ping <span class="s2">&quot;Ubuntu address&quot;</span>
 </pre></div>
 </div>
 <p>It will return that if the connection is setted correctly :</p>
 <p>6.3.6.3 Set the Vicon Bridge to make a wireless connection between Windows and Ubuntu computers.</p>
+<p><span class="raw-html"><font color="RoyalBlue">[TODO]JV</font></span></p>
 </div>
 </div>
 </div>

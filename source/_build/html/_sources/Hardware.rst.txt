@@ -11,7 +11,7 @@
 
 
 ?.? Step-by-step Procedure for Preparations Prior to Autonomous Field Experiments
---------------------------
+----------------------------------------------------------------------------------
     * Prepare the simulations.
     * Prepare the scripts for the real hardware tests.
     * Make a planning for the test day. See example document. TODO ADD 
@@ -21,7 +21,7 @@
 
 
 ?.? Step-by-step Procedure Autonomous Field Experiments
---------------------------
+--------------------------------------------------------
 
 
 ?.?.? RTK Field setup
@@ -45,7 +45,7 @@
   
   
 ?.?.? Run an Experiment
----------------------
+-----------------------
   * At each new test moment, follow the steps below but first always run the basic examples i.e. just_flying_rtk.sh and the last script you tested before.
   * From the ground station computer ssh on the on-board computer (i.e. ssh nuc5@<hostname or ip>).
   * cd to your testing folder.

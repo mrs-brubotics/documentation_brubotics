@@ -2,7 +2,7 @@
 =============
 
 .. role:: raw-html(raw)
-    :format: html
+   :format: html
 
 *This chapter will move on to another documentation.*
 
@@ -42,7 +42,7 @@ The first step is to `set up the radio communication <https://crazyswarm.readthe
 
 Then, `update <https://crazyswarm.readthedocs.io/en/latest/configuration.html#update-firmware>`__ the firmware of your Crazyflies and Crazyradios.
 
-If you can't connect to the CF, you probably need to run this command:
+If you can't connect to the CF, you probably need to run this command with the drone turned on and connected via USB:
 
 .. code-block:: shell
 
@@ -62,7 +62,8 @@ You could get this error as a result:
          while le.is_connected:
     NameError: name 'le' is not defined
 
-If so, set the USB permissions as described `here <https://www.bitcraze.io/documentation/repository/crazyflie-lib-python/master/installation/usb_permissions/>`__.
+If so, set the USB permissions as described `here <https://www.bitcraze.io/documentation/repository/crazyflie-lib-python/master/installation/usb_permissions/>`__. Then,
+run again these commands:
 
 .. code-block:: shell
 
@@ -106,6 +107,9 @@ More information can be found `here <https://www.vicon.com/what-is-motion-captur
 
 6.3.2 Hardware
 ^^^^^^^^^^^^^^
+
+.. image:: _static/Hardware.png
+   :alt: alternate text
 
 6.3.2.1 Cameras
 
@@ -220,17 +224,28 @@ but we were also able to use Nexus.
 6.3.3 Calibration of the Vicon System
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The *Mask cameras* function is used to make camera don’t care about area where infrared signal is not significant. Because vicon can believed there are markers
-in this area but it is not the case. So when we use this function we have to be sure no markers are in the vision field of cameras. 
+Before anything else, you must check if the attitude, the FOV (Field Of View), the depth of field and the aperture are correctly set to optimize the recording of
+movements in the to-be-captured area.
 
-Then, check that the cameras look in the direction where your Crazyflies will move. When it is good, you can *Start* to *Aim Cameras*.
+.. image:: _static/Volume.png
+   :alt: alternate text
 
-In order to calibrate the cameras, press *Start* in the *Calibrate Cameras* menu and wave with the active wand in the to-be-captured area, i.e. where you want to
-detect reflection markers. You should draw "∞" forms. In *Show Advances*, you must have at least *Refinement frames: 2000*. Cameras are blinking during this
-process and are all turned green when the process is finished.
+.. image:: _static/Adjust.png
+   :alt: alternate text
 
-In order to set the origin of the Vicon system, click *Start* in the *Set Volume Origin* menu. We usually use the active wand, but there are also others methods in
-advanced options.
+Then, you can start the calibration process:
+
+* The *Mask cameras* function is used to make camera don’t care about area where infrared signal is not significant. Because vicon can believed there are markers
+  in this area but it is not the case. So when we use this function we have to be sure no markers are in the vision field of cameras. 
+
+* Point the cameras to provide roughly the required coverage. When it is good, you can *Start* to *Aim Cameras*.
+
+* Press *Start* in the *Calibrate Cameras* menu and wave with the active wand by drawing "∞" forms in the to-be-captured area, i.e. where you want to
+  detect reflection markers. In *Show Advances*, you must have at least *Refinement frames: 2000*. Cameras are blinking during this
+  process and are all turned green when the process is finished.
+
+* In order to set the origin of the Vicon system, click *Start* in the *Set Volume Origin* menu. We usually use the active wand, but there are also others methods in
+  advanced options.
 
 .. figure:: _static/Set_volume_origin.png
    :alt: alternate text
@@ -238,10 +253,10 @@ advanced options.
 
    Fig. 6.8: Origin volume setting with the Vicon wand
 
-Leave the active wand where you want (make sure it is in the camera view of all cameras) and press *Set the origin*. Now your Vicon system is
-ready to use. To calibrate the system we can also adjust the focal of cameras.
-During using of the Vicon sometimes cameras blink red, it means the camera pose has changed. Most of the time it is only due to vibration so it do not affect
-the capture.
+* Leave the active wand where you want (make sure it is in the camera view of all cameras) and press *Set the origin*. Now your Vicon system is
+  ready to use. To calibrate the system we can also adjust the focal of cameras.
+  During using of the Vicon sometimes cameras blink red, it means the camera pose has changed. Most of the time it is only due to vibration so it do not affect
+  the capture.
 
 .. figure:: _static/System_preparation_menu.png
    :alt: alternate text
@@ -252,6 +267,16 @@ the capture.
 6.3.4 Marker Arrangements
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
+We use the same marker arrangement as the USC ACT Lab propose in their documentation:
+
+.. figure:: _static/CF.png
+   :alt: alternate text
+   :align: center
+
+   Fig. 6.10: Marker arrangement
+
+Markers are fixed using double-sided tape.
+
 6.3.5 Creating an object
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -261,7 +286,7 @@ To create an object on Vicon Nexus, first create a subject like this:
    :alt: alternate text
    :align: center
 
-   Fig. 6.10: Creating a subject
+   Fig. 6.11: Creating a subject
 
 Then create segments:
 
@@ -269,7 +294,7 @@ Then create segments:
    :alt: alternate text
    :align: center
 
-   Fig. 6.11: Creating segments
+   Fig. 6.12: Creating segments
 
 Select the markers of the CF:
 
@@ -277,7 +302,7 @@ Select the markers of the CF:
    :alt: alternate text
    :align: center
 
-   Fig. 6.12: Selecting markers
+   Fig. 6.13: Selecting markers
 
 Then click on *create*:
 
@@ -285,7 +310,7 @@ Then click on *create*:
    :alt: alternate text
    :align: center
 
-   Fig. 6.13: Creating the object
+   Fig. 6.14: Creating the object
 
 Normally the object has been created and it looks like this:
 
@@ -293,12 +318,19 @@ Normally the object has been created and it looks like this:
    :alt: alternate text
    :align: center
 
-   Fig. 6.14: Object
+   Fig. 6.15: Object
+
+.. note::
+   We do not know why but when saving a new subject, it sometimes unsaves the objects already saved.
    
 6.3.6 Get Vicon data on Ubuntu desktop
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+:raw-html:`<font color="RoyalBlue">[TODO]JV</font>`
+
 6.3.6.1 Create an ethernet connection between your Linux computer and the Windows computer.
+
+:raw-html:`<font color="RoyalBlue">[TODO: add extra explanations about the right IP adress, the last segment of the IP address and the not working ping.]JV</font>`
 
 This is the global way to set an Ethernet connection. At the end of this section, you can follow a simpler way to do it but it is not available for 
 all Ubuntu configuation.
@@ -352,7 +384,7 @@ You can test on an Ubuntu terminal the command:
    
 On Windows you can test with:
 
-.. code-block:: Windows
+.. code-block:: shell
 
    cmd
    ping "Ubuntu address"
@@ -363,3 +395,4 @@ It will return that if the connection is setted correctly :
 
 6.3.6.3 Set the Vicon Bridge to make a wireless connection between Windows and Ubuntu computers.
 
+:raw-html:`<font color="RoyalBlue">[TODO]JV</font>`

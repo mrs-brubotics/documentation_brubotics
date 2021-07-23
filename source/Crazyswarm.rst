@@ -1,9 +1,6 @@
 6. Crazyswarm
 =============
 
-.. role:: raw-html(raw)
-    :format: html
-
 *This chapter will move on to another documentation.*
 
 6.1 Installation
@@ -326,7 +323,11 @@ Normally the object has been created and it looks like this:
 6.3.6 Get Vicon data on Ubuntu desktop
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+:blue:`[TODO.]JV`
+
 6.3.6.1 Create an ethernet connection between your Linux computer and the Windows computer.
+
+:blue:`[TODO: add extra explanations about the right IP adress, the last segment of the IP address and the not working ping.]JV`
 
 This is the global way to set an Ethernet connection. At the end of this section, you can follow a simpler way to do it but it is not available for 
 all Ubuntu configuation.
@@ -387,7 +388,8 @@ On Windows you can test with:
 
 It will return that if the connection is setted correctly :
 
-
+:blue:`[TODO: add what is written]JV`
 
 6.3.6.3 Set the Vicon Bridge to make a wireless connection between Windows and Ubuntu computers.
 
+:blue:`[TODO.]JV`

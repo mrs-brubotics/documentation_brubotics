@@ -1,0 +1,1 @@
+Some :red:`colored text` at last!
