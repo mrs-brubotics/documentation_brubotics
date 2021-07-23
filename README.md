@@ -7,16 +7,12 @@ First, clone this repository in the folder of your choice:
 ```
 git clone https://github.com/mrs-brubotics/documentation_brubotics.git
 ```
-Then, you will need to install Sphinx (we recommand you to use the pip3 installer).
-If you are running on Ubuntu 18.04, use:
+Then, you will need to install Sphinx.
 ```
-pip3 install sphinx
+sudo apt update
+sudo apt install python3-sphinx
 ```
-If you are running on Ubuntu 20.04, use:
-```
-sudo apt-get install python3-sphinx
-```
-Because we use ReadTheDocs, you will need to install the sphinx extension:
+Because we use ReadTheDocs, you will need to install the sphinx extension (we recommand you to use the pip3 installer):
 ```
 pip3 install sphinx-rtd-theme
 ```
