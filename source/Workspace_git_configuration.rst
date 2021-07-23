@@ -90,7 +90,7 @@ We automated the following steps with the **pull_all.sh** and **install.sh** com
 
 :red:`[TODO: everyone needs to watch (click watch buttom) the packages of MRS controllers, managers, trackers to make sure if something is changed, we do it too]BC`
 
-:red:`[why we did NOT fork? because it requires repo to be public So one option would be to use a fork explained</font>` `here <https://docs.github.com/en/github/getting-started-with-github/fork-a-repo>`__.
+:red:`[why we did NOT fork? because it requires repo to be public So one option would be to use a fork explained` `here <https://docs.github.com/en/github/getting-started-with-github/fork-a-repo>`__.
 :red:`It is unclear to me if github still requires both repos (so CTU and brubotics) to be public (since we want to keep our private). But i found also`
 `this link <https://gist.github.com/0xjac/85097472043b697ab57ba1b1c7530274>`__
 :red:`where it seems to be possible for private repo too. Read all comments since it might be even possible directly from github today. This command is applicable all interns, so  please all read it and discuss in group. I think this is really important to check in more detail. Please update me after your discussion, then we can decide what's best to do.]BC`
