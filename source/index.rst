@@ -7,13 +7,12 @@ DroneSwarmTutorial
    :maxdepth: 4
    :caption: Contents:
 
-   Information for internal collaborators
-   Hardware
    Introduction
    Prerequisites
    Introduction_to_MRS_Software_Extensions
    Workspace_git_configuration
    Introduction_to_visualization
-   Crazyswarm
+   Hardware
    For_developers
-   
+   Information for internal collaborators
+   Crazyswarm
