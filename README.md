@@ -1,7 +1,7 @@
 # documentation_brubotics
 Documentation developed by the summer 2021 BruBotics interns.
 
-## How to visualize our documentation?
+## How to read our documentation?
 
 First, clone this repository in the folder of your choice:
 ```
