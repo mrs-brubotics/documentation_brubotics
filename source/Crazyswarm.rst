@@ -418,4 +418,5 @@ run again these commands:
    cd crazyswarm/crazyflie-lib-python/examples
    python3 write-eeprom.py
    
-We use the **Vicon** motion capture system and **duplicated marker arrangements** so you must select the correct tabs to `adjust configuation files <https://crazyswarm.readthedocs.io/en/latest/configuration.html#adjust-configuration-files>`__.
+We use the **Vicon** motion capture system and **duplicated marker arrangements**
+so you must select the correct tabs to `adjust configuation files <https://crazyswarm.readthedocs.io/en/latest/configuration.html#adjust-configuration-files>`__.
