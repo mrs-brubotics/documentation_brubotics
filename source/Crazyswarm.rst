@@ -24,7 +24,7 @@ Indeed, the ``gcc-arm-embedded`` toolchain was used in Ubuntu 14.04, 16.04 and 1
    sudo apt-get install make gcc-arm-none-eabi
 
 To install the Crazyflie Client, we recommend you to follow `these steps <https://www.bitcraze.io/documentation/repository/crazyflie-clients-python/master/installation/install/>`__
-(Prerequisites installation and Installing from source).
+(Prerequisites installation and Installing from source - Linux part).
 
 6.2 Vicon
 ---------
@@ -320,42 +320,44 @@ all Ubuntu configuation.
    5. Under iPv4, use these settings
    
       1. Method: Manual. Otherwise default Automatic (DHCP) does not let you set an IP
-      2. Address: 169.254.123.105. The point is to use same IP except for last segment to be on the same subnet so if one is a.b.c.101 then you should be a.b.c.105 for example
-      3. Netmask: 255.255.0.0
+      2. Address: 169.254.123.1. The point is to use same IP except for last segment to be on the same subnet so if one is a.b.c.101 then you should be a.b.c.1 for example
+      3. Netmask: 255.255.255.0
       4. Gateway: leave blank
 
 It is at this point, on Lubuntu for example there is weirdness where, when typing address numbers, values "disappear" when typing. Just keep typing and when you Save, it seems the values just appear.
    Save
    Now choose your new direct-ether network, for example status bar click it
 
-On Ubuntu 20.04 for example, you can do that easily.
-
-1. Attach the Ethernet cable between the two computers.
-2. Go to the network manager 
-
 6.2.6.2 Test
 
 So now you should have, for example:
 
 Windows: 169.254.123.101
-Ubuntu: 169.254.123.105
+Ubuntu: 169.254.123.1
+ 
+On Windows you can test on a terminal with:
+
+.. code-block:: shell
+
+   ping "Ubuntu IP address"
 
 You can test on an Ubuntu terminal the command:
 
 .. code-block:: shell
-   
+    
    ping "Windows IP address"
-   
-On Windows you can test with:
-
-.. code-block:: shell
-
-   cmd
-   ping "Ubuntu IP address"
-
+    
 It will return that if the connection is setted correctly :
 
-:blue:`[TODO: add what is written]JV`
+.. figure:: _static/ping.png
+   :alt: alternate text
+   :align: center
+
+   Fig. 6.17: ping
+
+.. caution::
+
+   The ping can not work on the Ubuntu terminal but this is not a problem, however it needs to work on the Windows terminal.
 
 6.2.6.3 Set the Vicon Bridge to make a wireless connection between Windows and Ubuntu computers.
 
