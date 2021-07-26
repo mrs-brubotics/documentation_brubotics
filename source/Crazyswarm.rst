@@ -422,3 +422,7 @@ run again these commands:
    
 We use the **Vicon** motion capture system and **duplicated marker arrangements**
 so you must select the correct tabs to `adjust configuation files <https://crazyswarm.readthedocs.io/en/latest/configuration.html#adjust-configuration-files>`__.
+
+
+
+:blue:`[TODO: add explanations about the joystick package]JV`
