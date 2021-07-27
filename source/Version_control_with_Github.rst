@@ -24,7 +24,8 @@ You can fork a repository on a GitHub page of this repository by using the fork 
 
    Figure 1.1: fork
 
-You can choose the account (your personnal account or to an organization) where you want to fork the repository. After, you will be able to see the forked repository.
+You can choose the account (your personnal account or to an organization) where you want to fork the repository.
+After, you will be able to see the forked repository.
 
 .. figure:: _static/fork2.png
    :width: 800
@@ -34,9 +35,10 @@ You can choose the account (your personnal account or to an organization) where 
    Figure 1.2: fork_2
 
 A fork is GitHub-to-GitHub operation wich copy the entire repository to an account. It copy all the branches of the repository.
-You can clone it to your personnal computer and change the file of your choice, create new files etc.
+You can clone it to your personal computer and change the file of your choice, create new files etc.
 
-If you want, you can can make a pull request of a branch of your forked repository to an existing branch (of your choice) of the repository of origin. This is if you want to contribute to the work of the people who did the initial repository.
+If you want, you can make a pull request of a branch of your forked repository to an existing branch (of your choice) of the repository of origin.
+This is if you want to contribute to the work of the people who did the initial repository.
 
 .. figure:: _static/pull_request.png
    :width: 500
@@ -46,7 +48,7 @@ If you want, you can can make a pull request of a branch of your forked reposito
    Figure 1.3: pull_request
 
 They can accept your request, it will merge your work on the branch you have chosen.
-All of your commit will be visible on the initial repository.
+All of your commits will be visible on the initial repository.
 
 .. figure:: _static/commit.png
    :width: 800
@@ -64,10 +66,11 @@ The easiest way to understand how it works and why it is useful is to read the `
 The most important part is to understand "Basic Branching" chapter.
 
 3. Create a custom ROS package
+------------------------------
 
 If you only have custom launch files, scripts, or firmware, you can simplify the process by creating a custom out-of-source ROS package:
 
-.. code-block::
+.. code-block:: shell
 
     any/folder$ catkin_create_pkg my-new-pkg
 
@@ -75,7 +78,7 @@ In particular, you can create this package in any folder, including another git 
 
 Then, add this package to your project workspace by using a symbolic link:
 
-.. code-block::
+.. code-block:: shell
 
     project/ros_ws/src/userPackages$ ln -s /path/to/my-new-pkg .
 
