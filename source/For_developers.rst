@@ -21,11 +21,11 @@ You can see here the definition and the rendering of the current author's commen
 
 :red:`This is a comment from Bryan Convens.]BC`
     
-:teal:`<font color="Teal">[This is a comment from Kelly Merckaert.]KM`
+:teal:`[This is a comment from Kelly Merckaert.]KM`
     
 :maroon:`[This is a comment from Zakaria Lakeel.]ZL`
     
-:lime:`<font color="LimeGreen">[This is a comment from Titouan Tyack.]TT`
+:lime:`[This is a comment from Titouan Tyack.]TT`
     
 :blue:`[This is a comment from Jonathan Vogt.]JV`
 
