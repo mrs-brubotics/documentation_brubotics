@@ -17,7 +17,7 @@ It appeared that there 3 possibilities to do that.
 
 You can fork a repository on a GitHub page of this repository by using the fork button.
 
-.. figure::_static/fork.png
+.. figure:: _static/fork.png
    :width: 800
    :alt: alternate text
    :align: center
@@ -26,7 +26,7 @@ You can fork a repository on a GitHub page of this repository by using the fork 
 
 You can choose the account (your personnal account or to an organization) where you want to fork the repository. After, you will be able to see the forked repository.
 
-.. figure::_static/fork2.png
+.. figure:: _static/fork2.png
    :width: 800
    :alt: alternate text
    :align: center
@@ -48,12 +48,12 @@ If you want, you can can make a pull request of a branch of your forked reposito
 They can accept your request, it will merge your work on the branch you have chosen.
 All of your commit will be visible on the initial repository.
 
-.. figure::_static/commit.png
+.. figure:: _static/commit.png
    :width: 800
    :alt: alternate text
    :align: center
 
-   Figure 1.3: commit
+   Figure 1.4: commit
 
 2. Make a new branch
 --------------------
