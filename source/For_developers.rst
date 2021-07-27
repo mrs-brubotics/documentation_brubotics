@@ -12,7 +12,7 @@ The following syntax allow you to write a comment in color with your initials:
 
 And it will appear like this:
 
-:navy:`[This is a comment.]INITIALS`
+:red:`[This is a comment.]INITIALS`
 
 The available colors are: :gray:`gray`, :silver:`silver`, :maroon:`maroon`, :red:`red`, :magenta:`magenta`, :fuchsia:`fuchsia`, :pink:`pink`, :orange:`orange`,
 :yellow:`yellow`, :lime:`lime`, :green:`green`, :olive:`olive`, :teal:`teal`, :cyan:`cyan`, :aqua:`aqua`, :blue:`blue`, :navy:`navy`, :purple:`purple`.
