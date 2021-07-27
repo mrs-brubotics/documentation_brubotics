@@ -59,7 +59,7 @@ All of your commit will be visible on the initial repository.
 --------------------
 
 Make a new branch in a repository is very useful.
-The easiest way to understand how it works and why it is useful is to read the `Git documentation <https://git-scm.com/book/en/v2/Git-Branching-Basic-Branching-and-Merging>`
+The easiest way to understand how it works and why it is useful is to read the `Git documentation <https://git-scm.com/book/en/v2/Git-Branching-Basic-Branching-and-Merging>`__
 
 The most important part is to understand "Basic Branching" chapter.
 
