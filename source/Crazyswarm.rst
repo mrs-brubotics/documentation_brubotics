@@ -290,11 +290,7 @@ Normally the object has been created and it looks like this:
 6.2.6 Get Vicon data on Ubuntu desktop
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-:blue:`[TODO.]JV`
-
 6.2.6.1 Create an ethernet connection between your Linux computer and the Windows computer.
-
-:blue:`[TODO: add extra explanations about the right IP adress, the last segment of the IP address and the not working ping.]JV`
 
 This is the global way to set an Ethernet connection. At the end of this section, you can follow a simpler way to do it but it is not available for 
 all Ubuntu configuation.
@@ -390,7 +386,7 @@ The first step is to `set up the radio communication <https://crazyswarm.readthe
    
    To set up the radio communication, be careful to the radio bandwith. Select 2MBits/s.
    
-Then, `update <https://crazyswarm.readthedocs.io/en/latest/configuration.html#update-firmware>`__ the firmware of your Crazyflies and Crazyradios.
+Then, `update the firmware <https://crazyswarm.readthedocs.io/en/latest/configuration.html#update-firmware>`__ of your Crazyflies and Crazyradios.
    
 If you can't connect to the CF, you probably need to run this command with the drone turned on and connected via USB:
    
@@ -423,6 +419,7 @@ run again these commands:
 We use the **Vicon** motion capture system and **duplicated marker arrangements**
 so you must select the correct tabs to `adjust configuation files <https://crazyswarm.readthedocs.io/en/latest/configuration.html#adjust-configuration-files>`__.
 
-
+6.4 Tutorials
+-------------
 
 :blue:`[TODO: add explanations about the joystick package]JV`
