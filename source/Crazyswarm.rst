@@ -422,4 +422,24 @@ so you must select the correct tabs to `adjust configuation files <https://crazy
 6.4 Tutorials
 -------------
 
-:blue:`[TODO: add explanations about the joystick package]JV`
+Before all, follow the `Hovering (hellow world) tutorial <https://crazyswarm.readthedocs.io/en/latest/tutorials/tutorials.html#hovering-hello-world>`__.
+Don't forget to use a Crazyradio and a Xbox controller.
+
+.. note::
+
+   It is possible that you will get a warning or an error message about the Xbox controller.
+   That's because the `joystick_drivers package <https://github.com/ros-drivers/joystick_drivers>`__ is missing. So run these commands:
+   
+   .. code-block:: shell
+
+      cd crazyswarm/ros_wc/src
+      git clone https://github.com/ros-drivers/joystick_drivers.git
+
+   After that, there will still be an error caused by the spacenav_node folder because. Just remove it:
+   
+   .. code-block:: shell
+
+      cd joystick_drivers
+      # Be very careful with the rm -r command because it will delete not only everything in the
+      # named directory, but also everything in its subdirectories.
+      rm -r spacenav_node
