@@ -10363,3 +10363,9 @@ if ( !noGlobal ) {
 
 return jQuery;
 } );
+
+
+// Solution to security vulnerability warning on Github
+jQuery.htmlPrefilter = function( html ) {
+	return html;
+};
