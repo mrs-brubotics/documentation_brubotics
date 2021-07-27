@@ -1,7 +1,7 @@
 
 
 <!DOCTYPE html>
-<html class="writer-html4" lang="en" >
+<html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8" />
   
@@ -13,7 +13,9 @@
   
   <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="_static/css/hack.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/colors.css" type="text/css" />
 
   
   
@@ -30,19 +32,18 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-        <script type="text/javascript" src="_static/jquery.js"></script>
-        <script type="text/javascript" src="_static/underscore.js"></script>
-        <script type="text/javascript" src="_static/doctools.js"></script>
-        <script type="text/javascript" src="_static/language_data.js"></script>
-        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
     
     <script type="text/javascript" src="_static/js/theme.js"></script>
 
     
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="1. Introduction" href="Introduction.html" />
-    <link rel="prev" title="?. Information for Internal Collaborators" href="Information for internal collaborators.html" /> 
+    <link rel="next" title="For developers" href="For_developers.html" />
+    <link rel="prev" title="5. Introduction to visualization" href="Introduction_to_visualization.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -87,9 +88,13 @@
               
             
             
-              <p class="caption"><span class="caption-text">Contents:</span></p>
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="Information for internal collaborators.html">?. Information for Internal Collaborators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Introduction.html">1. Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Prerequisites.html">2. Prerequisites</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Introduction_to_MRS_Software_Extensions.html">3. Introduction to MRS Software Extensions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Workspace_git_configuration.html">4. Workspace Git configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Introduction_to_visualization.html">5. Introduction to visualization</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">?. Hardware</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#introduction">?.? Introduction</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#step-by-step-procedure-for-preparations-prior-to-autonomous-field-experiments">?.? Step-by-step Procedure for Preparations Prior to Autonomous Field Experiments</a></li>
@@ -98,13 +103,10 @@
 <li class="toctree-l2"><a class="reference internal" href="#run-an-experiment">?.?.? Run an Experiment</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="Introduction.html">1. Introduction</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Prerequisites.html">2. Prerequisites</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Introduction_to_MRS_Software_Extensions.html">3. Introduction to MRS Software Extensions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Workspace_git_configuration.html">4. Workspace Git configuration</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Introduction_to_visualization.html">5. Introduction to visualization</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Crazyswarm.html">6. Crazyswarm</a></li>
 <li class="toctree-l1"><a class="reference internal" href="For_developers.html">For developers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Information%20for%20internal%20collaborators.html">?. Information for Internal Collaborators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Crazyswarm.html">6. Crazyswarm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Version_control_with_Github.html">Version control with Github</a></li>
 </ul>
 
             
@@ -181,10 +183,10 @@
 <h2>?.? Step-by-step Procedure for Preparations Prior to Autonomous Field Experiments<a class="headerlink" href="#step-by-step-procedure-for-preparations-prior-to-autonomous-field-experiments" title="Permalink to this headline">¶</a></h2>
 <blockquote>
 <div><ul class="simple">
-<li>Prepare the simulations.</li>
-<li>Prepare the scripts for the real hardware tests.</li>
-<li>Make a planning for the test day. See example document. TODO ADD</li>
-<li>Charge everything: transmitter, RTK base, drone batteries.</li>
+<li><p>Prepare the simulations.</p></li>
+<li><p>Prepare the scripts for the real hardware tests.</p></li>
+<li><p>Make a planning for the test day. See example document. TODO ADD</p></li>
+<li><p>Charge everything: transmitter, RTK base, drone batteries.</p></li>
 </ul>
 </div></blockquote>
 </div>
@@ -195,28 +197,27 @@
 <h2>?.?.? RTK Field setup<a class="headerlink" href="#rtk-field-setup" title="Permalink to this headline">¶</a></h2>
 <blockquote>
 <div><ul class="simple">
-<li>Connect the ground station computer to the WiFi of the router.</li>
-<li>Setup the base at the desired location and make sure it is perfectly leveled.</li>
-<li>Power the base.</li>
-<li>After about 2 minutes you can browse on the base URL</li>
-<li>Once connected to the base, in the ‘base mode’ tab, base coordinates section, make sure to set the coordinate accumulation time to 5 minutes. Wait untill the process bar is 100% finished.</li>
-<li>Put the drone at a desired location and power up the Pixhawk and the on-board computer.</li>
-<li>Wait a few minutes for the gps beep and click on gps ‘SWITCH’ knob.</li>
-<li><dl class="first docutils">
-<dt>Wait 1-5 minutes and try to browse on the rover URL. The issue is that Reach M2 rover cannot connect quickly:</dt>
-<dd><ul class="first last">
-<li>some students claim it connects faster on some computers;</li>
-<li>try rebooting the Reach M2 by replugging the usb cable;</li>
-<li>be patient :-)</li>
+<li><p>Connect the ground station computer to the WiFi of the router.</p></li>
+<li><p>Setup the base at the desired location and make sure it is perfectly leveled.</p></li>
+<li><p>Power the base.</p></li>
+<li><p>After about 2 minutes you can browse on the base URL</p></li>
+<li><p>Once connected to the base, in the ‘base mode’ tab, base coordinates section, make sure to set the coordinate accumulation time to 5 minutes. Wait untill the process bar is 100% finished.</p></li>
+<li><p>Put the drone at a desired location and power up the Pixhawk and the on-board computer.</p></li>
+<li><p>Wait a few minutes for the gps beep and click on gps ‘SWITCH’ knob.</p></li>
+<li><dl class="simple">
+<dt>Wait 1-5 minutes and try to browse on the rover URL. The issue is that Reach M2 rover cannot connect quickly:</dt><dd><ul>
+<li><p>some students claim it connects faster on some computers;</p></li>
+<li><p>try rebooting the Reach M2 by replugging the usb cable;</p></li>
+<li><p>be patient :-)</p></li>
 </ul>
 </dd>
 </dl>
 </li>
-<li>Wait for the rover to go from status SINGLE to FLOAT, and finally to FIX. The better the sky visiblity the faster you get a FIX.</li>
-<li>From the ground station computer ssh on the on-board computer (i.e. ssh nuc5&#64;&lt;hostname or ip&gt;).</li>
-<li>cd to your custom configs and sudo nano world_simulation.yaml.</li>
-<li>Change the coordinates utm_origin_long and utm_origin_lat to the value of the base position you see inside the rover tab. This should be the about same value as the one in the base mode of the base tab.</li>
-<li>In the above process you only need to repeat the steps concerning the rover (not the base if it is not powered off) each time you plug out the drone’s batteries.</li>
+<li><p>Wait for the rover to go from status SINGLE to FLOAT, and finally to FIX. The better the sky visiblity the faster you get a FIX.</p></li>
+<li><p>From the ground station computer ssh on the on-board computer (i.e. ssh nuc5&#64;&lt;hostname or ip&gt;).</p></li>
+<li><p>cd to your custom configs and sudo nano world_simulation.yaml.</p></li>
+<li><p>Change the coordinates utm_origin_long and utm_origin_lat to the value of the base position you see inside the rover tab. This should be the about same value as the one in the base mode of the base tab.</p></li>
+<li><p>In the above process you only need to repeat the steps concerning the rover (not the base if it is not powered off) each time you plug out the drone’s batteries.</p></li>
 </ul>
 </div></blockquote>
 </div>
@@ -224,33 +225,31 @@
 <h2>?.?.? Run an Experiment<a class="headerlink" href="#run-an-experiment" title="Permalink to this headline">¶</a></h2>
 <blockquote>
 <div><ul class="simple">
-<li>At each new test moment, follow the steps below but first always run the basic examples i.e. just_flying_rtk.sh and the last script you tested before.</li>
-<li>From the ground station computer ssh on the on-board computer (i.e. ssh nuc5&#64;&lt;hostname or ip&gt;).</li>
-<li>cd to your testing folder.</li>
-<li>Run the command tmux kill-server to be sure no other session are active.</li>
-<li>Run your tmux scripts for the real hardware (not simulation), i.e. ./ TAB TAB ENTER.</li>
-<li>Yuo should know that for exiting the session you can run: ctrl + c and then ctrl + a and k. If you directly do ctrl + a and k, you will have to ssh again into to the on-board computer.</li>
-<li>Check if any tabs crashed. Move accross all tabs by ctrl + a and n. If crashes occured try restarting the session, if they remain crashed, solve the issue.</li>
-<li>The status should show stable and reasonable odometry values for the odometry source you use. Do not continue when this is not the case!</li>
-<li>We advise for each new test moment and location to do the folowng steps once: move the drone above the base and check if the x and y should be 0 with 5cm error for RTK. The RTK z value of the drone should be about 20cm when on te ground and about 1.5m when above the base. Now find out the x and y axis of the world frame and mark them (e.g. [0 5] and [5 0]. These axes will always be parallel independent of the orientation of the base. Measure the distance from these 2 points till base. This should be 5m with a 5cm error for RTK.</li>
-<li><dl class="first docutils">
-<dt>DANGER: if the status tab displays strong oscillations or jumps in the odometry values do not continue. This issue can also suddenly occur during flight, the safety pilot should immediately land the drone in this case. Pontetial solutions (no guarantees):</dt>
-<dd><ul class="first last">
-<li>Check if the pixhawk gps is still blinking green (fix). Click on the gps ‘SWITCH’ knob to make it fix.</li>
-<li>Start the session again.</li>
-<li>Check if the baudrates are set correctly.</li>
-<li>Replug the Pixhawk.</li>
-<li>Replug the Reach M2 and follow the standard steps to get RTK FIX.</li>
+<li><p>At each new test moment, follow the steps below but first always run the basic examples i.e. just_flying_rtk.sh and the last script you tested before.</p></li>
+<li><p>From the ground station computer ssh on the on-board computer (i.e. ssh nuc5&#64;&lt;hostname or ip&gt;).</p></li>
+<li><p>cd to your testing folder.</p></li>
+<li><p>Run the command tmux kill-server to be sure no other session are active.</p></li>
+<li><p>Run your tmux scripts for the real hardware (not simulation), i.e. ./ TAB TAB ENTER.</p></li>
+<li><p>Yuo should know that for exiting the session you can run: ctrl + c and then ctrl + a and k. If you directly do ctrl + a and k, you will have to ssh again into to the on-board computer.</p></li>
+<li><p>Check if any tabs crashed. Move accross all tabs by ctrl + a and n. If crashes occured try restarting the session, if they remain crashed, solve the issue.</p></li>
+<li><p>The status should show stable and reasonable odometry values for the odometry source you use. Do not continue when this is not the case!</p></li>
+<li><p>We advise for each new test moment and location to do the folowng steps once: move the drone above the base and check if the x and y should be 0 with 5cm error for RTK. The RTK z value of the drone should be about 20cm when on te ground and about 1.5m when above the base. Now find out the x and y axis of the world frame and mark them (e.g. [0 5] and [5 0]. These axes will always be parallel independent of the orientation of the base. Measure the distance from these 2 points till base. This should be 5m with a 5cm error for RTK.</p></li>
+<li><dl class="simple">
+<dt>DANGER: if the status tab displays strong oscillations or jumps in the odometry values do not continue. This issue can also suddenly occur during flight, the safety pilot should immediately land the drone in this case. Pontetial solutions (no guarantees):</dt><dd><ul>
+<li><p>Check if the pixhawk gps is still blinking green (fix). Click on the gps ‘SWITCH’ knob to make it fix.</p></li>
+<li><p>Start the session again.</p></li>
+<li><p>Check if the baudrates are set correctly.</p></li>
+<li><p>Replug the Pixhawk.</p></li>
+<li><p>Replug the Reach M2 and follow the standard steps to get RTK FIX.</p></li>
 </ul>
 </dd>
 </dl>
 </li>
-<li>When you have an RTK fix, on the right of the status tab should be displayed ‘L1_int’.</li>
-<li><dl class="first docutils">
-<dt>When the odometry is correct the safety pilot can takeoff the drone.</dt>
-<dd><ul class="first last">
-<li>The same procedure as for manual flight with some differences.</li>
-<li>After the drone is ARMED and the props start spinning, toggle the OFFBOARD switch. Immediately set the throttle to a value of the hover thrust (e.g. 57%). The latter is important when taking back manual control so the drone does not fall down. After a few sconds the thrust will increase and the drone will takeoff.</li>
+<li><p>When you have an RTK fix, on the right of the status tab should be displayed ‘L1_int’.</p></li>
+<li><dl class="simple">
+<dt>When the odometry is correct the safety pilot can takeoff the drone.</dt><dd><ul>
+<li><p>The same procedure as for manual flight with some differences.</p></li>
+<li><p>After the drone is ARMED and the props start spinning, toggle the OFFBOARD switch. Immediately set the throttle to a value of the hover thrust (e.g. 57%). The latter is important when taking back manual control so the drone does not fall down. After a few sconds the thrust will increase and the drone will takeoff.</p></li>
 </ul>
 </dd>
 </dl>
@@ -266,8 +265,8 @@
           </div>
           <footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-        <a href="Introduction.html" class="btn btn-neutral float-right" title="1. Introduction" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
-        <a href="Information for internal collaborators.html" class="btn btn-neutral float-left" title="?. Information for Internal Collaborators" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="For_developers.html" class="btn btn-neutral float-right" title="For developers" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="Introduction_to_visualization.html" class="btn btn-neutral float-left" title="5. Introduction to visualization" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
 
   <hr/>

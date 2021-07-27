@@ -1,7 +1,7 @@
 
 
 <!DOCTYPE html>
-<html class="writer-html4" lang="en" >
+<html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8" />
   
@@ -13,7 +13,9 @@
   
   <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="_static/css/hack.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/colors.css" type="text/css" />
 
   
   
@@ -30,19 +32,18 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-        <script type="text/javascript" src="_static/jquery.js"></script>
-        <script type="text/javascript" src="_static/underscore.js"></script>
-        <script type="text/javascript" src="_static/doctools.js"></script>
-        <script type="text/javascript" src="_static/language_data.js"></script>
-        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
     
     <script type="text/javascript" src="_static/js/theme.js"></script>
 
     
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="For developers" href="For_developers.html" />
-    <link rel="prev" title="5. Introduction to visualization" href="Introduction_to_visualization.html" /> 
+    <link rel="next" title="Version control with Github" href="Version_control_with_Github.html" />
+    <link rel="prev" title="?. Information for Internal Collaborators" href="Information%20for%20internal%20collaborators.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -87,31 +88,33 @@
               
             
             
-              <p class="caption"><span class="caption-text">Contents:</span></p>
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="Information for internal collaborators.html">?. Information for Internal Collaborators</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Hardware.html">?. Hardware</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Introduction.html">1. Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Prerequisites.html">2. Prerequisites</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Introduction_to_MRS_Software_Extensions.html">3. Introduction to MRS Software Extensions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Workspace_git_configuration.html">4. Workspace Git configuration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Introduction_to_visualization.html">5. Introduction to visualization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Hardware.html">?. Hardware</a></li>
+<li class="toctree-l1"><a class="reference internal" href="For_developers.html">For developers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Information%20for%20internal%20collaborators.html">?. Information for Internal Collaborators</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">6. Crazyswarm</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#installation">6.1 Installation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#configuration">6.2 Configuration</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#vicon">6.3 Vicon</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#working-principle">6.3.1 Working principle</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#hardware">6.3.2 Hardware</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#software">6.3.3 Software</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#calibration-of-the-vicon-system">6.3.3 Calibration of the Vicon System</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#marker-arrangements">6.3.4 Marker Arrangements</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#creating-an-object">6.3.5 Creating an object</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#get-vicon-data-on-ubuntu-desktop">6.3.6 Get Vicon data on Ubuntu desktop</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#vicon">6.2 Vicon</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#working-principle">6.2.1 Working principle</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#hardware">6.2.2 Hardware</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#software">6.2.3 Software</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#calibration-of-the-vicon-system">6.2.3 Calibration of the Vicon System</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#marker-arrangements">6.2.4 Marker Arrangements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#creating-an-object">6.2.5 Creating an object</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#get-vicon-data-on-ubuntu-desktop">6.2.6 Get Vicon data on Ubuntu desktop</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="#configuration">6.3 Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#tutorials">6.4 Tutorials</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="For_developers.html">For developers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Version_control_with_Github.html">Version control with Github</a></li>
 </ul>
 
             
@@ -196,49 +199,16 @@ Please refer to the <em>Physical Robots and Simulation</em> part. Don’t forget
 </pre></div>
 </div>
 <p>To install the Crazyflie Client, we recommend you to follow <a class="reference external" href="https://www.bitcraze.io/documentation/repository/crazyflie-clients-python/master/installation/install/">these steps</a>
-(Prerequisites installation and Installing from source).</p>
-</div>
-<div class="section" id="configuration">
-<h2>6.2 Configuration<a class="headerlink" href="#configuration" title="Permalink to this headline">¶</a></h2>
-<p>Now, <a class="reference external" href="https://crazyswarm.readthedocs.io/en/latest/configuration.html#configuration">configuration</a> is needed before flying.</p>
-<p>The first step is to <a class="reference external" href="https://crazyswarm.readthedocs.io/en/latest/configuration.html#set-up-radio-communication">set up the radio communication</a>.</p>
-<div class="admonition important">
-<p class="first admonition-title">Important</p>
-<p class="last">To set up the radio communication, be careful to the radio bandwith. Select 2MBits/s.</p>
-</div>
-<p>Then, <a class="reference external" href="https://crazyswarm.readthedocs.io/en/latest/configuration.html#update-firmware">update</a> the firmware of your Crazyflies and Crazyradios.</p>
-<p>If you can’t connect to the CF, you probably need to run this command with the drone turned on and connected via USB:</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> crazyswarm/crazyflie-lib-python/examples
-python3 write-eeprom.py
-</pre></div>
-</div>
-<p>You could get this error as a result:</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>Scanning interfaces <span class="k">for</span> Crazyflies...
-Cannot find a Crazyradio Dongle
-Crazyflies found:
-No Crazyflies found, cannot run example
-Traceback <span class="o">(</span>most recent call last<span class="o">)</span>:
-  File <span class="s2">&quot;write-eeprom.py&quot;</span>, line <span class="m">148</span>, in &lt;module&gt;
-     <span class="k">while</span> le.is_connected:
-NameError: name <span class="s1">&#39;le&#39;</span> is not defined
-</pre></div>
-</div>
-<p>If so, set the USB permissions as described <a class="reference external" href="https://www.bitcraze.io/documentation/repository/crazyflie-lib-python/master/installation/usb_permissions/">here</a>. Then,
-run again these commands:</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> crazyswarm/crazyflie-lib-python/examples
-python3 write-eeprom.py
-</pre></div>
-</div>
-<p>We use the Vicon motion capture system and duplicated marker arrangements so you must select the correct tabs to <a class="reference external" href="https://crazyswarm.readthedocs.io/en/latest/configuration.html#adjust-configuration-files">adjust configuation files</a>.</p>
+(Prerequisites installation and Installing from source - Linux part).</p>
 </div>
 <div class="section" id="vicon">
-<h2>6.3 Vicon<a class="headerlink" href="#vicon" title="Permalink to this headline">¶</a></h2>
+<h2>6.2 Vicon<a class="headerlink" href="#vicon" title="Permalink to this headline">¶</a></h2>
 <p>Vicon is a developer of motion capture products and services for the life science, entertainment, and engineering industries. Motion capture (mocap) is the
 process of recording the movement of objects or people. The technology originated in the life science market for gait analysis but is now used widely by VFX
 studios, sports therapists, neuroscientists, and for validation and control of computer vision and robotics.
 More information about Vicon can be found on <a class="reference external" href="https://www.vicon.com">Vicon website</a>.</p>
 <div class="section" id="working-principle">
-<h3>6.3.1 Working principle<a class="headerlink" href="#working-principle" title="Permalink to this headline">¶</a></h3>
+<h3>6.2.1 Working principle<a class="headerlink" href="#working-principle" title="Permalink to this headline">¶</a></h3>
 <p>The Vicon motion capture system is a passive optical system. This technique uses retroreflective markers that are tracked by the infrared cameras by reflecting
 the light that is generated near the cameras’ lens. The camera’s threshold can be adjusted so only the bright reflective markers will be sampled, ignoring
 skin and fabric.</p>
@@ -252,14 +222,14 @@ objects hiding one of the cameras, the number of cameras needed can increase qui
 is required, more cameras will be needed.</p>
 <div class="figure align-center" id="id1">
 <img alt="alternate text" src="_images/Vicon_working_principle.png" />
-<p class="caption"><span class="caption-text">Fig. 6.1: Vicon Working principle</span></p>
+<p class="caption"><span class="caption-text">Fig. 6.1: Vicon Working principle</span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
 </div>
 <p>More information can be found <a class="reference external" href="https://www.vicon.com/what-is-motion-capture">here</a>.</p>
 </div>
 <div class="section" id="hardware">
-<h3>6.3.2 Hardware<a class="headerlink" href="#hardware" title="Permalink to this headline">¶</a></h3>
+<h3>6.2.2 Hardware<a class="headerlink" href="#hardware" title="Permalink to this headline">¶</a></h3>
 <img alt="alternate text" src="_images/Hardware.png" />
-<p>6.3.2.1 Cameras</p>
+<p>6.2.2.1 Cameras</p>
 <p>At the R&amp;MM lab there are ten Vero v2.2 cameras with a resolution of 1280*1024 pixels and a frame rate of 250fps. The higher the resolution of the camera, the
 preciser the positioning of the markers and the more details you can obtain from the markers which is interesting when using very small markers placed close to
 each other. The higher the frame rate, the easier to track the quick movements of the markers, which is also needed to use position of markers in a feedback
@@ -268,9 +238,9 @@ loop with high sampling time.</p>
 the future it could be useful to have all of them on tripod to be able to change their places easily and quickly.</p>
 <div class="figure align-center" id="id2">
 <img alt="alternate text" src="_images/Vicon_cameras.png" />
-<p class="caption"><span class="caption-text">Fig. 6.2: Vicon cameras</span></p>
+<p class="caption"><span class="caption-text">Fig. 6.2: Vicon cameras</span><a class="headerlink" href="#id2" title="Permalink to this image">¶</a></p>
 </div>
-<p>6.3.2.2 Sync box</p>
+<p>6.2.2.2 Sync box</p>
 <p>As can be seen in Fig. 2.1, all cameras and the PC are connected to the synch box in order to get data coming from cameras and sending this to the PC. The sync
 box provides a single communication point between the cameras and the (Vicon) PC. If you’re not integrating third-party equipment like reference video or force
 plates into your system, this could be as simple as a POE switch. The real difference with the various sync boxes offered by manufacturers comes when you need
@@ -279,9 +249,9 @@ synchronized triggering of your third-party devices.</p>
 <p>More information can be found <a class="reference external" href="https://www.vicon.com/products/vicon-devices/lock-sync-box">here</a>.</p>
 <div class="figure align-center" id="id3">
 <img alt="alternate text" src="_images/Sync_box.png" />
-<p class="caption"><span class="caption-text">Fig. 6.3: Cameras connected to the synch box</span></p>
+<p class="caption"><span class="caption-text">Fig. 6.3: Cameras connected to the synch box</span><a class="headerlink" href="#id3" title="Permalink to this image">¶</a></p>
 </div>
-<p>6.3.2.3 Active wand</p>
+<p>6.2.2.3 Active wand</p>
 <p>Before using Vicon we need to calibrate the Vicon system in order that the cameras know their location relative to each other.</p>
 <p>Before starting with the calibration, we first have to mask all reflective elements (e.g. the cameras themselves, maybe clothes or shoes with that reflect
 infrared light) in the Vicon room, so no reflective markers that you will use may be visible for the cameras. To start the calibration, press start in the
@@ -297,35 +267,35 @@ they can compute the position relative to each other.</p>
 <p>More information can be found <a class="reference external" href="https://www.vicon.com/products/vicon-devices/calibration">here</a>.</p>
 <div class="figure align-center" id="id4">
 <img alt="alternate text" src="_images/Active_wand.png" />
-<p class="caption"><span class="caption-text">Fig. 6.4: Active Wand</span></p>
+<p class="caption"><span class="caption-text">Fig. 6.4: Active Wand</span><a class="headerlink" href="#id4" title="Permalink to this image">¶</a></p>
 </div>
-<p>6.3.2.4 Reflective Markers</p>
+<p>6.2.2.4 Reflective Markers</p>
 <p>The reflective markers are placed on objects or on the body in order to detect their position. In order to detect pose (i.e position and orientation) of a
 rigid object we need at least 3 markers. The position of the markers w.r.t. each other needs to be asymmetrical, in other words you may not form an equilateral
 triangle.</p>
 <div class="figure align-center" id="id5">
 <img alt="alternate text" src="_images/Markers.png" />
-<p class="caption"><span class="caption-text">Fig. 6.5: Markers</span></p>
+<p class="caption"><span class="caption-text">Fig. 6.5: Markers</span><a class="headerlink" href="#id5" title="Permalink to this image">¶</a></p>
 </div>
-<p>6.3.2.5 Computer</p>
+<p>6.2.2.5 Computer</p>
 <p>The computer gives us the possibility to drive the Vicon system, calibrate, organize data capture, set parameters. Since the capture and display of motion
 capture data is a highly demanding task for a PC and the real-time data processing asks a lot of the processor, the recommended specifications of the computer
 are:
 * Dell Precision XL Tower 5820</p>
 <ul class="simple">
-<li>Intel Xeon Processor W-2123 (3.6GHz, 3.9GHz Turbo, 4C, 8.25M Cache)</li>
-<li>16GB (2x8GB) 2666MHz DDR4 RDIMM ECC</li>
-<li>2 x 2TB 3.5inch Serial ATA (7,200 Rpm) Hard Drive</li>
-<li>Non RAID</li>
-<li>8x Slimline DVD+/-RW Drive</li>
-<li>2 GB NVIDIA Quadro P600</li>
-<li>Windows 10 Pro English</li>
-<li>INTEL ETHERNET i350 T4 SERVER ADAPTER RJ45 PCI−E – to connect Vicon System</li>
+<li><p>Intel Xeon Processor W-2123 (3.6GHz, 3.9GHz Turbo, 4C, 8.25M Cache)</p></li>
+<li><p>16GB (2x8GB) 2666MHz DDR4 RDIMM ECC</p></li>
+<li><p>2 x 2TB 3.5inch Serial ATA (7,200 Rpm) Hard Drive</p></li>
+<li><p>Non RAID</p></li>
+<li><p>8x Slimline DVD+/-RW Drive</p></li>
+<li><p>2 GB NVIDIA Quadro P600</p></li>
+<li><p>Windows 10 Pro English</p></li>
+<li><p>INTEL ETHERNET i350 T4 SERVER ADAPTER RJ45 PCI−E – to connect Vicon System</p></li>
 </ul>
 <p>More information can be found <a class="reference external" href="https://www.vicon.com/faqs/operating-systems-and-pc-specification/what-is-the-recommended-pc-specification-to-run-my-vicon-tracker-system">here</a>.</p>
 </div>
 <div class="section" id="software">
-<h3>6.3.3 Software<a class="headerlink" href="#software" title="Permalink to this headline">¶</a></h3>
+<h3>6.2.3 Software<a class="headerlink" href="#software" title="Permalink to this headline">¶</a></h3>
 <p>Vicon offers several software packages, each of them for <a class="reference external" href="https://www.vicon.com/products/software">different applications</a>.
 Two of them are explained beheight: 400
 :width: 400
@@ -334,142 +304,219 @@ engineering, design method optimization, virtual engineering, and previsualizati
 but we were also able to use Nexus.</p>
 <div class="figure align-center" id="id6">
 <img alt="alternate text" src="_images/Tracker.png" />
-<p class="caption"><span class="caption-text">Fig. 6.7: Tracker</span></p>
+<p class="caption"><span class="caption-text">Fig. 6.7: Tracker</span><a class="headerlink" href="#id6" title="Permalink to this image">¶</a></p>
 </div>
 </div>
 <div class="section" id="calibration-of-the-vicon-system">
-<h3>6.3.3 Calibration of the Vicon System<a class="headerlink" href="#calibration-of-the-vicon-system" title="Permalink to this headline">¶</a></h3>
+<h3>6.2.3 Calibration of the Vicon System<a class="headerlink" href="#calibration-of-the-vicon-system" title="Permalink to this headline">¶</a></h3>
 <p>Before anything else, you must check if the attitude, the FOV (Field Of View), the depth of field and the aperture are correctly set to optimize the recording of
 movements in the to-be-captured area.</p>
 <img alt="alternate text" src="_images/Volume.png" />
 <img alt="alternate text" src="_images/Adjust.png" />
 <p>Then, you can start the calibration process:</p>
 <ul class="simple">
-<li>The <em>Mask cameras</em> function is used to make camera don’t care about area where infrared signal is not significant. Because vicon can believed there are markers
-in this area but it is not the case. So when we use this function we have to be sure no markers are in the vision field of cameras.</li>
-<li>Point the cameras to provide roughly the required coverage. When it is good, you can <em>Start</em> to <em>Aim Cameras</em>.</li>
-<li>Press <em>Start</em> in the <em>Calibrate Cameras</em> menu and wave with the active wand by drawing “∞” forms in the to-be-captured area, i.e. where you want to
+<li><p>The <em>Mask cameras</em> function is used to make camera don’t care about area where infrared signal is not significant. Because vicon can believed there are markers
+in this area but it is not the case. So when we use this function we have to be sure no markers are in the vision field of cameras.</p></li>
+<li><p>Point the cameras to provide roughly the required coverage. When it is good, you can <em>Start</em> to <em>Aim Cameras</em>.</p></li>
+<li><p>Press <em>Start</em> in the <em>Calibrate Cameras</em> menu and wave with the active wand by drawing “∞” forms in the to-be-captured area, i.e. where you want to
 detect reflection markers. In <em>Show Advances</em>, you must have at least <em>Refinement frames: 2000</em>. Cameras are blinking during this
-process and are all turned green when the process is finished.</li>
-<li>In order to set the origin of the Vicon system, click <em>Start</em> in the <em>Set Volume Origin</em> menu. We usually use the active wand, but there are also others methods in
-advanced options.</li>
+process and are all turned green when the process is finished.</p></li>
+<li><p>In order to set the origin of the Vicon system, click <em>Start</em> in the <em>Set Volume Origin</em> menu. We usually use the active wand, but there are also others methods in
+advanced options.</p></li>
 </ul>
 <div class="figure align-center" id="id7">
 <img alt="alternate text" src="_images/Set_volume_origin.png" />
-<p class="caption"><span class="caption-text">Fig. 6.8: Origin volume setting with the Vicon wand</span></p>
+<p class="caption"><span class="caption-text">Fig. 6.8: Origin volume setting with the Vicon wand</span><a class="headerlink" href="#id7" title="Permalink to this image">¶</a></p>
 </div>
 <ul class="simple">
-<li>Leave the active wand where you want (make sure it is in the camera view of all cameras) and press <em>Set the origin</em>. Now your Vicon system is
+<li><p>Leave the active wand where you want (make sure it is in the camera view of all cameras) and press <em>Set the origin</em>. Now your Vicon system is
 ready to use. To calibrate the system we can also adjust the focal of cameras.
 During using of the Vicon sometimes cameras blink red, it means the camera pose has changed. Most of the time it is only due to vibration so it do not affect
-the capture.</li>
+the capture.</p></li>
 </ul>
 <div class="figure align-center" id="id8">
 <img alt="alternate text" src="_images/System_preparation_menu.png" />
-<p class="caption"><span class="caption-text">Fig. 6.9: Example of system preparation menu</span></p>
+<p class="caption"><span class="caption-text">Fig. 6.9: Example of system preparation menu</span><a class="headerlink" href="#id8" title="Permalink to this image">¶</a></p>
 </div>
 </div>
 <div class="section" id="marker-arrangements">
-<h3>6.3.4 Marker Arrangements<a class="headerlink" href="#marker-arrangements" title="Permalink to this headline">¶</a></h3>
+<h3>6.2.4 Marker Arrangements<a class="headerlink" href="#marker-arrangements" title="Permalink to this headline">¶</a></h3>
 <p>We use the same marker arrangement as the USC ACT Lab propose in their documentation:</p>
 <div class="figure align-center" id="id9">
-<img alt="alternate text" src="_images/CF.png" />
-<p class="caption"><span class="caption-text">Fig. 6.10: Marker arrangement</span></p>
+<a class="reference internal image-reference" href="_images/CF.png"><img alt="alternate text" src="_images/CF.png" style="width: 500px;" /></a>
+<p class="caption"><span class="caption-text">Fig. 6.10: Marker arrangement</span><a class="headerlink" href="#id9" title="Permalink to this image">¶</a></p>
+</div>
+<p>But our drones look like this:</p>
+<div class="figure align-center" id="id10">
+<a class="reference internal image-reference" href="_images/CF2.png"><img alt="alternate text" src="_images/CF2.png" style="width: 500px;" /></a>
+<p class="caption"><span class="caption-text">Fig. 6.11: Our drones</span><a class="headerlink" href="#id10" title="Permalink to this image">¶</a></p>
 </div>
 <p>Markers are fixed using double-sided tape.</p>
 </div>
 <div class="section" id="creating-an-object">
-<h3>6.3.5 Creating an object<a class="headerlink" href="#creating-an-object" title="Permalink to this headline">¶</a></h3>
+<h3>6.2.5 Creating an object<a class="headerlink" href="#creating-an-object" title="Permalink to this headline">¶</a></h3>
 <p>To create an object on Vicon Nexus, first create a subject like this:</p>
-<div class="figure align-center" id="id10">
+<div class="figure align-center" id="id11">
 <img alt="alternate text" src="_images/Create_subject.png" />
-<p class="caption"><span class="caption-text">Fig. 6.11: Creating a subject</span></p>
+<p class="caption"><span class="caption-text">Fig. 6.12: Creating a subject</span><a class="headerlink" href="#id11" title="Permalink to this image">¶</a></p>
 </div>
 <p>Then create segments:</p>
-<div class="figure align-center" id="id11">
+<div class="figure align-center" id="id12">
 <img alt="alternate text" src="_images/Create_segments.png" />
-<p class="caption"><span class="caption-text">Fig. 6.12: Creating segments</span></p>
+<p class="caption"><span class="caption-text">Fig. 6.13: Creating segments</span><a class="headerlink" href="#id12" title="Permalink to this image">¶</a></p>
 </div>
 <p>Select the markers of the CF:</p>
-<div class="figure align-center" id="id12">
+<div class="figure align-center" id="id13">
 <img alt="alternate text" src="_images/Select_markers.png" />
-<p class="caption"><span class="caption-text">Fig. 6.13: Selecting markers</span></p>
+<p class="caption"><span class="caption-text">Fig. 6.14: Selecting markers</span><a class="headerlink" href="#id13" title="Permalink to this image">¶</a></p>
 </div>
 <p>Then click on <em>create</em>:</p>
-<div class="figure align-center" id="id13">
+<div class="figure align-center" id="id14">
 <img alt="alternate text" src="_images/Create_object.png" />
-<p class="caption"><span class="caption-text">Fig. 6.14: Creating the object</span></p>
+<p class="caption"><span class="caption-text">Fig. 6.15: Creating the object</span><a class="headerlink" href="#id14" title="Permalink to this image">¶</a></p>
 </div>
 <p>Normally the object has been created and it looks like this:</p>
-<div class="figure align-center" id="id14">
+<div class="figure align-center" id="id15">
 <img alt="alternate text" src="_images/Object.png" />
-<p class="caption"><span class="caption-text">Fig. 6.15: Object</span></p>
+<p class="caption"><span class="caption-text">Fig. 6.16: Object</span><a class="headerlink" href="#id15" title="Permalink to this image">¶</a></p>
 </div>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">We do not know why but when saving a new subject, it sometimes unsaves the objects already saved.</p>
+<p class="admonition-title">Note</p>
+<p>We do not know why but when saving a new subject, it sometimes unsaves the objects already saved.</p>
 </div>
 </div>
 <div class="section" id="get-vicon-data-on-ubuntu-desktop">
-<h3>6.3.6 Get Vicon data on Ubuntu desktop<a class="headerlink" href="#get-vicon-data-on-ubuntu-desktop" title="Permalink to this headline">¶</a></h3>
-<p><span class="raw-html"><font color="RoyalBlue">[TODO]JV</font></span></p>
-<p>6.3.6.1 Create an ethernet connection between your Linux computer and the Windows computer.</p>
-<p><span class="raw-html"><font color="RoyalBlue">[TODO: add extra explanations about the right IP adress, the last segment of the IP address and the not working ping.]JV</font></span></p>
+<h3>6.2.6 Get Vicon data on Ubuntu desktop<a class="headerlink" href="#get-vicon-data-on-ubuntu-desktop" title="Permalink to this headline">¶</a></h3>
+<p>6.2.6.1 Create an ethernet connection between your Linux computer and the Windows computer.</p>
 <p>This is the global way to set an Ethernet connection. At the end of this section, you can follow a simpler way to do it but it is not available for
 all Ubuntu configuation.</p>
 <ol class="arabic simple">
-<li>On Windows<ol class="arabic">
-<li>Check current IP: start <code class="docutils literal notranslate"><span class="pre">cmd</span></code> to open a terminal and run <code class="docutils literal notranslate"><span class="pre">ipconfig</span></code></li>
-<li>Write down the current IP(s) to compare later</li>
-</ol>
-</li>
-<li>Attach the Ethernet cable to both machines so they are now physically connected to each other.</li>
-<li>On Windows<ol class="arabic">
-<li>Get the new IP: start <code class="docutils literal notranslate"><span class="pre">cmd</span></code> to open a command prompt and run <code class="docutils literal notranslate"><span class="pre">ipconfig</span></code></li>
-<li>Comparing with your previously copied IPs, see which new IP appears, and copy it down. For example it may resemble: 169.254.123.101.</li>
-</ol>
-</li>
-<li>On Ubuntu<ol class="arabic">
-<li>Go to the network manager, for example click status bar network icon</li>
-<li>Edit Connections</li>
-<li>Choose Wired type</li>
-<li>Create a new wired connection, naming it something you will recognize such as <code class="docutils literal notranslate"><span class="pre">Wired</span> <span class="pre">connection</span> <span class="pre">VUB</span></code></li>
-<li>Under iPv4, use these settings<ol class="arabic">
-<li>Method: Manual. Otherwise default Automatic (DHCP) does not let you set an IP</li>
-<li>Address: 169.254.123.105. The point is to use same IP except for last segment to be on the same subnet so if one is a.b.c.101 then you should be a.b.c.105 for example</li>
-<li>Netmask: 255.255.0.0</li>
-<li>Gateway: leave blank</li>
-</ol>
-</li>
-</ol>
-</li>
-</ol>
-<dl class="docutils">
-<dt>It is at this point, on Lubuntu for example there is weirdness where, when typing address numbers, values “disappear” when typing. Just keep typing and when you Save, it seems the values just appear.</dt>
-<dd>Save
-Now choose your new direct-ether network, for example status bar click it</dd>
-</dl>
-<p>On Ubuntu 20.04 for example, you can do that easily.</p>
+<li><p>On Windows</p>
 <ol class="arabic simple">
-<li>Attach the Ethernet cable between the two computers.</li>
-<li>Go to the network manager</li>
+<li><p>Check current IP: start <code class="docutils literal notranslate"><span class="pre">cmd</span></code> to open a terminal and run <code class="docutils literal notranslate"><span class="pre">ipconfig</span></code></p></li>
+<li><p>Write down the current IP(s) to compare later</p></li>
 </ol>
-<p>6.3.6.2 Test</p>
+</li>
+<li><p>Attach the Ethernet cable to both machines so they are now physically connected to each other.</p></li>
+<li><p>On Windows</p>
+<ol class="arabic simple">
+<li><p>Get the new IP: start <code class="docutils literal notranslate"><span class="pre">cmd</span></code> to open a command prompt and run <code class="docutils literal notranslate"><span class="pre">ipconfig</span></code></p></li>
+<li><p>Comparing with your previously copied IPs, see which new IP appears, and copy it down. For example it may resemble: 169.254.123.101.</p></li>
+</ol>
+</li>
+<li><p>On Ubuntu</p>
+<ol class="arabic simple">
+<li><p>Go to the network manager, for example click status bar network icon</p></li>
+<li><p>Edit Connections</p></li>
+<li><p>Choose Wired type</p></li>
+<li><p>Create a new wired connection, naming it something you will recognize such as <code class="docutils literal notranslate"><span class="pre">Wired</span> <span class="pre">connection</span> <span class="pre">VUB</span></code></p></li>
+<li><p>Under iPv4, use these settings</p>
+<ol class="arabic simple">
+<li><p>Method: Manual. Otherwise default Automatic (DHCP) does not let you set an IP</p></li>
+<li><p>Address: 169.254.123.1. The point is to use same IP except for last segment to be on the same subnet so if one is a.b.c.101 then you should be a.b.c.1 for example</p></li>
+<li><p>Netmask: 255.255.255.0</p></li>
+<li><p>Gateway: leave blank</p></li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<dl class="simple">
+<dt>It is at this point, on Lubuntu for example there is weirdness where, when typing address numbers, values “disappear” when typing. Just keep typing and when you Save, it seems the values just appear.</dt><dd><p>Save
+Now choose your new direct-ether network, for example status bar click it</p>
+</dd>
+</dl>
+<p>6.2.6.2 Test</p>
 <p>So now you should have, for example:</p>
 <p>Windows: 169.254.123.101
-Ubuntu: 169.254.123.105</p>
+Ubuntu: 169.254.123.1</p>
+<p>On Windows you can test on a terminal with:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>ping <span class="s2">&quot;Ubuntu IP address&quot;</span>
+</pre></div>
+</div>
 <p>You can test on an Ubuntu terminal the command:</p>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>ping <span class="s2">&quot;Windows IP address&quot;</span>
 </pre></div>
 </div>
-<p>On Windows you can test with:</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>cmd
-ping <span class="s2">&quot;Ubuntu address&quot;</span>
+<p>It will return that if the connection is setted correctly :</p>
+<div class="figure align-center" id="id16">
+<img alt="alternate text" src="_images/ping.png" />
+<p class="caption"><span class="caption-text">Fig. 6.17: ping</span><a class="headerlink" href="#id16" title="Permalink to this image">¶</a></p>
+</div>
+<div class="admonition caution">
+<p class="admonition-title">Caution</p>
+<p>The ping can not work on the Ubuntu terminal but this is not a problem, however it needs to work on the Windows terminal.</p>
+</div>
+<p>6.2.6.3 Set the Vicon Bridge to make a wireless connection between Windows and Ubuntu computers.</p>
+<p>In order to use the Vicon system with ROS enabled robots, the <a class="reference external" href="http://wiki.ros.org/vicon_bridge">Vicon bridge</a> has to be installed:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> ~/catkin_ws/src
+git clone https://github.com/ethz-asl/vicon_bridge.git
+<span class="nb">cd</span> ..
+catkin_make
 </pre></div>
 </div>
-<p>It will return that if the connection is setted correctly :</p>
-<p>6.3.6.3 Set the Vicon Bridge to make a wireless connection between Windows and Ubuntu computers.</p>
-<p><span class="raw-html"><font color="RoyalBlue">[TODO]JV</font></span></p>
+<p>We need to set parameters in the vicon.launch file:</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span>//change this line
+<span class="p">&lt;</span><span class="nt">param</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;datastream_hostport&quot;</span><span class="na">value</span><span class="o">=</span><span class="s">&quot;vicon:801&quot;</span><span class="na">type</span><span class="o">=</span><span class="s">&quot;str&quot;</span><span class="p">/&gt;</span>
+//into
+<span class="p">&lt;</span><span class="nt">param</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;datastream_hostport&quot;</span><span class="na">value</span><span class="o">=</span><span class="s">&quot;PC−IP−adress:801&quot;</span><span class="na">type</span><span class="o">=</span><span class="s">&quot;str&quot;</span><span class="p">/&gt;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="configuration">
+<h2>6.3 Configuration<a class="headerlink" href="#configuration" title="Permalink to this headline">¶</a></h2>
+<p>Now, <a class="reference external" href="https://crazyswarm.readthedocs.io/en/latest/configuration.html#configuration">configuration</a> is needed before flying.</p>
+<p>The first step is to <a class="reference external" href="https://crazyswarm.readthedocs.io/en/latest/configuration.html#set-up-radio-communication">set up the radio communication</a>.</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>To set up the radio communication, be careful to the radio bandwith. Select 2MBits/s.</p>
+</div>
+<p>Then, <a class="reference external" href="https://crazyswarm.readthedocs.io/en/latest/configuration.html#update-firmware">update the firmware</a> of your Crazyflies and Crazyradios.</p>
+<p>If you can’t connect to the CF, you probably need to run this command with the drone turned on and connected via USB:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> crazyswarm/crazyflie-lib-python/examples
+python3 write-eeprom.py
+</pre></div>
+</div>
+<p>You could get this error as a result:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>Scanning interfaces <span class="k">for</span> Crazyflies...
+Cannot find a Crazyradio Dongle
+Crazyflies found:
+No Crazyflies found, cannot run example
+Traceback <span class="o">(</span>most recent call last<span class="o">)</span>:
+File <span class="s2">&quot;write-eeprom.py&quot;</span>, line <span class="m">148</span>, in &lt;module&gt;
+<span class="k">while</span> le.is_connected:
+NameError: name <span class="s1">&#39;le&#39;</span> is not defined
+</pre></div>
+</div>
+<p>If so, set the USB permissions as described <a class="reference external" href="https://www.bitcraze.io/documentation/repository/crazyflie-lib-python/master/installation/usb_permissions/">here</a>. Then,
+run again these commands:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> crazyswarm/crazyflie-lib-python/examples
+python3 write-eeprom.py
+</pre></div>
+</div>
+<p>We use the <strong>Vicon</strong> motion capture system and <strong>duplicated marker arrangements</strong>
+so you must select the correct tabs to <a class="reference external" href="https://crazyswarm.readthedocs.io/en/latest/configuration.html#adjust-configuration-files">adjust configuation files</a>.</p>
+</div>
+<div class="section" id="tutorials">
+<h2>6.4 Tutorials<a class="headerlink" href="#tutorials" title="Permalink to this headline">¶</a></h2>
+<p>Before all, follow the <a class="reference external" href="https://crazyswarm.readthedocs.io/en/latest/tutorials/tutorials.html#hovering-hello-world">Hovering (hellow world) tutorial</a>.
+Don’t forget to use a Crazyradio and a Xbox controller.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>It is possible that you will get a warning or an error message about the Xbox controller.
+That’s because the <a class="reference external" href="https://github.com/ros-drivers/joystick_drivers">joystick_drivers package</a> is missing. So run these commands:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> crazyswarm/ros_wc/src
+git clone https://github.com/ros-drivers/joystick_drivers.git
+</pre></div>
+</div>
+<p>After that, there will still be an error caused by the spacenav_node folder because. Just remove it:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> joystick_drivers
+<span class="c1"># Be very careful with the rm -r command because it will delete not only everything in the</span>
+<span class="c1"># named directory, but also everything in its subdirectories.</span>
+rm -r spacenav_node
+</pre></div>
+</div>
 </div>
 </div>
 </div>
@@ -480,8 +527,8 @@ ping <span class="s2">&quot;Ubuntu address&quot;</span>
           </div>
           <footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-        <a href="For_developers.html" class="btn btn-neutral float-right" title="For developers" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
-        <a href="Introduction_to_visualization.html" class="btn btn-neutral float-left" title="5. Introduction to visualization" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="Version_control_with_Github.html" class="btn btn-neutral float-right" title="Version control with Github" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="Information%20for%20internal%20collaborators.html" class="btn btn-neutral float-left" title="?. Information for Internal Collaborators" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
 
   <hr/>

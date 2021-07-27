@@ -1,9 +1,6 @@
 5. Introduction to visualization
 ================================
 
-.. role:: raw-html(raw)
-    :format: html
-
 In this chapter, we will introduce you to the visualization on Rviz. It is a great tool for ROS, used by many to debug codes or to have some nice
 visualization of your simulations.
 
@@ -266,7 +263,7 @@ In order to visualize how it works, we first need to change ``data/f450.xml`` fi
        <material name="UAVSpecificColor" />
      </visual>
 
-:raw-html:`<font color="RoyalBlue">[TODO: explanations about how to visualize the path, the applied pose and desired reference pose]JV</font>`
+:blue:`[TODO: explanations about how to visualize the path, the applied pose and desired reference pose]JV`
 
 5.4.2 D-ERG strategy 1
 ^^^^^^^^^^^^^^^^^^^^^^
@@ -284,7 +281,7 @@ Tube can **translate** and **rotate**.
 
 To visualize a pill, we need to create a plugin because this display type is not available on RViz. But this is not trivial at all.
 
-:raw-html:`<font color="RoyalBlue">[TODO: explanations about how to do it]JV</font>`
+:blue:`[TODO: explanations about how to do it]JV`
 
 5.4.3 D-ERG strategy 2
 ^^^^^^^^^^^^^^^^^^^^^^
@@ -300,7 +297,7 @@ Communicate: :math:`p_{k}`, :math:`p_{k}^{v}`
 
 Tube can **translate**, **rotate** and **change length**.
 
-:raw-html:`<font color="RoyalBlue">[TODO: explanations about how to do it]JV</font>`
+:blue:`[TODO: explanations about how to do it]JV`
 
 5.4.4 D-ERG strategy 3
 ^^^^^^^^^^^^^^^^^^^^^^
@@ -316,7 +313,7 @@ Communicate: :math:`p_{k}`, :math:`p_{k}^{v}`, :math:`S_{a,min}^{⊥}`
 
 Tube can **translate**, **rotate**, **change length and width**. The witfh (radius) is the minimal one for a tube with error directed longitudinal axis.
 
-:raw-html:`<font color="RoyalBlue">[TODO: explanations about how to do it]JV</font>`
+:blue:`[TODO: explanations about how to do it]JV`
 
 5.4.5 D-ERG strategy 4
 ^^^^^^^^^^^^^^^^^^^^^^
@@ -333,7 +330,7 @@ Communicate: :math:`p_{k}^{0}`, :math:`p_{k}^{1}`, :math:`S_{a,min}^{⊥}`
 Tube and cylinder can **translate**, **rotate**, **change length and width**. The width (radius) and the length are the minimal one for a tube with error directed
 longitudinal axis.
 
-:raw-html:`<font color="RoyalBlue">[TODO: explanations about how to do it]JV</font>`
+:blue:`[TODO: explanations about how to do it]JV`
 
 5.4.6 D-ERG strategy 5
 ^^^^^^^^^^^^^^^^^^^^^^
@@ -347,4 +344,4 @@ longitudinal axis.
 
 This final strategy permits to calculate the minimal distance between 2 drones.
 
-:raw-html:`<font color="RoyalBlue">[TODO: explanations about how to do it]JV</font>`
+:blue:`[TODO: explanations about how to do it]JV`

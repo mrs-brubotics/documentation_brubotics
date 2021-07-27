@@ -1,7 +1,7 @@
 
 
 <!DOCTYPE html>
-<html class="writer-html4" lang="en" >
+<html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8" />
   
@@ -13,7 +13,9 @@
   
   <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="_static/css/hack.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/colors.css" type="text/css" />
 
   
   
@@ -30,18 +32,18 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-        <script type="text/javascript" src="_static/jquery.js"></script>
-        <script type="text/javascript" src="_static/underscore.js"></script>
-        <script type="text/javascript" src="_static/doctools.js"></script>
-        <script type="text/javascript" src="_static/language_data.js"></script>
-        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
     
     <script type="text/javascript" src="_static/js/theme.js"></script>
 
     
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="prev" title="6. Crazyswarm" href="Crazyswarm.html" /> 
+    <link rel="next" title="?. Information for Internal Collaborators" href="Information%20for%20internal%20collaborators.html" />
+    <link rel="prev" title="?. Hardware" href="Hardware.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -86,16 +88,14 @@
               
             
             
-              <p class="caption"><span class="caption-text">Contents:</span></p>
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="Information for internal collaborators.html">?. Information for Internal Collaborators</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Hardware.html">?. Hardware</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Introduction.html">1. Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Prerequisites.html">2. Prerequisites</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Introduction_to_MRS_Software_Extensions.html">3. Introduction to MRS Software Extensions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Workspace_git_configuration.html">4. Workspace Git configuration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Introduction_to_visualization.html">5. Introduction to visualization</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Crazyswarm.html">6. Crazyswarm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Hardware.html">?. Hardware</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">For developers</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#definition-of-authors-comments">Definition of authors’ comments</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#how-to-use-readthedocs">How to use ReadTheDocs ?</a><ul>
@@ -106,6 +106,9 @@
 </li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="Information%20for%20internal%20collaborators.html">?. Information for Internal Collaborators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Crazyswarm.html">6. Crazyswarm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Version_control_with_Github.html">Version control with Github</a></li>
 </ul>
 
             
@@ -182,14 +185,14 @@
 </pre></div>
 </div>
 <p>And it will appear like this:</p>
-<p><span class="navy">[This is a comment.]INITIALS</span></p>
+<p><span class="red">[This is a comment.]INITIALS</span></p>
 <p>The available colors are: <span class="gray">gray</span>, <span class="silver">silver</span>, <span class="maroon">maroon</span>, <span class="red">red</span>, <span class="magenta">magenta</span>, <span class="fuchsia">fuchsia</span>, <span class="pink">pink</span>, <span class="orange">orange</span>,
 <span class="yellow">yellow</span>, <span class="lime">lime</span>, <span class="green">green</span>, <span class="olive">olive</span>, <span class="teal">teal</span>, <span class="cyan">cyan</span>, <span class="aqua">aqua</span>, <span class="blue">blue</span>, <span class="navy">navy</span>, <span class="purple">purple</span>.</p>
 <p>You can see here the definition and the rendering of the current author’s comments:</p>
 <p><span class="red">This is a comment from Bryan Convens.]BC</span></p>
-<p><span class="teal">&lt;font color=”Teal”&gt;[This is a comment from Kelly Merckaert.]KM</span></p>
+<p><span class="teal">[This is a comment from Kelly Merckaert.]KM</span></p>
 <p><span class="maroon">[This is a comment from Zakaria Lakeel.]ZL</span></p>
-<p><span class="lime">&lt;font color=”LimeGreen”&gt;[This is a comment from Titouan Tyack.]TT</span></p>
+<p><span class="lime">[This is a comment from Titouan Tyack.]TT</span></p>
 <p><span class="blue">[This is a comment from Jonathan Vogt.]JV</span></p>
 </div>
 <div class="section" id="how-to-use-readthedocs">
@@ -212,19 +215,19 @@ website. It has a syntax highlighting tool.</p>
 <p>The only files you need to modify are <code class="docutils literal notranslate"><span class="pre">conf.py</span></code> and all the <code class="docutils literal notranslate"><span class="pre">.rst</span></code> files in the <code class="docutils literal notranslate"><span class="pre">source</span></code> folder. Once you want to update your documentation, use the following
 commands from your directory:</p>
 <ul class="simple">
-<li>Before all, we recommend you to run this command to update your local repository and get the newest code:</li>
+<li><p>Before all, we recommend you to run this command to update your local repository and get the newest code:</p></li>
 </ul>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>git pull
 </pre></div>
 </div>
 <ul class="simple">
-<li>To check what files wich have been updated since the last commit you can use that command:</li>
+<li><p>To check what files wich have been updated since the last commit you can use that command:</p></li>
 </ul>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>git status
 </pre></div>
 </div>
 <ul class="simple">
-<li>To update your repository, adapt and run these commands</li>
+<li><p>To update your repository, adapt and run these commands</p></li>
 </ul>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>git add <span class="o">(</span>use tab key and <span class="nb">type</span> the first letter of the files to commit or use git add -A to directly stage all files<span class="o">)</span>
 git commit -m <span class="s2">&quot;Provide a clear explanation of your commit. People who did not make the change should understand the issue you solved.&quot;</span>
@@ -233,8 +236,8 @@ git push
 </div>
 <p>Please refer to section <a class="reference internal" href="Prerequisites.html#working-with-git"><span class="std std-ref">2.4</span></a> to understand why we use these commands.</p>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">When visualizing the documentation after running <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">html</span></code>, you may not see every chapters in the left tab. That’s probably because you modify the <code class="docutils literal notranslate"><span class="pre">index.rst</span></code>
+<p class="admonition-title">Note</p>
+<p>When visualizing the documentation after running <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">html</span></code>, you may not see every chapters in the left tab. That’s probably because you modify the <code class="docutils literal notranslate"><span class="pre">index.rst</span></code>
 file. To fix this, you need to save every <code class="docutils literal notranslate"><span class="pre">.rst</span></code> file.</p>
 </div>
 </div>
@@ -247,7 +250,8 @@ file. To fix this, you need to save every <code class="docutils literal notransl
           </div>
           <footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-        <a href="Crazyswarm.html" class="btn btn-neutral float-left" title="6. Crazyswarm" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="Information%20for%20internal%20collaborators.html" class="btn btn-neutral float-right" title="?. Information for Internal Collaborators" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="Hardware.html" class="btn btn-neutral float-left" title="?. Hardware" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
 
   <hr/>

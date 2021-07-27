@@ -1,7 +1,7 @@
 
 
 <!DOCTYPE html>
-<html class="writer-html4" lang="en" >
+<html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8" />
   
@@ -13,7 +13,9 @@
   
   <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="_static/css/hack.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/colors.css" type="text/css" />
 
   
   
@@ -30,19 +32,18 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-        <script type="text/javascript" src="_static/jquery.js"></script>
-        <script type="text/javascript" src="_static/underscore.js"></script>
-        <script type="text/javascript" src="_static/doctools.js"></script>
-        <script type="text/javascript" src="_static/language_data.js"></script>
-        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
     
     <script type="text/javascript" src="_static/js/theme.js"></script>
 
     
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="?. Hardware" href="Hardware.html" />
-    <link rel="prev" title="DroneSwarmTutorial" href="index.html" /> 
+    <link rel="next" title="6. Crazyswarm" href="Crazyswarm.html" />
+    <link rel="prev" title="For developers" href="For_developers.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -87,8 +88,15 @@
               
             
             
-              <p class="caption"><span class="caption-text">Contents:</span></p>
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="Introduction.html">1. Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Prerequisites.html">2. Prerequisites</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Introduction_to_MRS_Software_Extensions.html">3. Introduction to MRS Software Extensions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Workspace_git_configuration.html">4. Workspace Git configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Introduction_to_visualization.html">5. Introduction to visualization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Hardware.html">?. Hardware</a></li>
+<li class="toctree-l1"><a class="reference internal" href="For_developers.html">For developers</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">?. Information for Internal Collaborators</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#introduction">?.1 Introduction</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#learning-the-skills">?.2 Learning the Skills</a></li>
@@ -103,14 +111,8 @@
 <li class="toctree-l2"><a class="reference internal" href="#our-droneswarm-brubotics-framework">?.2.9 Our droneswarm_brubotics Framework</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="Hardware.html">?. Hardware</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Introduction.html">1. Introduction</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Prerequisites.html">2. Prerequisites</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Introduction_to_MRS_Software_Extensions.html">3. Introduction to MRS Software Extensions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Workspace_git_configuration.html">4. Workspace Git configuration</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Introduction_to_visualization.html">5. Introduction to visualization</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Crazyswarm.html">6. Crazyswarm</a></li>
-<li class="toctree-l1"><a class="reference internal" href="For_developers.html">For developers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Version_control_with_Github.html">Version control with Github</a></li>
 </ul>
 
             
@@ -194,16 +196,15 @@ Please contact your supervisor if you have questions (e.g. which points you coul
 <div class="section" id="communication">
 <h2>?.2.1 Communication<a class="headerlink" href="#communication" title="Permalink to this headline">¶</a></h2>
 <p>A good communication between the student and the supervisor is key to achieve good research results on time.</p>
-<dl class="docutils">
-<dt>Some guidelines:</dt>
-<dd><ul class="first last simple">
-<li>Update your supervisor every few days you worked on some part. You should refer him/her to the tutorial documentation and to the scientific research report. Explain the new ideas you have, the issues you solved, the open problems you still have, what you already tried to solve these without success, and what you will try next (hopefully with sucess).</li>
-<li>Once a week we will try to organize a microsoft teams or a physical meeting (about 30 minutes) where you can provide updates of the last week, and a plan of what you will work on in the coming week. A powerpoint is the best medium, but you can also show parts of your report.</li>
-<li>Make realsitic plannings and don’t delay working on it. It requires you to spend quite some focused time to debug issues and obtain good results.</li>
-<li>Use email with references to the tutorial and scientific report if you want detailed technical feedback.</li>
-<li>If you arrange the meeting date and hour on time, the more chance your supervisor will be free.</li>
-<li>Use WhatssApp message for urgent communication (e.g. the code does not build today, are you in the lab, where can I find this in the lab, …). Send your supervisor your phone number, who will invite you to the whatssapp group. It is adviced to use the whatssApp web app on your PC to type quicker (highly advised to not lose time during Q&amp;A).</li>
-<li>If you and your supervisor don’t know the answer to some issue, ask your questions (if related) on the issues (e.g. github issues) of the framework you are using. Formulate these questions clearly, but don’t make them too long. Outside collaborators might have no clue (as oppsoded to yourself and your supervisor) what you are trying to do.</li>
+<dl class="simple">
+<dt>Some guidelines:</dt><dd><ul class="simple">
+<li><p>Update your supervisor every few days you worked on some part. You should refer him/her to the tutorial documentation and to the scientific research report. Explain the new ideas you have, the issues you solved, the open problems you still have, what you already tried to solve these without success, and what you will try next (hopefully with sucess).</p></li>
+<li><p>Once a week we will try to organize a microsoft teams or a physical meeting (about 30 minutes) where you can provide updates of the last week, and a plan of what you will work on in the coming week. A powerpoint is the best medium, but you can also show parts of your report.</p></li>
+<li><p>Make realsitic plannings and don’t delay working on it. It requires you to spend quite some focused time to debug issues and obtain good results.</p></li>
+<li><p>Use email with references to the tutorial and scientific report if you want detailed technical feedback.</p></li>
+<li><p>If you arrange the meeting date and hour on time, the more chance your supervisor will be free.</p></li>
+<li><p>Use WhatssApp message for urgent communication (e.g. the code does not build today, are you in the lab, where can I find this in the lab, …). Send your supervisor your phone number, who will invite you to the whatssapp group. It is adviced to use the whatssApp web app on your PC to type quicker (highly advised to not lose time during Q&amp;A).</p></li>
+<li><p>If you and your supervisor don’t know the answer to some issue, ask your questions (if related) on the issues (e.g. github issues) of the framework you are using. Formulate these questions clearly, but don’t make them too long. Outside collaborators might have no clue (as oppsoded to yourself and your supervisor) what you are trying to do.</p></li>
 </ul>
 </dd>
 </dl>
@@ -212,14 +213,13 @@ Please contact your supervisor if you have questions (e.g. which points you coul
 <h2>?.2.2 The Tutorial Documentation<a class="headerlink" href="#the-tutorial-documentation" title="Permalink to this headline">¶</a></h2>
 <p>We ask all collaborators to document their research (also what does NOT work is valuable!) in easy-to-read and well-explained tutorials.
 Moreover we ask them to improve the unclear or wrong parts of the existing tutorials while they go through them.</p>
-<dl class="docutils">
-<dt>A good documentation:</dt>
-<dd><ul class="first last simple">
-<li>is a tutorial-style report which allows seemless reproducability of research results;</li>
-<li>automatically teaches the new collaborator and does not require additional help from an expert to reproduce the results;</li>
-<li>does NOT look like a scientific paper or a thesis report. The focus of a tutorial is on the pratical setup and implementation aspects to reproduce experiments and not on the analysis of the research results;</li>
-<li>is obtained when you document directly after you try new things. Delaying the writing for the next hour, the day or the next week will most likely reduce the clarity and cause pontial errors like: missing important details, wrong orders of steps. It quickly leads to non-reproducible results and no help from other collaborators.</li>
-<li>evolves over time and is never finished since it can always be improved.</li>
+<dl class="simple">
+<dt>A good documentation:</dt><dd><ul class="simple">
+<li><p>is a tutorial-style report which allows seemless reproducability of research results;</p></li>
+<li><p>automatically teaches the new collaborator and does not require additional help from an expert to reproduce the results;</p></li>
+<li><p>does NOT look like a scientific paper or a thesis report. The focus of a tutorial is on the pratical setup and implementation aspects to reproduce experiments and not on the analysis of the research results;</p></li>
+<li><p>is obtained when you document directly after you try new things. Delaying the writing for the next hour, the day or the next week will most likely reduce the clarity and cause pontial errors like: missing important details, wrong orders of steps. It quickly leads to non-reproducible results and no help from other collaborators.</p></li>
+<li><p>evolves over time and is never finished since it can always be improved.</p></li>
 </ul>
 </dd>
 </dl>
@@ -229,22 +229,20 @@ Moreover we ask them to improve the unclear or wrong parts of the existing tutor
 </div>
 <div class="section" id="the-scientific-research-report">
 <h2>?.2.3 The Scientific Research Report<a class="headerlink" href="#the-scientific-research-report" title="Permalink to this headline">¶</a></h2>
-<dl class="docutils">
-<dt>Everything related to the actual scientific research questions, the followed research methodology, the research results, discussions and conclusions will be contained in the scientific research report (e.g. the paper, the thesis).</dt>
-<dd><ul class="first last simple">
-<li>Create your scientific report in the requested template. Please contact your supervisor since they might have example templates to start from.</li>
-<li>Preferably use the online overleaf Latex editor <a class="reference external" href="https://www.overleaf.com/">https://www.overleaf.com/</a> and share the report with your supervisor.</li>
-<li>Go to the main.tex and ctrl + f “NewStudent”. Copy paste and update the example code in there such that you and your supervisor can give comments (i.e. coloured text) using their own initials (e.g. bc{Bryan Convens (BC) writes a comment here!}). Don’t delete the example NS ns{it is for new students to see this example.</li>
+<dl class="simple">
+<dt>Everything related to the actual scientific research questions, the followed research methodology, the research results, discussions and conclusions will be contained in the scientific research report (e.g. the paper, the thesis).</dt><dd><ul class="simple">
+<li><p>Create your scientific report in the requested template. Please contact your supervisor since they might have example templates to start from.</p></li>
+<li><p>Preferably use the online overleaf Latex editor <a class="reference external" href="https://www.overleaf.com/">https://www.overleaf.com/</a> and share the report with your supervisor.</p></li>
+<li><p>Go to the main.tex and ctrl + f “NewStudent”. Copy paste and update the example code in there such that you and your supervisor can give comments (i.e. coloured text) using their own initials (e.g. bc{Bryan Convens (BC) writes a comment here!}). Don’t delete the example NS ns{it is for new students to see this example.</p></li>
 </ul>
 </dd>
-<dt>Some guidelines:</dt>
-<dd><ul class="first last simple">
-<li>Before you write a part, create a structure for the report with sections, subsections, subsubsections, and explain very briefly the main message you want to bring to the reader in each of these.</li>
-<li>Write in decent English and with full sentences.</li>
-<li>Use SI units and their abreviations.</li>
-<li>Think well about the used notations and symbols. Try to use the same notations and symbols as the work where you base yourself on. It will help you to make less mistakes.</li>
-<li>The results section needs high-quality figures and tables. This means the axes should be readable, the graph lines should be thick enough and identifyable with a legend, and the caption should provide enough information to the reader to understand the result (e.g. captions which are only a title are mostly bad).</li>
-<li>Be critical. Question yourself if the results you obtained are plausible and if not what might be wrong.</li>
+<dt>Some guidelines:</dt><dd><ul class="simple">
+<li><p>Before you write a part, create a structure for the report with sections, subsections, subsubsections, and explain very briefly the main message you want to bring to the reader in each of these.</p></li>
+<li><p>Write in decent English and with full sentences.</p></li>
+<li><p>Use SI units and their abreviations.</p></li>
+<li><p>Think well about the used notations and symbols. Try to use the same notations and symbols as the work where you base yourself on. It will help you to make less mistakes.</p></li>
+<li><p>The results section needs high-quality figures and tables. This means the axes should be readable, the graph lines should be thick enough and identifyable with a legend, and the caption should provide enough information to the reader to understand the result (e.g. captions which are only a title are mostly bad).</p></li>
+<li><p>Be critical. Question yourself if the results you obtained are plausible and if not what might be wrong.</p></li>
 </ul>
 </dd>
 </dl>
@@ -257,11 +255,11 @@ We have several computers available in the lab, but these have to be reserved si
 Once you decided on a machine:</p>
 <blockquote>
 <div><ul class="simple">
-<li>TODO FROM PART INTERNS You first need to install Ubuntu 18.04 LTS Desktop. If you already have windows on your PC, you need to reserve HDD space (a partition of at least 50GB recommended) and do a dual boot. Do NOT use a virtual machine, it slows down things a lot. Follow href{<a class="reference external" href="https://ubuntu.com/tutorials/install-ubuntu-desktop#1-overview">https://ubuntu.com/tutorials/install-ubuntu-desktop#1-overview</a>}{these steps}. It is advised to boot from a usb stick.</li>
-<li>Download the href{<a class="reference external" href="https://code.visualstudio.com/">https://code.visualstudio.com/</a>}{visual studio code IDE} for Ubuntu and install it. Preferably use this whenever you want to view or edit code opposed to the default text editor in Ubuntu. Set visual studio code as the default program to open files (right click on the file and select “open with other application”).</li>
-<li>Read and follow step doc in google drive: Configure CPU Specs. Laptops only have performance and powersave mode and no Conservative, ondemand and schedutil mode. Make sure you do your simulatios always in performance mode.</li>
-<li>Install href{<a class="reference external" href="https://www.teamviewer.com/nl/download/linux/">https://www.teamviewer.com/nl/download/linux/</a>}{teamviewer for linux}, and create an teamviewer account.</li>
-<li>Install on Matlab and Simulink version 2020b. See doc in google drive, since you might get some non trivial issues.</li>
+<li><p>TODO FROM PART INTERNS You first need to install Ubuntu 18.04 LTS Desktop. If you already have windows on your PC, you need to reserve HDD space (a partition of at least 50GB recommended) and do a dual boot. Do NOT use a virtual machine, it slows down things a lot. Follow href{<a class="reference external" href="https://ubuntu.com/tutorials/install-ubuntu-desktop#1-overview">https://ubuntu.com/tutorials/install-ubuntu-desktop#1-overview</a>}{these steps}. It is advised to boot from a usb stick.</p></li>
+<li><p>Download the href{<a class="reference external" href="https://code.visualstudio.com/">https://code.visualstudio.com/</a>}{visual studio code IDE} for Ubuntu and install it. Preferably use this whenever you want to view or edit code opposed to the default text editor in Ubuntu. Set visual studio code as the default program to open files (right click on the file and select “open with other application”).</p></li>
+<li><p>Read and follow step doc in google drive: Configure CPU Specs. Laptops only have performance and powersave mode and no Conservative, ondemand and schedutil mode. Make sure you do your simulatios always in performance mode.</p></li>
+<li><p>Install href{<a class="reference external" href="https://www.teamviewer.com/nl/download/linux/">https://www.teamviewer.com/nl/download/linux/</a>}{teamviewer for linux}, and create an teamviewer account.</p></li>
+<li><p>Install on Matlab and Simulink version 2020b. See doc in google drive, since you might get some non trivial issues.</p></li>
 </ul>
 </div></blockquote>
 </div>
@@ -269,10 +267,10 @@ Once you decided on a machine:</p>
 <h2>?.2.5 Git Version Control<a class="headerlink" href="#git-version-control" title="Permalink to this headline">¶</a></h2>
 <blockquote>
 <div><ul class="simple">
-<li>Create a github account and email me your name on github. I will give you access to our code.</li>
-<li>Learn git by following href{<a class="reference external" href="https://www.coursera.org/learn/version-control-with-git">https://www.coursera.org/learn/version-control-with-git</a>}{this free tutorial}. Make sure you follow the tutorial from the command line / terminal window (not the GUI). This will allow you to effectively improve your software and work in a team.</li>
-<li>You will further use git during the project. Remember to keep your commits structured by having multiple commits for each small task you code. Try to push your code on github once a day so everyone is up-to-date with your developments.</li>
-<li>Test if your code works before commiting anything!</li>
+<li><p>Create a github account and email me your name on github. I will give you access to our code.</p></li>
+<li><p>Learn git by following href{<a class="reference external" href="https://www.coursera.org/learn/version-control-with-git">https://www.coursera.org/learn/version-control-with-git</a>}{this free tutorial}. Make sure you follow the tutorial from the command line / terminal window (not the GUI). This will allow you to effectively improve your software and work in a team.</p></li>
+<li><p>You will further use git during the project. Remember to keep your commits structured by having multiple commits for each small task you code. Try to push your code on github once a day so everyone is up-to-date with your developments.</p></li>
+<li><p>Test if your code works before commiting anything!</p></li>
 </ul>
 </div></blockquote>
 </div>
@@ -287,14 +285,13 @@ Once you decided on a machine:</p>
 <div class="section" id="the-ctu-mrs-framework">
 <h2>?.2.8 The CTU MRS Framework<a class="headerlink" href="#the-ctu-mrs-framework" title="Permalink to this headline">¶</a></h2>
 <p>TODO REFER TO SECTION ON THIS!</p>
-<dl class="docutils">
-<dt>The software framework you will use during the project is based on href{<a class="reference external" href="https://ctu-mrs.github.io/">https://ctu-mrs.github.io/</a>}{the MRS UAV system code from CTU Prague}.</dt>
-<dd><ul class="first last simple">
-<li>Read their wiki href{<a class="reference external" href="https://ctu-mrs.github.io/">https://ctu-mrs.github.io/</a>} for the parts that are relevant for your thesis and install their code” mrs uav system” by following the steps found href{<a class="reference external" href="https://github.com/ctu-mrs/mrs_uav_system#i-have-a-fresh-ubuntu-1804-and-want-it-quick-and-easy">https://github.com/ctu-mrs/mrs_uav_system#i-have-a-fresh-ubuntu-1804-and-want-it-quick-and-easy</a>}{on their github repo}: “I have a fresh Ubuntu 18.04 and want it quick and easy”. Than try to compile (i.e. build) the code by following these steps. You should NOT istall their linux setup.</li>
-<li>Learn the required skills from the links they provide.</li>
-<li>In case you have problems only related to this software, please open a new issue href{<a class="reference external" href="https://github.com/ctu-mrs/mrs_uav_system/issues">https://github.com/ctu-mrs/mrs_uav_system/issues</a>}{here} or open a new discussion. Validate if the software builds without errors and without warnings.</li>
-<li>Run a some example scripts in the simulationfolder. Which ones do (not) work?</li>
-<li>Read the paper of mrs uav system <a class="reference external" href="https://link.springer.com/article/10.1007/s10846-021-01383-5">https://link.springer.com/article/10.1007/s10846-021-01383-5</a></li>
+<dl class="simple">
+<dt>The software framework you will use during the project is based on href{<a class="reference external" href="https://ctu-mrs.github.io/">https://ctu-mrs.github.io/</a>}{the MRS UAV system code from CTU Prague}.</dt><dd><ul class="simple">
+<li><p>Read their wiki href{<a class="reference external" href="https://ctu-mrs.github.io/">https://ctu-mrs.github.io/</a>} for the parts that are relevant for your thesis and install their code” mrs uav system” by following the steps found href{<a class="reference external" href="https://github.com/ctu-mrs/mrs_uav_system#i-have-a-fresh-ubuntu-1804-and-want-it-quick-and-easy">https://github.com/ctu-mrs/mrs_uav_system#i-have-a-fresh-ubuntu-1804-and-want-it-quick-and-easy</a>}{on their github repo}: “I have a fresh Ubuntu 18.04 and want it quick and easy”. Than try to compile (i.e. build) the code by following these steps. You should NOT istall their linux setup.</p></li>
+<li><p>Learn the required skills from the links they provide.</p></li>
+<li><p>In case you have problems only related to this software, please open a new issue href{<a class="reference external" href="https://github.com/ctu-mrs/mrs_uav_system/issues">https://github.com/ctu-mrs/mrs_uav_system/issues</a>}{here} or open a new discussion. Validate if the software builds without errors and without warnings.</p></li>
+<li><p>Run a some example scripts in the simulationfolder. Which ones do (not) work?</p></li>
+<li><p>Read the paper of mrs uav system <a class="reference external" href="https://link.springer.com/article/10.1007/s10846-021-01383-5">https://link.springer.com/article/10.1007/s10846-021-01383-5</a></p></li>
 </ul>
 </dd>
 </dl>
@@ -313,8 +310,8 @@ Don’t forget to commit your changes when updates this tutorial!</p>
           </div>
           <footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-        <a href="Hardware.html" class="btn btn-neutral float-right" title="?. Hardware" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
-        <a href="index.html" class="btn btn-neutral float-left" title="DroneSwarmTutorial" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="Crazyswarm.html" class="btn btn-neutral float-right" title="6. Crazyswarm" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="For_developers.html" class="btn btn-neutral float-left" title="For developers" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
 
   <hr/>
