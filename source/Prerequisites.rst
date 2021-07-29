@@ -104,6 +104,7 @@ tools. You just need to install extension depending on what kind of file you are
 program to open files (right-click on the file and select "Properties → Open with → Visual Studio Code").
 
 To add line comments, select the lines with right-click and use ``Ctrl+K Ctrl+C``.
+To remove them, use ``Ctrl+K Ctrl+U``.
 
 .. _2.4 Working with Git:
 
