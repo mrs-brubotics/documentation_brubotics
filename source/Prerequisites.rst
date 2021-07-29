@@ -101,7 +101,7 @@ from Jonathan Cacace.
 
 We highly recommend you to use `Visual Studio Code <https://code.visualstudio.com/>`__ for Ubuntu. It is easier to view and edit code with syntax highlighting
 tools. You just need to install extension depending on what kind of file you are working e.g. ``.cpp``, ``.py`` etc. Set visual studio code as the default
-program to open files (right-click on the file and select "Properties → Open with → Visual Studio Code").
+program to open files (right-click on the file and select "Properties → Open With → Visual Studio Code → Set as default").
 
 To add line comments, select the lines with right-click and use ``Ctrl+K Ctrl+C``.
 To remove them, use ``Ctrl+K Ctrl+U``.
