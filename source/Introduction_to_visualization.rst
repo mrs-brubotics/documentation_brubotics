@@ -59,6 +59,7 @@ A ``.yml`` looks like this:
 
 .. code-block:: yaml
 
+   # mrs_workspace/src/simulation/example_tmux_scripts/one_drone_gps/session.yml
    name: simulation
    root: ./
    startup_window: status
@@ -118,6 +119,7 @@ the configuration of RViz, i.e. what is displayed.
 
 .. code-block:: html
 
+   <!-- mrs_workspace/src/uav_core/ros_packages/mrs_uav_testing/launch.rviz.launch -->
    <launch>
 
      <arg name="name" default="default_simulation" />
@@ -153,11 +155,11 @@ the topic name in the left window.
 5.3 Structure of the visualization_brubotics package
 ----------------------------------------------------
 
-We have developed a `visualization package <https://github.com/mrs-brubotics/visualization_brubotics>`__ which permits to visualize on RViz the previous
-strategies in the `2_two_drones_D-ERG simulation <https://github.com/mrs-brubotics/testing_brubotics/tree/master/tmux_scripts/bryan/2_two_drones_D-ERG>`__.
+We have developed a `visualization package <https://github.com/mrs-brubotics/visualization_brubotics>`__ which permits to visualize in RViz the :ref:`D-ERG
+strategies <5.4 Our work D-ERG visualization>` in the `two_drones_D-ERG <https://github.com/mrs-brubotics/testing_brubotics/tree/master/tmux_scripts/bryan/two_drones_D-ERG>`__.
 This package is based on the `mrs_rviz_plugins <https://github.com/ctu-mrs/mrs_rviz_plugins>`__ structure. We will explain you how to reproduce it.
 
-First, create a new package in ``workspace/src_droneswarm_brubotics/ros_packages`` with:
+First, we created a new package in ``workspace/src_droneswarm_brubotics/ros_packages`` with:
 
 .. code-block:: shell
 
@@ -165,17 +167,77 @@ First, create a new package in ``workspace/src_droneswarm_brubotics/ros_packages
 
 This command creates a ``CMakeLists.txt`` file and a ``package.xml`` file.
 
-Then, go to the ``session.yml`` file of the `2_two_drones_D-ERG simulation <https://github.com/mrs-brubotics/testing_brubotics/tree/master/tmux_scripts/bryan/2_two_drones_D-ERG>`__.
-At the end (line 223), you should see a RViz part. If it is commented, uncomment it. Modify these lines so it looks lite this:
+Then, we modified ``session.yml`` file of the `two_drones_D-ERG <https://github.com/mrs-brubotics/testing_brubotics/tree/master/tmux_scripts/bryan/two_drones_D-ERG>`__.
+At the end (line 247), you should see a RViz part. If it is commented, uncomment it. We modified these lines so it looks lite this:
 
 .. code-block:: shell
 
+   # workspace/src/droneswarm_brubotics/ros_packages/testing_brubotics/tmux_scripts/bryan/two_drones_D-ERG/session.yml
    - rviz:
-      layout: tiled
-      panes:
-        - waitForControl; roslaunch visualization_brubotics rviz.launch name:=avoidance_test
-        - waitForControl; roslaunch visualization_brubotics load_robot.launch
-  
+       layout: tiled
+       panes:
+         - waitForControl; roslaunch testing_brubotics rviz_brubotics.launch name:=two_drones_derg
+         - waitForControl; roslaunch testing_brubotics tf_connector_avoidance.launch 
+         - waitForControl; export UAV_NAME=uav1; roslaunch mrs_rviz_plugins load_robot.launch
+         - waitForControl; export UAV_NAME=uav2; roslaunch mrs_rviz_plugins load_robot.launch
+
+
+Now, we will explain line per line why we did.
+The ``rviz_brubotics.launch`` and ``tf_connector_avoidance.launch`` files are based from CTU but we made some changes in them. Indeed, we don't want to visualize the same things as CTU.
+Thus, we make our own ``.rviz`` files in the ``testing_brubotics`` package. So we needed to adapt the find path in the ``rviz.launch``:
+
+.. code-block:: html
+
+   <!-- workspace/src/droneswarm_brubotics/ros_packages/testing_brubotics/launch/rviz/rviz_brubotics.launch -->
+   <launch>
+
+     <arg name="name" default="default_simulation" />
+
+     <group>
+
+       <node pkg="rviz" type="rviz" name="rviz" args="-d $(find testing_brubotics)/rviz/$(arg name).rviz" />
+
+     </group>
+
+   </launch>
+
+The path find ``tf_connector_avoidance.launch`` file has also been changed because it calls the ``tf_connector_avoidance.yaml`` file which permits to visualize several drones at the same time.
+
+.. code-block:: html
+
+   <!-- workspace/src/droneswarm_brubotics/ros_packages/testing_brubotics/launch/rviz/tf_connector_avoidance.launch -->
+   <launch>
+       <!-- other args -->
+     <arg name="standalone" default="true" />
+     <arg name="debug" default="false" />
+
+     <arg     if="$(eval arg('standalone') or arg('debug'))" name="nodelet" value="standalone" />
+     <arg unless="$(eval arg('standalone') or arg('debug'))" name="nodelet" value="load" />
+     <arg     if="$(eval arg('standalone') or arg('debug'))" name="nodelet_manager" value="" />
+     <arg unless="$(eval arg('standalone') or arg('debug'))" name="nodelet_manager" value="tf_connector_nodelet_manager" />
+
+     <arg     if="$(arg debug)" name="launch_prefix" value="debug_roslaunch" />
+     <arg unless="$(arg debug)" name="launch_prefix" value="" />
+
+     <node pkg="nodelet" type="nodelet" name="tf_connector_dummy" args="$(arg nodelet) mrs_uav_odometry/TFConnectorDummy $(arg nodelet_manager)" output="screen" launch-prefix="$(arg launch_prefix)">
+
+       <rosparam file="$(find testing_brubotics)/config/tf_connector_avoidance.yaml" />
+
+       <!-- Subscribers -->
+       <remap from="~tf_in" to="/tf" />
+
+       <!-- Publishers -->
+       <remap from="~tf_out" to="/tf" />
+
+     </node>
+
+     </launch>
+
+To create the robot model, we can use the ``load_robot.launch`` file of CTU without changing it.
+
+:blue:`[TODO: remove the next parts]JV`
+
+
 5.3.1 `launch folder <https://github.com/mrs-brubotics/visualization_brubotics/tree/main/launch>`__
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -271,6 +333,8 @@ This file will define properly the frames id.
 
 Finally, create a ``src`` folder in your ``visualization_brubotics`` package and copy/paste the ``mrs_rviz_plugins/src/rviz_interface`` folder in it.
 It contains 2 ``.cpp`` files which define who the CTU RViz tools work.
+
+.. _5.4 Our work D-ERG visualization:
 
 5.4 Our work: D-ERG visualization
 ---------------------------------
