@@ -205,8 +205,7 @@ and <a class="reference external" href="https://www.sphinx-doc.org/en/master/usa
 </div>
 <div class="section" id="how-to-open-the-readthedocs-website">
 <h3>How to open the ReadTheDocs website ?<a class="headerlink" href="#how-to-open-the-readthedocs-website" title="Permalink to this headline">¶</a></h3>
-<p>If you are reading this, it means that you already know how to visualize this documentation.
-However, you can still read <a class="reference external" href="https://github.com/mrs-brubotics/documentation_brubotics">these instructions</a> in the README file.</p>
+<p>Just follow <a class="reference external" href="https://github.com/mrs-brubotics/documentation_brubotics">these instructions</a>.</p>
 </div>
 <div class="section" id="how-to-edit-the-readthedocs-website">
 <h3>How to edit the ReadTheDocs website ?<a class="headerlink" href="#how-to-edit-the-readthedocs-website" title="Permalink to this headline">¶</a></h3>
@@ -215,21 +214,28 @@ website. It has a syntax highlighting tool.</p>
 <p>The only files you need to modify are <code class="docutils literal notranslate"><span class="pre">conf.py</span></code> and all the <code class="docutils literal notranslate"><span class="pre">.rst</span></code> files in the <code class="docutils literal notranslate"><span class="pre">source</span></code> folder. Once you want to update your documentation, use the following
 commands from your directory:</p>
 <ul class="simple">
-<li><p>Before all, we recommend you to run this command to update your local repository and get the newest code:</p></li>
-</ul>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>git pull
-</pre></div>
-</div>
-<ul class="simple">
-<li><p>To check what files wich have been updated since the last commit you can use that command:</p></li>
+<li><p>Before all, we recommend you to run this command to check which files have been updated since the last commit:</p></li>
 </ul>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>git status
 </pre></div>
 </div>
 <ul class="simple">
+<li><p>To update your local repository and get the newest code, run this command:</p></li>
+</ul>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>git pull
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The pull can not work if you have made changes in the files without committing and if someone also made commits If so, run this command:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>git stash
+</pre></div>
+</div>
+</div>
+<ul class="simple">
 <li><p>To update your repository, adapt and run these commands</p></li>
 </ul>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>git add <span class="o">(</span>use tab key and <span class="nb">type</span> the first letter of the files to commit or use git add -A to directly stage all files<span class="o">)</span>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>git add       <span class="c1"># use tab key and type the first letter of the files to commit or use git add -A to directly stage all files</span>
 git commit -m <span class="s2">&quot;Provide a clear explanation of your commit. People who did not make the change should understand the issue you solved.&quot;</span>
 git push
 </pre></div>
@@ -237,8 +243,8 @@ git push
 <p>Please refer to section <a class="reference internal" href="Prerequisites.html#working-with-git"><span class="std std-ref">2.4</span></a> to understand why we use these commands.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>When visualizing the documentation after running <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">html</span></code>, you may not see every chapters in the left tab. That’s probably because you modify the <code class="docutils literal notranslate"><span class="pre">index.rst</span></code>
-file. To fix this, you need to save every <code class="docutils literal notranslate"><span class="pre">.rst</span></code> file.</p>
+<p>When visualizing the documentation after running <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">html</span></code>, you may not see every chapters in the left tab. That’s probably because you modify
+the <code class="docutils literal notranslate"><span class="pre">index.rst</span></code> file. To fix this, you need to save every <code class="docutils literal notranslate"><span class="pre">.rst</span></code> file.</p>
 </div>
 </div>
 </div>

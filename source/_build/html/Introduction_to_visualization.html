@@ -207,47 +207,110 @@ To do that you can run these commands:</p>
 <a class="reference internal image-reference" href="_images/one_drone_rviz.png"><img alt="alternate text" src="_images/one_drone_rviz.png" style="width: 800px;" /></a>
 <p class="caption"><span class="caption-text">Figure 5.1: RViz window with CTU visualization</span><a class="headerlink" href="#id2" title="Permalink to this image">¶</a></p>
 </div>
-<p>You can see arrows, poses and UAV frames in this simple visualization.
-For these simple tasks, you only need to click on the add button and subscribe to the topic you want to visualize.</p>
+<p>In this default visualization, you can the UAV model with its frame.
+You can also use the 2D Nav Goal button to choose a position and a heading to go for the UAV. Thus, you will see the UAV trajectory.</p>
 <div class="figure align-center" id="id3">
-<a class="reference internal image-reference" href="_images/add_button.png"><img alt="alternate text" src="_images/add_button.png" style="width: 400px;" /></a>
-<p class="caption"><span class="caption-text">Figure 5.2: Add button</span><a class="headerlink" href="#id3" title="Permalink to this image">¶</a></p>
-</div>
-<div class="figure align-center" id="id4">
-<a class="reference internal image-reference" href="_images/topic_window.png"><img alt="alternate text" src="_images/topic_window.png" style="width: 400px;" /></a>
-<p class="caption"><span class="caption-text">Figure 5.3: Topic window</span><a class="headerlink" href="#id4" title="Permalink to this image">¶</a></p>
-</div>
-<p>You can also use the 2D Nav Goal button to choose a position and a heading to go for the UAV.</p>
-<div class="figure align-center" id="id5">
 <a class="reference internal image-reference" href="_images/navgoal_button.png"><img alt="alternate text" src="_images/navgoal_button.png" style="width: 400px;" /></a>
-<p class="caption"><span class="caption-text">Figure 5.4: Navigation goal button</span><a class="headerlink" href="#id5" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-text">Figure 5.2: Navigation goal button</span><a class="headerlink" href="#id3" title="Permalink to this image">¶</a></p>
 </div>
-<p>Next, you can run some simulations which use dedicated plugins for one specific task.
-You will need to use these commands:</p>
+<p>Next, you can run some simulations which use dedicated plugins for one specific task. You will need to use these commands to see all of them:</p>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> ~/mrs_workspace/src/uav_core/ros_packages/mrs_uav_testing/tmux
 ls
 </pre></div>
 </div>
-<p>It will show you the different simulation that you can test. You can do it by using <code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">./&quot;directory_of_the_simulation&quot;</span></code> and running:</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>./start.sh
+<p>Choose the one that you want to test by running:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> <span class="s2">&quot;name_of_the_simulation&quot;</span>
+./start.sh
 </pre></div>
 </div>
-<p>The bumper simulation is an example of advanced task that you can do on Rviz. It is made by a plugin created from scratch.
+<p>The bumper simulation is an example of an advanced visualization task that you can do on RViz. It is made by a plugin created from scratch.
 It represents a huge work to create these type of visualization but it shows you the diversity of possibilities.</p>
 </div>
 <div class="section" id="how-rviz-works">
 <h2>5.2 How RViz works ?<a class="headerlink" href="#how-rviz-works" title="Permalink to this headline">¶</a></h2>
-<p>To run a simulation, you will use the <code class="docutils literal notranslate"><span class="pre">start.sh</span></code> file wich will ask to the <code class="docutils literal notranslate"><span class="pre">session.yml</span></code> what <code class="docutils literal notranslate"><span class="pre">.launch</span></code> file are going to be runned.
+<p>To run a simulation, you will use the <code class="docutils literal notranslate"><span class="pre">start.sh</span></code> file wich will ask to the <code class="docutils literal notranslate"><span class="pre">session.yml</span></code> file what <code class="docutils literal notranslate"><span class="pre">.launch</span></code> file is going to be ran.
 A <code class="docutils literal notranslate"><span class="pre">.yml</span></code> looks like this:</p>
-<div class="figure align-center" id="id6">
-<a class="reference internal image-reference" href="_images/yml_file.png"><img alt="alternate text" src="_images/yml_file.png" style="width: 800px;" /></a>
-<p class="caption"><span class="caption-text">Figure 5.5: .yml file</span><a class="headerlink" href="#id6" title="Permalink to this image">¶</a></p>
+<div class="highlight-yml notranslate"><div class="highlight"><pre><span></span>name: simulation
+root: ./
+startup_window: status
+pre_window: export UAV_NAME=uav1; export RUN_TYPE=simulation; export UAV_TYPE=t650; export WORLD_NAME=simulation; export SENSORS=&quot;garmin_down&quot;
+windows:
+  - roscore:
+    layout: tiled
+    panes:
+      - roscore
+  - gazebo:
+    layout: tiled
+    panes:
+      - waitForRos; roslaunch mrs_simulation simulation.launch world_name:=grass_plane gui:=true
+      - waitForOdometry; gz camera -c gzclient_camera -f uav1; history -s gz camera -c gzclient_camera -f uav1
+  - status:
+    layout: tiled
+    panes:
+      - waitForSimulation; roslaunch mrs_uav_status status.launch
+  - spawn:
+    layout: tiled
+    panes:
+    - waitForSimulation; rosservice call /mrs_drone_spawner/spawn &quot;1 $UAV_TYPE --enable-rangefinder&quot;
+  - control:
+    layout: tiled
+    panes:
+      - waitForOdometry; roslaunch mrs_uav_general core.launch
+  - takeoff:
+    layout: tiled
+    panes:
+      - waitForSimulation; roslaunch mrs_uav_general automatic_start.launch
+      - &#39;waitForControl;
+        rosservice call /$UAV_NAME/mavros/cmd/arming 1;
+        sleep 2;
+        rosservice call /$UAV_NAME/mavros/set_mode 0 offboard&#39;
+  - goto:
+    layout: tiled
+    panes:
+      - &#39;history -s rosservice call /$UAV_NAME/control_manager/goto \&quot;goal: \[0.0, 10.0, 1.5, 0.0\]\&quot;&#39;
+  - rviz:
+    layout: tiled
+    panes:
+      - waitForControl; roslaunch mrs_uav_testing rviz.launch
+      - waitForControl; roslaunch mrs_rviz_plugins load_robot.launch
+  - easy_control:
+    layout: tiled
+    panes:
+      - waitForControl; waitForControl; roslaunch mrs_uav_general logitech_joystick.launch
+      - waitForControl; waitForControl; roslaunch mrs_rviz_plugins rviz_interface.launch
+  - layout:
+    layout: tiled
+    panes:
+      - waitForControl; sleep 3; ~/.i3/layout_manager.sh ./layout.json
+</pre></div>
 </div>
-<p>You can see that there is an Rviz part.
-The first line ask for the <code class="docutils literal notranslate"><span class="pre">rviz.launch</span></code> file which is used to choose the <code class="docutils literal notranslate"><span class="pre">.rviz</span></code> file that you want to use. This type of file is used to save
-the configuration of Rviz, like what is displayed. On the <code class="docutils literal notranslate"><span class="pre">testing_brubotics</span></code> package, there is the <code class="docutils literal notranslate"><span class="pre">rviz</span></code> directory which contains all the <code class="docutils literal notranslate"><span class="pre">.rviz</span></code>
-files.</p>
-<p>You can generate a <code class="docutils literal notranslate"><span class="pre">.rviz</span></code> file, which save your RViz configuration, by clicking in RViz on <code class="docutils literal notranslate"><span class="pre">File-&gt;Save</span> <span class="pre">config</span> <span class="pre">as</span></code>.</p>
+<p>In the RViz part, you can see that the first line ask for the <code class="docutils literal notranslate"><span class="pre">rviz.launch</span></code> (see below) file which is used to choose the <code class="docutils literal notranslate"><span class="pre">.rviz</span></code> file that you want to use. The <code class="docutils literal notranslate"><span class="pre">.rviz</span></code> file is used to save
+the configuration of RViz, i.e. what is displayed.</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">launch</span><span class="p">&gt;</span>
+
+  <span class="p">&lt;</span><span class="nt">arg</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;name&quot;</span> <span class="na">default</span><span class="o">=</span><span class="s">&quot;default_simulation&quot;</span> <span class="p">/&gt;</span>
+
+  <span class="p">&lt;</span><span class="nt">group</span><span class="p">&gt;</span>
+
+    <span class="p">&lt;</span><span class="nt">node</span> <span class="na">pkg</span><span class="o">=</span><span class="s">&quot;rviz&quot;</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;rviz&quot;</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;rviz&quot;</span> <span class="na">args</span><span class="o">=</span><span class="s">&quot;-d $(find mrs_uav_testing)/rviz/$(arg name).rviz&quot;</span> <span class="p">/&gt;</span>
+
+  <span class="p">&lt;/</span><span class="nt">group</span><span class="p">&gt;</span>
+
+<span class="p">&lt;/</span><span class="nt">launch</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+<p>In the <code class="docutils literal notranslate"><span class="pre">mrs_uav_testing</span></code> package of CTU, there is a <code class="docutils literal notranslate"><span class="pre">rviz</span></code> folder which contains all the <code class="docutils literal notranslate"><span class="pre">.rviz</span></code> files.
+You can generate a <code class="docutils literal notranslate"><span class="pre">.rviz</span></code> file, which save your RViz configuration, by clicking in RViz on <code class="docutils literal notranslate"><span class="pre">File</span> <span class="pre">→</span> <span class="pre">Save</span> <span class="pre">config</span> <span class="pre">as</span></code>.</p>
+<p>To add a new display, click on <code class="docutils literal notranslate"><span class="pre">Add</span></code> and choose <code class="docutils literal notranslate"><span class="pre">By</span> <span class="pre">display</span> <span class="pre">type</span></code> or <code class="docutils literal notranslate"><span class="pre">By</span> <span class="pre">topic</span></code> to subscribe to the topic you want to visualize. If you choose <code class="docutils literal notranslate"><span class="pre">By</span> <span class="pre">display</span> <span class="pre">type</span></code>, you will have to write
+the topic name in the left window.</p>
+<div class="figure align-center" id="id4">
+<a class="reference internal image-reference" href="_images/add_button.png"><img alt="alternate text" src="_images/add_button.png" style="width: 400px;" /></a>
+<p class="caption"><span class="caption-text">Figure 5.3: Add button</span><a class="headerlink" href="#id4" title="Permalink to this image">¶</a></p>
+</div>
+<div class="figure align-center" id="id5">
+<a class="reference internal image-reference" href="_images/topic_window.png"><img alt="alternate text" src="_images/topic_window.png" style="width: 400px;" /></a>
+<p class="caption"><span class="caption-text">Figure 5.4: Topic window</span><a class="headerlink" href="#id5" title="Permalink to this image">¶</a></p>
+</div>
 </div>
 <div class="section" id="structure-of-the-visualization-brubotics-package">
 <h2>5.3 Structure of the visualization_brubotics package<a class="headerlink" href="#structure-of-the-visualization-brubotics-package" title="Permalink to this headline">¶</a></h2>
@@ -364,9 +427,9 @@ run with these commands:</p>
 <p>We have several D-ERG (Distributed Explicit Reference Governor) strategies to illustrate. For more advanced explanations, watch <a class="reference external" href="https://www.youtube.com/watch?v=le6WSeyTXNU">this video</a></p>
 <div class="section" id="d-erg-strategy-0">
 <h3>5.4.1 D-ERG strategy 0<a class="headerlink" href="#d-erg-strategy-0" title="Permalink to this headline">¶</a></h3>
-<div class="figure align-center" id="id7">
+<div class="figure align-center" id="id6">
 <a class="reference internal image-reference" href="_images/DERG-0.png"><img alt="alternate text" src="_images/DERG-0.png" style="width: 500px;" /></a>
-<p class="caption"><span class="caption-text">Figure 5.6: D-ERG strategy 0</span><a class="headerlink" href="#id7" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-text">Figure 5.6: D-ERG strategy 0</span><a class="headerlink" href="#id6" title="Permalink to this image">¶</a></p>
 </div>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(p_{k}\)</span>: current pose of the UAV</p></li>
@@ -399,9 +462,9 @@ run with these commands:</p>
 </div>
 <div class="section" id="d-erg-strategy-1">
 <h3>5.4.2 D-ERG strategy 1<a class="headerlink" href="#d-erg-strategy-1" title="Permalink to this headline">¶</a></h3>
-<div class="figure align-center" id="id8">
+<div class="figure align-center" id="id7">
 <a class="reference internal image-reference" href="_images/DERG-1.png"><img alt="alternate text" src="_images/DERG-1.png" style="width: 500px;" /></a>
-<p class="caption"><span class="caption-text">Figure 5.7: D-ERG strategy 1</span><a class="headerlink" href="#id8" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-text">Figure 5.7: D-ERG strategy 1</span><a class="headerlink" href="#id7" title="Permalink to this image">¶</a></p>
 </div>
 <p>Communicate: <span class="math notranslate nohighlight">\(p_{k}\)</span>, <span class="math notranslate nohighlight">\(p_{k}^{v}\)</span></p>
 <p>Tube can <strong>translate</strong> and <strong>rotate</strong>.</p>
@@ -410,9 +473,9 @@ run with these commands:</p>
 </div>
 <div class="section" id="d-erg-strategy-2">
 <h3>5.4.3 D-ERG strategy 2<a class="headerlink" href="#d-erg-strategy-2" title="Permalink to this headline">¶</a></h3>
-<div class="figure align-center" id="id9">
+<div class="figure align-center" id="id8">
 <a class="reference internal image-reference" href="_images/DERG-2.png"><img alt="alternate text" src="_images/DERG-2.png" style="width: 500px;" /></a>
-<p class="caption"><span class="caption-text">Figure 5.8: D-ERG strategy 2</span><a class="headerlink" href="#id9" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-text">Figure 5.8: D-ERG strategy 2</span><a class="headerlink" href="#id8" title="Permalink to this image">¶</a></p>
 </div>
 <p>Communicate: <span class="math notranslate nohighlight">\(p_{k}\)</span>, <span class="math notranslate nohighlight">\(p_{k}^{v}\)</span></p>
 <p>Tube can <strong>translate</strong>, <strong>rotate</strong> and <strong>change length</strong>.</p>
@@ -420,9 +483,9 @@ run with these commands:</p>
 </div>
 <div class="section" id="d-erg-strategy-3">
 <h3>5.4.4 D-ERG strategy 3<a class="headerlink" href="#d-erg-strategy-3" title="Permalink to this headline">¶</a></h3>
-<div class="figure align-center" id="id10">
+<div class="figure align-center" id="id9">
 <a class="reference internal image-reference" href="_images/DERG-3.png"><img alt="alternate text" src="_images/DERG-3.png" style="width: 500px;" /></a>
-<p class="caption"><span class="caption-text">Figure 5.9: D-ERG strategy 3</span><a class="headerlink" href="#id10" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-text">Figure 5.9: D-ERG strategy 3</span><a class="headerlink" href="#id9" title="Permalink to this image">¶</a></p>
 </div>
 <p>Communicate: <span class="math notranslate nohighlight">\(p_{k}\)</span>, <span class="math notranslate nohighlight">\(p_{k}^{v}\)</span>, <span class="math notranslate nohighlight">\(S_{a,min}^{⊥}\)</span></p>
 <p>Tube can <strong>translate</strong>, <strong>rotate</strong>, <strong>change length and width</strong>. The witfh (radius) is the minimal one for a tube with error directed longitudinal axis.</p>
@@ -430,9 +493,9 @@ run with these commands:</p>
 </div>
 <div class="section" id="d-erg-strategy-4">
 <h3>5.4.5 D-ERG strategy 4<a class="headerlink" href="#d-erg-strategy-4" title="Permalink to this headline">¶</a></h3>
-<div class="figure align-center" id="id11">
+<div class="figure align-center" id="id10">
 <a class="reference internal image-reference" href="_images/DERG-4.png"><img alt="alternate text" src="_images/DERG-4.png" style="width: 500px;" /></a>
-<p class="caption"><span class="caption-text">Figure 5.10: D-ERG strategy 4</span><a class="headerlink" href="#id11" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-text">Figure 5.10: D-ERG strategy 4</span><a class="headerlink" href="#id10" title="Permalink to this image">¶</a></p>
 </div>
 <p>Communicate: <span class="math notranslate nohighlight">\(p_{k}^{0}\)</span>, <span class="math notranslate nohighlight">\(p_{k}^{1}\)</span>, <span class="math notranslate nohighlight">\(S_{a,min}^{⊥}\)</span></p>
 <p>Tube and cylinder can <strong>translate</strong>, <strong>rotate</strong>, <strong>change length and width</strong>. The width (radius) and the length are the minimal one for a tube with error directed
@@ -441,9 +504,9 @@ longitudinal axis.</p>
 </div>
 <div class="section" id="d-erg-strategy-5">
 <h3>5.4.6 D-ERG strategy 5<a class="headerlink" href="#d-erg-strategy-5" title="Permalink to this headline">¶</a></h3>
-<div class="figure align-center" id="id12">
+<div class="figure align-center" id="id11">
 <a class="reference internal image-reference" href="_images/DERG-5.png"><img alt="alternate text" src="_images/DERG-5.png" style="width: 500px;" /></a>
-<p class="caption"><span class="caption-text">Figure 5.11: D-ERG strategy 5</span><a class="headerlink" href="#id12" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-text">Figure 5.11: D-ERG strategy 5</span><a class="headerlink" href="#id11" title="Permalink to this image">¶</a></p>
 </div>
 <p>This final strategy permits to calculate the minimal distance between 2 drones.</p>
 <p><span class="blue">[TODO: explanations about how to do it]JV</span></p>

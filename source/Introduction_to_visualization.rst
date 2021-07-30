@@ -24,68 +24,131 @@ The RViz window will open after Gazebo and it looks like this:
 
    Figure 5.1: RViz window with CTU visualization
 
-You can see arrows, poses and UAV frames in this simple visualization.
-For these simple tasks, you only need to click on the add button and subscribe to the topic you want to visualize.
-
-.. figure:: _static/add_button.png
-   :width: 400
-   :alt: alternate text
-   :align: center
-
-   Figure 5.2: Add button
-
-.. figure:: _static/topic_window.png
-   :width: 400
-   :alt: alternate text
-   :align: center
-
-   Figure 5.3: Topic window
-
-You can also use the 2D Nav Goal button to choose a position and a heading to go for the UAV.
+In this default visualization, you can the UAV model with its frame.
+You can also use the 2D Nav Goal button to choose a position and a heading to go for the UAV. Thus, you will see the UAV trajectory.
 
 .. figure:: _static/navgoal_button.png
    :width: 400
    :alt: alternate text
    :align: center
 
-   Figure 5.4: Navigation goal button
+   Figure 5.2: Navigation goal button
 
-Next, you can run some simulations which use dedicated plugins for one specific task.
-You will need to use these commands:
+Next, you can run some simulations which use dedicated plugins for one specific task. You will need to use these commands to see all of them:
 
 .. code-block:: shell
 
    cd ~/mrs_workspace/src/uav_core/ros_packages/mrs_uav_testing/tmux
    ls
 
-It will show you the different simulation that you can test. You can do it by using ``cd ./"directory_of_the_simulation"`` and running:
+Choose the one that you want to test by running:
 
 .. code-block:: shell
 
+   cd "name_of_the_simulation"
    ./start.sh
 
-The bumper simulation is an example of advanced task that you can do on Rviz. It is made by a plugin created from scratch.
+The bumper simulation is an example of an advanced visualization task that you can do on RViz. It is made by a plugin created from scratch.
 It represents a huge work to create these type of visualization but it shows you the diversity of possibilities.
 
 5.2 How RViz works ?
 --------------------
 
-To run a simulation, you will use the ``start.sh`` file wich will ask to the ``session.yml`` what ``.launch`` file are going to be runned. 
+To run a simulation, you will use the ``start.sh`` file wich will ask to the ``session.yml`` file what ``.launch`` file is going to be ran. 
 A ``.yml`` looks like this:
 
-.. figure:: _static/yml_file.png
-   :width: 800
+.. code-block:: yaml
+
+   name: simulation
+   root: ./
+   startup_window: status
+   pre_window: export UAV_NAME=uav1; export RUN_TYPE=simulation; export UAV_TYPE=t650; export WORLD_NAME=simulation; export SENSORS="garmin_down"
+   windows:
+     - roscore:
+       layout: tiled
+       panes:
+         - roscore
+     - gazebo:
+       layout: tiled
+       panes:
+         - waitForRos; roslaunch mrs_simulation simulation.launch world_name:=grass_plane gui:=true
+         - waitForOdometry; gz camera -c gzclient_camera -f uav1; history -s gz camera -c gzclient_camera -f uav1
+     - status:
+       layout: tiled
+       panes:
+         - waitForSimulation; roslaunch mrs_uav_status status.launch
+     - spawn:
+       layout: tiled
+       panes:
+       - waitForSimulation; rosservice call /mrs_drone_spawner/spawn "1 $UAV_TYPE --enable-rangefinder"
+     - control:
+       layout: tiled
+       panes:
+         - waitForOdometry; roslaunch mrs_uav_general core.launch
+     - takeoff:
+       layout: tiled
+       panes:
+         - waitForSimulation; roslaunch mrs_uav_general automatic_start.launch
+         - 'waitForControl;
+           rosservice call /$UAV_NAME/mavros/cmd/arming 1;
+           sleep 2;
+           rosservice call /$UAV_NAME/mavros/set_mode 0 offboard'
+     - goto:
+       layout: tiled
+       panes:
+         - 'history -s rosservice call /$UAV_NAME/control_manager/goto \"goal: \[0.0, 10.0, 1.5, 0.0\]\"'
+     - rviz:
+       layout: tiled
+       panes:
+         - waitForControl; roslaunch mrs_uav_testing rviz.launch
+         - waitForControl; roslaunch mrs_rviz_plugins load_robot.launch
+     - easy_control:
+       layout: tiled
+       panes:
+         - waitForControl; waitForControl; roslaunch mrs_uav_general logitech_joystick.launch
+         - waitForControl; waitForControl; roslaunch mrs_rviz_plugins rviz_interface.launch
+     - layout:
+       layout: tiled
+       panes:
+         - waitForControl; sleep 3; ~/.i3/layout_manager.sh ./layout.json
+
+
+In the RViz part, you can see that the first line ask for the ``rviz.launch`` (see below) file which is used to choose the ``.rviz`` file that you want to use. The ``.rviz`` file is used to save
+the configuration of RViz, i.e. what is displayed. 
+
+.. code-block:: html
+
+   <launch>
+
+     <arg name="name" default="default_simulation" />
+
+     <group>
+
+       <node pkg="rviz" type="rviz" name="rviz" args="-d $(find mrs_uav_testing)/rviz/$(arg name).rviz" />
+
+     </group>
+
+   </launch>
+
+In the ``mrs_uav_testing`` package of CTU, there is a ``rviz`` folder which contains all the ``.rviz`` files.
+You can generate a ``.rviz`` file, which save your RViz configuration, by clicking in RViz on "File → Save config as".
+
+To add a new display, click on  "Add" and choose "By display type" or "By topic" to subscribe to the topic you want to visualize. If you choose "By display type", you will have to write
+the topic name in the left window.
+
+.. figure:: _static/add_button.png
+   :width: 400
    :alt: alternate text
    :align: center
 
-   Figure 5.5: .yml file
+   Figure 5.3: Add button
 
-You can see that there is an Rviz part. 
-The first line ask for the ``rviz.launch`` file which is used to choose the ``.rviz`` file that you want to use. This type of file is used to save
-the configuration of Rviz, like what is displayed. On the ``testing_brubotics`` package, there is the ``rviz`` directory which contains all the ``.rviz``
-files.
+.. figure:: _static/topic_window.png
+   :width: 400
+   :alt: alternate text
+   :align: center
 
-You can generate a ``.rviz`` file, which save your RViz configuration, by clicking in RViz on ``File->Save config as``.
+   Figure 5.4: Topic window
 
 5.3 Structure of the visualization_brubotics package
 ----------------------------------------------------

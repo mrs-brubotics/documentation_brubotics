@@ -43,8 +43,7 @@ and `ReStructuredText primer <https://www.sphinx-doc.org/en/master/usage/restruc
 How to open the ReadTheDocs website ?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-If you are reading this, it means that you already know how to visualize this documentation.
-However, you can still read `these instructions <https://github.com/mrs-brubotics/documentation_brubotics>`__ in the README file.
+Just follow `these instructions <https://github.com/mrs-brubotics/documentation_brubotics>`__.
 
 How to edit the ReadTheDocs website ?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -55,28 +54,36 @@ website. It has a syntax highlighting tool.
 The only files you need to modify are ``conf.py`` and all the ``.rst`` files in the ``source`` folder. Once you want to update your documentation, use the following
 commands from your directory:
 
-* Before all, we recommend you to run this command to update your local repository and get the newest code:
+* Before all, we recommend you to run this command to check which files have been updated since the last commit:
+  
+.. code-block:: shell
+
+    git status
+
+* To update your local repository and get the newest code, run this command:
     
 .. code-block:: shell    
 
     git pull
 
-* To check what files wich have been updated since the last commit you can use that command:
+.. note::
 
-.. code-block:: shell
+    The pull can not work if you have made changes in the files without committing and if someone also made commits If so, run this command:
 
-    git status
+    .. code-block:: shell    
+
+        git stash
 
 * To update your repository, adapt and run these commands
 
 .. code-block:: shell
 
-    git add (use tab key and type the first letter of the files to commit or use git add -A to directly stage all files)
+    git add       # use tab key and type the first letter of the files to commit or use git add -A to directly stage all files
     git commit -m "Provide a clear explanation of your commit. People who did not make the change should understand the issue you solved."
     git push
 
 Please refer to section :ref:`2.4 <2.4 Working with Git>` to understand why we use these commands.
 
 .. note::
-    When visualizing the documentation after running ``make html``, you may not see every chapters in the left tab. That's probably because you modify the ``index.rst``
-    file. To fix this, you need to save every ``.rst`` file.
+    When visualizing the documentation after running ``make html``, you may not see every chapters in the left tab. That's probably because you modify
+    the ``index.rst`` file. To fix this, you need to save every ``.rst`` file.
