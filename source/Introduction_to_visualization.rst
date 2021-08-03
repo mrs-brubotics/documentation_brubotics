@@ -159,7 +159,7 @@ We have developed a `visualization package <https://github.com/mrs-brubotics/vis
 strategies <5.4 Our work D-ERG visualization>` in the `two_drones_D-ERG <https://github.com/mrs-brubotics/testing_brubotics/tree/master/tmux_scripts/bryan/two_drones_D-ERG>`__.
 This package is based on the `mrs_rviz_plugins <https://github.com/ctu-mrs/mrs_rviz_plugins>`__ structure. We will explain you how to reproduce it.
 
-First, we created a new package in ``workspace/src_droneswarm_brubotics/ros_packages`` with:
+First, we created a new package named ``visualization_brubotics`` in ``workspace/src_droneswarm_brubotics/ros_packages`` with:
 
 .. code-block:: shell
 
@@ -180,11 +180,11 @@ At the end (line 247), you should see a RViz part. If it is commented, uncomment
          - waitForControl; roslaunch testing_brubotics tf_connector_avoidance.launch 
          - waitForControl; export UAV_NAME=uav1; roslaunch mrs_rviz_plugins load_robot.launch
          - waitForControl; export UAV_NAME=uav2; roslaunch mrs_rviz_plugins load_robot.launch
-
+         - waitForControl; roslaunch visualization_brubotics sphere.launch
 
 Now, we will explain line per line why we did.
 The ``rviz_brubotics.launch`` and ``tf_connector_avoidance.launch`` files are based from CTU but we made some changes in them. Indeed, we don't want to visualize the same things as CTU.
-Thus, we make our own ``.rviz`` files in the ``testing_brubotics`` package. So we needed to adapt the find path in the ``rviz.launch``:
+Thus, we make our own ``.rviz`` files in the ``testing_brubotics/rviz``. So we needed to adapt the find path in the ``rviz.launch``:
 
 .. code-block:: html
 
@@ -234,105 +234,20 @@ The path find ``tf_connector_avoidance.launch`` file has also been changed becau
      </launch>
 
 To create the robot model, we can use the ``load_robot.launch`` file of CTU without changing it.
-
-:blue:`[TODO: remove the next parts]JV`
-
+:blue:`[TODO: add explanations about sphere.launch file]JV`
+:blue:`[TODO: change the next parts]JV`
 
 5.3.1 `launch folder <https://github.com/mrs-brubotics/visualization_brubotics/tree/main/launch>`__
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Now, create a ``launch`` folder in your ``visualization_brubotics`` package and copy/paste the ``mrs_uav_testing/launch/rviz.launch`` file.
-Open it and change ``mrs_uav_testing`` by ``visualization_brubotics``. This file permits to open a RViz window when you will start the `2_two_drones_D-ERG simulation <https://github.com/mrs-brubotics/testing_brubotics/tree/master/tmux_scripts/bryan/2_two_drones_D-ERG>`__.
-
-Copy/paste the ``mrs_uav_testing/launch/tf_connector_avoidance.launch`` file in your ``launch`` folder and rename it ``load_robot.launch``. Open it and make the
-following changes:
-
-.. code-block:: xml
-
-   <launch>
-
-     <arg name="uav_type" default="$(optenv UAV_TYPE f450)"/>
-
-         <!-- other args -->
-     <arg name="standalone" default="true" />
-     <arg name="debug" default="false" />
-
-     <arg     if="$(eval arg('standalone') or arg('debug'))" name="nodelet" value="standalone" />
-     <arg unless="$(eval arg('standalone') or arg('debug'))" name="nodelet" value="load" />
-     <arg     if="$(eval arg('standalone') or arg('debug'))" name="nodelet_manager" value="" />
-     <arg unless="$(eval arg('standalone') or arg('debug'))" name="nodelet_manager" value="tf_connector_nodelet_manager" />
-
-     <arg     if="$(arg debug)" name="launch_prefix" value="debug_roslaunch" />
-     <arg unless="$(arg debug)" name="launch_prefix" value="" />
-
-     <group ns="uav1">
-       <param name="robot_model" command="$(find visualization_brubotics)/scripts/generate_robot_model_xml.py $(find visualization_brubotics)/data/$(arg uav_type).xml uav1/fcu $(find visualization_brubotics)" />
-       <node name="tf_published_uav_marker_link" pkg="tf2_ros" type="static_transform_publisher" args="0 0 0 0 0 0 uav1/fcu uav1/fcu/uav_marker" />
-       <node name="tf_published_props_link" pkg="tf2_ros" type="static_transform_publisher" args="0 0 0 0 0 0 uav1/fcu uav1/fcu/props" />
-       <node name="tf_published_arms_link" pkg="tf2_ros" type="static_transform_publisher" args="0 0 0 0 0 0 uav1/fcu uav1/fcu/arms" />
-       <node name="tf_published_arms_red_link" pkg="tf2_ros" type="static_transform_publisher" args="0 0 0 0 0 0 uav1/fcu uav1/fcu/arms_red" />
-     </group>
-
-     <group ns="uav2">
-       <param name="robot_model" command="$(find visualization_brubotics)/scripts/generate_robot_model_xml.py $(find visualization_brubotics)/data/$(arg uav_type).xml uav2/fcu $(find visualization_brubotics)" />
-       <node name="tf_published_uav_marker_link" pkg="tf2_ros" type="static_transform_publisher" args="0 0 0 0 0 0 uav2/fcu uav2/fcu/uav_marker" />
-       <node name="tf_published_props_link" pkg="tf2_ros" type="static_transform_publisher" args="0 0 0 0 0 0 uav2/fcu uav2/fcu/props" />
-       <node name="tf_published_arms_link" pkg="tf2_ros" type="static_transform_publisher" args="0 0 0 0 0 0 uav2/fcu uav2/fcu/arms" />
-       <node name="tf_published_arms_red_link" pkg="tf2_ros" type="static_transform_publisher" args="0 0 0 0 0 0 uav2/fcu uav2/fcu/arms_red" />
-     </group>
-
-     <node pkg="nodelet" type="nodelet" name="tf_connector_dummy" args="$(arg nodelet) mrs_uav_odometry/TFConnectorDummy $(arg nodelet_manager)" output="screen" launch-prefix="$(arg launch_prefix)">
-
-       <rosparam file="$(find visualization_brubotics)/config/tf_connector_avoidance.yaml" />
-
-       <!-- Subscribers -->
-       <remap from="~tf_in" to="/tf" />
-
-       <!-- Publishers -->
-       <remap from="~tf_out" to="/tf" />
-
-     </node>
-
-   </launch>
-
-
-This file will launch the 2 UAV on the RViz window.
-
-Go in the ``launch`` folder from ``mrs_rviz_plugins``, copy the ``rviz_interface`` folder and paste it in your ``visualization_brubotics/launch``
-folder. You will be able to use tools developed by CTU like the "2D Nav Goal" after you did :ref:`these steps <5.4.6_src_folder>`.
-
-5.3.2 `rviz folder <https://github.com/mrs-brubotics/visualization_brubotics/tree/main/rviz>`__
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-Create a ``rviz`` folder in your ``visualization_brubotics`` package. Copy/paste the ``mrs_uav_testing/rviz/default_simulation.rviz`` in it. 
-Create a ``avoidance_test.rviz file``, copy the text from `our existing file <https://github.com/mrs-brubotics/visualization_brubotics/blob/main/rviz/avoidance_test.rviz>`__
-and paste it in the file you just have created. It will allow you to directly see on RViz what is interesting to visualize.
-
-5.3.3 `data folder <https://github.com/mrs-brubotics/visualization_brubotics/tree/main/data>`__
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-For this step, you only have to copy/paste the entire ``mrs_rviz_plugins/data`` folder in your ``visualization_brubotics`` package. This folder contains the
-description of the UAV models.
-
-5.3.4 `scripts folder <https://github.com/mrs-brubotics/visualization_brubotics/tree/main/scripts>`__
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-Create a ``scripts`` folder in your ``visualization_brubotics`` package and copy/paste the ``mrs_rviz_plugins/scripts/generate_robot_model_xml.py`` file in it.
-This script will generate a ``robot_model`` that you will be able to visualize on RViz.
-
-5.3.5 `config folder <https://github.com/mrs-brubotics/visualization_brubotics/tree/main/config>`__
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-Create a ``config`` folder in your ``visualization_brubotics`` package and copy/paste the ``mrs_uav_testing/config/tf_connector_avoidance.yaml`` in it.
-This file will define properly the frames id.
-
-.. _5.4.6_src_folder:
+Now, create a ``launch`` folder in your ``visualization_brubotics`` package and... 
+:blue:`[TODO: add explanations about sphere.launch file]JV`
 
 5.3.6 `src folder <https://github.com/mrs-brubotics/visualization_brubotics/tree/main/src>`__
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Finally, create a ``src`` folder in your ``visualization_brubotics`` package and copy/paste the ``mrs_rviz_plugins/src/rviz_interface`` folder in it.
-It contains 2 ``.cpp`` files which define who the CTU RViz tools work.
+Finally, create a ``src`` folder in your ``visualization_brubotics`` package and ...
+:blue:`[TODO]JV`
 
 .. _5.4 Our work D-ERG visualization:
 
