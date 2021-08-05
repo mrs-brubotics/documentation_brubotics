@@ -1,8 +1,8 @@
 5. Introduction to visualization
 ================================
 
-In this chapter, we will introduce you to the visualization on Rviz. It is a great tool for ROS, used by many to debug codes or to have some nice
-visualization of your simulations.
+In this chapter, we will introduce you to the visualization on Rviz.
+It is a great tool for ROS, used by many to debug codes or to have some nice visualization of your simulations.
 
 5.1 The beginning
 -----------------
@@ -34,7 +34,8 @@ You can also use the 2D Nav Goal button to choose a position and a heading to go
 
    Figure 5.2: Navigation goal button
 
-Next, you can run some simulations which use dedicated plugins for one specific task. You will need to use these commands to see all of them:
+Next, you can run some simulations which use dedicated plugins for one specific task.
+You will need to use these commands to see all of them:
 
 .. code-block:: shell
 
@@ -48,7 +49,8 @@ Choose the one that you want to test by running:
    cd "name_of_the_simulation"
    ./start.sh
 
-The bumper simulation is an example of an advanced visualization task that you can do on RViz. It is made by a plugin created from scratch.
+The bumper simulation is an example of an advanced visualization task that you can do on RViz.
+It is made by a plugin created from scratch.
 It represents a huge work to create these type of visualization but it shows you the diversity of possibilities.
 
 5.2 How RViz works ?
@@ -114,8 +116,8 @@ A ``.yml`` looks like this:
          - waitForControl; sleep 3; ~/.i3/layout_manager.sh ./layout.json
 
 
-In the RViz part, you can see that the first line ask for the ``rviz.launch`` (see below) file which is used to choose the ``.rviz`` file that you want to use. The ``.rviz`` file is used to save
-the configuration of RViz, i.e. what is displayed. 
+In the RViz part, you can see that the first line ask for the ``rviz.launch`` (see below) file which is used to choose the ``.rviz`` 
+file that you want to use. The ``.rviz`` file is used to savethe configuration of RViz, i.e. what is displayed. 
 
 .. code-block:: html
 
@@ -135,8 +137,8 @@ the configuration of RViz, i.e. what is displayed.
 In the ``mrs_uav_testing`` package of CTU, there is a ``rviz`` folder which contains all the ``.rviz`` files.
 You can generate a ``.rviz`` file, which save your RViz configuration, by clicking in RViz on "File → Save config as".
 
-To add a new display, click on  "Add" and choose "By display type" or "By topic" to subscribe to the topic you want to visualize. If you choose "By display type", you will have to write
-the topic name in the left window.
+To add a new display, click on  "Add" and choose "By display type" or "By topic" to subscribe to the topic you want to visualize.
+If you choose "By display type", you will have to write the topic name in the left window.
 
 .. figure:: _static/add_button.png
    :width: 400
@@ -152,12 +154,13 @@ the topic name in the left window.
 
    Figure 5.4: Topic window
 
-5.3 Structure of the visualization_brubotics package
-----------------------------------------------------
+5.3 How did we vuild the `visualization package <https://github.com/mrs-brubotics/visualization_brubotics>` ?
+-------------------------------------------------------------------------------------------------------------
 
-We have developed a `visualization package <https://github.com/mrs-brubotics/visualization_brubotics>`__ which permits to visualize in RViz the :ref:`D-ERG
-strategies <5.4 Our work D-ERG visualization>` in the `two_drones_D-ERG <https://github.com/mrs-brubotics/testing_brubotics/tree/master/tmux_scripts/bryan/two_drones_D-ERG>`__.
-This package is based on the `mrs_rviz_plugins <https://github.com/ctu-mrs/mrs_rviz_plugins>`__ structure. We will explain you how to reproduce it.
+We have developed a `visualization package <https://github.com/mrs-brubotics/visualization_brubotics>`__ which permits to visualize
+in RViz the :ref:`D-ERG strategies algorithms <5.4 Our work D-ERG visualization>` in the `two_drones_D-ERG <https://github.com/mrs-brubotics/testing_brubotics/tree/master/tmux_scripts/bryan/two_drones_D-ERG>`__.
+This package is based on the `mrs_rviz_plugins <https://github.com/ctu-mrs/mrs_rviz_plugins>`__ structure.
+We will explain you how to reproduce it.
 
 First, we created a new package named ``visualization_brubotics`` in ``workspace/src_droneswarm_brubotics/ros_packages`` with:
 
@@ -182,9 +185,10 @@ At the end (line 247), you should see a RViz part. If it is commented, uncomment
          - waitForControl; export UAV_NAME=uav2; roslaunch mrs_rviz_plugins load_robot.launch
          - waitForControl; roslaunch visualization_brubotics sphere.launch
 
-Now, we will explain line per line why we did.
-The ``rviz_brubotics.launch`` and ``tf_connector_avoidance.launch`` files are based from CTU but we made some changes in them. Indeed, we don't want to visualize the same things as CTU.
-Thus, we make our own ``.rviz`` files in the ``testing_brubotics/rviz``. So we needed to adapt the find path in the ``rviz.launch``:
+Now, we will explain you line per line why we did this.
+The ``rviz_brubotics.launch`` and ``tf_connector_avoidance.launch`` files are based on CTU codes but we made some changes in them.
+Indeed, we don't want to visualize the same things as CTU. Thus, we make our own ``.rviz`` files in the ``testing_brubotics/rviz``.
+So we needed to adapt the find path in the ``rviz.launch``:
 
 .. code-block:: html
 
@@ -201,7 +205,8 @@ Thus, we make our own ``.rviz`` files in the ``testing_brubotics/rviz``. So we n
 
    </launch>
 
-The path find ``tf_connector_avoidance.launch`` file has also been changed because it calls the ``tf_connector_avoidance.yaml`` file which permits to visualize several drones at the same time.
+The path find ``tf_connector_avoidance.launch`` file has also been changed because it calls the ``tf_connector_avoidance.yaml``
+file which permits to visualize several drones at the same time.
 
 .. code-block:: html
 
@@ -233,8 +238,8 @@ The path find ``tf_connector_avoidance.launch`` file has also been changed becau
 
      </launch>
 
-To create the robot model, we can use the ``load_robot.launch`` file of CTU without changing it. It permits to create one robot
-model so we use it two times because there are two drones in our simulation, uav1 and uav2.
+To create the robot model, we can use the ``load_robot.launch`` file of CTU without changing it.
+It permits to create one robot model so we use it two times because there are two drones in our simulation, uav1 and uav2.
 
 Then, we launch our ``sphere.launch`` file to start our ``.cpp`` file for visualization.
 
@@ -267,9 +272,9 @@ Finally, create a ``src`` folder in your ``visualization_brubotics`` package and
 5.4 Our work: D-ERG visualization
 ---------------------------------
 
-We want to visualize what it is computed by the `D-ERG tracker <https://github.com/mrs-brubotics/trackers_brubotics/blob/master/src/dergbryan_tracker/dergbryan_tracker.cpp>`__ of
-BruBotics, especially in the `2_two_drones_D-ERG simulation <https://github.com/mrs-brubotics/testing_brubotics/tree/master/tmux_scripts/bryan/2_two_drones_D-ERG>`__ that you can
-run with these commands:
+We want to visualize what it is computed by the `D-ERG tracker <https://github.com/mrs-brubotics/trackers_brubotics/blob/master/src/dergbryan_tracker/dergbryan_tracker.cpp>`__
+of BruBotics, especially in the `2_two_drones_D-ERG simulation <https://github.com/mrs-brubotics/testing_brubotics/tree/master/tmux_scripts/bryan/2_two_drones_D-ERG>`__
+that you can run with these commands:
 
 .. code-block:: shell
 
