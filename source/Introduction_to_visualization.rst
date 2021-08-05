@@ -233,8 +233,21 @@ The path find ``tf_connector_avoidance.launch`` file has also been changed becau
 
      </launch>
 
-To create the robot model, we can use the ``load_robot.launch`` file of CTU without changing it.
-:blue:`[TODO: add explanations about sphere.launch file]JV`
+To create the robot model, we can use the ``load_robot.launch`` file of CTU without changing it. It permits to create one robot
+model so we use it two times because there are two drones in our simulation, uav1 and uav2.
+
+Then, we launch our ``sphere.launch`` file to start our ``.cpp`` file for visualization.
+
+.. code-block:: html
+
+  <!-- workspace/src/droneswarm_brubotics/ros_packages/visualization_brubotics/launch/sphere.launch -->
+  <?xml version="1.0" ?>
+  <launch>
+
+      <node pkg="visualization_brubotics" type="sphere" name="sphere" output="screen"/>
+
+  </launch>
+
 :blue:`[TODO: change the next parts]JV`
 
 5.3.1 `launch folder <https://github.com/mrs-brubotics/visualization_brubotics/tree/main/launch>`__
