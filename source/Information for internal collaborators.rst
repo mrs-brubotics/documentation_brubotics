@@ -68,6 +68,14 @@ We have several computers available in the lab, but these have to be reserved si
 Please provide your supervisor the specs of your machine(s) (i.e. laptops or desktops) you would like to use for this project. They can tell you if it's sufficient.
 Once you decided on a machine:
     * TODO FROM PART INTERNS You first need to install Ubuntu 18.04 LTS Desktop. If you already have windows on your PC, you need to reserve HDD space (a partition of at least 50GB recommended) and do a dual boot. Do NOT use a virtual machine, it slows down things a lot. Follow \href{https://ubuntu.com/tutorials/install-ubuntu-desktop#1-overview}{these steps}. It is advised to boot from a usb stick.
+    * Configure the VUBnext internet settings on Ubuntu. In the Security tab select:
+         * Security: WPA & WPA2 Enterprise
+         * Authentication: Protected EAP (PEAP)
+         * CA certificate: (None)
+         * Check the "No CA certificate is required box.
+         * PEAP version: Automatic
+         * Inner authentication: MSCHAPv2
+         * Fill in your VUB username and password.
     * Download the \href{https://code.visualstudio.com/}{visual studio code IDE} for Ubuntu and install it. Preferably use this whenever you want to view or edit code opposed to the default text editor in Ubuntu. Set visual studio code as the default program to open files (right click on the file and select "open with other application").
     * Read and follow step doc in google drive: Configure CPU Specs. Laptops only have performance and powersave mode and no Conservative, ondemand and schedutil mode. Make sure you do your simulatios always in performance mode.
     * Install \href{https://www.teamviewer.com/nl/download/linux/}{teamviewer for linux}, and create an teamviewer account. 
