@@ -76,7 +76,7 @@ Once you decided on a machine:
          * PEAP version: Automatic
          * Inner authentication: MSCHAPv2
          * Fill in your VUB username and password.
-    * Download the `visual studio code IDE for Ubuntu <https://code.visualstudio.com/>`__ for Ubuntu and install it. Preferably use this whenever you want to view or edit code opposed to the default text editor in Ubuntu. Set visual studio code as the default program to open files (right click on the file and select "open with other application").
+    * Download the `Visual Studio Code IDE <https://code.visualstudio.com/>`__ for Ubuntu (.deb) and install it. Preferably use this whenever you want to view or edit code opposed to the default text editor in Ubuntu. Set visual studio code as the default program to open files (right click on the file and select "open with other application").
     * Read and follow step doc in google drive: Configure CPU Specs. Laptops only have performance and powersave mode and no Conservative, ondemand and schedutil mode. Make sure you do your simulatios always in performance mode.
     * Install \href{https://www.teamviewer.com/nl/download/linux/}{teamviewer for linux}, and create an teamviewer account. 
     * Install on Matlab and Simulink version 2020b. See doc in google drive, since you might get some non trivial issues.
