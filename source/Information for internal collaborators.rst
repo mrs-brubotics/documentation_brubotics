@@ -85,7 +85,7 @@ Once you decided on a machine:
 -------------------------
     * Create a github account and email me your name on github. I will give you access to our code.
     * Setup git user name and email on your machine by following these steps: https://www.digitalocean.com/community/tutorials/how-to-install-git-on-ubuntu-18-04 , "Setting Up Git".
-    * You need to setup your ssh keys correctly by following [these steps](https://docs.github.com/en/github/authenticating-to-github/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent).
+    * You need to setup your ssh keys correctly by following [these steps](https://docs.github.com/en/github/authenticating-to-github/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent) to generate them and then follow these steps https://docs.github.com/en/github/authenticating-to-github/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account to add them to your GitHub.
     * Learn git by following \href{https://www.coursera.org/learn/version-control-with-git}{this free tutorial}. Make sure you follow the tutorial from the command line / terminal window (not the GUI). This will allow you to effectively improve your software and work in a team. 
     * You will further use git during the project. Remember to keep your commits structured by having multiple commits for each small task you code. Try to push your code on github once a day so everyone is up-to-date with your developments.
     * Test if your code works before commiting anything!
