@@ -49,7 +49,7 @@ Note: Most of the documentation (this repo) and all code can be found on github.
 ------------------------------------
 Everything related to the actual scientific research questions, the followed research methodology, the research results, discussions and conclusions will be contained in the scientific research report (e.g. the paper, the thesis).
     * Create your scientific report in the requested template. Please contact your supervisor since they might have example templates to start from.
-    * Preferably use the ` overleaf online Latex editor <https://www.overleaf.com/>`__ and share the report with your supervisor.
+    * Preferably use the `overleaf online Latex editor <https://www.overleaf.com>`__.
     * Go to the main.tex and ctrl + f "NewStudent". Copy paste and update the example code in there such that you and your supervisor can give comments (i.e. coloured text) using their own initials (e.g. \bc{Bryan Convens (BC) writes a comment here!}). Don't delete the example NS \ns{it is for new students to see this example.
     
 Some guidelines:
