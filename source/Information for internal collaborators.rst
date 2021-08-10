@@ -82,7 +82,15 @@ Once you decided on a machine:
          * Find Belgian Wang 724 AZERTY under Dutch or French. https://www.roelpeters.be/changing-to-dutch-belgian-keyboard-layout-in-ubuntu/
          * Move it up as the default keyboard.
     * Download the `Visual Studio Code IDE <https://code.visualstudio.com/>`__ for Ubuntu (.deb) and install it. Preferably use this whenever you want to view or edit code opposed to the default text editor in Ubuntu. Set visual studio code as the default program to open files (right click on the file and select "open with other application").
-    * Read and follow step doc in google drive: Configure CPU Specs. Laptops only have performance and powersave mode and no Conservative, ondemand and schedutil mode. Make sure you do your simulatios always in performance mode.
+    * Configure CPU Specs:
+         * Read the section `Disabling CPU frequency scaling <https://frankaemika.github.io/docs/troubleshooting.html#disabling-cpu-frequency-scaling>`__  
+         * sudo apt install cpufrequtils
+         * sudo apt install indicator-cpufreq , reboot machine to see the cpu icon pop up.
+         * sudo systemctl disable ondemand
+         * sudo systemctl enable cpufrequtils
+         * sudo sh -c 'echo "GOVERNOR=performance" > /etc/default/cpufrequtils'
+         * sudo systemctl daemon-reload && sudo systemctl restart cpufrequtils
+    * Note: laptops only have Performance and Powersave mode and no Conservative, ondemand and schedutil mode. Make sure you do your simulatios always in performance mode. See also .docx on our Google drive.
     * Install `TeamViewer for Linux <https://www.teamviewer.com/nl/download/linux/>`__, and create an teamviewer account. 
     * Install on Matlab and Simulink version 2021b and the toolboxes you like. See doc in google drive, since you might get some non trivial issues.
 
