@@ -67,6 +67,7 @@ We have several computers available in the lab, but these have to be reserved si
 
 Please provide your supervisor the specs of your machine(s) (i.e. laptops or desktops) you would like to use for this project. They can tell you if it's sufficient.
 Once you decided on a machine:
+
     * TODO FROM PART INTERNS You first need to install Ubuntu 18.04 LTS Desktop. If you already have windows on your PC, you need to reserve HDD space (a partition of at least 50GB recommended) and do a dual boot. Do NOT use a virtual machine, it slows down things a lot. Follow \href{https://ubuntu.com/tutorials/install-ubuntu-desktop#1-overview}{these steps}. It is advised to boot from a usb stick.
     * Configure the VUBnext internet settings on Ubuntu. In the Security tab select:
          * Security: WPA & WPA2 Enterprise
@@ -75,21 +76,32 @@ Once you decided on a machine:
          * Check the "No CA certificate is required box.
          * PEAP version: Automatic
          * Inner authentication: MSCHAPv2
-         * Fill in your VUB username and password.
+         * Fill in your VUB username and password. 
     * If you did not select the correct keyboard during the Ubuntu installation, there can be some bugs with a Belgian AZERTY keyboard. Some solutions:
+    
          * Install the Languages French and Dutch (Nederlands).
          * sudo locale-gen fr_BE.UTF-8 (https://askubuntu.com/questions/1133361/cannot-find-my-keyboard-layout)
          * Find Belgian Wang 724 AZERTY under Dutch or French. https://www.roelpeters.be/changing-to-dutch-belgian-keyboard-layout-in-ubuntu/
-         * Move it up as the default keyboard.
+         * Move it up as the default keyboard.  
     * Download the `Visual Studio Code IDE <https://code.visualstudio.com/>`__ for Ubuntu (.deb) and install it. Preferably use this whenever you want to view or edit code opposed to the default text editor in Ubuntu. Set visual studio code as the default program to open files (right click on the file and select "open with other application").
     * Configure CPU Specs:
          * Read the section `Disabling CPU frequency scaling <https://frankaemika.github.io/docs/troubleshooting.html#disabling-cpu-frequency-scaling>`__  
-         * sudo apt install cpufrequtils
-         * sudo apt install indicator-cpufreq , reboot machine to see the cpu icon pop up.
-         * sudo systemctl disable ondemand
-         * sudo systemctl enable cpufrequtils
-         * sudo sh -c 'echo "GOVERNOR=performance" > /etc/default/cpufrequtils'
-         * sudo systemctl daemon-reload && sudo systemctl restart cpufrequtils
+         * Install cpufrequtils and its indicator
+         
+            .. code:: shell
+
+               sudo apt install cpufrequtils
+               sudo apt install indicator-cpufreq     
+         
+         * Reboot the machine to see the cpu indicator appear in the top right corner of your screen. Yuo can manually select the desired mode here.
+         
+            .. code:: shell
+
+               sudo systemctl disable ondemand
+               sudo systemctl enable cpufrequtils
+               sudo sh -c 'echo "GOVERNOR=performance" > /etc/default/cpufrequtils'
+               sudo systemctl daemon-reload && sudo systemctl restart cpufrequtils
+               
     * Note: laptops only have Performance and Powersave mode and no Conservative, ondemand and schedutil mode. Make sure you do your simulatios always in performance mode. See also .docx on our Google drive.
     * Install `TeamViewer for Linux <https://www.teamviewer.com/nl/download/linux/>`__, and create an teamviewer account. 
     * Install on Matlab and Simulink version 2021b and the toolboxes you like. See doc in google drive, since you might get some non trivial issues.
@@ -128,8 +140,3 @@ The software framework you will use during the project is based on \href{https:/
 Read the relevant parts of our tutorial to learn to use the droneswarm_brubotics framework.
 Please help us to improve the tutorual. If you struggled on some parts it means it was not writtin sufficiently well. 
 Don't forget to commit your changes when updates this tutorial!
-
-
-
-
-
