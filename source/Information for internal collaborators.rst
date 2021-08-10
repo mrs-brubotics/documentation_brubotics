@@ -103,7 +103,7 @@ Once you decided on a machine:
                sudo sh -c 'echo "GOVERNOR=performance" > /etc/default/cpufrequtils'
                sudo systemctl daemon-reload && sudo systemctl restart cpufrequtils
                
-    * Note: laptops only have Performance and Powersave mode and no Conservative, ondemand and schedutil mode. Make sure you do your simulatios always in performance mode. See also .docx on our Google drive.
+         * Note: laptops only have Performance and Powersave mode and no Conservative, ondemand and schedutil mode. Make sure you do your simulatios always in performance mode. See also .docx on our Google drive.
     * Install `TeamViewer for Linux <https://www.teamviewer.com/nl/download/linux/>`__, and create an teamviewer account. 
     * Install on Matlab and Simulink version 2021b and the toolboxes you like. See doc in google drive, since you might get some non trivial issues.
 
