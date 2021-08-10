@@ -76,6 +76,10 @@ Once you decided on a machine:
          * PEAP version: Automatic
          * Inner authentication: MSCHAPv2
          * Fill in your VUB username and password.
+    * If you did not select the correct keyboard during the isntallation, there can be some bugs with a Belgian AZERTY keyboard. Some solutions:
+         * Install the Languages French and Dutch (Nederlands).
+         * sudo locale-gen fr_BE.UTF-8 (https://askubuntu.com/questions/1133361/cannot-find-my-keyboard-layout)
+         * Find Belgian Wang 724 AZERTY under Dutch or French. https://www.roelpeters.be/changing-to-dutch-belgian-keyboard-layout-in-ubuntu/
     * Download the `Visual Studio Code IDE <https://code.visualstudio.com/>`__ for Ubuntu (.deb) and install it. Preferably use this whenever you want to view or edit code opposed to the default text editor in Ubuntu. Set visual studio code as the default program to open files (right click on the file and select "open with other application").
     * Read and follow step doc in google drive: Configure CPU Specs. Laptops only have performance and powersave mode and no Conservative, ondemand and schedutil mode. Make sure you do your simulatios always in performance mode.
     * Install `TeamViewer for Linux <https://www.teamviewer.com/nl/download/linux/>`__, and create an teamviewer account. 
