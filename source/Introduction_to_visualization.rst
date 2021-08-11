@@ -154,7 +154,7 @@ If you choose "By display type", you will have to write the topic name in the le
 
    Figure 5.4: Topic window
 
-5.3 How did we vuild the `visualization package <https://github.com/mrs-brubotics/visualization_brubotics>` ?
+5.3 How did we build the `visualization package <https://github.com/mrs-brubotics/visualization_brubotics>` ?
 -------------------------------------------------------------------------------------------------------------
 
 We have developed a `visualization package <https://github.com/mrs-brubotics/visualization_brubotics>`__ which permits to visualize
@@ -282,6 +282,8 @@ that you can run with these commands:
     ./start.sh
 
 We have several D-ERG (Distributed Explicit Reference Governor) strategies to illustrate. For more advanced explanations, watch `this video <https://www.youtube.com/watch?v=le6WSeyTXNU>`__
+
+``Explanations about quaternions <https://scriptinghelpers.org/blog/how-to-think-about-quaternions>``__
 
 5.4.1 D-ERG strategy 0
 ^^^^^^^^^^^^^^^^^^^^^^
