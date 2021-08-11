@@ -373,9 +373,25 @@ longitudinal axis.
 This final strategy permits to calculate the minimal distance between 2 predicted poses.
 
 
-5.5 The code for visualization
-------------------------------
+5.5 The `code <https://github.com/mrs-brubotics/visualization_brubotics/blob/main/src/sphere.cpp>`__ for visualization
+----------------------------------------------------------------------------------------------------------------------
 
-:blue:`[TODO: add explanations about the C++ code step by step]JV`
+:blue:`[Don't forget to change the link if we change the file name]JV`
 
-``Explanations about quaternions <https://scriptinghelpers.org/blog/how-to-think-about-quaternions>``__
+As you can see in the different :ref:`D-ERG strategies  <5.4 Our work D-ERG visualization>`, we want to visualize spheres, tubes and lines.
+These three shapes are `RViz standard display marker types <http://wiki.ros.org/rviz/DisplayTypes/Marker>`__, except the tube.
+But we will see later that we can build these shape with one cylinder, which is also a RViz standard display marker type, and two hemispheres.
+
+5.5.1 Beginner tutorials
+^^^^^^^^^^^^^^^^^^^^^^^^
+
+To display basic shapes in RViz, we invite you to follow `this tutorial <http://wiki.ros.org/rviz/Tutorials/Markers%3A%20Basic%20Shapes>`__.
+You will learn to display cubes, spheres, cylinders, and arrows in RViz.
+
+Then, follow `this tutorial <http://wiki.ros.org/rviz/Tutorials/Markers%3A%20Points%20and%20Lines>`__ to learn how to display points and lines.
+
+You will also need to write ROS publishers and subscribers so please follow `this tutorial <http://wiki.ros.org/ROS/Tutorials/WritingPublisherSubscriber%28c%2B%2B%29>`__
+
+:blue:`[TODO: add a part for the explanations about the C++ code step by step]JV`
+
+`Explanations about quaternions <https://scriptinghelpers.org/blog/how-to-think-about-quaternions>`__
