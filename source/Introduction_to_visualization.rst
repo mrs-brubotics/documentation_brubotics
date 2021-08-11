@@ -154,8 +154,8 @@ If you choose "By display type", you will have to write the topic name in the le
 
    Figure 5.4: Topic window
 
-5.3 How did we build the `visualization package <https://github.com/mrs-brubotics/visualization_brubotics>` ?
--------------------------------------------------------------------------------------------------------------
+5.3 How did we build the `visualization package <https://github.com/mrs-brubotics/visualization_brubotics>`__ ?
+---------------------------------------------------------------------------------------------------------------
 
 We have developed a `visualization package <https://github.com/mrs-brubotics/visualization_brubotics>`__ which permits to visualize
 in RViz the :ref:`D-ERG strategies algorithms <5.4 Our work D-ERG visualization>` in the `two_drones_D-ERG <https://github.com/mrs-brubotics/testing_brubotics/tree/master/tmux_scripts/bryan/two_drones_D-ERG>`__.
@@ -241,7 +241,7 @@ file which permits to visualize several drones at the same time.
 To create the robot model, we can use the ``load_robot.launch`` file of CTU without changing it.
 It permits to create one robot model so we use it two times because there are two drones in our simulation, uav1 and uav2.
 
-Then, we launch our ``sphere.launch`` file to start our ``.cpp`` file for visualization.
+Then, we launch our ``launch/sphere.launch`` file to start our ``src/sphere.cpp`` file for visualization.
 
 .. code-block:: html
 
@@ -253,19 +253,8 @@ Then, we launch our ``sphere.launch`` file to start our ``.cpp`` file for visual
 
   </launch>
 
+:blue:`[TODO: adapt the .cpp file name]JV`
 :blue:`[TODO: change the next parts]JV`
-
-5.3.1 `launch folder <https://github.com/mrs-brubotics/visualization_brubotics/tree/main/launch>`__
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-Now, create a ``launch`` folder in your ``visualization_brubotics`` package and... 
-:blue:`[TODO: add explanations about sphere.launch file]JV`
-
-5.3.6 `src folder <https://github.com/mrs-brubotics/visualization_brubotics/tree/main/src>`__
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-Finally, create a ``src`` folder in your ``visualization_brubotics`` package and ...
-:blue:`[TODO]JV`
 
 .. _5.4 Our work D-ERG visualization:
 
@@ -273,17 +262,17 @@ Finally, create a ``src`` folder in your ``visualization_brubotics`` package and
 ---------------------------------
 
 We want to visualize what it is computed by the `D-ERG tracker <https://github.com/mrs-brubotics/trackers_brubotics/blob/master/src/dergbryan_tracker/dergbryan_tracker.cpp>`__
-of BruBotics, especially in the `2_two_drones_D-ERG simulation <https://github.com/mrs-brubotics/testing_brubotics/tree/master/tmux_scripts/bryan/2_two_drones_D-ERG>`__
+of BruBotics, especially in the `two_drones_D-ERG simulation <https://github.com/mrs-brubotics/testing_brubotics/tree/master/tmux_scripts/bryan/2_two_drones_D-ERG>`__
 that you can run with these commands:
 
 .. code-block:: shell
 
-    cd ~workspace/src/droneswarm_brubotics/ros_packages/testing_brubotics/tmux_scripts/2_two_drones_D-ERG/
+    cd ~workspace/src/droneswarm_brubotics/ros_packages/testing_brubotics/tmux_scripts/two_drones_D-ERG/
     ./start.sh
 
 We have several D-ERG (Distributed Explicit Reference Governor) strategies to illustrate. For more advanced explanations, watch `this video <https://www.youtube.com/watch?v=le6WSeyTXNU>`__
 
-``Explanations about quaternions <https://scriptinghelpers.org/blog/how-to-think-about-quaternions>``__
+.. _5.4.1 D-ERG strategy 0:
 
 5.4.1 D-ERG strategy 0
 ^^^^^^^^^^^^^^^^^^^^^^
@@ -304,28 +293,7 @@ Communicate: :math:`p_{k}`
 
 Sphere can **translate**.
 
-In order to visualize how it works, we first need to change ``data/f450.xml`` file. The error sphere has a constant radius so it is easy: you just need to add a marker like this:
-
-.. code-block:: xml
-
-   <link name="[REPLACEME]uav_name[/REPLACEME]/uav_marker">
-     <!-- UAV specific-color marker -->
-     <visual>
-       <origin xyz="0 0 -70e-3" rpy="0 0 0" />
-       <geometry>
-         <cylinder radius="370e-3" length="220e-3" />
-       </geometry>
-       <material name="UAVSpecificColor" />
-     </visual>
-     <visual>
-       <origin xyz="0 0 -70e-3" rpy="0 0 0" />
-       <geometry>
-         <sphere radius="1.5" />
-       </geometry>
-       <material name="UAVSpecificColor" />
-     </visual>
-
-:blue:`[TODO: explanations about how to visualize the path, the applied pose and desired reference pose]JV`
+.. _5.4.2 D-ERG strategy 1:
 
 5.4.2 D-ERG strategy 1
 ^^^^^^^^^^^^^^^^^^^^^^
@@ -341,9 +309,7 @@ Communicate: :math:`p_{k}`, :math:`p_{k}^{v}`
 
 Tube can **translate** and **rotate**.
 
-To visualize a pill, we need to create a plugin because this display type is not available on RViz. But this is not trivial at all.
-
-:blue:`[TODO: explanations about how to do it]JV`
+.. _5.4.3 D-ERG strategy 2:
 
 5.4.3 D-ERG strategy 2
 ^^^^^^^^^^^^^^^^^^^^^^
@@ -359,7 +325,7 @@ Communicate: :math:`p_{k}`, :math:`p_{k}^{v}`
 
 Tube can **translate**, **rotate** and **change length**.
 
-:blue:`[TODO: explanations about how to do it]JV`
+.. _5.4.4 D-ERG strategy 3:
 
 5.4.4 D-ERG strategy 3
 ^^^^^^^^^^^^^^^^^^^^^^
@@ -375,7 +341,7 @@ Communicate: :math:`p_{k}`, :math:`p_{k}^{v}`, :math:`S_{a,min}^{⊥}`
 
 Tube can **translate**, **rotate**, **change length and width**. The witfh (radius) is the minimal one for a tube with error directed longitudinal axis.
 
-:blue:`[TODO: explanations about how to do it]JV`
+.. _5.4.5 D-ERG strategy 4:
 
 5.4.5 D-ERG strategy 4
 ^^^^^^^^^^^^^^^^^^^^^^
@@ -392,7 +358,7 @@ Communicate: :math:`p_{k}^{0}`, :math:`p_{k}^{1}`, :math:`S_{a,min}^{⊥}`
 Tube and cylinder can **translate**, **rotate**, **change length and width**. The width (radius) and the length are the minimal one for a tube with error directed
 longitudinal axis.
 
-:blue:`[TODO: explanations about how to do it]JV`
+.. _5.4.6 D-ERG strategy 5:
 
 5.4.6 D-ERG strategy 5
 ^^^^^^^^^^^^^^^^^^^^^^
@@ -404,6 +370,12 @@ longitudinal axis.
 
    Figure 5.11: D-ERG strategy 5
 
-This final strategy permits to calculate the minimal distance between 2 drones.
+This final strategy permits to calculate the minimal distance between 2 predicted poses.
 
-:blue:`[TODO: explanations about how to do it]JV`
+
+5.5 The code for visualization
+------------------------------
+
+:blue:`[TODO: add explanations about the C++ code step by step]JV`
+
+``Explanations about quaternions <https://scriptinghelpers.org/blog/how-to-think-about-quaternions>``__
