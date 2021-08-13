@@ -94,7 +94,6 @@ Once you decided on a machine:
             sudo apt-get update
             sudo apt-get upgrade
          
-    * Download the `Visual Studio Code IDE <https://code.visualstudio.com/>`__ for Ubuntu (.deb) and install it. Preferably use this whenever you want to view or edit code opposed to the default text editor in Ubuntu. Set visual studio code as the default program to open files (right click on the file and select "open with other application").
     * Configure CPU Specs:
          * Read the section `Disabling CPU frequency scaling <https://frankaemika.github.io/docs/troubleshooting.html#disabling-cpu-frequency-scaling>`__  
          * Install cpufrequtils and its indicator
@@ -110,7 +109,7 @@ Once you decided on a machine:
             
                sudo reboot
                
-         * Automatically enable the machine in performance mode on every boot:
+         * Automatically enable the machine in performance mode on every boot (required for the onboard drone computer, and recommended for other machines):
          
             .. code:: shell
 
@@ -120,6 +119,8 @@ Once you decided on a machine:
                sudo systemctl daemon-reload && sudo systemctl restart cpufrequtils
                
          * Note: laptops only have Performance and Powersave mode and no Conservative, ondemand and schedutil mode. Make sure you do your simulatios always in performance mode. See also .docx on our Google drive.
+         * Make a habit to do all yuor simulations in perfromance mode. This can significantly lower the computational time of simulations and allow to achieve better real-timeness.
+    * Download the `Visual Studio Code IDE <https://code.visualstudio.com/>`__ for Ubuntu (.deb) and install it. Preferably use this whenever you want to view or edit code opposed to the default text editor in Ubuntu. Set visual studio code as the default program to open files (right click on the file and select "open with other application").
     * Install `TeamViewer for Linux <https://www.teamviewer.com/nl/download/linux/>`__, and create an teamviewer account. 
     * Install on Matlab and Simulink version 2021b and the toolboxes you like. See doc in google drive, since you might get some non trivial issues.
 
