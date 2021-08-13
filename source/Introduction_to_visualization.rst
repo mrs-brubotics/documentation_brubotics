@@ -380,20 +380,21 @@ This final strategy permits to calculate the minimal distance between 2 predicte
 
 As you can see in the different :ref:`D-ERG strategies  <5.4 Our work D-ERG visualization>`, we want to visualize spheres, tubes and lines.
 These three shapes are `RViz standard display marker types <http://wiki.ros.org/rviz/DisplayTypes/Marker>`__, except the tube.
-But we will see later that we can build these shape with one cylinder, which is also a RViz standard display marker type, and two hemispheres.
+But we will see later that we can build this shape with one cylinder, which is also a RViz standard display marker type, and two hemispheres.
 
 5.5.1 Beginner tutorials and knowledge
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 To display basic shapes in RViz, we invite you to follow `this tutorial <http://wiki.ros.org/rviz/Tutorials/Markers%3A%20Basic%20Shapes>`__.
 You will learn to display cubes, spheres, cylinders, and arrows in RViz.
-You can read `this documentation <http://wiki.ros.org/rviz/DisplayTypes/Marker#Mesh_Resource_.28MESH_RESOURCE.3D10.29_.5B1.1.2B-.5D>`__ to learn how to do a marker using a mesh resource.
-We used it to do the markers of the hemispheres. You need to use a .stl file for example. You can search on the internet to find this kind of file, or you can make it yourself with specific 
-software like 3D-builder or SolidWorks on windows. Be careful to use the metric system on the software. You may enconter some issues of scale between your software and Rviz. For us, there was a difference
-of scale of 1000 between these two. You can see on our code that every scale parameter for the hemispheres markers are divided by 1000. Also, for the spheres for example, Rviz 
-works with diameter, you can see for example that our spheres markers are multiplied by a factor of 2 because the tracker computes radius. Our .stl file of hemispheres is made to work with radius, 
-so we didn't need to multiply by 2 the scale of our hemispheres.
 Then, follow `this tutorial <http://wiki.ros.org/rviz/Tutorials/Markers%3A%20Points%20and%20Lines>`__ to learn how to display points and lines.
+You can read `this documentation <http://wiki.ros.org/rviz/DisplayTypes/Marker#Mesh_Resource_.28MESH_RESOURCE.3D10.29_.5B1.1.2B-.5D>`__ to learn how to do a marker using a mesh resource.
+We used it to do the markers of the hemispheres. For example, you can use a .stl file. You can search on the internet to find this kind of file, or you can make it yourself with specific 
+software like 3D-builder or SolidWorks on Windows. Be careful to use the metric system on the software. You may encounter some issues of scale between your software and Rviz.
+For us, there was a scale difference of 1000 between these two. You can see in our code that every scale parameter for the hemispheres markers are divided by 1000.
+In addition, RViz works with the diameter for spheres and cylinders scale. You can see that our spheres markers are multiplied by 2 because the tracker computes the radius.
+Our .stl file of hemispheres is made to work with radius, so we didn't need to multiply by 2 the scale of our hemispheres.
+
 You will also need to write ROS publishers and subscribers so please follow `this tutorial <http://wiki.ros.org/ROS/Tutorials/WritingPublisherSubscriber%28c%2B%2B%29>`__
 
 Because we use quaternions to set the orientation of some markers, it could be useful for you to read `this <https://scriptinghelpers.org/blog/how-to-think-about-quaternions>`__
