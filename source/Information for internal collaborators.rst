@@ -74,14 +74,19 @@ Once you decided on a machine:
          * sudo locale-gen fr_BE.UTF-8 (https://askubuntu.com/questions/1133361/cannot-find-my-keyboard-layout)
          * Find Belgian Wang 724 AZERTY under Dutch or French. https://www.roelpeters.be/changing-to-dutch-belgian-keyboard-layout-in-ubuntu/
          * Move it up as the default keyboard.  
-    * Configure the VUBnext internet settings on Ubuntu. In the Security tab select:
-         * Security: WPA & WPA2 Enterprise
-         * Authentication: Protected EAP (PEAP)
-         * CA certificate: (None)
-         * Check the "No CA certificate is required box.
-         * PEAP version: Automatic
-         * Inner authentication: MSCHAPv2
-         * Fill in your VUB username and password. 
+    * Configure you internet access:
+         * VUBnext internet settings on Ubuntu. In the Security tab select:
+               * Security: WPA & WPA2 Enterprise
+               * Authentication: Protected EAP (PEAP)
+               * CA certificate: (None)
+               * Check the "No CA certificate is required box.
+               * PEAP version: Automatic
+               * Inner authentication: MSCHAPv2
+               * Fill in your VUB username and password. 
+         * Other option is Eduroam. TODO: Please explain someone who works with Eduroam.
+         * In lab there is R&MM network with password "nietholonoom". The range is very limited.
+         * Note: if this machine is an onboard computer of a drone, make sure that the device is set to never automatically connect to a network (except the main router's network). So on yuor network Detail, uncheck the box "Connect automatically".
+         
     * Regularly update Ubuntu. Do this at least once a week.
     
          .. code:: shell
