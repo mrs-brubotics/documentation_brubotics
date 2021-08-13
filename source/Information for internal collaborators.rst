@@ -103,7 +103,7 @@ Once you decided on a machine:
                sudo apt install cpufrequtils
                sudo apt install indicator-cpufreq     
          
-         * Reboot the machine to see the cpu indicator appear in the top right corner of your screen. Yuo can manually select the desired mode here.
+         * Reboot the machine to see the cpu indicator appear in the top right corner of your screen. You can manually select the desired mode here.
          
             .. code:: shell
             
@@ -119,7 +119,7 @@ Once you decided on a machine:
                sudo systemctl daemon-reload && sudo systemctl restart cpufrequtils
                
          * Note: laptops only have Performance and Powersave mode and no Conservative, ondemand and schedutil mode. Make sure you do your simulatios always in performance mode. See also .docx on our Google drive.
-         * Make a habit to do all yuor simulations in perfromance mode. This can significantly lower the computational time of simulations and allow to achieve better real-timeness.
+         * Make a habit to do all simulations and experiments in perfromance mode. This can significantly lower the computational time of simulations and allow to achieve better real-timeness.
     * Download the `Visual Studio Code IDE <https://code.visualstudio.com/>`__ for Ubuntu (.deb) and install it. Preferably use this whenever you want to view or edit code opposed to the default text editor in Ubuntu. Set visual studio code as the default program to open files (right click on the file and select "open with other application").
     * Install `TeamViewer for Linux <https://www.teamviewer.com/nl/download/linux/>`__, and create an teamviewer account. 
     * Install on Matlab and Simulink version 2021b and the toolboxes you like. See doc in google drive, since you might get some non trivial issues.
