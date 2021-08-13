@@ -69,6 +69,11 @@ Please provide your supervisor the specs of your machine(s) (i.e. laptops or des
 Once you decided on a machine:
 
     * TODO FROM PART INTERNS You first need to install Ubuntu 18.04 LTS Desktop. If you already have windows on your PC, you need to reserve HDD space (a partition of at least 50GB recommended) and do a dual boot. Do NOT use a virtual machine, it slows down things a lot. Follow \href{https://ubuntu.com/tutorials/install-ubuntu-desktop#1-overview}{these steps}. It is advised to boot from a usb stick.
+    * If you did not select the correct keyboard during the Ubuntu installation, there can be some bugs with a Belgian AZERTY keyboard. Some solutions:
+         * Install the Languages French and Dutch (Nederlands).
+         * sudo locale-gen fr_BE.UTF-8 (https://askubuntu.com/questions/1133361/cannot-find-my-keyboard-layout)
+         * Find Belgian Wang 724 AZERTY under Dutch or French. https://www.roelpeters.be/changing-to-dutch-belgian-keyboard-layout-in-ubuntu/
+         * Move it up as the default keyboard.  
     * Configure the VUBnext internet settings on Ubuntu. In the Security tab select:
          * Security: WPA & WPA2 Enterprise
          * Authentication: Protected EAP (PEAP)
@@ -77,12 +82,13 @@ Once you decided on a machine:
          * PEAP version: Automatic
          * Inner authentication: MSCHAPv2
          * Fill in your VUB username and password. 
-    * If you did not select the correct keyboard during the Ubuntu installation, there can be some bugs with a Belgian AZERTY keyboard. Some solutions:
+    * Regularly update Ubuntu. Do this at least once a week.
     
-         * Install the Languages French and Dutch (Nederlands).
-         * sudo locale-gen fr_BE.UTF-8 (https://askubuntu.com/questions/1133361/cannot-find-my-keyboard-layout)
-         * Find Belgian Wang 724 AZERTY under Dutch or French. https://www.roelpeters.be/changing-to-dutch-belgian-keyboard-layout-in-ubuntu/
-         * Move it up as the default keyboard.  
+         .. code:: shell
+         
+            sudo apt-get update
+            sudo apt-get upgrade
+         
     * Download the `Visual Studio Code IDE <https://code.visualstudio.com/>`__ for Ubuntu (.deb) and install it. Preferably use this whenever you want to view or edit code opposed to the default text editor in Ubuntu. Set visual studio code as the default program to open files (right click on the file and select "open with other application").
     * Configure CPU Specs:
          * Read the section `Disabling CPU frequency scaling <https://frankaemika.github.io/docs/troubleshooting.html#disabling-cpu-frequency-scaling>`__  
