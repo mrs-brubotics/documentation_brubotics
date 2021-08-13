@@ -100,6 +100,11 @@ Once you decided on a machine:
                sudo apt install indicator-cpufreq     
          
          * Reboot the machine to see the cpu indicator appear in the top right corner of your screen. Yuo can manually select the desired mode here.
+         
+            .. code:: shell
+            
+               sudo reboot
+               
          * Automatically enable the machine in performance mode on every boot:
          
             .. code:: shell
