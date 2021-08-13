@@ -387,6 +387,12 @@ But we will see later that we can build these shape with one cylinder, which is 
 
 To display basic shapes in RViz, we invite you to follow `this tutorial <http://wiki.ros.org/rviz/Tutorials/Markers%3A%20Basic%20Shapes>`__.
 You will learn to display cubes, spheres, cylinders, and arrows in RViz.
+You can read `this documentation <http://wiki.ros.org/rviz/DisplayTypes/Marker#Mesh_Resource_.28MESH_RESOURCE.3D10.29_.5B1.1.2B-.5D>`__ to learn how to do a marker using a mesh resource.
+We used it to do the markers of the hemispheres. You need to use a .stl file for example. You can search on the internet to find this kind of file, or you can make it yourself with specific 
+software like 3D-builder or SolidWorks on windows. Be careful to use the metric system on the software. You may enconter some issues of scale between your software and Rviz. For us, there was a difference
+of scale of 1000 between these two. You can see on our code that every scale parameter for the hemispheres markers are divided by 1000. Also, for the spheres for example, Rviz 
+works with diameter, you can see for example that our spheres markers are multiplied by a factor of 2 because the tracker computes radius. Our .stl file of hemispheres is made to work with radius, 
+so we didn't need to multiply by 2 the scale of our hemispheres.
 Then, follow `this tutorial <http://wiki.ros.org/rviz/Tutorials/Markers%3A%20Points%20and%20Lines>`__ to learn how to display points and lines.
 You will also need to write ROS publishers and subscribers so please follow `this tutorial <http://wiki.ros.org/ROS/Tutorials/WritingPublisherSubscriber%28c%2B%2B%29>`__
 
