@@ -133,6 +133,9 @@ Once you decided on a machine:
     * Learn git by following \href{https://www.coursera.org/learn/version-control-with-git}{this free tutorial}. Make sure you follow the tutorial from the command line / terminal window (not the GUI). This will allow you to effectively improve your software and work in a team. 
     * You will further use git during the project. Remember to keep your commits structured by having multiple commits for each small task you code. Try to push your code on github once a day so everyone is up-to-date with your developments.
     * Test if your code works before commiting anything!
+    * Learn about managing large files with Git [here and all sublinks](https://docs.github.com/en/github/managing-large-files). If you regularly push large files to GitHub, you should use Git Large File Storage (Git LFS). You can learn the basic use quickly from [this](https://git-lfs.github.com/) and [this](http://arfc.github.io/manual/guides/git-lfs) link and more details can be found [here](https://docs.github.com/en/github/managing-large-files/versioning-large-files).
+         * TODO check the use of [Distributing large binaries](https://docs.github.com/en/github/managing-large-files/working-with-large-files/distributing-large-binaries).
+         
 
 ?.2.6 C++ Software Development
 ------------------------------
