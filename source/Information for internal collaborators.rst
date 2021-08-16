@@ -185,13 +185,14 @@ Once you decided on a machine:
                         git reflog expire --expire=now --all && git gc --prune=now --aggressive
                         
                * Write down the size of this remote_repo_name.git folder, it should be lower depedning on how much large files were removed.
-               * Now push it back to github (don't put origin master this time, it won't work)
+               * Now push it back to github (don't put origin master this time, it won't work). 
                
                   .. code:: shell
                   
                         git push
-                   
-               * Now clone your repo and check if the original .git folder is reduced in size and check if the code still build and works as expected.
+                  
+                  Since you rewrote history it is normal you won't see a commit on github. Indeed, you did not even create a commit.
+               * Now clone your repo and check if the original .git folder is reduced in size and check if the code still builds and works as before. The cloning should also go faster now and less storage / bandwidth will be used. As an example this helped me to reduce the .git folder from 4.5G to ??M.
                
    * TODO check the use of [Distributing large binaries](https://docs.github.com/en/github/managing-large-files/working-with-large-files/distributing-large-binaries).
    * TODO checkout `this <https://docs.github.com/en/github/administering-a-repository/managing-repository-settings/managing-git-lfs-objects-in-archives-of-your-repository>`__ 
