@@ -146,10 +146,58 @@ Once you decided on a machine:
          git push origin branch_name (e.g. master, main)    
                
     * Learn about managing large files with Git [here and all sublinks](https://docs.github.com/en/github/managing-large-files). If you regularly push large files to GitHub, you should use Git Large File Storage (Git LFS). You can learn the basic use quickly from [this](https://git-lfs.github.com/) and [this](http://arfc.github.io/manual/guides/git-lfs) link and more details including install instructions can be found [here](https://docs.github.com/en/github/managing-large-files/versioning-large-files). 
-    For rewriting git history we suggest you to use BFG Repo-Cleaner over git filter-branch.
-         * For installation: download the altest jar file from https://rtyley.github.io/bfg-repo-cleaner/. Run sudo apt-get install build-essential procps curl file git (source https://docs.brew.sh/Homebrew-on-Linux) and then try brew install bfg (source https://github.com/rtyley/bfg-repo-cleaner/issues/255#issuecomment-606705860) and it will be built. Now you can run bfg as java -jar /path/to/bfg-version.jar (so you don't have to make the alias) (source: https://github.com/rtyley/bfg-repo-cleaner/pull/196/commits/5f2e8879117da42b71304da5febed93f887e0fd0).
+    [ONLY ALLOWED BY PROJECT OWNERS!!!] For rewriting git history we suggest you to use BFG Repo-Cleaner () over git filter-branch. More info on both you can find here (https://docs.github.com/en/github/authenticating-to-github/keeping-your-account-and-data-secure/removing-sensitive-data-from-a-repository).
+         * For installation: download the latest jar file from https://rtyley.github.io/bfg-repo-cleaner/ and rename it to just bfg.jar. Run sudo apt-get install build-essential procps curl file git (source https://docs.brew.sh/Homebrew-on-Linux) and then try brew install bfg (source https://github.com/rtyley/bfg-repo-cleaner/issues/255#issuecomment-606705860) and it will be built. Now you can run bfg as java -jar /path/to/bfg-version.jar (so you don't have to make the alias) (source: https://github.com/rtyley/bfg-repo-cleaner/pull/196/commits/5f2e8879117da42b71304da5febed93f887e0fd0). 
+         * Cleaning the repo (source https://rtyley.github.io/bfg-repo-cleaner/):
+               * Commit all files and push them remotely
+               * Make a manual copy of the repo you want to clean in case something goes wrong
+               * Write down the folder size of the repo and its .git folder (which contains the commit history).
+               * Open a new terminal and create a folder to clone the mirror packe in it:
+               
+                  .. code:: shell
+                     
+                     cd Desktop
+                     mkdir folder_name_mirrored_repo
+                     cd folder_name_mirrored_repo
+                     git clone path_to_remote_repo
+                     
+               * Move the bfg.jar file to Desktop
+               * In a new terminal clone the repo in the folder
+                  .. code:: shell
+                     
+                     cd Desktop/folder_name_mirrored_repo
+                     git clone --mirror remote_repo_name.git
+                     
+               * Write down the size of this remote_repo_name.git folder. It is normal the size is already lower than the original .git folder since it is a mirror.
+               * Now rewrite the history. In this example we remove all files larger than 10M (typically figures, .bag, .mat, .mp4 files) from history. For other examples see https://rtyley.github.io/bfg-repo-cleaner/.
+               
+                  .. code:: shell
+                  
+                     cd ~/Desktop
+                     java -jar bfg.jar --strip-blobs-bigger-than 10M folder_name_mirrored_repo/remote_repo_name.git
+                     
+                  This process is very quick and a report is generated in the folder_name_mirrored_repo. You can see which files (and their size) have been removed.
+               * If you are ok with the removed files, then do
+               
+                  .. code:: shell
+                  
+                        cd ~/Desktop/folder_name_mirrored_repo/remote_repo_name.git
+                        git reflog expire --expire=now --all && git gc --prune=now --aggressive
+                        
+               * Write down the size of this remote_repo_name.git folder, it should be lower depedning on how much large files were removed.
+               * Now push it back to github (don't put origin master this time, it won't work)
+               
+                  .. code:: shell
+                  
+                        git push
+                   
+               * Now clone your repo and check if the original .git folder is reduced in size and check if the code still build and works as expected.
+               
    * TODO check the use of [Distributing large binaries](https://docs.github.com/en/github/managing-large-files/working-with-large-files/distributing-large-binaries).
    * TODO checkout `this <https://docs.github.com/en/github/administering-a-repository/managing-repository-settings/managing-git-lfs-objects-in-archives-of-your-repository>`__ 
+   * TODO checkout https://github.com/git-lfs/git-lfs/blob/main/docs/man/git-lfs-migrate.1.ronn?utm_source=gitlfs_site&utm_medium=doc_man_migrate_link&utm_campaign=gitlfs
+   * TODO find an elegant way to sotre large files (e.g. bag, mat CAD on cloud? while still being referencd via git)
+   * TODO check https://docs.github.com/en/github/managing-large-files/versioning-large-files/moving-a-file-in-your-repository-to-git-large-file-storage
          
 
 ?.2.6 C++ Software Development
