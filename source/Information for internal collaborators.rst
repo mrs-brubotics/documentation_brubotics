@@ -192,7 +192,7 @@ Once you decided on a machine:
                         git push
                   
                   Since you rewrote history it is normal you won't see a commit on github. Indeed, you did not even create a commit.
-               * Now clone your repo and check if the original .git folder is reduced in size and check if the code still builds and works as before. The cloning should also go faster now and less storage / bandwidth will be used. As an example this helped me to reduce the .git folder from 4.5G to ??M.
+               * Now clone your repo and check if the original .git folder is reduced in size and check if the code still builds and works as before. The cloning should also go faster now and less storage / bandwidth will be used. As an example this helped me to reduce the .git folder from 4.5G to 200M.
                
    * TODO check the use of [Distributing large binaries](https://docs.github.com/en/github/managing-large-files/working-with-large-files/distributing-large-binaries).
    * TODO checkout `this <https://docs.github.com/en/github/administering-a-repository/managing-repository-settings/managing-git-lfs-objects-in-archives-of-your-repository>`__ 
