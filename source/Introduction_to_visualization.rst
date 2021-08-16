@@ -455,6 +455,10 @@ We want to display only 50 trajectory points but this array contains 300 ones. S
 
 5.5.2.2 :ref:`D-ERG strategy 0  <5.3.1 D-ERG strategy 0>`
 
+In this strategy, we want to visualize the error sphere of radius :math:`\bar{S}_{a}`. We do it by the same way we display the applied reference sphere.
+But we get back the radius value from the `tracker's code <https://github.com/mrs-brubotics/trackers_brubotics/blob/master/src/dergbryan_tracker/dergbryan_tracker.cpp>`__
+similarly as the D-ERG strategy value.
+
 5.5.2.3 :ref:`D-ERG strategy 1  <5.3.2 D-ERG strategy 1>`
 
 Explanation about the hemisphere:
@@ -467,8 +471,16 @@ Our .stl file of hemispheres is made to work with radius, so we didn't need to m
 
 5.5.2.4 :ref:`D-ERG strategy 2  <5.3.3 D-ERG strategy 2>`
 
+:blue:`[TODO]JV`
+
 5.5.2.5 :ref:`D-ERG strategy 3  <5.3.4 D-ERG strategy 3>`
+
+:blue:`[TODO]JV`
 
 5.5.2.6 :ref:`D-ERG strategy 4  <5.3.5 D-ERG strategy 4>`
 
+:blue:`[TODO]JV`
+
 5.5.2.7 :ref:`D-ERG strategy 5  <5.3.6 D-ERG strategy 5>`
+
+:blue:`[TODO]JV`
