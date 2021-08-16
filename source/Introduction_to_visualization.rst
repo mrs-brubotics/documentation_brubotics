@@ -478,7 +478,7 @@ similarly as the D-ERG strategy value.
 
 5.5.2.3 :ref:`D-ERG strategy 1  <5.3.2 D-ERG strategy 1>`
 
-Now we want to visualiaze a tube. It will be composed of a cylinder and 2 hemispheres.
+Now we want to visualiaze a blue tube. It will be composed of a cylinder and 2 hemispheres.
 The cylinder has to be between :math:`p_{k}^{*}` and the applied reference :math:`p_{k}^{v}` and with a radius :math:`\bar{S}_{a}^{⊥}`.
 We get :math:`p_{k}^{*}` back by the same way as we did with :math:`p_{k}`.
 
@@ -493,6 +493,9 @@ The pose will be given by the ``CylinderOrientation()`` function as a `geometry_
 The ``CylinderOrientation()`` function also returns the distance between the two given points, which is the cylinder height in our case.
 We get the radius value :math:`\bar{S}_{a}^{⊥}` by the same way we did with :math:`\bar{S}_{a}`.
 
+.. note::
+  The cylinder could change length as the way we made the code. But this fonctionnality is implemented directly in the `tracker's code <https://github.com/mrs-brubotics/trackers_brubotics/blob/master/src/dergbryan_tracker/dergbryan_tracker.cpp>`__.
+
 We used the `mesh ressource marker <http://wiki.ros.org/rviz/DisplayTypes/Marker#Mesh_Resource_.28MESH_RESOURCE.3D10.29_.5B1.1.2B-.5D>`__
 to display the hemispheres marker. For example, you can use a .stl file.
 You can search in the internet to directly get this type of file, or you can make it yourself with specific software like 3D-builder or SolidWorks on Windows.
@@ -503,14 +506,21 @@ In addition, RViz works with the diameter for spheres and cylinders scale.
 You can see that our spheres markers are multiplied by 2 because the tracker computes the radius.
 Our .stl file of hemispheres is made to work with radius, so we didn't need to multiply by 2 the scale of our hemispheres.
 
+We could create a mesh which display directly a full tube but the benefits would be insignificant and it would be way more difficult to change its size.
+
+:blue:`[TODO: add a picture of this visualization]JV`
+
 5.5.2.4 :ref:`D-ERG strategy 2  <5.3.3 D-ERG strategy 2>`
 
-:blue:`[TODO]JV`
+The main difference between D-ERG strategy 1 and 2 is that the blue tube become transparent and we add another blue tube between :math:`p_{k}` and :math:`p_{k}^{v}`.
+
 :blue:`[TODO: add a picture of this visualization]JV`
 
 5.5.2.5 :ref:`D-ERG strategy 3  <5.3.4 D-ERG strategy 3>`
 
-:blue:`[TODO]JV`
+Starting from the strategy 2, we want to add an orange tube between :math:`p_{k}` and :math:`p_{k}^{v}`with a radius :math:`S_{a,min}^{⊥}`.
+This radius is obtained similarly as :math:`\bar{S}_{a}^{⊥}`.
+
 :blue:`[TODO: add a picture of this visualization]JV`
 
 5.5.2.6 :ref:`D-ERG strategy 4  <5.3.5 D-ERG strategy 4>`
