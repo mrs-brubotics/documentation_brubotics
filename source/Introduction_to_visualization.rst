@@ -415,6 +415,8 @@ if you don't know anything about it.
 Like any well written C++ code, our code has to be organized. It is divided in several parts: the includes, parameters, publishers and subscribers, messages, class,
 function prototypes, function definitions and the main.
 
+:blue:`[Change the structure if we make a .h file]JV`
+
 5.5.2.2 Basic visuals
 
 To decide which strategy should be displayed, we created a publisher called ``derg_strategy_id_publisher_`` in the `tracker's code <https://github.com/mrs-brubotics/trackers_brubotics/blob/master/src/dergbryan_tracker/dergbryan_tracker.cpp>`__
@@ -422,10 +424,10 @@ which publish a `std_msgs::Int32 message <http://docs.ros.org/en/api/std_msgs/ht
 The subscriber called ``DERG_strategy_id_subscriber_`` in the `visualization code <https://github.com/mrs-brubotics/visualization_brubotics/blob/main/src/visual.cpp>`__
 subscribe to the ``uav1/control_manager/dergbryan_tracker/derg_strategy_id`` topic and permits to get the ``_DERG_strategy_id_`` value back.
 
-By default, we display the current pose sphere, the applied reference sphere and the trajectory (see all the :ref:`D-ERG strategies  <5.3 Our work D-ERG visualization>`).
+By default, we display the current pose sphere , the applied reference sphere and the trajectory (see all the :ref:`D-ERG strategies  <5.3 Our work D-ERG visualization>`).
 To do so, we subscribe to the ``uavX/control_manager/dergbryan_tracker/custom_predicted_poses`` topic which contains a ``std::vector<geometry_msgs::Pose>`` message
 (see `geometry_msgs::Pose message definition <http://docs.ros.org/en/noetic/api/geometry_msgs/html/msg/Pose.html>`__).
-It is a vector of all the predicted uav predicted poses (position and orientation) so the first element is the current pose.
+It is a vector of all the predicted uav predicted poses (position and orientation) so the first element is the current pose :math:`p`.
 Consequently, we can display a sphere at the current UAV pose.
 We use the `boost::function function pointer <https://www.boost.org/doc/libs/1_77_0/doc/html/boost/function.html>`__ to manage vectors of subscribers.
 
@@ -441,15 +443,15 @@ We use the `boost::function function pointer <https://www.boost.org/doc/libs/1_7
     marker.pose.orientation.z = 0;
     marker.pose.orientation.w = 1.0;
 
-For the applied reference, the related topic is ``uavX/control_manager/dergbryan_tracker/uav_applied_ref`` and it contains a `mrs_msgs::FutureTrajectory message <https://ctu-mrs.github.io/mrs_msgs/msg/FutureTrajectory.html>`__.
+For the applied reference :math:`p^{v}`, the related topic is ``uavX/control_manager/dergbryan_tracker/uav_applied_ref`` and it contains a `mrs_msgs::FutureTrajectory message <https://ctu-mrs.github.io/mrs_msgs/msg/FutureTrajectory.html>`__.
 The ``point`` field is an array of `FuturePoint messages <https://ctu-mrs.github.io/mrs_msgs/msg/FuturePoint.html>`__.
 
 .. note::
   All the markers are published in the ``/common_origin`` frame.
 
-:blue:`[Include here the explanations about the trajectory.]JV`
-
-:blue:`[Change the structure if we make a .h file]JV`
+To display the predicted trajectory, we need the data contained in the ``uavX/control_manager/dergbryan_tracker/predicted_trajectory`` topic which is a `mrs_msgs::FutureTrajectory message <https://ctu-mrs.github.io/mrs_msgs/msg/FutureTrajectory.html>`__.
+Thus, we get a 3-dimensions array named ``predicted_trajectories``: one for the predicted point, one for the coordinates and one for each UAV.
+We want to display only 50 trajectory points but this array contains 300 ones. So we chose to display the first one, then the seventh, the thirteenth, etc.
 
 5.5.2.2 :ref:`D-ERG strategy 0  <5.3.1 D-ERG strategy 0>`
 
