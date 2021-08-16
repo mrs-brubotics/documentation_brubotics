@@ -54,6 +54,11 @@ The `test_bumper simulation <https://github.com/ctu-mrs/mrs_uav_testing/tree/mas
 is an example of an advanced visualization task that you can do on RViz. It is made by a plugin created from scratch.
 It represents a weighty work to create this type of visualization but it shows you the diversity of possibilities.
 
+Below you can see the most complex visualization we made:
+
+:blue:`[TODO: add a picture of this visualization: D-ERG strategy 4 or/and 5]JV`
+
+
 5.2 How RViz works ?
 --------------------
 
@@ -427,7 +432,7 @@ subscribe to the ``uav1/control_manager/dergbryan_tracker/derg_strategy_id`` top
 By default, we display the current pose sphere , the applied reference sphere and the trajectory (see all the :ref:`D-ERG strategies  <5.3 Our work D-ERG visualization>`).
 To do so, we subscribe to the ``uavX/control_manager/dergbryan_tracker/custom_predicted_poses`` topic which contains a ``std::vector<geometry_msgs::Pose>`` message
 (see `geometry_msgs::Pose message definition <http://docs.ros.org/en/noetic/api/geometry_msgs/html/msg/Pose.html>`__).
-It is a vector of all the predicted uav predicted poses (position and orientation) so the first element is the current pose :math:`p`.
+It is a vector of all the predicted uav predicted poses (position and orientation) so the first element is the current pose :math:`p_{k}`.
 Consequently, we can display a sphere at the current UAV pose.
 We use the `boost::function function pointer <https://www.boost.org/doc/libs/1_77_0/doc/html/boost/function.html>`__ to manage vectors of subscribers.
 
@@ -443,15 +448,25 @@ We use the `boost::function function pointer <https://www.boost.org/doc/libs/1_7
     marker.pose.orientation.z = 0;
     marker.pose.orientation.w = 1.0;
 
-For the applied reference :math:`p^{v}`, the related topic is ``uavX/control_manager/dergbryan_tracker/uav_applied_ref`` and it contains a `mrs_msgs::FutureTrajectory message <https://ctu-mrs.github.io/mrs_msgs/msg/FutureTrajectory.html>`__.
+For the applied reference :math:`p_{k}^{v}`, the related topic is ``uavX/control_manager/dergbryan_tracker/uav_applied_ref`` and it contains a `mrs_msgs::FutureTrajectory message <https://ctu-mrs.github.io/mrs_msgs/msg/FutureTrajectory.html>`__.
 The ``point`` field is an array of `FuturePoint messages <https://ctu-mrs.github.io/mrs_msgs/msg/FuturePoint.html>`__.
 
 .. note::
-  All the markers are published in the ``/common_origin`` frame.
+  All the markers are published in the ``/common_origin`` frame and are part of a MarkerArray. That's why namespaces are attractive: we are still able to
+  select the markers we want to display:
+
+  .. figure:: _static/Namespaces.png
+   :width: 800
+   :alt: alternate text
+   :align: center
+
+   Figure 5.11: Navigation goal button
 
 To display the predicted trajectory, we need the data contained in the ``uavX/control_manager/dergbryan_tracker/predicted_trajectory`` topic which is a `mrs_msgs::FutureTrajectory message <https://ctu-mrs.github.io/mrs_msgs/msg/FutureTrajectory.html>`__.
 Thus, we get a 3-dimensions array named ``predicted_trajectories``: one for the predicted point, one for the coordinates and one for each UAV.
 We want to display only 50 trajectory points but this array contains 300 ones. So we chose to display the first one, then the seventh, the thirteenth, etc.
+
+:blue:`[TODO: add a picture of this default visualization]JV`
 
 5.5.2.2 :ref:`D-ERG strategy 0  <5.3.1 D-ERG strategy 0>`
 
@@ -459,28 +474,51 @@ In this strategy, we want to visualize the error sphere of radius :math:`\bar{S}
 But we get back the radius value from the `tracker's code <https://github.com/mrs-brubotics/trackers_brubotics/blob/master/src/dergbryan_tracker/dergbryan_tracker.cpp>`__
 similarly as the D-ERG strategy value.
 
+:blue:`[TODO: add a picture of this visualization]JV`
+
 5.5.2.3 :ref:`D-ERG strategy 1  <5.3.2 D-ERG strategy 1>`
 
-Explanation about the hemisphere:
-We used it to do the markers of the hemispheres. For example, you can use a .stl file.
-You can search in the internet to directly get this kind of file, or you can make it yourself with specific software like
-3D-builder or SolidWorks on Windows. Be careful to use the metric system on the software. You may encounter some issues of scale between your software and Rviz.
-For us, there was a scale difference of 1000 between these two. You can see in our code that every scale parameter for the hemispheres markers are divided by 1000.
-In addition, RViz works with the diameter for spheres and cylinders scale. You can see that our spheres markers are multiplied by 2 because the tracker computes the radius.
+Now we want to visualiaze a tube. It will be composed of a cylinder and 2 hemispheres.
+The cylinder has to be between :math:`p_{k}^{*}` and the applied reference :math:`p_{k}^{v}` and with a radius :math:`\bar{S}_{a}^{⊥}`.
+We get :math:`p_{k}^{*}` back by the same way as we did with :math:`p_{k}`.
+
+.. note::
+  Contrary to the sphere, the cylinder needs an orientation. 
+  
+The pose will be given by the ``CylinderOrientation()`` function as a `geometry_msgs::Pose message <http://docs.ros.org/en/noetic/api/geometry_msgs/html/msg/Pose.html>`__:
+
+* The position of the cylinder is its center, so the middle of :math:`p_{k}^{*}` and :math:`p_{k}^{v}`, the two points given in argument.
+* :blue:`[TODO: add the explanations about how the orientation is calculated]JV`
+
+The ``CylinderOrientation()`` function also returns the distance between the two given points, which is the cylinder height in our case.
+We get the radius value :math:`\bar{S}_{a}^{⊥}` by the same way we did with :math:`\bar{S}_{a}`.
+
+We used the `mesh ressource marker <http://wiki.ros.org/rviz/DisplayTypes/Marker#Mesh_Resource_.28MESH_RESOURCE.3D10.29_.5B1.1.2B-.5D>`__
+to display the hemispheres marker. For example, you can use a .stl file.
+You can search in the internet to directly get this type of file, or you can make it yourself with specific software like 3D-builder or SolidWorks on Windows.
+Be careful to use the metric system on the software. You may encounter some issues of scale between your software and Rviz.
+For us, there was a scale difference of 1000 between these two.
+You can see in our code that every scale parameter for the hemispheres markers are divided by 1000.
+In addition, RViz works with the diameter for spheres and cylinders scale.
+You can see that our spheres markers are multiplied by 2 because the tracker computes the radius.
 Our .stl file of hemispheres is made to work with radius, so we didn't need to multiply by 2 the scale of our hemispheres.
 
 5.5.2.4 :ref:`D-ERG strategy 2  <5.3.3 D-ERG strategy 2>`
 
 :blue:`[TODO]JV`
+:blue:`[TODO: add a picture of this visualization]JV`
 
 5.5.2.5 :ref:`D-ERG strategy 3  <5.3.4 D-ERG strategy 3>`
 
 :blue:`[TODO]JV`
+:blue:`[TODO: add a picture of this visualization]JV`
 
 5.5.2.6 :ref:`D-ERG strategy 4  <5.3.5 D-ERG strategy 4>`
 
 :blue:`[TODO]JV`
+:blue:`[TODO: add a picture of this visualization]JV`
 
 5.5.2.7 :ref:`D-ERG strategy 5  <5.3.6 D-ERG strategy 5>`
 
 :blue:`[TODO]JV`
+:blue:`[TODO: add a picture of this visualization]JV`
