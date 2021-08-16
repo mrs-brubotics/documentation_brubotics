@@ -158,11 +158,12 @@ If you choose "By display type", you will have to write the topic name in the le
 ---------------------------------------------------------------------------------------------------------------
 
 We have developed a `visualization package <https://github.com/mrs-brubotics/visualization_brubotics>`__ which permits to visualize
-in RViz the :ref:`D-ERG strategies algorithms <5.4 Our work D-ERG visualization>` in the `two_drones_D-ERG <https://github.com/mrs-brubotics/testing_brubotics/tree/master/tmux_scripts/bryan/two_drones_D-ERG>`__.
+in RViz the :ref:`D-ERG strategies algorithms <5.4 Our work D-ERG visualization>` in the `two_drones_D-ERG simulation <https://github.com/mrs-brubotics/testing_brubotics/tree/master/tmux_scripts/bryan/two_drones_D-ERG>`__.
 This package is based on the `mrs_rviz_plugins <https://github.com/ctu-mrs/mrs_rviz_plugins>`__ structure.
 We will explain you how to reproduce it.
 
-First, we created a new package named ``visualization_brubotics`` in ``workspace/src_droneswarm_brubotics/ros_packages`` with:
+First, we created a new package named `visualization_brubotics <https://github.com/mrs-brubotics/visualization_brubotics>`__ in
+``workspace/src_droneswarm_brubotics/ros_packages`` with:
 
 .. code-block:: shell
 
@@ -170,7 +171,8 @@ First, we created a new package named ``visualization_brubotics`` in ``workspace
 
 This command creates a ``CMakeLists.txt`` file and a ``package.xml`` file.
 
-Then, we modified ``session.yml`` file of the `two_drones_D-ERG <https://github.com/mrs-brubotics/testing_brubotics/tree/master/tmux_scripts/bryan/two_drones_D-ERG>`__.
+Then, we modified `session.yml <https://github.com/mrs-brubotics/testing_brubotics/blob/master/tmux_scripts/bryan/two_drones_D-ERG/session.yml>`__
+file of the `two_drones_D-ERG <https://github.com/mrs-brubotics/testing_brubotics/tree/master/tmux_scripts/bryan/two_drones_D-ERG>`__.
 At the end (line 247), you should see a RViz part. If it is commented, uncomment it. We modified these lines so it looks lite this:
 
 .. code-block:: shell
@@ -183,12 +185,13 @@ At the end (line 247), you should see a RViz part. If it is commented, uncomment
          - waitForControl; roslaunch testing_brubotics tf_connector_avoidance.launch 
          - waitForControl; export UAV_NAME=uav1; roslaunch mrs_rviz_plugins load_robot.launch
          - waitForControl; export UAV_NAME=uav2; roslaunch mrs_rviz_plugins load_robot.launch
-         - waitForControl; roslaunch visualization_brubotics sphere.launch
+         - waitForControl; roslaunch visualization_brubotics visual.launch
 
 Now, we will explain you line per line why we did this.
-The ``rviz_brubotics.launch`` and ``tf_connector_avoidance.launch`` files are based on CTU codes but we made some changes in them.
-Indeed, we don't want to visualize the same things as CTU. Thus, we make our own ``.rviz`` files in the ``testing_brubotics/rviz``.
-So we needed to adapt the find path in the ``rviz.launch``:
+The `rviz_brubotics.launch <https://github.com/mrs-brubotics/testing_brubotics/blob/master/launch/rviz/rviz_brubotics.launch>`__ and `tf_connector_avoidance.launch <https://github.com/mrs-brubotics/testing_brubotics/blob/master/launch/rviz/tf_connector_avoidance.launch>`__
+files are based on CTU codes but we made some changes in them.
+Indeed, we don't want to visualize the same things as CTU. Thus, we make our own ``.rviz`` files in the `testing_brubotics/rviz folder <https://github.com/mrs-brubotics/testing_brubotics/tree/master/rviz>`__.
+So we needed to adapt the find path in the `rviz_brubotics.launch <https://github.com/mrs-brubotics/testing_brubotics/blob/master/launch/rviz/rviz_brubotics.launch>`__:
 
 .. code-block:: html
 
@@ -205,7 +208,8 @@ So we needed to adapt the find path in the ``rviz.launch``:
 
    </launch>
 
-The path find ``tf_connector_avoidance.launch`` file has also been changed because it calls the ``tf_connector_avoidance.yaml``
+The path find `tf_connector_avoidance.launch <https://github.com/mrs-brubotics/testing_brubotics/blob/master/launch/rviz/tf_connector_avoidance.launch>`__
+file has also been changed because it calls the `tf_connector_avoidance.yaml <https://github.com/mrs-brubotics/testing_brubotics/blob/master/config/tf_connector_avoidance.yaml>`__
 file which permits to visualize several drones at the same time.
 
 .. code-block:: html
@@ -238,18 +242,19 @@ file which permits to visualize several drones at the same time.
 
      </launch>
 
-To create the robot model, we can use the ``load_robot.launch`` file of CTU without changing it.
+To create the robot model, we can use the `load_robot.launch <https://github.com/ctu-mrs/mrs_rviz_plugins/blob/master/launch/load_robot.launch>`__
+file of CTU without changing it.
 It permits to create one robot model so we use it two times because there are two drones in our simulation, uav1 and uav2.
 
-Then, we launch our ``launch/sphere.launch`` file to start our ``src/sphere.cpp`` file for visualization.
+Then, we launch our ``launch/visual.launch`` file to start our ``src/visual.cpp`` file for visualization.
 
 .. code-block:: html
 
-  <!-- workspace/src/droneswarm_brubotics/ros_packages/visualization_brubotics/launch/sphere.launch -->
+  <!-- workspace/src/droneswarm_brubotics/ros_packages/visualization_brubotics/launch/visual.launch -->
   <?xml version="1.0" ?>
   <launch>
 
-      <node pkg="visualization_brubotics" type="sphere" name="sphere" output="screen"/>
+      <node pkg="visualization_brubotics" type="visual" name="visual" output="screen"/>
 
   </launch>
 
@@ -270,7 +275,7 @@ that you can run with these commands:
     cd ~workspace/src/droneswarm_brubotics/ros_packages/testing_brubotics/tmux_scripts/two_drones_D-ERG/
     ./start.sh
 
-We have several D-ERG (Distributed Explicit Reference Governor) strategies to illustrate. For more advanced explanations, watch `this video <https://www.youtube.com/watch?v=le6WSeyTXNU>`__
+We have several D-ERG (Distributed Explicit Reference Governor) strategies to illustrate. For more advanced explanations, watch `this video <https://www.youtube.com/watch?v=le6WSeyTXNU>`__.
 
 .. _5.4.1 D-ERG strategy 0:
 
@@ -339,7 +344,7 @@ Tube can **translate**, **rotate** and **change length**.
 
 Communicate: :math:`p_{k}`, :math:`p_{k}^{v}`, :math:`S_{a,min}^{⊥}`
 
-Tube can **translate**, **rotate**, **change length and width**. The witfh (radius) is the minimal one for a tube with error directed longitudinal axis.
+Tube can **translate**, **rotate**, **change length and width**. The width (radius) is the minimal one for a tube with error directed longitudinal axis.
 
 .. _5.4.5 D-ERG strategy 4:
 
@@ -395,14 +400,13 @@ For us, there was a scale difference of 1000 between these two. You can see in o
 In addition, RViz works with the diameter for spheres and cylinders scale. You can see that our spheres markers are multiplied by 2 because the tracker computes the radius.
 Our .stl file of hemispheres is made to work with radius, so we didn't need to multiply by 2 the scale of our hemispheres.
 
-You will also need to write ROS publishers and subscribers so please follow `this tutorial <http://wiki.ros.org/ROS/Tutorials/WritingPublisherSubscriber%28c%2B%2B%29>`__
+You will also need to write ROS publishers and subscribers so please follow `this tutorial <http://wiki.ros.org/ROS/Tutorials/WritingPublisherSubscriber%28c%2B%2B%29>`__.
 
 Because we use quaternions to set the orientation of some markers, it could be useful for you to read `this <https://scriptinghelpers.org/blog/how-to-think-about-quaternions>`__
 if you don't know anything about it.
 
-5.5.2 Our `C++ code <https://github.com/mrs-brubotics/visualization_brubotics/blob/main/src/sphere.cpp>`__
+5.5.2 Our `C++ code <https://github.com/mrs-brubotics/visualization_brubotics/blob/main/src/visual.cpp>`__
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 :blue:`[TODO: add the explanations about the C++ code step by step]JV`
 
-`Explanations about quaternions <https://scriptinghelpers.org/blog/how-to-think-about-quaternions>`__
