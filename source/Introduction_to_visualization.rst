@@ -395,12 +395,12 @@ But we will see later that we can build this shape with one cylinder, which is a
 
 To display basic shapes in RViz, we invite you to follow `this tutorial <http://wiki.ros.org/rviz/Tutorials/Markers%3A%20Basic%20Shapes>`__.
 You will learn to display cubes, spheres, cylinders, and arrows in RViz.
-Then, follow `this tutorial <http://wiki.ros.org/rviz/Tutorials/Markers%3A%20Points%20and%20Lines>`__
-to learn how to display points and lines.
+Then, follow `this tutorial <http://wiki.ros.org/rviz/Tutorials/Markers%3A%20Points%20and%20Lines>`__ to learn how to display points and lines.
 You can read `this documentation <http://wiki.ros.org/rviz/DisplayTypes/Marker#Mesh_Resource_.28MESH_RESOURCE.3D10.29_.5B1.1.2B-.5D>`__
 to learn how to do a custom marker using a mesh resource.
 
 You will also need to write ROS publishers and subscribers so please follow `this tutorial <http://wiki.ros.org/ROS/Tutorials/WritingPublisherSubscriber%28c%2B%2B%29>`__.
+`Here <http://docs.ros.org/en/api/std_msgs/html/index-msg.html>`__ is a list of all ROS standard message types.
 
 Because we use quaternions to set the orientation of some markers, it could be useful for you to read `this <https://scriptinghelpers.org/blog/how-to-think-about-quaternions>`__
 if you don't know anything about it.
@@ -410,7 +410,46 @@ if you don't know anything about it.
 
 :blue:`[TODO: add the explanations about the C++ code step by step]JV`
 
-5.5.2.1 The structure
+5.5.2.1 Architecture
+
+Like any well written C++ code, our code has to be organized. It is divided in several parts: the includes, parameters, publishers and subscribers, messages, class,
+function prototypes, function definitions and the main.
+
+5.5.2.2 Basic visuals
+
+To decide which strategy should be displayed, we created a publisher called ``derg_strategy_id_publisher_`` in the `tracker's code <https://github.com/mrs-brubotics/trackers_brubotics/blob/master/src/dergbryan_tracker/dergbryan_tracker.cpp>`__
+which publish a `std_msgs::Int32 message <http://docs.ros.org/en/api/std_msgs/html/msg/Int32.html>`__.
+The subscriber called ``DERG_strategy_id_subscriber_`` in the `visualization code <https://github.com/mrs-brubotics/visualization_brubotics/blob/main/src/visual.cpp>`__
+subscribe to the ``uav1/control_manager/dergbryan_tracker/derg_strategy_id`` topic and permits to get the ``_DERG_strategy_id_`` value back.
+
+By default, we display the current pose sphere, the applied reference sphere and the trajectory (see all the :ref:`D-ERG strategies  <5.3 Our work D-ERG visualization>`).
+To do so, we subscribe to the ``uavX/control_manager/dergbryan_tracker/custom_predicted_poses`` topic which contains a ``std::vector<geometry_msgs::Pose>`` message
+(see `geometry_msgs::Pose message definition <http://docs.ros.org/en/noetic/api/geometry_msgs/html/msg/Pose.html>`__).
+It is a vector of all the predicted uav predicted poses (position and orientation) so the first element is the current pose.
+Consequently, we can display a sphere at the current UAV pose.
+We use the `boost::function function pointer <https://www.boost.org/doc/libs/1_77_0/doc/html/boost/function.html>`__ to manage vectors of subscribers.
+
+:blue:`[more details about the boost?]JV`
+
+.. hint::
+  For a sphere, the marker's orientation doesn't matter. Set the orientation parameters like this to avoid getting a warning in RViz:
+
+  .. code-block:: c
+
+    marker.pose.orientation.x = 0;
+    marker.pose.orientation.y = 0;
+    marker.pose.orientation.z = 0;
+    marker.pose.orientation.w = 1.0;
+
+For the applied reference, the related topic is ``uavX/control_manager/dergbryan_tracker/uav_applied_ref`` and it contains a `mrs_msgs::FutureTrajectory message <https://ctu-mrs.github.io/mrs_msgs/msg/FutureTrajectory.html>`__.
+The ``point`` field is an array of `FuturePoint messages <https://ctu-mrs.github.io/mrs_msgs/msg/FuturePoint.html>`__.
+
+.. note::
+  All the markers are published in the ``/common_origin`` frame.
+
+:blue:`[Include here the explanations about the trajectory.]JV`
+
+:blue:`[Change the structure if we make a .h file]JV`
 
 5.5.2.2 :ref:`D-ERG strategy 0  <5.3.1 D-ERG strategy 0>`
 
