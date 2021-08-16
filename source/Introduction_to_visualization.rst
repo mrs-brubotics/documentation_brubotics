@@ -1,21 +1,22 @@
 5. Introduction to visualization
 ================================
 
-In this chapter, we will introduce you to the visualization on Rviz.
+In this chapter, we will introduce you to the visualization on `RViz <http://wiki.ros.org/rviz>`__.
 It is a great tool for ROS, used by many to debug codes or to have some nice visualization of your simulations.
 
 5.1 The beginning
 -----------------
 
-First, especially if you have never runned any simulation using Rviz, we recommand you to try some CTU MRS simulation.
-To do that you can run these commands:
+First, especially if you have never runned any simulation using RViz, we recommand you to try some `CTU MRS simulation examples <https://github.com/ctu-mrs/simulation/tree/master/example_tmux_scripts>`__.
+Let's try this `basic simulation <https://github.com/ctu-mrs/simulation/tree/master/example_tmux_scripts/one_drone_gps>`__
+by running these commands:
 
 .. code-block:: shell
 
    cd ~/mrs_workspace/src/simulation/example_tmux_scripts/one_drone_gps
    ./start.sh
 
-The RViz window will open after Gazebo and it looks like this:
+The RViz window will open after Gazebo and it should look like this:
 
 .. figure:: _static/one_drone_rviz.png
    :width: 800
@@ -24,7 +25,7 @@ The RViz window will open after Gazebo and it looks like this:
 
    Figure 5.1: RViz window with CTU visualization
 
-In this default visualization, you can the UAV model with its frame.
+In this default visualization, you can see the UAV model with its frame.
 You can also use the 2D Nav Goal button to choose a position and a heading to go for the UAV. Thus, you will see the UAV trajectory.
 
 .. figure:: _static/navgoal_button.png
@@ -35,23 +36,23 @@ You can also use the 2D Nav Goal button to choose a position and a heading to go
    Figure 5.2: Navigation goal button
 
 Next, you can run some simulations which use dedicated plugins for one specific task.
-You will need to use these commands to see all of them:
+You will need to use these commands to see `all of them <https://github.com/ctu-mrs/mrs_uav_testing/tree/master/tmux>`__:
 
 .. code-block:: shell
 
    cd ~/mrs_workspace/src/uav_core/ros_packages/mrs_uav_testing/tmux
    ls
 
-Choose the one that you want to test by running:
+Choose the one you want to test by running:
 
 .. code-block:: shell
 
    cd "name_of_the_simulation"
    ./start.sh
 
-The bumper simulation is an example of an advanced visualization task that you can do on RViz.
-It is made by a plugin created from scratch.
-It represents a huge work to create these type of visualization but it shows you the diversity of possibilities.
+The `test_bumper simulation <https://github.com/ctu-mrs/mrs_uav_testing/tree/master/tmux/test_bumper>`__
+is an example of an advanced visualization task that you can do on RViz. It is made by a plugin created from scratch.
+It represents a weighty work to create this type of visualization but it shows you the diversity of possibilities.
 
 5.2 How RViz works ?
 --------------------
@@ -116,8 +117,8 @@ A ``.yml`` looks like this:
          - waitForControl; sleep 3; ~/.i3/layout_manager.sh ./layout.json
 
 
-In the RViz part, you can see that the first line ask for the ``rviz.launch`` (see below) file which is used to choose the ``.rviz`` 
-file that you want to use. The ``.rviz`` file is used to savethe configuration of RViz, i.e. what is displayed. 
+In the RViz part, you can see that the first line ask for the ``rviz.launch`` file (see below) which is used to choose the ``.rviz`` 
+file that you want to use. The ``.rviz`` file is used to save the configuration of RViz, i.e. what is displayed. 
 
 .. code-block:: html
 
@@ -134,10 +135,11 @@ file that you want to use. The ``.rviz`` file is used to savethe configuration o
 
    </launch>
 
-In the ``mrs_uav_testing`` package of CTU, there is a ``rviz`` folder which contains all the ``.rviz`` files.
+In the `mrs_uav_testing <https://github.com/ctu-mrs/mrs_uav_testing>`__ package of CTU, there is a ``rviz`` folder
+which contains all the ``.rviz`` files.
 You can generate a ``.rviz`` file, which save your RViz configuration, by clicking in RViz on "File → Save config as".
 
-To add a new display, click on  "Add" and choose "By display type" or "By topic" to subscribe to the topic you want to visualize.
+To add a new display, click on  "Add" and choose "By display type" or "By topic" to display to the topic you want to visualize.
 If you choose "By display type", you will have to write the topic name in the left window.
 
 .. figure:: _static/add_button.png
@@ -154,11 +156,127 @@ If you choose "By display type", you will have to write the topic name in the le
 
    Figure 5.4: Topic window
 
-5.3 How did we build the `visualization package <https://github.com/mrs-brubotics/visualization_brubotics>`__ ?
+.. _5.3 Our work D-ERG visualization:
+
+5.3 Our work: D-ERG visualization
+---------------------------------
+
+We want to visualize what it is computed by the `D-ERG tracker <https://github.com/mrs-brubotics/trackers_brubotics/blob/master/src/dergbryan_tracker/dergbryan_tracker.cpp>`__
+of BruBotics, especially in the `two_drones_D-ERG simulation <https://github.com/mrs-brubotics/testing_brubotics/tree/master/tmux_scripts/bryan/two_drones_D-ERG>`__
+that you can run with these commands:
+
+.. code-block:: shell
+
+    cd ~workspace/src/droneswarm_brubotics/ros_packages/testing_brubotics/tmux_scripts/two_drones_D-ERG/
+    ./start.sh
+
+We have several D-ERG (Distributed Explicit Reference Governor) strategies to illustrate. For more advanced explanations, watch `this video <https://www.youtube.com/watch?v=le6WSeyTXNU>`__.
+
+.. _5.3.1 D-ERG strategy 0:
+
+5.3.1 D-ERG strategy 0
+^^^^^^^^^^^^^^^^^^^^^^
+
+.. figure:: _static/DERG-0.png
+   :width: 500
+   :alt: alternate text
+   :align: center
+
+   Figure 5.5: D-ERG strategy 0
+
+* :math:`p_{k}`: current pose of the UAV
+* :math:`p̂_{k}`: desired reference pose
+* :math:`p_{k}^{v}`: applied reference pose 
+* :math:`R_{a}`: drone's radius
+
+Communicate: :math:`p_{k}`
+
+Sphere can **translate**.
+
+.. _5.3.2 D-ERG strategy 1:
+
+5.3.2 D-ERG strategy 1
+^^^^^^^^^^^^^^^^^^^^^^
+
+.. figure:: _static/DERG-1.png
+   :width: 500
+   :alt: alternate text
+   :align: center
+
+   Figure 5.6: D-ERG strategy 1
+
+Communicate: :math:`p_{k}`, :math:`p_{k}^{v}`
+
+Tube can **translate** and **rotate**.
+
+.. _5.3.3 D-ERG strategy 2:
+
+5.3.3 D-ERG strategy 2
+^^^^^^^^^^^^^^^^^^^^^^
+
+.. figure:: _static/DERG-2.png
+   :width: 500
+   :alt: alternate text
+   :align: center
+
+   Figure 5.7: D-ERG strategy 2
+
+Communicate: :math:`p_{k}`, :math:`p_{k}^{v}`
+
+Tube can **translate**, **rotate** and **change length**.
+
+.. _5.3.4 D-ERG strategy 3:
+
+5.3.4 D-ERG strategy 3
+^^^^^^^^^^^^^^^^^^^^^^
+
+.. figure:: _static/DERG-3.png
+   :width: 500
+   :alt: alternate text
+   :align: center
+
+   Figure 5.8: D-ERG strategy 3
+
+Communicate: :math:`p_{k}`, :math:`p_{k}^{v}`, :math:`S_{a,min}^{⊥}`
+
+Tube can **translate**, **rotate**, **change length and width**. The width (radius) is the minimal one for a tube with error directed longitudinal axis.
+
+.. _5.3.5 D-ERG strategy 4:
+
+5.3.5 D-ERG strategy 4
+^^^^^^^^^^^^^^^^^^^^^^
+
+.. figure:: _static/DERG-4.png
+   :width: 500
+   :alt: alternate text
+   :align: center
+
+   Figure 5.9: D-ERG strategy 4
+
+Communicate: :math:`p_{k}^{0}`, :math:`p_{k}^{1}`, :math:`S_{a,min}^{⊥}`
+
+Tube and cylinder can **translate**, **rotate**, **change length and width**. The width (radius) and the length are the minimal one for a tube with error directed
+longitudinal axis.
+
+.. _5.3.6 D-ERG strategy 5:
+
+5.3.6 D-ERG strategy 5
+^^^^^^^^^^^^^^^^^^^^^^
+
+.. figure:: _static/DERG-5.png
+   :width: 500
+   :alt: alternate text
+   :align: center
+
+   Figure 5.10: D-ERG strategy 5
+
+This final strategy permits to calculate the minimal distance between 2 predicted poses.
+
+5.4 How did we build the `visualization package <https://github.com/mrs-brubotics/visualization_brubotics>`__ ?
 ---------------------------------------------------------------------------------------------------------------
 
 We have developed a `visualization package <https://github.com/mrs-brubotics/visualization_brubotics>`__ which permits to visualize
-in RViz the :ref:`D-ERG strategies algorithms <5.4 Our work D-ERG visualization>` in the `two_drones_D-ERG simulation <https://github.com/mrs-brubotics/testing_brubotics/tree/master/tmux_scripts/bryan/two_drones_D-ERG>`__.
+in RViz the :ref:`D-ERG strategies algorithms <5.3 Our work D-ERG visualization>` in the `two_drones_D-ERG simulation <https://github.com/mrs-brubotics/testing_brubotics/tree/master/tmux_scripts/bryan/two_drones_D-ERG>`__.
 This package is based on the `mrs_rviz_plugins <https://github.com/ctu-mrs/mrs_rviz_plugins>`__ structure.
 We will explain you how to reproduce it.
 
@@ -169,7 +287,8 @@ First, we created a new package named `visualization_brubotics <https://github.c
 
    catkin_create_pkg visualization_brubotics
 
-This command creates a ``CMakeLists.txt`` file and a ``package.xml`` file.
+This command creates a `CMakeLists.txt <https://github.com/mrs-brubotics/visualization_brubotics/blob/main/CMakeLists.txt>`__ file
+and a `package.xml <https://github.com/mrs-brubotics/visualization_brubotics/blob/main/package.xml>`__ file.
 
 Then, we modified `session.yml <https://github.com/mrs-brubotics/testing_brubotics/blob/master/tmux_scripts/bryan/two_drones_D-ERG/session.yml>`__
 file of the `two_drones_D-ERG <https://github.com/mrs-brubotics/testing_brubotics/tree/master/tmux_scripts/bryan/two_drones_D-ERG>`__.
@@ -246,7 +365,9 @@ To create the robot model, we can use the `load_robot.launch <https://github.com
 file of CTU without changing it.
 It permits to create one robot model so we use it two times because there are two drones in our simulation, uav1 and uav2.
 
-Then, we launch our ``launch/visual.launch`` file to start our ``src/visual.cpp`` file for visualization.
+Then, we launch our `launch/visual.launch file <https://github.com/mrs-brubotics/visualization_brubotics/blob/main/launch/visual.launch>`_
+to start our `src/visual.cpp file <https://github.com/mrs-brubotics/visualization_brubotics/blob/main/src/visual.cpp>`__ for visualization
+that we will explain in the next chapter.
 
 .. code-block:: html
 
@@ -259,131 +380,13 @@ Then, we launch our ``launch/visual.launch`` file to start our ``src/visual.cpp`
   </launch>
 
 :blue:`[TODO: adapt the .cpp file name]JV`
-:blue:`[TODO: change the next parts]JV`
-
-.. _5.4 Our work D-ERG visualization:
-
-5.4 Our work: D-ERG visualization
----------------------------------
-
-We want to visualize what it is computed by the `D-ERG tracker <https://github.com/mrs-brubotics/trackers_brubotics/blob/master/src/dergbryan_tracker/dergbryan_tracker.cpp>`__
-of BruBotics, especially in the `two_drones_D-ERG simulation <https://github.com/mrs-brubotics/testing_brubotics/tree/master/tmux_scripts/bryan/two_drones_D-ERG>`__
-that you can run with these commands:
-
-.. code-block:: shell
-
-    cd ~workspace/src/droneswarm_brubotics/ros_packages/testing_brubotics/tmux_scripts/two_drones_D-ERG/
-    ./start.sh
-
-We have several D-ERG (Distributed Explicit Reference Governor) strategies to illustrate. For more advanced explanations, watch `this video <https://www.youtube.com/watch?v=le6WSeyTXNU>`__.
-
-.. _5.4.1 D-ERG strategy 0:
-
-5.4.1 D-ERG strategy 0
-^^^^^^^^^^^^^^^^^^^^^^
-
-.. figure:: _static/DERG-0.png
-   :width: 500
-   :alt: alternate text
-   :align: center
-
-   Figure 5.6: D-ERG strategy 0
-
-* :math:`p_{k}`: current pose of the UAV
-* :math:`p̂_{k}`: desired reference pose
-* :math:`p_{k}^{v}`: applied reference pose 
-* :math:`R_{a}`: drone's radius
-
-Communicate: :math:`p_{k}`
-
-Sphere can **translate**.
-
-.. _5.4.2 D-ERG strategy 1:
-
-5.4.2 D-ERG strategy 1
-^^^^^^^^^^^^^^^^^^^^^^
-
-.. figure:: _static/DERG-1.png
-   :width: 500
-   :alt: alternate text
-   :align: center
-
-   Figure 5.7: D-ERG strategy 1
-
-Communicate: :math:`p_{k}`, :math:`p_{k}^{v}`
-
-Tube can **translate** and **rotate**.
-
-.. _5.4.3 D-ERG strategy 2:
-
-5.4.3 D-ERG strategy 2
-^^^^^^^^^^^^^^^^^^^^^^
-
-.. figure:: _static/DERG-2.png
-   :width: 500
-   :alt: alternate text
-   :align: center
-
-   Figure 5.8: D-ERG strategy 2
-
-Communicate: :math:`p_{k}`, :math:`p_{k}^{v}`
-
-Tube can **translate**, **rotate** and **change length**.
-
-.. _5.4.4 D-ERG strategy 3:
-
-5.4.4 D-ERG strategy 3
-^^^^^^^^^^^^^^^^^^^^^^
-
-.. figure:: _static/DERG-3.png
-   :width: 500
-   :alt: alternate text
-   :align: center
-
-   Figure 5.9: D-ERG strategy 3
-
-Communicate: :math:`p_{k}`, :math:`p_{k}^{v}`, :math:`S_{a,min}^{⊥}`
-
-Tube can **translate**, **rotate**, **change length and width**. The width (radius) is the minimal one for a tube with error directed longitudinal axis.
-
-.. _5.4.5 D-ERG strategy 4:
-
-5.4.5 D-ERG strategy 4
-^^^^^^^^^^^^^^^^^^^^^^
-
-.. figure:: _static/DERG-4.png
-   :width: 500
-   :alt: alternate text
-   :align: center
-
-   Figure 5.10: D-ERG strategy 4
-
-Communicate: :math:`p_{k}^{0}`, :math:`p_{k}^{1}`, :math:`S_{a,min}^{⊥}`
-
-Tube and cylinder can **translate**, **rotate**, **change length and width**. The width (radius) and the length are the minimal one for a tube with error directed
-longitudinal axis.
-
-.. _5.4.6 D-ERG strategy 5:
-
-5.4.6 D-ERG strategy 5
-^^^^^^^^^^^^^^^^^^^^^^
-
-.. figure:: _static/DERG-5.png
-   :width: 500
-   :alt: alternate text
-   :align: center
-
-   Figure 5.11: D-ERG strategy 5
-
-This final strategy permits to calculate the minimal distance between 2 predicted poses.
-
 
 5.5 The code for visualization
 ------------------------------
 
 :blue:`[Don't forget to change the link if we change the file name]JV`
 
-As you can see in the different :ref:`D-ERG strategies  <5.4 Our work D-ERG visualization>`, we want to visualize spheres, tubes and lines.
+As you can see in the different :ref:`D-ERG strategies  <5.3 Our work D-ERG visualization>`, we want to visualize spheres, tubes and lines.
 These three shapes are `RViz standard display marker types <http://wiki.ros.org/rviz/DisplayTypes/Marker>`__, except the tube.
 But we will see later that we can build this shape with one cylinder, which is also a RViz standard display marker type, and two hemispheres.
 
@@ -392,13 +395,10 @@ But we will see later that we can build this shape with one cylinder, which is a
 
 To display basic shapes in RViz, we invite you to follow `this tutorial <http://wiki.ros.org/rviz/Tutorials/Markers%3A%20Basic%20Shapes>`__.
 You will learn to display cubes, spheres, cylinders, and arrows in RViz.
-Then, follow `this tutorial <http://wiki.ros.org/rviz/Tutorials/Markers%3A%20Points%20and%20Lines>`__ to learn how to display points and lines.
-You can read `this documentation <http://wiki.ros.org/rviz/DisplayTypes/Marker#Mesh_Resource_.28MESH_RESOURCE.3D10.29_.5B1.1.2B-.5D>`__ to learn how to do a marker using a mesh resource.
-We used it to do the markers of the hemispheres. For example, you can use a .stl file. You can search on the internet to find this kind of file, or you can make it yourself with specific 
-software like 3D-builder or SolidWorks on Windows. Be careful to use the metric system on the software. You may encounter some issues of scale between your software and Rviz.
-For us, there was a scale difference of 1000 between these two. You can see in our code that every scale parameter for the hemispheres markers are divided by 1000.
-In addition, RViz works with the diameter for spheres and cylinders scale. You can see that our spheres markers are multiplied by 2 because the tracker computes the radius.
-Our .stl file of hemispheres is made to work with radius, so we didn't need to multiply by 2 the scale of our hemispheres.
+Then, follow `this tutorial <http://wiki.ros.org/rviz/Tutorials/Markers%3A%20Points%20and%20Lines>`__
+to learn how to display points and lines.
+You can read `this documentation <http://wiki.ros.org/rviz/DisplayTypes/Marker#Mesh_Resource_.28MESH_RESOURCE.3D10.29_.5B1.1.2B-.5D>`__
+to learn how to do a custom marker using a mesh resource.
 
 You will also need to write ROS publishers and subscribers so please follow `this tutorial <http://wiki.ros.org/ROS/Tutorials/WritingPublisherSubscriber%28c%2B%2B%29>`__.
 
@@ -410,3 +410,24 @@ if you don't know anything about it.
 
 :blue:`[TODO: add the explanations about the C++ code step by step]JV`
 
+5.5.2.1 The structure
+
+5.5.2.2 :ref:`D-ERG strategy 0  <5.3.1 D-ERG strategy 0>`
+
+5.5.2.3 :ref:`D-ERG strategy 1  <5.3.2 D-ERG strategy 1>`
+
+Explanation about the hemisphere:
+We used it to do the markers of the hemispheres. For example, you can use a .stl file.
+You can search in the internet to directly get this kind of file, or you can make it yourself with specific software like
+3D-builder or SolidWorks on Windows. Be careful to use the metric system on the software. You may encounter some issues of scale between your software and Rviz.
+For us, there was a scale difference of 1000 between these two. You can see in our code that every scale parameter for the hemispheres markers are divided by 1000.
+In addition, RViz works with the diameter for spheres and cylinders scale. You can see that our spheres markers are multiplied by 2 because the tracker computes the radius.
+Our .stl file of hemispheres is made to work with radius, so we didn't need to multiply by 2 the scale of our hemispheres.
+
+5.5.2.4 :ref:`D-ERG strategy 2  <5.3.3 D-ERG strategy 2>`
+
+5.5.2.5 :ref:`D-ERG strategy 3  <5.3.4 D-ERG strategy 3>`
+
+5.5.2.6 :ref:`D-ERG strategy 4  <5.3.5 D-ERG strategy 4>`
+
+5.5.2.7 :ref:`D-ERG strategy 5  <5.3.6 D-ERG strategy 5>`
