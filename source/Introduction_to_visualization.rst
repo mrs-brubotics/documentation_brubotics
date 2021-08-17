@@ -161,6 +161,9 @@ If you choose "By display type", you will have to write the topic name in the le
 
    Figure 5.4: Topic window
 
+To record videos of your RViz visualization, we use the free software Recordmydesktop.
+If you want the RVIz camera not to move during the simulation, ...
+
 .. _5.3 Our work D-ERG visualization:
 
 5.3 Our work: D-ERG visualization
@@ -486,6 +489,10 @@ The ``point`` field is an array of `FuturePoint messages <https://ctu-mrs.github
    Figure 5.11: Navigation goal button
 
   The `MarkerArray <http://docs.ros.org/en/api/visualization_msgs/html/msg/MarkerArray.html>`__ avoid to have synchronisation issues between all the markers. 
+
+.. important::
+  The `MarkerArray <http://docs.ros.org/en/api/visualization_msgs/html/msg/MarkerArray.html>`__ can't be a global variable because otherwise, it could be
+  updated and published at the same time, which could result as flashing markers.
 
 To display the predicted trajectory, we need the data contained in the ``uavX/control_manager/dergbryan_tracker/predicted_trajectory`` topic which is a `mrs_msgs::FutureTrajectory message <https://ctu-mrs.github.io/mrs_msgs/msg/FutureTrajectory.html>`__.
 Thus, we get a 3-dimensions array named ``predicted_trajectories``: one dimensio for the predicted point, one for the coordinates and one for each UAV.
