@@ -404,8 +404,9 @@ Then, follow `this tutorial <http://wiki.ros.org/rviz/Tutorials/Markers%3A%20Poi
 You can read `this documentation <http://wiki.ros.org/rviz/DisplayTypes/Marker#Mesh_Resource_.28MESH_RESOURCE.3D10.29_.5B1.1.2B-.5D>`__
 to learn how to do a custom marker using a mesh resource.
 
-You will also need to write ROS publishers and subscribers so please follow `this tutorial <http://wiki.ros.org/ROS/Tutorials/WritingPublisherSubscriber%28c%2B%2B%29>`__.
+You will need to write ROS publishers and subscribers so please follow `this tutorial <http://wiki.ros.org/ROS/Tutorials/WritingPublisherSubscriber%28c%2B%2B%29>`__.
 `Here <http://docs.ros.org/en/api/std_msgs/html/index-msg.html>`__ is a list of all ROS standard message types.
+We also use `callbacks and spinning <http://wiki.ros.org/roscpp/Overview/Callbacks%20and%20Spinning>`__.
 
 Because we use quaternions to set the orientation of some markers, it could be useful for you to read `this <https://scriptinghelpers.org/blog/how-to-think-about-quaternions>`__
 if you don't know anything about it.
@@ -423,6 +424,27 @@ function prototypes, function definitions and the main.
 :blue:`[Change the structure if we make a .h file]JV`
 
 5.5.2.2 Basic visuals
+
+Before all, we need to know how many UAVs are in the running simulation.
+This information is located in the `SpawnerDiagnostics message <https://github.com/ctu-mrs/mrs_msgs/blob/master/msg/simulation/SpawnerDiagnostics.msg>`__
+of the ``mrs_drone_spawner/diagnostics`` topic. The ``active_vehicles`` member of this message is a list of all the active UAVs.
+We created a subscriber called ``diagnostics_subscriber_`` which subscribe to this topic and get this list back.
+Thus, we defined a parameter called ``number_of_uav`` which is equal to the size of this list.
+
+.. important::
+  Because this data is the first we need to know before displaying anything, we have to wait until the related message is published.
+  That's why we use these lines of code juste after subscribing to the topic:
+
+  .. code-block:: c
+
+    while(!test1){
+      ros::spinOnce();
+      r.sleep();
+      }
+
+  ``test1`` is a boolean initialized at "false". It becomes "true" when the callback function of the `SpawnerDiagnostics message <https://github.com/ctu-mrs/mrs_msgs/blob/master/msg/simulation/SpawnerDiagnostics.msg>`__
+  is called, and then it is set again to false. Thus, the ``ros::spinOnce()`` will call all the callbacks waiting to be called at that point in time,
+  including the ``DiagnosticsCallback`` function.
 
 To decide which strategy should be displayed, we created a publisher called ``derg_strategy_id_publisher_`` in the `tracker's code <https://github.com/mrs-brubotics/trackers_brubotics/blob/master/src/dergbryan_tracker/dergbryan_tracker.cpp>`__
 which publish a `std_msgs::Int32 message <http://docs.ros.org/en/api/std_msgs/html/msg/Int32.html>`__.
@@ -452,7 +474,8 @@ For the applied reference :math:`p_{k}^{v}`, the related topic is ``uavX/control
 The ``point`` field is an array of `FuturePoint messages <https://ctu-mrs.github.io/mrs_msgs/msg/FuturePoint.html>`__.
 
 .. note::
-  All the markers are published in the ``/common_origin`` frame and are part of a MarkerArray. That's why namespaces are attractive: we are still able to
+  All the markers are published in the ``/common_origin`` frame and are part of a `MarkerArray <http://docs.ros.org/en/api/visualization_msgs/html/msg/MarkerArray.html>`__.
+  That's why namespaces are attractive: we are still able to
   select the markers we want to display:
 
   .. figure:: _static/Namespaces.png
@@ -462,8 +485,10 @@ The ``point`` field is an array of `FuturePoint messages <https://ctu-mrs.github
 
    Figure 5.11: Navigation goal button
 
+  The `MarkerArray <http://docs.ros.org/en/api/visualization_msgs/html/msg/MarkerArray.html>`__ avoid to have synchronisation issues between all the markers. 
+
 To display the predicted trajectory, we need the data contained in the ``uavX/control_manager/dergbryan_tracker/predicted_trajectory`` topic which is a `mrs_msgs::FutureTrajectory message <https://ctu-mrs.github.io/mrs_msgs/msg/FutureTrajectory.html>`__.
-Thus, we get a 3-dimensions array named ``predicted_trajectories``: one for the predicted point, one for the coordinates and one for each UAV.
+Thus, we get a 3-dimensions array named ``predicted_trajectories``: one dimensio for the predicted point, one for the coordinates and one for each UAV.
 We want to display only 50 trajectory points but this array contains 300 ones. So we chose to display the first one, then the seventh, the thirteenth, etc.
 
 :blue:`[TODO: add a picture of this default visualization]JV`
@@ -518,17 +543,26 @@ The main difference between D-ERG strategy 1 and 2 is that the blue tube become 
 
 5.5.2.5 :ref:`D-ERG strategy 3  <5.3.4 D-ERG strategy 3>`
 
-Starting from the strategy 2, we want to add an orange tube between :math:`p_{k}` and :math:`p_{k}^{v}`with a radius :math:`S_{a,min}^{⊥}`.
+Starting from the strategy 2, we want to add an orange tube between :math:`p_{k}` and :math:`p_{k}^{v}` with a radius :math:`S_{a,min}^{⊥}`.
 This radius is obtained similarly as :math:`\bar{S}_{a}^{⊥}`.
 
 :blue:`[TODO: add a picture of this visualization]JV`
 
 5.5.2.6 :ref:`D-ERG strategy 4  <5.3.5 D-ERG strategy 4>`
 
-:blue:`[TODO]JV`
+Now, the orange tube has to be between :math:`p_{k}^{1}` and :math:`p_{k}^{0}`. These information are related to the
+``uavX/control_manager/dergbryan_tracker/future_trajectory_tube`` topic which contains a `FutureTrajectoryTube message <https://github.com/mrs-brubotics/trackers_brubotics/blob/master/msg/FutureTrajectoryTube.msg>`__.
+We also get the radius :math:`S_{a,min}^{⊥}` value back from this message.
+Contrary to the previous strategy, the orange tube has now red hemispheres.
+
 :blue:`[TODO: add a picture of this visualization]JV`
 
 5.5.2.7 :ref:`D-ERG strategy 5  <5.3.6 D-ERG strategy 5>`
 
-:blue:`[TODO]JV`
+For the last strategy, we start from the :ref:`D-ERG strategy 3  <5.3.4 D-ERG strategy 3>` by taking the orange tube.
+We want to display the shortest distance between two desired reference sphere :math:`\hat{p}_{k}` and :math:`\hat{p}_{i}`, and these two spheres.
+First, we calculate the shortest norm between all the predicted trajectory points and we get the index of the two related points back.
+Then, we have to transpose by the radius :math:`R_{a}` these two points in the distance vector direction because
+the line we want to plot is not between the two spheres center but between the two spheres.
+
 :blue:`[TODO: add a picture of this visualization]JV`
