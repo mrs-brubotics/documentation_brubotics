@@ -93,7 +93,18 @@ Once you decided on a machine:
          
             sudo apt-get update
             sudo apt-get upgrade
+            
+    * Install htop so you can kill processes if required as exaplined here in the last comment (https://askubuntu.com/questions/596830/kill-process-with-htop) F9.
+    
+          .. code:: shell
          
+             sudo snap install htop
+             
+       * First, press F6 which is the "sort by" option. 
+       * Then, under the "sort by" category on the left, select option PID and then press Enter. This should give you a more stable output.
+       * Next, to locate a process, press F3 to search, type in the search, and then press F3 again to scroll through search results.
+       * When the process is highlighted, press F9 two times quickly and then press 9 and then press Enter to kill the process.
+       
     * Configure CPU Specs:
          * Read the section `Disabling CPU frequency scaling <https://frankaemika.github.io/docs/troubleshooting.html#disabling-cpu-frequency-scaling>`__  
          * Install cpufrequtils and its indicator
