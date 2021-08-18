@@ -39,6 +39,7 @@ A good documentation:
     * does NOT look like a scientific paper or a thesis report. The focus of a tutorial is on the pratical setup and implementation aspects to reproduce experiments and not on the analysis of the research results;
     * is obtained when you document directly after you try new things. Delaying the writing for the next hour, the day or the next week will most likely reduce the clarity and cause pontial errors like: missing important details, wrong orders of steps. It quickly leads to non-reproducible results and no help from other collaborators.
     * evolves over time and is never finished since it can always be improved.
+
 Remember, the better you document your work in this tutorial, the easier you will get help from others and the more chance your high-quality research will be used in the end!
 
 Take a look at the files in this repository. If you understand the syntax of the .rst files and the structure you are ready to contribute your own documentation to this Read the Docs tutorial. Ask your advisor where you should put the documentation of your project.
@@ -65,16 +66,28 @@ Some guidelines:
 Working on advanced robot simulators (e.g. Gazebo) and algorithms requires decent computational hardware (i.e. CPU, GPU specs).
 We have several computers available in the lab, but these have to be reserved since they are mainly used when working on the real robot hardware.
 
+KELLY 
+
 Please provide your supervisor the specs of your machine(s) (i.e. laptops or desktops) you would like to use for this project. They can tell you if it's sufficient.
 Once you decided on a machine:
 
-    * TODO FROM PART INTERNS You first need to install Ubuntu 18.04 LTS Desktop. If you already have windows on your PC, you need to reserve HDD space (a partition of at least 50GB recommended) and do a dual boot. Do NOT use a virtual machine, it slows down things a lot. Follow \href{https://ubuntu.com/tutorials/install-ubuntu-desktop#1-overview}{these steps}. It is advised to boot from a usb stick.
-    * If you did not select the correct keyboard during the Ubuntu installation, there can be some bugs with a Belgian AZERTY keyboard. Some solutions:
+   *  TODO FROM PART INTERNS You first need to install Ubuntu 18.04 LTS Desktop. 
+      If you already have windows on your PC, you need to reserve HDD space (a partition of at least 50GB recommended) 
+      and do a dual boot. Do NOT use a virtual machine, it slows down things a lot. 
+      Follow \href{https://ubuntu.com/tutorials/install-ubuntu-desktop#1-overview}{these steps}. 
+      It is advised to boot from a usb stick.
+
+   *  If you did not select the correct keyboard during the Ubuntu installation, 
+      there can be some bugs with a Belgian AZERTY keyboard. 
+      Some solutions:
+
          * Install the Languages French and Dutch (Nederlands).
          * sudo locale-gen fr_BE.UTF-8 (https://askubuntu.com/questions/1133361/cannot-find-my-keyboard-layout)
          * Find Belgian Wang 724 AZERTY under Dutch or French. https://www.roelpeters.be/changing-to-dutch-belgian-keyboard-layout-in-ubuntu/
          * Move it up as the default keyboard.  
+
     * Configure you internet access:
+
          * VUBnext internet settings on Ubuntu. In the Security tab select:
                * Security: WPA & WPA2 Enterprise
                * Authentication: Protected EAP (PEAP)
@@ -89,14 +102,14 @@ Once you decided on a machine:
          
     * Regularly update Ubuntu. Do this at least once a week.
     
-         .. code:: shell
+         .. code-block:: shell
          
-            sudo apt-get update
-            sudo apt-get upgrade
+                 sudo apt-get update
+                 sudo apt-get upgrade 
             
     * Install htop so you can kill processes if required as exaplined here in the last comment (https://askubuntu.com/questions/596830/kill-process-with-htop) F9.
     
-          .. code:: shell
+          .. code-block:: shell
          
              sudo snap install htop
              
@@ -109,20 +122,20 @@ Once you decided on a machine:
          * Read the section `Disabling CPU frequency scaling <https://frankaemika.github.io/docs/troubleshooting.html#disabling-cpu-frequency-scaling>`__  
          * Install cpufrequtils and its indicator
          
-            .. code:: shell
+            .. code-block:: shell
 
                sudo apt install cpufrequtils
                sudo apt install indicator-cpufreq     
          
          * Reboot the machine to see the cpu indicator appear in the top right corner of your screen. You can manually select the desired mode here.
          
-            .. code:: shell
+            .. code-block:: shell
             
                sudo reboot
                
          * Automatically enable the machine in performance mode on every boot (required for the onboard drone computer, and recommended for other machines):
          
-            .. code:: shell
+            .. code-block:: shell
 
                sudo systemctl disable ondemand
                sudo systemctl enable cpufrequtils
@@ -148,7 +161,7 @@ Once you decided on a machine:
         
       .. code:: shell
       
-         cd to_a_git_repo
+         cd to_a_git_repo 
          git checkout branch_name (e.g. master, main)
          git status
          git pull
@@ -156,8 +169,7 @@ Once you decided on a machine:
          git commit -m "write a clear but comprehensive commit message"
          git push origin branch_name (e.g. master, main)    
                
-    * Learn about managing large files with Git [here and all sublinks](https://docs.github.com/en/github/managing-large-files). If you regularly push large files to GitHub, you should use Git Large File Storage (Git LFS). You can learn the basic use quickly from [this](https://git-lfs.github.com/) and [this](http://arfc.github.io/manual/guides/git-lfs) link and more details including install instructions can be found [here](https://docs.github.com/en/github/managing-large-files/versioning-large-files). 
-    [ONLY ALLOWED BY PROJECT OWNERS!!!] For rewriting git history we suggest you to use BFG Repo-Cleaner () over git filter-branch. More info on both you can find here (https://docs.github.com/en/github/authenticating-to-github/keeping-your-account-and-data-secure/removing-sensitive-data-from-a-repository).
+    * Learn about managing large files with Git [here and all sublinks](https://docs.github.com/en/github/managing-large-files). If you regularly push large files to GitHub, you should use Git Large File Storage (Git LFS). You can learn the basic use quickly from [this](https://git-lfs.github.com/) and [this](http://arfc.github.io/manual/guides/git-lfs) link and more details including install instructions can be found [here](https://docs.github.com/en/github/managing-large-files/versioning-large-files). [ONLY ALLOWED BY PROJECT OWNERS!!!] For rewriting git history we suggest you to use BFG Repo-Cleaner () over git filter-branch. More info on both you can find here (https://docs.github.com/en/github/authenticating-to-github/keeping-your-account-and-data-secure/removing-sensitive-data-from-a-repository).
          * For installation: download the latest jar file from https://rtyley.github.io/bfg-repo-cleaner/ and rename it to just bfg.jar. Run sudo apt-get install build-essential procps curl file git (source https://docs.brew.sh/Homebrew-on-Linux) and then try brew install bfg (source https://github.com/rtyley/bfg-repo-cleaner/issues/255#issuecomment-606705860) and it will be built. Now you can run bfg as java -jar /path/to/bfg-version.jar (so you don't have to make the alias) (source: https://github.com/rtyley/bfg-repo-cleaner/pull/196/commits/5f2e8879117da42b71304da5febed93f887e0fd0). 
          * Cleaning the repo (source https://rtyley.github.io/bfg-repo-cleaner/):
                * Commit all files and push them remotely
@@ -165,7 +177,7 @@ Once you decided on a machine:
                * Write down the folder size of the repo and its .git folder (which contains the commit history).
                * Open a new terminal and create a folder to clone the mirror packe in it:
                
-                  .. code:: shell
+                  .. code-block:: shell
                      
                      cd Desktop
                      mkdir folder_name_mirrored_repo
@@ -174,7 +186,7 @@ Once you decided on a machine:
                      
                * Move the bfg.jar file to Desktop
                * In a new terminal clone the repo in the folder
-                  .. code:: shell
+                  .. code-block:: shell
                      
                      cd Desktop/folder_name_mirrored_repo
                      git clone --mirror remote_repo_name.git
@@ -182,7 +194,7 @@ Once you decided on a machine:
                * Write down the size of this remote_repo_name.git folder. It is normal the size is already lower than the original .git folder since it is a mirror.
                * Now rewrite the history. In this example we remove all files larger than 10M (typically figures, .bag, .mat, .mp4 files) from history. For other examples see https://rtyley.github.io/bfg-repo-cleaner/.
                
-                  .. code:: shell
+                  .. code-block:: shell
                   
                      cd ~/Desktop
                      java -jar bfg.jar --strip-blobs-bigger-than 10M folder_name_mirrored_repo/remote_repo_name.git
@@ -190,7 +202,7 @@ Once you decided on a machine:
                   This process is very quick and a report is generated in the folder_name_mirrored_repo. You can see which files (and their size) have been removed.
                * If you are ok with the removed files, then do
                
-                  .. code:: shell
+                  .. code-block:: shell
                   
                         cd ~/Desktop/folder_name_mirrored_repo/remote_repo_name.git
                         git reflog expire --expire=now --all && git gc --prune=now --aggressive
@@ -198,12 +210,12 @@ Once you decided on a machine:
                * Write down the size of this remote_repo_name.git folder, it should be lower depedning on how much large files were removed.
                * Now push it back to github (don't put origin master this time, it won't work). 
                
-                  .. code:: shell
+                  .. code-block:: shell
                   
                         git push
                   
                   Since you rewrote history it is normal you won't see a commit on github. Indeed, you did not even create a commit.
-               * Now clone your repo and check if the original .git folder is reduced in size and check if the code still builds and works as before. The cloning should also go faster now and less storage / bandwidth will be used. As an example this helped me to reduce the .git folder from 4.5G to 200M.
+               * Now clone your repo and check if the original .git folder is reduced in size and check if the code-block still builds and works as before. The cloning should also go faster now and less storage / bandwidth will be used. As an example this helped me to reduce the .git folder from 4.5G to 200M.
                
    * TODO check the use of [Distributing large binaries](https://docs.github.com/en/github/managing-large-files/working-with-large-files/distributing-large-binaries).
    * TODO checkout `this <https://docs.github.com/en/github/administering-a-repository/managing-repository-settings/managing-git-lfs-objects-in-archives-of-your-repository>`__ 
