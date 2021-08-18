@@ -527,7 +527,7 @@ The ``point`` field is an array of `FuturePoint messages <https://ctu-mrs.github
   updated and published at the same time, which could result as flashing markers.
 
 To display the predicted trajectory, we need the data contained in the ``uavX/control_manager/dergbryan_tracker/predicted_trajectory`` topic which is a `mrs_msgs::FutureTrajectory message <https://ctu-mrs.github.io/mrs_msgs/msg/FutureTrajectory.html>`__.
-Thus, we get a 3-dimensions array named ``predicted_trajectories``: one dimensio for the predicted point, one for the coordinates and one for each UAV.
+Thus, we created a 3-dimensions array named ``predicted_trajectories``: one dimension for the predicted point, one for the coordinates and one for each UAV.
 We want to display only 50 trajectory points but this array contains 300 ones. So we chose to display the first one, then the seventh, the thirteenth, etc.
 
 5.5.2.2 :ref:`D-ERG strategy 0  <5.3.1 D-ERG strategy 0>`
