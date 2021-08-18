@@ -3,13 +3,10 @@ Documentation developed by the summer 2021 BruBotics interns.
 
 ## How to read our documentation?
 
-First, clone this repository in the folder of your choice:
-```
-git clone https://github.com/mrs-brubotics/documentation_brubotics.git
-```
+This repo is automatically cloned when you install droneswarm_brubotics.
+
 Then, you will need to install Sphinx.
 ```
-sudo apt update
 sudo apt install python3-sphinx
 ```
 Because we use ReadTheDocs, you will need to install the sphinx extension (we recommand you to use the pip3 installer):
