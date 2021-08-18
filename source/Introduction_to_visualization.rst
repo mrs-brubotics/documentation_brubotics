@@ -27,20 +27,21 @@ The RViz window will open after Gazebo and it should look like this:
 
 In this default visualization, you can see the UAV model with its frame.
 You can also use the 2D Nav Goal button to choose a position and a heading to go for the UAV. Thus, you will see the UAV trajectory.
-
-.. figure:: _static/navgoal_button.png
-   :width: 400
-   :alt: alternate text
-   :align: center
-
-   Figure 5.2: Navigation goal button
+:blue:`[TODO: ask CTU what the small frames and blue arrows depict and write it here.]JV`
 
 .. figure:: _static/TrajVisualization.png
    :width: 800
    :alt: alternate text
    :align: center
 
-   Figure 5.3: Visualization of the trajectory
+   Figure 5.2: Visualization of CTU
+
+.. figure:: _static/navgoal_button.png
+   :width: 400
+   :alt: alternate text
+   :align: center
+
+   Figure 5.3: Navigation goal button
 
 Next, you can run some simulations which use dedicated plugins for one specific task.
 You will need to use these commands to see `all of them <https://github.com/ctu-mrs/mrs_uav_testing/tree/master/tmux>`__:
@@ -318,7 +319,7 @@ This final strategy permits to calculate the minimal distance between 2 predicte
 We have developed a `visualization package <https://github.com/mrs-brubotics/visualization_brubotics>`__ which permits to visualize
 in RViz the :ref:`D-ERG strategies algorithms <5.3 Our work D-ERG visualization>` in the `two_drones_D-ERG simulation <https://github.com/mrs-brubotics/testing_brubotics/tree/master/tmux_scripts/bryan/two_drones_D-ERG>`__.
 This package is based on the `mrs_rviz_plugins <https://github.com/ctu-mrs/mrs_rviz_plugins>`__ structure.
-We will explain you how to reproduce it.
+We will explain you how to reproduce it. :blue:`[TODO: say that the visualization work for multiple drones simulations when the test will be done.]JV`
 
 First, we created a new package named `visualization_brubotics <https://github.com/mrs-brubotics/visualization_brubotics>`__ in
 ``workspace/src_droneswarm_brubotics/ros_packages`` with:
@@ -419,12 +420,8 @@ that we will explain in the next chapter.
 
   </launch>
 
-:blue:`[TODO: adapt the .cpp file name]JV`
-
 5.5 The code for visualization
 ------------------------------
-
-:blue:`[Don't forget to change the link if we change the file name]JV`
 
 As you can see in the different :ref:`D-ERG strategies  <5.3 Our work D-ERG visualization>`, we want to visualize spheres, tubes and lines.
 These three shapes are `RViz standard display marker types <http://wiki.ros.org/rviz/DisplayTypes/Marker>`__, except the tube.
@@ -467,7 +464,7 @@ We created a subscriber called ``diagnostics_subscriber_`` which subscribe to th
 Thus, we defined a parameter called ``number_of_uav`` which is equal to the size of this list.
 
 .. important::
-  Because this data is the first we need to know before displaying anything, we have to wait until the related message is published.
+  We have to wait until the related message is published because this data is the first we need to know before displaying anything, .
   That's why we use these lines of code juste after subscribing to the topic:
 
   .. code-block:: c
@@ -477,9 +474,9 @@ Thus, we defined a parameter called ``number_of_uav`` which is equal to the size
       r.sleep();
       }
 
-  ``test1`` is a boolean initialized at "false". It becomes "true" when the callback function of the `SpawnerDiagnostics message <https://github.com/ctu-mrs/mrs_msgs/blob/master/msg/simulation/SpawnerDiagnostics.msg>`__
-  is called, and then it is set again to false. Thus, the ``ros::spinOnce()`` will call all the callbacks waiting to be called at that point in time,
-  including the ``DiagnosticsCallback`` function.
+  ``test1`` is a boolean set to "false".
+  Thus, the ``ros::spinOnce()`` will call all the callbacks waiting to be called at that point in time, including the ``DiagnosticsCallback`` function.
+  The latter will be called only one time because ``test1`` is set to "true" at the end of the ``DiagnosticsCallback`` function.
 
 To decide which strategy should be displayed, we created a publisher called ``derg_strategy_id_publisher_`` in the `tracker's code <https://github.com/mrs-brubotics/trackers_brubotics/blob/master/src/dergbryan_tracker/dergbryan_tracker.cpp>`__
 which publish a `std_msgs::Int32 message <http://docs.ros.org/en/api/std_msgs/html/msg/Int32.html>`__.
@@ -487,12 +484,14 @@ The subscriber called ``DERG_strategy_id_subscriber_`` in the `visualization cod
 subscribe to the ``uav1/control_manager/dergbryan_tracker/derg_strategy_id`` topic and permits to get the ``_DERG_strategy_id_`` value back.
 
 By default, we display the current pose sphere , the applied reference sphere and the trajectory (see all the :ref:`D-ERG strategies  <5.3 Our work D-ERG visualization>`).
+We also show a line which depict the distance between each UAV at their current pose because we think it's useful to spot where the drones are,
+especially when the drones are close to each other. :blue:`[TODO in the code.]JV`
+
 To do so, we subscribe to the ``uavX/control_manager/dergbryan_tracker/custom_predicted_poses`` topic which contains a ``std::vector<geometry_msgs::Pose>`` message
 (see `geometry_msgs::Pose message definition <http://docs.ros.org/en/noetic/api/geometry_msgs/html/msg/Pose.html>`__).
 It is a vector of all the predicted uav predicted poses (position and orientation) so the first element is the current pose :math:`p_{k}`.
 Consequently, we can display a sphere at the current UAV pose.
 We use the `boost::function function pointer <https://www.boost.org/doc/libs/1_77_0/doc/html/boost/function.html>`__ to manage vectors of subscribers.
-
 :blue:`[more details about the boost?]JV`
 
 .. hint::
@@ -510,8 +509,7 @@ The ``point`` field is an array of `FuturePoint messages <https://ctu-mrs.github
 
 .. note::
   All the markers are published in the ``/common_origin`` frame and are part of a `MarkerArray <http://docs.ros.org/en/api/visualization_msgs/html/msg/MarkerArray.html>`__.
-  That's why namespaces are attractive: we are still able to
-  select the markers we want to display:
+  That's why namespaces are attractive: we are still able to select the markers we want to display.
 
   .. figure:: _static/Namespaces.png
    :width: 800
@@ -522,6 +520,8 @@ The ``point`` field is an array of `FuturePoint messages <https://ctu-mrs.github
 
   The `MarkerArray <http://docs.ros.org/en/api/visualization_msgs/html/msg/MarkerArray.html>`__ avoid to have synchronisation issues between all the markers. 
 
+:blue:`[TODO: add explanations about the InitMarkers function]JV`
+
 .. important::
   The `MarkerArray <http://docs.ros.org/en/api/visualization_msgs/html/msg/MarkerArray.html>`__ can't be a global variable because otherwise, it could be
   updated and published at the same time, which could result as flashing markers.
@@ -529,6 +529,8 @@ The ``point`` field is an array of `FuturePoint messages <https://ctu-mrs.github
 To display the predicted trajectory, we need the data contained in the ``uavX/control_manager/dergbryan_tracker/predicted_trajectory`` topic which is a `mrs_msgs::FutureTrajectory message <https://ctu-mrs.github.io/mrs_msgs/msg/FutureTrajectory.html>`__.
 Thus, we created a 3-dimensions array named ``predicted_trajectories``: one dimension for the predicted point, one for the coordinates and one for each UAV.
 We want to display only 50 trajectory points but this array contains 300 ones. So we chose to display the first one, then the seventh, the thirteenth, etc.
+
+:blue:`[TODO: add screenshots of this basic visualization with multiple choices for the trajectory and we we chose the one we chose.]JV`
 
 5.5.2.2 :ref:`D-ERG strategy 0  <5.3.1 D-ERG strategy 0>`
 
@@ -572,6 +574,8 @@ You can see in our code that every scale parameter for the hemispheres markers a
 In addition, RViz works with the diameter for spheres and cylinders scale.
 You can see that our spheres markers are multiplied by 2 because the tracker computes the radius.
 Our .stl file of hemispheres is made to work with radius, so we didn't need to multiply by 2 the scale of our hemispheres.
+
+:blue:`[TODO: add explanations about the orientation of hemispheres]JV`
 
 We could create a mesh which display directly a full tube but the benefits would be insignificant and it would be way more difficult to change its size.
 
