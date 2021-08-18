@@ -162,7 +162,14 @@ If you choose "By display type", you will have to write the topic name in the le
    Figure 5.4: Topic window
 
 To record videos of your RViz visualization, we use the free software Recordmydesktop.
-If you want the RVIz camera not to move during the simulation, ...
+If you want the RVIz camera not to move during the simulation, select a ``Target Frame`` which doesn't belong to the UAV in the right window.
+
+.. figure:: _static/Views.png
+   :width: 400
+   :alt: alternate text
+   :align: center
+
+   Figure 5.5: Views window
 
 .. _5.3 Our work D-ERG visualization:
 
@@ -190,7 +197,7 @@ We have several D-ERG (Distributed Explicit Reference Governor) strategies to il
    :alt: alternate text
    :align: center
 
-   Figure 5.5: D-ERG strategy 0
+   Figure 5.6: D-ERG strategy 0
 
 * :math:`p_{k}`: current pose of the UAV
 * :math:`p̂_{k}`: desired reference pose
@@ -211,7 +218,7 @@ Sphere can **translate**.
    :alt: alternate text
    :align: center
 
-   Figure 5.6: D-ERG strategy 1
+   Figure 5.7: D-ERG strategy 1
 
 Communicate: :math:`p_{k}`, :math:`p_{k}^{v}`
 
@@ -227,7 +234,7 @@ Tube can **translate** and **rotate**.
    :alt: alternate text
    :align: center
 
-   Figure 5.7: D-ERG strategy 2
+   Figure 5.8: D-ERG strategy 2
 
 Communicate: :math:`p_{k}`, :math:`p_{k}^{v}`
 
@@ -243,7 +250,7 @@ Tube can **translate**, **rotate** and **change length**.
    :alt: alternate text
    :align: center
 
-   Figure 5.8: D-ERG strategy 3
+   Figure 5.9: D-ERG strategy 3
 
 Communicate: :math:`p_{k}`, :math:`p_{k}^{v}`, :math:`S_{a,min}^{⊥}`
 
@@ -259,7 +266,7 @@ Tube can **translate**, **rotate**, **change length and width**. The width (radi
    :alt: alternate text
    :align: center
 
-   Figure 5.9: D-ERG strategy 4
+   Figure 5.10: D-ERG strategy 4
 
 Communicate: :math:`p_{k}^{0}`, :math:`p_{k}^{1}`, :math:`S_{a,min}^{⊥}`
 
@@ -276,7 +283,7 @@ longitudinal axis.
    :alt: alternate text
    :align: center
 
-   Figure 5.10: D-ERG strategy 5
+   Figure 5.11: D-ERG strategy 5
 
 This final strategy permits to calculate the minimal distance between 2 predicted poses.
 
@@ -486,7 +493,7 @@ The ``point`` field is an array of `FuturePoint messages <https://ctu-mrs.github
    :alt: alternate text
    :align: center
 
-   Figure 5.11: Navigation goal button
+   Figure 5.12: Namespaces
 
   The `MarkerArray <http://docs.ros.org/en/api/visualization_msgs/html/msg/MarkerArray.html>`__ avoid to have synchronisation issues between all the markers. 
 
@@ -540,7 +547,12 @@ Our .stl file of hemispheres is made to work with radius, so we didn't need to m
 
 We could create a mesh which display directly a full tube but the benefits would be insignificant and it would be way more difficult to change its size.
 
-:blue:`[TODO: add a picture of this visualization]JV`
+.. figure:: _static/derg1.png
+  :width: 600
+  :alt: alternate text
+  :align: center
+
+  Figure 5.14: Visualization of D-ERG strategy 1
 
 5.5.2.4 :ref:`D-ERG strategy 2  <5.3.3 D-ERG strategy 2>`
 
@@ -572,4 +584,9 @@ First, we calculate the shortest norm between all the predicted trajectory point
 Then, we have to transpose by the radius :math:`R_{a}` these two points in the distance vector direction because
 the line we want to plot is not between the two spheres center but between the two spheres.
 
-:blue:`[TODO: add a picture of this visualization]JV`
+.. figure:: _static/derg5.png
+  :width: 600
+  :alt: alternate text
+  :align: center
+
+  Figure 5.18: Visualization of D-ERG strategy 5
