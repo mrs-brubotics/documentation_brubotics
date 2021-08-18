@@ -35,6 +35,13 @@ You can also use the 2D Nav Goal button to choose a position and a heading to go
 
    Figure 5.2: Navigation goal button
 
+.. figure:: _static/TrajVisualization.png
+   :width: 800
+   :alt: alternate text
+   :align: center
+
+   Figure 5.3: Visualization of the trajectory
+
 Next, you can run some simulations which use dedicated plugins for one specific task.
 You will need to use these commands to see `all of them <https://github.com/ctu-mrs/mrs_uav_testing/tree/master/tmux>`__:
 
@@ -54,10 +61,28 @@ The `test_bumper simulation <https://github.com/ctu-mrs/mrs_uav_testing/tree/mas
 is an example of an advanced visualization task that you can do on RViz. It is made by a plugin created from scratch.
 It represents a weighty work to create this type of visualization but it shows you the diversity of possibilities.
 
+.. figure:: _static/bumper.png
+  :width: 800
+  :alt: alternate text
+  :align: center
+
+  Figure 5.4: Visualization of the test_bumper visualization
+
 Below you can see the most complex visualization we made:
 
-:blue:`[TODO: add a picture of this visualization: D-ERG strategy 4 or/and 5]JV`
+.. figure:: _static/derg4.png
+  :width: 600
+  :alt: alternate text
+  :align: center
 
+  Figure 5.5: Visualization of D-ERG strategy 4
+
+.. figure:: _static/derg5.png
+  :width: 600
+  :alt: alternate text
+  :align: center
+
+  Figure 5.6: Visualization of D-ERG strategy 5
 
 5.2 How RViz works ?
 --------------------
@@ -152,14 +177,14 @@ If you choose "By display type", you will have to write the topic name in the le
    :alt: alternate text
    :align: center
 
-   Figure 5.3: Add button
+   Figure 5.7: Add button
 
 .. figure:: _static/topic_window.png
    :width: 400
    :alt: alternate text
    :align: center
 
-   Figure 5.4: Topic window
+   Figure 5.8: Topic window
 
 To record videos of your RViz visualization, we use the free software Recordmydesktop.
 If you want the RVIz camera not to move during the simulation, select a ``Target Frame`` which doesn't belong to the UAV in the right window.
@@ -169,7 +194,7 @@ If you want the RVIz camera not to move during the simulation, select a ``Target
    :alt: alternate text
    :align: center
 
-   Figure 5.5: Views window
+   Figure 5.9: Views window
 
 .. _5.3 Our work D-ERG visualization:
 
@@ -197,7 +222,7 @@ We have several D-ERG (Distributed Explicit Reference Governor) strategies to il
    :alt: alternate text
    :align: center
 
-   Figure 5.6: D-ERG strategy 0
+   Figure 5.10: D-ERG strategy 0
 
 * :math:`p_{k}`: current pose of the UAV
 * :math:`p̂_{k}`: desired reference pose
@@ -218,7 +243,7 @@ Sphere can **translate**.
    :alt: alternate text
    :align: center
 
-   Figure 5.7: D-ERG strategy 1
+   Figure 5.11: D-ERG strategy 1
 
 Communicate: :math:`p_{k}`, :math:`p_{k}^{v}`
 
@@ -234,7 +259,7 @@ Tube can **translate** and **rotate**.
    :alt: alternate text
    :align: center
 
-   Figure 5.8: D-ERG strategy 2
+   Figure 5.12: D-ERG strategy 2
 
 Communicate: :math:`p_{k}`, :math:`p_{k}^{v}`
 
@@ -250,7 +275,7 @@ Tube can **translate**, **rotate** and **change length**.
    :alt: alternate text
    :align: center
 
-   Figure 5.9: D-ERG strategy 3
+   Figure 5.13: D-ERG strategy 3
 
 Communicate: :math:`p_{k}`, :math:`p_{k}^{v}`, :math:`S_{a,min}^{⊥}`
 
@@ -266,7 +291,7 @@ Tube can **translate**, **rotate**, **change length and width**. The width (radi
    :alt: alternate text
    :align: center
 
-   Figure 5.10: D-ERG strategy 4
+   Figure 5.14: D-ERG strategy 4
 
 Communicate: :math:`p_{k}^{0}`, :math:`p_{k}^{1}`, :math:`S_{a,min}^{⊥}`
 
@@ -283,7 +308,7 @@ longitudinal axis.
    :alt: alternate text
    :align: center
 
-   Figure 5.11: D-ERG strategy 5
+   Figure 5.15: D-ERG strategy 5
 
 This final strategy permits to calculate the minimal distance between 2 predicted poses.
 
@@ -493,7 +518,7 @@ The ``point`` field is an array of `FuturePoint messages <https://ctu-mrs.github
    :alt: alternate text
    :align: center
 
-   Figure 5.12: Namespaces
+   Figure 5.16: Namespaces
 
   The `MarkerArray <http://docs.ros.org/en/api/visualization_msgs/html/msg/MarkerArray.html>`__ avoid to have synchronisation issues between all the markers. 
 
@@ -505,15 +530,18 @@ To display the predicted trajectory, we need the data contained in the ``uavX/co
 Thus, we get a 3-dimensions array named ``predicted_trajectories``: one dimensio for the predicted point, one for the coordinates and one for each UAV.
 We want to display only 50 trajectory points but this array contains 300 ones. So we chose to display the first one, then the seventh, the thirteenth, etc.
 
-:blue:`[TODO: add a picture of this default visualization]JV`
-
 5.5.2.2 :ref:`D-ERG strategy 0  <5.3.1 D-ERG strategy 0>`
 
 In this strategy, we want to visualize the error sphere of radius :math:`\bar{S}_{a}`. We do it by the same way we display the applied reference sphere.
 But we get back the radius value from the `tracker's code <https://github.com/mrs-brubotics/trackers_brubotics/blob/master/src/dergbryan_tracker/dergbryan_tracker.cpp>`__
 similarly as the D-ERG strategy value.
 
-:blue:`[TODO: add a picture of this visualization]JV`
+.. figure:: _static/derg0.png
+  :width: 500
+  :alt: alternate text
+  :align: center
+
+  Figure 5.17: Visualization of D-ERG strategy 0
 
 5.5.2.3 :ref:`D-ERG strategy 1  <5.3.2 D-ERG strategy 1>`
 
@@ -552,20 +580,30 @@ We could create a mesh which display directly a full tube but the benefits would
   :alt: alternate text
   :align: center
 
-  Figure 5.14: Visualization of D-ERG strategy 1
+  Figure 5.18: Visualization of D-ERG strategy 1
 
 5.5.2.4 :ref:`D-ERG strategy 2  <5.3.3 D-ERG strategy 2>`
 
 The main difference between D-ERG strategy 1 and 2 is that the blue tube become transparent and we add another blue tube between :math:`p_{k}` and :math:`p_{k}^{v}`.
 
-:blue:`[TODO: add a picture of this visualization]JV`
+.. figure:: _static/derg2.png
+  :width: 600
+  :alt: alternate text
+  :align: center
+
+  Figure 5.19: Visualization of D-ERG strategy 2
 
 5.5.2.5 :ref:`D-ERG strategy 3  <5.3.4 D-ERG strategy 3>`
 
 Starting from the strategy 2, we want to add an orange tube between :math:`p_{k}` and :math:`p_{k}^{v}` with a radius :math:`S_{a,min}^{⊥}`.
 This radius is obtained similarly as :math:`\bar{S}_{a}^{⊥}`.
 
-:blue:`[TODO: add a picture of this visualization]JV`
+.. figure:: _static/derg3.png
+  :width: 600
+  :alt: alternate text
+  :align: center
+
+  Figure 5.20: Visualization of D-ERG strategy 3
 
 5.5.2.6 :ref:`D-ERG strategy 4  <5.3.5 D-ERG strategy 4>`
 
@@ -574,7 +612,12 @@ Now, the orange tube has to be between :math:`p_{k}^{1}` and :math:`p_{k}^{0}`. 
 We also get the radius :math:`S_{a,min}^{⊥}` value back from this message.
 Contrary to the previous strategy, the orange tube has now red hemispheres.
 
-:blue:`[TODO: add a picture of this visualization]JV`
+.. figure:: _static/derg4.png
+  :width: 600
+  :alt: alternate text
+  :align: center
+
+  Figure 5.21: Visualization of D-ERG strategy 4
 
 5.5.2.7 :ref:`D-ERG strategy 5  <5.3.6 D-ERG strategy 5>`
 
@@ -589,4 +632,4 @@ the line we want to plot is not between the two spheres center but between the t
   :alt: alternate text
   :align: center
 
-  Figure 5.18: Visualization of D-ERG strategy 5
+  Figure 5.22: Visualization of D-ERG strategy 5
