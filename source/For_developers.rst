@@ -87,6 +87,9 @@ Please refer to section :ref:`2.4 <2.4 Working with Git>` to understand why we u
 .. note::
     When visualizing the documentation after running ``make html``, you may not see every chapters in the left tab. That's probably because you modify
     the ``index.rst`` file. To fix this, you need to save every ``.rst`` file.
+    
+    Furthermore, if the ``make html`` command doesn't build your documentation with your last changes,
+    run ``make clean`` and ``make html``.
 
 How to make the `documentation downloadable as PDF <https://docs.readthedocs.io/en/stable/downloadable-documentation.html#>`__?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -105,11 +108,11 @@ up to *Build the PDF with TexWorks*.
 
 When pressing the green button with LuaLatex selected, we had this error:
 
-.. code-block:: python
+.. code-block::
 
     ! LaTeX Error: File `cmap.sty' not found.
 
-We solved it by writting this command in a terminal.
+We solved it by writting this command in a terminal:
 
 .. code-block:: c
 
