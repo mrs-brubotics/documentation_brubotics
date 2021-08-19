@@ -87,3 +87,32 @@ Please refer to section :ref:`2.4 <2.4 Working with Git>` to understand why we u
 .. note::
     When visualizing the documentation after running ``make html``, you may not see every chapters in the left tab. That's probably because you modify
     the ``index.rst`` file. To fix this, you need to save every ``.rst`` file.
+
+How to make the `documentation downloadable as PDF <https://docs.readthedocs.io/en/stable/downloadable-documentation.html#>`__?
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The first thing you need is a configuration file.
+`Here <https://docs.readthedocs.io/en/stable/config-file/v2.html#>`__ are the instructions to create it.
+Once it's good, go to `this page <https://virtel.readthedocs.io/en/latest/manuals/newsletters/TN201707/tn201707.html#getting-started-with-sphinx-and-readthedocs>`__
+and again follow the directions.
+You don't need to download Pandoc but you will need to download `MiKTeX <https://miktex.org/download>`__ for your Ubuntu version.
+Just follow the steps and it should be fine.
+Then, continue to follow the steps from `this page <https://virtel.readthedocs.io/en/latest/manuals/newsletters/TN201707/tn201707.html#getting-started-with-sphinx-and-readthedocs>`__
+up to *Build the PDF with TexWorks*.
+
+.. attention::
+    The mentionned TEX file is not located in the _build/latex directory but in the build/latex directory.
+
+When pressing the green button with LuaLatex selected, we had this error:
+
+.. code-block:: python
+
+    ! LaTeX Error: File `cmap.sty' not found.
+
+We solved it by writting this command in a terminal.
+
+.. code-block:: c
+
+    sudo apt install texlive-latex-extra
+
+After pressing the green button and when the builder process is finished, a PDF will appear in another window.
