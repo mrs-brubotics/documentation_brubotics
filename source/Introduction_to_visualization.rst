@@ -426,7 +426,9 @@ that we will explain in the next chapter.
 5.5 The code for visualization
 ------------------------------
 
-As you can see in the different :ref:`D-ERG strategies  <5.3 Our work D-ERG visualization>`, we want to visualize spheres, tubes and lines.
+:blue:`[TODO: add the explanations about the C++ code step by step]JV`
+
+As you can see in the different :ref:`D-ERG strategies <5.3 Our work D-ERG visualization>`, we want to visualize spheres, tubes and lines.
 These three shapes are `RViz standard display marker types <http://wiki.ros.org/rviz/DisplayTypes/Marker>`__, except the tube.
 But we will see later that we can build this shape with one cylinder, which is also a RViz standard display marker type, and two hemispheres.
 
@@ -446,19 +448,16 @@ We also use `callbacks and spinning <http://wiki.ros.org/roscpp/Overview/Callbac
 Because we use quaternions to set the orientation of some markers, it could be useful for you to read `this <https://scriptinghelpers.org/blog/how-to-think-about-quaternions>`__
 if you don't know anything about it.
 
-5.5.2 Our `C++ code <https://github.com/mrs-brubotics/visualization_brubotics/blob/main/src/visual.cpp>`__
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-:blue:`[TODO: add the explanations about the C++ code step by step]JV`
-
-5.5.2.1 Architecture
+5.5.2 Architecture of our `C++ code <https://github.com/mrs-brubotics/visualization_brubotics/blob/main/src/visual.cpp>`__
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Like any well written C++ code, our code has to be organized. It is divided in several parts: the includes, parameters, publishers and subscribers, messages, class,
 function prototypes, function definitions and the main.
 
 :blue:`[Change the structure if we make a .h file]JV`
 
-5.5.2.2 Basic visuals
+5.5.3 Default visuals
+^^^^^^^^^^^^^^^^^^^^^
 
 Before all, we need to know how many UAVs are in the running simulation.
 This information is located in the `SpawnerDiagnostics message <https://github.com/ctu-mrs/mrs_msgs/blob/master/msg/simulation/SpawnerDiagnostics.msg>`__
@@ -486,10 +485,14 @@ which publish a `std_msgs::Int32 message <http://docs.ros.org/en/api/std_msgs/ht
 The subscriber called ``DERG_strategy_id_subscriber_`` in the `visualization code <https://github.com/mrs-brubotics/visualization_brubotics/blob/main/src/visual.cpp>`__
 subscribe to the ``uav1/control_manager/dergbryan_tracker/derg_strategy_id`` topic and permits to get the ``_DERG_strategy_id_`` value back.
 
-By default, i.e. in each :ref:`D-ERG strategies  <5.3 Our work D-ERG visualization>`, we display the current pose sphere,
-the applied reference sphere and the trajectory (see all the :ref:`D-ERG strategies  <5.3 Our work D-ERG visualization>`).
+By default, i.e. in each :ref:`D-ERG strategies <5.3 Our work D-ERG visualization>`, we display the current pose sphere,
+the applied reference sphere and the trajectory (see all the :ref:`D-ERG strategies <5.3 Our work D-ERG visualization>`).
 We also show a line which depict the distance between each UAV at their current pose because
 we think it's useful to spot where the drones are, especially when the drones are close to each other.
+Finally, we show the shortest distance line and the two related spheres from the :ref:`D-ERG strategy 5 <5.3.6 D-ERG strategy 5>` because we think this
+information can be useful for someone who doesn't know anything about drones and robotics.
+
+5.5.3.1 Current pose sphere
 
 To do so, we subscribe to the ``uavX/control_manager/dergbryan_tracker/custom_predicted_poses`` topic which contains a ``std::vector<geometry_msgs::Pose>`` message
 (see `geometry_msgs::Pose message definition <http://docs.ros.org/en/noetic/api/geometry_msgs/html/msg/Pose.html>`__).
@@ -501,12 +504,45 @@ We use the `boost::function function pointer <https://www.boost.org/doc/libs/1_7
 .. hint::
   For a sphere, the marker's orientation doesn't matter. Set the orientation parameters like this to avoid getting a warning in RViz:
 
-  .. code-block:: c
+.. code-block:: c
 
-    marker.pose.orientation.x = 0;
-    marker.pose.orientation.y = 0;
-    marker.pose.orientation.z = 0;
-    marker.pose.orientation.w = 1.0;
+  marker.pose.orientation.x = 0;
+  marker.pose.orientation.y = 0;
+  marker.pose.orientation.z = 0;
+  marker.pose.orientation.w = 1.0;
+
+We created a function called ``InitMarker`` in order to avoid repeating the same lines of code a lot of times.
+Indeed, we use this function to initialize some marker options:
+    
+.. code-block:: c
+    
+  void InitMarker(visualization_msgs::Marker& marker,
+                  const std::string name, const int id,
+                  const int type,
+                  const float r, const float g, const float b, const float a,
+                  const std::string &mesh = empty){
+    
+    marker.header.frame_id = "/common_origin";
+    marker.header.stamp = ros::Time::now();
+    marker.ns = name;
+    marker.id = id;
+    marker.type = type; 
+    if(type==10){
+      marker.mesh_resource = "package://visualization_brubotics/meshes/" + mesh + ".stl";
+    }
+    marker.action = visualization_msgs::Marker::ADD;
+    marker.color.r = r;
+    marker.color.g = g;
+    marker.color.b = b;
+    marker.color.a = a;
+    marker.lifetime = ros::Duration();
+  }
+    
+The marker type can either be a word or a number, for example: ARROW=0, SPHERE=2, CYLINDER=3, etc.
+If we use a `mesh ressource marker <http://wiki.ros.org/rviz/DisplayTypes/Marker#Mesh_Resource_.28MESH_RESOURCE.3D10.29_.5B1.1.2B-.5D>`__, the name file
+will be given as an argument.
+
+5.5.3.2 Applied reference sphere
 
 For the applied reference :math:`p_{k}^{v}`, the related topic is ``uavX/control_manager/dergbryan_tracker/uav_applied_ref`` and it contains a `mrs_msgs::FutureTrajectory message <https://ctu-mrs.github.io/mrs_msgs/msg/FutureTrajectory.html>`__.
 The ``point`` field is an array of `FuturePoint messages <https://ctu-mrs.github.io/mrs_msgs/msg/FuturePoint.html>`__.
@@ -526,36 +562,7 @@ For the line between each UAV, ...
 
   The `MarkerArray <http://docs.ros.org/en/api/visualization_msgs/html/msg/MarkerArray.html>`__ avoid to have synchronisation issues between all the markers. 
 
-We created a function called ``InitMarker`` in order to avoid repeating the same lines of code a lot of times.
-Indeed, we use this function to initialize some marker's options:
-
-.. code-block:: c
-
-  void InitMarker(visualization_msgs::Marker& marker,
-                  const std::string name, const int id,
-                  const int type,
-                  const float r, const float g, const float b, const float a,
-                  const std::string &mesh = empty){
-
-    marker.header.frame_id = "/common_origin";
-    marker.header.stamp = ros::Time::now();
-    marker.ns = name;
-    marker.id = id;
-    marker.type = type; 
-    if(type==10){
-      marker.mesh_resource = "package://visualization_brubotics/meshes/" + mesh + ".stl";
-    }
-    marker.action = visualization_msgs::Marker::ADD;
-    marker.color.r = r;
-    marker.color.g = g;
-    marker.color.b = b;
-    marker.color.a = a;
-    marker.lifetime = ros::Duration();
-  }
-
-The marker type can either be a word or a number, for example: ARROW=0, SPHERE=2, CYLINDER=3, etc.
-If we use a `mesh ressource marker <http://wiki.ros.org/rviz/DisplayTypes/Marker#Mesh_Resource_.28MESH_RESOURCE.3D10.29_.5B1.1.2B-.5D>`__, the name file
-will be given as an argument.
+5.5.3.3 Trajectory
 
 To display the predicted trajectory, we need the data contained in the ``uavX/control_manager/dergbryan_tracker/predicted_trajectory`` topic which is a `mrs_msgs::FutureTrajectory message <https://ctu-mrs.github.io/mrs_msgs/msg/FutureTrajectory.html>`__.
 Thus, we created a 3-dimensions array named ``predicted_trajectories``: one dimension for the predicted point, one for the coordinates and one for each UAV.
@@ -565,11 +572,16 @@ We want to display only 50 trajectory points but this array contains 300 ones. S
   The `MarkerArray <http://docs.ros.org/en/api/visualization_msgs/html/msg/MarkerArray.html>`__ can't be a global variable because otherwise, it could be
   updated and published at the same time, which could result as flashing markers.
 
+5.5.3.4 Distance line between UAVs
+
 :blue:`[TODO: add the explanations about the red line for the distance between UAVs]JV`
+
+5.5.3.4 Shortest distance line between UAVs' trajectory
 
 :blue:`[TODO: add screenshots of this basic visualization with multiple choices for the trajectory and we we chose the one we chose.]JV`
 
-5.5.2.2 :ref:`D-ERG strategy 0  <5.3.1 D-ERG strategy 0>`
+5.5.4 :ref:`D-ERG strategy 0 <5.3.1 D-ERG strategy 0>`
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 In this strategy, we want to visualize the error sphere of radius :math:`\bar{S}_{a}`. We do it by the same way we display the applied reference sphere.
 But we get back the radius value from the `tracker's code <https://github.com/mrs-brubotics/trackers_brubotics/blob/master/src/dergbryan_tracker/dergbryan_tracker.cpp>`__
@@ -584,7 +596,8 @@ similarly as the D-ERG strategy value.
 
 ..   Figure 5.17: Visualization of D-ERG strategy 0
 
-5.5.2.3 :ref:`D-ERG strategy 1  <5.3.2 D-ERG strategy 1>`
+5.5.5 :ref:`D-ERG strategy 1 <5.3.2 D-ERG strategy 1>`
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Now we want to visualiaze a blue tube. It will be composed of a cylinder and 2 hemispheres.
 The cylinder has to be between :math:`p_{k}^{*}` and the applied reference :math:`p_{k}^{v}` and with a radius :math:`\bar{S}_{a}^{⊥}`.
@@ -652,7 +665,8 @@ difficult to change its size without warping it.
 
 ..   Figure 5.18: Visualization of D-ERG strategy 1
 
-5.5.2.4 :ref:`D-ERG strategy 2  <5.3.3 D-ERG strategy 2>`
+5.5.6 :ref:`D-ERG strategy 2 <5.3.3 D-ERG strategy 2>`
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The main difference between D-ERG strategy 1 and 2 is that the blue tube become transparent and we add another blue tube between :math:`p_{k}` and :math:`p_{k}^{v}`.
 
@@ -665,7 +679,8 @@ The main difference between D-ERG strategy 1 and 2 is that the blue tube become 
 
 ..   Figure 5.19: Visualization of D-ERG strategy 2
 
-5.5.2.5 :ref:`D-ERG strategy 3  <5.3.4 D-ERG strategy 3>`
+5.5.7 :ref:`D-ERG strategy 3 <5.3.4 D-ERG strategy 3>`
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Starting from the strategy 2, we want to add an orange tube between :math:`p_{k}` and :math:`p_{k}^{v}` with a radius :math:`S_{a,min}^{⊥}`.
 This radius is obtained similarly as :math:`\bar{S}_{a}^{⊥}`.
@@ -679,7 +694,8 @@ This radius is obtained similarly as :math:`\bar{S}_{a}^{⊥}`.
 
 ..   Figure 5.20: Visualization of D-ERG strategy 3
 
-5.5.2.6 :ref:`D-ERG strategy 4  <5.3.5 D-ERG strategy 4>`
+5.5.8 :ref:`D-ERG strategy 4 <5.3.5 D-ERG strategy 4>`
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Now, the orange tube has to be between :math:`p_{k}^{1}` and :math:`p_{k}^{0}`. These information are related to the
 ``uavX/control_manager/dergbryan_tracker/future_trajectory_tube`` topic which contains a `FutureTrajectoryTube message <https://github.com/mrs-brubotics/trackers_brubotics/blob/master/msg/FutureTrajectoryTube.msg>`__.
@@ -695,9 +711,10 @@ Contrary to the previous strategy, the orange tube has now red hemispheres.
 
 ..   Figure 5.21: Visualization of D-ERG strategy 4
 
-5.5.2.7 :ref:`D-ERG strategy 5  <5.3.6 D-ERG strategy 5>`
+5.5.9 :ref:`D-ERG strategy 5 <5.3.6 D-ERG strategy 5>`
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-For the last strategy, we start from the :ref:`D-ERG strategy 3  <5.3.4 D-ERG strategy 3>` by taking the orange tube.
+For the last strategy, we start from the :ref:`D-ERG strategy 3 <5.3.4 D-ERG strategy 3>` by taking the orange tube.
 We want to display the shortest distance between two desired reference sphere :math:`\hat{p}_{k}` and :math:`\hat{p}_{i}`, and these two spheres.
 First, we calculate the shortest norm between all the predicted trajectory points and we get the index of the two related points back.
 Then, we have to transpose by the radius :math:`R_{a}` these two points in the distance vector direction because
