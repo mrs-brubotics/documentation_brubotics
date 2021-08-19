@@ -422,7 +422,7 @@ so you must select the correct tabs to `adjust configuation files <https://crazy
 6.4 Tutorials
 -------------
 
-Before all, follow the `Hovering (hellow world) tutorial <https://crazyswarm.readthedocs.io/en/latest/tutorials/tutorials.html#hovering-hello-world>`__.
+Before all, follow the `Hovering (hello world) tutorial <https://crazyswarm.readthedocs.io/en/latest/tutorials/tutorials.html#hovering-hello-world>`__.
 Don't forget to use a Crazyradio and a Xbox controller.
 
 .. note::

@@ -71,19 +71,22 @@ It represents a weighty work to create this type of visualization but it shows y
 
 Below you can see the most complex visualization we made:
 
-.. figure:: _static/derg4.png
-  :width: 600
-  :alt: alternate text
-  :align: center
+:blue:`[TODO: add screenshots of our final result.]JV`
 
-  Figure 5.5: Visualization of D-ERG strategy 4
 
-.. figure:: _static/derg5.png
-  :width: 600
-  :alt: alternate text
-  :align: center
+.. .. figure:: _static/derg4.png
+..   :width: 600
+..   :alt: alternate text
+..   :align: center
 
-  Figure 5.6: Visualization of D-ERG strategy 5
+..   Figure 5.5: Visualization of D-ERG strategy 4
+
+.. .. figure:: _static/derg5.png
+..   :width: 600
+..   :alt: alternate text
+..   :align: center
+
+..   Figure 5.6: Visualization of D-ERG strategy 5
 
 5.2 How RViz works ?
 --------------------
@@ -538,28 +541,31 @@ In this strategy, we want to visualize the error sphere of radius :math:`\bar{S}
 But we get back the radius value from the `tracker's code <https://github.com/mrs-brubotics/trackers_brubotics/blob/master/src/dergbryan_tracker/dergbryan_tracker.cpp>`__
 similarly as the D-ERG strategy value.
 
-.. figure:: _static/derg0.png
-  :width: 500
-  :alt: alternate text
-  :align: center
+:blue:`[TODO: add a screenshot of the final D-ERG strategy 0 visualization.]JV`
 
-  Figure 5.17: Visualization of D-ERG strategy 0
+.. .. figure:: _static/derg0.png
+..   :width: 500
+..   :alt: alternate text
+..   :align: center
+
+..   Figure 5.17: Visualization of D-ERG strategy 0
 
 5.5.2.3 :ref:`D-ERG strategy 1  <5.3.2 D-ERG strategy 1>`
 
 Now we want to visualiaze a blue tube. It will be composed of a cylinder and 2 hemispheres.
 The cylinder has to be between :math:`p_{k}^{*}` and the applied reference :math:`p_{k}^{v}` and with a radius :math:`\bar{S}_{a}^{⊥}`.
 We get :math:`p_{k}^{*}` back by the same way as we did with :math:`p_{k}`.
+We made a new publisher called ``point_link_star_publisher_`` in the `tracker's code <https://github.com/mrs-brubotics/trackers_brubotics/blob/master/src/dergbryan_tracker/dergbryan_tracker.cpp>`__
+in order to get the position of :math:`p_{k}^{*}`.
+  
+The pose will be given as a `geometry_msgs::Pose message <http://docs.ros.org/en/noetic/api/geometry_msgs/html/msg/Pose.html>`__:
+
+* The position of the cylinder is its center, so the middle of :math:`p_{k}^{*}` and :math:`p_{k}^{v}`, the two points given in argument.
+*  The ``CylinderOrientation()`` function takes 2 points as parameters and calculate the orientation of a cylinder made between these two points, together with its length. :blue:`[Maybe add more explanations about how the orientation is calculated]JV`
 
 .. note::
   Contrary to the sphere, the cylinder needs an orientation. 
-  
-The pose will be given by the ``CylinderOrientation()`` function as a `geometry_msgs::Pose message <http://docs.ros.org/en/noetic/api/geometry_msgs/html/msg/Pose.html>`__:
 
-* The position of the cylinder is its center, so the middle of :math:`p_{k}^{*}` and :math:`p_{k}^{v}`, the two points given in argument.
-* :blue:`[TODO: add the explanations about how the orientation is calculated]JV`
-
-The ``CylinderOrientation()`` function also returns the distance between the two given points, which is the cylinder height in our case.
 We get the radius value :math:`\bar{S}_{a}^{⊥}` by the same way we did with :math:`\bar{S}_{a}`.
 
 .. note::
@@ -575,39 +581,69 @@ In addition, RViz works with the diameter for spheres and cylinders scale.
 You can see that our spheres markers are multiplied by 2 because the tracker computes the radius.
 Our .stl file of hemispheres is made to work with radius, so we didn't need to multiply by 2 the scale of our hemispheres.
 
-:blue:`[TODO: add explanations about the orientation of hemispheres]JV`
+The first hemisphere as the same orientation as the cylinder while the second one has an opposite orientation.
+Indeed, the second one need to be rotated by 180° on the radius axis. 
+That's why we just have to switch the points used to calculate the pose to obtain this rotation.
 
-We could create a mesh which display directly a full tube but the benefits would be insignificant and it would be way more difficult to change its size.
+.. tip::
+  At the beginning, we were using a full cylinder and two empty hemispheres, i.e. without a volume, just a surface.
+  But the visual result was not meeting our expectations as we see a disk making the connection between the cylinder and the hemisphere:
 
-.. figure:: _static/derg1.png
-  :width: 600
-  :alt: alternate text
-  :align: center
+  .. figure:: _static/derg1.png
+    :width: 600
+    :alt: alternate text
+    :align: center
 
-  Figure 5.18: Visualization of D-ERG strategy 1
+    Figure 5.18: Visualization of a full cylinder + two empty hemispheres
+
+  That's why we also used the `mesh ressource marker <http://wiki.ros.org/rviz/DisplayTypes/Marker#Mesh_Resource_.28MESH_RESOURCE.3D10.29_.5B1.1.2B-.5D>`__
+  for the cylinder to also make it empty. Now, we only see a circle as connection between the cylinder and the hemisphere:
+  
+  .. figure:: _static/stl2.png
+    :width: 600
+    :alt: alternate text
+    :align: center
+
+    Figure 5.18: Visualization of an empty cylinder + two empty hemispheres
+
+We could create a mesh which display directly a full tube but the benefits would be insignificant and it would be way more
+difficult to change its size without warping it.
+
+:blue:`[TODO: add a screenshot of the final D-ERG strategy 1 visualization.]JV`
+
+.. .. figure:: _static/derg1.png
+..   :width: 600
+..   :alt: alternate text
+..   :align: center
+
+..   Figure 5.18: Visualization of D-ERG strategy 1
 
 5.5.2.4 :ref:`D-ERG strategy 2  <5.3.3 D-ERG strategy 2>`
 
 The main difference between D-ERG strategy 1 and 2 is that the blue tube become transparent and we add another blue tube between :math:`p_{k}` and :math:`p_{k}^{v}`.
 
-.. figure:: _static/derg2.png
-  :width: 600
-  :alt: alternate text
-  :align: center
+:blue:`[TODO: add a screenshot of the final D-ERG strategy 2 visualization.]JV`
 
-  Figure 5.19: Visualization of D-ERG strategy 2
+.. .. figure:: _static/derg2.png
+..   :width: 600
+..   :alt: alternate text
+..   :align: center
+
+..   Figure 5.19: Visualization of D-ERG strategy 2
 
 5.5.2.5 :ref:`D-ERG strategy 3  <5.3.4 D-ERG strategy 3>`
 
 Starting from the strategy 2, we want to add an orange tube between :math:`p_{k}` and :math:`p_{k}^{v}` with a radius :math:`S_{a,min}^{⊥}`.
 This radius is obtained similarly as :math:`\bar{S}_{a}^{⊥}`.
 
-.. figure:: _static/derg3.png
-  :width: 600
-  :alt: alternate text
-  :align: center
+:blue:`[TODO: add a screenshot of the final D-ERG strategy 3 visualization.]JV`
 
-  Figure 5.20: Visualization of D-ERG strategy 3
+.. .. figure:: _static/derg3.png
+..   :width: 600
+..   :alt: alternate text
+..   :align: center
+
+..   Figure 5.20: Visualization of D-ERG strategy 3
 
 5.5.2.6 :ref:`D-ERG strategy 4  <5.3.5 D-ERG strategy 4>`
 
@@ -616,12 +652,14 @@ Now, the orange tube has to be between :math:`p_{k}^{1}` and :math:`p_{k}^{0}`. 
 We also get the radius :math:`S_{a,min}^{⊥}` value back from this message.
 Contrary to the previous strategy, the orange tube has now red hemispheres.
 
-.. figure:: _static/derg4.png
-  :width: 600
-  :alt: alternate text
-  :align: center
+:blue:`[TODO: add a screenshot of the final D-ERG strategy 4 visualization.]JV`
 
-  Figure 5.21: Visualization of D-ERG strategy 4
+.. .. figure:: _static/derg4.png
+..   :width: 600
+..   :alt: alternate text
+..   :align: center
+
+..   Figure 5.21: Visualization of D-ERG strategy 4
 
 5.5.2.7 :ref:`D-ERG strategy 5  <5.3.6 D-ERG strategy 5>`
 
@@ -631,9 +669,11 @@ First, we calculate the shortest norm between all the predicted trajectory point
 Then, we have to transpose by the radius :math:`R_{a}` these two points in the distance vector direction because
 the line we want to plot is not between the two spheres center but between the two spheres.
 
-.. figure:: _static/derg5.png
-  :width: 600
-  :alt: alternate text
-  :align: center
+:blue:`[TODO: add a screenshot of the final D-ERG strategy 5 visualization.]JV`
 
-  Figure 5.22: Visualization of D-ERG strategy 5
+.. .. figure:: _static/derg5.png
+..   :width: 600
+..   :alt: alternate text
+..   :align: center
+
+..   Figure 5.22: Visualization of D-ERG strategy 5
