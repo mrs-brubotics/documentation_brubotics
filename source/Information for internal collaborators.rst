@@ -151,7 +151,7 @@ Once you decided on a machine:
 ?.2.5 Git Version Control
 -------------------------
     * Create a github account and email me your name on github. I will give you access to our code.
-    * Setup git user name and email on your machine by following these steps: https://www.digitalocean.com/community/tutorials/how-to-install-git-on-ubuntu-18-04 , "Setting Up Git".
+    * Setup git user name and email on your machine by following these steps: https://www.digitalocean.com/community/tutorials/how-to-install-git-on-ubuntu-18-04 , "Setting Up Git". TODO Give example how .gitconfig should look like.
     * You need to setup your ssh keys correctly by following [these steps](https://docs.github.com/en/github/authenticating-to-github/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent) to generate them and then follow these steps https://docs.github.com/en/github/authenticating-to-github/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account to add them to your GitHub.
     * Also since August 2021 developers are required to use [personel access tokens](https://github.blog/2020-12-15-token-authentication-requirements-for-git-operations/). Follow [these steps](https://docs.github.com/en/github/authenticating-to-github/keeping-your-account-and-data-secure/creating-a-personal-access-token) to generate these tokes.
     * Learn git by following \href{https://www.coursera.org/learn/version-control-with-git}{this free tutorial}. Make sure you follow the tutorial from the command line / terminal window (not the GUI). This will allow you to effectively improve your software and work in a team. 
@@ -167,7 +167,7 @@ Once you decided on a machine:
          git pull
          git add file_names (tab tab) or git add -A (for all files)
          git commit -m "write a clear but comprehensive commit message"
-         git push origin branch_name (e.g. master, main)    
+         git push origin branch_name (e.g. master, main)
                
     * Learn about managing large files with Git [here and all sublinks](https://docs.github.com/en/github/managing-large-files). If you regularly push large files to GitHub, you should use Git Large File Storage (Git LFS). You can learn the basic use quickly from [this](https://git-lfs.github.com/) and [this](http://arfc.github.io/manual/guides/git-lfs) link and more details including install instructions can be found [here](https://docs.github.com/en/github/managing-large-files/versioning-large-files). [ONLY ALLOWED BY PROJECT OWNERS!!!] For rewriting git history we suggest you to use BFG Repo-Cleaner () over git filter-branch. More info on both you can find here (https://docs.github.com/en/github/authenticating-to-github/keeping-your-account-and-data-secure/removing-sensitive-data-from-a-repository).
          * For installation: download the latest jar file from https://rtyley.github.io/bfg-repo-cleaner/ and rename it to just bfg.jar. Run sudo apt-get install build-essential procps curl file git (source https://docs.brew.sh/Homebrew-on-Linux) and then try brew install bfg (source https://github.com/rtyley/bfg-repo-cleaner/issues/255#issuecomment-606705860) and it will be built. Now you can run bfg as java -jar /path/to/bfg-version.jar (so you don't have to make the alias) (source: https://github.com/rtyley/bfg-repo-cleaner/pull/196/commits/5f2e8879117da42b71304da5febed93f887e0fd0). 
