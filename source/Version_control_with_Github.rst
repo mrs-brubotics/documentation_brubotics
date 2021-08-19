@@ -22,7 +22,7 @@ You can fork a repository on a GitHub page of this repository by using the fork 
    :alt: alternate text
    :align: center
 
-   Figure 1.1: fork
+   Figure ?.1: fork
 
 You can choose the account (your personnal account or to an organization) where you want to fork the repository.
 After, you will be able to see the forked repository.
@@ -32,7 +32,7 @@ After, you will be able to see the forked repository.
    :alt: alternate text
    :align: center
 
-   Figure 1.2: fork_2
+   Figure ?.2: fork_2
 
 A fork is GitHub-to-GitHub operation wich copy the entire repository to an account. It copy all the branches of the repository.
 You can clone it to your personal computer and change the file of your choice, create new files etc.
@@ -45,7 +45,7 @@ This is if you want to contribute to the work of the people who did the initial 
    :alt: alternate text
    :align: center
 
-   Figure 1.3: pull_request
+   Figure ?.3: pull_request
 
 They can accept your request, it will merge your work on the branch you have chosen.
 All of your commits will be visible on the initial repository.
@@ -55,7 +55,7 @@ All of your commits will be visible on the initial repository.
    :alt: alternate text
    :align: center
 
-   Figure 1.4: commit
+   Figure ?.4: commit
 
 ?.2. Make a new branch
 ----------------------
