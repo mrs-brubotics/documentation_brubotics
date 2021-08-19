@@ -177,7 +177,9 @@ To verify your configuration file, you can run the same commands but like this:
    git config --global user.email
 
 Now, you can follow `these steps <https://docs.github.com/en/github/authenticating-to-github/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent#generating-a-new-ssh-key>`__
-to setup your SSH key in Github.
+to setup your SSH key in Github. 
+Note: when this message is given "Generating public/private ed25519 key pair.
+Enter file in which to save the key (/home/nuc3/.ssh/id_ed25519):", you can either keep the default or set .ssh/FirstName-LastName. With the latter we can keep track which ssh keys belong to which github account.
 
 2.4.3 How to use github permalinks
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
