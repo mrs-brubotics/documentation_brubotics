@@ -12,8 +12,9 @@ DroneSwarmTutorial
    Introduction_to_MRS_Software_Extensions
    Workspace_git_configuration
    Introduction_to_visualization
-   Hardware
-   For_developers
-   Information for internal collaborators
    Crazyswarm
    Version_control_with_Github
+   Hardware
+   Information_for_developers
+   Information for internal collaborators
+   

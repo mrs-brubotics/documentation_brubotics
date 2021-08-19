@@ -1,8 +1,8 @@
-For developers
-===============
+?. Information for developers
+=============================
 
-Definition of authors' comments
--------------------------------
+?.1 Definition of authors' comments
+-----------------------------------
 
 The following syntax allow you to write a comment in color with your initials:
 
@@ -29,24 +29,24 @@ You can see here the definition and the rendering of the current author's commen
     
 :blue:`[This is a comment from Jonathan Vogt.]JV`
 
-How to use ReadTheDocs ?
-------------------------
+?.2 How to use ReadTheDocs ?
+----------------------------
 
 In this chapter, we will explain the basics of ReadTheDocs.
 
-How to produce the ReadTheDocs website ?
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+?.2.1 How to produce the ReadTheDocs website ?
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 To create this tutorial, we used a documentation generator called Sphinx and reStructuredText. We refered to the `ReadTheDocs Documentation <https://docs.readthedocs.io/en/stable/index.html#>`__
 and `ReStructuredText primer <https://www.sphinx-doc.org/en/master/usage/restructuredtext/basics.html>`__.
 
-How to open the ReadTheDocs website ?
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+?.2.2 How to open the ReadTheDocs website ?
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Just follow `these instructions <https://github.com/mrs-brubotics/documentation_brubotics>`__.
 
-How to edit the ReadTheDocs website ?
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+?.2.3 How to edit the ReadTheDocs website ?
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 It can be easier for you to code your website by using Visual Studio Code with an extension called reStructuredText wich is useful to previsualize your
 website. It has a syntax highlighting tool.
@@ -91,8 +91,8 @@ Please refer to section :ref:`2.4 <2.4 Working with Git>` to understand why we u
     Furthermore, if the ``make html`` command doesn't build your documentation with your last changes,
     run ``make clean`` and ``make html``.
 
-How to make the `documentation downloadable as PDF <https://docs.readthedocs.io/en/stable/downloadable-documentation.html#>`__?
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+?.2.4 How to make the `documentation downloadable as PDF <https://docs.readthedocs.io/en/stable/downloadable-documentation.html#>`__?
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The first thing you need is a configuration file.
 `Here <https://docs.readthedocs.io/en/stable/config-file/v2.html#>`__ are the instructions to create it.

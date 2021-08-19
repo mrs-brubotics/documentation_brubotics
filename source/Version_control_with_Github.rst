@@ -1,5 +1,5 @@
-Version control with Github
-===========================
+?. Version control with Github
+==============================
 
 We will explain in this section how we managed the version control.
 Our goal was to update a code from two years ago based on a firmware that has since been updated. 
@@ -12,8 +12,8 @@ It appeared that there 3 possibilities to do that.
 2. Make a new branch on the repository of the firmawre
 3. Create a custom ROS package 
 
-1. Fork a repository
---------------------
+?.1. Fork a repository
+----------------------
 
 You can fork a repository on a GitHub page of this repository by using the fork button.
 
@@ -57,16 +57,16 @@ All of your commits will be visible on the initial repository.
 
    Figure 1.4: commit
 
-2. Make a new branch
---------------------
+?.2. Make a new branch
+----------------------
 
 Make a new branch in a repository is very useful.
 The easiest way to understand how it works and why it is useful is to read the `Git documentation <https://git-scm.com/book/en/v2/Git-Branching-Basic-Branching-and-Merging>`__
 
 The most important part is to understand "Basic Branching" chapter.
 
-3. Create a custom ROS package
-------------------------------
+?.3. Create a custom ROS package
+--------------------------------
 
 If you only have custom launch files, scripts, or firmware, you can simplify the process by creating a custom out-of-source ROS package:
 
