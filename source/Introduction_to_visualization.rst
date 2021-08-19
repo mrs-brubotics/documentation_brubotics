@@ -486,9 +486,10 @@ which publish a `std_msgs::Int32 message <http://docs.ros.org/en/api/std_msgs/ht
 The subscriber called ``DERG_strategy_id_subscriber_`` in the `visualization code <https://github.com/mrs-brubotics/visualization_brubotics/blob/main/src/visual.cpp>`__
 subscribe to the ``uav1/control_manager/dergbryan_tracker/derg_strategy_id`` topic and permits to get the ``_DERG_strategy_id_`` value back.
 
-By default, we display the current pose sphere , the applied reference sphere and the trajectory (see all the :ref:`D-ERG strategies  <5.3 Our work D-ERG visualization>`).
-We also show a line which depict the distance between each UAV at their current pose because we think it's useful to spot where the drones are,
-especially when the drones are close to each other. :blue:`[TODO in the code.]JV`
+By default, i.e. in each :ref:`D-ERG strategies  <5.3 Our work D-ERG visualization>`, we display the current pose sphere,
+the applied reference sphere and the trajectory (see all the :ref:`D-ERG strategies  <5.3 Our work D-ERG visualization>`).
+We also show a line which depict the distance between each UAV at their current pose because
+we think it's useful to spot where the drones are, especially when the drones are close to each other.
 
 To do so, we subscribe to the ``uavX/control_manager/dergbryan_tracker/custom_predicted_poses`` topic which contains a ``std::vector<geometry_msgs::Pose>`` message
 (see `geometry_msgs::Pose message definition <http://docs.ros.org/en/noetic/api/geometry_msgs/html/msg/Pose.html>`__).
@@ -510,8 +511,10 @@ We use the `boost::function function pointer <https://www.boost.org/doc/libs/1_7
 For the applied reference :math:`p_{k}^{v}`, the related topic is ``uavX/control_manager/dergbryan_tracker/uav_applied_ref`` and it contains a `mrs_msgs::FutureTrajectory message <https://ctu-mrs.github.io/mrs_msgs/msg/FutureTrajectory.html>`__.
 The ``point`` field is an array of `FuturePoint messages <https://ctu-mrs.github.io/mrs_msgs/msg/FuturePoint.html>`__.
 
+For the line between each UAV, ...
+
 .. note::
-  All the markers are published in the ``/common_origin`` frame and are part of a `MarkerArray <http://docs.ros.org/en/api/visualization_msgs/html/msg/MarkerArray.html>`__.
+  All the markers are part of a `MarkerArray <http://docs.ros.org/en/api/visualization_msgs/html/msg/MarkerArray.html>`__.
   That's why namespaces are attractive: we are still able to select the markers we want to display.
 
   .. figure:: _static/Namespaces.png
@@ -523,15 +526,46 @@ The ``point`` field is an array of `FuturePoint messages <https://ctu-mrs.github
 
   The `MarkerArray <http://docs.ros.org/en/api/visualization_msgs/html/msg/MarkerArray.html>`__ avoid to have synchronisation issues between all the markers. 
 
-:blue:`[TODO: add explanations about the InitMarkers function]JV`
+We created a function called ``InitMarker`` in order to avoid repeating the same lines of code a lot of times.
+Indeed, we use this function to initialize some marker's options:
+
+.. code-block:: c
+
+  void InitMarker(visualization_msgs::Marker& marker,
+                  const std::string name, const int id,
+                  const int type,
+                  const float r, const float g, const float b, const float a,
+                  const std::string &mesh = empty){
+
+    marker.header.frame_id = "/common_origin";
+    marker.header.stamp = ros::Time::now();
+    marker.ns = name;
+    marker.id = id;
+    marker.type = type; 
+    if(type==10){
+      marker.mesh_resource = "package://visualization_brubotics/meshes/" + mesh + ".stl";
+    }
+    marker.action = visualization_msgs::Marker::ADD;
+    marker.color.r = r;
+    marker.color.g = g;
+    marker.color.b = b;
+    marker.color.a = a;
+    marker.lifetime = ros::Duration();
+  }
+
+The marker type can either be a word or a number, for example: ARROW=0, SPHERE=2, CYLINDER=3, etc.
+If we use a `mesh ressource marker <http://wiki.ros.org/rviz/DisplayTypes/Marker#Mesh_Resource_.28MESH_RESOURCE.3D10.29_.5B1.1.2B-.5D>`__, the name file
+will be given as an argument.
+
+To display the predicted trajectory, we need the data contained in the ``uavX/control_manager/dergbryan_tracker/predicted_trajectory`` topic which is a `mrs_msgs::FutureTrajectory message <https://ctu-mrs.github.io/mrs_msgs/msg/FutureTrajectory.html>`__.
+Thus, we created a 3-dimensions array named ``predicted_trajectories``: one dimension for the predicted point, one for the coordinates and one for each UAV.
+We want to display only 50 trajectory points but this array contains 300 ones. So we chose to display the first one, then the seventh, the thirteenth, etc.
 
 .. important::
   The `MarkerArray <http://docs.ros.org/en/api/visualization_msgs/html/msg/MarkerArray.html>`__ can't be a global variable because otherwise, it could be
   updated and published at the same time, which could result as flashing markers.
 
-To display the predicted trajectory, we need the data contained in the ``uavX/control_manager/dergbryan_tracker/predicted_trajectory`` topic which is a `mrs_msgs::FutureTrajectory message <https://ctu-mrs.github.io/mrs_msgs/msg/FutureTrajectory.html>`__.
-Thus, we created a 3-dimensions array named ``predicted_trajectories``: one dimension for the predicted point, one for the coordinates and one for each UAV.
-We want to display only 50 trajectory points but this array contains 300 ones. So we chose to display the first one, then the seventh, the thirteenth, etc.
+:blue:`[TODO: add the explanations about the red line for the distance between UAVs]JV`
 
 :blue:`[TODO: add screenshots of this basic visualization with multiple choices for the trajectory and we we chose the one we chose.]JV`
 
