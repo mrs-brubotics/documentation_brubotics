@@ -119,3 +119,5 @@ We solved it by writting this command in a terminal:
     sudo apt install texlive-latex-extra
 
 After pressing the green button and when the builder process is finished, a PDF will appear in another window.
+
+:blue:`[The documentation from the previous link say to press the green button with LuaLatex+MakeIndex+BibTex selected but we get an error bby doing this. It works with only LuaLatex selecetd ]JV`

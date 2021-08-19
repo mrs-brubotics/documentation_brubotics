@@ -111,7 +111,7 @@ html_css_files = ['css/colors.css']
 # -- Options for HTMLHelp output ---------------------------------------------
 
 # Output file base name for HTML help builder.
-htmlhelp_basename = 'doctutdoc'
+htmlhelp_basename = 'DroneSwarmTutorial'
 
 
 # -- Options for LaTeX output ------------------------------------------------
@@ -138,7 +138,7 @@ latex_elements = {
 # (source start file, target name, title,
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
-    (master_doc, 'doctut.tex', u'doctut Documentation',
+    (master_doc, 'DroneSwarmTutorial.tex', u'DroneSwarmTutorial Documentation',
      u'BruBotics', 'manual'),
 ]
 
@@ -148,7 +148,7 @@ latex_documents = [
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
 man_pages = [
-    (master_doc, 'doctut', u'doctut Documentation',
+    (master_doc, 'DroneSwarmTutorial', u'DroneSwarmTutorial Documentation',
      [author], 1)
 ]
 
@@ -159,8 +159,8 @@ man_pages = [
 # (source start file, target name, title, author,
 #  dir menu entry, description, category)
 texinfo_documents = [
-    (master_doc, 'doctut', u'doctut Documentation',
-     author, 'doctut', 'One line description of project.',
+    (master_doc, 'DroneSwarmTutorial', u'DroneSwarmTutorial Documentation',
+     author, 'DroneSwarmTutorial', 'One line description of project.',
      'Miscellaneous'),
 ]
 
