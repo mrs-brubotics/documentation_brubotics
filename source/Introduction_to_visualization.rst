@@ -630,7 +630,7 @@ both trajectories is minimal. We also use this minimal norm to translate the poi
 In addition, we display the two related spheres. They correspond to the points where the distance between both trajectories is minimal.
 
 .. figure:: _static/shortestdistanceline.png
-  :width: 600
+  :width: 400
   :alt: alternate text
   :align: center
 
