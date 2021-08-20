@@ -181,14 +181,14 @@ If you choose "By display type", you will have to write the topic name in the le
    :alt: alternate text
    :align: center
 
-   Figure 5.7: Add button
+   Figure 5.?: Add button
 
 .. figure:: _static/topic_window.png
    :width: 400
    :alt: alternate text
    :align: center
 
-   Figure 5.8: Topic window
+   Figure 5.?: Topic window
 
 To record videos of your RViz visualization, we use the free software Recordmydesktop.
 If you want the RVIz camera not to move during the simulation, select a ``Target Frame`` which doesn't belong to the UAV in the right window.
@@ -198,7 +198,7 @@ If you want the RVIz camera not to move during the simulation, select a ``Target
    :alt: alternate text
    :align: center
 
-   Figure 5.9: Views window
+   Figure 5.?: Views window
 
 .. _5.3 Our work D-ERG visualization:
 
@@ -226,7 +226,7 @@ We have several D-ERG (Distributed Explicit Reference Governor) strategies to il
    :alt: alternate text
    :align: center
 
-   Figure 5.10: D-ERG strategy 0
+   Figure 5.?: D-ERG strategy 0
 
 * :math:`p_{k}`: current pose of the UAV
 * :math:`p̂_{k}`: desired reference pose
@@ -247,7 +247,7 @@ Sphere can **translate**.
    :alt: alternate text
    :align: center
 
-   Figure 5.11: D-ERG strategy 1
+   Figure 5.?: D-ERG strategy 1
 
 Communicate: :math:`p_{k}`, :math:`p_{k}^{v}`
 
@@ -263,7 +263,7 @@ Tube can **translate** and **rotate**.
    :alt: alternate text
    :align: center
 
-   Figure 5.12: D-ERG strategy 2
+   Figure 5.?: D-ERG strategy 2
 
 Communicate: :math:`p_{k}`, :math:`p_{k}^{v}`
 
@@ -279,7 +279,7 @@ Tube can **translate**, **rotate** and **change length**.
    :alt: alternate text
    :align: center
 
-   Figure 5.13: D-ERG strategy 3
+   Figure 5.?: D-ERG strategy 3
 
 Communicate: :math:`p_{k}`, :math:`p_{k}^{v}`, :math:`S_{a,min}^{⊥}`
 
@@ -295,7 +295,7 @@ Tube can **translate**, **rotate**, **change length and width**. The width (radi
    :alt: alternate text
    :align: center
 
-   Figure 5.14: D-ERG strategy 4
+   Figure 5.?: D-ERG strategy 4
 
 Communicate: :math:`p_{k}^{0}`, :math:`p_{k}^{1}`, :math:`S_{a,min}^{⊥}`
 
@@ -312,7 +312,7 @@ longitudinal axis.
    :alt: alternate text
    :align: center
 
-   Figure 5.15: D-ERG strategy 5
+   Figure 5.?: D-ERG strategy 5
 
 This final strategy permits to calculate the minimal distance between 2 predicted poses.
 
@@ -547,8 +547,6 @@ will be given as an argument.
 For the applied reference :math:`p_{k}^{v}`, the related topic is ``uavX/control_manager/dergbryan_tracker/uav_applied_ref`` and it contains a `mrs_msgs::FutureTrajectory message <https://ctu-mrs.github.io/mrs_msgs/msg/FutureTrajectory.html>`__.
 The ``point`` field is an array of `FuturePoint messages <https://ctu-mrs.github.io/mrs_msgs/msg/FuturePoint.html>`__.
 
-For the line between each UAV, ...
-
 .. note::
   All the markers are part of a `MarkerArray <http://docs.ros.org/en/api/visualization_msgs/html/msg/MarkerArray.html>`__.
   That's why namespaces are attractive: we are still able to select the markers we want to display.
@@ -558,27 +556,85 @@ For the line between each UAV, ...
    :alt: alternate text
    :align: center
 
-   Figure 5.16: Namespaces
+   Figure 5.?: Namespaces example
 
   The `MarkerArray <http://docs.ros.org/en/api/visualization_msgs/html/msg/MarkerArray.html>`__ avoid to have synchronisation issues between all the markers. 
-
-5.5.3.3 Trajectory
-
-To display the predicted trajectory, we need the data contained in the ``uavX/control_manager/dergbryan_tracker/predicted_trajectory`` topic which is a `mrs_msgs::FutureTrajectory message <https://ctu-mrs.github.io/mrs_msgs/msg/FutureTrajectory.html>`__.
-Thus, we created a 3-dimensions array named ``predicted_trajectories``: one dimension for the predicted point, one for the coordinates and one for each UAV.
-We want to display only 50 trajectory points but this array contains 300 ones. So we chose to display the first one, then the seventh, the thirteenth, etc.
 
 .. important::
   The `MarkerArray <http://docs.ros.org/en/api/visualization_msgs/html/msg/MarkerArray.html>`__ can't be a global variable because otherwise, it could be
   updated and published at the same time, which could result as flashing markers.
 
+5.5.3.3 Trajectory
+
+To display the predicted trajectory, we need the data contained in the ``uavX/control_manager/dergbryan_tracker/predicted_trajectory`` topic which is a `mrs_msgs::FutureTrajectory message <https://ctu-mrs.github.io/mrs_msgs/msg/FutureTrajectory.html>`__.
+Thus, we created a 3-dimensions array named ``predicted_trajectories``: one dimension for the predicted point, one for the coordinates x,y or z and
+one for each UAV.
+The ``Trajectory`` function is used to display the trajectory of each UAV.
+We want to display only 50 trajectory points but this array contains 300 ones. We always want to see the first trajectory point and the last one.
+So we use a ``step`` variable to show 48 others trajectory points at regular intervals from the first point.
+
+Because we want to provide several options for the visual aspect of the trajectory, our code compute three different markers.
+Thanks to the RViz namespaces, the user can select the ones he wants to see: a sphere list, a line strip or an arrow list.
+
+:blue:`[TODO: add arrows option]JV`
+
+.. figure:: _static/spherelisttrajectory.png
+  :width: 400
+  :alt: alternate text
+  :align: center
+
+  Figure 5.?: Visualization of the trajectory as a sphere list
+
+.. figure:: _static/linestriptrajectory.png
+  :width: 400
+  :alt: alternate text
+  :align: center
+
+  Figure 5.?: Visualization of the trajectory as a line strip
+
+.. note::
+  It is also possible to mix those options:
+
+  .. figure:: _static/spherelistlinestriptrajectory.png
+    :width: 400
+    :alt: alternate text
+    :align: center
+
+    Figure 5.?: Visualization of the trajectory as a sphere list and a line strip
+
+:blue:`[TODO: add screenshots of the options with arrows]JV`
+
+
 5.5.3.4 Distance line between UAVs
 
-:blue:`[TODO: add the explanations about the red line for the distance between UAVs]JV`
+To print the line between each current UAV position, we use a function called ``RedLines``.
+It has to "for loop" in order to compute the :math:`\frac{\text{n(n-1)}}{\text{2}}` lines, with n the UAV number.
+For each points doublet, we calculate the norm between them because the line we want to show is between the frontiers of the two current pose spheres.
+Thus, we use another function called ``GiveTranslatedPoint``.
+From point p1, it calculates the new point transposed by ``distance`` in the direction formed by the director vector (p2, p1).
+So we use it for the two calculated points p1 and p2 and we give p_new1 and p_new1 to line marker.
+
+.. figure:: _static/redline.png
+  :width: 800
+  :alt: alternate text
+  :align: center
+
+  Figure 5.?: Red distance line between UAVs current pose sphere
 
 5.5.3.4 Shortest distance line between UAVs' trajectory
 
-:blue:`[TODO: add screenshots of this basic visualization with multiple choices for the trajectory and we we chose the one we chose.]JV`
+The ``ShortestDistanceLines`` function is very similar to the ``RedLines`` function.
+The only difference with the previous display is the points used to plot the line.
+Indeed, they are determined thanks to the ``CalculNormMin`` function which calculate the index of the trajectory points list where the distance between
+both trajectories is minimal. We also use this minimal norm to translate the points.
+In addition, we display the two related spheres. They correspond to the points where the distance between both trajectories is minimal.
+
+.. figure:: _static/shortestdistanceline.png
+  :width: 800
+  :alt: alternate text
+  :align: center
+
+  Figure 5.?: Shortest distance line between UAVs' trajectory
 
 5.5.4 :ref:`D-ERG strategy 0 <5.3.1 D-ERG strategy 0>`
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -594,7 +650,7 @@ similarly as the D-ERG strategy value.
 ..   :alt: alternate text
 ..   :align: center
 
-..   Figure 5.17: Visualization of D-ERG strategy 0
+..   Figure 5.?: Visualization of D-ERG strategy 0
 
 5.5.5 :ref:`D-ERG strategy 1 <5.3.2 D-ERG strategy 1>`
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -641,7 +697,7 @@ That's why we just have to switch the points used to calculate the pose to obtai
     :alt: alternate text
     :align: center
 
-    Figure 5.18: Visualization of a full cylinder + two empty hemispheres
+    Figure 5.?: Visualization of a full cylinder + two empty hemispheres
 
   That's why we also used the `mesh ressource marker <http://wiki.ros.org/rviz/DisplayTypes/Marker#Mesh_Resource_.28MESH_RESOURCE.3D10.29_.5B1.1.2B-.5D>`__
   for the cylinder to also make it empty. Now, we only see a circle as connection between the cylinder and the hemisphere:
@@ -651,7 +707,7 @@ That's why we just have to switch the points used to calculate the pose to obtai
     :alt: alternate text
     :align: center
 
-    Figure 5.18: Visualization of an empty cylinder + two empty hemispheres
+    Figure 5.?: Visualization of an empty cylinder + two empty hemispheres
 
 We could create a mesh which display directly a full tube but the benefits would be insignificant and it would be way more
 difficult to change its size without warping it.
@@ -663,7 +719,7 @@ difficult to change its size without warping it.
 ..   :alt: alternate text
 ..   :align: center
 
-..   Figure 5.18: Visualization of D-ERG strategy 1
+..   Figure 5.?: Visualization of D-ERG strategy 1
 
 5.5.6 :ref:`D-ERG strategy 2 <5.3.3 D-ERG strategy 2>`
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -677,7 +733,7 @@ The main difference between D-ERG strategy 1 and 2 is that the blue tube become 
 ..   :alt: alternate text
 ..   :align: center
 
-..   Figure 5.19: Visualization of D-ERG strategy 2
+..   Figure 5.?: Visualization of D-ERG strategy 2
 
 5.5.7 :ref:`D-ERG strategy 3 <5.3.4 D-ERG strategy 3>`
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -692,7 +748,7 @@ This radius is obtained similarly as :math:`\bar{S}_{a}^{⊥}`.
 ..   :alt: alternate text
 ..   :align: center
 
-..   Figure 5.20: Visualization of D-ERG strategy 3
+..   Figure 5.?: Visualization of D-ERG strategy 3
 
 5.5.8 :ref:`D-ERG strategy 4 <5.3.5 D-ERG strategy 4>`
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -709,7 +765,7 @@ Contrary to the previous strategy, the orange tube has now red hemispheres.
 ..   :alt: alternate text
 ..   :align: center
 
-..   Figure 5.21: Visualization of D-ERG strategy 4
+..   Figure 5.?: Visualization of D-ERG strategy 4
 
 5.5.9 :ref:`D-ERG strategy 5 <5.3.6 D-ERG strategy 5>`
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -727,4 +783,4 @@ the line we want to plot is not between the two spheres center but between the t
 ..   :alt: alternate text
 ..   :align: center
 
-..   Figure 5.22: Visualization of D-ERG strategy 5
+..   Figure 5.?: Visualization of D-ERG strategy 5
