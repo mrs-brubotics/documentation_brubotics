@@ -448,6 +448,8 @@ We also use `callbacks and spinning <http://wiki.ros.org/roscpp/Overview/Callbac
 Because we use quaternions to set the orientation of some markers, it could be useful for you to read `this <https://scriptinghelpers.org/blog/how-to-think-about-quaternions>`__
 if you don't know anything about it.
 
+Finally, we used `this tutorial <https://roboticsbackend.com/ros-param-yaml-format/>`__ to load the parameters from our `visual.yaml file <https://github.com/mrs-brubotics/visualization_brubotics/blob/main/config/visual.yaml>`__.
+
 5.5.2 Architecture of our `C++ code <https://github.com/mrs-brubotics/visualization_brubotics/blob/main/src/visual.cpp>`__
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -784,3 +786,23 @@ the line we want to plot is not between the two spheres center but between the t
 ..   :align: center
 
 ..   Figure 5.?: Visualization of D-ERG strategy 5
+
+5.5.4 Visual settings
+^^^^^^^^^^^^^^^^^^^^^
+
+5.5.4.1 Settings in RViz
+
+:blue:`[TODO: add a screenshot of all our namespaces]JV`
+
+5.5.4.2 Settings via .yaml file
+
+Ideally, a user should not have to change parameters in our `visual.cpp file <https://github.com/mrs-brubotics/visualization_brubotics/blob/main/src/visual.cpp>`__.
+That's why we created a `visual.yaml file <https://github.com/mrs-brubotics/visualization_brubotics/blob/main/config/visual.yaml>`__.
+In this file, we define all the parameters of the visualization:
+
+* Number of points used to display the trajectory 
+* Color and transparencyof each marker: r, g, b, alpha
+* :blue:`[TODO: add the new parameters]JV`
+
+.. note::
+  In each function where you use the ``getParam`` function, you need to initialize the related node with the ``ros::NodeHandle`` function.
