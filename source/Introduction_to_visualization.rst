@@ -79,14 +79,14 @@ Below you can see the most complex visualization we made:
 ..   :alt: alternate text
 ..   :align: center
 
-..   Figure 5.5: Visualization of D-ERG strategy 4
+..   Figure 5.?: Visualization of D-ERG strategy 4
 
 .. .. figure:: _static/derg5.png
 ..   :width: 600
 ..   :alt: alternate text
 ..   :align: center
 
-..   Figure 5.6: Visualization of D-ERG strategy 5
+..   Figure 5.?: Visualization of D-ERG strategy 5
 
 5.2 How RViz works ?
 --------------------
@@ -630,7 +630,7 @@ both trajectories is minimal. We also use this minimal norm to translate the poi
 In addition, we display the two related spheres. They correspond to the points where the distance between both trajectories is minimal.
 
 .. figure:: _static/shortestdistanceline.png
-  :width: 800
+  :width: 600
   :alt: alternate text
   :align: center
 
