@@ -611,7 +611,7 @@ To print the line between each current UAV position, we use a function called ``
 It has to "for loop" in order to compute the :math:`\frac{\text{n(n-1)}}{\text{2}}` lines, with n the UAV number.
 For each points doublet, we calculate the norm between them because the line we want to show is between the frontiers of the two current pose spheres.
 Thus, we use another function called ``GiveTranslatedPoint``.
-From point p1, it calculates the new point transposed by ``distance`` in the direction formed by the director vector (p2, p1).
+From point p1, it calculates the new point transposed by the drone's radius :math:`R_{a}` in the direction formed by the director vector (p2, p1).
 So we use it for the two calculated points p1 and p2 and we give p_new1 and p_new1 to line marker.
 
 .. figure:: _static/redline.png
@@ -693,7 +693,7 @@ That's why we just have to switch the points used to calculate the pose to obtai
   But the visual result was not meeting our expectations as we see a disk making the connection between the cylinder and the hemisphere:
 
   .. figure:: _static/derg1.png
-    :width: 600
+    :width: 400
     :alt: alternate text
     :align: center
 
@@ -703,7 +703,7 @@ That's why we just have to switch the points used to calculate the pose to obtai
   for the cylinder to also make it empty. Now, we only see a circle as connection between the cylinder and the hemisphere:
   
   .. figure:: _static/stl2.png
-    :width: 600
+    :width: 400
     :alt: alternate text
     :align: center
 
