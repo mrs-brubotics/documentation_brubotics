@@ -577,8 +577,22 @@ The ``point`` field is an array of `FuturePoint messages <https://ctu-mrs.github
 .. important::
   The `MarkerArray <http://docs.ros.org/en/api/visualization_msgs/html/msg/MarkerArray.html>`__ can not be a global variable because otherwise, it could be
   updated and published at the same time, which could result as flashing markers.
+  
+5.5.3.3 Goal pose frame
 
-5.5.3.3 Trajectory
+Because we want to know where the drone is going, we display a RGB frame at the goal position. A RGB frame is not a marker so we did not code it in the 
+``PublishMarkers`` function but in the ``PublishFrame`` function.
+The goal pose is contained in a `mrs_msgs::ReferenceStamped message <https://ctu-mrs.github.io/mrs_msgs/msg/ReferenceStamped.html>`__
+related to the  ``uavX/control_manager/dergbryan_tracker/goal_pose`` topic.
+
+The display type for the RGB frame is a `geometry_msgs::PoseArray <http://docs.ros.org/en/noetic/api/geometry_msgs/html/msg/PoseArray.html>`__.
+First, we define the header. Then we have to orient the frame. To do so, we made a new function called ``FrameOrientation`` which is inspired by
+the ``CylinderOrienation function`` from :ref:`D-ERG strategy 1 <5.5.5 D-ERG strategy 1>`.
+The frame's position is set thanks to the reference.position member of the `mrs_msgs::ReferenceStamped message <https://ctu-mrs.github.io/mrs_msgs/msg/ReferenceStamped.html>`__.
+The frame's orientation is set thanks to the reference.heading member of the `mrs_msgs::ReferenceStamped message <https://ctu-mrs.github.io/mrs_msgs/msg/ReferenceStamped.html>`__.
+Indeed, it is the projection of the heading vector in the plane span (x,y). That's why we set the x and y member of the ``frame_z_direction`` at zero.
+
+5.5.3.4 Trajectory
 
 To display the predicted trajectory, we need the data contained in the ``uavX/control_manager/dergbryan_tracker/predicted_trajectory`` topic which is a `mrs_msgs::FutureTrajectory message <https://ctu-mrs.github.io/mrs_msgs/msg/FutureTrajectory.html>`__.
 Thus, we created a 3-dimensions array named ``predicted_trajectories``: one dimension for the predicted point, one for the coordinates x,y or z and
@@ -619,7 +633,7 @@ Thanks to the RViz namespaces, the user can select the ones he wants to see: a s
 :blue:`[TODO: add screenshots of the options with arrows]JV`
 
 
-5.5.3.4 Distance line between UAVs
+5.5.3.5 Distance line between UAVs
 
 To print the line between each current UAV position, we use a function called ``RedLines``.
 It has to "for loop" in order to compute the :math:`\frac{\text{n(n-1)}}{\text{2}}` lines, with n the UAV number.
@@ -635,7 +649,7 @@ So we use it for the two calculated points p1 and p2 and we give p_new1 and p_ne
 
   Figure 5.?: Red distance line between UAVs current pose sphere
 
-5.5.3.4 Shortest distance line between UAVs' trajectory
+5.5.3.6 Shortest distance line between UAVs' trajectory
 
 The ``ShortestDistanceLines`` function is very similar to the ``RedLines`` function.
 The only difference with the previous display is the points used to plot the line.
@@ -665,6 +679,8 @@ thanks to the ``sa_max_publisher_``, similarly as we do for the D-ERG strategy v
 ..   :align: center
 
 ..   Figure 5.?: Visualization of D-ERG strategy 0
+
+.. _5.5.5 D-ERG strategy 1:
 
 5.5.5 :ref:`D-ERG strategy 1 <5.3.2 D-ERG strategy 1>`
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
