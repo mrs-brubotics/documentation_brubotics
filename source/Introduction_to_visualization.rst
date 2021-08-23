@@ -454,8 +454,15 @@ Finally, we used `this tutorial <https://roboticsbackend.com/ros-param-yaml-form
 5.5.2 Architecture of our `C++ code <https://github.com/mrs-brubotics/visualization_brubotics/blob/main/src/visual.cpp>`__
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Like any well written C++ code, our code has to be organized. It is divided in several parts: the includes, parameters, publishers and subscribers, messages, class,
-function prototypes, function definitions and the main.
+Like any well written C++ code, our code has to be organized. It is divided in several parts:
+
+* the includes
+* parameters
+* publishers and subscribers
+* messages
+* function prototypes
+* function definitions
+* the main function
 
 :blue:`[Change the structure if we make a .h file]JV`
 
