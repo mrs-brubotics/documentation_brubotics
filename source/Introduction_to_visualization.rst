@@ -28,6 +28,7 @@ The RViz window will open after Gazebo and it should look like this:
 In this default visualization, you can see the UAV model with its frame.
 You can also use the 2D Nav Goal button to choose a position and a heading to go for the UAV. Thus, you will see the UAV trajectory.
 :blue:`[TODO: ask CTU what the small frames and blue arrows depict and write it here.]JV`
+`Link to the discussion <https://github.com/ctu-mrs/mrs_uav_system/discussions/105>`__
 
 .. figure:: _static/TrajVisualization.png
    :width: 800
@@ -191,7 +192,7 @@ If you choose "By display type", you will have to write the topic name in the le
    Figure 5.?: Topic window
 
 To record videos of your RViz visualization, we use the free software Recordmydesktop.
-If you want the RVIz camera not to move during the simulation, select a ``Target Frame`` which doesn't belong to the UAV in the right window.
+If you want the RVIz camera not to move during the simulation, select a ``Target Frame`` which does not belong to the UAV in the right window.
 
 .. figure:: _static/Views.png
    :width: 400
@@ -353,7 +354,7 @@ At the end (line 247), you should see a RViz part. If it is commented, uncomment
 Now, we will explain you line per line why we did this.
 The `rviz_brubotics.launch <https://github.com/mrs-brubotics/testing_brubotics/blob/master/launch/rviz/rviz_brubotics.launch>`__ and `tf_connector_avoidance.launch <https://github.com/mrs-brubotics/testing_brubotics/blob/master/launch/rviz/tf_connector_avoidance.launch>`__
 files are based on CTU codes but we made some changes in them.
-Indeed, we don't want to visualize the same things as CTU. Thus, we make our own ``.rviz`` files in the `testing_brubotics/rviz folder <https://github.com/mrs-brubotics/testing_brubotics/tree/master/rviz>`__.
+Indeed, we do not want to visualize the same things as CTU. Thus, we make our own ``.rviz`` files in the `testing_brubotics/rviz folder <https://github.com/mrs-brubotics/testing_brubotics/tree/master/rviz>`__.
 So we needed to adapt the find path in the `rviz_brubotics.launch <https://github.com/mrs-brubotics/testing_brubotics/blob/master/launch/rviz/rviz_brubotics.launch>`__:
 
 .. code-block:: html
@@ -423,8 +424,8 @@ that we will explain in the next chapter.
 
   </launch>
 
-5.5 The code for visualization
-------------------------------
+5.5 The `code <https://github.com/mrs-brubotics/visualization_brubotics/blob/main/src/visual.cpp>`__ for visualization
+----------------------------------------------------------------------------------------------------------------------
 
 :blue:`[TODO: add the explanations about the C++ code step by step]JV`
 
@@ -446,7 +447,7 @@ You will need to write ROS publishers and subscribers so please follow `this tut
 We also use `callbacks and spinning <http://wiki.ros.org/roscpp/Overview/Callbacks%20and%20Spinning>`__.
 
 Because we use quaternions to set the orientation of some markers, it could be useful for you to read `this <https://scriptinghelpers.org/blog/how-to-think-about-quaternions>`__
-if you don't know anything about it.
+if you do not know anything about it.
 
 Finally, we used `this tutorial <https://roboticsbackend.com/ros-param-yaml-format/>`__ to load the parameters from our `visual.yaml file <https://github.com/mrs-brubotics/visualization_brubotics/blob/main/config/visual.yaml>`__.
 
@@ -492,7 +493,11 @@ the applied reference sphere and the trajectory (see all the :ref:`D-ERG strateg
 We also show a line which depict the distance between each UAV at their current pose because
 we think it's useful to spot where the drones are, especially when the drones are close to each other.
 Finally, we show the shortest distance line and the two related spheres from the :ref:`D-ERG strategy 5 <5.3.6 D-ERG strategy 5>` because we think this
-information can be useful for someone who doesn't know anything about drones and robotics.
+information can be useful for someone who does not know anything about drones and robotics.
+
+It could also be significant to enable/disable the visualization easily, including what we added in the `tracker's code <https://github.com/mrs-brubotics/trackers_brubotics/blob/master/src/dergbryan_tracker/dergbryan_tracker.cpp>`__.
+In the `dergbryan_tracker.yaml file <https://github.com/mrs-brubotics/trackers_brubotics/blob/master/config/default/dergbryan_tracker.yaml>`__, we added a new
+variable called ``enable_visualization``set to ``true`` which enable/disable the code we added.
 
 5.5.3.1 Current pose sphere
 
@@ -504,7 +509,7 @@ We use the `boost::function function pointer <https://www.boost.org/doc/libs/1_7
 :blue:`[more details about the boost?]JV`
 
 .. hint::
-  For a sphere, the marker's orientation doesn't matter. Set the orientation parameters like this to avoid getting a warning in RViz:
+  For a sphere, the marker's orientation does not matter. Set the orientation parameters like this to avoid getting a warning in RViz:
 
 .. code-block:: c
 
@@ -563,7 +568,7 @@ The ``point`` field is an array of `FuturePoint messages <https://ctu-mrs.github
   The `MarkerArray <http://docs.ros.org/en/api/visualization_msgs/html/msg/MarkerArray.html>`__ avoid to have synchronisation issues between all the markers. 
 
 .. important::
-  The `MarkerArray <http://docs.ros.org/en/api/visualization_msgs/html/msg/MarkerArray.html>`__ can't be a global variable because otherwise, it could be
+  The `MarkerArray <http://docs.ros.org/en/api/visualization_msgs/html/msg/MarkerArray.html>`__ can not be a global variable because otherwise, it could be
   updated and published at the same time, which could result as flashing markers.
 
 5.5.3.3 Trajectory
@@ -641,9 +646,9 @@ In addition, we display the two related spheres. They correspond to the points w
 5.5.4 :ref:`D-ERG strategy 0 <5.3.1 D-ERG strategy 0>`
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-In this strategy, we want to visualize the error sphere of radius :math:`\bar{S}_{a}`. We do it by the same way we display the applied reference sphere.
-But we get back the radius value from the `tracker's code <https://github.com/mrs-brubotics/trackers_brubotics/blob/master/src/dergbryan_tracker/dergbryan_tracker.cpp>`__
-similarly as the D-ERG strategy value.
+In this strategy, we want to visualize the error sphere of radius :math:`\bar{S}_{a}`. We do by the same way as we display the applied reference sphere.
+But we get the radius value back from the `tracker's code <https://github.com/mrs-brubotics/trackers_brubotics/blob/master/src/dergbryan_tracker/dergbryan_tracker.cpp>`__
+thanks to the ``sa_max_publisher_``, similarly as we do for the D-ERG strategy value.
 
 :blue:`[TODO: add a screenshot of the final D-ERG strategy 0 visualization.]JV`
 
@@ -671,7 +676,8 @@ The pose will be given as a `geometry_msgs::Pose message <http://docs.ros.org/en
 .. note::
   Contrary to the sphere, the cylinder needs an orientation. 
 
-We get the radius value :math:`\bar{S}_{a}^{⊥}` by the same way we did with :math:`\bar{S}_{a}`.
+We get the radius value :math:`\bar{S}_{a}^{⊥}` by the same way we did with :math:`\bar{S}_{a}`, but with the ``sa_perp_max_publisher_`` of the `tracker's code <https://github.com/mrs-brubotics/trackers_brubotics/blob/master/src/dergbryan_tracker/dergbryan_tracker.cpp>`__
+because it was not published before.
 
 .. note::
   The cylinder could change length as the way we made the code. But this fonctionnality is implemented directly in the `tracker's code <https://github.com/mrs-brubotics/trackers_brubotics/blob/master/src/dergbryan_tracker/dergbryan_tracker.cpp>`__.
@@ -684,7 +690,7 @@ For us, there was a scale difference of 1000 between these two.
 You can see in our code that every scale parameter for the hemispheres markers are divided by 1000.
 In addition, RViz works with the diameter for spheres and cylinders scale.
 You can see that our spheres markers are multiplied by 2 because the tracker computes the radius.
-Our .stl file of hemispheres is made to work with radius, so we didn't need to multiply by 2 the scale of our hemispheres.
+Our .stl file of hemispheres is made to work with radius, so we did not need to multiply by 2 the scale of our hemispheres.
 
 The first hemisphere as the same orientation as the cylinder while the second one has an opposite orientation.
 Indeed, the second one need to be rotated by 180° on the radius axis. 
@@ -792,6 +798,8 @@ the line we want to plot is not between the two spheres center but between the t
 
 5.5.4.1 Settings in RViz
 
+Below you can find the list of all the visualization parameters we provide:
+
 :blue:`[TODO: add a screenshot of all our namespaces]JV`
 
 5.5.4.2 Settings via .yaml file
@@ -801,8 +809,12 @@ That's why we created a `visual.yaml file <https://github.com/mrs-brubotics/visu
 In this file, we define all the parameters of the visualization:
 
 * Number of points used to display the trajectory 
-* Color and transparencyof each marker: r, g, b, alpha
+* Color and transparency of each marker: r, g, b, alpha
 * :blue:`[TODO: add the new parameters]JV`
 
 .. note::
-  In each function where you use the ``getParam`` function, you need to initialize the related node with the ``ros::NodeHandle`` function.
+  You need to initialize a node with ``ros::NodeHandle`` in each function where you use ``getParam``.
+
+5.5.4.3 Settings in the `code <https://github.com/mrs-brubotics/visualization_brubotics/blob/main/src/visual.cpp>`__
+
+:blue:`[TODO: add the list of the settings in our code]JV`
