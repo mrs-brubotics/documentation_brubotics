@@ -504,7 +504,21 @@ information can be useful for someone who does not know anything about drones an
 
 It could also be significant to enable/disable the visualization easily, including what we added in the `tracker's code <https://github.com/mrs-brubotics/trackers_brubotics/blob/master/src/dergbryan_tracker/dergbryan_tracker.cpp>`__.
 In the `dergbryan_tracker.yaml file <https://github.com/mrs-brubotics/trackers_brubotics/blob/master/config/default/dergbryan_tracker.yaml>`__, we added a new
-variable called ``enable_visualization``set to ``true`` which enable/disable the code we added.
+variable called ``enable_visualization`` set to ``true`` which enable/disable the code we added.
+
+.. note::
+  When you run the ``rostopic list`` command, you can still see the related topcis because the subscribers of the `visual.cpp file <https://github.com/mrs-brubotics/visualization_brubotics/blob/main/src/visual.cpp>`__
+  are not disabled. For example:
+
+  .. code-block:: shell
+
+    $ rostopic info /uav1/control_manager/dergbryan_tracker/derg_strategy_id
+    Type: std_msgs/Int32
+
+    Publishers: None
+
+    Subscribers:
+    * /visual (http://nuc6-NUC10i7FNK:32835/)
 
 5.5.3.1 Current pose sphere
 
@@ -816,16 +830,16 @@ the line we want to plot is not between the two spheres center but between the t
 
 ..   Figure 5.?: Visualization of D-ERG strategy 5
 
-5.5.4 Visual settings
-^^^^^^^^^^^^^^^^^^^^^
+5.5.10 Visual settings
+^^^^^^^^^^^^^^^^^^^^^^
 
-5.5.4.1 Settings in RViz
+5.5.10.1 Settings in RViz
 
 Below you can find the list of all the visualization parameters we provide:
 
 :blue:`[TODO: add a screenshot of all our namespaces]JV`
 
-5.5.4.2 Settings via .yaml file
+5.5.10.2 Settings via .yaml file
 
 Ideally, a user should not have to change parameters in our `visual.cpp file <https://github.com/mrs-brubotics/visualization_brubotics/blob/main/src/visual.cpp>`__.
 That's why we created a `visual.yaml file <https://github.com/mrs-brubotics/visualization_brubotics/blob/main/config/visual.yaml>`__.
@@ -833,11 +847,15 @@ In this file, we define all the parameters of the visualization:
 
 * Number of points used to display the trajectory 
 * Color and transparency of each marker: r, g, b, alpha
-* :blue:`[TODO: add the new parameters]JV`
+
+:blue:`[TODO: update the parameters list]JV`
 
 .. note::
   You need to initialize a node with ``ros::NodeHandle`` in each function where you use ``getParam``.
 
-5.5.4.3 Settings in the `code <https://github.com/mrs-brubotics/visualization_brubotics/blob/main/src/visual.cpp>`__
+5.5.10.3 Settings in the `code <https://github.com/mrs-brubotics/visualization_brubotics/blob/main/src/visual.cpp>`__
+
+The only parameter in our `visual.cpp file <https://github.com/mrs-brubotics/visualization_brubotics/blob/main/src/visual.cpp>`__ is the global variable
+``MAX_UAV_NUMBER``. It is used to initialize some arrays' size.
 
 :blue:`[TODO: add the list of the settings in our code]JV`
