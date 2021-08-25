@@ -323,7 +323,7 @@ This final strategy permits to calculate the minimal distance between 2 predicte
 We have developed a `visualization package <https://github.com/mrs-brubotics/visualization_brubotics>`__ which permits to visualize
 in RViz the :ref:`D-ERG strategies algorithms <5.3 Our work D-ERG visualization>` in the `two_drones_D-ERG simulation <https://github.com/mrs-brubotics/testing_brubotics/tree/master/tmux_scripts/bryan/two_drones_D-ERG>`__.
 This package is based on the `mrs_rviz_plugins <https://github.com/ctu-mrs/mrs_rviz_plugins>`__ structure.
-We will explain you how to reproduce it. :blue:`[TODO: say that the visualization work for multiple drones simulations when the test will be done.]JV`
+We will explain you how to reproduce it. :blue:`[Maybe say that the visualization work for multiple drones simulations when the test will be done.]JV`
 
 First, we created a new package named `visualization_brubotics <https://github.com/mrs-brubotics/visualization_brubotics>`__ in
 ``workspace/src_droneswarm_brubotics/ros_packages`` with:
@@ -426,8 +426,6 @@ that we will explain in the next chapter.
 
 5.5 The `code <https://github.com/mrs-brubotics/visualization_brubotics/blob/main/src/visual.cpp>`__ for visualization
 ----------------------------------------------------------------------------------------------------------------------
-
-:blue:`[TODO: add the explanations about the C++ code step by step]JV`
 
 As you can see in the different :ref:`D-ERG strategies <5.3 Our work D-ERG visualization>`, we want to visualize spheres, tubes and lines.
 These three shapes are `RViz standard display marker types <http://wiki.ros.org/rviz/DisplayTypes/Marker>`__, except the tube.
@@ -606,7 +604,7 @@ The frame's position is set thanks to the reference.position member of the `mrs_
 The frame's orientation is set thanks to the reference.heading member of the `mrs_msgs::ReferenceStamped message <https://ctu-mrs.github.io/mrs_msgs/msg/ReferenceStamped.html>`__.
 Indeed, it is the projection of the heading vector in the plane span (x,y). That's why we set the x and y member of the ``frame_z_direction`` at zero.
 
-5.5.3.4 Trajectory
+5.5.3.4 Predicted trajectory
 
 To display the predicted trajectory, we need the data contained in the ``uavX/control_manager/dergbryan_tracker/predicted_trajectory`` topic which is a `mrs_msgs::FutureTrajectory message <https://ctu-mrs.github.io/mrs_msgs/msg/FutureTrajectory.html>`__.
 Thus, we created a 3-dimensions array named ``predicted_trajectories``: one dimension for the predicted point, one for the coordinates x,y or z and
@@ -614,11 +612,12 @@ one for each UAV.
 The ``Trajectory`` function is used to display the trajectory of each UAV.
 We want to display only 50 trajectory points but this array contains 300 ones. We always want to see the first trajectory point and the last one.
 So we use a ``step`` variable to show 48 others trajectory points at regular intervals from the first point.
+We also want to show arrows between every other point. That's why we double the ``step``. We did not choose the arrows from the
+`PoseArray display type <http://wiki.ros.org/rviz/DisplayTypes/PoseArray>`__ because we can't change their size in real time. It could be problematic
+because the last points of the ``predicted_trajectories`` array are very closely grouped so the arrows would be overlapped.
 
 Because we want to provide several options for the visual aspect of the trajectory, our code compute three different markers.
-Thanks to the RViz namespaces, the user can select the ones he wants to see: a sphere list, a line strip or an arrow list.
-
-:blue:`[TODO: add arrows option]JV`
+Thanks to the RViz namespaces, the user can select what he wants to see: a sphere list, a line strip or an arrow list.
 
 .. figure:: _static/spherelisttrajectory.png
   :width: 400
@@ -634,6 +633,13 @@ Thanks to the RViz namespaces, the user can select the ones he wants to see: a s
 
   Figure 5.?: Visualization of the trajectory as a line strip
 
+.. figure:: _static/arrowlisttrajectory.png
+  :width: 400
+  :alt: alternate text
+  :align: center
+
+  Figure 5.?: Visualization of the trajectory as an arrow list
+
 .. note::
   It is also possible to mix those options:
 
@@ -644,8 +650,12 @@ Thanks to the RViz namespaces, the user can select the ones he wants to see: a s
 
     Figure 5.?: Visualization of the trajectory as a sphere list and a line strip
 
-:blue:`[TODO: add screenshots of the options with arrows]JV`
+  .. figure:: _static/arrowlistlinestriptrajectory.png
+    :width: 400
+    :alt: alternate text
+    :align: center
 
+    Figure 5.?: Visualization of the trajectory as an arrow list and a line strip
 
 5.5.3.5 Distance line between UAVs
 
@@ -677,6 +687,13 @@ In addition, we display the two related spheres. They correspond to the points w
   :align: center
 
   Figure 5.?: Shortest distance line between UAVs' trajectory
+
+5.5.3.7 Text labels
+
+Knowing which drone goes where is fundamental. Thus, we added view-oriented text markers at the current UAV pose ``uavID`` and at the goal pose ``goalID``.
+We get the ``uavID`` from the ``mrs_drone_spawner/diagnostics`` topic.
+For the ``goalID``, we need to get only the ID from the ``mrs_drone_spawner/diagnostics`` so we use the `replace function <http://cplusplus.com/reference/string/string/replace/>`__
+from the C++ strings library.
 
 5.5.4 :ref:`D-ERG strategy 0 <5.3.1 D-ERG strategy 0>`
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -738,7 +755,7 @@ That's why we just have to switch the points used to calculate the pose to obtai
   But the visual result was not meeting our expectations as we see a disk making the connection between the cylinder and the hemisphere:
 
   .. figure:: _static/derg1.png
-    :width: 400
+    :width: 500
     :alt: alternate text
     :align: center
 
@@ -748,7 +765,7 @@ That's why we just have to switch the points used to calculate the pose to obtai
   for the cylinder to also make it empty. Now, we only see a circle as connection between the cylinder and the hemisphere:
   
   .. figure:: _static/stl2.png
-    :width: 400
+    :width: 500
     :alt: alternate text
     :align: center
 
@@ -835,9 +852,14 @@ the line we want to plot is not between the two spheres center but between the t
 
 5.5.10.1 Settings in RViz
 
-Below you can find the list of all the visualization parameters we provide:
+Below you can find the list of all the visualization parameters we provide in RViz:
 
-:blue:`[TODO: add a screenshot of all our namespaces]JV`
+.. figure:: _static/Namespaces2.png
+  :width: 400
+  :alt: alternate text
+  :align: center
+
+  Figure 5.?: RViz parameters
 
 5.5.10.2 Settings via .yaml file
 
@@ -848,7 +870,7 @@ In this file, we define all the parameters of the visualization:
 * Number of points used to display the trajectory 
 * Color and transparency of each marker: r, g, b, alpha
 
-:blue:`[TODO: update the parameters list]JV`
+:blue:`[Update the parameters list]JV`
 
 .. note::
   You need to initialize a node with ``ros::NodeHandle`` in each function where you use ``getParam``.
@@ -858,4 +880,4 @@ In this file, we define all the parameters of the visualization:
 The only parameter in our `visual.cpp file <https://github.com/mrs-brubotics/visualization_brubotics/blob/main/src/visual.cpp>`__ is the global variable
 ``MAX_UAV_NUMBER``. It is used to initialize some arrays' size.
 
-:blue:`[TODO: add the list of the settings in our code]JV`
+:blue:`[Update the settings list in our code]JV`
