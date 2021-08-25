@@ -4,7 +4,7 @@ DroneSwarmTutorial
 *We can include some text here*
 
 .. toctree::
-   :maxdepth: 4
+   :maxdepth: 5
    :caption: Contents:
 
    Introduction
