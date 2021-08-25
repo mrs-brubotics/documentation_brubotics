@@ -66,6 +66,7 @@ More information can be found `here <https://www.vicon.com/what-is-motion-captur
    :alt: alternate text
 
 6.2.2.1 Cameras
+"""""""""""""""
 
 At the R&MM lab there are ten Vero v2.2 cameras with a resolution of 1280*1024 pixels and a frame rate of 250fps. The higher the resolution of the camera, the
 preciser the positioning of the markers and the more details you can obtain from the markers which is interesting when using very small markers placed close to
@@ -82,6 +83,7 @@ the future it could be useful to have all of them on tripod to be able to change
    Fig. 6.2: Vicon cameras
 
 6.2.2.2 Sync box
+""""""""""""""""
 
 As can be seen in Fig. 2.1, all cameras and the PC are connected to the synch box in order to get data coming from cameras and sending this to the PC. The sync
 box provides a single communication point between the cameras and the (Vicon) PC. If you’re not integrating third-party equipment like reference video or force
@@ -98,6 +100,7 @@ More information can be found `here <https://www.vicon.com/products/vicon-device
    Fig. 6.3: Cameras connected to the synch box
 
 6.2.2.3 Active wand
+"""""""""""""""""""
 
 Before using Vicon we need to calibrate the Vicon system in order that the cameras know their location relative to each other.
 
@@ -123,6 +126,7 @@ More information can be found `here <https://www.vicon.com/products/vicon-device
    Fig. 6.4: Active Wand
 
 6.2.2.4 Reflective Markers
+""""""""""""""""""""""""""
 
 The reflective markers are placed on objects or on the body in order to detect their position. In order to detect pose (i.e position and orientation) of a
 rigid object we need at least 3 markers. The position of the markers w.r.t. each other needs to be asymmetrical, in other words you may not form an equilateral
@@ -135,6 +139,7 @@ triangle.
    Fig. 6.5: Markers
 
 6.2.2.5 Computer
+""""""""""""""""
 
 The computer gives us the possibility to drive the Vicon system, calibrate, organize data capture, set parameters. Since the capture and display of motion
 capture data is a highly demanding task for a PC and the real-time data processing asks a lot of the processor, the recommended specifications of the computer
@@ -290,7 +295,8 @@ Normally the object has been created and it looks like this:
 6.2.6 Get Vicon data on Ubuntu desktop
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-6.2.6.1 Create an ethernet connection between your Linux computer and the Windows computer.
+6.2.6.1 Create an ethernet connection between the Linux computer and the Windows computer
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 This is the global way to set an Ethernet connection. At the end of this section, you can follow a simpler way to do it but it is not available for 
 all Ubuntu configuation.
@@ -325,6 +331,7 @@ It is at this point, on Lubuntu for example there is weirdness where, when typin
    Now choose your new direct-ether network, for example status bar click it
 
 6.2.6.2 Test
+""""""""""""
 
 So now you should have, for example:
 
