@@ -742,8 +742,8 @@ from the C++ strings library to replace ``uav`` with ``goal``.
 
 .. _5.5.4 D-ERG strategy 0:
 
-5.5.4 :ref:`D-ERG strategy 0 visualization <5.3.1 D-ERG strategy 0>`
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+5.5.4 :ref:`D-ERG strategy 0 <5.3.1 D-ERG strategy 0>` visualization
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 In this strategy, we want to visualize the error sphere of radius :math:`\bar{S}_{a}` centered on :math:`p_{k}^{v}`.
 We do it by the same way as we display the :ref:`applied reference sphere <5.5.3.2 Applied reference sphere>`.
@@ -761,8 +761,8 @@ thanks to the ``sa_max_publisher_``, similarly as we did for the D-ERG strategy 
 
 .. _5.5.5 D-ERG strategy 1:
 
-5.5.5 :ref:`D-ERG strategy 1 visualization <5.3.2 D-ERG strategy 1>`
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+5.5.5 :ref:`D-ERG strategy 1 <5.3.2 D-ERG strategy 1>` visualization
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Now we want to visualiaze a blue tube. It will be composed of a cylinder and 2 hemispheres.
 The cylinder has to be between :math:`p_{k}^{*}` and the applied reference :math:`p_{k}^{v}` with a radius :math:`\bar{S}_{a}^{⊥}`.
@@ -834,8 +834,8 @@ difficult to change its size without warping it.
 
 .. _5.5.6 D-ERG strategy 2:
 
-5.5.6 :ref:`D-ERG strategy 2 visualization <5.3.3 D-ERG strategy 2>`
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+5.5.6 :ref:`D-ERG strategy 2 <5.3.3 D-ERG strategy 2>` visualization
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The main difference between D-ERG strategy 1 and 2 is that the blue tube become transparent and we add another blue tube between :math:`p_{k}` and :math:`p_{k}^{v}`.
 
@@ -850,8 +850,8 @@ The main difference between D-ERG strategy 1 and 2 is that the blue tube become 
 
 .. _5.5.7 D-ERG strategy 3:
 
-5.5.7 :ref:`D-ERG strategy 3 visualization <5.3.4 D-ERG strategy 3>`
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+5.5.7 :ref:`D-ERG strategy 3 <5.3.4 D-ERG strategy 3>` visualization
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Starting from the strategy 2, we want to add an orange tube between :math:`p_{k}` and :math:`p_{k}^{v}` with a radius :math:`S_{a,min}^{⊥}`.
 This radius is obtained similarly as :math:`\bar{S}_{a}^{⊥}`.
@@ -867,8 +867,8 @@ This radius is obtained similarly as :math:`\bar{S}_{a}^{⊥}`.
 
 .. _5.5.8 D-ERG strategy 4:
 
-5.5.8 :ref:`D-ERG strategy 4 visualization <5.3.5 D-ERG strategy 4>`
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+5.5.8 :ref:`D-ERG strategy 4 <5.3.5 D-ERG strategy 4>` visualization
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Now, the orange tube has to be between :math:`p_{k}^{1}` and :math:`p_{k}^{0}`. These information are related to the
 ``uavX/control_manager/dergbryan_tracker/future_trajectory_tube`` topic which contains a `FutureTrajectoryTube message <https://github.com/mrs-brubotics/trackers_brubotics/blob/master/msg/FutureTrajectoryTube.msg>`__.
@@ -886,8 +886,8 @@ Contrary to the previous strategy, the orange tube has now red hemispheres.
 
 .. _5.5.9 D-ERG strategy 5:
 
-5.5.9 :ref:`D-ERG strategy 5 visualization <5.3.6 D-ERG strategy 5>`
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+5.5.9 :ref:`D-ERG strategy 5 <5.3.6 D-ERG strategy 5>` visualization
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 For the last strategy, we start from the :ref:`D-ERG strategy 3 <5.3.4 D-ERG strategy 3>` by taking the orange tube.
 We want to display the shortest distance between two desired reference sphere :math:`\hat{p}_{k}` and :math:`\hat{p}_{i}`,
