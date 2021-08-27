@@ -72,22 +72,12 @@ It represents a weighty work to create this type of visualization but it shows y
 
 Below you can see the most complex visualization we made:
 
-:blue:`[TODO: add a screenshot of the strat 5 visualization]JV`
+.. figure:: _static/derg4.png
+  :width: 400
+  :alt: alternate text
+  :align: center
 
-
-.. .. figure:: _static/derg4.png
-..   :width: 600
-..   :alt: alternate text
-..   :align: center
-
-..   Figure 5.?: Visualization of D-ERG strategy 4
-
-.. .. figure:: _static/derg5.png
-..   :width: 600
-..   :alt: alternate text
-..   :align: center
-
-..   Figure 5.?: Visualization of D-ERG strategy 5
+  Figure 5.5: Visualization of D-ERG strategy 4
 
 5.2 How `RViz <http://wiki.ros.org/rviz>`__ works ?
 ---------------------------------------------------
@@ -183,14 +173,14 @@ to display to the topic you want to visualize. If you choose "By display type", 
    :alt: alternate text
    :align: center
 
-   Figure 5.?: Add button
+   Figure 5.6: Add button
 
 .. figure:: _static/topic_window.png
    :width: 400
    :alt: alternate text
    :align: center
 
-   Figure 5.?: Topic window
+   Figure 5.7: Topic window
 
 To record videos of your RViz visualization, we use the free software Recordmydesktop.
 If you want the RVIz camera not to move during the simulation, select a ``Target Frame`` which does not belong to the UAV in the right window.
@@ -200,7 +190,7 @@ If you want the RVIz camera not to move during the simulation, select a ``Target
    :alt: alternate text
    :align: center
 
-   Figure 5.?: Views window
+   Figure 5.8: Views window
 
 .. _5.3 Our work D-ERG visualization:
 
@@ -228,7 +218,7 @@ We have several D-ERG (Distributed Explicit Reference Governor) strategies to il
    :alt: alternate text
    :align: center
 
-   Figure 5.?: D-ERG strategy 0
+   Figure 5.9: D-ERG strategy 0
 
 * :math:`p_{k}`: current pose of the UAV
 * :math:`p̂_{k}`: desired reference pose
@@ -249,7 +239,7 @@ Sphere can **translate**.
    :alt: alternate text
    :align: center
 
-   Figure 5.?: D-ERG strategy 1
+   Figure 5.10: D-ERG strategy 1
 
 Communicate: :math:`p_{k}`, :math:`p_{k}^{v}`
 
@@ -265,7 +255,7 @@ Tube can **translate** and **rotate**.
    :alt: alternate text
    :align: center
 
-   Figure 5.?: D-ERG strategy 2
+   Figure 5.11: D-ERG strategy 2
 
 Communicate: :math:`p_{k}`, :math:`p_{k}^{v}`
 
@@ -281,7 +271,7 @@ Tube can **translate**, **rotate** and **change length**.
    :alt: alternate text
    :align: center
 
-   Figure 5.?: D-ERG strategy 3
+   Figure 5.12: D-ERG strategy 3
 
 Communicate: :math:`p_{k}`, :math:`p_{k}^{v}`, :math:`S_{a,min}^{⊥}`
 
@@ -297,7 +287,7 @@ Tube can **translate**, **rotate**, **change length and width**. The width (radi
    :alt: alternate text
    :align: center
 
-   Figure 5.?: D-ERG strategy 4
+   Figure 5.13: D-ERG strategy 4
 
 Communicate: :math:`p_{k}^{0}`, :math:`p_{k}^{1}`, :math:`S_{a,min}^{⊥}`
 
@@ -314,7 +304,7 @@ longitudinal axis.
    :alt: alternate text
    :align: center
 
-   Figure 5.?: D-ERG strategy 5
+   Figure 5.14: D-ERG strategy 5
 
 This final strategy permits to calculate the minimal distance between 2 predicted trajectories.
 
@@ -546,7 +536,7 @@ a new variable named ``enable_visualization`` set to ``true`` which enable/disab
     :alt: alternate text
     :align: center
   
-    Figure 5.?: Namespaces example
+    Figure 5.15: Namespaces example
   
   The `MarkerArray <http://docs.ros.org/en/api/visualization_msgs/html/msg/MarkerArray.html>`__ avoid to have synchronisation issues between all the markers. 
   
@@ -664,21 +654,21 @@ Thanks to the RViz namespaces, the user can select what he wants to see: a spher
   :alt: alternate text
   :align: center
 
-  Figure 5.?: Visualization of the trajectory as a sphere list
+  Figure 5.16: Visualization of the trajectory as a sphere list
 
 .. figure:: _static/linestriptrajectory.png
   :width: 400
   :alt: alternate text
   :align: center
 
-  Figure 5.?: Visualization of the trajectory as a line strip
+  Figure 5.17: Visualization of the trajectory as a line strip
 
 .. figure:: _static/arrowlisttrajectory.png
   :width: 400
   :alt: alternate text
   :align: center
 
-  Figure 5.?: Visualization of the trajectory as an arrow list
+  Figure 5.18: Visualization of the trajectory as an arrow list
 
 .. note::
   It is also possible to mix those options:
@@ -688,14 +678,14 @@ Thanks to the RViz namespaces, the user can select what he wants to see: a spher
     :alt: alternate text
     :align: center
 
-    Figure 5.?: Visualization of the trajectory as a sphere list and a line strip
+    Figure 5.19: Visualization of the trajectory as a sphere list and a line strip
 
   .. figure:: _static/arrowlistlinestriptrajectory.png
     :width: 400
     :alt: alternate text
     :align: center
 
-    Figure 5.?: Visualization of the trajectory as an arrow list and a line strip
+    Figure 5.20: Visualization of the trajectory as an arrow list and a line strip
 
 5.5.3.5 Distance line between UAVs position
 """""""""""""""""""""""""""""""""""""""""""
@@ -711,7 +701,7 @@ So we use it for the two calculated points p1 and p2 and we give p_new1 and p_ne
   :alt: alternate text
   :align: center
 
-  Figure 5.?: Red distance line between UAVs current pose sphere
+  Figure 5.21: Red distance line between UAVs current pose sphere
 
 .. _5.5.3.6 Shortest distance line between UAVs' predicted trajectory:
 
@@ -730,7 +720,7 @@ Their center correspond to the points where the distance between both trajectori
   :alt: alternate text
   :align: center
 
-  Figure 5.?: Shortest distance line between UAVs' predicted trajectory
+  Figure 5.22: Shortest distance line between UAVs' predicted trajectory
 
 5.5.3.7 Text labels
 """""""""""""""""""
@@ -752,12 +742,12 @@ thanks to the ``sa_max_publisher_``, similarly as we did for the D-ERG strategy 
 
 :blue:`[TODO: add a screenshot of the final D-ERG strategy 0 visualization.]JV`
 
-.. .. figure:: _static/derg0.png
-..   :width: 500
-..   :alt: alternate text
-..   :align: center
+.. figure:: _static/derg0.png
+  :width: 500
+  :alt: alternate text
+  :align: center
 
-..   Figure 5.?: Visualization of D-ERG strategy 0
+  Figure 5.23: Visualization of D-ERG strategy 0
 
 .. _5.5.5 D-ERG strategy 1:
 
@@ -803,12 +793,12 @@ That's why we just have to switch the points used to calculate the pose to obtai
   At the beginning, we were using a full cylinder and two empty hemispheres, i.e. without a volume, just a surface.
   But the visual result was not meeting our expectations as we see a disk making the connection between the cylinder and the hemisphere:
 
-  .. figure:: _static/derg1.png
+  .. figure:: _static/old_derg1.png
     :width: 500
     :alt: alternate text
     :align: center
 
-    Figure 5.?: Visualization of a full cylinder + two empty hemispheres
+    Figure 5.24: Visualization of a full cylinder + two empty hemispheres
 
   That's why we also used the `mesh ressource marker <http://wiki.ros.org/rviz/DisplayTypes/Marker#Mesh_Resource_.28MESH_RESOURCE.3D10.29_.5B1.1.2B-.5D>`__
   for the cylinder to also make it empty. Now, we only see a circle as connection between the cylinder and the hemisphere:
@@ -818,19 +808,19 @@ That's why we just have to switch the points used to calculate the pose to obtai
     :alt: alternate text
     :align: center
 
-    Figure 5.?: Visualization of an empty cylinder + two empty hemispheres
+    Figure 5.25: Visualization of an empty cylinder + two empty hemispheres
 
 We could create a mesh which display directly a full tube but the benefits would be insignificant and it would be way more
 difficult to change its size without warping it.
 
 :blue:`[TODO: add a screenshot of the final D-ERG strategy 1 visualization.]JV`
 
-.. .. figure:: _static/derg1.png
-..   :width: 600
-..   :alt: alternate text
-..   :align: center
+.. figure:: _static/derg1.png
+  :width: 500
+  :alt: alternate text
+  :align: center
 
-..   Figure 5.?: Visualization of D-ERG strategy 1
+  Figure 5.26: Visualization of D-ERG strategy 1
 
 .. _5.5.6 D-ERG strategy 2:
 
@@ -841,12 +831,12 @@ The main difference between D-ERG strategy 1 and 2 is that the blue tube become 
 
 :blue:`[TODO: add a screenshot of the final D-ERG strategy 2 visualization.]JV`
 
-.. .. figure:: _static/derg2.png
-..   :width: 600
-..   :alt: alternate text
-..   :align: center
+.. figure:: _static/derg2.png
+  :width: 600
+  :alt: alternate text
+  :align: center
 
-..   Figure 5.?: Visualization of D-ERG strategy 2
+  Figure 5.27: Visualization of D-ERG strategy 2
 
 .. _5.5.7 D-ERG strategy 3:
 
@@ -858,12 +848,12 @@ This radius is obtained similarly as :math:`\bar{S}_{a}^{⊥}`.
 
 :blue:`[TODO: add a screenshot of the final D-ERG strategy 3 visualization.]JV`
 
-.. .. figure:: _static/derg3.png
-..   :width: 600
-..   :alt: alternate text
-..   :align: center
+.. figure:: _static/derg3.png
+  :width: 600
+  :alt: alternate text
+  :align: center
 
-..   Figure 5.?: Visualization of D-ERG strategy 3
+  Figure 5.28: Visualization of D-ERG strategy 3
 
 .. _5.5.8 D-ERG strategy 4:
 
@@ -875,14 +865,12 @@ Now, the orange tube has to be between :math:`p_{k}^{1}` and :math:`p_{k}^{0}`. 
 We also get the radius :math:`S_{a,min}^{⊥}` value back from this message.
 Contrary to the previous strategy, the orange tube has now red hemispheres.
 
-:blue:`[TODO: add a screenshot of the final D-ERG strategy 4 visualization.]JV`
+.. figure:: _static/derg4.png
+  :width: 500
+  :alt: alternate text
+  :align: center
 
-.. .. figure:: _static/derg4.png
-..   :width: 600
-..   :alt: alternate text
-..   :align: center
-
-..   Figure 5.?: Visualization of D-ERG strategy 4
+  Figure 5.29: Visualization of D-ERG strategy 4
 
 .. _5.5.9 D-ERG strategy 5:
 
@@ -893,14 +881,12 @@ For the last strategy, we start from the :ref:`D-ERG strategy 3 <5.3.4 D-ERG str
 We want to display the shortest distance between two desired reference sphere :math:`\hat{p}_{k}` and :math:`\hat{p}_{i}`,
 and these two spheres, as explained :ref:`here <5.5.3.6 Shortest distance line between UAVs' predicted trajectory>`.
 
-:blue:`[TODO: add a screenshot of the final D-ERG strategy 5 visualization.]JV`
+.. figure:: _static/derg5.png
+  :width: 500
+  :alt: alternate text
+  :align: center
 
-.. .. figure:: _static/derg5.png
-..   :width: 600
-..   :alt: alternate text
-..   :align: center
-
-..   Figure 5.?: Visualization of D-ERG strategy 5
+  Figure 5.30: Visualization of D-ERG strategy 5
 
 5.5.10 Visual settings
 ^^^^^^^^^^^^^^^^^^^^^^
@@ -915,7 +901,7 @@ Below you can find the list of all the visualization parameters we provide in RV
   :alt: alternate text
   :align: center
 
-  Figure 5.?: RViz parameters
+  Figure 5.31: RViz parameters
 
 5.5.10.2 Settings via .yaml file
 """"""""""""""""""""""""""""""""
