@@ -31,7 +31,7 @@ You can also use the 2D Nav Goal button to choose a position and a heading to go
 `Link to the discussion <https://github.com/ctu-mrs/mrs_uav_system/discussions/105>`__
 
 .. figure:: _static/TrajVisualization.png
-   :width: 800
+   :width: 600
    :alt: alternate text
    :align: center
 
@@ -208,10 +208,10 @@ that you can run with these commands:
 
 We have several D-ERG (Distributed Explicit Reference Governor) strategies to illustrate. For more advanced explanations, watch `this video <https://www.youtube.com/watch?v=le6WSeyTXNU>`__.
 
-.. _5.3.1 D-ERG strategy 0:
-
 5.3.1 :ref:`D-ERG strategy 0 <5.5.4 D-ERG strategy 0>`
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. _5.3.1 D-ERG strategy 0:
 
 .. figure:: _static/DERG-0.png
    :width: 500
@@ -229,10 +229,10 @@ Communicate: :math:`p_{k}^{v}`
 
 Sphere can **translate**.
 
-.. _5.3.2 D-ERG strategy 1:
-
 5.3.2 :ref:`D-ERG strategy 1 <5.5.5 D-ERG strategy 1>`
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. _5.3.2 D-ERG strategy 1:
 
 .. figure:: _static/DERG-1.png
    :width: 500
@@ -245,10 +245,10 @@ Communicate: :math:`p_{k}`, :math:`p_{k}^{v}`
 
 Tube can **translate** and **rotate**.
 
-.. _5.3.3 D-ERG strategy 2:
-
 5.3.3 :ref:`D-ERG strategy 2 <5.5.6 D-ERG strategy 2>`
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. _5.3.3 D-ERG strategy 2:
 
 .. figure:: _static/DERG-2.png
    :width: 500
@@ -261,10 +261,10 @@ Communicate: :math:`p_{k}`, :math:`p_{k}^{v}`
 
 Tube can **translate**, **rotate** and **change length**.
 
-.. _5.3.4 D-ERG strategy 3:
-
 5.3.4 :ref:`D-ERG strategy 3 <5.5.7 D-ERG strategy 3>`
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. _5.3.4 D-ERG strategy 3:
 
 .. figure:: _static/DERG-3.png
    :width: 500
@@ -277,10 +277,10 @@ Communicate: :math:`p_{k}`, :math:`p_{k}^{v}`, :math:`S_{a,min}^{⊥}`
 
 Tube can **translate**, **rotate**, **change length and width**. The width (radius) is the minimal one for a tube with error directed longitudinal axis.
 
-.. _5.3.5 D-ERG strategy 4:
-
 5.3.5 :ref:`D-ERG strategy 4 <5.5.8 D-ERG strategy 4>`
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. _5.3.5 D-ERG strategy 4:
 
 .. figure:: _static/DERG-4.png
    :width: 500
@@ -294,10 +294,10 @@ Communicate: :math:`p_{k}^{0}`, :math:`p_{k}^{1}`, :math:`S_{a,min}^{⊥}`
 Tube and cylinder can **translate**, **rotate**, **change length and width**. The width (radius) and the length are the minimal one for a tube with error directed
 longitudinal axis.
 
-.. _5.3.6 D-ERG strategy 5:
-
 5.3.6 :ref:`D-ERG strategy 5 <5.5.9 D-ERG strategy 5>`
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. _5.3.6 D-ERG strategy 5:
 
 .. figure:: _static/DERG-5.png
    :width: 500
@@ -313,8 +313,15 @@ This final strategy permits to calculate the minimal distance between 2 predicte
 
 We have developed a `visualization package <https://github.com/mrs-brubotics/visualization_brubotics>`__ which permits to visualize
 in RViz the :ref:`D-ERG strategies algorithms <5.3 Our work D-ERG visualization>` in the `two_drones_D-ERG simulation <https://github.com/mrs-brubotics/testing_brubotics/tree/master/tmux_scripts/bryan/two_drones_D-ERG>`__.
-This package is based on the `mrs_rviz_plugins <https://github.com/ctu-mrs/mrs_rviz_plugins>`__ structure.
-We will explain you how to reproduce it. :blue:`[Maybe say that the visualization work for multiple drones simulations when the test will be done.]JV`
+We will explain you how to reproduce it.
+This package is based on the `mrs_rviz_plugins <https://github.com/ctu-mrs/mrs_rviz_plugins>`__ structure and the code is based on
+the `erg_visualization_test.cpp file <https://github.com/panda-brubotics/franka_constrained_control/blob/main/catkin_ws/src/franka_planner_control/src/erg_visualization_test.cpp>`__
+and `erg_visualization.cpp file <https://github.com/panda-brubotics/franka_constrained_control/blob/main/catkin_ws/src/franka_planner_control/src/erg_visualization.cpp>`__
+from the `franka_constrained_control package <https://github.com/panda-brubotics/franka_constrained_control>`__.
+
+.. note::
+  The code has been made for the `two_drones_D-ERG simulation <https://github.com/mrs-brubotics/testing_brubotics/tree/master/tmux_scripts/bryan/two_drones_D-ERG>`__
+  but it has been coded in a way to work if this simulation had more than 2 UAVs.
 
 First, we created a new package named `visualization_brubotics <https://github.com/mrs-brubotics/visualization_brubotics>`__ in
 ``workspace/src_droneswarm_brubotics/ros_packages`` with:
@@ -365,7 +372,7 @@ Consequently, we needed to adapt the find path in the `rviz_brubotics.launch fil
 
 The path find in the `tf_connector_avoidance.launch file <https://github.com/mrs-brubotics/testing_brubotics/blob/master/launch/rviz/tf_connector_avoidance.launch>`__
 file has also been changed (line 16) because it calls the `tf_connector_avoidance.yaml file <https://github.com/mrs-brubotics/testing_brubotics/blob/master/config/tf_connector_avoidance.yaml>`__
-which permits to visualize several drones at the same time thanks to the tf. :blue:`[Maybe explain more precisely what this file do]JV`
+which permits to see the number of drones we want. This why this file is located in our workspace.
 
 .. code-block:: html
 
@@ -402,8 +409,8 @@ file of CTU without changing it.
 It permits to create one robot model so we use it two times because there are two drones in our simulation: uav1 and uav2.
 
 Then, we launch our `visual.launch file <https://github.com/mrs-brubotics/visualization_brubotics/blob/main/launch/visual.launch>`_
-to start our `visual.cpp file <https://github.com/mrs-brubotics/visualization_brubotics/blob/main/src/visual.cpp>`__ for visualization
-that we will explain in the next chapter.
+to start our `visual_main.cpp file <https://github.com/mrs-brubotics/visualization_brubotics/blob/main/src/visual_main.cpp>`__
+for visualization that we will explain in the next chapter.
 
 .. code-block:: html
 
@@ -412,7 +419,7 @@ that we will explain in the next chapter.
   <?xml version="1.0" ?>
   <launch>
 
-    <node pkg="visualization_brubotics" type="visual" name="visual" output="screen"/>
+    <node pkg="visualization_brubotics" type="visual_main" name="visual_main" output="screen"/>
 
     <group ns="visualization_brubotics">
       <rosparam file="$(find visualization_brubotics)/config/visual.yaml" />
@@ -420,8 +427,8 @@ that we will explain in the next chapter.
 
   </launch>
 
-5.5 The `code <https://github.com/mrs-brubotics/visualization_brubotics/blob/main/src/visual.cpp>`__ for visualization
-----------------------------------------------------------------------------------------------------------------------
+5.5 The code for visualization
+------------------------------
 
 As you can see in the different :ref:`D-ERG strategies <5.3 Our work D-ERG visualization>`, we want to visualize spheres, tubes and lines.
 These three shapes are `RViz standard display marker types <http://wiki.ros.org/rviz/DisplayTypes/Marker>`__, except the tube.
@@ -445,20 +452,14 @@ if you do not know anything about it.
 
 Finally, we used `this tutorial <https://roboticsbackend.com/ros-param-yaml-format/>`__ to load the parameters from our `visual.yaml file <https://github.com/mrs-brubotics/visualization_brubotics/blob/main/config/visual.yaml>`__.
 
-5.5.2 Architecture of our `C++ code <https://github.com/mrs-brubotics/visualization_brubotics/blob/main/src/visual.cpp>`__
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+5.5.2 Architecture of our C++ code
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Like any well written C++ code, our code has to be organized. It is divided in several parts:
 
-* Includes
-* Parameters
-* Publishers and subscribers
-* Messages
-* Function prototypes
-* Function definitions
-* Main function
-
-:blue:`[Update the structure if we make progress]JV`
+* `visual.h file <https://github.com/mrs-brubotics/visualization_brubotics/blob/main/include/visual.h>`__: it contains the includes, the class definition and the methods/functions prototypes.
+* `visual.cpp <https://github.com/mrs-brubotics/visualization_brubotics/blob/main/src/visual.cpp>`__: it contains the methods definition.
+* `visual_main.cpp <https://github.com/mrs-brubotics/visualization_brubotics/blob/main/src/visual_main.cpp>`__: it contains the variables, messages, publishers and subscribers, the functions definition and the main function.
 
 .. _5.5.3 Default visuals:
 
@@ -488,18 +489,18 @@ Thus, we defined a parameter named ``number_of_uav`` which is equal to the size 
 
 To decide which strategy should be displayed, we created a publisher named ``derg_strategy_id_publisher_`` in the `tracker's code <https://github.com/mrs-brubotics/trackers_brubotics/blob/master/src/dergbryan_tracker/dergbryan_tracker.cpp>`__
 which publish a `std_msgs::Int32 message <http://docs.ros.org/en/api/std_msgs/html/msg/Int32.html>`__.
-The subscriber named ``DERG_strategy_id_subscriber_`` in the `visualization code <https://github.com/mrs-brubotics/visualization_brubotics/blob/main/src/visual.cpp>`__
+The subscriber named ``DERG_strategy_id_subscriber_`` in the `visual_main.cpp file <https://github.com/mrs-brubotics/visualization_brubotics/blob/main/src/visual_main.cpp>`__
 subscribes to the ``uav1/control_manager/dergbryan_tracker/derg_strategy_id`` topic and permits to get the ``_DERG_strategy_id_`` value back.
 
 By default, i.e. in each :ref:`D-ERG strategy <5.3 Our work D-ERG visualization>`, we display the:
 
-* Current pose sphere
-* Applied reference sphere
-* Goal pose frame
-* Predicted trajectory
-* Line between UAVs position
-* Shortest distance line between UAVs' predicted trajectory and the two related sphere at these points
-* Text labels
+1. :ref:`Current pose sphere <5.5.3.1 Current pose sphere>`
+2. :ref:`Applied reference sphere <5.5.3.2 Applied reference sphere>`
+3. :ref:`Goal pose frame <5.5.3.3 Goal pose frame>`
+4. :ref:`Predicted trajectory <5.5.3.4 Predicted trajectory>`
+5. :ref:`Distance line between UAVs position <5.5.3.5 Distance line between UAVs position>`
+6. :ref:`Shortest distance line between UAVs' predicted trajectory and the two related sphere at these points <5.5.3.6 Shortest distance line between UAVs' predicted trajectory and the two related sphere at these points>`
+7. :ref:`Text labels <5.5.3.7 Text labels>`
 
 (See all the :ref:`D-ERG strategies <5.3 Our work D-ERG visualization>`).
 
@@ -544,6 +545,8 @@ a new variable named ``enable_visualization`` set to ``true`` which enable/disab
   The `MarkerArray <http://docs.ros.org/en/api/visualization_msgs/html/msg/MarkerArray.html>`__  can not be a global variable
   because otherwise, it could be updated and published at the same time, which could result as flashing markers.
 
+.. _5.5.3.1 Current pose sphere:
+
 5.5.3.1 Current pose sphere
 """""""""""""""""""""""""""
 
@@ -564,46 +567,6 @@ We use the `boost::function function pointer <https://www.boost.org/doc/libs/1_7
   marker.pose.orientation.z = 0;
   marker.pose.orientation.w = 1.0;
 
-We created a function named ``InitMarker`` in order to avoid repeating the same code lines.
-Indeed, we use this function to initialize some marker options:
-    
-.. code-block:: c
-    
-  void InitMarker(visualization_msgs::Marker& marker,
-                  const std::string name,
-                  const int id, const int type,
-                  const float r, const float g, const float b, const float a,
-                  const std::string &mesh = empty){
-
-    //Clear marker pose
-    marker.pose.position.x = 0;
-    marker.pose.position.y = 0;
-    marker.pose.position.z = 0;
-    marker.pose.orientation.x = 0;
-    marker.pose.orientation.y = 0;
-    marker.pose.orientation.z = 0;
-    marker.pose.orientation.w = 0;
-
-    marker.header.frame_id = "/common_origin";
-    marker.header.stamp = ros::Time::now();
-    marker.ns = name;
-    marker.id = id;
-    marker.type = type; 
-    if(type==10){
-      marker.mesh_resource = "package://visualization_brubotics/meshes/" + mesh + ".stl";
-    }
-    marker.action = visualization_msgs::Marker::ADD;
-    marker.color.r = r;
-    marker.color.g = g;
-    marker.color.b = b;
-    marker.color.a = a;
-    marker.lifetime = ros::Duration();
-  }
-    
-The marker type can either be a word or a number, for example: ARROW=0, SPHERE=2, CYLINDER=3, etc.
-If we use a `mesh ressource marker <http://wiki.ros.org/rviz/DisplayTypes/Marker#Mesh_Resource_.28MESH_RESOURCE.3D10.29_.5B1.1.2B-.5D>`__, the filename
-will be given as an argument.
-
 .. _5.5.3.2 Applied reference sphere:
 
 5.5.3.2 Applied reference sphere
@@ -613,7 +576,9 @@ For the applied reference pose :math:`p_{k}^{v}`, the related topic is ``uavX/co
 and it contains a `mrs_msgs::FutureTrajectory message <https://ctu-mrs.github.io/mrs_msgs/msg/FutureTrajectory.html>`__.
 The ``point`` field is an array of `FuturePoint messages <https://ctu-mrs.github.io/mrs_msgs/msg/FuturePoint.html>`__
 so we take the first element.
-  
+
+.. _5.5.3.3 Goal pose frame:
+
 5.5.3.3 Goal pose frame
 """""""""""""""""""""""
 
@@ -629,6 +594,8 @@ The frame's position is set thanks to the ``reference.position`` member of the `
 The frame's orientation is set thanks to the ``reference.heading`` member of the `mrs_msgs::ReferenceStamped message <https://ctu-mrs.github.io/mrs_msgs/msg/ReferenceStamped.html>`__.
 Indeed, it is the projection of the heading vector in the plane span (x,y).
 That's why we set to zero the x and y member of the ``frame_z_direction``.
+
+.. _5.5.3.4 Predicted trajectory:
 
 5.5.3.4 Predicted trajectory
 """"""""""""""""""""""""""""
@@ -687,6 +654,8 @@ Thanks to the RViz namespaces, the user can select what he wants to see: a spher
 
     Figure 5.20: Visualization of the trajectory as an arrow list and a line strip
 
+.. _5.5.3.5 Distance line between UAVs position:
+
 5.5.3.5 Distance line between UAVs position
 """""""""""""""""""""""""""""""""""""""""""
 
@@ -703,10 +672,10 @@ So we use it for the two calculated points p1 and p2 and we give p_new1 and p_ne
 
   Figure 5.21: Red distance line between UAVs current pose sphere
 
-.. _5.5.3.6 Shortest distance line between UAVs' predicted trajectory:
+.. _5.5.3.6 Shortest distance line between UAVs' predicted trajectory and the two related sphere at these points:
 
-5.5.3.6 Shortest distance line between UAVs' predicted trajectory
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+5.5.3.6 Shortest distance line between UAVs' predicted trajectory and the two related sphere at these points
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 The ``ShortestDistanceLines`` function is very similar to the ``RedLines`` function.
 The only difference with the previous display is the points used to plot the line.
@@ -722,6 +691,8 @@ Their center correspond to the points where the distance between both trajectori
 
   Figure 5.22: Shortest distance line between UAVs' predicted trajectory
 
+.. _5.5.3.7 Text labels:
+
 5.5.3.7 Text labels
 """""""""""""""""""
 
@@ -729,8 +700,6 @@ Knowing which drone goes where is fundamental. Thus, we added view-oriented text
 We get the ``uavID`` string from the ``mrs_drone_spawner/diagnostics`` topic.
 For the ``goalID`` string, we need to get only the ID from the ``mrs_drone_spawner/diagnostics`` so we use the `replace function <http://cplusplus.com/reference/string/string/replace/>`__
 from the C++ strings library to replace ``uav`` with ``goal``.
-
-.. _5.5.4 D-ERG strategy 0:
 
 5.5.4 :ref:`D-ERG strategy 0 <5.3.1 D-ERG strategy 0>` visualization
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -740,7 +709,7 @@ We do it by the same way as we display the :ref:`applied reference sphere <5.5.3
 But we get the radius value back from the `tracker's code <https://github.com/mrs-brubotics/trackers_brubotics/blob/master/src/dergbryan_tracker/dergbryan_tracker.cpp>`__
 thanks to the ``sa_max_publisher_``, similarly as we did for the D-ERG strategy value in :ref:`this chapter <5.5.3 Default visuals>`.
 
-:blue:`[TODO: add a screenshot of the final D-ERG strategy 0 visualization.]JV`
+.. _5.5.4 D-ERG strategy 0:
 
 .. figure:: _static/derg0.png
   :width: 500
@@ -748,8 +717,6 @@ thanks to the ``sa_max_publisher_``, similarly as we did for the D-ERG strategy 
   :align: center
 
   Figure 5.23: Visualization of D-ERG strategy 0
-
-.. _5.5.5 D-ERG strategy 1:
 
 5.5.5 :ref:`D-ERG strategy 1 <5.3.2 D-ERG strategy 1>` visualization
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -803,6 +770,8 @@ That's why we just have to switch the points used to calculate the pose to obtai
   That's why we also used the `mesh ressource marker <http://wiki.ros.org/rviz/DisplayTypes/Marker#Mesh_Resource_.28MESH_RESOURCE.3D10.29_.5B1.1.2B-.5D>`__
   for the cylinder to also make it empty. Now, we only see a circle as connection between the cylinder and the hemisphere:
   
+  .. _figure5.25:
+
   .. figure:: _static/stl2.png
     :width: 500
     :alt: alternate text
@@ -810,10 +779,14 @@ That's why we just have to switch the points used to calculate the pose to obtai
 
     Figure 5.25: Visualization of an empty cylinder + two empty hemispheres
 
-We could create a mesh which display directly a full tube but the benefits would be insignificant and it would be way more
-difficult to change its size without warping it.
+  We could create a mesh which display directly a full tube but the benefits would be insignificant and it would be way more
+  difficult to change its size without warping it.
 
-:blue:`[TODO: add a screenshot of the final D-ERG strategy 1 visualization.]JV`
+.. note::
+  To get the some transparency on the :ref:`Figure 5.25 <figure5.25>`, we need to reduce the alpha parameter because the mesh marker
+  we use has 4 surfaces: 2 insides and 2 outsides.
+
+.. _5.5.5 D-ERG strategy 1:
 
 .. figure:: _static/derg1.png
   :width: 500
@@ -822,14 +795,12 @@ difficult to change its size without warping it.
 
   Figure 5.26: Visualization of D-ERG strategy 1
 
-.. _5.5.6 D-ERG strategy 2:
-
 5.5.6 :ref:`D-ERG strategy 2 <5.3.3 D-ERG strategy 2>` visualization
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The main difference between D-ERG strategy 1 and 2 is that the blue tube become transparent and we add another blue tube between :math:`p_{k}` and :math:`p_{k}^{v}`.
+.. _5.5.6 D-ERG strategy 2:
 
-:blue:`[TODO: add a screenshot of the final D-ERG strategy 2 visualization.]JV`
+The main difference between D-ERG strategy 1 and 2 is that the blue tube become transparent and we add another blue tube between :math:`p_{k}` and :math:`p_{k}^{v}`.
 
 .. figure:: _static/derg2.png
   :width: 600
@@ -838,15 +809,13 @@ The main difference between D-ERG strategy 1 and 2 is that the blue tube become 
 
   Figure 5.27: Visualization of D-ERG strategy 2
 
-.. _5.5.7 D-ERG strategy 3:
-
 5.5.7 :ref:`D-ERG strategy 3 <5.3.4 D-ERG strategy 3>` visualization
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Starting from the strategy 2, we want to add an orange tube between :math:`p_{k}` and :math:`p_{k}^{v}` with a radius :math:`S_{a,min}^{⊥}`.
 This radius is obtained similarly as :math:`\bar{S}_{a}^{⊥}`.
 
-:blue:`[TODO: add a screenshot of the final D-ERG strategy 3 visualization.]JV`
+.. _5.5.7 D-ERG strategy 3:
 
 .. figure:: _static/derg3.png
   :width: 600
@@ -855,10 +824,10 @@ This radius is obtained similarly as :math:`\bar{S}_{a}^{⊥}`.
 
   Figure 5.28: Visualization of D-ERG strategy 3
 
-.. _5.5.8 D-ERG strategy 4:
-
 5.5.8 :ref:`D-ERG strategy 4 <5.3.5 D-ERG strategy 4>` visualization
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. _5.5.8 D-ERG strategy 4:
 
 Now, the orange tube has to be between :math:`p_{k}^{1}` and :math:`p_{k}^{0}`. These information are related to the
 ``uavX/control_manager/dergbryan_tracker/future_trajectory_tube`` topic which contains a `FutureTrajectoryTube message <https://github.com/mrs-brubotics/trackers_brubotics/blob/master/msg/FutureTrajectoryTube.msg>`__.
@@ -872,14 +841,14 @@ Contrary to the previous strategy, the orange tube has now red hemispheres.
 
   Figure 5.29: Visualization of D-ERG strategy 4
 
-.. _5.5.9 D-ERG strategy 5:
-
 5.5.9 :ref:`D-ERG strategy 5 <5.3.6 D-ERG strategy 5>` visualization
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 For the last strategy, we start from the :ref:`D-ERG strategy 3 <5.3.4 D-ERG strategy 3>` by taking the orange tube.
 We want to display the shortest distance between two desired reference sphere :math:`\hat{p}_{k}` and :math:`\hat{p}_{i}`,
 and these two spheres, as explained :ref:`here <5.5.3.6 Shortest distance line between UAVs' predicted trajectory>`.
+
+.. _5.5.9 D-ERG strategy 5:
 
 .. figure:: _static/derg5.png
   :width: 500
@@ -906,22 +875,20 @@ Below you can find the list of all the visualization parameters we provide in RV
 5.5.10.2 Settings via .yaml file
 """"""""""""""""""""""""""""""""
 
-Ideally, a user should not have to change parameters in our `visual.cpp file <https://github.com/mrs-brubotics/visualization_brubotics/blob/main/src/visual.cpp>`__.
+Ideally, a user should not have to change parameters in our codes.
 That's why we created a `visual.yaml file <https://github.com/mrs-brubotics/visualization_brubotics/blob/main/config/visual.yaml>`__.
 In this file, we define all the parameters of the visualization:
 
 * Number of points used to display the trajectory 
 * Color and transparency of each marker: r, g, b, alpha
-
-:blue:`[Update the parameters list]JV`
+* Trajectory markers size
+* Line width
 
 .. note::
   You need to initialize a node with ``ros::NodeHandle`` in each function where you use ``getParam``.
 
-5.5.10.3 Settings in the `code <https://github.com/mrs-brubotics/visualization_brubotics/blob/main/src/visual.cpp>`__
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+5.5.10.3 Settings in the `visual_main.cpp <https://github.com/mrs-brubotics/visualization_brubotics/blob/main/src/visual_main.cpp>`__
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 The only parameter in our `visual.cpp file <https://github.com/mrs-brubotics/visualization_brubotics/blob/main/src/visual.cpp>`__ is the global variable
 ``MAX_UAV_NUMBER``. It is used to initialize some arrays' size.
-
-:blue:`[Update the settings list in our code]JV`
