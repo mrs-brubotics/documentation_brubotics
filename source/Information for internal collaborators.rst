@@ -147,6 +147,7 @@ Once you decided on a machine:
     * Download the `Visual Studio Code IDE <https://code.visualstudio.com/>`__ for Ubuntu (.deb) and install it. Preferably use this whenever you want to view or edit code opposed to the default text editor in Ubuntu. Set visual studio code as the default program to open files (right click on the file and select "open with other application").
     * Install `TeamViewer for Linux <https://www.teamviewer.com/nl/download/linux/>`__, and create an teamviewer account. 
     * Install on Matlab and Simulink version 2021b and the toolboxes you like. See doc in google drive, since you might get some non trivial issues.
+    * Install RecordMyDesktop from UbuntuSoftware. Use this for recording simulations of Gazebo, RVIZ, since the default recording tools perform poorly.
 
 ?.2.5 Git Version Control
 -------------------------
