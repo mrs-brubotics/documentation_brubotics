@@ -1,7 +1,12 @@
-Step to reproduce spawning of a load, still need to adapt syntax
-===================================================================
+Adding a payload in an existing simulation
+=========================================
 
-CHECK FOR PICTURES TO ADD AND SMALL MODIFICATIONS IN THE CONTENT 
+In this section, you'll learn how to:
+
+* make a load spawn in Gazebo
+* modify the load model 
+* visualize it using Rviz
+* tweak the simulation parameters according to your needs. 
 
 Creation of a new world with payload and automate it to start with simulation
 -----------------------------------------------------------------------------
@@ -9,15 +14,20 @@ Creation of a new world with payload and automate it to start with simulation
 To create a new simulation environment, follow these steps:
 
 * Make a new folder in the directory: "/workspace/src/droneswarm\_brubotics/ros\_packages/testing\_brubotics/tmux\_scripts"
+
 * Copy the files ("start.sh", "layout.json" and "session.yml") of an other example (from brubotics or mrs) in your new folder. Take a simulation as close as possible to 
   what you want to achieve (e.g.:one drone gps). 
+
 * Launch your simulation, by opening terminal and typing "./start.sh". 
+
 * If you want to create a new world \bc{see previous chapter on creating new worlds, this "general" explanation belongs there}, copy an existing world file in in the folder 
   you created in ".../tmux\_scripts" . The location of the standard mrs world files are in following directory:\\  "/git/simulation/ros\_packages/mrs\_gazebo\_common\_resources". For our situation, we started from the standard grass plane. \bc{be more specific about which files you base yourself on for the specific task you have.}\pp{Done}
+
 * Adapt your file by adding models, e.g. boxes or trees. We added a box that will be used as payload. Find exemples of codes to implement this models in other .world files or 
   the internet. \bc{no no need list this code if you do not talk about specific parts in the code. Better to insert a link to this file on our github. Try to explain which parameters 
   are important to set for your purpose. Now it is again "quite generic". It does not directly explain the specifics, although they might be in the code.}\pp{Done, not pushed yet so 
   we still have to add link}
+
 * Change "world\_name:=grass\_plane" in the following lines in the "Session.yml" file:
 
 .. code-block:: xml
@@ -31,6 +41,8 @@ To create a new simulation environment, follow these steps:
     layout: tiled
     panes:
       - waitForRos; roslaunch mrs_simulation simulation.launch world_file:='/home/NAME OF COMPUTER SESSION/workspace/src/droneswarm_brubotics/ros_packages/testing_brubotics/tmux_scripts/NAME OF FOLDER/NAME OF WORLD FILE.world' gui:=true
+
+
 
 Link_attacher
 -------------
@@ -156,6 +168,14 @@ In our situation we want a ball joint (spherical joint), to approach a cable on 
 6. Now you can move your drone up to see your payload take off. Try moving your drone sideways,
 you will see the payload is not implemented yet in the control and will oscillate.
 
+Here is what you should see in your simulation :
+
+.. figure:: _static/Link_attacher.png
+   :width: 800
+   :alt: alternate text
+   :align: center
+
+
 Model your payload with an URDF file
 ------------------------------------
 
@@ -238,11 +258,18 @@ screen. The arguments are given to the urdf file where you need to change the RO
 name you gave in the urdf file!
 To test if everything works as expected launch a simulation (./start.sh in the right folder). Then
 execute the launch file by opening a new terminal and pasting the following command (change the name
-to your NAME.launch file). You should see a box spawn like on the figure.
+to your NAME.launch file).
 
 .. code-block:: shell
 
   roslaunch testing_brubotics NAME.launch
+
+ You should see a box spawn like on the following figure::
+
+.. figure:: _static/urdf_install.png
+  :width: 800
+  :alt: alternate text
+  :align: center
 
 Automate this using tmux
 ^^^^^^^^^^^^^^^^^^^^^^^^
@@ -268,6 +295,11 @@ makes a link. This means that we use 2 xacro files, one where the "functions" ar
 the parameters are given. Because the number of files begins to increase, sub folders are made to have a
 clearer overview like on the figure below. Later the files will be put in the right folder and pushed to the
 brubotics github.
+
+.. figure:: _static/structure.png
+   :width: 800
+   :alt: alternate text
+   :align: center
 
 .. note::
   For a more complete introduction, follow `this youtube tutorial <https://www.youtube.com/watch?v=ixTMFQfXfgs>`__ (part 1 to 4 are relevant to learn URDF,XACRO and using Rviz efficiently).
@@ -374,6 +406,11 @@ UPPERCASE words to your example.
   </robot>
 
 
+To communicate between the two xacro files, we have to add the line <include> with the right PATH
+and name. Then we call the function <m_link_box> and give the parameters needed. When starting the
+simulation with ./start.sh, you should see the box spawn in gazebo. 
+Now you can make your own model.
+
 This will only work on Ubuntu 18/Ros Melodic. If you are using ROS Noetic on Ubuntu 20, you must add xacro: before calling the m_link_box macro.
 
 .. code-block:: xml
@@ -395,9 +432,7 @@ This will only work on Ubuntu 18/Ros Melodic. If you are using ROS Noetic on Ubu
                   size="1 1 1" />
     </robot>
 
-To communicate between the two xacro files, we have to add the line <include> with the right PATH
-and name. Then we call the function <m_link_box> and give the parameters needed. When starting the
-simulation with ./start.sh, you should see the box spawn in gazebo. Now you can make your own model.
+Starting from now all codes will be shown as this, to work on both Melodic and Noetic.
 
 Using RVIZ
 ----------
@@ -445,17 +480,31 @@ spawn the objects in the origin of the plane or you will not be able to see them
 
   roslaunch testing_brubotics rviz.launch
 
-This is the result you should see. There is still nothing shown, this is because of the error. In the fixed
+This is the result you should see. 
+
+.. figure:: _static/rviz_problem.png
+   :width: 800
+   :alt: alternate text
+   :align: center
+
+There is still nothing shown, this is because of the error. In the fixed
 frame you need to change the "map" [you should put your window in full screen] AD to the base you want
 to use instead. This link will be considered the ground of your model. Take for this the "base_link" of
-your model. PICTURE HERE
+your model. 
 
 Now to visualize the robot model you need:
 1. Click on the add button in the left corner of the RVIZ screen
 2. Search for RobotModel and click on it.
 3. Click on OK
 4. In this list you can also add frames.
-[TO MODIFY NOT CLEAR, see youtube video]
+[unclear, see video in previous note]
+
+You should see the model now as in the following figure.
+
+.. figure:: _static/rviz_final.png
+   :width: 800
+   :alt: alternate text
+   :align: center
 
 Now you can play with the joints and see how your model behaves. To see overlapping of the parts it
 is possible to change the Alpha value in RobotModel to 0,5 for example and press enter. Then they are
@@ -476,4 +525,212 @@ the document and when launching again all the settings should be correct.
 
 Example: Creation of a bar with two cables
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-I would sugges to follow the youtube video instead of this example, as the expected results are easier to see on a video than in such file.
+[I would sugges to follow the youtube video instead of this example, as the expected results are easier to see on a video than in such file.]
+
+he implementation of the following example is based on `this github code <https://github.com/massimilianop/collaborative_load_lifting/blob/master/urdf/cables_and_payload.xacro>`__. We use
+this approach in order to create the joints. As it is not possible to create ball joints using xacro files, this
+approach simulates ball joints by overlapping two continuous joints (one allowing a rotation around the
+x-axis and one around the y-axis). This example is given to demonstrate the choice of reference in the
+xacro file. The following code was written to create the system
+
+.. code-block:: xml
+
+  <xacro:m_link_box name="${link_00_name}"
+              origin_rpy="0 0 0" origin_xyz="0 0 0.05"
+              mass="0.1"
+              ixx="0.1" ixy="0" ixz="0"
+              iyy="0.1" iyz="0"
+              izz="0.1"
+              size="0.5 0.1 0.1" />
+              
+  <xacro:m_joint name="${link_00_name}__${link_01_name}__x" type="continuous"
+           axis_xyz="1 0 0"
+           origin_rpy="0 0 0" origin_xyz="0.24 0 0.1"
+           parent="base_link" child="link_01"
+           limit_e="1000" limit_l="-3.14" limit_u="3.14" limit_v="0.5" />
+           
+  <xacro:m_link_sphere name="${link_01_name}"
+              origin_rpy="0 0 0" origin_xyz="0 0 0.005"  
+              mass="0.01"
+              ixx="0.1" ixy="0" ixz="0"
+              iyy="0.1" iyz="0"
+              izz="0.01"
+              radius="0.01" />
+              
+  <xacro:m_joint name="${link_01_name}__${link_02_name}__x" type="continuous"
+           axis_xyz="0 1 0"
+           origin_rpy="0 0 0" origin_xyz="0 0 0"
+           parent="link_01" child="link_02"
+           limit_e="1000" limit_l="-3.14" limit_u="3.14" limit_v="0.5" /> 
+
+  <xacro:m_link_cylinder name="${link_02_name}"
+              origin_rpy="0 0 0" origin_xyz="0 0 0.25"  
+              mass="0.01"
+              ixx="0.1" ixy="0" ixz="0"
+              iyy="0.1" iyz="0"
+              izz="0.01"
+              radius="0.01" length="0.5" />                     
+            
+  <xacro:m_joint name="${link_00_name}__${link_03_name}__x" type="continuous"
+           axis_xyz="1 0 0"
+           origin_rpy="0 0 0" origin_xyz="-0.24 0 0.1"
+           parent="base_link" child="link_03"
+           limit_e="1000" limit_l="-3.14" limit_u="3.14" limit_v="0.5" />
+
+  <xacro:m_link_sphere name="${link_03_name}"
+              origin_rpy="0 0 0" origin_xyz="0 0 0.005"  
+              mass="0.01"
+              ixx="0.1" ixy="0" ixz="0"
+              iyy="0.1" iyz="0"
+              izz="0.01"
+              radius="0.01" />
+              
+  <xacro:m_joint name="${link_03_name}__${link_04_name}__x" type="continuous"
+           axis_xyz="0 1 0"
+           origin_rpy="0 0 0" origin_xyz="0 0 0"
+           parent="link_03" child="link_04"
+           limit_e="1000" limit_l="-3.14" limit_u="3.14" limit_v="0.5" />    
+
+  <xacro:m_link_cylinder name="${link_04_name}"
+              origin_rpy="0 0 0" origin_xyz="0 0 0.25"  
+              mass="0.01"
+              ixx="0.1" ixy="0" ixz="0"
+              iyy="0.1" iyz="0"
+              izz="0.01"
+              radius="0.01" length="0.5" />
+
+Explanation of code:
+""""""""""""""""""""
+
+1. The "link_00_name" represents the bar on the ground. The position of the box can be changed
+with "origin_xyz", this represents the center of mass of the object.
+2. For joints, "origin_xyz" represents the position of the joint relative to the previous joint. If it is the
+first joint (as for "${link_00_name}__${link_01_name}__x"), it is relative to (0,0,0).
+3. [make sure the text fits on the page]BCFor every link that is added, the "origin_xyz" will represent
+the center of mass of the object relative to the previous joint. For example, "link_03_name" is
+defined relative to "${link_00_name}__${link_03_name}__x"
+4. Something that cannot be done in xacro files are ball joints. A solution for thi si represented in
+this example. To joints are placed in the same position to realise a rotation around both the x- and
+y-axis.
+
+To see this model, reproduce the procedure to launch it in RVIZ (see above section). If everything is working fine, you should see this:
+
+.. figure:: _static/Example_bar_2cables.png
+   :width: 800
+   :alt: alternate text
+   :align: center
+
+Chaning drone initial position
+------------------------------
+
+Instead of spawning the drone in the default position, you can choose where you want to spawn it. In
+order to change the initial position, you will have to create a .csv file in which you specify the position at
+which the drone has to be spawned. To do you, follow the following steps:
+
+1. create a .csv file (ex: spawn_location.csv) in the directory in which you have your session.yml file "/workspace/src/droneswarm_brubotics/ros_packages/testing_brubotics/tmux_scripts"
+   (you can create a .csv file using visual studio by just creating a new file and saving it as a .csv):
+
+2. add the following line to your file and save it.
+
+.. code-block:: xml
+
+  1, 0.0 , 0.0 , 0.0, 0.0
+
+Which means :
+
+  (a) the first number = the id of the drone (if you have 1 drone, the id is 1. if you have 2 drones,
+      the first drone has id 1 and the second id 2)
+
+  (b) the following 3 numbers are the position at which you want the drone (in this case the origin)
+
+  (c) the last number is the heading of the drone
+
+  (d) For the case of one drone, we spawn UAV1 with id 1 in the origin (see code above) as to make
+      the connection to the payload easier since we are using the link-attacher
+
+3. add the .csv file to your session.yml by adding the following to the line containing the command to
+   spawn the UAV. Change the CSV_FILE_NAME by the name of your .csv file.
+   
+   .. code-block:: xml
+
+      --pos_file `pwd`/CSV_FILE_NAME.csv
+
+   like in this example:
+
+   .. code-block:: xml
+
+    - waitForSimulation; rosservice call /mrs_drone_spawner/spawn "1 $UAV_TYPE --enable-rangefinder --enable-ground-truth --pos_file `pwd`/spawn_location.csv"
+  
+4. To change the position of multiple drones, you will have to create a .csv for each drone (don't forget
+   to change the id, depending on the drone) and follow the steps above to integrate it in the session.yml file.
+
+Making a connection between load and drone after takeoff
+--------------------------------------------------------
+Sometimes weird behavior of the system can be observed if the connection between the drone and the
+payload is done before takeoff. Before solving this problem, another problem has to be tackled. When
+performing the simulations, there is always an offset between the desired position of the drone and its
+actual position. This is because we use a regular GPS. This will result in a connection that is not perfectly
+in the COM of the drone when doing the connection after takeoff. A solution is to change to a `RTK GPS <https://en.wikipedia.org/wiki/Real-time_kinematic_positioning>`__.
+
+Use a RTK GPS
+^^^^^^^^^^^^^
+
+To switch to a RTK GPS, two things must be done:
+
+1. The drone must be spawned with following line in the session.yml file. This enables a publisher of
+   the ground truth position of the UAV.
+
+  .. code-block:: xml
+
+    --enable-ground-truth
+
+2. Following line must be added in the pre-window of the session.yml file.
+   
+   .. code-block:: xml
+
+      export ODOMETRY\_TYPE="rtk"
+
+
+Change in code to perform connection after takeoff
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+To perform the connection after takeoff, the drone must follow a couple of steps:
+
+1. make the drone takeoff without connection to the payload
+2. make the drone fly above the position where you will spawn the payload
+3. pause the physics of the simulation
+4. spawn the payload
+5. use link attacher to make a connection between the payload and the drone
+6. unpause the physics
+
+This results in a change of lines 77 to 89 in Session.yml in this `Github file <https://github.com/mrs-brubotics/testing_brubotics/blob/master/tmux_scripts/load_transportation/6_one_drone_SE3controllerBrubotics_Robustness_mv1/session.yml>`__.
+
+Change tracker after take-off and take-off height
+-------------------------------------------------
+
+Since the collision properties have to be deactivated in order to get two drone closer than 3m to each
+other, the tracker has to be changed after take-off. To do so, a custom_configs has to be created inside
+the folder in which the session.yml file resides. In this custom_configs folder, create a new file called
+uav_manager.yaml and add the following:
+
+.. code-block:: xml
+
+  takeoff:
+
+        after_takeoff:
+            tracker: "LineTracker"
+            controller: "Se3Controller"
+
+    takeoff_height: 1
+
+this code will change the tracker after take-off by the "Linetracker". The LineTracker allows the drone
+to fly close to each other (remove the collision properties). In the same code it is also possible to change
+the take-off height.
+To implement this in the session.yml, the following code as to be added at the part of the control
+inside the session.yml:
+
+.. code-block:: xml
+
+  - waitForOdometry; roslaunch mrs_uav_general core.launch DEBUG:=false
+    config_uav_manager:=./custom_configs/uav_manager.yam
+
