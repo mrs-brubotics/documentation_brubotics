@@ -1,4 +1,4 @@
-Adding a payload in an existing simulation
+7. Adding a payload in an existing simulation
 =========================================
 
 In this section, you'll learn how to:
