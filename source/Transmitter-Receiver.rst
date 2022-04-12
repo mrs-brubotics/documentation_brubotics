@@ -11,7 +11,7 @@ In this section, you'll learn how to bind the receiver (Hitec Optima SL) and the
 
 The button "Jog Dial Scroll/Enter" will be referenced as "scroller" throughout the section.
 
-The following steps comes from `this video <https://www.youtube.com/watch?v=SzZXjZMq_po>`__. 
+The following steps come from `this video <https://www.youtube.com/watch?v=SzZXjZMq_po>`__. 
 
 To bind both RC devices, follow these steps :
 
