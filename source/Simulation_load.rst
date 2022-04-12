@@ -1,5 +1,5 @@
 7. Adding a payload in an existing simulation
-=========================================
+=============================================
 
 In this section, you'll learn how to:
 
@@ -734,3 +734,27 @@ inside the session.yml:
   - waitForOdometry; roslaunch mrs_uav_general core.launch DEBUG:=false
     config_uav_manager:=./custom_configs/uav_manager.yam
 
+Change UAV mass
+---------------
+
+In order to simulate with a hardware UAV mass (2.40 kg for f450, TODO??kg for t650) some manual changes are required in the mrs_uav_system (explained for the f450):
+
+* Open *~/mrs_workspace/src/simulation/ros_packages/mrs_simulation/models/mrs_robots_description/urdf/f450.xacro* and adjust the mass: *<xacro:property name="mass" value="${2.40-0.005*4.0-0.015-0.00001}" /> <!-- [kg] 2.40-->* . This ensures that Gazebo simulates a UAV 
+  model with the hardware mass. Note that the xacro has slight offset from 2.4kg since afterwards some small masses (of motors, sensors) are added to the uav so we subtract them before they are added.
+
+* Open *~/mrs_workspace/src/uav_core/ros_packages/mrs_uav_managers/config/simulation/f450/mass.yaml* and adjust the mass: uav_mass: 2.40 #2.00 # [kg]. 
+  This ensures that the controllers and trackers that use mass (e.g., for feedforward actions) use th hardware mass.
+
+* Catkin build the mrs_worspace (although not strcitly necessary if you only change configs, make a habit to catkin build more than too less)
+
+.. note::
+  Do not forget to do the above steps each time you reinstall the mrs_uav_system! For hardware experiments the UAV mass used in the controllers and trackers is the one set in the ~/.bashrc, hence the above changes do not effect operation on hardware.
+
+* For UAVs with payload, you need to do the same for what concerns mass of only the UAV (excluding payload mass), but you also need to ensure that the xacro of the payload has the same payload mass as the one you use in 
+  the controller and tracker. This is normally exported in the session.yml file of each test folder, where you have to change *LOAD_MASS:0.2* and *export LOAD_MASS=0.2* with the chosen mass. 
+  For 2 UAVs each UAV offcourse compensates for half of the bar's mass instead of the total payload mass in the case of one UAV with cable suspended load. So you must put the full mass in *LOAD_MASS:m* but only half of it in *export LOAD_MASS=m/2*
+
+.. note:: 
+  For the se3_brubotics_load_controller, the mass of the UAV is loaded through the variable defined in the ~/.bashrc file as well. So changing the yaml files as explained above might not be enough.
+  To solve this issue you can either change the value in the ~/.bashrc directly. Or add *export UAV_MASS="2.4"* alongside the other export in the session.yml of your test. This export will normally overwrite
+  the value present in the ~/.bashrc.
