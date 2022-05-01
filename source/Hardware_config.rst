@@ -14,3 +14,8 @@ QGROUNDCONTROL STEPS MODIFICATIONS TO DO ON TUTORIAL, not finished
 	TO connect correctly ESC to Powerboard : from top to bottom : orange blue brown. (Orange(S), blue (+/T) , Brown(-) to the corresponding pin, see picture of powerboard
 	channel number is written on powerboard
 	Order of the motors ???? See figure 4.10 and follow numbers not letters.
+
+.. CONFIG NUC
+plug in the pixhawk before doing step 4.13.2
+????BCComment before 4.14
+Lot's of pictures to add here.
