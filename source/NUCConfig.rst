@@ -14,6 +14,9 @@ Prerequist
 
 * Download the Brubotics software by following this `README.md <https://github.com/mrs-brubotics/droneswarm_brubotics/blob/master/README.md>`__.
 
+Connection with the Pixhawk
+---------------------------
+
 Once this is done the basic setup of the NUC is done. The steps that will follow next will make that there
 is a clear connection between the NUC and the PixHawk 4, and that the NUC recognises the PixHawk 4
 when it is connected to it. These steps will be based on `this <https://ctu-mrs.github.io/docs/hardware/px4_configuration.html>`__ tutorial written by CTU-MRS.
@@ -91,8 +94,102 @@ If you have no processes that died and a long list of blacklisted and loaded ite
    :alt: alternate text
    :align: center
 
+You have to repeat this procedure for the Arduino's and the RTK GPS module. Always make sure to use the same port when doing this. 
+SSH Configuration
+-----------------
 
-.. .. CONFIG NUC
-.. plug in the pixhawk before doing step 4.13.2
-.. ????BCComment before 4.14
-.. Lot's of pictures to add here.
+Another problem that needs to be solved is what concerns the ssh service of the
+NUC. As a safety measure, this service is disabled each time the NUC reboots so we need to enable
+it again before flying, otherwise it would not be possible to remotely login into the NUC and start the
+shell script for the experiment. When typing ’sudo systemctl status ssh’ and you get the same results
+as in 
+
+.. figure:: _static/SSHCouldnotbefound.png
+   :width: 800
+   :alt: alternate text
+   :align: center
+
+
+You first have to do :
+
+.. code-block:: shell
+
+  sudo apt-get install ssh
+
+If get the same result as the following pictures **after** rebooting completeley the nuc and running the same command, you can skip the next parts as the SSH is already launched automatically.
+
+.. figure:: _static/SShActiveAfterBoot.png
+   :width: 800
+   :alt: alternate text
+   :align: center
+  
+
+But if you get the same result as there : 
+
+.. figure:: _static/SSHExpectedBootProblem.png
+   :width: 800
+   :alt: alternate text
+   :align: center
+
+
+In order to enable the ssh again a monitor, mouse and keyboard is needed and of course it is not very handy to take these outside during experiments. 
+To avoid that you have to follow the steps explained in this section
+
+To address this issue a shell script is created that will start the ssh service automatically when the NUC is turned on. This can be done by following
+the next steps: 
+
+
+
+
+Here is the procedure to follow to correct this : 
+* Follow the steps of How to install SSH server in Ubuntu (only the top parts before step 1) of this
+link.
+* Create a new file using : 
+.. code-block:: shell
+  
+  sudo touch /etc/rc.local
+
+* Go inside this file
+
+.. code-block:: shell
+
+  sudo nano /etc/rc.local
+
+* Paste the following in that file : 
+
+.. code-block:: shell
+  
+  #!/bin/sh
+  sudo systemctl ssh start
+  exit 0
+
+.. note::
+
+  If it doesn't work it may be due to the second line. Change it to "sudo service ssh start".
+
+* Make the script executable by running :
+
+.. code-block:: shell
+
+  sudo chmod +x /etc/rc.local
+
+* Reboot to see if it worked. Now when you open a terminal and type :
+
+.. code-block:: shell
+  
+  sudo systemctl status ssh
+
+You should now get the same result as on the following figure :
+
+
+.. figure:: _static/SShActiveAfterBoot.png
+   :width: 800
+   :alt: alternate text
+   :align: center
+
+
+Connection to the onboard NUCs
+------------------------------
+
+http://192.168.0.1 cannot be accessed with 2.4Ghz network. Must use the 5G but Bryan said its not good.
+Do not touche the settings of ipv4 of your machine when trying to connect to the router. Do modifications in router website.
