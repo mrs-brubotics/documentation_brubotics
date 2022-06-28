@@ -191,5 +191,48 @@ You should now get the same result as on the following figure :
 Connection to the onboard NUCs
 ------------------------------
 
-http://192.168.0.1 cannot be accessed with 2.4Ghz network. Must use the 5G but Bryan said its not good.
-Do not touche the settings of ipv4 of your machine when trying to connect to the router. Do modifications in router website.
+To be able to remotely control the nuc (i.e. ssh into the onboard nuc via the ground station PC thanks to the router)
+
+Connect to internet with the router
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The first essential things is to have internet access when connected to the router via Wifi. 
+To do so, one must follow these steps :
+
+* Plug an Ethernet cable in the router’s Internet port. 
+* Connect your device to the router’s Wi-Fi network. Use the 2.4Gz only as the 5Gz gives problems later on with the GPS. (The password of the wifi is written at the back of the router)
+* Go on the router’s website http://192.168.0.1 (usrname and psw: "admin")
+* Go to Quick Setup, Wireless Router, Static Ip and fill in all required information of your network
+ 
+If you are at VUB, here are the settings you have to put to connect to the network :
+
+.. figure:: _static/RouterIPconfigVUB.png
+   :width: 800
+   :alt: alternate text
+   :align: center
+
+You should now have internet over the router's wifi. If it's not the case check if the ethernet port of the wall is working fine (or just test another one.)
+
+Configure the static IP of each connected device
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Once every PC can access internet on router rename all IP addresses as follows and set Netmask to 255.255.255.0.
+
+* Go to WiFi settings, connect to the routers network
+* select the router network and under Details you find the IPv4 address and the Hardware address corresponds to the MAC address. 
+* To change the IP, you go to the IPv4 tab, set to Manual instead of Automatic, and set the IP address and netmask to the value described above. 
+
+.. figure:: _static/IPv4SettingsCorrectNUC.png
+   :width: 800
+   :alt: alternate text
+   :align: center
+
+Then check via ifconfig if the ip adress is set now correctly:
+
+You can find back the device IP address and MAC address on Ubuntu by typing ifconfig and get as output the inet (IPv4) and the ether (Mac
+address) (make sure you connected to the router network) :
+
+.. figure:: _static/ifconfigCorrectIP.png
+   :width: 800
+   :alt: alternate text
+   :align: center
