@@ -19,7 +19,7 @@ DroneSwarmTutorial
    Simulation_load
    NUCConfig
    RTKSetup
-   Encoder_Validation
    QGroundControl    
    Transmitter-Receiver
    Hardware
+   Encoder_Validation

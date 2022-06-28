@@ -5,22 +5,25 @@ In this part, the steps needed to validate the good working of the encoder will 
 
 Encoders and material needed
 -------------------------------
-Inorder to measure the position of the load attached to the drone, we must use encoders to measure the angle of ball joint. Based on this information, the position in the inertial and word frame can be computed easilly.
+Inorder to measure the position of the load attached to the drone, we must use encoders to measure the angle of ball joint. Based on this information, the position of the payload in the inertial and word frame can be computed easilly (with the other states measured elsewhere of course).
 The encoders are the `EMS22A <https://www.bourns.com/docs/product-datasheets/EMS22A.pdf>`__ and their data is read using 
 an `Arduino Uno <https://benl.rs-online.com/web/p/arduino/7697409?cm_mmc=BE-PLA-DS3A-_-google-_-PLA_BE_NL_Raspberry_Pi_%26_Arduino_%26_Development_Tools_Whoop-_-(BE:Whoop!)+Arduino-_-7697409&matchtype=&pla-341920527054&gclid=Cj0KCQjwgYSTBhDKARIsAB8KukvAlQU51p7JJ5_edjdlsALUf8YW28bD243x1uw75FKns0QKy6QeSckaAlJREALw_wcB&gclsrc=aw.ds>`__
-
-What about the force sensor ? Used or not ?
+These encoders are mounted in some spherical joint, ADD LINK TO CAD ONCE UPLOADED ON DRIVE/GITHUB . (not done yet as some modifications are possible in case issues are noticed during tests)
 
 On the following figure, one can see the correct circuit to reproduce. 
+
+.. figure:: _static/ElectronicCircuit.png
+   :width: 800
+   :alt: alternate text
+   :align: center
+
 
 .. note::
   It is better to use flexible cables to do the circuit as rigid ones might disconnect more easily in case they are pulled a bit.
 
 
-
 Real-time graphs using only matlab
 ----------------------------------
-
 The first step is to plot in real time the data coming from the Arduino using a matlab script (without having to deal with the BACA protocol used for communication with the ROS frame work. This will be the next step).
 
 Prerequist
@@ -42,7 +45,7 @@ Performing the test on matlab
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Once you installed the IDE, you can upload the script you want throught it. 
 The script that must be compiled on the arduino can be found here : *~/workspace/src/droneswarm_brubotics/ros_packages/testing_brubotics/tmux_scripts/Raphael/arduino/EMS22A_encoder/EMS22A_encoder.ino*. 
-You can then click on the "V" to check the syntax, and then on the arrow on the right to upload it. See the following figure:
+You can then click on the "V" to check the syntax (in the IDE), and then on the arrow on the right to upload it. See the following figure:
 
 .. figure:: _static/ArduinoScript.png
    :width: 800
@@ -347,7 +350,9 @@ Explaining the Arduino code
 
 
 The code begin by defining all the variables and the correct pin used to read informations from the two encoders. 
-It will not be commented more as it is a common procedure in Arduino codes.
+It will not be commented more as it is a common procedure in Arduino codes for reading and converting values coming from encoders.
+
+Before trusting the data, one must also add the offset to the calculated values of each encoders. This can be done by measuring the angle when the load is vertical and then use this value as the ofset.
 
 Communication with ROS
 ----------------------
@@ -526,8 +531,8 @@ To enable the communication with ROS, one must change the first line of the code
 
   bool Communication_Matlab = false; //set to true if communicating with Matlab and false to comminicate with ROS
 
-
-
-
-
+This has not been tested more yet, a test will probably be made at VUB asap. I think the folder *https://github.com/mrs-brubotics/testing_brubotics/tree/master/tmux_scripts/load_transportation/1_one_drone_validation_encoder*
+was made for this by last year students, but it is probably already flying. There is probably a way to launch the BACA protocol without having to fly the drone (even with the standard non-damping controller). 
  
+Raphael : Remaining parts to transpose are "4.14.4 Modifying the MRS code", "4.15 Making the drone take off and fly", "4.16 Set up the Nimbro parameters according to MRS" 
+maybe the part about take off and fly is redundant with the Hardware.rst written already in this tutorial. Check before doing it.
