@@ -1,5 +1,7 @@
-MRS code documentation
-======================
+?.? MRS code documentation
+==========================
+
+This is the part I have done without knowing it was not asked, beginning of 2nd semester. Ive kept it in case some usefull part are already there. RB
 
 In this section you'll learn how to install, update, and use the UAV system from CTU Prague.
 

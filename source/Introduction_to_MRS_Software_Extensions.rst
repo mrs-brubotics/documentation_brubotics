@@ -1,5 +1,3 @@
-.. _3. Introduction to MRS Software Extensions:
-
 3. Introduction to MRS Software Extensions
 ==========================================
 

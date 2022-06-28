@@ -1,5 +1,3 @@
-.. _4. Workspace Git configuration:
-
 4. Workspace Git configuration
 ==============================
 

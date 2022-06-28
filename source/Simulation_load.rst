@@ -8,25 +8,23 @@ In this section, you'll learn how to:
 * visualize it using Rviz
 * tweak the simulation parameters according to your needs. 
 
-Creation of a new world with payload and automate it to start with simulation
------------------------------------------------------------------------------
+7.1 Creation of a new world with payload and automate it to start with simulation
+---------------------------------------------------------------------------------
 
 To create a new simulation environment, follow these steps:
 
-* Make a new folder in the directory: "/workspace/src/droneswarm\_brubotics/ros\_packages/testing\_brubotics/tmux\_scripts"
+* Make a new folder in the directory: */workspace/src/droneswarm\_brubotics/ros\_packages/testing\_brubotics/tmux\_scripts*.
 
 * Copy the files ("start.sh", "layout.json" and "session.yml") of an other example (from brubotics or mrs) in your new folder. Take a simulation as close as possible to 
   what you want to achieve (e.g.:one drone gps). 
 
 * Launch your simulation, by opening terminal and typing "./start.sh". 
 
-* If you want to create a new world \bc{see previous chapter on creating new worlds, this "general" explanation belongs there}, copy an existing world file in in the folder 
-  you created in ".../tmux\_scripts" . The location of the standard mrs world files are in following directory:\\  "/git/simulation/ros\_packages/mrs\_gazebo\_common\_resources". For our situation, we started from the standard grass plane. \bc{be more specific about which files you base yourself on for the specific task you have.}\pp{Done}
+* If you want to create a new world, copy an existing world file in in the folder 
+  you created in *.../tmux\_scripts* . The location of the standard mrs world files are in following directory: */git/simulation/ros\_packages/mrs\_gazebo\_common\_resources*. For our situation, we started from the standard grass plane. 
 
-* Adapt your file by adding models, e.g. boxes or trees. We added a box that will be used as payload. Find exemples of codes to implement this models in other .world files or 
-  the internet. \bc{no no need list this code if you do not talk about specific parts in the code. Better to insert a link to this file on our github. Try to explain which parameters 
-  are important to set for your purpose. Now it is again "quite generic". It does not directly explain the specifics, although they might be in the code.}\pp{Done, not pushed yet so 
-  we still have to add link}
+* Adapt your file by adding models, e.g. boxes or trees. We added a box that will be used as payload. Find exemples of codes to implement this models in other .world files on 
+  the internet, or follow the example presented in next section. 
 
 * Change "world\_name:=grass\_plane" in the following lines in the "Session.yml" file:
 
@@ -36,7 +34,11 @@ To create a new simulation environment, follow these steps:
     layout: tiled
     panes:
     - waitForRos; roslaunch mrs_simulation simulation.launch world_name:=grass_plane gui:=true
-    to (adapt text in LARGE LETTERING)
+
+with these lines :
+  
+.. code-block:: xml
+
   - gazebo:
     layout: tiled
     panes:
@@ -44,12 +46,12 @@ To create a new simulation environment, follow these steps:
 
 
 
-Link_attacher
--------------
+7.2 Link_attacher
+-----------------
 
-Installation
-^^^^^^^^^^^^
-The required package is normally installed directly with the dronesware brubotics installation. Check in ~/workspace/src/ if mrs_gazebo_extras_resources is present or not.
+7.2.1 Installation
+^^^^^^^^^^^^^^^^^^
+The required package is normally installed directly with the dronesware brubotics installation. Check in *~/workspace/src/* if mrs_gazebo_extras_resources is present or not.
 If it's there, skip the first step (cloning) and only do the next step (.worlf file modification).
 
 To be able to attach a load to your drone, follow next steps:
@@ -73,8 +75,9 @@ To be able to attach a load to your drone, follow next steps:
 
   <plugin name="mrs_gazebo_link_attacher_plugin" filename="libMRSGazeboLinkAttacherPlugin.so"/>
 
-Creation of a link
-^^^^^^^^^^^^^^^^^^
+7.2.2 Creation of a link
+^^^^^^^^^^^^^^^^^^^^^^^^
+
 Now you can use the link attacher plugin in your
 simulation. To be able to use the plugin, there must be an object in your .world file to attach to your
 drone (a box for example):
@@ -109,7 +112,7 @@ drone (a box for example):
       </link>
   </robot>
 
-Then create another file called "box.launch" and copy paste the following code inside (if you've chosen to extend the .world file, you can skip this part, see next section):
+Then create another file called "box.launch" and copy paste the following code inside (if you've chosen to extend the .world file, you can skip this part):
 
 .. code-block:: xml 
 
@@ -166,7 +169,7 @@ fixed.
 In our situation we want a ball joint (spherical joint), to approach a cable on a hinge
 
 6. Now you can move your drone up to see your payload take off. Try moving your drone sideways,
-you will see the payload is not implemented yet in the control and will oscillate.
+you will see the payload is not implemented yet in the controller and there will be oscillations.
 
 Here is what you should see in your simulation :
 
@@ -176,15 +179,15 @@ Here is what you should see in your simulation :
    :align: center
 
 
-Model your payload with an URDF file
-------------------------------------
+7.3 Model your payload with an URDF file
+----------------------------------------
 
 Instead of spawning the box in the world file as done previously, it is possible to make an urdf file of the
 payload. This has the advantage that you can define more comlex connections of multiple objects and
 add joints between elements.
 
-Create urdf file
-^^^^^^^^^^^^^^^^
+7.3.1 Create urdf file
+^^^^^^^^^^^^^^^^^^^^^^
 
 Open a blank file and save it as MODELNAME.urdf, for the MODELNAME
 you can choose what you want. Place the urdf file in an existing package or make a new package. To reproduce the steps and learn correctly, 
@@ -226,10 +229,10 @@ and visual. Again you can name them how you want. The sub modules can be modifie
 and visual do not have to be the same. More info can be found on http://wiki.ros.org/urdf/XML/link.
 Finally, close the robot description with </robot>.
 
-Create a launch file
-^^^^^^^^^^^^^^^^^^^^
+7.3.2 Create a launch file
+^^^^^^^^^^^^^^^^^^^^^^^^^^
 Now that you have created the urdf file, it needs to be executed. Therefore we use a launch file. Again
-open a blank file and save it as NAME.launch, with "NAME" that can be what you want.Place
+open a blank file and save it as NAME.launch, with "NAME" that can be what you want. Place
 it in the folder with all the other documents you created in testing_brubotics/load_transportation. Below an example of a launch file 
 is shown, you can copy paste this code inyour launch file.
 
@@ -264,6 +267,7 @@ to your NAME.launch file).
 
   roslaunch testing_brubotics NAME.launch
 
+
  You should see a box spawn like on the following figure::
 
 .. figure:: _static/urdf_install.png
@@ -271,8 +275,8 @@ to your NAME.launch file).
   :alt: alternate text
   :align: center
 
-Automate this using tmux
-^^^^^^^^^^^^^^^^^^^^^^^^
+7.3.3 Automate this using tmux
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Instead of opening a new terminal it is possible to do it with the rest
 of the simulation. Open for that your session.yml file in your directory. Add the lines that are indicated
@@ -287,8 +291,8 @@ lines added will execute the launch file.
       panes:
         - waitForSimulation; roslaunch testing_brubotics NAME.launch
 
-Model your payload with an XACRO file
--------------------------------------
+7.4 Model your payload with an XACRO file
+-----------------------------------------
 The advantage with using xacro files is that we can use macros. This means that instead of defining each
 link in the urdf file we can make a macro. A macro acts line a function were we give variables and this
 makes a link. This means that we use 2 xacro files, one where the "functions" are defined and one were
@@ -434,15 +438,14 @@ This will only work on Ubuntu 18/Ros Melodic. If you are using ROS Noetic on Ubu
 
 Starting from now all codes will be shown as this, to work on both Melodic and Noetic.
 
-Using RVIZ
-----------
+7.5 Using RVIZ
+--------------
 
 To make the correct model in the xacro file it can be long to launch everytime the gazebo simulation. A
 quicker and better way is to use RVIZ for this instance. When using RVIZ the physics are not loaded like
 in gazebo so it is way quicker to see the changes and how the joints are acting. For this you will have to
 make a new launch file. To keep it simple name it RVIZ.launch but is can be whatever you want. Copy
-paste the code from below (change the PATH and MODELNAME) and save the file. TIP: Copy paste it
-from the source code of overleaf.
+paste the code from below (change the PATH and MODELNAME) and save the file.
 
 .. code-block:: xml
 
@@ -465,7 +468,7 @@ from the source code of overleaf.
 
 To modify the joint values and see how they change you will have to download a package. Copy paste
 the following command in your terminal. Make sure to replace <your_ros_version> with the code name
-of the ROS version you are using. So for Melodic, replace it with melodic! This should download the
+of the ROS version you are using. So for Noetic, replace it with noetic! This should download the
 missing package.(Normally already installed with the Droneswarm Brubotics installation.)
 
 .. code-block:: shell
@@ -488,7 +491,7 @@ This is the result you should see.
    :align: center
 
 There is still nothing shown, this is because of the error. In the fixed
-frame you need to change the "map" [you should put your window in full screen] AD to the base you want
+frame you need to change the "map" to the base you want
 to use instead. This link will be considered the ground of your model. Take for this the "base_link" of
 your model. 
 
@@ -523,11 +526,11 @@ the document and when launching again all the settings should be correct.
   <!-- Show in Rviz -->
   <node name="rviz" pkg="rviz" type="rviz" args="-d $(find testing_brubotics)/PATH/config.rviz" />
 
-Example: Creation of a bar with two cables
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-[I would sugges to follow the youtube video instead of this example, as the expected results are easier to see on a video than in such file.]
+7.5.1 Example: Creation of a bar with two cables
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.. [I would sugges to follow the youtube video instead of this example, as the expected results are easier to see on a video than in such file.]
 
-he implementation of the following example is based on `this github code <https://github.com/massimilianop/collaborative_load_lifting/blob/master/urdf/cables_and_payload.xacro>`__. We use
+The implementation of the following example is based on `this github code <https://github.com/massimilianop/collaborative_load_lifting/blob/master/urdf/cables_and_payload.xacro>`__. We use
 this approach in order to create the joints. As it is not possible to create ball joints using xacro files, this
 approach simulates ball joints by overlapping two continuous joints (one allowing a rotation around the
 x-axis and one around the y-axis). This example is given to demonstrate the choice of reference in the
@@ -599,18 +602,18 @@ xacro file. The following code was written to create the system
               izz="0.01"
               radius="0.01" length="0.5" />
 
-Explanation of code:
-""""""""""""""""""""
+7.5.1.1 Explanation of code:
+""""""""""""""""""""""""""""
 
 1. The "link_00_name" represents the bar on the ground. The position of the box can be changed
 with "origin_xyz", this represents the center of mass of the object.
-2. For joints, "origin_xyz" represents the position of the joint relative to the previous joint. If it is the
+2. For every joints, "origin_xyz" represents the position of the joint relative to the previous joint. If it is the
 first joint (as for "${link_00_name}__${link_01_name}__x"), it is relative to (0,0,0).
-3. [make sure the text fits on the page]BCFor every link that is added, the "origin_xyz" will represent
+3. For every link that is added, the "origin_xyz" will represent
 the center of mass of the object relative to the previous joint. For example, "link_03_name" is
 defined relative to "${link_00_name}__${link_03_name}__x"
-4. Something that cannot be done in xacro files are ball joints. A solution for thi si represented in
-this example. To joints are placed in the same position to realise a rotation around both the x- and
+4. Something that cannot be done in xacro files are ball joints. A solution for this is represented in
+the example above. Two joints are placed in the same position to realise a rotation around both the x- and
 y-axis.
 
 To see this model, reproduce the procedure to launch it in RVIZ (see above section). If everything is working fine, you should see this:
@@ -620,8 +623,8 @@ To see this model, reproduce the procedure to launch it in RVIZ (see above secti
    :alt: alternate text
    :align: center
 
-Chaning drone initial position
-------------------------------
+7.6 Chaning drone initial position
+----------------------------------
 
 Instead of spawning the drone in the default position, you can choose where you want to spawn it. In
 order to change the initial position, you will have to create a .csv file in which you specify the position at
@@ -664,16 +667,18 @@ Which means :
 4. To change the position of multiple drones, you will have to create a .csv for each drone (don't forget
    to change the id, depending on the drone) and follow the steps above to integrate it in the session.yml file.
 
-Making a connection between load and drone after takeoff
---------------------------------------------------------
-Sometimes weird behavior of the system can be observed if the connection between the drone and the
-payload is done before takeoff. Before solving this problem, another problem has to be tackled. When
-performing the simulations, there is always an offset between the desired position of the drone and its
-actual position. This is because we use a regular GPS. This will result in a connection that is not perfectly
+7.7 Making a connection between load and drone after takeoff
+------------------------------------------------------------
+
+.. Sometimes weird behavior of the system can be observed if the connection between the drone and the
+.. payload is done before takeoff. Before solving this problem, 
+
+Another problem has to be tackled before attaching a drone and a payload precisely togheter. When performing the simulations, there is always an offset between the desired 
+position of the drone and its actual position. This is because we use a regular GPS. This will result in a connection that is not perfectly
 in the COM of the drone when doing the connection after takeoff. A solution is to change to a `RTK GPS <https://en.wikipedia.org/wiki/Real-time_kinematic_positioning>`__.
 
-Use a RTK GPS
-^^^^^^^^^^^^^
+7.7.1 Use a RTK GPS
+^^^^^^^^^^^^^^^^^^^
 
 To switch to a RTK GPS, two things must be done:
 
@@ -691,8 +696,8 @@ To switch to a RTK GPS, two things must be done:
       export ODOMETRY\_TYPE="rtk"
 
 
-Change in code to perform connection after takeoff
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+7.7.2 Change in code to perform connection after takeoff
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 To perform the connection after takeoff, the drone must follow a couple of steps:
 
@@ -705,8 +710,25 @@ To perform the connection after takeoff, the drone must follow a couple of steps
 
 This results in a change of lines 77 to 89 in Session.yml in this `Github file <https://github.com/mrs-brubotics/testing_brubotics/blob/master/tmux_scripts/load_transportation/6_one_drone_SE3controllerBrubotics_Robustness_mv1/session.yml>`__.
 
-Change tracker after take-off and take-off height
--------------------------------------------------
+.. code-block:: xml
+
+    - load:
+      layout: tiled
+      panes:
+        - waitForControl;
+          sleep 25;
+          rosservice call /uav1/control_manager/goto '[-5.0, -5.0, 1.2, 0.0]';
+          sleep 15;
+          rosservice call gazebo/pause_physics;
+          roslaunch testing_brubotics payload_6.launch;
+          sleep 2
+          rosservice call /link_attacher_node/attach_typed 'uav1' 'base_link' 'bar' 'link_04' 'fixed';
+          sleep 2;
+          rosservice call gazebo/unpause_physics
+
+
+7.8 Change tracker after take-off and take-off height
+-----------------------------------------------------
 
 Since the collision properties have to be deactivated in order to get two drone closer than 3m to each
 other, the tracker has to be changed after take-off. To do so, a custom_configs has to be created inside
@@ -734,10 +756,11 @@ inside the session.yml:
   - waitForOdometry; roslaunch mrs_uav_general core.launch DEBUG:=false
     config_uav_manager:=./custom_configs/uav_manager.yam
 
-Change UAV mass
----------------
+7.9 Change UAV mass
+-------------------
 
 In order to simulate with a hardware UAV mass (2.40 kg for f450, TODO??kg for t650) some manual changes are required in the mrs_uav_system (explained for the f450):
+If this step is not done correctly, the feedforward action of the controller will create a steady state error in the z direction (i.e the drone will be higher than expected if the mass in the controller is smaller than the real one). 
 
 * Open *~/mrs_workspace/src/simulation/ros_packages/mrs_simulation/models/mrs_robots_description/urdf/f450.xacro* and adjust the mass: *<xacro:property name="mass" value="${2.40-0.005*4.0-0.015-0.00001}" /> <!-- [kg] 2.40-->* . This ensures that Gazebo simulates a UAV 
   model with the hardware mass. Note that the xacro has slight offset from 2.4kg since afterwards some small masses (of motors, sensors) are added to the uav so we subtract them before they are added.

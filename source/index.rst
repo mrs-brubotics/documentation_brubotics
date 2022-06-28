@@ -14,13 +14,12 @@ DroneSwarmTutorial
    Introduction_to_visualization
    Crazyswarm
    Version_control_with_Github
-   Hardware
    Information_for_developers
    Information for internal collaborators
    Simulation_load
-   Encoder_Validation    
    NUCConfig
-   QGroundControl
    RTKSetup
+   Encoder_Validation
+   QGroundControl    
    Transmitter-Receiver
-   MRS_code_Documentation
+   Hardware

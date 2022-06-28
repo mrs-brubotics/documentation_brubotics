@@ -1,5 +1,3 @@
-.. _?. Information for Internal Collaborators:
-
 ?. Information for Internal Collaborators
 ==========================================
 
