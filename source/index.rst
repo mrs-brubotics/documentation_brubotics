@@ -19,7 +19,9 @@ DroneSwarmTutorial
    Simulation_load
    NUCConfig
    RTKSetup
+   building the drone
    QGroundControl    
    Transmitter-Receiver
+   connecting the NUC on the drone
    Hardware
    Encoder_Validation

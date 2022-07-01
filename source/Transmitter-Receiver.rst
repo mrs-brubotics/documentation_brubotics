@@ -1,4 +1,4 @@
-?.? Binding the RC transmitter and the receiver
+15 Binding the RC transmitter and the receiver
 ===============================================
 
 In this section, you'll learn how to bind the receiver (Hitec Optima SL) and the transmitter (Hitec Flash 8).

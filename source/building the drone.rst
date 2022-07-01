@@ -1,8 +1,8 @@
-?.? Building the drone
+13 Building the drone
 ======================
 In this chapter you will learn how to build the drone from its different components.
 
-Components
+13.1 Components
 ----------
 In this section, you will learn the components needed to build the drone :
 
@@ -138,7 +138,7 @@ Choice : Emlid Reach M2 UAV Mapping Kit
    :align: center
 
 
-3D printed parts
+13.2 3D printed parts
 ----------------
 
 In this section, you will learn the 3D printed parts needed and their use. They are accessible here (TO DO).
@@ -226,7 +226,7 @@ The drone totally assembled looks like this :
 CAD of the drone.
 
 
-Building
+13.3 Building
 --------
 
 In this section you will learn how to fix the components on the drone and how to solder/connect every cable.

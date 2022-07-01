@@ -1,4 +1,4 @@
-?.? Setting up QGroundControl
+14 Setting up QGroundControl
 ===============================================
 
 In this section, you'll learn how to set up the software in order to :
@@ -9,7 +9,7 @@ In this section, you'll learn how to set up the software in order to :
 
 * Configure the safety modes 
 
-Installation
+14.1 Installation
 ------------
 
 before doing all of this, you should first setup the SD card of the pixhawk otherwise the communication between the pixhawk and NUC will not be done 
@@ -28,7 +28,7 @@ As a note: the etc folder does not get removed when flashing new firmware.
   It is important that, as explained in the video, you install the ubuntu.sh such that you have everything. Also, when you have already build (make)
   beforehand, delete the build folder as it might give problemes if the previous one was not build well. Always to this when rebuilding.
 
-Calibrations
+14.2 Calibrations
 ------------
 
 * in QGroundControl, select vehicle setup, custom firmware file and select in the build folder the .px4 file. 
@@ -102,7 +102,7 @@ Calibrations
    :align: center
 
 
-Safety setup
+14.3 Safety setup
 ------------
 
 In "Safety" section, configure the following failsafe actions : 

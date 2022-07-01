@@ -1,11 +1,11 @@
-Connecting the NUC on the drone
+16 Connecting the NUC on the drone
 ===================================
 
 In this part of the tutorial, you'll learn how to :
 * Power the NUC through the battery
 * Link the NUC and the Pixhawk
 
-Power the NUC through the battery :
+16.1 Power the NUC through the battery :
 -----------------------------------
 
 Normally, the NUC is supplied by a 19V battery through its charger. In reality it can work fine with a voltage going from 12-19V DC.
@@ -52,7 +52,7 @@ Once it's done, put the buck converter in its case on the drone (TO BE DONE !!! 
 Connect the 11116 plug to the NUC when you need to alimentate it.
 The remaining output of the XT60 splitter is used to alimentate the power distribution board.
 
-Link the NUC and the Pixhawk :
+16.2 Link the NUC and the Pixhawk :
 ------------------------------ 
 
 To exchange data between the NUC and the Pixhawk, the connection between them will be done via one of the USB ports of the NUC, through a FTDI board.
