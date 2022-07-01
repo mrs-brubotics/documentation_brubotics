@@ -1,4 +1,4 @@
-9. Config RTK
+12. Config RTK
 =============
 What we did not modified :
   Github issue : https://github.com/ctu-mrs/mrs_uav_system/issues/77 we let gga to 1hz instead of 10 as explained in the issue.

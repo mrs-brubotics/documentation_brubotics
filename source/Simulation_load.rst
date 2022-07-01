@@ -1,4 +1,4 @@
-7. Adding a payload in an existing simulation
+10. Adding a payload in an existing simulation
 =============================================
 
 In this section, you'll learn how to:
@@ -8,7 +8,7 @@ In this section, you'll learn how to:
 * visualize it using Rviz
 * tweak the simulation parameters according to your needs. 
 
-7.1 Creation of a new world with payload and automate it to start with simulation
+10.1 Creation of a new world with payload and automate it to start with simulation
 ---------------------------------------------------------------------------------
 
 To create a new simulation environment, follow these steps:
@@ -46,10 +46,10 @@ with these lines :
 
 
 
-7.2 Link_attacher
+10.2 Link_attacher
 -----------------
 
-7.2.1 Installation
+10.2.1 Installation
 ^^^^^^^^^^^^^^^^^^
 The required package is normally installed directly with the dronesware brubotics installation. Check in *~/workspace/src/* if mrs_gazebo_extras_resources is present or not.
 If it's there, skip the first step (cloning) and only do the next step (.worlf file modification).
@@ -75,7 +75,7 @@ To be able to attach a load to your drone, follow next steps:
 
   <plugin name="mrs_gazebo_link_attacher_plugin" filename="libMRSGazeboLinkAttacherPlugin.so"/>
 
-7.2.2 Creation of a link
+10.2.2 Creation of a link
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
 Now you can use the link attacher plugin in your
@@ -179,14 +179,14 @@ Here is what you should see in your simulation :
    :align: center
 
 
-7.3 Model your payload with an URDF file
+10.3 Model your payload with an URDF file
 ----------------------------------------
 
 Instead of spawning the box in the world file as done previously, it is possible to make an urdf file of the
 payload. This has the advantage that you can define more comlex connections of multiple objects and
 add joints between elements.
 
-7.3.1 Create urdf file
+10.3.1 Create urdf file
 ^^^^^^^^^^^^^^^^^^^^^^
 
 Open a blank file and save it as MODELNAME.urdf, for the MODELNAME
@@ -229,7 +229,7 @@ and visual. Again you can name them how you want. The sub modules can be modifie
 and visual do not have to be the same. More info can be found on http://wiki.ros.org/urdf/XML/link.
 Finally, close the robot description with </robot>.
 
-7.3.2 Create a launch file
+10.3.2 Create a launch file
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 Now that you have created the urdf file, it needs to be executed. Therefore we use a launch file. Again
 open a blank file and save it as NAME.launch, with "NAME" that can be what you want. Place
@@ -275,7 +275,7 @@ to your NAME.launch file).
   :alt: alternate text
   :align: center
 
-7.3.3 Automate this using tmux
+10.3.3 Automate this using tmux
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Instead of opening a new terminal it is possible to do it with the rest
@@ -291,7 +291,7 @@ lines added will execute the launch file.
       panes:
         - waitForSimulation; roslaunch testing_brubotics NAME.launch
 
-7.4 Model your payload with an XACRO file
+10.4 Model your payload with an XACRO file
 -----------------------------------------
 The advantage with using xacro files is that we can use macros. This means that instead of defining each
 link in the urdf file we can make a macro. A macro acts line a function were we give variables and this
@@ -438,7 +438,7 @@ This will only work on Ubuntu 18/Ros Melodic. If you are using ROS Noetic on Ubu
 
 Starting from now all codes will be shown as this, to work on both Melodic and Noetic.
 
-7.5 Using RVIZ
+10.5 Using RVIZ
 --------------
 
 To make the correct model in the xacro file it can be long to launch everytime the gazebo simulation. A
@@ -526,7 +526,7 @@ the document and when launching again all the settings should be correct.
   <!-- Show in Rviz -->
   <node name="rviz" pkg="rviz" type="rviz" args="-d $(find testing_brubotics)/PATH/config.rviz" />
 
-7.5.1 Example: Creation of a bar with two cables
+10.5.1 Example: Creation of a bar with two cables
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 .. [I would sugges to follow the youtube video instead of this example, as the expected results are easier to see on a video than in such file.]
 
@@ -602,7 +602,7 @@ xacro file. The following code was written to create the system
               izz="0.01"
               radius="0.01" length="0.5" />
 
-7.5.1.1 Explanation of code:
+10.5.1.1 Explanation of code:
 """"""""""""""""""""""""""""
 
 1. The "link_00_name" represents the bar on the ground. The position of the box can be changed
@@ -623,7 +623,7 @@ To see this model, reproduce the procedure to launch it in RVIZ (see above secti
    :alt: alternate text
    :align: center
 
-7.6 Chaning drone initial position
+10.6 Chaning drone initial position
 ----------------------------------
 
 Instead of spawning the drone in the default position, you can choose where you want to spawn it. In
@@ -667,7 +667,7 @@ Which means :
 4. To change the position of multiple drones, you will have to create a .csv for each drone (don't forget
    to change the id, depending on the drone) and follow the steps above to integrate it in the session.yml file.
 
-7.7 Making a connection between load and drone after takeoff
+10.7 Making a connection between load and drone after takeoff
 ------------------------------------------------------------
 
 .. Sometimes weird behavior of the system can be observed if the connection between the drone and the
@@ -677,7 +677,7 @@ Another problem has to be tackled before attaching a drone and a payload precise
 position of the drone and its actual position. This is because we use a regular GPS. This will result in a connection that is not perfectly
 in the COM of the drone when doing the connection after takeoff. A solution is to change to a `RTK GPS <https://en.wikipedia.org/wiki/Real-time_kinematic_positioning>`__.
 
-7.7.1 Use a RTK GPS
+10.7.1 Use a RTK GPS
 ^^^^^^^^^^^^^^^^^^^
 
 To switch to a RTK GPS, two things must be done:
@@ -696,7 +696,7 @@ To switch to a RTK GPS, two things must be done:
       export ODOMETRY\_TYPE="rtk"
 
 
-7.7.2 Change in code to perform connection after takeoff
+10.7.2 Change in code to perform connection after takeoff
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 To perform the connection after takeoff, the drone must follow a couple of steps:
@@ -727,7 +727,7 @@ This results in a change of lines 77 to 89 in Session.yml in this `Github file <
           rosservice call gazebo/unpause_physics
 
 
-7.8 Change tracker after take-off and take-off height
+10.8 Change tracker after take-off and take-off height
 -----------------------------------------------------
 
 Since the collision properties have to be deactivated in order to get two drone closer than 3m to each
@@ -756,7 +756,7 @@ inside the session.yml:
   - waitForOdometry; roslaunch mrs_uav_general core.launch DEBUG:=false
     config_uav_manager:=./custom_configs/uav_manager.yam
 
-7.9 Change UAV mass
+10.9 Change UAV mass
 -------------------
 
 In order to simulate with a hardware UAV mass (2.40 kg for f450, TODO??kg for t650) some manual changes are required in the mrs_uav_system (explained for the f450):

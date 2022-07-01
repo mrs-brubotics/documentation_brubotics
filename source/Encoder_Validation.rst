@@ -1,9 +1,9 @@
-?.? Validation of the encoder
+18 Validation of the encoder
 =============================
 
 In this part, the steps needed to validate the good working of the encoder will be explained.
 
-Encoders and material needed
+18.1 Encoders and material needed
 -------------------------------
 Inorder to measure the position of the load attached to the drone, we must use encoders to measure the angle of ball joint. Based on this information, the position of the payload in the inertial and word frame can be computed easilly (with the other states measured elsewhere of course).
 The encoders are the `EMS22A <https://www.bourns.com/docs/product-datasheets/EMS22A.pdf>`__ and their data is read using 
@@ -22,11 +22,11 @@ On the following figure, one can see the correct circuit to reproduce.
   It is better to use flexible cables to do the circuit as rigid ones might disconnect more easily in case they are pulled a bit.
 
 
-Real-time graphs using only matlab
+18.2 Real-time graphs using only matlab
 ----------------------------------
 The first step is to plot in real time the data coming from the Arduino using a matlab script (without having to deal with the BACA protocol used for communication with the ROS frame work. This will be the next step).
 
-Prerequist
+18.2.1 Prerequist
 ^^^^^^^^^^
 
 To do so, you need to install the Arduino IDE following `this <https://docs.arduino.cc/software/ide-v1/tutorials/Linux>`__ link.
@@ -41,7 +41,7 @@ If the error keeps popping, it might be that the script cannot create the Arduin
 Then go back to the installation folder and reexecute the installation script. 
 Now you should find the Arduino shortcut in the Applications of Ubuntu.
 
-Performing the test on matlab
+18.2.2 Performing the test on matlab
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Once you installed the IDE, you can upload the script you want throught it. 
 The script that must be compiled on the arduino can be found here : *~/workspace/src/droneswarm_brubotics/ros_packages/testing_brubotics/tmux_scripts/Raphael/arduino/EMS22A_encoder/EMS22A_encoder.ino*. 
@@ -75,7 +75,7 @@ Here is an example of the kind of graph that you might be able to generate with 
    :alt: alternate text
    :align: center
 
-Explaining the Arduino code 
+18.2.3 Explaining the Arduino code 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: arduino 
@@ -354,10 +354,10 @@ It will not be commented more as it is a common procedure in Arduino codes for r
 
 Before trusting the data, one must also add the offset to the calculated values of each encoders. This can be done by measuring the angle when the load is vertical and then use this value as the ofset.
 
-Communication with ROS
+18.3 Communication with ROS
 ----------------------
 
-Configure the NUC to recognize the Arduino port
+18.3.1 Configure the NUC to recognize the Arduino port
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 To be sure that the Arduino is recognized by the NUC everytime it is plugged in, one must do the following steps :
 
@@ -464,7 +464,7 @@ It is then possible to do roslaunch and subscribe to the topic in a new terminal
 
 This can, as usual be automated in a session.yml file.
 
-BACA Protocol in Arduino code
+18.3.2 BACA Protocol in Arduino code
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 To use the encoder among the ROS framework, one has to use the `BACA protocol <https://github.com/ctu-mrs/mrs_serial>`__ to send the relevant data via the USB port of the arduino, to the NUC.

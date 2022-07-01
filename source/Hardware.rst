@@ -1,11 +1,11 @@
-?. Hardware
+17. Hardware
 ============
 
-?.? Introduction
+17.1 Introduction
 -----------------
 
 
-?.? Step-by-step Procedure for Preparations Prior to Autonomous Field Experiments
+17.2 Step-by-step Procedure for Preparations Prior to Autonomous Field Experiments
 ----------------------------------------------------------------------------------
     * Prepare the simulations.
     * Prepare the scripts for the real hardware tests.
@@ -15,11 +15,11 @@
 
 
 
-?.? Step-by-step Procedure Autonomous Field Experiments
+17.3 Step-by-step Procedure Autonomous Field Experiments
 --------------------------------------------------------
 
 
-?.?.? RTK Field setup
+17.3.1 RTK Field setup
 ---------------------
   * Connect the ground station computer to the WiFi of the router.
   * Setup the base at the desired location and make sure it is perfectly leveled.
@@ -39,7 +39,7 @@
   * In the above process you only need to repeat the steps concerning the rover (not the base if it is not powered off) each time you plug out the drone's batteries.
   
   
-?.?.? Run an Experiment
+17.3.2 Run an Experiment
 -----------------------
   * At each new test moment, follow the steps below but first always run the basic examples i.e. just_flying_rtk.sh and the last script you tested before.
   * From the ground station computer ssh on the on-board computer (i.e. ssh nuc5@<hostname or ip>).

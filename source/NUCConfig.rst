@@ -1,11 +1,11 @@
-8. Configuration of the NUC for autonomous flight
+11. Configuration of the NUC for autonomous flight
 =================================================
 
 The assumption in this section is that the NUC is brand new, in order to make the explanation easier. If
 it is already used it is not that big of a problem but make sure you have enough space available on the
 SSD of the NUC.
 
-8.1 Prerequist
+11.1 Prerequist
 --------------
 
 * The first thing to do is to download Ubuntu 20.04 on your NUC. This can be easily done with a bootable USB. For more details we refer to the \href{https://ubuntu.com/tutorials/install-ubuntu-desktop#1-overview}{tutorial} written by Ubuntu;
@@ -17,7 +17,7 @@ SSD of the NUC.
 Before proceeding make sure you are able to run scripts from CTU workspace (e.g. *~/mrs_workspace/src/simulation/example_tmux_scripts/one_drone_pendulum*) and the brubotics workspace (*~/workspace/src/droneswarm_brubotics/ros_packages/testing_brubotics/tmux_scripts/Raphael/0_One_Drone_f450_BruboticsDampingController*)
  
 
-8.2 Connection with the Pixhawk
+11.2 Connection with the Pixhawk
 -------------------------------
 
 Once this is done the basic setup of the NUC is done. The steps that will follow next will make that there
@@ -112,7 +112,7 @@ On the NUC3 the file will looks like :
   SUBSYSTEM=="tty", ATTRS{idVendor}=="2341", ATTRS{idProduct}=="0043", ATTRS{serial}=="7593231393835130E061", SYMLINK+="arduino",OWNER="vub",MODE="0666"
 
 
-8.3 SSH Configuration
+11.3 SSH Configuration
 ---------------------
 
 Another problem that needs to be solved is what concerns the ssh service of the
@@ -200,12 +200,12 @@ You should now get the same result as on the following figure :
    :align: center
 
 
-8.4 Connection to the onboard NUCs
+11.4 Connection to the onboard NUCs
 ----------------------------------
 
 To be able to remotely control the nuc by SSH into it from a base computer, one needs to configure a wifi router.
 
-8.4.1 Connect to internet with the router
+11.4.1 Connect to internet with the router
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The first essential things is to have internet access when connected to the router via Wifi. 
@@ -227,7 +227,7 @@ If you are at VUB, here are the settings you have to put to connect to the netwo
 
 You should now have internet over the router's wifi with your NUC. If it's not the case check if the ethernet port of the wall is working fine (or just test another one.)
 
-8.4.2 Configure the static IP of each connected device
+11.4.2 Configure the static IP of each connected device
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Once every PC can access internet on router rename all IP addresses as follows and set Netmask to 255.255.255.0.
