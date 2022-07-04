@@ -403,6 +403,11 @@ In this section you will learn how to fix all the components on their (custom-ma
 
 **Steps**
 
+.. admonition:: todo
+
+   When building the second drone you need to add the steps of "Connecting the NUC on the drone" in this section in a logical order. 
+   This should not be a seperate section as you need to explain the build procedure of how to build the autonomous drone (as you design is made for that one).
+
 1. Mount the frame as explained `in this tutorial <https://www.youtube.com/watch?v=Ddvgs200OaY&ab_channel=MultiCopterBuild>`__. You only need to attach the arms to the body and you can skip the assembly of the legs and the top part.
 
 2. Drill the holes of all the 3D printed pieces. Use a drill bit of size 2.5mm for every hole **NOT** directly touching the frame. For the holes used to fix the parts on the frame itself, use a 3mm drill bit.
@@ -710,8 +715,8 @@ Off-the-shelf
 
      add a note if required
 
-* **Part2**: 
-do same
+* **Part2**: do same here
+  do same here
 
 * **Other**: 
 
@@ -799,7 +804,7 @@ We 3D print all these pieces with 20% infill:
      Battery case
 
 Step-by-step assembly instructions
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 In this section you will learn how to fix all the components on their (custom-made) piece, assemble everything, and solder/connect every cable/connector to electronic components.
 

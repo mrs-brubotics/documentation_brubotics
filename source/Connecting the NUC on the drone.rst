@@ -46,14 +46,14 @@ Now follow these steps :
 * Plug the XT60 connector to the battery and measure the output voltage at the output ports of the buck converter with the voltmeter.
 * Change the output voltage to reach 18.5V-19V more or less (by help of the potentiometer).
 
-//PICTURE ENDING CIRCUIT//
+TODO PICTURE ENDING CIRCUIT
 
 Once it's done, put the buck converter in its case on the drone (TO BE DONE !!! + picture), connect the battery to the XT60 splitter and use one of it's output to connect the XT60 plug from the buck circuit.
 Connect the 11116 plug to the NUC when you need to alimentate it.
 The remaining output of the XT60 splitter is used to alimentate the power distribution board.
 
 16.2 Link the NUC and the Pixhawk :
------------------------------- 
+------------------------------------- 
 
 To exchange data between the NUC and the Pixhawk, the connection between them will be done via one of the USB ports of the NUC, through a FTDI board.
 To realize the connection, you'll need : 
