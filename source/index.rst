@@ -6,7 +6,8 @@ DroneSwarmTutorial
 .. toctree::
    :maxdepth: 5
    :caption: Contents:
-
+   
+   building the drone
    Introduction
    Prerequisites
    Introduction_to_MRS_Software_Extensions
@@ -19,7 +20,6 @@ DroneSwarmTutorial
    Simulation_load
    NUCConfig
    RTKSetup
-   building the drone
    QGroundControl    
    Transmitter-Receiver
    connecting the NUC on the drone
