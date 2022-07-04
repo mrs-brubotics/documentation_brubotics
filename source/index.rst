@@ -7,7 +7,7 @@ DroneSwarmTutorial
    :maxdepth: 5
    :caption: Contents:
    
-   building the drone
+   Building the UAVs
    Introduction
    Prerequisites
    Introduction_to_MRS_Software_Extensions
