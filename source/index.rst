@@ -7,7 +7,12 @@ DroneSwarmTutorial
    :maxdepth: 5
    :caption: Contents:
    
-   Building the UAVs
+   Building the Hardware
+   Configuration for Manual Flight 
+   Pre-flight UAV Setup
+   Transmitter-Receiver
+   QGroundControl 
+   connecting the NUC on the drone
    Introduction
    Prerequisites
    Introduction_to_MRS_Software_Extensions
@@ -20,8 +25,5 @@ DroneSwarmTutorial
    Simulation_load
    NUCConfig
    RTKSetup
-   QGroundControl    
-   Transmitter-Receiver
-   connecting the NUC on the drone
    Hardware
    Encoder_Validation
