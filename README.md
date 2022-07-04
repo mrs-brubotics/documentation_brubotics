@@ -24,6 +24,11 @@ This repo is automatically cloned when you install droneswarm_brubotics.
   python3 -m pip install sphinx_rtd_theme
   ```
 
+  * In order to use copy buttoms on code blocks:
+  ```bash
+  pip install sphinx-copybutton
+  ```
+
 * Install myst-parser:
   ``` bash
   python3 -m pip install myst-parser
