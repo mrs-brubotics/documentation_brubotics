@@ -1,15 +1,35 @@
-10. Adding a payload in an existing simulation
-=============================================
+Project Certified Correct Control of UAVs with Cable-Suspended-Payload
+=========================================================================
 
-In this section, you'll learn how to:
+.. admonition:: todo
 
-* make a load spawn in Gazebo
-* modify the load model 
-* visualize it using Rviz
+   Raphael todo
+
+
+Introduction
+---------------
+
+
+Simulation setup
+----------------------------------------------------
+
+.. admonition:: todo
+
+   Raphael todo: explain how the changes in the software allow a Gazebo simulation which can simulate cable suspended payload UAVs (1 or 2), 
+   how the data of Gazebo (which topics etc) is going into the controller and tracker 
+   and which tests can be ran with this new feature. These are the tests in your thesis. 
+   So only required to put the basic validations in here that proof your changes are correct.
+
+
+In this section, you will learn how to:
+
+* make a load spawn in Gazebo;
+* modify the load model;
+* visualize it using Rviz;
 * tweak the simulation parameters according to your needs. 
 
-10.1 Creation of a new world with payload and automate it to start with simulation
----------------------------------------------------------------------------------
+Creation of a new world with payload and automate it to start with simulation
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 To create a new simulation environment, follow these steps:
 
@@ -46,11 +66,11 @@ with these lines :
 
 
 
-10.2 Link_attacher
------------------
+Link_attacher
+^^^^^^^^^^^^^^^
 
-10.2.1 Installation
-^^^^^^^^^^^^^^^^^^
+Installation
+****************************
 The required package is normally installed directly with the dronesware brubotics installation. Check in *~/workspace/src/* if mrs_gazebo_extras_resources is present or not.
 If it's there, skip the first step (cloning) and only do the next step (.worlf file modification).
 
@@ -75,8 +95,8 @@ To be able to attach a load to your drone, follow next steps:
 
   <plugin name="mrs_gazebo_link_attacher_plugin" filename="libMRSGazeboLinkAttacherPlugin.so"/>
 
-10.2.2 Creation of a link
-^^^^^^^^^^^^^^^^^^^^^^^^
+Creation of a link
+**********************
 
 Now you can use the link attacher plugin in your
 simulation. To be able to use the plugin, there must be an object in your .world file to attach to your
@@ -179,15 +199,15 @@ Here is what you should see in your simulation :
    :align: center
 
 
-10.3 Model your payload with an URDF file
-----------------------------------------
+Model your payload with an URDF file
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Instead of spawning the box in the world file as done previously, it is possible to make an urdf file of the
 payload. This has the advantage that you can define more comlex connections of multiple objects and
 add joints between elements.
 
-10.3.1 Create urdf file
-^^^^^^^^^^^^^^^^^^^^^^
+Create urdf file
+*************************
 
 Open a blank file and save it as MODELNAME.urdf, for the MODELNAME
 you can choose what you want. Place the urdf file in an existing package or make a new package. To reproduce the steps and learn correctly, 
@@ -229,8 +249,9 @@ and visual. Again you can name them how you want. The sub modules can be modifie
 and visual do not have to be the same. More info can be found on http://wiki.ros.org/urdf/XML/link.
 Finally, close the robot description with </robot>.
 
-10.3.2 Create a launch file
-^^^^^^^^^^^^^^^^^^^^^^^^^^
+Create a launch file
+**********************
+
 Now that you have created the urdf file, it needs to be executed. Therefore we use a launch file. Again
 open a blank file and save it as NAME.launch, with "NAME" that can be what you want. Place
 it in the folder with all the other documents you created in testing_brubotics/load_transportation. Below an example of a launch file 
@@ -275,8 +296,8 @@ to your NAME.launch file).
   :alt: alternate text
   :align: center
 
-10.3.3 Automate this using tmux
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Automate this using tmux
+***************************
 
 Instead of opening a new terminal it is possible to do it with the rest
 of the simulation. Open for that your session.yml file in your directory. Add the lines that are indicated
@@ -291,8 +312,9 @@ lines added will execute the launch file.
       panes:
         - waitForSimulation; roslaunch testing_brubotics NAME.launch
 
-10.4 Model your payload with an XACRO file
------------------------------------------
+Model your payload with an XACRO file
+**************************************
+
 The advantage with using xacro files is that we can use macros. This means that instead of defining each
 link in the urdf file we can make a macro. A macro acts line a function were we give variables and this
 makes a link. This means that we use 2 xacro files, one where the "functions" are defined and one were
@@ -438,8 +460,8 @@ This will only work on Ubuntu 18/Ros Melodic. If you are using ROS Noetic on Ubu
 
 Starting from now all codes will be shown as this, to work on both Melodic and Noetic.
 
-10.5 Using RVIZ
---------------
+Using RVIZ
+^^^^^^^^^^^
 
 To make the correct model in the xacro file it can be long to launch everytime the gazebo simulation. A
 quicker and better way is to use RVIZ for this instance. When using RVIZ the physics are not loaded like
@@ -526,8 +548,8 @@ the document and when launching again all the settings should be correct.
   <!-- Show in Rviz -->
   <node name="rviz" pkg="rviz" type="rviz" args="-d $(find testing_brubotics)/PATH/config.rviz" />
 
-10.5.1 Example: Creation of a bar with two cables
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Example: Creation of a bar with two cables
+************************************************
 .. [I would sugges to follow the youtube video instead of this example, as the expected results are easier to see on a video than in such file.]
 
 The implementation of the following example is based on `this github code <https://github.com/massimilianop/collaborative_load_lifting/blob/master/urdf/cables_and_payload.xacro>`__. We use
@@ -602,7 +624,7 @@ xacro file. The following code was written to create the system
               izz="0.01"
               radius="0.01" length="0.5" />
 
-10.5.1.1 Explanation of code:
+Explanation of code:
 """"""""""""""""""""""""""""
 
 1. The "link_00_name" represents the bar on the ground. The position of the box can be changed
@@ -623,8 +645,8 @@ To see this model, reproduce the procedure to launch it in RVIZ (see above secti
    :alt: alternate text
    :align: center
 
-10.6 Chaning drone initial position
-----------------------------------
+Chaning drone initial position
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Instead of spawning the drone in the default position, you can choose where you want to spawn it. In
 order to change the initial position, you will have to create a .csv file in which you specify the position at
@@ -667,8 +689,8 @@ Which means :
 4. To change the position of multiple drones, you will have to create a .csv for each drone (don't forget
    to change the id, depending on the drone) and follow the steps above to integrate it in the session.yml file.
 
-10.7 Making a connection between load and drone after takeoff
-------------------------------------------------------------
+Making a connection between load and drone after takeoff
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. Sometimes weird behavior of the system can be observed if the connection between the drone and the
 .. payload is done before takeoff. Before solving this problem, 
@@ -677,8 +699,8 @@ Another problem has to be tackled before attaching a drone and a payload precise
 position of the drone and its actual position. This is because we use a regular GPS. This will result in a connection that is not perfectly
 in the COM of the drone when doing the connection after takeoff. A solution is to change to a `RTK GPS <https://en.wikipedia.org/wiki/Real-time_kinematic_positioning>`__.
 
-10.7.1 Use a RTK GPS
-^^^^^^^^^^^^^^^^^^^
+Use a RTK GPS
+***************
 
 To switch to a RTK GPS, two things must be done:
 
@@ -696,8 +718,8 @@ To switch to a RTK GPS, two things must be done:
       export ODOMETRY\_TYPE="rtk"
 
 
-10.7.2 Change in code to perform connection after takeoff
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Change in code to perform connection after takeoff
+*****************************************************
 
 To perform the connection after takeoff, the drone must follow a couple of steps:
 
@@ -727,8 +749,8 @@ This results in a change of lines 77 to 89 in Session.yml in this `Github file <
           rosservice call gazebo/unpause_physics
 
 
-10.8 Change tracker after take-off and take-off height
------------------------------------------------------
+Change tracker after take-off and take-off height
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Since the collision properties have to be deactivated in order to get two drone closer than 3m to each
 other, the tracker has to be changed after take-off. To do so, a custom_configs has to be created inside
@@ -756,8 +778,8 @@ inside the session.yml:
   - waitForOdometry; roslaunch mrs_uav_general core.launch DEBUG:=false
     config_uav_manager:=./custom_configs/uav_manager.yam
 
-10.9 Change UAV mass
--------------------
+Change UAV mass
+^^^^^^^^^^^^^^^^
 
 In order to simulate with a hardware UAV mass (2.40 kg for f450, TODO??kg for t650) some manual changes are required in the mrs_uav_system (explained for the f450):
 If this step is not done correctly, the feedforward action of the controller will create a steady state error in the z direction (i.e the drone will be higher than expected if the mass in the controller is smaller than the real one). 
@@ -781,3 +803,440 @@ If this step is not done correctly, the feedforward action of the controller wil
   For the se3_brubotics_load_controller, the mass of the UAV is loaded through the variable defined in the ~/.bashrc file as well. So changing the yaml files as explained above might not be enough.
   To solve this issue you can either change the value in the ~/.bashrc directly. Or add *export UAV_MASS="2.4"* alongside the other export in the session.yml of your test. This export will normally overwrite
   the value present in the ~/.bashrc.
+
+
+
+Hardware setup 
+-------------------
+
+.. admonition:: todo
+
+   Raphael todo: same as above but specifically for the hardware.
+   explain the hardware valdiations of the Cable Suspended PAyload Mechanism via Matlab. 
+   Not the design as this was discussed before. 
+   Explain How this relates to the model used in simulation and highlight the differences.
+
+In this part, the steps needed to validate the good operation of the Cable-Suspended Payload Module will be explained.
+
+
+Off-board validation via MATLAB
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The first step is to plot in real-time the data coming from the Arduino using a matlab script (without having to deal with the BACA protocol used for communication with the ROS frame work. This will be the next step).
+
+Prerequist
+****************
+
+To do so, you need to install the Arduino IDE following `this <https://docs.arduino.cc/software/ide-v1/tutorials/Linux>`__ link.
+If an error is displayed running the installation script, you might need to run sudo ./install.sh instead of just ./install.sh
+If the error keeps popping, it might be that the script cannot create the Arduino folder in /usr/local/bin. To do so, execute the following code 
+
+.. code-block:: shell
+
+  cd /usr/local/bin
+  sudo mkdir arduino
+
+Then go back to the installation folder and reexecute the installation script. 
+Now you should find the Arduino shortcut in the Applications of Ubuntu.
+
+Performing the test on matlab
+*********************************
+
+Once you installed the IDE, you can upload the script you want throught it. 
+The script that must be compiled on the arduino can be found here : *~/workspace/src/droneswarm_brubotics/ros_packages/testing_brubotics/tmux_scripts/Raphael/arduino/EMS22A_encoder/EMS22A_encoder.ino*. 
+You can then click on the "V" to check the syntax (in the IDE), and then on the arrow on the right to upload it. See the following figure:
+
+.. admonition:: todo
+
+   Raphael: please refer to the code on github. If you need to highlight sections, then only put those in here but not the full code, not via screenshot but inline code as you did below (but better if you can explain by referring to the code, maybe mention the variable names in case this helps).
+
+.. figure:: _static/ArduinoScript.png
+   :width: 800
+   :alt: alternate text
+   :align: center
+
+If no error are displayed, the correct code is now running on your arduino. See next section for the explanation of this code.
+
+To plot in real time the data coming from the Arduino, you must be sure that the *Communication_Matlab* variable is set on *true*. If not, change it and upload it again.
+Now you can close the Arduino IDE and open Matlab.
+
+Open the scripts located in */home/nuc3/git/droneswarm_brubotics/.gitman/testing_brubotics/tmux_scripts/Raphael/arduino/matlab*.
+
+* *Test.m* is the file you must run to open the correct port and plot the data. 
+
+* *ReadSineWaveData.m* is a function that is plotting the data that is being received from the Arduino. It is called each time we receive a new packet. You can change the duration
+  of the test by changing the value here : *src.UserData.Count > 400*. By default only one of the encoder will be plotted live. You can uncomment the part of the second encoder to have both at the same time if needed.
+
+* *post_pocessing* is a script that can be used when the test is finish to produce nice graphs.
+
+
+The data that is being plotted is the angle of each encoder and the angular velocity associated. 
+Here is an example of the kind of graph that you might be able to generate with the scripts (here using *post_processing.m*):
+
+.. figure:: _static/ArduinoGraphExample.png
+   :width: 800
+   :alt: alternate text
+   :align: center
+
+Explaining the Arduino code 
+******************************
+
+.. admonition:: todo
+
+   Raphael: instead of copying the code it is better to refer to this file on github. If you need to highlight sections, then only put those in here but not the full code.
+
+.. code-block:: arduino 
+
+  //Smoothing window average
+  #define WINDOW_SIZE 3
+  bool Communication_Matlab = false; //set to true if communicating with Matlab and false to comminicate with ROS
+
+  int INDEX = 0;
+  float VALUE = 0;
+  float SUM = 0;
+  float READINGS[WINDOW_SIZE];
+  float AVERAGED = 0;
+
+  int INDEX_2 = 0;
+  float VALUE_2 = 0;
+  float SUM_2 = 0;
+  float READINGS_2[WINDOW_SIZE];
+  float AVERAGED_2 = 0;
+
+  int INDEX_3 = 0;
+  float VALUE_3 = 0;
+  float SUM_3 = 0;
+  float READINGS_3[WINDOW_SIZE];
+  float AVERAGED_3 = 0;
+
+  int INDEX_4 = 0;
+  float VALUE_4 = 0;
+  float SUM_4 = 0;
+  float READINGS_4[WINDOW_SIZE];
+  float AVERAGED_4 = 0;
+
+  const int PIN_CS = 5;
+  const int PIN_CLOCK = 6;
+  const int PIN_DATA = 7;
+
+  const int PIN_CS_2 = 2;
+  const int PIN_CLOCK_2 = 3;
+  const int PIN_DATA_2 = 4;
+
+  float oldpos;
+  float newpos;
+  float angle;   
+  float ang_velocity;
+
+  float oldpos_2;
+  float newpos_2;
+  float angle_2;
+  float ang_velocity_2;
+
+  volatile int start =0;
+  volatile int dt = 0;
+
+  float offset;
+  float offset_2;
+
+  int i = 0;
+
+  void setup() {
+    Serial.begin(9600);
+    pinMode(PIN_CS, OUTPUT);
+    pinMode(PIN_CLOCK, OUTPUT);
+    pinMode(PIN_DATA, INPUT);
+    pinMode(PIN_CS_2, OUTPUT);
+    pinMode(PIN_CLOCK_2, OUTPUT);
+    pinMode(PIN_DATA_2, INPUT);
+
+    digitalWrite(PIN_CLOCK, HIGH);
+    digitalWrite(PIN_CS, LOW);
+    digitalWrite(PIN_CLOCK_2, HIGH);
+    digitalWrite(PIN_CS_2, LOW);
+    
+    oldpos = 0;
+    newpos = 0;
+    ang_velocity = 0;
+    oldpos_2 = 0;
+    newpos_2 = 0;
+    ang_velocity_2 = 0;
+
+    offset = -144.66;
+    offset_2 = -93.67;
+
+    //find_offset();
+  
+    //get the start time
+    start = millis();
+  }
+
+  //byte stream[16];
+  void loop() {
+    // Encoder number 1
+    digitalWrite(PIN_CS, HIGH);
+    digitalWrite(PIN_CS, LOW);
+    int pos = 0;
+    for (int i=0; i<10; i++) {
+      digitalWrite(PIN_CLOCK, LOW);
+      digitalWrite(PIN_CLOCK, HIGH);
+    
+      byte b = digitalRead(PIN_DATA) == HIGH ? 1 : 0;
+      pos += b * pow(2, 10-(i+1));
+    }
+    for (int i=0; i<6; i++) {
+      digitalWrite(PIN_CLOCK, LOW);
+      digitalWrite(PIN_CLOCK, HIGH);
+    }
+    digitalWrite(PIN_CLOCK, LOW);
+    digitalWrite(PIN_CLOCK, HIGH);
+    
+    //convert pos [0, 1024] to angle [-180, 180] degrees
+    angle = pos + offset;
+    angle = (angle - 512)*(360.0/1024);
+    angle = (angle * 71) / 4068.0; //convert to radians and remove offset
+    // Serial.print(angle);
+
+    //average 
+    SUM = SUM - READINGS[INDEX];       // Remove the oldest entry from the sum
+    VALUE = angle;        // Read the next sensor value
+    READINGS[INDEX] = VALUE;           // Add the newest reading to the window
+    SUM = SUM + VALUE;                 // Add the newest reading to the sum
+    INDEX = (INDEX+1) % WINDOW_SIZE;   // Increment the index, and wrap to 0 if it exceeds the window size
+
+    AVERAGED = SUM / WINDOW_SIZE;      // Divide the sum of the window by the window size for the result
+
+    // Encoder number 2
+    digitalWrite(PIN_CS_2, HIGH);
+    digitalWrite(PIN_CS_2, LOW);
+    pos = 0;
+    for (int i=0; i<10; i++) {
+      digitalWrite(PIN_CLOCK_2, LOW);
+      digitalWrite(PIN_CLOCK_2, HIGH);
+    
+      byte b = digitalRead(PIN_DATA_2) == HIGH ? 1 : 0;
+      pos += b * pow(2, 10-(i+1));
+    }
+    for (int i=0; i<6; i++) {
+      digitalWrite(PIN_CLOCK_2, LOW);
+      digitalWrite(PIN_CLOCK_2, HIGH);
+    }
+    digitalWrite(PIN_CLOCK_2, LOW);
+    digitalWrite(PIN_CLOCK_2, HIGH);
+    
+    //convert pos [0, 1024] to angle [-180, 180] degrees
+    angle_2 = pos + offset_2;
+    angle_2 = (angle_2 - 512)*(360.0/1024); //angle in degrees
+    angle_2 = (angle_2 * 71) / 4068.0; //convert to radians and remove offset
+
+    //average encoder 2
+    SUM_2 = SUM_2 - READINGS_2[INDEX_2];       // Remove the oldest entry from the sum
+    VALUE_2 = angle_2;        // Read the next sensor value
+    READINGS_2[INDEX_2] = VALUE_2;           // Add the newest reading to the window
+    SUM_2 = SUM_2 + VALUE_2;                 // Add the newest reading to the sum
+    INDEX_2 = (INDEX_2+1) % WINDOW_SIZE;   // Increment the index, and wrap to 0 if it exceeds the window size
+
+    AVERAGED_2 = SUM_2 / WINDOW_SIZE;      // Divide the sum of the window by the window size for the result
+
+    if (Communication_Matlab){
+      Serial.print(angle);
+      Serial.print(";");
+      Serial.print(AVERAGED);
+      Serial.print(";");
+      Serial.print(angle_2);
+      Serial.print(";");
+      Serial.print(AVERAGED_2);
+      Serial.print(";");
+    }else{
+      send_data(angle*1000, 0X18);
+      send_data(angle_2*1000, 0X19);
+    }
+    
+    angular_velocity(angle, angle_2);
+    delay(10);
+  }
+
+  void find_offset(){
+    // take the average of the first 300 data encoder 1
+    for (int i = 0; i <= 300; i++){
+      // Encoder number 1
+      digitalWrite(PIN_CS, HIGH);
+      digitalWrite(PIN_CS, LOW);
+      int pos = 0;
+      for (int i=0; i<10; i++) {
+        digitalWrite(PIN_CLOCK, LOW);
+        digitalWrite(PIN_CLOCK, HIGH);
+      
+        byte b = digitalRead(PIN_DATA) == HIGH ? 1 : 0;
+        pos += b * pow(2, 10-(i+1));
+      }
+      for (int i=0; i<6; i++) {
+        digitalWrite(PIN_CLOCK, LOW);
+        digitalWrite(PIN_CLOCK, HIGH);
+      }
+      digitalWrite(PIN_CLOCK, LOW);
+      digitalWrite(PIN_CLOCK, HIGH);
+      offset = offset + pos;
+    }
+    offset = offset / 300.0;
+    offset = 512.0 - offset;
+
+    // take the average of the second 300 data encoder 1
+    for (int i = 0; i <= 300; i++){
+      // Encoder number 1
+      digitalWrite(PIN_CS_2, HIGH);
+      digitalWrite(PIN_CS_2, LOW);
+      int pos = 0;
+      for (int i=0; i<10; i++) {
+        digitalWrite(PIN_CLOCK_2, LOW);
+        digitalWrite(PIN_CLOCK_2, HIGH);
+      
+        byte b = digitalRead(PIN_DATA_2) == HIGH ? 1 : 0;
+        pos += b * pow(2, 10-(i+1));
+      }
+      for (int i=0; i<6; i++) {
+        digitalWrite(PIN_CLOCK_2, LOW);
+        digitalWrite(PIN_CLOCK_2, HIGH);
+      }
+      digitalWrite(PIN_CLOCK_2, LOW);
+      digitalWrite(PIN_CLOCK_2, HIGH);
+      offset_2 = offset_2 + pos;
+    }
+    offset_2 = offset_2 / 300.0;
+    offset_2 = 512.0 - offset_2;
+    Serial.println(offset);
+    Serial.println(offset_2);
+  }
+
+  void angular_velocity(float data, float data_2){
+    oldpos = newpos;
+    newpos = data;
+    
+    oldpos_2 = newpos_2;
+    newpos_2 = data_2;
+    // Find the time
+    long fin = millis();
+    dt =(fin - start);
+    start = fin;   // sets up start for the next interrupt
+    
+    //calculate angular velocity
+    ang_velocity = 1000 * (newpos - oldpos)/dt; // [degree/ sec]
+    ang_velocity_2 = 1000 * (newpos_2 - oldpos_2)/dt; // [degree/ sec]
+
+    //average velocity 1
+    SUM_3 = SUM_3 - READINGS_3[INDEX_3];       // Remove the oldest entry from the sum
+    VALUE_3 = ang_velocity;        // Read the next sensor value
+    READINGS_3[INDEX_3] = VALUE_3;           // Add the newest reading to the window
+    SUM_3 = SUM_3 + VALUE_3;                 // Add the newest reading to the sum
+    INDEX_3 = (INDEX_3+1) % WINDOW_SIZE;   // Increment the index, and wrap to 0 if it exceeds the window size
+
+    AVERAGED_3 = SUM_3 / WINDOW_SIZE;      // Divide the sum of the window by the window size for the result
+
+    //average velocity 2
+    SUM_4 = SUM_4 - READINGS_4[INDEX_3];       // Remove the oldest entry from the sum
+    VALUE_4 = ang_velocity_2;        // Read the next sensor value
+    READINGS_4[INDEX_4] = VALUE_4;           // Add the newest reading to the window
+    SUM_4 = SUM_4 + VALUE_4;                 // Add the newest reading to the sum
+    INDEX_4 = (INDEX_4+1) % WINDOW_SIZE;   // Increment the index, and wrap to 0 if it exceeds the window size
+
+    AVERAGED_4 = SUM_4 / WINDOW_SIZE;      // Divide the sum of the window by the window size for the result
+
+    if(Communication_Matlab){
+    Serial.print(ang_velocity);
+    Serial.print(";");
+    Serial.print(AVERAGED_3);
+    Serial.print(";");
+    Serial.print(ang_velocity_2);
+    Serial.print(";");
+    Serial.println(AVERAGED_4);
+    }else{
+      send_data(AVERAGED_3*1000, 0X20);
+      send_data(AVERAGED_4*1000, 0X21);
+    }
+  }
+
+
+The code begin by defining all the variables and the correct pin used to read informations from the two encoders. 
+It will not be commented more as it is a common procedure in Arduino codes for reading and converting values coming from encoders.
+
+Before trusting the data, one must also add the offset to the calculated values of each encoders. This can be done by measuring the angle when the load is vertical and then use this value as the ofset.
+
+
+On-board validation via ROS
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.. admonition:: todo
+
+   * Raphael todo: 
+   * explain the results obtained that the measured payoad state that enters your controller (the one you use in the PD control) is correct. 
+   * So I would propose to request the UAV to fly a: up and forth steps in x (0 to 2 to 0 to 2 etc), circular (sin x cos y) and figure 8 (see online for equations) trajectory at and intial heading angle of 45° (as to check that the full UAV attitude is correctly accounted for). Make sure the trajectory is not too quick so the UAV can follow it well, but also fast enough so sufficiently large payload swing angles and UAV pitch roll motions are visible. Do this with a controler and ERG used as bypasstracker.
+   * Make a video of the exp.
+   * Plot the graphs in 3D of UAV (plot a `RGB 3D frame <https://nl.mathworks.com/help/nav/ref/poseplot.html>`__) and payload state (position) and a line between the 2. See if it looks the same as in reality.
+   * I think by showing for enough experiments that it is the same you can somehow proof it.
+
+
+Autonomous Flight setup
+-------------------------
+
+.. admonition:: todo
+
+   Raphael todo: refer to the similarities (via refering to other previous sections) and differences (mention them explicitely) in setup wrt a normal autonomous flight. 
+
+
+Determination of the correct motor paramters and payload paramters
+--------------------------------------------------------------------
+
+.. admonition:: todo
+
+   * I assume your controller has an integrator in the height active with sufficient gain (use same value as default integral gains of the Se3Controller of ctu) and is configured using the motor params determined for the T650 hardware estimated by (`see ctu <https://github.com/ctu-mrs/mrs_uav_controllers/blob/master/config/uav/t650/motor_params_default.yaml>`__). Always use feedforward term to compensate total mass of uav and payload.
+   * Make sure you have fully charged batteries from which you start each experiment.
+   * Attach a load of mass m_l to the UAV of mass m_uav. 
+   * write down m_l and m_uav and compute the total m_total = m_m + m_uav.
+   * Do a test where you let the UAV with a load attached hover at a fixed position, far enough from the ground (avoid ground effect, e.g. 3m high). Make sure the load is not swinging so either tape it (strongly) to the frame or use a sufficiently long cable.
+   * To know the whole thrust (or mass) range you should have tested before (with small steps what the max payload is the UAV can still takeoff safely, be carefull). Always stay 20% below when you see full throttle is not able to takeoff the UAV. Write down the last total mass for which it could takeoff and the one for which it just could not. This is the physical total thrust constraint.
+   * You log (rosbag) over time (each exp about same length, e.g. 10 minutes of flight data) the battery voltage (starting from fully charged), the thrust command your controller produces (value between 0 and 1) and the UAV position in xyz. 
+   * Repeat this process for increasing masses m_l (and m_l + m_uav) within (the full range of) the thrust capabilities of the UAV. Take about 4-5 total masses over the whole range (above nominal weight), one can be without any additional payload. 
+   * See which thrust constant you found for the UAV by computing it as (`in ctu's file <https://github.com/ctu-mrs/uav_core/tree/master/miscellaneous/thrust_constants/uav_thrust_curve_estimation>`__). Show me using the max, avg and min value of trust you logged to compensate the same mass (because battery voltage drops over time). 
+   * Plot the data voltage, pos, trust over time and a line that corresponds to hover thrust = totalmass*g.
+   * Push matlab file on github and wetransfer me the matlab and rosbags. 
+   * Repeat this process for both UAVs.
+   * Are the min, max, avg thrust constants different from what ctu obtained (they have 2 models for T650, so check both)? How far are is the min to max for each UAV? How different is it between 2 UAVs?
+   * Based on the above answers we have to make them a function of the motor voltage (as this decreases during operation).
+
+
+
+
+.. admonition:: todo
+
+   * Raphael todo: in the sections below focus on explaining how you configured to run each experiment. E.g. change this variables in the bashrc and put the drone this. and run this cript (with link). The actual resutls are for your thesis report. So focus on the practical things to reproduce the experiment and not for the scientific thesis.
+
+Validation of swing dampening control and trajectory-predictions
+--------------------------------------------------------------------
+
+.. admonition:: todo
+
+   * Raphael todo: obtain results for your thesis. (write in your thesis)
+   * validate the controller for a sufficenly large mass (to show there is coupling and not just a small disturbance) but not too large, so you can follow some trajectories (steps up and forth, circular, figure 8). Decide the cable length.
+   * For the 2 UAVs with load design some trajectories that exploit different swing modes. Start with the steps up and forth in the longitudinal direction of the load and orthogonal to it. Then validate torqion modes by.
+   * BE VERY VERY CAREFULL
+
+Single UAV case
+^^^^^^^^^^^^^^^^^
+
+Two UAVs case
+^^^^^^^^^^^^^^^
+
+Validation of trajectory-based ERGs
+-------------------------------------
+
+.. admonition:: todo
+
+   * Raphael todo: obtain results for your thesis. (write in your thesis)
+   * Make a working discrete-time ERG on the input constraints (the individual motor thrusts, not just the total thrust and the angular speed) and show that for the very aggressive trajectories (see before those you could not do in bypass mode) you can safely "filter" them using the ERG.
+   * If you have time you can do obstacle avoidance test like they did last year with the tube, but first make sure the input cosntraints work on both models (1 and 2 UAVs).
+   * BE VERY VERY CAREFULL
+
+Single UAV case
+^^^^^^^^^^^^^^^^^
+
+Two UAVs case
+^^^^^^^^^^^^^^^

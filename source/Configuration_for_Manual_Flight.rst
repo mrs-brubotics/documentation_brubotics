@@ -1,6 +1,21 @@
 Configuration for Manual Flight  
 =====================================
 
+
+Batteries how to use:
+----------------------
+LiPo batteries are usually used for drones as it provides the best energy-to-weight ratio. A drawback of these batteries is their chance to catch fire. To use them correctly, please read `this link <https://www.cnydrones.org/lipo-batteries-and-safety-for-beginners/>`__ to understand them and follow these guidelines :
+	Charging : * Power on the battery charger.
+		   * Set the voltage to 22.2V (6S battery) for the drone and the current to 1A for charging. The higher the current value the faster the battery will charge, but this will decrease the lifetime of the battery, so trade-off is needed.
+		   * Place the battery in the fireproof bag. This is absolutely required as a safety issue since LiPo batteries can catch fire.
+		   * Connect the battery to the charger. For the main lead beware of the polarity! Red on red, black on black. For the balance lead connect (back of the charger) it to its appropriate place (6S).
+	           * Press start until it beeps. Then press start again.
+	           * The charger will beep when the battery is charged.
+	           * The battery can now be disconnected.
+		   Never leave a battery charging without having an eye on it! The risk of it catching fire is existing and you should be ready to intervene if required. Try to always have a spare battery to replace the discharged one to avoid losing time. If you charge the LiPo battery and you get the low voltage error on the screen, then you should charge it under NiMH for a couple of minutes on a current below 0.7A (use blue charger for that).
+	Storing : If the LiPo won’t be used for a long time it is imperative to not keep the batteries at full capacity, as this will damage them. the storage mode of the charger to discharge the battery. It is a similar procedure to the charging one.
+
+
 Binding the RC transmitter with the RC receiver
 -------------------------------------------------
 In this section, you'll learn how to bind the receiver (Hitec Optima SL) and the transmitter (Hitec Flash 8).

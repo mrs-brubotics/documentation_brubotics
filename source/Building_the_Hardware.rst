@@ -678,8 +678,8 @@ In this section you will learn how to fix all the components on their (custom-ma
 Your UAV is built!
 
 
-Suspended Payload Module
--------------------------
+Cable-Suspended Payload Module
+-------------------------------
 
 .. admonition:: todo
 
@@ -687,6 +687,30 @@ Suspended Payload Module
 
 This module is installed at the bottom of the UAV and allows to measure the state (position and velocity) of a cable-suspended load hanging below the UAV. 
 
+.. admonition:: todo
+
+   Raphael todo: integrate the next section better in the hardware building chapter using a similar structure as for UAV (see example given below). Give more pictures and explain better each step of the setup.
+
+18.1 Encoders and material needed (TO INTEGRATE BETTER)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+In order to measure the position of the load attached to the UAV, we use encoders to measure the angles of ball joint. Based on this information, the position of the payload in the inertial and word frame can be computed easilly (with the other states measured elsewhere of course).
+The encoders are the `EMS22A <https://www.bourns.com/docs/product-datasheets/EMS22A.pdf>`__ and their data is read using 
+an `Arduino Uno <https://benl.rs-online.com/web/p/arduino/7697409?cm_mmc=BE-PLA-DS3A-_-google-_-PLA_BE_NL_Raspberry_Pi_%26_Arduino_%26_Development_Tools_Whoop-_-(BE:Whoop!)+Arduino-_-7697409&matchtype=&pla-341920527054&gclid=Cj0KCQjwgYSTBhDKARIsAB8KukvAlQU51p7JJ5_edjdlsALUf8YW28bD243x1uw75FKns0QKy6QeSckaAlJREALw_wcB&gclsrc=aw.ds>`__
+These encoders are mounted in some spherical joint, 
+
+.. admonition:: todo
+
+   Raphael todo: ADD LINK TO CAD ONCE UPLOADED ON DRIVE/GITHUB . (not done yet as some modifications are possible in case issues are noticed during tests)
+
+On the following figure, one can see the correct circuit to reproduce. 
+
+.. figure:: _static/ElectronicCircuit.png
+   :width: 800
+   :alt: alternate text
+   :align: center
+
+.. note::
+  It is better to use flexible cables to do the circuit as rigid ones might disconnect more easily in case they are pulled a bit.
 
 Components
 ^^^^^^^^^^^

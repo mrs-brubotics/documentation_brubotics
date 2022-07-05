@@ -53,3 +53,4 @@ make html
 ```
 
 Finally, open `build/html/index.html` in your web browser (NOT the _build folder!).
+Regularly delete the build folder as this otherwise can give issues with old unused files.

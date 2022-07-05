@@ -1,25 +1,11 @@
-17. Hardware
-============
+Autonomous Flight Procedures
+=============================
 
-17.1 Introduction
------------------
+.. admonition:: todo
 
+   todo
 
-Batteries how to use:
-----------------------
-LiPo batteries are usually used for drones as it provides the best energy-to-weight ratio. A drawback of these batteries is their chance to catch fire. To use them correctly, please read `this link <https://www.cnydrones.org/lipo-batteries-and-safety-for-beginners/>`__ to understand them and follow these guidelines :
-	Charging : * Power on the battery charger.
-		   * Set the voltage to 22.2V (6S battery) for the drone and the current to 1A for charging. The higher the current value the faster the battery will charge, but this will decrease the lifetime of the battery, so trade-off is needed.
-		   * Place the battery in the fireproof bag. This is absolutely required as a safety issue since LiPo batteries can catch fire.
-		   * Connect the battery to the charger. For the main lead beware of the polarity! Red on red, black on black. For the balance lead connect (back of the charger) it to its appropriate place (6S).
-	           * Press start until it beeps. Then press start again.
-	           * The charger will beep when the battery is charged.
-	           * The battery can now be disconnected.
-		   Never leave a battery charging without having an eye on it! The risk of it catching fire is existing and you should be ready to intervene if required. Try to always have a spare battery to replace the discharged one to avoid losing time. If you charge the LiPo battery and you get the low voltage error on the screen, then you should charge it under NiMH for a couple of minutes on a current below 0.7A (use blue charger for that).
-	Storing : If the LiPo won’t be used for a long time it is imperative to not keep the batteries at full capacity, as this will damage them. the storage mode of the charger to discharge the battery. It is a similar procedure to the charging one.
-
-
-17.2 Step-by-step Procedure for Preparations Prior to Autonomous Field Experiments
+Step-by-step Procedure for Preparations Prior to Autonomous Field Experiments
 ----------------------------------------------------------------------------------
     * Prepare the simulations.
     * Prepare the scripts for the real hardware tests.
@@ -29,12 +15,12 @@ LiPo batteries are usually used for drones as it provides the best energy-to-wei
 
 
 
-17.3 Step-by-step Procedure Autonomous Field Experiments
---------------------------------------------------------
+Step-by-step Procedure During Autonomous Field Experiments
+-----------------------------------------------------------
 
 
-17.3.1 RTK Field setup
----------------------
+RTK Field setup
+^^^^^^^^^^^^^^^^^^^^^^^
   * Connect the ground station computer to the WiFi of the router.
   * Setup the base at the desired location and make sure it is perfectly leveled.
   * Power the base.
@@ -74,3 +60,4 @@ LiPo batteries are usually used for drones as it provides the best energy-to-wei
   * When the odometry is correct the safety pilot can takeoff the drone. 
         * The same procedure as for manual flight with some differences.
         * After the drone is ARMED and the props start spinning, toggle the OFFBOARD switch. Immediately set the throttle to a value of the hover thrust (e.g. 57%). The latter is important when taking back manual control so the drone does not fall down. After a few sconds the thrust will increase and the drone will takeoff. 
+

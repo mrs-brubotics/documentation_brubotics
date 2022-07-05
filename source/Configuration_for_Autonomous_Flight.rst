@@ -1,12 +1,15 @@
-11. Configuration of the NUC for autonomous flight
+Configuration for Autonomous Flight
 =================================================
+
+NUC
+----
 
 The assumption in this section is that the NUC is brand new, in order to make the explanation easier. If
 it is already used it is not that big of a problem but make sure you have enough space available on the
 SSD of the NUC.
 
-11.1 Prerequist
---------------
+Prerequist
+^^^^^^^^^^^^^^^^
 
 * The first thing to do is to download Ubuntu 20.04 on your NUC. This can be easily done with a bootable USB. For more details we refer to the \href{https://ubuntu.com/tutorials/install-ubuntu-desktop#1-overview}{tutorial} written by Ubuntu;
 
@@ -17,8 +20,8 @@ SSD of the NUC.
 Before proceeding make sure you are able to run scripts from CTU workspace (e.g. *~/mrs_workspace/src/simulation/example_tmux_scripts/one_drone_pendulum*) and the brubotics workspace (*~/workspace/src/droneswarm_brubotics/ros_packages/testing_brubotics/tmux_scripts/Raphael/0_One_Drone_f450_BruboticsDampingController*)
  
 
-11.2 Connection with the Pixhawk
--------------------------------
+Connection with the Pixhawk
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Once this is done the basic setup of the NUC is done. The steps that will follow next will make that there
 is a clear connection between the NUC and the PixHawk 4, and that the NUC recognises the PixHawk 4
@@ -112,8 +115,8 @@ On the NUC3 the file will looks like :
   SUBSYSTEM=="tty", ATTRS{idVendor}=="2341", ATTRS{idProduct}=="0043", ATTRS{serial}=="7593231393835130E061", SYMLINK+="arduino",OWNER="vub",MODE="0666"
 
 
-11.3 SSH Configuration
----------------------
+SSH Configuration
+^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Another problem that needs to be solved is what concerns the ssh service of the
 NUC. As a safety measure, this service is disabled each time the NUC reboots so we need to enable
@@ -200,13 +203,13 @@ You should now get the same result as on the following figure :
    :align: center
 
 
-11.4 Connection to the onboard NUCs
-----------------------------------
+Wireless Connection to the onboard NUCs
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 To be able to remotely control the nuc by SSH into it from a base computer, one needs to configure a wifi router.
 
-11.4.1 Connect to internet with the router
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+**Connect to internet with the router**
+
 
 The first essential things is to have internet access when connected to the router via Wifi. 
 
@@ -227,8 +230,7 @@ If you are at VUB, here are the settings you have to put to connect to the netwo
 
 You should now have internet over the router's wifi with your NUC. If it's not the case check if the ethernet port of the wall is working fine (or just test another one.)
 
-11.4.2 Configure the static IP of each connected device
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+**Configure the static IP of each connected device**
 
 Once every PC can access internet on router rename all IP addresses as follows and set Netmask to 255.255.255.0.
 The ip of the ground station must be 192.168.0.100, while the IP of the NUC's must be 192.168.0.10X, with X being the number of the NUC.
@@ -260,3 +262,218 @@ The last one is the information corresponding to the NUC, meaning that it's conf
 One also might need to change the MAC adress of each computer in the router's website itself.it was needed for my windows computer, but might 
 already be configured for the other nuc's, as their MAC adress are the same as before normally.
 TO CHECK ADD pictures of the corresponding tab. 
+
+
+Config RTK
+--------------------
+
+
+What we did not modified :
+  Github issue : https://github.com/ctu-mrs/mrs_uav_system/issues/77 we let gga to 1hz instead of 10 as explained in the issue.
+  Changed the TCP parameters , figure 4.31 rover of the tutorial. See screenshots taken friday 13/05.
+  Figure 4.33 is showing different parameters from what has been stated above. (POSITION OUTPUT)
+
+
+The Real-Time Kinematic (RTK) system is composed of the Emlid Reach RS2 as the "base" an the Emlid
+Reach M2 attached to the drone as the "rover". To the latter is connected the Multi-band GNSS antenna.
+The RTK is a GPS-based positioning system that allows to get cm-precise XYZ position from Global
+Navigation Satellite System (GNSS) measurements. The base and rover setup will help to get the RTK
+precision. Simply explained, the RTK system consists of the base (i.e. Reach RS2), the device that doesn’t
+move, and the rover (i.e. Reach M2), the device attached to the UAV. Both devices individually can get
+GNSS measurements with usual GPS precision. The RTK system computes the baseline, the difference
+between both measurements, which gives the rover’s position relative to the base.
+
+
+
+
+Cable-Suspended Payload Module
+--------------------------------------
+
+.. admonition:: todo
+
+   Raphael: Explain all you need to configure the module.
+
+Arduino setup
+^^^^^^^^^^^^^^^
+
+Configure the NUC to recognize the Arduino port
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+To be sure that the Arduino is recognized by the NUC everytime it is plugged in, one must do the following steps :
+
+Once the Arduino is correctly connected to the computer using the USB port, it will show up as something similar to /dev/ttyUSB0. 
+To find what port is used type the following command and use this name for the next command in the terminal : 
+
+.. code-block:: shell
+
+  ls -l /dev/ttyACM*
+
+This should give the port to which the Arduino Uno is connected. Replace in the next
+command the correct port and paste it in the terminal : 
+
+.. code-block:: shell
+
+  udevadm info -p $(udevadm info -q path -n /dev/ttyACM0) | grep 'SERIAL_SHORT\|VENDOR_ID\|MODEL_ID'
+
+This should return the an information similar to what can be seen here under (Values might be different): 
+
+.. code-block:: shell 
+
+    E: ID_MODEL_ID=0043
+    E: ID_SERIAL_SHORT=757363033363518031F0
+    E: ID_VENDOR_ID=2341
+
+Then create a new file (or edit it if you already done this part for the Pixhawk or for the RTK Gps) in /etc/udev/rules.d/ and call it 99-usb-serial.rules. Paste the fol-
+lowing line in this text document and change it with the information obtained by using
+previous command : 
+
+.. code-block:: shell 
+
+  SUBSYSTEM=="tty", ATTRS{idVendor}=="2341", ATTRS{idProduct}=="0043", ATTRS{serial}=="757363033363518031F0", SYMLINK+="arduino",
+  OWNER="vub",MODE="0666"
+
+In the mrs serial package a new launch file should be created for example arduino.launch
+with the correct baudrate and port:
+
+.. code-block:: xml
+
+  <launch>
+
+    <arg name="UAV_NAME" default="$(optenv UAV_NAME uav)" />
+    <arg name="name" default="" />
+    <arg name="portname" default="/dev/ttyACM0" />  <!-- INPUT : Put the correct port for the Arduino -->
+    <arg name="baudrate" default="9600" /> <!-- INPUT : Put the correct baudrate for the Arduino, should be 9600 if using the same script -->
+    <!-- "/dev/arduino" baudrate: 9600 19200 38400 57600 115200 230400 460800 500000 576000 921600-->
+    <arg name="profiler" default="$(optenv PROFILER false)" />
+
+    <arg name="swap_garmins" default="$(optenv SWAP_GARMINS false)" />
+
+    <!-- will it run using GNU debugger? -->
+    <arg name="DEBUG" default="false" />
+    <arg unless="$(arg DEBUG)" name="launch_prefix_debug" value=""/>
+    <arg     if="$(arg DEBUG)" name="launch_prefix_debug" value="debug_roslaunch"/>
+
+    <!-- will it run as standalone nodelet or using a nodelet manager? -->
+    <arg name="standalone" default="true" />
+    <arg name="manager" default="$(arg UAV_NAME)_bacaprotocol_manager" />
+    <arg name="n_threads" default="8" />
+    <arg unless="$(arg standalone)" name="nodelet" value="load"/>
+    <arg     if="$(arg standalone)" name="nodelet" value="standalone"/>
+    <arg unless="$(arg standalone)" name="nodelet_manager" value="$(arg manager)"/>
+    <arg     if="$(arg standalone)" name="nodelet_manager" value=""/>
+
+    <group ns="$(arg UAV_NAME)">
+
+      <!-- launch the nodelet -->
+      <node pkg="nodelet" type="nodelet" name="serial" args="$(arg nodelet) baca_protocol/BacaProtocol $(arg nodelet_manager)" launch-prefix="$(arg launch_prefix_debug)" output="screen">
+
+        <param name="uav_name" type="string" value="$(arg UAV_NAME)"/>
+
+        <rosparam file="$(find mrs_serial)/config/mrs_serial.yaml" />
+
+        <param name="enable_profiler" type="bool" value="$(arg profiler)" />
+        <param name="portname" value="$(arg portname)"/>
+        <param name="baudrate" value="$(arg baudrate)"/>
+        <param name="use_timeout" value="false"/>
+
+        <param name="swap_garmins" value="$(arg swap_garmins)"/>
+
+        <!-- Publishers -->
+        <remap from="~range" to="/$(arg UAV_NAME)/garmin/range" />
+        <remap from="~range_up" to="/$(arg UAV_NAME)/garmin/range_up" />
+        <remap from="~profiler" to="profiler" />
+        <remap from="~baca_protocol_out" to="~received_message" />
+
+          <!-- Subscribers -->
+        <remap from="~baca_protocol_in" to="~send_message" />
+        <remap from="~raw_in" to="~send_raw_message" />
+
+      </node>
+
+    </group>
+
+  </launch>
+
+
+It is then possible to do roslaunch and subscribe to the topic in a new terminal using the following two commands : 
+
+.. code-block:: shell
+
+  roslaunch mrs_serial arduino.launch
+  rostopic echo /uav1/serial/received_message
+
+This can, as usual be automated in a session.yml file.
+
+BACA Protocol in Arduino code
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+To use the encoder among the ROS framework, one has to use the `BACA protocol <https://github.com/ctu-mrs/mrs_serial>`__ to send the relevant data via the USB port of the arduino, to the NUC.
+The following function is implemented in the Arduino to correctly transform the data and send it to ROS.
+Then a node will be able to subscribe to a specific topic to read this data flow, and use it for measuring the load's position.
+Here is the full function used :
+
+.. code-block:: arduino
+
+  //communication with ROS
+  void send_data(int16_t data, int16_t message_id) {
+    uint8_t checksum = 0;
+    uint8_t payload_size = 3;
+
+    byte bytes[2];
+    //split 16 bit integer to two 8 bit integers
+    bytes[0] = (data >> 8) & 0xFF;
+    bytes[1] = data & 0xFF;
+
+    //message start
+    Serial.write('b');
+    checksum += 'b';
+
+    //payload size
+    Serial.write(payload_size);
+    checksum += payload_size;
+
+    //payload
+    Serial.write(message_id); // message_id
+    checksum += message_id;
+
+    Serial.write(bytes[0]);
+    checksum += bytes[0];
+
+    Serial.write(bytes[1]);
+    checksum += bytes[1];
+
+    //checksum
+    Serial.write(checksum);
+  }
+
+The message is defined as below:
+
+.. code-block:: cpp
+
+  ['b'][payload_size][payload_0(=message_id)][payload_1]...[payload_n][checksum]
+
+Between each brackets, there is one eight bit value. The message starts with the
+character "b". Then the size of the message is defined in the next eight bit value. This
+represents how long the transferred data is. The message id is then next, to differentiate
+the various sensors. Finally the last byte is the checksum. This is calculated as follows:
+
+.. code-block:: arduino
+
+  uint8_t checksum = 'b' + payload_size + payload0 + payload1 + payload_n
+
+This checksum is calculated and put to the end of the message. ROS calculates this checksum again
+and compares to see if it is the same. In case there is a difference, the data was not
+transferred correctly and the message is discarded. 
+
+To enable the communication with ROS, one must change the first line of the code to switch from "MATLAB communication" to "Ros communication"
+
+.. code-block:: arduino
+
+  bool Communication_Matlab = false; //set to true if communicating with Matlab and false to comminicate with ROS
+
+This has not been tested more yet, a test will probably be made at VUB asap. I think the folder *https://github.com/mrs-brubotics/testing_brubotics/tree/master/tmux_scripts/load_transportation/1_one_drone_validation_encoder*
+was made for this by last year students, but it is probably already flying. There is probably a way to launch the BACA protocol without having to fly the drone (even with the standard non-damping controller). 
+ 
+Raphael : Remaining parts to transpose are "4.14.4 Modifying the MRS code", "4.15 Making the drone take off and fly", "4.16 Set up the Nimbro parameters according to MRS" 
+maybe the part about take off and fly is redundant with the Hardware.rst written already in this tutorial. Check before doing it.
+
+

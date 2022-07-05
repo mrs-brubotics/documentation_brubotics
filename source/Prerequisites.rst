@@ -1,40 +1,39 @@
-2. Prerequisites
-================
+Prerequisites
+====================
 
-:red:`[explain in a logic chronology which background knowledge is required to understand the core for this report. Assume an absolute beginner
-in robot software development. So think about what you knew before the internship and write here what is required in logic order. Give links to tutorials you followed
-(and you think are good to learn the required skills/concepts)]BC`
+This section gives an overview of the main scientific concepts and engineering tools used this project.
+We suggest some useful sources for both beginners (more general) and for more advanced audience (more sepcific).
+Depending on the features you are interested in, not all prior knowledge will be required.
 
-Example template:
-first you need to know this. Good tutorial are this (add link) and this (add link). Very important concepts are blablabla.
-Then this.
-Then this.
-..
+.. admonition:: todo
 
-:teal:`[Explain here the basic knowledge you need to do this project. Use the references and write down the extra information you need to know or extra things you have to do besides the explanation in a book or website you are referring to.]KM`
+   It is highly recommended to read through the Introduction section of `the CTU MRS tutorial <https://ctu-mrs.github.io/docs/introduction/>`__.
+   as this project is heavily based and can generally be considered as an extension on the former. 
+   We even recommend to checkout the full CTU MRS tutorial to get a glimpse fo its capabilities.
 
-:red:`[Each missing tutorial you think is a must to follow can be put here.]BC` :red:`[don't forget to cite
-papers important to be read before you can start with the rest of this report]BC`
+Scientific disciplines
+------------------------
 
-:red:`[Maybe also important to explain which hardware and software is required or recommended. E.g. give the best and worse specs of your PC
-for simulation. Ubuntu 18.04 with at least 50GB disk space. Better to use a good desktop machine for simulation. need/ tested with ROS melodic and matlab simulink 2020a.
-etc etc]BC`
+.. admonition:: todo
 
-:red:`[I moved some sections here since this is required prior knowledge before starting to understand the MRS documentation.]BC`
+   list some relevant books/papers to be read.
 
-In this chapter, we will talk about the minimum knowledge we need to understand this report. You will find in this chapter documentation links and tutorials
-needed to better start with the rest of the report. Some concepts and skills from other tutorials are not indicated in the basic documentation from 
-`MRS website <https://ctu-mrs.github.io>`__ and ROS documentation. That is why we will add more information about the basic information and minimum requirements
-on hardware and software sides.
 
-2.1 Hardware minimum requirements
----------------------------------
+* Dyanmical Systems Theory
+* Automatic Control Theory
+* Robotics and Automation 
+* Safety Verification
 
-You need to have a hardware minimum requirements to be able to install and use the MRS workspace software without any issue. In this section, we will see what
-kind of minimum setup requirement is needed, and which configuration is recommended.
 
-2.1.1 PC Specs
-^^^^^^^^^^^^^^
+Software development
+-----------------------------
+
+Ubuntu
+^^^^^^^
+ Ubuntu 20.04 with at least 50GB disk space. Better to use a good desktop machine for simulation. need/ tested with ROS melodic and matlab simulink 2020a.
+
+PC Specs
+*************
 
 Before dealing with the Ubuntu partition, we have to talk about your minimum PC configuration. Here you can see the general PC specs used by the four interns
 during the project:
@@ -63,8 +62,8 @@ significant impact on the build of the packages in your workspace, and the prope
    Keep in mind that some issues with your simulation will not be related to your PC configuration. We had issues with the launch of many UAV, due to the lack
    of code optimization.
 
-2.1.2 Ubuntu partition
-^^^^^^^^^^^^^^^^^^^^^^
+Ubuntu partition
+*******************
 
 Then, we can talk about the Ubuntu partition. You will need a minimum **50GB** partition on your PC to install this partition.
 
@@ -74,8 +73,8 @@ Then, we can talk about the Ubuntu partition. You will need a minimum **50GB** p
 
 That is why we recommend to install the Ubuntu 18.04 version until the change on 20.04 have been made.
 
-2.1.3 Prepare Ubuntu
-^^^^^^^^^^^^^^^^^^^^
+Prepare Ubuntu
+*****************
 
 :red:`[Matlab]BC` :red:`[Micorosdt visual studio code editor set as default]BC`
 
@@ -84,20 +83,19 @@ To install Ubuntu, you will first need to get a bootable USB stick [Recommended]
 To create the bootable usb disk you can follow `these steps <https://ubuntu.com/tutorials/create-a-usb-stick-on-windows#3-usb-selection>`__
 if you are running on Windows and `these <https://ubuntu.com/tutorials/create-a-usb-stick-on-ubuntu#5-confirm-usb-device>`__ if you are running on Ubuntu.
 
-2.1.4 Install Ubuntu
-^^^^^^^^^^^^^^^^^^^^
+Install Ubuntu
+******************
 
 To install this OS, please refer to the the `Ubuntu install documentation <https://ubuntu.com/tutorials/install-ubuntu-desktop#1-overview>`__.
 
-2.2 Working with ROS
---------------------
 
-MRS bases its work on the use of ROS, a framework widely used in robotics. We strongly recommend that you inquire about. You can find useful tutorial on `ROS wiki <http://wiki.ros.org/>`__.
-We also recommend `Mastering ROS for ROBOTICS Programming <https://drive.google.com/file/d/1URHQAuDK1JT6X-8AUVfGe2xsPoZxqJsY/view>`__, by Lentin Joseph ans Jonathan Cacace, chapter 1, 2, 3, 4 and 7 - `here <https://github.com/jocacace>`__ you will find the github
-from Jonathan Cacace.
+Programming
+^^^^^^^^^^^^^^
 
-2.3 Working with Visual Studio Code
------------------------------------
+Environemnts, Languages, Concepts
+
+Visual Studio Code
+**********************
 
 We highly recommend you to use `Visual Studio Code <https://code.visualstudio.com/>`__ for Ubuntu. It is easier to view and edit code with syntax highlighting
 tools. You just need to install extension depending on what kind of file you are working e.g. ``.cpp``, ``.py`` etc. Set visual studio code as the default
@@ -106,13 +104,26 @@ program to open files (right-click on the file and select "Properties → Open W
 To add line comments, select the lines with right-click and use ``Ctrl+K Ctrl+C``.
 To remove them, use ``Ctrl+K Ctrl+U``.
 
-.. _2.4 Working with Git:
+C++
+****
 
-2.4 Working with Git
---------------------
+Python
+*******
 
-2.4.1 Git basics
-^^^^^^^^^^^^^^^^
+ROS
+****
+MRS bases its work on the use of ROS, a framework widely used in robotics. We strongly recommend that you inquire about. You can find useful tutorial on `ROS wiki <http://wiki.ros.org/>`__.
+We also recommend `Mastering ROS for ROBOTICS Programming <https://drive.google.com/file/d/1URHQAuDK1JT6X-8AUVfGe2xsPoZxqJsY/view>`__, by Lentin Joseph ans Jonathan Cacace, chapter 1, 2, 3, 4 and 7 - `here <https://github.com/jocacace>`__ you will find the github
+from Jonathan Cacace.
+
+Matlab
+********
+
+
+Git Version Control
+**********************
+
+**Git basics**
 
 If you are new at git, first take a look at `basic commands <https://guides.github.com/introduction/git-handbook/#basic-git>`__. We can base our usage of git on
 the team on this `tutorial <https://learngitbranching.js.org>`_ or the `git tutorial advised by Bryan <https://www.coursera.org/learn/version-control-with-git>`__.
@@ -156,10 +167,10 @@ Similar to cherry-pick, it allows the reorganization of commits from the current
 
    git stash
 
-**Reverts the folder to the latest commit and throws all changes away**
+*Reverts the folder to the latest commit and throws all changes away*
 
-2.4.2 Setup your SSH key in Git
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+**Setup your SSH key in Git**
+
 
 We recommend you to setup your SSH key in Github, it's an easy thing that can avoid you some problems that are hard to understand.
 Also, you will need to setup your email and your name by using these commands:
@@ -181,8 +192,8 @@ to setup your SSH key in Github.
 Note: when this message is given "Generating public/private ed25519 key pair.
 Enter file in which to save the key (/home/nuc3/.ssh/id_ed25519):", you can either keep the default or set .ssh/FirstName-LastName. With the latter we can keep track which ssh keys belong to which github account.
 
-2.4.3 How to use github permalinks
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+**How to use github permalinks**
+
 
 A Github permalink is an interesting way to refer to some lines of a code, here is how to create one. For example in the file `control_manager.cpp <https://github.com/mrs-brubotics/
 MatlabGraphs/blob/master/control_manager.cpp>`__, if you want to highlight the line 5, you need to click on the 5 line number:
@@ -221,10 +232,23 @@ research on control and navigation of aerial robots.]BC` :red:`[From this report
 very specific project.]BC` :red:`[this report is explained for newcomers in robot software development.]BC`
 :red:`[explain the outline of the report. what will be discussed in each chapter.]BC`
 
-.. _2.5_Working_with_Tmux_session:
+CTU MRS UAV System
+*********************
+In this documentation, you will do the simulation of one drone with gps. Remember that you can use the :ref:`Tmux commands <2.5_Working_with_Tmux_session>`
+to navigate through different terminals.
 
-2.5 Working with Tmux session
------------------------------
+Also, you can try to launch others simulations created by CTU-MRS group. Go to the ``~/mrs_workspace/src/simulation/example_tmux_scripts/`` folder and
+run the ``ls`` command to see the name of the different simulations. Then you can run:
+
+.. code-block:: shell
+
+   cd "DESIRED SIMULATION"
+   ./start.sh
+
+It will launch a Tmux session and Gazebo. It depends on your PC specs but you may not be able to run all the simulation, especially multi-drones ones.
+
+Tmux sessions
+*******************
 
 Tmux is a powerful tool with ROS and Linux. It allows you to setup a complete and custom session for your simulation for instance, or been able to custom your
 terminal as you want. Your will be able to use this tool if you have install the MRS Linux environment setup as recommented in section :ref:`2.6.1 <2.6.1_MRS_workspace_installation>`.
@@ -247,44 +271,21 @@ to navigate in the tmux session without any issue:
    The official tmux documentation use ``<Ctrl+b and ['key']>`` format. In our case, ``<Ctrl-a and ['key']>`` is the good way to issue the command. It's also possble
    that you get different shortcut, you can easily remap command into ``~/.tmux.conf``.
 
-:red:`[TODO: check summer school shortcuts and add here, check MRS cheatsheet]BC`
 
-2.6 How to use CTU-MRS system
------------------------------
+.. admonition:: todo
+   check summer school shortcuts and add here, check MRS cheatsheet
 
-.. _2.6.1_MRS_workspace_installation:
 
-2.6.1 MRS workspace installation
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Hardware development
+----------------------
 
-Once you have your Ubuntu partition, next step will be to install the MRS workspace from the `CTU-MRS github <https://github.com/ctu-mrs/mrs_uav_system>`__.
-Just follow the instructions on this website in the "`I have a fresh Ubuntu 18.04 and want it quick and easy <https://github.com/ctu-mrs/mrs_uav_system#i-have-a-fresh-ubuntu-1804-and-want-it-quick-and-easy>`__"
-part. We highly recommend to install the MRS Linux environment setup for been able to configure your Linux partition for the MRS workspace. For more detail about
-the workspace configuration, refer to :ref:`Introduction to MRS <3. Introduction to MRS Software Extensions>`.
+CAD
+^^^^^
 
-.. warning::
-   You may encounter an issue to build the MRS packages. If the build fails, you can try in the ``mrs_workspace`` file the following command:
+3D Printing
+^^^^^^^^^^^^^
 
-   .. code-block:: shell
-      
-      catkin build -j2
 
-   It can not work at the the first time, but you can re-try it.
+Soldering
+^^^^^^^^^^^^^
 
-2.6.2 CTU-MRS system use
-^^^^^^^^^^^^^^^^^^^^^^^^
-
-We suggest you to read the `CTU-MRS documentation <https://ctu-mrs.github.io/>`__ to learn how to use the CTU-MRS system.
-
-In this documentation, you will do the simulation of one drone with gps. Remember that you can use the :ref:`Tmux commands <2.5_Working_with_Tmux_session>`
-to navigate through different terminals.
-
-Also, you can try to launch others simulations created by CTU-MRS group. Go to the ``~/mrs_workspace/src/simulation/example_tmux_scripts/`` folder and
-run the ``ls`` command to see the name of the different simulations. Then you can run:
-
-.. code-block:: shell
-
-   cd "DESIRED SIMULATION"
-   ./start.sh
-
-It will launch a Tmux session and Gazebo. It depends on your PC specs but you may not be able to run all the simulation, especially multi-drones ones.
