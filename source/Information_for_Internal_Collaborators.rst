@@ -64,19 +64,22 @@ Some guidelines:
 Setting Up your Ubutnu Machine
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Working on advanced robot simulators (e.g. Gazebo) and algorithms requires decent computational hardware (i.e. CPU, GPU specs).
+Working on advanced robot simulators (e.g. Gazebo) and algorithms requires decent computational hardware (i.e., CPU, GPU specs).
 We have several computers available in the lab, but these have to be reserved since they are mainly used when working on the real robot hardware.
+Please provide your supervisor the specs of your machine(s) (i.e., laptops or desktops) you would like to use for this project. They can tell you if it is sufficient.
 
-KELLY 
+Once you decided on a machine to use:
 
-Please provide your supervisor the specs of your machine(s) (i.e. laptops or desktops) you would like to use for this project. They can tell you if it's sufficient.
-Once you decided on a machine:
-
-   *  TODO FROM PART INTERNS You first need to install Ubuntu 18.04 LTS Desktop. 
-      If you already have windows on your PC, you need to reserve HDD space (a partition of at least 50GB recommended) 
-      and do a dual boot. Do NOT use a virtual machine, it slows down things a lot. 
-      Follow \href{https://ubuntu.com/tutorials/install-ubuntu-desktop#1-overview}{these steps}. 
-      It is advised to boot from a usb stick.
+   * You first need to install Ubuntu 20.04 LTS Desktop. 
+   * If you already have windows on your PC, you need to reserve HDD space (a partition of at least 50GB recommended) and do a dual boot. Do NOT use a virtual machine, it slows down things a lot. 
+   * Follow `these steps <https://ubuntu.com/tutorials/install-ubuntu-desktop#1-overview>`__.
+   * In case you need to update the on-board UAV Intel NUC computer follow `these install instruction <https://ubuntu.com/download/intel-nuc-desktop>`__, make sure you updated the BIOS (follow `these the F7 update instructions <https://www.intel.com/content/dam/support/us/en/documents/mini-pcs/AptioV-BIOS-Update-NUC.pdf>`_ where you choose the BIOS update for Intel® NUC Kits NUC10i7FN `these steps <https://www.intel.com/content/www/us/en/download/19485/bios-update-fncml357.html?wapkw=NUC10FNK%20bios%20update>`_.)
+   * Download the Ubuntu Desktop image `here <https://releases.ubuntu.com/20.04/?_ga=2.186935080.1248387199.1654872293-148428191.1654872293&_gac=1.51465691.1654880802.CjwKCAjw14uVBhBEEiwAaufYx895DiQpFQjDlt3YTGCU2WhtA7pSPgYMvkcwDVmSvlFvOo2gUVrLQBoCOP0QAvD_BwE>`_.
+   * It is advised to boot from a usb stick.
+   * When booting the Intel NUC with the Ubuntu USB drive, you have to push F10 to enter the boot menu.
+   * In case the install doe not start immediately and you don't see an "install Ubuntu" option, then fix the problem as follows:
+      * `Here <https://askubuntu.com/questions/1388118/no-install-ubuntu-option-when-booting-from-live-usb>`__, is mentioned that in the terminal, "I changed "quiet splash" to "noacpi acpi=off" as suggested in the first bullet of the answer linked. Press F10 to boot and it worked." This did not work on the NUC.
+      * `Here <https://askubuntu.com/questions/1138820/black-screen-after-grub-selection-boot-from-usb-live> __ they mentioned but "with adding nouveau.modset=0 to the end of the line instead of acpi=off and leaving quiet splash in place". This did work on the NUC. Normally afterwards, the Ubuntu installation is loaded immediately when starting up. 
 
    *  If you did not select the correct keyboard during the Ubuntu installation, 
       there can be some bugs with a Belgian AZERTY keyboard. 
