@@ -79,7 +79,7 @@ Once you decided on a machine to use:
    * When booting the Intel NUC with the Ubuntu USB drive, you have to push F10 to enter the boot menu.
    * In case the install doe not start immediately and you don't see an "install Ubuntu" option, then fix the problem as follows:
       * `Here <https://askubuntu.com/questions/1388118/no-install-ubuntu-option-when-booting-from-live-usb>`__, is mentioned that in the terminal, "I changed "quiet splash" to "noacpi acpi=off" as suggested in the first bullet of the answer linked. Press F10 to boot and it worked." This did not work on the NUC.
-      * `Here <https://askubuntu.com/questions/1138820/black-screen-after-grub-selection-boot-from-usb-live> __ they mentioned but "with adding nouveau.modset=0 to the end of the line instead of acpi=off and leaving quiet splash in place". This did work on the NUC. Normally afterwards, the Ubuntu installation is loaded immediately when starting up. 
+      * `Here <https://askubuntu.com/questions/1138820/black-screen-after-grub-selection-boot-from-usb-live>`__ they mentioned but "with adding nouveau.modset=0 to the end of the line instead of acpi=off and leaving quiet splash in place". This did work on the NUC. Normally afterwards, the Ubuntu installation is loaded immediately when starting up. 
    * Note that in case you have multiple ubutnu partitions and you wish to delete there is no trivial solution for this. Therefor always install over the previous version.
    
      .. admonition:: todo
@@ -91,8 +91,8 @@ Once you decided on a machine to use:
       Some solutions:
 
          * Install the Languages French and Dutch (Nederlands).
-         * sudo locale-gen fr_BE.UTF-8 (https://askubuntu.com/questions/1133361/cannot-find-my-keyboard-layout)
-         * Find Belgian Wang 724 AZERTY under Dutch or French. https://www.roelpeters.be/changing-to-dutch-belgian-keyboard-layout-in-ubuntu/
+         * sudo locale-gen fr_BE.UTF-8 (`source <https://askubuntu.com/questions/1133361/cannot-find-my-keyboard-layout>`__)
+         * Find Belgian Wang 724 AZERTY under Dutch or French. (`source <https://www.roelpeters.be/changing-to-dutch-belgian-keyboard-layout-in-ubuntu/>`__)
          * Move it up as the default keyboard.  
 
     * Configure you internet access:
@@ -116,7 +116,7 @@ Once you decided on a machine to use:
                  sudo apt-get update
                  sudo apt-get upgrade 
             
-    * Install htop so you can kill processes if required as exaplined here in the last comment (https://askubuntu.com/questions/596830/kill-process-with-htop) F9.
+    * Install htop so you can kill processes if required as exaplined `here <https://askubuntu.com/questions/596830/kill-process-with-htop>`__ in the last comment F9.
     
           .. code-block:: shell
          
@@ -155,7 +155,7 @@ Once you decided on a machine to use:
          * Make a habit to do all simulations and experiments in perfromance mode. This can significantly lower the computational time of simulations and allow to achieve better real-timeness.
     * Download the `Visual Studio Code IDE <https://code.visualstudio.com/>`__ for Ubuntu (.deb) and install it. Preferably use this whenever you want to view or edit code opposed to the default text editor in Ubuntu. Set visual studio code as the default program to open files (right click on the file and select "open with other application").
     * Install `TeamViewer for Linux <https://www.teamviewer.com/nl/download/linux/>`__, and create an teamviewer account. 
-    * Install on Matlab and Simulink version 2021b and the toolboxes you like. See doc in google drive, since you might get some non trivial issues.
+    * Install on MATLAB and Simulink version 2022a and the toolboxes you require. See `these instructions <https://docs.google.com/document/d/1cf5-dsv7b9QUM9sU1zcnYI2isRkyQdxyGfc9MB_vovY/edit?usp=sharing>`__ for installing MATLAB on Ubuntu, since you might get some non trivial issues.
     * Install RecordMyDesktop from UbuntuSoftware. Use this for recording simulations of Gazebo, RVIZ, since the default recording tools perform poorly.
 
 Git Version Control
