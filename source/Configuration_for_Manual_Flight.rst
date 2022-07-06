@@ -31,7 +31,15 @@ Charging:
 .. admonition:: warning
 
    Never leave a battery charging without having an eye on it! The risk of it catching fire is existing and you should be ready to intervene if required. 
+   
+.. admonition:: note
+   
+   With a battery voltage monitor (connected to the balance leads of the battery) you can check if the LiPo battery is charged and it will notify you via beeping when the voltage is too low. This is useful on the field to quickly chekc the voltage or put it on the flying UAV.
 
+.. admonition:: todo
+   
+   add pic of battery voltage monitor
+   
 .. admonition:: note
 
    Make sure enough, preferably all, batteries are charged before doing hardware experiments. When hardware experiments are finished and batteries are drained, recahrge them asap as too low storage voltages is bad for the battery health. 
@@ -42,7 +50,7 @@ Charging:
   
 .. admonition:: note
   
-  If you charge the LiPo battery and you get the low voltage error on the screen, then you should charge it under NiMH for a couple of minutes on a current below 0.7A (`source <https://www.youtube.com/watch?v=clsBhxOo34Q>`__). Use the blue charger.
+  If you charge the LiPo battery and you get the low voltage error on the screen, then you should charge it under NiMH for a couple of minutes on a current below 0.7A (`source <https://www.youtube.com/watch?v=clsBhxOo34Q>`__). Use the blue charger to go back to a voltage around 12-13V (for 4S) and then you can use LiPo mode of whatever charger (blue or black you prefer). Upon arrival of new batteries many of them can have the low voltage error. Always tell this to the suppliers since it si not good! They should send new battries!}
 
 Binding the RC transmitter with the RC receiver
 -------------------------------------------------
