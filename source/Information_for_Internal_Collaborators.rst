@@ -82,9 +82,9 @@ Once you decided on a machine to use:
       * `Here <https://askubuntu.com/questions/1138820/black-screen-after-grub-selection-boot-from-usb-live> __ they mentioned but "with adding nouveau.modset=0 to the end of the line instead of acpi=off and leaving quiet splash in place". This did work on the NUC. Normally afterwards, the Ubuntu installation is loaded immediately when starting up. 
    * Note that in case you have multiple ubutnu partitions and you wish to delete there is no trivial solution for this. Therefor always install over the previous version.
    
-   .. admonition:: todo
+     .. admonition:: todo
 
-   solve this issue. Show where it gets stuck using Gparted
+        solve this issue. Show where it gets stuck using Gparted
 
    *  If you did not select the correct keyboard during the Ubuntu installation, 
       there can be some bugs with a Belgian AZERTY keyboard. 
