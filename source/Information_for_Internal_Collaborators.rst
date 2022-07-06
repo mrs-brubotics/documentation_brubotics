@@ -27,7 +27,7 @@ Some guidelines:
     * If you and your supervisor don't know the answer to some issue, ask your questions (if related) on the issues (e.g. github issues) of the framework you are using. Formulate these questions clearly, but don't make them too long. Outside collaborators might have no clue (as oppsoded to yourself and your supervisor) what you are trying to do.
 
 The Tutorial Documentation
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 We ask all collaborators to document their research (also what does NOT work is valuable!) in easy-to-read and well-explained tutorials.
 Moreover we ask them to improve the unclear or wrong parts of the existing tutorials while they go through them.
@@ -80,6 +80,7 @@ Once you decided on a machine to use:
    * In case the install doe not start immediately and you don't see an "install Ubuntu" option, then fix the problem as follows:
       * `Here <https://askubuntu.com/questions/1388118/no-install-ubuntu-option-when-booting-from-live-usb>`__, is mentioned that in the terminal, "I changed "quiet splash" to "noacpi acpi=off" as suggested in the first bullet of the answer linked. Press F10 to boot and it worked." This did not work on the NUC.
       * `Here <https://askubuntu.com/questions/1138820/black-screen-after-grub-selection-boot-from-usb-live> __ they mentioned but "with adding nouveau.modset=0 to the end of the line instead of acpi=off and leaving quiet splash in place". This did work on the NUC. Normally afterwards, the Ubuntu installation is loaded immediately when starting up. 
+   * Note that in case you have multiple ubutnu partitions and you wish to delete there is no trivial solution for this. Therefor always install over the previous version.
 
    *  If you did not select the correct keyboard during the Ubuntu installation, 
       there can be some bugs with a Belgian AZERTY keyboard. 
