@@ -4,7 +4,9 @@ Configuration for Manual Flight
 
 Batteries and safety
 -------------------------------------
-LiPo batteries are usually used for drones as it provides the best energy-to-weight ratio. A drawback of these batteries is their chance to catch fire. To use them correctly, please read `this link <https://www.cnydrones.org/lipo-batteries-and-safety-for-beginners/>`__ to understand them and follow these guidelines.
+LiPo batteries are usually used for drones as it provides the best energy-to-weight ratio. 
+The battery has a voltage that is the product of the number of cells and the cell voltage (assumed to be equal for each cell).
+A LiPo has $3.7V$ nominal per cell if it is depleted and 4.2 V if it is fully charged. Two important characteristics are defining a battery: its capacity expressed in mAh and its C-rating. A drawback of these batteries is their chance to catch fire. To use them correctly, please read `this link <https://www.cnydrones.org/lipo-batteries-and-safety-for-beginners/>`__ to understand them and follow these guidelines.
 
 Charging:
 ^^^^^^^^^^^
@@ -46,6 +48,8 @@ In this section, you'll learn how to bind the receiver (Hitec Optima SL) and the
    :width: 800
    :alt: alternate text
    :align: center
+   
+   Hitec Flash 8 RC transmitter
 
 The button "Jog Dial Scroll/Enter" will be referenced as "scroller" throughout the section.
 
