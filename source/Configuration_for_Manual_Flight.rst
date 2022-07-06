@@ -6,7 +6,12 @@ Batteries and safety
 -------------------------------------
 LiPo batteries are usually used for drones as it provides the best energy-to-weight ratio. 
 The battery has a voltage that is the product of the number of cells and the cell voltage (assumed to be equal for each cell).
-A LiPo has $3.7V$ nominal per cell if it is depleted and 4.2 V if it is fully charged. Two important characteristics are defining a battery: its capacity expressed in mAh and its C-rating. A drawback of these batteries is their chance to catch fire. To use them correctly, please read `this link <https://www.cnydrones.org/lipo-batteries-and-safety-for-beginners/>`__ to understand them and follow these guidelines.
+A LiPo has $3.7V$ nominal per cell if it is depleted and 4.2 V if it is fully charged. Two important characteristics are defining a battery: its capacity expressed in mAh and its C-rating. 
+
+* The capacity is a measure for the amount of electrical charge that is stored inside the battery. In this case it is expressed in mAh and not in Coulomb, but there is explicitly a link between both units. 1 mAh is equivalent to 3.6 Coulombs.
+* The C-rating gives knowledge about the maximum current that the battery can draw while ensuring safe operations (not overheating). The units of this quantity are 1/hour.
+
+A drawback of these batteries is their chance to catch fire. To use them correctly, please read `this link <https://www.cnydrones.org/lipo-batteries-and-safety-for-beginners/>`__ to understand them and follow these guidelines.
 
 Charging:
 ^^^^^^^^^^^
@@ -37,7 +42,7 @@ Charging:
   
 .. admonition:: note
   
-  If you charge the LiPo battery and you get the low voltage error on the screen, then you should charge it under NiMH for a couple of minutes on a current below 0.7A (use the blue charger for that).
+  If you charge the LiPo battery and you get the low voltage error on the screen, then you should charge it under NiMH for a couple of minutes on a current below 0.7A (`source <https://www.youtube.com/watch?v=clsBhxOo34Q>`__). Use the blue charger.
 
 Binding the RC transmitter with the RC receiver
 -------------------------------------------------
