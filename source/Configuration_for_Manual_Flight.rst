@@ -2,19 +2,40 @@ Configuration for Manual Flight
 =====================================
 
 
-Batteries how to use:
-----------------------
-LiPo batteries are usually used for drones as it provides the best energy-to-weight ratio. A drawback of these batteries is their chance to catch fire. To use them correctly, please read `this link <https://www.cnydrones.org/lipo-batteries-and-safety-for-beginners/>`__ to understand them and follow these guidelines :
-	Charging : * Power on the battery charger.
-		   * Set the voltage to 22.2V (6S battery) for the drone and the current to 1A for charging. The higher the current value the faster the battery will charge, but this will decrease the lifetime of the battery, so trade-off is needed.
-		   * Place the battery in the fireproof bag. This is absolutely required as a safety issue since LiPo batteries can catch fire.
-		   * Connect the battery to the charger. For the main lead beware of the polarity! Red on red, black on black. For the balance lead connect (back of the charger) it to its appropriate place (6S).
-	           * Press start until it beeps. Then press start again.
-	           * The charger will beep when the battery is charged.
-	           * The battery can now be disconnected.
-		   Never leave a battery charging without having an eye on it! The risk of it catching fire is existing and you should be ready to intervene if required. Try to always have a spare battery to replace the discharged one to avoid losing time. If you charge the LiPo battery and you get the low voltage error on the screen, then you should charge it under NiMH for a couple of minutes on a current below 0.7A (use blue charger for that).
-	Storing : If the LiPo won’t be used for a long time it is imperative to not keep the batteries at full capacity, as this will damage them. the storage mode of the charger to discharge the battery. It is a similar procedure to the charging one.
+Batteries and safety
+-------------------------------------
+LiPo batteries are usually used for drones as it provides the best energy-to-weight ratio. A drawback of these batteries is their chance to catch fire. To use them correctly, please read `this link <https://www.cnydrones.org/lipo-batteries-and-safety-for-beginners/>`__ to understand them and follow these guidelines.
 
+Charging:
+^^^^^^^^^^^
+* Put the red/black plug connectors in the battery charger. For the main lead beware of the polarity! Red on red, black on black; 
+* Power on the battery charger;
+* Set the mode to Lipo CHARGE;
+* Set the voltage to 14.8V (for a 4S battery) or 22.2V (for a 6S battery) and the current to 1A or 2A respectively. The higher the current value the faster the battery will charge, but this will decrease the lifetime of the battery, so this trade-off must be considered.
+* Place the battery in the fireproof bag. This is absolutely required as a safety issue since LiPo batteries can catch fire. Never put the charger in the bag as when taking out the charger from the bag the red/black plug connectors might get pulled out of the charger and amke contact resulting in a short circuit! 
+* Connect the battery to the charger. First, for the balance lead connect (back of the charger) it to its appropriate place (4S/6S). Then mating the male and female XT60/XT90 connectors. 
+* Check the voltage and current settings again;
+* Press start until it beeps. Then press start again.
+* When pressing on the status arrows you can view the individual cell voltages. They should be almost equal (i.e., balanced).
+* The charger will beep when the battery is charged.
+* Click on the stop botton;
+* The battery can now be disconnected by unmating the XT60/XT90 connectors.
+		   
+.. admonition:: warning
+
+   Never leave a battery charging without having an eye on it! The risk of it catching fire is existing and you should be ready to intervene if required. 
+
+.. admonition:: note
+
+   Make sure enough, preferably all, batteries are charged before doing hardware experiments. When hardware experiments are finished and batteries are drained, recahrge them asap as too low storage voltages is bad for the battery health. 
+
+.. admonition:: note
+
+   For optimal battery health it is recommended to store them (for longer periods fo time, like multiple weeks or months) at a lower capacity than fully charged. Use the LiPo STORAGE mode which will discharge the abttery up to a safe storage level.
+  
+.. admonition:: note
+  
+  If you charge the LiPo battery and you get the low voltage error on the screen, then you should charge it under NiMH for a couple of minutes on a current below 0.7A (use the blue charger for that).
 
 Binding the RC transmitter with the RC receiver
 -------------------------------------------------
