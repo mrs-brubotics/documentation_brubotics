@@ -75,7 +75,7 @@ Once you decided on a machine to use:
    * Follow `these steps <https://ubuntu.com/tutorials/install-ubuntu-desktop#1-overview>`__.
    * In case you need to update the on-board UAV Intel NUC computer follow `these install instruction <https://ubuntu.com/download/intel-nuc-desktop>`__, make sure you updated the BIOS (follow `these the F7 update instructions <https://www.intel.com/content/dam/support/us/en/documents/mini-pcs/AptioV-BIOS-Update-NUC.pdf>`_ where you choose the BIOS update for Intel® NUC Kits NUC10i7FN `these steps <https://www.intel.com/content/www/us/en/download/19485/bios-update-fncml357.html?wapkw=NUC10FNK%20bios%20update>`_.)
    * Download the Ubuntu Desktop image `here <https://releases.ubuntu.com/20.04/?_ga=2.186935080.1248387199.1654872293-148428191.1654872293&_gac=1.51465691.1654880802.CjwKCAjw14uVBhBEEiwAaufYx895DiQpFQjDlt3YTGCU2WhtA7pSPgYMvkcwDVmSvlFvOo2gUVrLQBoCOP0QAvD_BwE>`_.
-   * It is advised to boot from a usb stick.
+   * It is advised to boot from a usb stick. Te format the stick we recommand using SD Card Formatter on windows.
    * When booting the Intel NUC with the Ubuntu USB drive, you have to push F10 to enter the boot menu.
    * In case the install doe not start immediately and you don't see an "install Ubuntu" option, then fix the problem as follows:
       * `Here <https://askubuntu.com/questions/1388118/no-install-ubuntu-option-when-booting-from-live-usb>`__, is mentioned that in the terminal, "I changed "quiet splash" to "noacpi acpi=off" as suggested in the first bullet of the answer linked. Press F10 to boot and it worked." This did not work on the NUC.
