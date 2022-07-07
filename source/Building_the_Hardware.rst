@@ -1,5 +1,5 @@
 Building the Hardware
-======================
+=====================
 This chapter explains which components are to be ordered and and how to build a custom UAV from its different components.
 We provide details for the development of two distinct UAV versions based on the frame size: an F450 and a T650 UAV.
 Moreover, we provide the details of additional hardware modules that extends the functionality of the UAVs.
@@ -15,7 +15,7 @@ To know which UAV and additional hardware can be used for which type of experime
 
 
 F450 UAV
-----------
+--------
 
 .. admonition:: todo
 
@@ -23,14 +23,14 @@ F450 UAV
 
 
 T650 UAV
-----------
+--------
 
 Components
-^^^^^^^^^^^
+^^^^^^^^^^
 This section lists all the components required to build the UAV.
 
 Off-the-shelf
-**************
+*************
 
 * **Frame**: the body of the UAV, to which all other components are fixed.
 
