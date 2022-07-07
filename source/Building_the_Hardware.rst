@@ -419,20 +419,37 @@ In this section you will learn how to fix all the components on their (custom-ma
 .. admonition:: todo
 
    I assume you drill because they did not print perfectly? Just to be sure you printed the holes with the 3D printer?
+   Yes ! The holes are there but a bit too small du to shrinkage.
+
+(updated)
+  .. figure:: _static/material_motor.jpg
+     :width: 800
+     :alt: alternate text
+     :align: center
+Material for steps 3, 4 and 6 to 9
 
 3. Put the motor on the "Motor top fixation" piece (cables go through the elliptical hole), with the help of the screws provided with the motor. Repeat for all motors.
+(updated)
+  .. figure:: _static/motor_top.jpg
+     :width: 800
+     :alt: alternate text
+     :align: center
+Step 3
+
+     TODO caption
 
 .. admonition:: todo
 
    Take picture on white background (use a clean white sheet of paper, you can find those at the printer up the stairs in front of you). Make sure there are no unnecessary things (noise) in the picture. In this case we do not need to see the soldering yet. Crop the image to what is actually useful. **these comments applies to all pictures below you take of the prototype**
 
 4. Solder the three motor cables to the ESC in arbitrary order. Repeat for all ESCs.
+(updated)
 
-  .. figure:: _static/motor_top.jpg
+  .. figure:: _static/step4.jpg
      :width: 800
      :alt: alternate text
      :align: center
-
+Step 4 
      TODO caption
 
   .. admonition:: todo
@@ -451,6 +468,13 @@ In this section you will learn how to fix all the components on their (custom-ma
 
 6. Fix the "Motor bottom fixation" piece to the frame's part (shown in next figure) with 4x M3 bolts (head on bottom).
 
+(updated)
+  .. figure:: _static/step6.jpg
+     :width: 800
+     :alt: alternate text
+     :align: center
+Step 6
+
 7. Put two straps in it through the side windows. The loops will be done downward.
 
   .. admonition:: todo
@@ -458,6 +482,13 @@ In this section you will learn how to fix all the components on their (custom-ma
      Take picture
 
   .. admonition:: todo
+
+(updated)
+  .. figure:: _static/step6.jpg
+     :width: 800
+     :alt: alternate text
+     :align: center
+Step 6
 
      say length of straps and how they will be used.
 
@@ -490,14 +521,22 @@ In this section you will learn how to fix all the components on their (custom-ma
 
      Take picture
 
-11. Take four pairs of power supply cables (thick red and black cables, a single pair per motor) and a pair with an XT60 connector on them (provided with the PDB). Make sure that the four pairs can reach the ESCs starting from the middle of the frame. Solder all the pairs on the power distribution board (PDB). The position of each pair is shown in the picture below. As the drone requires four motors but the PDB can supply up to eight motors, you can solder each red cable to both B+ connections available on each corner of the PDB. In each corner, where the red cables are, choose one of the two GND connection to solder the black cables.
+11. Take four pairs of power supply cables (more or less 18cm, thick red and black cables, a single pair per motor). Make sure that the four pairs can reach the ESCs starting from the middle of the frame. Solder all the pairs on the power distribution board (PDB). The position of each pair is shown in the picture below. As the drone requires four motors but the PDB can supply up to eight motors, you can solder each red cable to both B+ connections available on each corner of the PDB. In each corner, where the red cables are, choose one of the two GND connection to solder the black cables.
+
+(updated)
+  .. figure:: _static/material_step11.jpg
+     :width: 800
+     :alt: alternate text
+     :align: center
+Material for step 11
 
 
   .. figure:: _static/pdb_indications.jpg
      :width: 800
      :alt: alternate text
      :align: center
-
+Step 11
+The picture above doesn't replace this one, I still need to improve it.
      todo: caption
 
   .. admonition:: todo
