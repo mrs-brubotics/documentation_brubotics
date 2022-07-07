@@ -466,17 +466,7 @@ In this section you will learn how to fix all the components on their (custom-ma
 (updated)
   .. figure:: _static/step6.jpg
      :width: 800
-     :alt: alternate text
-     :align: center
-     
-     Step 6
-
-7. Put two straps in it through the side windows. The loops will be done downward.
-
-  .. admonition:: todo
-
-     Take picture
-
+     :alt: alternate textCenterpiecepart2front
   .. admonition:: todo
 
 (updated)
@@ -730,17 +720,116 @@ This module is installed at the bottom of the UAV and allows to measure the stat
 
    Raphael todo: integrate the next section better in the hardware building chapter using a similar structure as for UAV (see example given below). Give more pictures and explain better each step of the setup.
 
-Encoders and material needed (TO INTEGRATE BETTER)
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-In order to measure the position of the load attached to the UAV, we use encoders to measure the angles of ball joint. Based on this information, the position of the payload in the inertial and word frame can be computed easilly (with the other states measured elsewhere of course).
-The encoders are the `EMS22A <https://www.bourns.com/docs/product-datasheets/EMS22A.pdf>`__ and their data is read using 
-an `Arduino Uno <https://benl.rs-online.com/web/p/arduino/7697409?cm_mmc=BE-PLA-DS3A-_-google-_-PLA_BE_NL_Raspberry_Pi_%26_Arduino_%26_Development_Tools_Whoop-_-(BE:Whoop!)+Arduino-_-7697409&matchtype=&pla-341920527054&gclid=Cj0KCQjwgYSTBhDKARIsAB8KukvAlQU51p7JJ5_edjdlsALUf8YW28bD243x1uw75FKns0QKy6QeSckaAlJREALw_wcB&gclsrc=aw.ds>`__
-These encoders are mounted in some spherical joint, 
+Components
+^^^^^^^^^^
+This section lists all the components required to build the Suspended Payload Module for a UAV.
+This is currently only compatible with the 650 UAV.
 
-.. admonition:: todo
+Off-the-shelf
+*************
 
-   Raphael todo: ADD LINK TO CAD ONCE UPLOADED ON DRIVE/GITHUB . (not done yet as some modifications are possible in case issues are noticed during tests)
+* **Encoders x2** : Sensor used to measure the actual orientation of the cable, fit inside the universal joint.
 
+  *Choice*: `EMS22A <https://www.bourns.com/docs/product-datasheets/EMS22A.pdf>`__ because of its absolute nature, making it suitable to measure an absolute angle. It has a good resolution and its plain shaft makes it lightweight and compact, which is perfect to fit in the joint.  
+
+* **Ball bearings x2** : To avoid friction losses in the joint and support the weight of the payload, to preserve encoder shaft.
+
+  *Choice*: `RS PRO Deep Groove Ball Bearing - Plain Race Type, 15mm I.D, 24mm O.D <https://benl.rs-online.com/web/p/ball-bearings/6190159>`__
+
+* **Collar clamp screw x2** : To fix the shaft of the encoders to axis of the joint.
+
+   *Choice*: `Huco Shaft Collar One Piece Clamp Screw, Bore 4mm, OD 16mm, W 9mm, Steel <https://benl.rs-online.com/web/p/shaft-collars/6918027>`__
+
+* **Arduino** : To process the data coming from the sensors and communicate with the controller.
+
+   *Choice*: `Arduino Uno rev3 <https://store.arduino.cc/products/arduino-uno-rev3>`__
+
+* **Stripboard** : to solder the electronic circuit between each components. I don't have the exact reference (no indication in thesis or old tutorial, no brand on the stripboard itself)
+
+   *Suggested choice*: `Single-Sided Stripboard 50x100mm <https://uk.rs-online.com/web/p/stripboards/2189160>`__ 
+    Very small area reaquired, might take any other stribord even a smaller one.
+
+* **Hex socket cap screw**
+
+   *Choice*: `M2.5 x 12 mm <https://benl.rs-online.com/web/p/socket-screws/4838130>`__
+
+Optionnal: 
+
+* **Force sensor** : To deduce if the cable is well taut.
+
+   *Choice*: `FSR04CE <https://www.mouser.be/datasheet/2/303/res_fsr-1590094.pdf>`__
+
+* **Resistor** : To do a pull down circuit for measuring the output of the force sensor.
+
+   Need to be 10k unicode:: U+003A9
+   
+
+Custom-made
+************
+All the following parts need to be 3D printed with PLA and infill of 10 to 15%. LINK TO CAD FILES (not uploaded yet)
+
+* **Center piece** : on which every other parts will be attached to. Must fit the colar clamps and the bearings. Separated in two parts to make assembly and printing possible. 
+
+  .. figure:: _static/centerPiecepart1front.png
+     :width: 400
+     :alt: alternate text
+     :align: center
+
+  .. figure:: _static/Centerpiecepart1back.png
+     :width: 400
+     :alt: alternate text
+     :align: center
+
+  .. figure:: _static/Centerpiecepart2front.png
+     :width: 400
+     :alt: alternate text
+     :align: center
+
+  .. figure:: _static/Centerpiecepart2back.png
+     :width: 400
+     :alt: alternate text
+     :align: center
+
+* **Upper arms** : Will be attached to the battery by its support. Must fit an encoder.
+
+  .. figure:: _static/UpperArm1Back.png
+     :width: 100
+     :alt: alternate text
+     :align: center
+
+  .. figure:: _static/UpperArm1Front.png
+     :width: 100
+     :alt: alternate text
+     :align: center
+
+  .. figure:: _static/UpperArm2.png
+     :width: 100
+     :alt: alternate text
+     :align: center
+
+
+* **Lower arms** : Same purpose as upper arm. 
+
+  .. figure:: _static/LowerArm.png
+     :width: 50
+     :alt: alternate text
+     :align: center
+
+
+   Note that this part is printed in two separated ones, then assembled why one bolt. This was done to ease the printing process and to allow a clean mounting and unmounting of this part.
+
+* **Attachment for the cable** : Must fit on the lower arm (And on the force sensor if there is one).
+
+* **Support attached to the battery case** : Link the battery of the UAV to the upper arm of the encoder module.
+
+* **Arduino plate** : Support to screw the arduino and the stripboard on the side of the battery case.
+
+Step-by-step assembly instructions
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Once everypart is ready, one can proceed with the assembly of the encoder system (mechanical and electronic).
+Electronic circuit
+******************
+First, the electronic components can be assembled. This will require a soldring station as everything will be connected via the stripboard.
 On the following figure, one can see the correct circuit to reproduce. 
 
 .. figure:: _static/ElectronicCircuit.png
@@ -749,25 +838,27 @@ On the following figure, one can see the correct circuit to reproduce.
    :align: center
 
 .. note::
-  It is better to use flexible cables to do the circuit as rigid ones might disconnect more easily in case they are pulled a bit.
+  It is better to use flexible cables (REF ??? I used the one that are at the lab on big rolls) to do the circuit as rigid ones might disconnect more easily in case they are pulled a bit.
 
-Components
-^^^^^^^^^^^
-This section lists all the components required to build the Suspended Payload Module for a UAV.
-This is currently only compatible with the 650 UAV.
+5 cables are needed per encoders. 2 are for the power (V+ and ground) and 3 are for the signal. To solder these correctly, put a small amount of tin on both the pin of the encoder and the cable. Then put the cable on the pin and heat up the two with the soldering iron. Both preapplied tin layers should melt easilly and fuse togheter on the pin. Once the shape of the weld is looking regular and well spreaded over the pin, just take out the iron and wait.
+Don't hesitate to redo some of the weldings if they don't look strong enough, as it is very important that the cables stay in place. Also, the welds must not touch each other of course.
+Once all the cables are welded to the encoder, cables from the same encoder can be attached togheter with tape to keep a readable circuit and avoid mistakes. 
 
-Off-the-shelf
-*************
+Mechanical assembly 
+*******************
+* **Center piece**  Press fit the collard inside the hollow part of the center piece. When those are in place, connect the two part of the central piece and secure it using two bolts.
 
-Custom-made
-************
+* **Add the bearings** 
 
+* **Assemble the lower arms** using bolt and adding already the attachment piece for the cable. 
 
-Step-by-step assembly instructions
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+* **Connect the support to the battery** 
 
+* **Attach the upper arm to the center piece of the jont and to the support of the battery**.
 
+* **Add the encoders** at the correct location on each arms
 
+* **Screw the arduino on its support plate and screw the plate on the battery case**
 
   
 
