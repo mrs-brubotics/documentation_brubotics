@@ -732,13 +732,30 @@ Off-the-shelf
 
   *Choice*: `EMS22A <https://www.bourns.com/docs/product-datasheets/EMS22A.pdf>`__ because of its absolute nature, making it suitable to measure an absolute angle. It has a good resolution and its plain shaft makes it lightweight and compact, which is perfect to fit in the joint.  
 
+  .. figure:: _static/RotaryEncoderEMS22A.png
+     :width: 400
+     :alt: alternate text
+     :align: center
+
 * **Ball bearings x2** : To avoid friction losses in the joint and support the weight of the payload, to preserve encoder shaft.
 
   *Choice*: `RS PRO Deep Groove Ball Bearing - Plain Race Type, 15mm I.D, 24mm O.D <https://benl.rs-online.com/web/p/ball-bearings/6190159>`__
 
+  .. figure:: _static/BearingAlone.png
+     :width: 400
+     :alt: alternate text
+     :align: center
+
+
 * **Collar clamp screw x2** : To fix the shaft of the encoders to axis of the joint.
 
    *Choice*: `Huco Shaft Collar One Piece Clamp Screw, Bore 4mm, OD 16mm, W 9mm, Steel <https://benl.rs-online.com/web/p/shaft-collars/6918027>`__
+
+  .. figure:: _static/CollarClamps.png
+     :width: 400
+     :alt: alternate text
+     :align: center
+
 
 * **Arduino** : To process the data coming from the sensors and communicate with the controller.
 
@@ -759,9 +776,14 @@ Optionnal:
 
    *Choice*: `FSR04CE <https://www.mouser.be/datasheet/2/303/res_fsr-1590094.pdf>`__
 
+  .. figure:: _static/ForceSensor.png
+     :width: 400
+     :alt: alternate text
+     :align: center
+
 * **Resistor** : To do a pull down circuit for measuring the output of the force sensor.
 
-   Need to be 10k unicode:: U+003A9
+   Need to be 10k Ohms.
    
 
 Custom-made
@@ -810,23 +832,41 @@ All the following parts need to be 3D printed with PLA and infill of 10 to 15%. 
 
 * **Lower arms** : Same purpose as upper arm. 
 
-  .. figure:: _static/LowerArm.png
-     :width: 50
+   Note that this part is printed in two separated ones, then assembled why one bolt. This was done to ease the printing process and to allow a clean mounting and unmounting of this part.
+
+   .. figure:: _static/LowerArmFull.png
+     :width: 300
      :alt: alternate text
      :align: center
 
 
-   Note that this part is printed in two separated ones, then assembled why one bolt. This was done to ease the printing process and to allow a clean mounting and unmounting of this part.
 
 * **Attachment for the cable** : Must fit on the lower arm (And on the force sensor if there is one).
 
+
+   .. figure:: _static/AttachmentCable.png
+     :width: 100
+     :alt: alternate text
+     :align: center
+
 * **Support attached to the battery case** : Link the battery of the UAV to the upper arm of the encoder module.
 
+   .. figure:: _static/AttachmentBatteryCase.png
+     :width: 300
+     :alt: alternate text
+     :align: center
+
 * **Arduino plate** : Support to screw the arduino and the stripboard on the side of the battery case.
+
+   .. figure:: _static/AttachmentArduino.png
+     :width: 300
+     :alt: alternate text
+     :align: center
 
 Step-by-step assembly instructions
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Once everypart is ready, one can proceed with the assembly of the encoder system (mechanical and electronic).
+
 Electronic circuit
 ******************
 First, the electronic components can be assembled. This will require a soldring station as everything will be connected via the stripboard.
@@ -846,9 +886,24 @@ Once all the cables are welded to the encoder, cables from the same encoder can 
 
 Mechanical assembly 
 *******************
+
+.. admonition:: todo
+
+   Raphael : When building the 2nd encoder, will do pictures of intermediate steps. 
+
 * **Center piece**  Press fit the collard inside the hollow part of the center piece. When those are in place, connect the two part of the central piece and secure it using two bolts.
 
-* **Add the bearings** 
+.. figure:: _static/PressFit.png
+   :width: 800
+   :alt: alternate text
+   :align: center
+
+* **Add the bearings** also by doing press fit. Less tension needed as the arm will naturally keep them in place.
+
+.. figure:: _static/BallBearing.png
+   :width: 400
+   :alt: alternate text
+   :align: center
 
 * **Assemble the lower arms** using bolt and adding already the attachment piece for the cable. 
 
