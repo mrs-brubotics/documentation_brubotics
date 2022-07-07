@@ -410,33 +410,27 @@ In this section you will learn how to fix all the components on their (custom-ma
 
 1. Mount the frame as explained `in this tutorial <https://www.youtube.com/watch?v=Ddvgs200OaY&ab_channel=MultiCopterBuild>`__. You only need to attach the arms to the body and you can skip the assembly of the legs and the top part.
 
-2. Drill the holes of all the 3D printed pieces. Use a drill bit of size 2.5mm for every hole **NOT** directly touching the frame. For the holes used to fix the parts on the frame itself, use a 3mm drill bit.
+2. Drill the holes of all the 3D printed pieces to deal with imperfections due to shrinkage. Use a drill bit of size 2.5mm for every hole **NOT** directly touching the frame. For the holes used to fix the parts on the frame itself, use a 3mm drill bit.
 
 .. admonition:: todo
 
    I have difficulties understandign what you mean with these 2 categories of parts. Can you give a list of parts (see names above) that need which drill size? 
 
-.. admonition:: todo
-
-   I assume you drill because they did not print perfectly? Just to be sure you printed the holes with the 3D printer?
-   Yes ! The holes are there but a bit too small du to shrinkage.
-
-(updated)
   .. figure:: _static/material_motor.jpg
      :width: 800
      :alt: alternate text
      :align: center
-Material for steps 3, 4 and 6 to 9
+     
+     Material for steps 3, 4 and 6 to 9
 
 3. Put the motor on the "Motor top fixation" piece (cables go through the elliptical hole), with the help of the screws provided with the motor. Repeat for all motors.
-(updated)
+
   .. figure:: _static/motor_top.jpg
      :width: 800
      :alt: alternate text
      :align: center
-Step 3
-
-     TODO caption
+     
+     Step 3
 
 .. admonition:: todo
 
@@ -449,8 +443,9 @@ Step 3
      :width: 800
      :alt: alternate text
      :align: center
-Step 4 
-     TODO caption
+
+     Step 4 
+     
 
   .. admonition:: todo
 
@@ -473,7 +468,8 @@ Step 4
      :width: 800
      :alt: alternate text
      :align: center
-Step 6
+     
+     Step 6
 
 7. Put two straps in it through the side windows. The loops will be done downward.
 
@@ -488,9 +484,8 @@ Step 6
      :width: 800
      :alt: alternate text
      :align: center
-Step 6
 
-     say length of straps and how they will be used.
+      Step 6
 
 8. Fix the assembly to the end of an arm, using the bolts and parts (orange and blue) provided with the frame. 
 
@@ -521,23 +516,28 @@ Step 6
 
      Take picture
 
-11. Take four pairs of power supply cables (more or less 18cm, thick red and black cables, a single pair per motor). Make sure that the four pairs can reach the ESCs starting from the middle of the frame. Solder all the pairs on the power distribution board (PDB). The position of each pair is shown in the picture below. As the drone requires four motors but the PDB can supply up to eight motors, you can solder each red cable to both B+ connections available on each corner of the PDB. In each corner, where the red cables are, choose one of the two GND connection to solder the black cables.
+11. Take four pairs of power supply cables (more or less 18cm long, thick red and black cables, a single pair per motor). Make sure that the four pairs can reach the ESCs starting from the middle of the frame. Solder all the pairs on the power distribution board (PDB). The position of each pair is shown in the picture below. As the UAV requires four motors but the PDB can supply up to eight motors, you can solder each red cable to both B+ connections available on each corner of the PDB. In each corner, where the red cables are, choose one of the two GND connection to solder the black cables.
 
 (updated)
   .. figure:: _static/material_step11.jpg
      :width: 800
      :alt: alternate text
      :align: center
-Material for step 11
+
+     Material for step 11
 
 
   .. figure:: _static/pdb_indications.jpg
      :width: 800
      :alt: alternate text
      :align: center
-Step 11
-The picture above doesn't replace this one, I still need to improve it.
-     todo: caption
+
+      Step 11
+   
+  .. admonition:: todo
+      
+      The picture above doesn't replace this one, I still need to improve it.
+     
 
   .. admonition:: todo
 
