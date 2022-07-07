@@ -730,8 +730,8 @@ This module is installed at the bottom of the UAV and allows to measure the stat
 
    Raphael todo: integrate the next section better in the hardware building chapter using a similar structure as for UAV (see example given below). Give more pictures and explain better each step of the setup.
 
-18.1 Encoders and material needed (TO INTEGRATE BETTER)
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Encoders and material needed (TO INTEGRATE BETTER)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 In order to measure the position of the load attached to the UAV, we use encoders to measure the angles of ball joint. Based on this information, the position of the payload in the inertial and word frame can be computed easilly (with the other states measured elsewhere of course).
 The encoders are the `EMS22A <https://www.bourns.com/docs/product-datasheets/EMS22A.pdf>`__ and their data is read using 
 an `Arduino Uno <https://benl.rs-online.com/web/p/arduino/7697409?cm_mmc=BE-PLA-DS3A-_-google-_-PLA_BE_NL_Raspberry_Pi_%26_Arduino_%26_Development_Tools_Whoop-_-(BE:Whoop!)+Arduino-_-7697409&matchtype=&pla-341920527054&gclid=Cj0KCQjwgYSTBhDKARIsAB8KukvAlQU51p7JJ5_edjdlsALUf8YW28bD243x1uw75FKns0QKy6QeSckaAlJREALw_wcB&gclsrc=aw.ds>`__
@@ -757,156 +757,15 @@ This section lists all the components required to build the Suspended Payload Mo
 This is currently only compatible with the 650 UAV.
 
 Off-the-shelf
-**************
-
-* **Part1**: explain generally.
-
-  *Choice*: specific product name you ordered.
-
-  .. admonition:: todo
-
-     make sure the picture gets cropped (as to delete the excessive white borders)
-
-  .. figure:: _static/frame.jpg
-     :width: 800
-     :alt: alternate text
-     :align: center
-
-     Caption title
-
-  .. admonition:: note
-
-     add a note if required
-
-* **Part2**: do same here
-  do same here
-
-* **Other**: 
-
-   Electrical cables: 
-      * 20 x this used for that
-      * 10 x this used for that
-
-   Electrical connectors: 
-      * 3 x this used for that
-      * 5 x this used for that
-   
-   Mechanical connectors (screw, bolts and nuts): 
-      * 3 x this used for that
-      * 5 x this used for that
-   
-   Other?:
-      * 3 x this used for that
-      * 5 x this used for that
-
-
-  .. admonition:: todo
-
-     add here all screws, nuts, and their sizes, and other things like tape, straps, jumper cables, soldering iron, cables (which type of cable thickness and flexible), connectors (all yellow connectors or metal connectors to power things) and explain for what these are used.
-     Old text of Maxime I placed here: All the holes used to attach something directly on the frame are for M3 bolts and the other holes M2.5 bolts. Use M3x12mm and M2.5x12mm bolts.
+*************
 
 Custom-made
 ************
-In this section all custom made parts to build the Suspended Payload Module.
 
-.. admonition:: todo
-
-   Once the final designs are finished of both your thesis, I will need the inventor files and all stl files of the UAV (also for the F450 from which you started). I will put them on a drive that people can download it. We cannot put it on github since too large files. 
-   They are accessible here (TO DO).
-
-We 3D print all these pieces with 20% infill:
-
-* **Main piece (x 1)**: used to provide enough space for all the components. The PDB is fixed on its lower stage, the Pixhawk and its middle stage and the Intel NUC on its top stage. 
-
-  .. figure:: _static/pb_stage.jpg
-     :width: 800
-     :alt: alternate text
-     :align: center
-
-     Main piece 
-
-* **Motor top and bottom fixation (x 4 per piece)**: used to attach the motors to the frame and to fix the legs.
-
-  .. figure:: _static/motor_fixation_top.jpg
-     :width: 800
-     :alt: alternate text
-     :align: center
-   
-     Motor top fixation
-
-  .. figure:: _static/motor_fix_bottom.jpg
-     :width: 800
-     :alt: alternate text
-     :align: center
-   
-     Motor bottom fixation
-
-  .. figure:: _static/motor_cad.jpg
-     :width: 800
-     :alt: alternate text
-     :align: center
-
-     Motor fixed to Motor top fixation
-
-  .. admonition:: todo
-
-     for completeness add picture of how Motor bottom fixation is used to connect frame to Motor top fixation
-
-* **Battery case with side (x 2), front (x 1) and core (x 1) piece**: used to attach the battery to the frame.
-
-  .. admonition:: todo
-
-     add pictures of all pieces
-
-
-  .. figure:: _static/battery_assembly.jpg
-     :width: 800
-     :alt: alternate text
-     :align: center
-     
-     Battery case
 
 Step-by-step assembly instructions
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-In this section you will learn how to fix all the components on their (custom-made) piece, assemble everything, and solder/connect every cable/connector to electronic components.
-
-**Goal**: assemble the Suspended Payload Module that looks like in this CAD: 
-
-.. figure:: _static/drone.jpg
-   :width: 800
-   :alt: alternate text
-   :align: center
-   
-   Fully assembled CAD of the payload module T650 UAV and when attacked to the T650 UAV
-
-**Required tools**:
-
-.. admonition:: todo
-
-   list the tools needed during the assembly: e.g. soldering iron, screwdriver numbers...
-
-**Tips**:
-
-.. admonition:: note
-
-   Every time you solder cables, put a piece of shrink tube beforehand on the cables and heat them on the soldering once it is done.
-
-**Steps**
-
-1. Mount the frame as explained `in this tutorial <https://www.youtube.com/watch?v=Ddvgs200OaY&ab_channel=MultiCopterBuild>`__. You only need to attach the arms to the body and you can skip the assembly of the legs and the top part.
-
-2. Drill the holes of all the 3D printed pieces. Use a drill bit of size 2.5mm for every hole **NOT** directly touching the frame. For the holes used to fix the parts on the frame itself, use a 3mm drill bit.
-
-.. admonition:: todo
-
-   I have difficulties understandign what you mean with these 2 categories of parts. Can you give a list of parts (see names above) that need which drill size? 
-
-.. admonition:: todo
-
-   I assume you drill because they did not print perfectly? Just to be sure you printed the holes with the 3D printer?
-
-Your Suspended Payload Module is built!
 
 
 
