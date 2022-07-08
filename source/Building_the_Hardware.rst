@@ -47,6 +47,7 @@ Off-the-shelf
 
      We do not use the feet of the frame but instead 3D print custom feet as to reserve more space for additional hardware (e.g., an encoder mechnism for payload transport) at the bottom part of the UAV.
 
+(updated)
   .. admonition:: todo
 
      make sure the picture gets cropped (as to delete the excessive white borders)
@@ -73,6 +74,7 @@ Off-the-shelf
 
      Pixhawk 4 PDB
 
+(updated)
   .. admonition:: todo
 
      replace with higher resolution picture
@@ -88,6 +90,7 @@ Off-the-shelf
 
      Pixhawk 4 GPS
 
+(updated)
   .. admonition:: todo
 
      replace with higher resolution picture and make sure the picture cropped (as to delete the grey bottom reactangle)
@@ -103,6 +106,7 @@ Off-the-shelf
 
      Tarot 4114 320KV Multi-Rotor brushless motor
   
+(updated)
   .. admonition:: todo
 
      make sure the picture gets cropped (as to delete the excessive grey borders)
@@ -129,6 +133,7 @@ Off-the-shelf
 
       Turnigy MultiStar BLheli_32 ARM 51A Race Spec ESC 2~6S
 
+(updated)
    .. admonition:: todo
 
      make sure the picture gets cropped (as to delete the excessive grey borders)
@@ -144,6 +149,7 @@ Off-the-shelf
 
       Turnigy Graphene Professional 12000mAh 6S15C LiPo Pack
 
+(updated)
    .. admonition:: todo
 
      make sure the picture gets cropped (as to delete the excessive grey borders)
@@ -159,6 +165,7 @@ Off-the-shelf
 
      Hitec Optima SL
 
+(updated)
 .. admonition:: todo
 
      make sure the picture gets cropped (as to delete the excessive grey borders)
@@ -174,6 +181,7 @@ Off-the-shelf
 
      Hitec Flash 8
 
+(updated)
   .. admonition:: todo
 
      make sure the picture gets cropped (as to delete the excessive grey borders)
@@ -197,7 +205,7 @@ Off-the-shelf
       * 3 x this used for that
       * 5 x this used for that
 
-
+still to be done. I'll try to get clearer on the explanations.
   .. admonition:: todo
 
      add here all screws, nuts, and their sizes, and other things like tape, straps, jumper cables, soldering iron, cables (which type of cable thickness and flexible), connectors (all yellow connectors or metal connectors to power things) and explain for what these are used.
@@ -237,7 +245,10 @@ Off-the-shelf
 * **DC-DC converter**: enables to provide the appropriate supply voltage to the companion computer which is typically in a different range of voltage/current/power as the battery.
 
   *Choice*: Wingoneer XL4016E1 (input: 4-40V, output: 1.25-36V at max 8A, max power: 200W). Since the 6S LiPo battery (i.e., a Turnigy Graphene Professional 12000mAh 6S15C LiPo Pack) provides at most 25.2V and at least 18.0V and the Intel NUC companion computer needs a supply voltage between 12V and 19V and has a rated power supply of 19V/6.33A, the converter must be able to take 18V-25.2V in and deliver 19V/6.33A (or 121W).
+You can find `here https://www.alldatasheet.com/datasheet-pdf/pdf/1134370/XLSEMI/XL4016E1.html>`__ the datasheet of the XL4016E1. 
+Go `here <https://www.amazon.fr/WINGONEER-R%C3%A9gulateur-convertisseur-Efficacit%C3%A9-Alimentation/dp/B071L34ZXB>`__ for more information about the Wingoneer circuit and where to buy it.
 
+(updated)
     .. admonition:: todo
 
      add links to datasheets onlien and cite the pages where you found this info. 
@@ -343,9 +354,15 @@ We 3D print all these pieces with 20% infill:
 
      Motor fixed to Motor top fixation
 
+(updated)
   .. admonition:: todo
 
      for completeness add picture of how Motor bottom fixation is used to connect frame to Motor top fixation
+
+  .. figure:: _static/motor_on_arm_cad_1.jpg
+     :width: 800
+     :alt: alternate text
+     :align: center
 
 
 * **Leg (x 4)**: used to support the drone while on the ground.
@@ -359,6 +376,7 @@ We 3D print all these pieces with 20% infill:
 
 * **Battery case with side (x 2), front (x 1) and core (x 1) piece**: used to attach the battery to the frame.
 
+(updated) Also updated the picture of the assembly.
   .. admonition:: todo
 
      add pictures of all pieces
@@ -370,6 +388,34 @@ We 3D print all these pieces with 20% infill:
      :align: center
      
      Battery case
+
+  .. figure:: _static/bottom_battery.jpg
+     :width: 800
+     :alt: alternate text
+     :align: center
+     
+     Bottom of the battery case
+
+  .. figure:: _static/battery_front.jpg
+     :width: 800
+     :alt: alternate text
+     :align: center
+     
+     Front of the battery case
+
+  .. figure:: _static/sideR_battery.jpg
+     :width: 800
+     :alt: alternate text
+     :align: center
+     
+     Right side of the battery case
+
+  .. figure:: _static/sideL_battery.jpg
+     :width: 800
+     :alt: alternate text
+     :align: center
+     
+     Left side of the battery case
 
 Step-by-step assembly instructions
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -463,11 +509,6 @@ In this section you will learn how to fix all the components on their (custom-ma
 
 6. Fix the "Motor bottom fixation" piece to the frame's part (shown in next figure) with 4x M3 bolts (head on bottom).
 
-(updated)
-  .. figure:: _static/step6.jpg
-     :width: 800
-     :alt: alternate textCenterpiecepart2front
-  .. admonition:: todo
 
 (updated)
   .. figure:: _static/step6.jpg
@@ -477,12 +518,23 @@ In this section you will learn how to fix all the components on their (custom-ma
 
       Step 6
 
+7. Put 2 straps in it through the side windows. The loops will be done downward.
+
+  .. figure:: _static/step7.jpg
+     :width: 800
+     :alt: alternate text
+     :align: center
+
+      Step 7
+
 8. Fix the assembly to the end of an arm, using the bolts and parts (orange and blue) provided with the frame. 
 
   .. figure:: _static/motor_bottom.jpg
      :width: 800
      :alt: alternate text
      :align: center
+
+     Step 8
 
      todo: caption
 
@@ -497,6 +549,8 @@ In this section you will learn how to fix all the components on their (custom-ma
      :width: 800
      :alt: alternate text
      :align: center
+
+     Step 9
 
      todo caption
 
