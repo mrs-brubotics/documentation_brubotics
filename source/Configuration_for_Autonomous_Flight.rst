@@ -116,7 +116,7 @@ On the NUC3 the file will looks like :
 
 
 SSH Configuration
-^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^
 
 Another problem that needs to be solved is what concerns the ssh service of the
 NUC. As a safety measure, this service is disabled each time the NUC reboots so we need to enable
@@ -204,7 +204,7 @@ You should now get the same result as on the following figure :
 
 
 Wireless Connection to the onboard NUCs
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 To be able to remotely control the nuc by SSH into it from a base computer, one needs to configure a wifi router.
 
@@ -265,7 +265,7 @@ TO CHECK ADD pictures of the corresponding tab.
 
 
 Config RTK
---------------------
+----------
 
 
 What we did not modified :
@@ -284,10 +284,127 @@ GNSS measurements with usual GPS precision. The RTK system computes the baseline
 between both measurements, which gives the rover’s position relative to the base.
 
 
+.. admonition:: todo
+   Still need to add the pictures of the correct parameters + small explanations. Normally everything was already okay and well configured so should be fast to just transpose.
+   /!\ separate well the rover and base part to avoid confusion. It was not that clear in overleaf. 
 
+
+Create launch scripts and configure MRS code
+--------------------------------------------
+This section will cover the different files and parameters that must be configured prior to launching a test on hardware.
+Before doing anything, check that all the workspaces build correctly and that the code are up to date. 
+Several things have to be modified in the default code from MRS to work with the hardware presented here.
+
+* Go to the `config file <https://github.com/ctu-mrs/mrs_uav_odometry/blob/master/config/uav/rtk.yaml>`__ of the rtk and change "altitude_estimator: "HEIGHT" to "altitude_estimator:
+  "RTK"; This is because by default, standart GPS is used with the mrs code, which was not precise enough.
+
+* OPTIONNAL : Go to the `config file <https://github.com/ctu-mrs/mrs_uav_general/blob/master/config/uav_names.yaml>`__ of the uav names. Delete all the names present in the robot_names list and 
+  put the names of all the drones you are using. The names should be the same as the one in the
+  ∼/.bashrc and should be the hostname of your computer;
+
+* Go to the `launch file <https://github.com/ctu-mrs/mrs_serial/blob/master/launch/rtk.launch>`__ of the rtk and modify your baudrate according to the baudrate of the reach m2
+  (and NOT reachS2) that you’ve set up in previous section "Config RTK". Sometimes even when this baudrate is specified
+  and correct you can obtain an error when launching the rtk launch file. This error says that your
+  baudrate is unsupported and gives you a random number. If you want to bypass this error you will
+  have to impose your baudrate in the `nmea_parser.cpp <https://github.com/ctu-mrs/mrs_serial/blob/master/src/nmea_parser.cpp>`__ file and add this line after the parameters are
+  loaded; Normally MRS solved the issue. 
+
+.. code-block:: shell
+
+  baudrate_ = 9600;
+
+[serial apckage required and TODO add as custom config!] BC ???
+
+* Create your custom tmux script in your test folder or use the simple `just_flying.sh <https://github.com/ctu-mrs/uav_core/blob/master/tmux_scripts/just_flying.sh>`__ script from MRS as a start. Add the following
+  line:
+
+  .. code-block:: shell 
+    
+    'rtk' 'WaitForRos;␣roslaunch␣mrs\_serial␣rtk.launch'
+
+Before launching any script, double check that every .bashrc file is correct for every drone. Appart from drone name what to change ???TODO
+
+* In your folder where the just_flying.sh template is pasted, create a folder custom_configs where you will put your yaml files to overwrite
+  the parameters from the differents launch. The yaml files you need are :
+
+    * `world_simulation.yaml <https://github.com/ctu-mrs/mrs_uav_general/blob/master/config/worlds/world_simulation.yaml>`__ : add the actual lat-long coordinates of the BASE in the utm_origin_lat-long
+      part. This will ensure the right computation of the baseline. Be as precise as you can on the lat
+      long value.
+
+    * `rtk_republisher.yaml <https://github.com/ctu-mrs/mrs_uav_odometry/blob/master/config/rtk_republisher.yaml>`__ : not necessary but if you plan to use all the topics related to the rtk, the
+      offset x-y should be the latlong coordinates of the base CONVERTED in UTM coordinates
+
+    * Odometry.yalm should contain all the changes made to your odometry parameters. You can find the
+      one you can change inside all the config file of `mrs_uav_odometry/config <https://github.com/ctu-mrs/mrs_uav_odometry/blob/master/config/>`__ and more particularly in
+      default_config.yaml where you can choose the estimator you want. 
+
+      .. code-block:: xml
+
+        lateral_estimator = 'RTK'
+        altitude_estimator = 'RTK'
+        altitude :
+        use_rtk_altitude = true
+      
+      You can also play with the Q and R matrices of the altitude and latitude estimator. For more
+      information about the Kalman filter, read the `Wikipedia page <https://en.wikipedia.org/wiki/Kalman_filter>`__. But here, remember than if you
+      want in the odometry to put the emphasis more on the RTK measurements, just reduce the value
+      of the R of the height_rtk and pos_rtk. Add the following lines on your odometry.yaml :
+      
+      .. code-block:: xml
+      
+        altitude :
+        R:
+        height_rtk: [0.01]
+        lateral :
+        R:
+        pos_rtk: [0.01]
+      
+      To go further, you can also disable the fusing operation by disabling the fusion of the vel_baro
+      measurement in the altitude_estimator.yaml but this is unsafe.
+
+    * `uav_manager.yaml <https://github.com/ctu-mrs/mrs_uav_general/blob/master/config/default/uav_manager>`__ : To set up the takeoff height as desired and put the `max_thrust <https://github.com/ctu-mrs/mrs_uav_general/blob/master/config/default/uav_manager#L71>`__ to 1 to avoid
+      most of undesired elandings.
+      Be sure to allow the overwriting by adding in your custom scripts the config and link it to the right
+      custom config file :
+      99roslaunch mrs_uav_general core.launch config_uav_manager:=custom_configs/
+      uav_manager.yaml
+      config_odometry:=/custom_configs/odometry.yaml config_world_simulation:=/
+      custom_configs/world_simulation.yaml
+
+[what has to happen with the world_simulation.yaml and the rtk_republisher.yaml? do they not also have
+to be included ] AD [This is just as an example, i didn’t have the files near me so I wrote from memory.
+Include all config the same way] FM For the moment, the offset in Z is weird and the current solution is to
+add an 66.75 offset in the odometry.cpp.
+[Better solution on the way] FM
+
+.. admonition:: todo
+
+  following part is redundant with what is written in the next part autonomous flight procedure.
+
+With this all done, follow those steps when your UAV is outside: 
+
+1. First wait for the RTK FIX. You can see it in the EMLID ReachView of the Reach M2. Just access
+  it by typing its IP address on your browser
+  Figure 4.36: Look at the RTK Status at the top right corner in the EMLID ReachView App on your
+  browser (possible in the app also)
+
+2. Launch the .sh script
+
+3. Wait for the convergence to the current altitude of the drone. It takes more or less 10 seconds
+
+4. Arm the drone with the C switch (down position) and put it the the desired flight mode with the A
+  switch (UP = manual, Middle = ALTCTL, DOWN = POSCTL)
+
+5. Put the drone in offboard mode with the B switch (down position). The drone will takeoff automatically.
+
+6. Now you can send it to a setpoint with a rosservice command or through the status tab
+  Note that each battery can withstand more or less 2 flights. So prepare well your experiment. Make
+  sure the batteries are at 16.8V (fully charged for 4S) before you start to fly. When the battery voltage is
+  close to 14 V, it is better to not take off in order to avoid damage to the batteries. This can be changed
+  in the px4_config.yaml BUT you definitely shouldn’t change this value.
 
 Cable-Suspended Payload Module
---------------------------------------
+------------------------------
 
 .. admonition:: todo
 
