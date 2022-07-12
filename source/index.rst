@@ -18,14 +18,15 @@ DroneSwarmTutorial
    Autonomous_Flight_Procedures
    Project_Certified_Correct_Control_of_UAVs
    Project_Certified_Correct_Control_of_UAVs_with_Cable_Suspended_Payload
-   .. Connecting the NUC on the drone
-   .. Hardware_config
-   .. Introduction_to_MRS_Software_Extensions
-   .. MRS_code_Documentation
-   .. Workspace_git_configuration
-   .. Introduction_to_visualization
-   .. Crazyswarm
-   .. Version_control_with_Github
-   .. Information_for_developers
+
+.. Connecting the NUC on the drone
+.. Hardware_config
+.. Introduction_to_MRS_Software_Extensions
+.. MRS_code_Documentation
+.. Workspace_git_configuration
+.. Introduction_to_visualization
+.. Crazyswarm
+.. Version_control_with_Github
+.. Information_for_developers
   
    
