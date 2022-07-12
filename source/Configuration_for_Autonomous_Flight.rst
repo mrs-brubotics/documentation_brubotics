@@ -29,9 +29,9 @@ when it is connected to it (using always the same usb ports).
 
 These steps will be based on `this <https://ctu-mrs.github.io/docs/hardware/px4_configuration.html>`__ tutorial written by CTU-MRS.
 
-* Connect a mouse, keyboard and the PixHawk 4 to the Intel NUC (Use the FTDI board (TLL cable) and not not the standart USB cable of the PixHawk, see section on FTDI REF TO PUT HERE). There are 3 USB connections and you can chose
-  where to put each device, but then not change after configuration is done. 
-  I think we used the normal usb to micro usb cable for this, not sure. Might need to double check next time I come to the lab. Maxime do you remember ? For QGround control we used a standard usb for sure.
+* Connect a mouse, keyboard and the PixHawk 4 to the Intel NUC (**Use the FTDI board (TLL cable)** and **not the standart USB cable** of the PixHawk, see section on FTDI REF TO PUT HERE). There are 3 USB connections and you can chose
+  where to put each device, but then not change after configuration is done. In our case, the Pixhawk was connected through the front USB port of the NUC.
+  
 
 * Once the device is powered on (by the battery) and you are logged in, open a terminal and go to cd ../../dev or by
   clicking first on "other locations" in Files. If you type "ls" you will get a list of every connection that
@@ -244,25 +244,53 @@ The ip of the ground station must be 192.168.0.100, while the IP of the NUC's mu
    :alt: alternate text
    :align: center
 
-Let DNS server on automatic. PROBLEM IN WINDOWS : must be set, to what?? Was still able to ping and SSH into the nuc but I lose internet. Doesn't seems to be an issue on ubuntu, so 
-with the third NUC Bryan will bring it should be okay. (and the section will be confirmed).
+Note that the DNS server is on automatic but with a certain value. It works without the automatic switch, but if no number is put we lose internet. 
 
 Then check via ifconfig if the ip adress is set now correctly:
 
-You can find back the device IP address and MAC address on Ubuntu by typing ifconfig and get as output the inet (IPv4) and the ether (Mac
-address) (make sure you connected to the router network) :
+You can find back the device IP address and MAC address on Ubuntu by typing ifconfig and get as output the **inet (IPv4)** and the **ether (Mac
+address)** (make sure you connected to the router network) :
 
 .. figure:: _static/ifconfigCorrectIP.png
    :width: 800
    :alt: alternate text
    :align: center
 
-The last one is the information corresponding to the NUC, meaning that it's configured correctly.
+The last one is the information corresponding to the NUC, as you can see by its ip adresse that correspond to what we just configured (meaning that it's configured correctly). If for some reason the ip adress is not the new configured one, just disconnect and reconnect to the router's wifi and it should be fine.
 
-One also might need to change the MAC adress of each computer in the router's website itself.it was needed for my windows computer, but might 
-already be configured for the other nuc's, as their MAC adress are the same as before normally.
-TO CHECK ADD pictures of the corresponding tab. 
+One also might need to change the MAC adress of each computer in the router's website itself. To do so, go to the IP/MAC adress binding tab :
 
+.. figure:: _static/IPMACBinding.png
+   :width: 800
+   :alt: alternate text
+   :align: center
+
+and search for the ip of your NUC (for the drone as well as for the ground station). Check that the MAC adress associated with the IP of each NUC is coherent with what ifconfig is giving you (on the NUC you investigate).
+If this is not, as some NUC can be used for a while as a UAV and then be used for ground station, meaning that the ground station IP will be used with another MAC adress, one can click on edit and enter the correct one : 
+
+.. figure:: _static/BindingSettingsNUC6.png
+   :width: 800
+   :alt: alternate text
+   :align: center
+
+Normally you should still be able to access internet (always check), but also to PING and SSH between the NUCS : 
+
+.. figure:: _static/pingNUC6toNUC3.png
+   :width: 800
+   :alt: alternate text
+   :align: center
+
+.. figure:: _static/sshnuc.png
+   :width: 800
+   :alt: alternate text
+   :align: center
+
+Once you are in the onboard nuc with the ground station, thanks to the SSH, you can navigate to a test folder and launch any script, for example a simulation :
+
+.. figure:: _static/SSHworking.png
+   :width: 800
+   :alt: alternate text
+   :align: center
 
 Config RTK
 ----------
@@ -333,6 +361,14 @@ Several things have to be modified in the default code from MRS to work with the
     :alt: alternate text
     :align: center
 
+  When modifying the bashrc file, you need to execute the following command before launching some scripts : 
+
+  .. code-block:: shell
+
+    source ~/.bashrc
+
+  Otherwise you'll get an error related to an invalid ns (i.e. namespace). This is because the namespace used in our launch script is the UAV_NAME defined in this bashrc file. So if it is not sourced correctly, it can be found by ros. 
+
 .. admonition:: todo
 
   Bryan : Do you prefer to use uav1(2,3,..) as name and change hostname of the nuc (as they need to be the same). Or should we use the current default hostname of the nuc (nuc3-NUC10i7FNK) straight away ? Looks cleaner to use uav1 but dont know if it can create other problems to change the PC name. (By changing it in etc/hostname)
@@ -341,6 +377,7 @@ Several things have to be modified in the default code from MRS to work with the
 
   Before launching any script, double check that every .bashrc file is correct for every drone. This is very important as contrary to the simulation, no environmental variable will be overwritten in Session.yalm files. 
   In addition to that, a precise planning of each test that are going to be made must be done BEFORE the test day. Each different test folder must be prepared, the code reviewed and ready. Simulations must work perfectly as well before doing hardware test. This is essential to not waste time on site changing parameters and trying to debug software issues. 
+
 
 
 * **Shell script to lauch a test:** Create your custom tmux shell script in your test folder or use the simple `just_flying.sh <https://github.com/ctu-mrs/uav_core/blob/master/tmux_scripts/just_flying.sh>`__ script from MRS as a start. This is the equivalent of the Session file for the simulation part.
@@ -555,7 +592,7 @@ with the correct baudrate and port:
 
     <arg name="UAV_NAME" default="$(optenv UAV_NAME uav)" />
     <arg name="name" default="" />
-    <arg name="portname" default="/dev/ttyACM0" />  <!-- INPUT : Put the correct port for the Arduino -->
+    <arg name="portname" default="/dev/arduino" />  <!-- INPUT : Put the correct port for the Arduino -->
     <arg name="baudrate" default="9600" /> <!-- INPUT : Put the correct baudrate for the Arduino, should be 9600 if using the same script -->
     <!-- "/dev/arduino" baudrate: 9600 19200 38400 57600 115200 230400 460800 500000 576000 921600-->
     <arg name="profiler" default="$(optenv PROFILER false)" />
@@ -608,7 +645,7 @@ with the correct baudrate and port:
 
   </launch>
 
-
+Note that arduino is now the name used to identify the port at which we connect it. (instead of ttyACM0)
 It is then possible to do roslaunch and subscribe to the topic in a new terminal using the following two commands : 
 
 .. code-block:: shell
@@ -685,11 +722,91 @@ To enable the communication with ROS, one must change the first line of the code
 
   bool Communication_Matlab = false; //set to true if communicating with Matlab and false to comminicate with ROS
 
-In the controller and trackers code, one can subscribe to the topic : "/*UAVNAME$/serial/received_message" to get the data coming from the BACA protocol. 
-This has not been tested more yet, a test will probably be made at VUB asap. I think the folder *https://github.com/mrs-brubotics/testing_brubotics/tree/master/tmux_scripts/load_transportation/1_one_drone_validation_encoder*
-was made for this by last year students, but it is probably already flying. There is probably a way to launch the BACA protocol without having to fly the drone (even with the standard non-damping controller). 
- 
+Here are the steps to reproduce to validate the good working of the encoder system :
+
+* **Create a new testing folder** that will be used to this purpose, similar to TODO add link to my folder once fully validated.
+
+* **Test the launch file** of the node receiving the messages from the arduino. To do so, add this line in the session.yalm related to your simulations :
+
+  .. code-block:: yaml
+
+    - encoder:
+        layout: tiled
+        panes:
+          - waitForControl; history -s roslaunch testing_brubotics arduino.launch
+
+
+  Then launch a simulation and navigate to the encoder tab, to monitor if the node is launching properly.
+  Here is what should be monitored, indicating that the messages are well received, with very few checksum errors as expected.
+
+  .. figure:: _static/ArduinoLaunchOk.png
+    :width: 800
+    :alt: alternate text
+    :align: center
+  
+* **Create shell file for hardware test** : As the data coming from the arduino is only the angle, but also some reference number (to identify which encoder angle it is) and a the value of the checksum is received, 
+  one must process these messages. This is done in the controller's callback that is called everytime a new message comes from the serial port. 
+  In order to monitor that the received message is accurately giving the good position, and validate the position of the load (computed mathematically) and the physical joint at once, it is therefore better to do this doing a hovering test directly.
+  And to do so, a shell script must be created, as presented earlier in section ??? above.
+
+  .. code-block:: shell
+
+    # following commands will be executed first in each window
+    pre_input="export LOAD_MASS=0.5; export CABLE_LENGTH=1.065; export LOAD_GAIN_SWITCH=false; mkdir -p $MAIN_DIR/$PROJECT_NAME"
+    # DO NOT PUT SPACES IN THE NAMES
+    input=(
+      'Roscore' 'roscore
+    '
+      'Rosbag' 'waitForRos; rosrun mrs_uav_general record.sh
+    '
+      'Sensors' 'waitForRos; roslaunch mrs_uav_general sensors.launch
+    '
+      'Status' 'waitForRos; roslaunch mrs_uav_status status.launch
+    '
+      'Control' 'waitForRos;
+      roslaunch controllers_brubotics controllers_brubotics.launch custom_config_se3_copy_controller:=custom_configs/gains/hardware/se3_copy.yaml custom_config_se3_brubotics_controller:=custom_configs/gains/hardware/se3_brubotics.yaml;
+      roslaunch trackers_brubotics trackers_brubotics.launch custom_config_dergbryan_tracker:=custom_configs/gains/dergbryan.yaml;
+      roslaunch mrs_uav_general core.launch WORLD_FILE:=custom_configs/world_hardware.yaml config_control_manager:=custom_configs/control_manager.yaml config_uav_manager:=custom_configs/uav_manager.yaml config_odometry:=custom_configs/odometry.yaml config_constraint_manager:=custom_configs/constraint_manager.yaml config_se3_controller:=custom_configs/gains/hardware/se3.yaml config_motor_params:=custom_configs/motor_params_hardware.yaml
+    '
+      'AutoStart' 'waitForRos; roslaunch mrs_uav_general automatic_start.launch
+    '
+      'slow_odom' 'waitForRos; rostopic echo /'"$UAV_NAME"'/odometry/slow_odom
+    '
+      'odom_diag' 'waitForRos; rostopic echo /'"$UAV_NAME"'/odometry/diagnostics
+    '
+      'mavros_diag' 'waitForRos; rostopic echo /'"$UAV_NAME"'/mavros_interface/diagnostics
+    '
+      'rtk_serial' 'waitForRos; roslaunch mrs_serial rtk.launch baudrate:=9600
+    '
+    #   'load_trajectory' 'waitForRos; history -s roslaunch testing_brubotics trajectory_bryan.launch file:=tmux_scripts/bryan/regulation_control_predictions_one_drone_rtk/trajectories/'"$STEP_SIZE"'
+    # '
+    #   'goto_trajectory_start' 'waitForRos; history -s rosservice call /'"$UAV_NAME"'/control_manager/goto_trajectory_start
+    # '
+    #   'start_trajectory_tracking' 'waitForRos; history -s rosservice call /'"$UAV_NAME"'/control_manager/start_trajectory_tracking
+    # '
+      'kernel_log' 'tail -f /var/log/kern.log -n 100
+    '
+      'encoder' 'waitForRos; roslaunch testing_brubotics arduino.launch
+    '
+    )
+
+  Note that the trajectory related lines have been commented as the drone will only be hovering while validating this part.
+  The data will be logged in the folder you gave (by default bag_files) above, and then you can proceed with the standard procedure to generate matlab plots.
+  The function allowing to plot these values can be found `here <https://github.com/mrs-brubotics/testing_brubotics/blob/master/generic_matlab_plots/add_your_custom_plot_functions_here/ThesisB/plot_encoder_validation.m>`__
+
+
+
+.. admonition:: todo
+
+  In the controller and trackers code, one can subscribe to the topic : "/*UAVNAME$/serial/received_message" to get the data coming from the BACA protocol. 
+  This has not been tested more yet, a test will probably be made at VUB asap. I think the folder *https://github.com/mrs-brubotics/testing_brubotics/tree/master/tmux_scripts/load_transportation/1_one_drone_validation_encoder*
+  was made for this by last year students, but it is probably already flying. There is probably a way to launch the BACA protocol without having to fly the drone (even with the standard non-damping controller). 
+
+  Does commenting this 'AutoStart' 'waitForRos; roslaunch mrs_uav_general automatic_start.launch' only don't ask the drone to take off, or does it prevent other nodes to work properly. E.g. if we want to monitor the load position without having to make the drone hover, can be just comment this out and hold the drone in place ?
+  
+  record.sh how do we chosse which topic? MRS says it's easier to exclude topics rather than specifying which to record but Where to do that ? Is it not better do ask a similar command as in the session-sim.yml ? With all the topics listed?
+
 Raphael : Remaining parts to transpose are "4.14.4 Modifying the MRS code", "4.15 Making the drone take off and fly", "4.16 Set up the Nimbro parameters according to MRS" 
 maybe the part about take off and fly is redundant with the Hardware.rst written already in this tutorial. Check before doing it.
-
+Done except Nimbro as I'll do it when working on two drones. 
 
