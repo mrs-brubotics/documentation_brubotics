@@ -641,14 +641,41 @@ In this section you will learn how to fix all the components on their (custom-ma
 
      Take picture
 
-14. Fix the "Main piece" on the upper plate of the frame, by help of 8x M3 bolts.
+14. Fix the "Main piece" on the upper plate of the frame, by help of 8x M3 bolts. Put the cables with the XTC connector toward the front of your drone.
 
+
+  .. figure:: _static/mp_frame_1_bis.jpg
+     :width: 800
+     :alt: alternate text
+     :align: center
+
+      Step 14
+
+(updated)
   .. admonition:: todo
 
      Take picture
 
-15. Connect the signal cables of the ESCs (by passing them through the windows of the "main piece") to the "FMU-PWM-out" port of the PDB. Use the pins labeled 1 to 4 (to know which motor to connect to which set of pins, please refer to the chapter "Setting up QGroundControl"). If you have matched rightly the colors of the cables previously, connect the blue ones to the "S" pins, the brown ones to the "+" pins and the orange ones to the "-" pins (on top the blue cables, in the middle the brown cables and at the bottom the orange ones).
+15. Connect the signal cables of the ESCs (by passing them through the windows of the "main piece") to the "FMU-PWM-out" port of the PDB. Use the pins labeled 1 to 4 (1 = front left, 2 = back right, 3 = front right, 4 = back left). Considering the colors of the wires from the ESC, connect the orange ones to the "S" pins, the blue ones to the "+" pins and the brown ones to the "-" pins (on top the orange wires, in the middle the blue cables and at the bottom the brown ones).
 
+
+  .. figure:: _static/pin_number02.jpg
+     :width: 800
+     :alt: alternate text
+     :align: center
+
+      FMU-PWM-out pin labels (S,+,- and 1 to 8).
+
+  .. figure:: _static/pwm_cable.jpg
+     :width: 800
+     :alt: alternate text
+     :align: center
+
+      Step 15
+
+
+
+(updated)
   .. admonition:: todo
 
      Take picture
@@ -657,8 +684,27 @@ In this section you will learn how to fix all the components on their (custom-ma
 
      Chapter Setting up QGroundControl: try to be more specific and say which subsection or image you can find this information.
 
+16. Solder the battery cables coming from the PDB to each pair coming from the ESCs (black on black, red on red). Don't forget to put beforhand a piece of shrink tube on the cables.
 
-16. Connect the cables provided with the Pixhawk to the ports "FMU-PWM-in", "PWR1" and "PWR2" of the PDB.
+
+  .. figure:: _static/esc_pdb02.jpg
+     :width: 800
+     :alt: alternate text
+     :align: center
+	Step 16
+
+
+(updated)
+  .. admonition:: todo
+
+     redo picture
+
+
+
+     todo: caption
+
+
+17. Connect the cables provided with the Pixhawk to the ports "FMU-PWM-in", "PWR1" and "PWR2" of the PDB.
 
   .. figure:: _static/pdb_connection.jpg
      :width: 800
@@ -671,7 +717,7 @@ In this section you will learn how to fix all the components on their (custom-ma
 
      be more specific about which cables and how you attach them.
 
-17. Put the Pixhawk in its case and connect these cables respectively to the ports "I/O PWM OUT", "POWER1" and "POWER2" of the Pixhawk.
+18. Put the Pixhawk in its case and connect these cables respectively to the ports "I/O PWM OUT", "POWER1" and "POWER2" of the Pixhawk.
 
   .. figure:: _static/PX_pdb_connection.jpg
      :width: 800
@@ -684,48 +730,36 @@ In this section you will learn how to fix all the components on their (custom-ma
 
      redo and crop figure
 
-18.  Put a cable provided with the Pixhawk on its "DSM/SBUS RC" port. It will be used for the RC receiver.
+19.  Put a cable provided with the Pixhawk on its "DSM/SBUS RC" port. It will be used for the RC receiver.
 
   .. admonition:: todo
 
      Take picture
 
-19. Connect the GPS to the Pixhawk using the "GPS MODULE" port.
+20. Connect the GPS to the Pixhawk using the "GPS MODULE" port.
 
   .. admonition:: todo
 
      Take picture
 
-20. Be aware that you'll need to make another connection later. You can do it now but you'll need to follow the steps to make the picoblade cable with jumper wires explained in chapter "Connecting the NUC to the drone".
+21. Be aware that you'll need to make another connection later. You can do it now but you'll need to follow the steps to make the picoblade cable with jumper wires explained in chapter "Connecting the NUC to the drone".
 
   .. admonition:: todo
 
      Take picture
 
-21. You will also need an USB cable to setting up QGroundControl later on, if you want, you can already put the cable on the side of the Pixhawk (and let it hang by a window of the "main piece").
+22. You will also need an USB cable to setting up QGroundControl later on, if you want, you can already put the cable on the side of the Pixhawk (and let it hang by a window of the "main piece").
 
   .. admonition:: todo
 
      Take picture
 
-22. Fix the Pixhawk case to the "main piece" by help of 4x M2.5 bolts, on the middle stage. Try to have the Pixhawk as horizontal as possible in the drone.
+23. Fix the Pixhawk case to the "main piece" by help of 4x M2.5 bolts, on the middle stage. Try to have the Pixhawk as horizontal as possible in the drone.
 
   .. admonition:: todo
 
      Take picture
 
-23. Solder the battery cables coming from the PDB to each pair coming from the ESCs (black on black, red on red). Don't forget to put beforhand a piece of shrink tube on the cables.
-
-  .. admonition:: todo
-
-     redo picture
-
-  .. figure:: _static/all_untill_optima.jpg
-     :width: 800
-     :alt: alternate text
-     :align: center
-
-     todo: caption
 
 24. On top of the "main piece", fix the NUC case by help of 4x M2.5 bolts.
 
