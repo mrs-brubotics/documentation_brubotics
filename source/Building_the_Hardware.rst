@@ -482,15 +482,32 @@ In this section you will learn how to fix all the components on their (custom-ma
 
    Take picture on white background (use a clean white sheet of paper, you can find those at the printer up the stairs in front of you). Make sure there are no unnecessary things (noise) in the picture. In this case we do not need to see the soldering yet. Crop the image to what is actually useful. **these comments applies to all pictures below you take of the prototype**
 
-4. Solder the three motor cables to the ESC in arbitrary order. Repeat for all ESCs.
-(updated)
 
-  .. figure:: _static/step4.jpg
+4. Take 3 jumper wires (more or less 30cm) with at least one female connector, remove the other connector and solder them to the three signal cables from the ESC (blue, brown and orange). Try to keep the same colors for all the ESCs. Repeat for all ESCs.
+
+
+  .. figure:: _static/esc_signal.jpg
      :width: 800
      :alt: alternate text
      :align: center
 
      Step 4 
+
+(updated)
+  .. admonition:: todo
+
+     Take picture
+
+
+5. Solder the three motor cables to the ESC in arbitrary order. Repeat for all ESCs.
+(updated)
+
+  .. figure:: _static/motor_esc_soldering.jpg
+     :width: 800
+     :alt: alternate text
+     :align: center
+
+     Step 5 
      
 
   .. admonition:: todo
@@ -501,11 +518,7 @@ In this section you will learn how to fix all the components on their (custom-ma
 
      The ordering of the connectors will be corrected later in the calibration phase. Make sure you allow the space to resolder thse cables easily.
 
-5. Solder the three signal cables from the ESC (blue, brown and orange) to a jumper cable. Try to keep the same colors (blue on blue etc). Repeat for all ESCs.
 
-  .. admonition:: todo
-
-     Take picture
 
 6. Fix the "Motor bottom fixation" piece to the frame's part (shown in next figure) with 4x M3 bolts (head on bottom).
 
@@ -527,9 +540,9 @@ In this section you will learn how to fix all the components on their (custom-ma
 
       Step 7
 
-8. Fix the assembly to the end of an arm, using the bolts and parts (orange and blue) provided with the frame. 
+8. Fix the assembly to the end of an arm, using the bolts and parts (orange and blue) provided with the frame. With the help of a level, try to put it as horizontal as possible.
 
-  .. figure:: _static/motor_bottom.jpg
+  .. figure:: _static/motorb_frame.jpg
      :width: 800
      :alt: alternate text
      :align: center
@@ -545,7 +558,7 @@ In this section you will learn how to fix all the components on their (custom-ma
 
 9. Fix the "Motor top fixation" on the "Motor bottom fixation" with the help of 4x M2.5 bolts (holes on the corner of the parts). Repeat the last four steps for each motor.
 
-  .. figure:: _static/drone_arm_build.jpg
+  .. figure:: _static/motort_motorb.jpg
      :width: 800
      :alt: alternate text
      :align: center
@@ -571,16 +584,16 @@ In this section you will learn how to fix all the components on their (custom-ma
      Material for step 11
 
 
-  .. figure:: _static/pdb_indications.jpg
+  .. figure:: _static/pdb_soldering_2.jpg
      :width: 800
      :alt: alternate text
      :align: center
 
       Step 11
    
+(updated)
   .. admonition:: todo
       
-      The picture above doesn't replace this one, I still need to improve it.
      
 
   .. admonition:: todo
@@ -590,14 +603,40 @@ In this section you will learn how to fix all the components on their (custom-ma
      ii) The lengths of the cables: say how long you cut the cables in the text above (e.g. XX cm), 
      iii) a pair with an XT60 connector on them (provided with the PDB) is not visible on the picture what you do with it. So maybe not important here, but say the elngth of the cable so if we don't see the cable we know at elast how long it should be.
 
-12. Fix the PDB to the "Main piece" by help of 4x M3 bolts (head on bottom), use the 4 holes in the middle of the "Main piece".
+12. Fix the PDB to the "Main piece" by help of 4x M3 bolts (head on bottom), use the 4 holes in the middle of the "Main piece". As you can see in the picture below the holes are off-centered. Put the cables with the XTC connector on the side with the biggest space (on the right in the picture below) and put them out of the piece thanks to the hole on that side (see second picture). In between the main piece and the PDB, put a nut on each bolt that serve as spacers.
 
+  .. figure:: _static/main_piece_spacer.jpg
+     :width: 800
+     :alt: alternate text
+     :align: center
+
+      Step 12
+
+
+  .. figure:: _static/pdb_mp_1.jpg
+     :width: 800
+     :alt: alternate text
+     :align: center
+
+      Step 12
+
+(updated)
   .. admonition:: todo
 
      Take picture
 
-13. Put the free end of each of the ten power supply cables outside the "main piece" with help of the windows of the piece.
+13. Put the free end of each of the eight power supply cables outside the "main piece" with help of the holes in the corners.
 
+
+  .. figure:: _static/pdb_mp_2.jpg
+     :width: 800
+     :alt: alternate text
+     :align: center
+
+      Step 13
+
+
+(updated)
   .. admonition:: todo
 
      Take picture
