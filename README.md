@@ -52,6 +52,7 @@ Run this command from the `documentation_brubotics` folder:
 cd ~/workspace/src/droneswarm_brubotics/documentation_brubotics
 rm -r build
 make html
+
 ```
 
 Finally, open `build/html/index.html` in your web browser (NOT the _build folder!).
