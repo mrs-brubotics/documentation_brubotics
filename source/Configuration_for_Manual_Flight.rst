@@ -1,6 +1,9 @@
 Configuration for Manual Flight  
 =====================================
 
+.. admonition:: todo
+
+  Each of the figures below need a caption
 
 Batteries and safety
 -------------------------------------
@@ -139,8 +142,8 @@ To bind both RC devices, follow these steps :
    :alt: alternate text
    :align: center
 
-Setting up QGroundControl
---------------------------
+Setting up via QGroundControl
+--------------------------------
 
 In this section, you'll learn how to set up the software in order to :
 
@@ -153,7 +156,7 @@ In this section, you'll learn how to set up the software in order to :
 Installation
 ^^^^^^^^^^^^^^^^
 
-before doing all of this, you should first setup the SD card of the pixhawk otherwise the communication between the pixhawk and NUC will not be done 
+Before doing all of this, you should first setup the SD card of the pixhawk otherwise the communication between the pixhawk and NUC will not be done 
 (no blue light on FTDI, see section "Implementation of NUC" ). For the setup see section "SD card setup" of `this tuto <https://ctu-mrs.github.io/docs/hardware/px4_configuration.html>`__.
 As a note: the etc folder does not get removed when flashing new firmware.
 
@@ -169,6 +172,15 @@ As a note: the etc folder does not get removed when flashing new firmware.
   It is important that, as explained in the video, you install the ubuntu.sh such that you have everything. Also, when you have already build (make)
   beforehand, delete the build folder as it might give problemes if the previous one was not build well. Always to this when rebuilding.
 
+
+.. admonition:: todo
+
+  The firmware of ctu is continuously beging upgraded https://github.com/ctu-mrs/px4_firmware.
+  Therefor it is important to keep track of the firmware version on each pixhawk.
+  So make a note below in wich you say:
+  UAV# has firmware of link to commit in https://github.com/ctu-mrs/px4_firmware.
+  Make sure both UAVs you use are configred with the same firware
+
 Calibrations
 ^^^^^^^^^^^^^^
 
@@ -182,8 +194,12 @@ Calibrations
 * In "sensors", calibrate the compass, gyroscope, accelerometer and level horizon. To do so, follow the steps asked by QGroundControl.
   Make sure to keep the front of the drone as shown by QGroundControl.
 
-* Setup the channels on the transmitter (press both back button and scroller and select ’Channels’) such
-  that each channel is paired with the correct function, according to the next figures.
+* Setup the channels on the transmitter (press both back button and scroller and select ’Channels’) such that each channel is paired with the correct function, according to the next figures.
+
+.. admonition:: todo
+
+  The figures below are directly taken from CTU. No need to do that, you can refer to them. It is better to make a picture on white background of our transmitter and indicate the namings on the figure. Also make sure you have tested this before planning experiments.
+
 
 .. figure:: _static/channels_functions.jpg
    :width: 800
@@ -242,6 +258,9 @@ Calibrations
    :alt: alternate text
    :align: center
 
+.. admonition:: todo
+
+  improve above figure quality
 
 Safety setup
 ^^^^^^^^^^^^^

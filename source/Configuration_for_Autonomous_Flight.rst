@@ -1,15 +1,36 @@
 Configuration for Autonomous Flight
 =================================================
+.. admonition:: todo
 
-NUC
-----
+  Update this chapter as you indicate yourself it is not completed yet. 
+  I will most probably have several comments on this part, but I first need the time to check all the tutorial steps on the other f450 nucs. Will do it next week. In the meantime it is best Raphael and Maxime try the whole field exp procedure at pleinlaan (without actually flying) and let me know up to where it works. Which nodes crash and what do you see in the mrs_uav_status window when putting the drone in the start of the trajectory you designed. Is the position stable for a long time, show by someone walking around with the drone and if the position changes are realistic. E.g. walking the world x axis or pure y axis and checking those values. Make a movie of the status window.
 
-The assumption in this section is that the NUC is brand new, in order to make the explanation easier. If
-it is already used it is not that big of a problem but make sure you have enough space available on the
+
+.. admonition:: todo
+
+  The motor paramters etc need to be set correctly and needs to be explained as this requires some changes in ctu code. It is s now explained in the main readme of droneswarm brubotics.
+
+.. admonition:: todo
+
+  We need to think how most of the manual changes in the code of ctu or the config of the nucs can be automated upon install or by explicitly lqunching q configuration script where we can give some paramters to (eg nuc id). For example we automatically install the extra ctu packages, but we dont alwaya want to change the baudrate manually.
+
+.. admonition:: todo
+
+  We need to think how most of the manual changes in the code of ctu or the config of the nucs can be automated upon install or by explicitly launching q configuration script where we can give some paramters to (eg nuc id). For example we automatically install the extra ctu packages, but we dont alwaya want to change the baudrate manually.
+
+.. admonition:: todo
+
+  All configs required in a test should be mentioned here and what must or can be changed.
+
+
+Configure the default system
+-------------------------------
+
+The assumption in this section is that the NUC is brand new, in order to make the explanation easier. If it is already used it is not that big of a problem but make sure you have enough space available on the
 SSD of the NUC.
 
 Prerequist
-^^^^^^^^^^
+^^^^^^^^^^^^^
 
 * The first thing to do is to download Ubuntu 20.04 on your NUC. This can be easily done with a bootable USB. For more details we refer to the \href{https://ubuntu.com/tutorials/install-ubuntu-desktop#1-overview}{tutorial} written by Ubuntu;
 
@@ -292,8 +313,12 @@ Once you are in the onboard nuc with the ground station, thanks to the SSH, you 
    :alt: alternate text
    :align: center
 
-Config RTK
-----------
+Configure the RTK system
+--------------------------
+
+.. admonition:: todo
+
+  Update this part on how you bind the reach modules to the router, how you update their firmware via your phone, ...
 
 
 What we did not modified :

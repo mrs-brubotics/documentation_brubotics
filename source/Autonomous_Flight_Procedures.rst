@@ -3,7 +3,7 @@ Autonomous Flight Procedures
 
 .. admonition:: todo
 
-   todo
+   see main todo in the previous chapter
 
 Step-by-step Procedure for Preparations Prior to Autonomous Field Experiments
 ----------------------------------------------------------------------------------
@@ -12,8 +12,6 @@ Step-by-step Procedure for Preparations Prior to Autonomous Field Experiments
     * Make a planning for the test day. See example document. TODO ADD 
     * Charge everything: transmitter, RTK base, drone batteries.
     
-
-
 
 Step-by-step Procedure During Autonomous Field Experiments
 -----------------------------------------------------------

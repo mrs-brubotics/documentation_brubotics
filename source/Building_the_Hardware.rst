@@ -47,10 +47,6 @@ Off-the-shelf
 
      We do not use the feet of the frame but instead 3D print custom feet as to reserve more space for additional hardware (e.g., an encoder mechnism for payload transport) at the bottom part of the UAV.
 
-(updated)
-  .. admonition:: todo
-
-     make sure the picture gets cropped (as to delete the excessive white borders)
 
 * **Flight Controller (FC)**: the FC is an electronic board with sensors (e.g., accelerometer, gyroscope, barometer, GPS) required for controlling the attitude (and position) of the UAV.
   
@@ -74,11 +70,6 @@ Off-the-shelf
 
      Pixhawk 4 PDB
 
-(updated)
-  .. admonition:: todo
-
-     replace with higher resolution picture
-
 * **GPS**: retrieves the absolute (i.e., global) position of the UAV.
 
   *Choice*: the GPS from the Pixhawk 4.
@@ -89,11 +80,6 @@ Off-the-shelf
      :align: center
 
      Pixhawk 4 GPS
-
-(updated)
-  .. admonition:: todo
-
-     replace with higher resolution picture and make sure the picture cropped (as to delete the grey bottom reactangle)
 
 * **Motors**: when a voltage is supplied these rotate their propellors at a desired speed command proportianal to the applied voltage.
   
@@ -106,11 +92,6 @@ Off-the-shelf
 
      Tarot 4114 320KV Multi-Rotor brushless motor
   
-(updated)
-  .. admonition:: todo
-
-     make sure the picture gets cropped (as to delete the excessive grey borders)
-
 * **Propellers**: move the air due to the motor's motion and prdocue a thrust force that move the UAV.
 
   *Choice*: two pairs (CW and CCW) of the Tarot 15X5.5 Carbon Fiber Propeller TL2831
@@ -133,11 +114,6 @@ Off-the-shelf
 
       Turnigy MultiStar BLheli_32 ARM 51A Race Spec ESC 2~6S
 
-(updated)
-   .. admonition:: todo
-
-     make sure the picture gets cropped (as to delete the excessive grey borders)
-
 * **Battery**: the battery powers all electrical components on the UAV and is typically on of the heaviest components on the UAV. It is recommended to buy enough spare batteries.
 
   *Choice*: a Turnigy Graphene Professional 12000mAh 6S15C LiPo Pack.
@@ -148,11 +124,6 @@ Off-the-shelf
       :align: center
 
       Turnigy Graphene Professional 12000mAh 6S15C LiPo Pack
-
-(updated)
-   .. admonition:: todo
-
-     make sure the picture gets cropped (as to delete the excessive grey borders)
 
 * **RC Receiver (RCR)**: the RCR is a device that allows unidirectional wireless communication with the UAV. It receives and sends information from/to the RC transmitter that is located off-board the UAV.
 
@@ -165,11 +136,6 @@ Off-the-shelf
 
      Hitec Optima SL
 
-(updated)
-.. admonition:: todo
-
-     make sure the picture gets cropped (as to delete the excessive grey borders)
-
 * **RC Transmitter (RCT)**: the RCT is held by a human operator and teleoperates the UAV (i.e., it sends toggle and joystick commands to the UAV and receives some limited on-board information). This can be used to manually fly the UAV or as a safety control that overtakes autonomous flight if the operated sees somethings goes wrong.
 
   *Choice*: Hitec Flash 8
@@ -181,11 +147,9 @@ Off-the-shelf
 
      Hitec Flash 8
 
-(updated)
   .. admonition:: todo
 
-     make sure the picture gets cropped (as to delete the excessive grey borders)
-
+     replace with higher quality image and make sure the picture gets cropped (as to delete the excessive grey borders)
 
 * **Other**: 
 
@@ -205,11 +169,12 @@ Off-the-shelf
       * 3 x this used for that
       * 5 x this used for that
 
-still to be done. I'll try to get clearer on the explanations.
+
   .. admonition:: todo
 
      add here all screws, nuts, and their sizes, and other things like tape, straps, jumper cables, soldering iron, cables (which type of cable thickness and flexible), connectors (all yellow connectors or metal connectors to power things) and explain for what these are used.
      Old text of Maxime I placed here: All the holes used to attach something directly on the frame are for M3 bolts and the other holes M2.5 bolts. Use M3x12mm and M2.5x12mm bolts.
+     still to be done. I'll try to get clearer on the explanations.
 
 
 .. admonition:: note
@@ -244,18 +209,7 @@ still to be done. I'll try to get clearer on the explanations.
 
 * **DC-DC converter**: enables to provide the appropriate supply voltage to the companion computer which is typically in a different range of voltage/current/power as the battery.
 
-  *Choice*: Wingoneer XL4016E1 (input: 4-40V, output: 1.25-36V at max 8A, max power: 200W). Since the 6S LiPo battery (i.e., a Turnigy Graphene Professional 12000mAh 6S15C LiPo Pack) provides at most 25.2V and at least 18.0V and the Intel NUC companion computer needs a supply voltage between 12V and 19V and has a rated power supply of 19V/6.33A, the converter must be able to take 18V-25.2V in and deliver 19V/6.33A (or 121W).
-You can find `here https://www.alldatasheet.com/datasheet-pdf/pdf/1134370/XLSEMI/XL4016E1.html>`__ the datasheet of the XL4016E1. 
-Go `here <https://www.amazon.fr/WINGONEER-R%C3%A9gulateur-convertisseur-Efficacit%C3%A9-Alimentation/dp/B071L34ZXB>`__ for more information about the Wingoneer circuit and where to buy it.
-
-(updated)
-    .. admonition:: todo
-
-     add links to datasheets onlien and cite the pages where you found this info. 
-
-    .. admonition:: todo
-
-     add link where you ordered this convertor
+  *Choice*: Wingoneer XL4016E1 (from `datasheet <https://www.alldatasheet.com/datasheet-pdf/pdf/1134370/XLSEMI/XL4016E1.html>`__  - input: 4-40V, output: 1.25-36V at max 8A, max power: 200W). Since the 6S LiPo battery (i.e., a Turnigy Graphene Professional 12000mAh 6S15C LiPo Pack) provides at most 25.2V and at least 18.0V and the Intel NUC companion computer needs a supply voltage between 12V and 19V and has a rated power supply of 19V/6.33A, the converter must be able to take 18V-25.2V in and deliver 19V/6.33A (or 121W). Buy it `here <https://www.amazon.fr/WINGONEER-R%C3%A9gulateur-convertisseur-Efficacit%C3%A9-Alimentation/dp/B071L34ZXB>`__.
 
   .. figure:: _static/converter.jpg
      :width: 800
@@ -281,6 +235,7 @@ In this section all custom made parts to build the autonomous UAV are explained.
 
 .. admonition:: todo
 
+   see email: "Finalizing CAD files" 15 july.
    Once the final designs are finished of both your thesis, I will need the inventor files and all stl files of the UAV (also for the F450 from which you started). I will put them on a drive that people can download it. We cannot put it on github since too large files. 
    They are accessible here (TO DO).
 
@@ -354,15 +309,12 @@ We 3D print all these pieces with 20% infill:
 
      Motor fixed to Motor top fixation
 
-(updated)
-  .. admonition:: todo
-
-     for completeness add picture of how Motor bottom fixation is used to connect frame to Motor top fixation
-
   .. figure:: _static/motor_on_arm_cad_1.jpg
      :width: 800
      :alt: alternate text
      :align: center
+
+     Motor bottom fixation is used to connect frame to Motor top fixation
 
 
 * **Leg (x 4)**: used to support the drone while on the ground.
@@ -376,11 +328,9 @@ We 3D print all these pieces with 20% infill:
 
 * **Battery case with side (x 2), front (x 1) and core (x 1) piece**: used to attach the battery to the frame.
 
-(updated) Also updated the picture of the assembly.
   .. admonition:: todo
 
-     add pictures of all pieces
-
+     Why did the battery case design increase so much in complexity? Before there were less parts, now seems you need a lot more. What is main motivation?
 
   .. figure:: _static/battery_assembly.jpg
      :width: 800
@@ -433,7 +383,7 @@ In this section you will learn how to fix all the components on their (custom-ma
 
 .. admonition:: todo
 
-   in the picture above are missing several components. There is no NUC, battery, Reach M2, Antenna, GPS, ... A final assembly has ALL componenents (even screw). The only thing you cannot draw in CAD are the cables and connectors. If a user want to build it, it helps to see how all componenets fit in the custom-made parts.
+   in the picture above are missing several components. There is no NUC, battery, Reach M2, Antenna, GPS, ... A final assembly has ALL componenents (even screws and nuts). The only thing you cannot draw in CAD are the cables and connectors. If a user wants to build it, it helps to see how all componenets fit in the custom-made parts. So  compare your CAD with the fully assembled hardware prototype and make sure all componenets are also in CAD.
 
 **Required tools**:
 
@@ -493,14 +443,8 @@ In this section you will learn how to fix all the components on their (custom-ma
 
      Step 4 
 
-(updated)
-  .. admonition:: todo
-
-     Take picture
-
 
 5. Solder the three motor cables to the ESC in arbitrary order. Repeat for all ESCs.
-(updated)
 
   .. figure:: _static/motor_esc_soldering.jpg
      :width: 800
@@ -508,11 +452,6 @@ In this section you will learn how to fix all the components on their (custom-ma
      :align: center
 
      Step 5 
-     
-
-  .. admonition:: todo
-
-     Take picture
 
   .. admonition:: note
 
@@ -522,8 +461,6 @@ In this section you will learn how to fix all the components on their (custom-ma
 
 6. Fix the "Motor bottom fixation" piece to the frame's part (shown in next figure) with 4x M3 bolts (head on bottom).
 
-
-(updated)
   .. figure:: _static/step6.jpg
      :width: 800
      :alt: alternate text
@@ -549,12 +486,10 @@ In this section you will learn how to fix all the components on their (custom-ma
 
      Step 8
 
-     todo: caption
-
 
   .. admonition:: todo
 
-     orange and blue parts are not clear on the picture   
+     orange part is not clear on the picture. there is only blue.
 
 9. Fix the "Motor top fixation" on the "Motor bottom fixation" with the help of 4x M2.5 bolts (holes on the corner of the parts). Repeat the last four steps for each motor.
 
@@ -565,8 +500,6 @@ In this section you will learn how to fix all the components on their (custom-ma
 
      Step 9
 
-     todo caption
-
 10. You could now attach the propellors to the motors. However, for safety you should only do this when preparing for a real flight.
 
   .. admonition:: todo
@@ -575,7 +508,6 @@ In this section you will learn how to fix all the components on their (custom-ma
 
 11. Take four pairs of power supply cables (more or less 18cm long, thick red and black cables, a single pair per motor). Make sure that the four pairs can reach the ESCs starting from the middle of the frame. Solder all the pairs on the power distribution board (PDB). The position of each pair is shown in the picture below. As the UAV requires four motors but the PDB can supply up to eight motors, you can solder each red cable to both B+ connections available on each corner of the PDB. In each corner, where the red cables are, choose one of the two GND connection to solder the black cables.
 
-(updated)
   .. figure:: _static/material_step11.jpg
      :width: 800
      :alt: alternate text
@@ -590,20 +522,8 @@ In this section you will learn how to fix all the components on their (custom-ma
      :align: center
 
       Step 11
-   
-(updated)
-  .. admonition:: todo
-      
-     
 
-  .. admonition:: todo
-
-     Take new picture(s) with the following corrections:
-     i) less noise, so do not show jumber cables going to the PDB as you did not tell this before in the instructions. If you forgot this, then add it in a step before. 
-     ii) The lengths of the cables: say how long you cut the cables in the text above (e.g. XX cm), 
-     iii) a pair with an XT60 connector on them (provided with the PDB) is not visible on the picture what you do with it. So maybe not important here, but say the elngth of the cable so if we don't see the cable we know at elast how long it should be.
-
-12. Fix the PDB to the "Main piece" by help of 4x M3 bolts (head on bottom), use the 4 holes in the middle of the "Main piece". As you can see in the picture below the holes are off-centered. Put the cables with the XTC connector on the side with the biggest space (on the right in the picture below) and put them out of the piece thanks to the hole on that side (see second picture). In between the main piece and the PDB, put a nut on each bolt that serve as spacers.
+12. Fix the PDB to the "Main piece" by help of 4x M3 bolts (head on bottom), use the 4 holes in the middle of the "Main piece". As you can see in the picture below the holes are off-centered. Put the cables with the XT connector on the side with the biggest space (on the right in the picture below) and put them out of the piece thanks to the hole on that side (see second picture). In between the main piece and the PDB, put a nut on each bolt that serve as spacers.
 
   .. figure:: _static/main_piece_spacer.jpg
      :width: 800
@@ -620,11 +540,6 @@ In this section you will learn how to fix all the components on their (custom-ma
 
       Step 12
 
-(updated)
-  .. admonition:: todo
-
-     Take picture
-
 13. Put the free end of each of the eight power supply cables outside the "main piece" with help of the holes in the corners.
 
 
@@ -635,13 +550,7 @@ In this section you will learn how to fix all the components on their (custom-ma
 
       Step 13
 
-
-(updated)
-  .. admonition:: todo
-
-     Take picture
-
-14. Fix the "Main piece" on the upper plate of the frame, by help of 8x M3 bolts. Put the cables with the XTC connector toward the front of your drone.
+14. Fix the "Main piece" on the upper plate of the frame, by help of 8x M3 bolts. Put the cables with the XT connector toward the front of your drone.
 
 
   .. figure:: _static/mp_frame_1_bis.jpg
@@ -650,11 +559,6 @@ In this section you will learn how to fix all the components on their (custom-ma
      :align: center
 
       Step 14
-
-(updated)
-  .. admonition:: todo
-
-     Take picture
 
 15. Connect the signal cables of the ESCs (by passing them through the windows of the "main piece") to the "FMU-PWM-out" port of the PDB. Use the pins labeled 1 to 4 (1 = front left, 2 = back right, 3 = front right, 4 = back left). Considering the colors of the wires from the ESC, connect the orange ones to the "S" pins, the blue ones to the "+" pins and the brown ones to the "-" pins (on top the orange wires, in the middle the blue cables and at the bottom the brown ones).
 
@@ -673,17 +577,6 @@ In this section you will learn how to fix all the components on their (custom-ma
 
       Step 15
 
-
-
-(updated)
-  .. admonition:: todo
-
-     Take picture
-
-  .. admonition:: todo
-
-     Chapter Setting up QGroundControl: try to be more specific and say which subsection or image you can find this information.
-
 16. Solder the battery cables coming from the PDB to each pair coming from the ESCs (black on black, red on red). Don't forget to put beforhand a piece of shrink tube on the cables.
 
 
@@ -694,10 +587,9 @@ In this section you will learn how to fix all the components on their (custom-ma
 	Step 16
 
 
-(updated)
   .. admonition:: todo
 
-     redo picture
+     add picture
 
 
 
@@ -846,16 +738,21 @@ This module is installed at the bottom of the UAV and allows to measure the stat
 .. admonition:: todo
 
    Raphael todo: integrate the next section better in the hardware building chapter using a similar structure as for UAV (see example given below). Give more pictures and explain better each step of the setup.
+   
+.. admonition:: todo
+
+   Raphael todo: put captrions below each figure (see examples UAV). If there is 1 part from 3 views then tell this in caption as now maybe these are 3 different parts we cannot know. For each part tell how many we need e.g., x2, x1, x5. If a part consists out of different subparts also mention their names in the caption.
+
 
 Components
 ^^^^^^^^^^
 This section lists all the components required to build the Suspended Payload Module for a UAV.
-This is currently only compatible with the 650 UAV.
+This is currently only compatible with the T650 UAV.
 
 Off-the-shelf
 *************
 
-* **Encoders x2** : Sensor used to measure the actual orientation of the cable, fit inside the universal joint.
+* **Encoders x2**: Sensor used to measure the actual orientation of the cable, fit inside the universal joint.
 
   *Choice*: `EMS22A <https://www.bourns.com/docs/product-datasheets/EMS22A.pdf>`__ because of its absolute nature, making it suitable to measure an absolute angle. It has a good resolution and its plain shaft makes it lightweight and compact, which is perfect to fit in the joint.  
 
@@ -864,7 +761,13 @@ Off-the-shelf
      :alt: alternate text
      :align: center
 
-* **Ball bearings x2** : To avoid friction losses in the joint and support the weight of the payload, to preserve encoder shaft.
+     EMS22A encoder
+   
+  .. admonition:: todo
+
+   give value of resolution 
+
+* **Ball bearings x2**: To avoid friction losses in the joint and support the weight of the payload, to preserve the encoder shaft.
 
   *Choice*: `RS PRO Deep Groove Ball Bearing - Plain Race Type, 15mm I.D, 24mm O.D <https://benl.rs-online.com/web/p/ball-bearings/6190159>`__
 
@@ -874,7 +777,7 @@ Off-the-shelf
      :align: center
 
 
-* **Collar clamp screw x2** : To fix the shaft of the encoders to axis of the joint.
+* **Collar clamp screw x2**: To fix the shaft of the encoders to axis of the joint.
 
    *Choice*: `Huco Shaft Collar One Piece Clamp Screw, Bore 4mm, OD 16mm, W 9mm, Steel <https://benl.rs-online.com/web/p/shaft-collars/6918027>`__
 
@@ -884,11 +787,11 @@ Off-the-shelf
      :align: center
 
 
-* **Arduino** : To process the data coming from the sensors and communicate with the controller.
+* **Arduino**: To process the data coming from the sensors and communicate with the on-board computer.
 
    *Choice*: `Arduino Uno rev3 <https://store.arduino.cc/products/arduino-uno-rev3>`__
 
-* **Stripboard** : to solder the electronic circuit between each components. I don't have the exact reference (no indication in thesis or old tutorial, no brand on the stripboard itself)
+* **Stripboard**: to solder the electronic circuit between each components. I don't have the exact reference (no indication in thesis or old tutorial, no brand on the stripboard itself)
 
    *Suggested choice*: `Single-Sided Stripboard 50x100mm <https://uk.rs-online.com/web/p/stripboards/2189160>`__ 
     Very small area reaquired, might take any other stribord even a smaller one.
@@ -897,9 +800,9 @@ Off-the-shelf
 
    *Choice*: `M2.5 x 12 mm <https://benl.rs-online.com/web/p/socket-screws/4838130>`__
 
-Optionnal: 
+Optional: 
 
-* **Force sensor** : To deduce if the cable is well taut.
+* **Force sensor**: To deduce if the cable is well taut. Not used in the current design.
 
    *Choice*: `FSR04CE <https://www.mouser.be/datasheet/2/303/res_fsr-1590094.pdf>`__
 
@@ -907,17 +810,28 @@ Optionnal:
      :width: 400
      :alt: alternate text
      :align: center
-
-* **Resistor** : To do a pull down circuit for measuring the output of the force sensor.
-
-   Need to be 10k Ohms.
    
+  .. admonition:: todo
+
+     Bryan: make the force sensor work 
+
+* **Resistor**: To do a pull down circuit for measuring the output of the force sensor.
+
+   *Choice*: Needs to be 10k Ohms.
+   
+  .. admonition:: todo
+
+     Bryan: make the force sensor work 
 
 Custom-made
 ************
-All the following parts need to be 3D printed with PLA and infill of 10 to 15%. LINK TO CAD FILES (not uploaded yet)
+All the following parts need to be 3D printed with PLA and infill of 10 to 15%. 
 
-* **Center piece** : on which every other parts will be attached to. Must fit the colar clamps and the bearings. Separated in two parts to make assembly and printing possible. 
+  .. admonition:: todo
+
+     Bryan: LINK TO CAD FILES (not uploaded yet)
+
+* **Center piece**: on which every other parts will be attached to. Must fit the colar clamps and the bearings. Split into two parts to make assembly and printing possible. 
 
   .. figure:: _static/centerPiecepart1front.png
      :width: 400
@@ -939,7 +853,7 @@ All the following parts need to be 3D printed with PLA and infill of 10 to 15%. 
      :alt: alternate text
      :align: center
 
-* **Upper arms** : Will be attached to the battery by its support. Must fit an encoder.
+* **Upper arms**: Will be attached to the battery by its support. Must fit an encoder.
 
   .. figure:: _static/UpperArm1Back.png
      :width: 100
@@ -957,9 +871,9 @@ All the following parts need to be 3D printed with PLA and infill of 10 to 15%. 
      :align: center
 
 
-* **Lower arms** : Same purpose as upper arm. 
+* **Lower arms**: Same purpose as upper arm. 
 
-   Note that this part is printed in two separated ones, then assembled why one bolt. This was done to ease the printing process and to allow a clean mounting and unmounting of this part.
+   Note that this part is printed in two separated parts, then assembled with a bolt. This was done to ease the printing process and to allow a clean mounting and unmounting of this part.
 
    .. figure:: _static/LowerArmFull.png
      :width: 300
@@ -968,7 +882,7 @@ All the following parts need to be 3D printed with PLA and infill of 10 to 15%. 
 
 
 
-* **Attachment for the cable** : Must fit on the lower arm (And on the force sensor if there is one).
+* **Attachment for the cable**: Must fit on the lower arm (And on the force sensor if there is one).
 
 
    .. figure:: _static/AttachmentCable.png
@@ -976,19 +890,24 @@ All the following parts need to be 3D printed with PLA and infill of 10 to 15%. 
      :alt: alternate text
      :align: center
 
-* **Support attached to the battery case** : Link the battery of the UAV to the upper arm of the encoder module.
+* **Support attached to the battery case**: Link the battery of the UAV to the upper arm of the encoder module.
 
    .. figure:: _static/AttachmentBatteryCase.png
      :width: 300
      :alt: alternate text
      :align: center
 
-* **Arduino plate** : Support to screw the arduino and the stripboard on the side of the battery case.
+* **Arduino plate**: Support to screw the arduino and the stripboard on the side of the battery case.
 
    .. figure:: _static/AttachmentArduino.png
      :width: 300
      :alt: alternate text
      :align: center
+
+   
+   .. admonition:: todo
+
+     Raphael: make sure the arduino and electronics board are put in a casing that you attach to UAV. Make sure the cables cannot be pulled out eaily as there will be vibrations, shocks,.. It is very dangerous to leave it open as this is too close to ground and like that cables can be pulled out when landing or taking off or when manually changing batteries. 
 
 Step-by-step assembly instructions
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -1017,6 +936,11 @@ Mechanical assembly
 .. admonition:: todo
 
    Raphael : When building the 2nd encoder, will do pictures of intermediate steps. 
+
+
+.. admonition:: todo
+
+   Raphael: Make sure the following is desicussed in the tutorial. So you have 2 encoders which I guess cannot mechanically rotate indefinetely (there is some limit?). So how do you fix the encoder such that this limit will never be reached during operation. Then how do you calibrate it such that when the load hangs perfectly down, the angle are 0. Also how/where do you ensure that an increase/decrease of encoder rqw angle is tranformed in the correct sign of angle according to the model used in your thesis. I assume should be somewhere in arduino code. So all this needs to be explained (maybe not all here, but where it actually is the good place to explain). Also discuss if you have 2 drones with bar how you will manage this (do you have to do extra things?).
 
 * **Center piece**  Press fit the collard inside the hollow part of the center piece. When those are in place, connect the two part of the central piece and secure it using two bolts.
 
