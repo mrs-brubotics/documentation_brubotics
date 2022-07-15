@@ -49,6 +49,8 @@ This repo is automatically cloned when you install droneswarm_brubotics.
 Run this command from the `documentation_brubotics` folder:
 
 ```
+cd ~/workspace/src/droneswarm_brubotics/documentation_brubotics
+rm -r build
 make html
 ```
 
