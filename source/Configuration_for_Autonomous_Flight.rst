@@ -313,22 +313,12 @@ Once you are in the onboard nuc with the ground station, thanks to the SSH, you 
    :alt: alternate text
    :align: center
 
+
 Configure the RTK system
---------------------------
+------------------------
 
-.. admonition:: todo
-
-  Update this part on how you bind the reach modules to the router, how you update their firmware via your phone, ...
-
-
-What we did not modified :
-  Github issue : https://github.com/ctu-mrs/mrs_uav_system/issues/77 we let gga to 1hz instead of 10 as explained in the issue.
-  Changed the TCP parameters , figure 4.31 rover of the tutorial. See screenshots taken friday 13/05.
-  Figure 4.33 is showing different parameters from what has been stated above. (POSITION OUTPUT)
-
-
-The Real-Time Kinematic (RTK) system is composed of the Emlid Reach RS2 as the "base" an the Emlid
-Reach M2 attached to the drone as the "rover". To the latter is connected the Multi-band GNSS antenna.
+The Real-Time Kinematic (RTK) system is composed of the Emlid Reach RS2 as the ’base’ an the Emlid
+Reach M2 attached to the drone as the ’rover’. To the latter is connected the Multi-band GNSS antenna.
 The RTK is a GPS-based positioning system that allows to get cm-precise XYZ position from Global
 Navigation Satellite System (GNSS) measurements. The base and rover setup will help to get the RTK
 precision. Simply explained, the RTK system consists of the base (i.e. Reach RS2), the device that doesn’t
@@ -336,10 +326,140 @@ move, and the rover (i.e. Reach M2), the device attached to the UAV. Both device
 GNSS measurements with usual GPS precision. The RTK system computes the baseline, the difference
 between both measurements, which gives the rover’s position relative to the base.
 
+.. figure:: _static/mappingkit.jpg
+   :width: 800
+   :alt: alternate text
+   :align: center
+
+.. note::
+
+  Regularly update the firmware of both the Reach RS2 and Reach M2 devices.
+
+
+
+Reach RS2 base configuration
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+It is advised to read everything in the `manufacturer's tutorial on the Reach RS2 <https://docs.emlid.com/reachrs2/>`__. It contains a `QuickStart procedure <https://docs.emlid.com/reachrs2/quickstart>`__ that should be followed for the setup on the actual Reach RS2 hardware. Follow these Sections:
+
+* `Getting started with Reach RS2: <https://emlid.com/reachrs2/rs2/>`__ First connect the router via ethernet cable to the internet. On your smartphone, download the `ReachView3 App <https://docs.emlid.com/reachrs2/common/quickstart/first-setup/>`__ , available on iOS and Android; and connect your device to the WiFi Hotspot of the Reach RS2 *reach\_m2\_xx* and password *emlidreach*). Connect your phone to the Reach RS2 Wi-Fi network and in the ReachView3 app, then connect the Reach RS2 to your router (on the ReachView3 app go to Settings, Wi-Fi, and connect to the router, enter the router's password that you find on the bottom of the router). You will be disconnected on your phone, since the Reach RS2 is now connected to the router. Now connect also your smartphone to the same router that had internet access. In the ReachView3 app (Settings, General, Device and hotspot name) change the default name *reachRS2* to *reachRS2-base*.
+
+.. note::
+
+  If there is another router that was previously already configured and is now also connected to the device (reach RS2 or reach M2), you have to power off the router first to see the Wi-Fi hotspot of the emlid device.
+
+
+* `First setup: <https://docs.emlid.com/reachrs2/quickstart/first-setup>`__ When the router is connected to internet, the Reach RS2 firmware can be updated. The router can now be disconnected from the internet. When restarting Reach RS2, it now connects automatically to the router and the bars moving in the Reach Panel show Reach RS2 is ready for work.
+
+* `Base and Rover setup <https://docs.emlid.com/reachrs2/quickstart/base-rover-setup>`__ (cannot be executed since we don't use two Reach RS2 and only one for the base).
+
+* `Connecting Reach to Internet via Wi-Fi <https://docs.emlid.com/reachrs2/quickstart/connecting-to-wifi>`__.
+
+* `Working with NTRIP service <https://docs.emlid.com/reachrs2/quickstart/ntrip-workflow>`__ (only follow Update Reach, and Provide Reach with a clear sky view Section).
+
+
+The Reach device is now initialized and ready for custom set-up.
+
+
+.. \bc{TODO test it}Note: Instead of using a smarthpone with the ReachView3 App, all steps can be done also from your PC browser. You can access your emlid device by connecting your PC to its WiFi hotspot by typing in your browser the emlid device IP address `http://192.168.0.104 <http://192.168.0.104>`__. After connecting the Reach to your router, scan your router with AdvancedIPScanner as mentioned before or look for the Reach IP address in the router's login tab, and type its IP address in the browser. Perform the last point as mentioned above \rn{For me it is: 192.168.0.104}.
+
+Reach M2 rover configuration
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+It is advised to read everything in the `manufacturer's tutorial on the Reach M2 <https://docs.emlid.com/reachm2/>`__. It contains a `QuickStart procedure <https://docs.emlid.com/reachm2/quickstart>`__ that should be followed for the setup on the actual Reach M2 hardware. Follow these Sections:
+
+
+* `First setup <https://docs.emlid.com/reachm2/quickstart/first-setup>`__ Follow the same steps as for the Reach RS2 (connection to internet via router, update firmware).
+
+* `Base and Rover setup <https://docs.emlid.com/reachm2/quickstart/base-rover-setup>`__  In the ReachView3 app, change the default name *reach* to *reachM2-rover-id*, where *id* is the id of the on-board computer (e.g. $id=3$ for Nuc3). This is to ensure all Reach M2 devices in the multi-robot system have different names when connected to Wi-Fi network of the router. In the ReachView3 app, select the device and open the Reach Panel. For the Reach RS2 **base** setup use the following settings: change the RTK Positioning mode from the default Kinematic to Static, select all GNSS, increase the update rate from 1Hz to maximum of 10Hz (will even not always work the 10Hz). All the latter setings can be seen in the pictures contained in `this issue on RTK setup of the MRS UAV system <https://github.com/ctu-mrs/mrs_uav_system/issues/77>`__ . More info about `RTK settings <https://docs.emlid.com/reachrs/reach-panel/rtk-settings/>` can be found in the link.
+
+* `Connecting Reach to Internet via Wi-Fi <https://docs.emlid.com/reachrs2/quickstart/connecting-to-wifi>`__ .
+
+* `Working with NTRIP service <https://docs.emlid.com/reachrs2/quickstart/ntrip-workflow>`__ (only follow Update Reach, and Provide Reach with a clear sky view Section).
+
+
+
+
+..  \rn{Try putting the frequency from 1 Hz to 10 Hz! \href{https://docs.emlid.com/reachrs/reach-panel/rtk-settings/}{ update rate!} set emlid reach m2 also at 10 Hz! \href{https://docs.emlid.com/reachm2/reach-panel/rtk-settings/}{Data reach m2} \rn{SET POSITION OUTPUT FROM THE REACH ROVER GGA TO 10 Hz SEE ISSUE RTK SETTINGS \#77! CHANGES A LOT! ALL the correct settings are also shown in pictures in the issue!}}
+
+
+The only point to emphasize here is, when configuring the Reach M2 (the small black), be sure to choose in *Position output* tab, "USB-To-PC" and format of messages as "NMEA". If you don't, the MRS system won't be able to read to messages.\rn{Select output one serial and there you can select usb to pc and then format NMEA, the second output should be sett to off + do all the changes from the video} \rn{CHANGE ALSO THE BAUDRATE TO 112000 something! This should be the same as the base.}
+You should obtain a ReachView tab in the browser (or in the app) like this (don't mind the "no connection" message), the grey bars represents the GPS data from the base. 
+
+.. figure:: _static/baserover.png
+   :width: 800
+   :alt: alternate text
+   :align: center
+   
+
+.. \fm{GCP points procedure for better precision can be done but this has to be done only when everything works AND if it is required}
+.. \subsubsection{Additional Notes}
+
+.. \fm{Quick explanation of the NMEA protocol, XYZ-UTM coordonates system, just to be able to debug and understand everything}
+
+
+
+Here are the correct parameters for the Rover :
+
+.. figure:: _static/rover/Base-mode.png
+   :width: 800
+   :alt: alternate text
+   :align: center
+   
+.. figure:: _static/rover/Correction-input.png
+   :width: 800
+   :alt: alternate text
+   :align: center
+
+.. figure:: _static/rover/Position-output.png
+   :width: 800
+   :alt: alternate text
+   :align: center
+
+.. figure:: _static/rover/RTK-Settings.png
+   :width: 800
+   :alt: alternate text
+   :align: center
+
+.. figure:: _static/rover/Status.png
+   :width: 800
+   :alt: alternate text
+   :align: center
+
+Here are the correct parameters for the Base :
+
+.. figure:: _static/base/Base-mode.png
+   :width: 800
+   :alt: alternate text
+   :align: center
+
+.. figure:: _static/base/Correction-input.png
+   :width: 800
+   :alt: alternate text
+   :align: center
+
+.. figure:: _static/base/Position-output.png
+   :width: 800
+   :alt: alternate text
+   :align: center
+
+.. figure:: _static/base/RTK-Settings.png
+   :width: 800
+   :alt: alternate text
+   :align: center
+
+.. figure:: _static/base/Status.png
+   :width: 800
+   :alt: alternate text
+   :align: center
+
+
+
 .. admonition:: todo
 
-   Still need to add the pictures of the correct parameters + small explanations. Normally everything was already okay and well configured so should be fast to just transpose.
-   /!\ separate well the rover and base part to avoid confusion. It was not that clear in overleaf. 
+  Update this part on how you bind the reach modules to the router, how you update their firmware via your phone, ... Done
+  Github issue : https://github.com/ctu-mrs/mrs_uav_system/issues/77 we kept gga to 1hz instead of 10 as explained in the issue. 
+  Figure 4.33 is showing different parameters from what has been stated above. (POSITION OUTPUT)
 
 
 Create launch scripts and configure the MRS code
@@ -413,11 +533,13 @@ Several things have to be modified in the default code from MRS to work with the
       
       'rtk' 'WaitForRos; roslaunch mrs\_serial rtk.launch'
       
+
   In Bryan folder here is the line that there is for the launch of the rtk.
 
     .. code-block:: shell 
 
-      'rtk_serial' 'waitForRos; roslaunch mrs_serial rtk.launch baudrate:=9600
+      'rtk_serial' 'waitForRos; roslaunch mrs_serial rtk.launch baudrate:=9600'
+
 
   .. admonition:: todo
 
@@ -827,8 +949,6 @@ Here are the steps to reproduce to validate the good working of the encoder syst
   This has not been tested more yet, a test will probably be made at VUB asap. I think the folder *https://github.com/mrs-brubotics/testing_brubotics/tree/master/tmux_scripts/load_transportation/1_one_drone_validation_encoder*
   was made for this by last year students, but it is probably already flying. There is probably a way to launch the BACA protocol without having to fly the drone (even with the standard non-damping controller). 
 
-  Does commenting this 'AutoStart' 'waitForRos; roslaunch mrs_uav_general automatic_start.launch' only don't ask the drone to take off, or does it prevent other nodes to work properly. E.g. if we want to monitor the load position without having to make the drone hover, can be just comment this out and hold the drone in place ?
-  
   record.sh how do we chosse which topic? MRS says it's easier to exclude topics rather than specifying which to record but Where to do that ? Is it not better do ask a similar command as in the session-sim.yml ? With all the topics listed?
 
 Raphael : Remaining parts to transpose are "4.14.4 Modifying the MRS code", "4.15 Making the drone take off and fly", "4.16 Set up the Nimbro parameters according to MRS" 
