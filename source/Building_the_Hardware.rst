@@ -651,10 +651,10 @@ In this section you will learn how to fix all the components on their (custom-ma
 19. To exchange data between the NUC and the Pixhawk, the connection between them will be done via one of the USB ports of the NUC, through a FTDI board.
 To realize the connection, you'll need an FTDI board, a 6 pins picoblade cable provided with the Pixhawk (that can go to the "TELEM2" port of the Pixhawk), 3 jumper wires of 20cm (Female-X), shrink tubes and non-conductive tape.
 
-	.. figure:: _static/material_ftdi.jpg
-   	:width: 800
-   	:alt: alternate text
-   	:align: center
+  .. figure:: _static/material_ftdi.jpg
+     :width: 800
+     :alt: alternate text
+     :align: center
 	Material needed for step 19.
 
 	
@@ -664,25 +664,27 @@ To realize the connection, you'll need an FTDI board, a 6 pins picoblade cable p
 	* Prepare shrink tubes on the 3 useful wires (highlighted in green in picture below, cables 2,3 and 6 starting from red one, see documentation `here <http://www.holybro.com/manual/Pixhawk4-Pinouts.pdf>`__) and solder them to the jump wires. Heat the shrink tubes on the welds.
 	* Put some non-conductive tape at the end of each other wires from the picoblade wire (NOT highlighted in green) in order to avoid short circuit.
 
-	.. figure:: _static/cables_soldered_ftdi_1.jpg
-   	:width: 800
-   	:alt: alternate text
-   	:align: center
+  .. figure:: _static/cables_soldered_ftdi_1.jpg
+     :width: 800
+     :alt: alternate text
+     :align: center
 	Wires soldered together.
+
+
 
 	* Put some non-conductive tape on top of the welds and the 3 non used wires, to stick everything together.
 
 
-	.. figure:: _static/cables_soldered_ftdi_2.jpg
-   	:width: 800
-   	:alt: alternate text
-   	:align: center
+  .. figure:: _static/cables_soldered_ftdi_2.jpg
+     :width: 800
+     :alt: alternate text
+     :align: center
 	Wires taped together.
 
-	.. figure:: _static/telem2_ports.jpg
-   	:width: 800
-   	:alt: alternate text
-   	:align: center
+  .. figure:: _static/telem2_ports.jpg
+     :width: 800
+     :alt: alternate text
+     :align: center
 	Pixhawk "TELEM2" port pins information.
 
 	* With help of the picture above (or the documentation provided previously) and the labels on the FTDI board, connect them together as follow :
@@ -690,10 +692,10 @@ To realize the connection, you'll need an FTDI board, a 6 pins picoblade cable p
 		* PX4 RX - FTDI TX
 		* PX4 GND - FTDI GND
 	
-	.. figure:: _static/cables_soldered_ftdi_3.jpg
-   	:width: 800
-   	:alt: alternate text
-   	:align: center
+  .. figure:: _static/cables_soldered_ftdi_3.jpg
+     :width: 800
+     :alt: alternate text
+     :align: center
 	Final circuit step 19
 
 	If the connection is done properly you can plug the FTDI board in one of the USB entries of the NUC and the Telecom connector on the Telem2 port of the Pixhawk. When the NUC is powered on, a LED should light up.
@@ -701,10 +703,12 @@ To realize the connection, you'll need an FTDI board, a 6 pins picoblade cable p
 
 20. Fix the Pixhawk case to the "main piece" by help of 4x M2.5 bolts, on the middle stage (use the holes on the edges of the Pixhawk case). The arrow on the Pixhawk must go toward the front of the drone. Try to have the Pixhawk as horizontal as possible in the drone.
 Put the other side of the wires for the GPS and the Optima by the back of the drone. For the FTDI, do it by the front (as in the picture below).
-	.. figure:: _static/px_mp_01.jpg
-   	:width: 800
-   	:alt: alternate text
-   	:align: center
+
+
+.. figure:: _static/px_mp_01.jpg
+   :width: 800
+   :alt: alternate text
+   :align: center
 	Step 20
 
   .. admonition:: todo
@@ -714,10 +718,10 @@ Put the other side of the wires for the GPS and the Optima by the back of the dr
 
 21. On top of the "main piece", fix the NUC case (using the holes outside the box) by help of 3x M2.5 bolts.
 
-	.. figure:: _static/px_mp_01.jpg
-   	:width: 800
-   	:alt: alternate text
-   	:align: center
+.. figure:: _static/px_mp_01.jpg
+   :width: 800
+   :alt: alternate text
+   :align: center
 	Step 21
 
   .. admonition:: todo
@@ -726,38 +730,40 @@ Put the other side of the wires for the GPS and the Optima by the back of the dr
 
 22. Screw the sma cable provided with the Reach M2 to the GNSS antenna. Pass the wire through the hole on the top of the "upper case". Screw the antenna to the "upper case" with 2x M2.5 bolts.
 
-	.. figure:: _static/sma_cable.jpg
-   	:width: 800
-   	:alt: alternate text
-   	:align: center
+.. figure:: _static/sma_cable.jpg
+   :width: 800
+   :alt: alternate text
+   :align: center
 	sma cable
 
-	.. figure:: _static/antenna_upper.jpg
-   	:width: 800
-   	:alt: alternate text
-   	:align: center
+.. figure:: _static/antenna_upper.jpg
+   :width: 800
+   :alt: alternate text
+   :align: center
 	Step 22
 
 23. Put the LoRa radio module of the Reach M2 in the "upper case", below the antenna. The terminal for its own antenna must be on the same side as the round shaped part of the "upper case".
 
 
-	.. figure:: _static/lora_upper.jpg
-   	:width: 800
-   	:alt: alternate text
-   	:align: center
+.. figure:: _static/lora_upper.jpg
+   :width: 800
+   :alt: alternate text
+   :align: center
 	Step 23
 
 24. Fix the "upper case" to the cover of the NUC case, by help of 3x M2.5 bolts (heads facing downard).
-
-  .. admonition:: todo
-
-     redo picture
 
   .. figure:: _static/upper_ncover.jpg
      :width: 800
      :alt: alternate text
      :align: center
 	Step 24
+
+  .. admonition:: todo
+
+     redo picture
+
+
 
      todo: caption
 
@@ -837,7 +843,7 @@ As the battery provides a DC voltage of 22.2V, a buck converter is needed to con
 	* Solder the remaining pair of wires to the 11116 plug (+ and - ports shown on picture below).
 
 	.. figure:: _static/1116_signe.jpg
-	   :width: 800
+	  :width: 800
  	  :alt: alternate text
  	  :align: center
 	Polarity of the 111160 terminal
@@ -847,7 +853,7 @@ As the battery provides a DC voltage of 22.2V, a buck converter is needed to con
 	* Screw back the metalic and plastic parts of the 11116 plug.
 
 	.. figure:: _static/cables_soldered_converter.jpg
-	   :width: 800
+	  :width: 800
  	  :alt: alternate text
  	  :align: center
 	Wires soldered
@@ -855,7 +861,7 @@ As the battery provides a DC voltage of 22.2V, a buck converter is needed to con
 	* Fix the free side of the wires to the screw connectors. The ones weld to the XT60 goes on the input side of the converter (input ports on the left of the converter when the potentiometer is directed toward you), the other (with 111160 terminal) to the output. The polarities of the I/O ports of the converter are indicated on it.
 
 	.. figure:: _static/converter_complete_circuit.jpg
-	   :width: 800
+	  :width: 800
  	  :alt: alternate text
  	  :align: center
 	Final converter circuit
@@ -865,7 +871,7 @@ As the battery provides a DC voltage of 22.2V, a buck converter is needed to con
 30. Fix the converter circuit to the right side of the battery using 4x M2.5 bolts. The potentiometer must face upward.
 
 	.. figure:: _static/converter_battery.jpg
-	   :width: 800
+	  :width: 800
  	  :alt: alternate text
  	  :align: center
 	Step 30
