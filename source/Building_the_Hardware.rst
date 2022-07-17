@@ -699,10 +699,9 @@ Now follow these steps :
 
 If the connection is done properly you can plug the FTDI board in one of the USB entries of the NUC and the Telecom connector on the Telem2 port of the Pixhawk. When the NUC is powered on, a LED should light up.
 
-20. Fix the Pixhawk case to the "main piece" by help of 4x M2.5 bolts, on the middle stage (use the holes on the edges of the Pixhawk case). The arrow on the Pixhawk must go toward the front of the drone. Try to have the Pixhawk as horizontal as possible in the drone.
-Put the other side of the wires for the GPS and the Optima by the back of the drone. For the FTDI, do it by the front (as in the picture below).
+20. Fix the Pixhawk case to the "main piece" by help of 4x M2.5 bolts, on the middle stage (use the holes on the edges of the Pixhawk case). The arrow on the Pixhawk must go toward the front of the drone. Try to have the Pixhawk as horizontal as possible in the drone. Put the other side of the wires for the GPS and the Optima by the back of the drone. For the FTDI, do it by the front (as in the picture below).
 
-.. figure:: _static/px_mp_01.jpg
+.. figure:: _static/px_mp_02.jpg
    :width: 800
    :alt: alternate text
    :align: center
@@ -715,11 +714,12 @@ Put the other side of the wires for the GPS and the Optima by the back of the dr
 
 21. On top of the "main piece", fix the NUC case (using the holes outside the box) by help of 3x M2.5 bolts.
 
-.. figure:: _static/px_mp_01.jpg
+.. figure:: _static/nc_mp01.jpg
    :width: 800
    :alt: alternate text
    :align: center
-	Step 21
+
+   Step 21
 
   .. admonition:: todo
 
