@@ -9,7 +9,7 @@ Batteries and safety
 -------------------------------------
 LiPo batteries are usually used for drones as it provides the best energy-to-weight ratio. 
 The battery has a voltage that is the product of the number of cells and the cell voltage (assumed to be equal for each cell).
-A LiPo has $3.7V$ nominal per cell if it is depleted and 4.2 V if it is fully charged. Two important characteristics are defining a battery: its capacity expressed in mAh and its C-rating. 
+A LiPo has 3.7V nominal per cell if it is depleted and 4.2 V if it is fully charged. Two important characteristics are defining a battery: its capacity expressed in mAh and its C-rating. 
 
 * The capacity is a measure for the amount of electrical charge that is stored inside the battery. In this case it is expressed in mAh and not in Coulomb, but there is explicitly a link between both units. 1 mAh is equivalent to 3.6 Coulombs.
 * The C-rating gives knowledge about the maximum current that the battery can draw while ensuring safe operations (not overheating). The units of this quantity are 1/hour.
@@ -57,7 +57,7 @@ Charging:
 
 Binding the RC transmitter with the RC receiver
 -------------------------------------------------
-In this section, you'll learn how to bind the receiver (Hitec Optima SL) and the transmitter (Hitec Flash 8).
+In this section, you will learn how to bind the RC receiver (i.e., Hitec Optima SL) with the transmitter (i.e., Hitec Flash 8).
 
 
 .. figure:: _static/hitec_buttons.jpg
@@ -67,31 +67,30 @@ In this section, you'll learn how to bind the receiver (Hitec Optima SL) and the
    
    Hitec Flash 8 RC transmitter
 
-The button "Jog Dial Scroll/Enter" will be referenced as "scroller" throughout the section.
+The button "Jog Dial Scroll/Enter" in the picture above will be referenced as "scroller" throughout the section.
 
-The following steps come from `this video <https://www.youtube.com/watch?v=SzZXjZMq_po>`__. 
+Take the UAV and detach all propellors.
+To bind both RC devices, follow these steps (which come from `this video <https://www.youtube.com/watch?v=SzZXjZMq_po>`__):
 
-To bind both RC devices, follow these steps :
-
-* Connect the SL port of the Optima SL (horizontal port below) with the DSM/SBUS RC port of
-  the Pixhawk. Orientation of the cables is important!
-  If you connect the cables in the opposite order, the Optima SL won’t turn on at all. (from left to
-  right: yellow, red, black).
+* Connect the SL port of the Optima SL (horizontal port below) with the DSM/SBUS RC port of the Pixhawk. The orientation of the cables (from left to right: yellow, red, black) nees to be respected or the Optima SL will not turn on.
 
 .. figure:: _static/optima_cable_order.jpg
    :width: 800
    :alt: alternate text
    :align: center
 
-* (Optional but highly recommended) Connect one of the 4 ESCs signal cables to channel 1 of the
+* (Optional) Connect one of the 4 ESCs signal cables to channel 1 of the
   Optima SL. This is not required but can help in order to know if the binding was successful.
-  (Did not do it, should we keep it ?)
 
-* Turn on the Hitec Flash 8 (On/Off switch, see picture...).
+  .. admonition:: todo
+
+     Bryan: test this as never tried
+
+* Turn on the Hitec Flash 8 (On/Off switch, see picture above).
 
 * Select not ready to transmit.
 
-* Press and hold both buttons on the right of the Flash 8 (back button and the scroller, see picture...). A new menu with a ’System.List’ will
+* Press and hold both buttons on the bottom right of the Flash 8 (back button and the scroller). A new menu with a ’System.List’ will
   open.
 
 * Use the scroller to go to "Spectra" and press OK.
@@ -102,48 +101,38 @@ To bind both RC devices, follow these steps :
 
 * Select that you want to bind the transmitter and receiver.
 
-* Make sure the receiver is first turned off (pull the pixhawk usb cable out of your computer). When
-  the receiver is powered off press the link button of the receiver, and now turn
-  it on (insert the pixhawk usb cable in your computer). When the receiver is turned on, release the
-  link button.
+* Make sure the receiver is first turned off (pull the pixhawk usb cable out of your computer). When the receiver is powered off press the link button of the receiver, with s small tool (e.g., inbus key) and now turn  it on (insert the pixhawk usb cable in your computer). When the receiver is turned on, release the link button.
 
-* The screen on the transmitter should automatically go from "Press and hold the link button..." to
-  "Reboot RX check all functions...". When this happens, turn the power from the receiver off and
-  turn it back on.
+* The screen on the transmitter should automatically go from "Press and hold the link button..." to "Reboot RX check all functions...". When this happens, turn the power from the receiver off and turn it back on.
 
-* Press "finish". Normally you should see the battery voltage of the receiver on the lower part of the main screen of the
-  transmitter (more or less 5V if you are using the Pixhawk (4.7V)) It oscilates
-  at a high frequency. When you would power off the receiver, the value is fronze, turn on again and
-  it oscillates. Means its working.
+* Press "finish". Normally you should see the battery voltage of the receiver on the lower part of the main screen of the transmitter (more or less 5V if you are using the Pixhawk (4.7V)). It oscillates at a high frequency. When you would power off the receiver, the value is fronze, turn on again and it oscillates. This means it is working.
 
-* (Only if you did step 2) WITH THE PROPELLERS DETACHED FROM THE MOTORS AND THE BATTERY CONNECTED, raise the throttle stick of the transmitter. If the motor starts spinning,
-  then the binding process is successful. Keep in the mind that the RC calibration is not done yet, so
-  it is possible that the motor will only start spinning at 50% throttle or more.
-  (didn't do that, to keep ?)
+* (Optional, if you attached ESCs to Optima SL) WITH THE PROPELLERS DETACHED FROM THE MOTORS AND THE BATTERY CONNECTED, raise the throttle stick of the transmitter. If the motor starts spinning, then the binding process is successful. Keep in the mind that the RC calibration is not done yet, so it is possible that the motor will only start spinning at 50% throttle or more.
 
-* (Important) Now that everything is tested and working a last step needs to be performed in order
-  to set up the RC transmitter correctly. The Hitec Flash 8 proposes 3 different modes depending
-  on the model of your drone: ACRO, GLID and HELI. Press and hold both buttons on the right (back button and scroller) of the Flash 8.
-  A new menu with a ’System.List’ will open. Go to "MDL Type". Make sure you have the Airplane mode on, with 1 wing and normal tail (see picture below). 
-  The Airplane mode is the only mode correct for this drone, as it is also able to
-  control quadcopters. If you press and hold a bit on the scroller, Acro.List opens, and scroll all the way down till
-  "monitor" you will have a screen with all the different channels, when you move the joysticks in a
-  certain direction. With the Airplane (ACRO) mode selected, you will see
-  that only the channel linked to the throttle will move. If you do not do this the RC calibration on
-  QGroundControl will be messed up and your drone will most likely crash or flip when you take off.
+.. admonition:: todo
 
-* You should give your model a new name. Select the letter you want to change and select the new
-  replacement letter. Please don’t overwrite existing models. whenever you change MDL Type, the
-  name is lost.
-  
+     Bryan: test this as never tried
+
+* (Important) Now that the RC binding is tested and working a last step needs to be performed in order to set up the RC transmitter correctly. The Hitec Flash 8 proposes three different modes depending on the model of your UAV: ACRO, GLID and HELI. 
+  * Press and hold both buttons (back button and scroller) of the Flash 8. A new menu with a ’System.List’ will open;
+  * Go to "MDL Type";
+  * Make sure you have the Airplane (ACRO) mode on, with 1 wing (1 AILE) and normal tail (see picture below). The Airplane (ACRO) mode is the only mode correct for this UAV, as it is also able to control quadcopters;
+  * Go back to the main menu;
+  * If you press and hold a bit on only the scroller, Acro.List opens;
+  * Scroll all the way down till "monitor" and you will have a screen with all the different channels;
+  * When you move (i.e., make circles) the joysticks and with the Airplane (ACRO) mode previously selected, you will see that each joystick affects only two channels.
+  * If you do not do this the RC calibration, then QGroundControl will be messed up and your UAV will most likely crash or flip when you take off.
 
 .. figure:: _static/transmitter_mode.jpg
    :width: 800
    :alt: alternate text
    :align: center
 
-Setting up via QGroundControl
---------------------------------
+* In the main menu, scroll to the most top left name. You should give your model a new name. Select the letter you want to change and select the new replacement letter. Please do not overwrite existing models as they can be used by others. Whenever you change MDL Type, the name is lost.
+  
+
+Pixhawk configuration via QGroundControl
+------------------------------------------
 
 In this section, you'll learn how to set up the software in order to :
 
