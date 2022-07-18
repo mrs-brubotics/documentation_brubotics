@@ -680,10 +680,12 @@ Now follow these steps :
        Pixhawk "TELEM2" port pins information.
 
 * With help of the picture above (or the documentation provided previously) and the labels on the FTDI board, connect them together as follow :
+
 	* PX4 TX - FTDI RX
 	* PX4 RX - FTDI TX
 	* PX4 GND - FTDI GND
 	
+
     .. figure:: _static/cables_soldered_ftdi_3.jpg
        :width: 800
        :alt: alternate text
@@ -833,12 +835,14 @@ If the connection is done properly you can plug the FTDI board in one of the USB
 * Unscrew with hands the 11116 plug to separate the metalic and plastic parts.
 * Cut the narrow end of the plastic part and, if needed, increase a bit the size of the hole with a scalpel (see picture below). You must be able to pass the 2 wires through it.
 
+
   .. figure:: _static/111160_cut.jpg
      :width: 800
      :alt: alternate text
      :align: center
 
      111160 plastic part before and after being cutted
+
 
 * Solder the remaining pair of wires to the 11116 plug (+ and - ports shown on picture below).
 
@@ -849,8 +853,10 @@ If the connection is done properly you can plug the FTDI board in one of the USB
 
      Polarity of the 111160 terminal
 
+
 * Put some shrink tubes on the solderings.
 * Screw back the metalic and plastic parts of the 11116 plug.
+
 
   .. figure:: _static/cables_soldered_converter.jpg
      :width: 800
@@ -859,7 +865,9 @@ If the connection is done properly you can plug the FTDI board in one of the USB
 
      Wires soldered
 
+
 * Fix the free side of the wires to the screw connectors. The ones weld to the XT60 goes on the input side of the converter (input ports on the left of the converter when the potentiometer is directed toward you), the other (with 111160 terminal) to the output. The polarities of the I/O ports of the converter are indicated on it.
+
 
   .. figure:: _static/converter_complete_circuit.jpg
      :width: 800
@@ -867,6 +875,7 @@ If the connection is done properly you can plug the FTDI board in one of the USB
      :align: center
 
      Final converter circuit
+
 
 * Connect the battery to the XT60 port. Using a voltmeter measure the output voltage of the converter and change it to reach 18.5V-19V more or less (by help of the potentiometer).
 
@@ -969,7 +978,9 @@ If the connection is done properly you can plug the FTDI board in one of the USB
 
      redo picture
 
+
 38. Connect the USB-micro USB cable provided with the Reach M2 to it and to a USB port of the Nuc. Connect the FTDI to another USB port of the Nuc and the output port (111160) of the converter circuit to its power port.
+
 
   .. figure:: _static/nuc_connections01.jpg
      :width: 800
@@ -977,6 +988,7 @@ If the connection is done properly you can plug the FTDI board in one of the USB
      :align: center
 
      Step 38
+
 
 39. Screw the propellers to the motors with the 2 screws provided with the motors. Pay attention to match the spinning direction between the motor and its propeller. Put the propellers only right before flying, always remove them when working on the drone or doing calibration steps !!!
 
