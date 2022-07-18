@@ -32,13 +32,13 @@ SSD of the NUC.
 Prerequist
 ^^^^^^^^^^^^^
 
-* The first thing to do is to download Ubuntu 20.04 on your NUC. This can be easily done with a bootable USB. For more details we refer to the \href{https://ubuntu.com/tutorials/install-ubuntu-desktop#1-overview}{tutorial} written by Ubuntu;
+* The first thing to do is to download Ubuntu 20.04 on your NUC. This can be easily done with a bootable USB. For more details we refer to the `tutorial <https://ubuntu.com/tutorials/install-ubuntu-desktop#1-overview>`__ written by Ubuntu;
 
 * Next, download the workspace provided by CTU-MRS by pasting the code under `I have a fresh Ubuntu install and want it quick and easy <https://github.com/ctu-mrs/mrs_uav_system#i-have-a-fresh-ubuntu-1804-and-want-it-quick-and-easy>`__ inside a terminal;
 
 * Download the Brubotics software by following this `README.md <https://github.com/mrs-brubotics/droneswarm_brubotics/blob/master/README.md>`__.
 
-Before proceeding make sure you are able to run scripts from CTU workspace (e.g. *~/mrs_workspace/src/simulation/example_tmux_scripts/one_drone_pendulum*) and the brubotics workspace (*~/workspace/src/droneswarm_brubotics/ros_packages/testing_brubotics/tmux_scripts/Raphael/0_One_Drone_f450_BruboticsDampingController*)
+Before proceeding make sure you are able to run simulation scripts from CTU workspace (e.g. *~/mrs_workspace/src/simulation/example_tmux_scripts/one_drone_pendulum*) and the brubotics workspace (*~/workspace/src/droneswarm_brubotics/ros_packages/testing_brubotics/tmux_scripts/Raphael/0_One_Drone_f450_BruboticsDampingController*)
  
 
 Connection with the Pixhawk
@@ -66,7 +66,7 @@ These steps will be based on `this <https://ctu-mrs.github.io/docs/hardware/px4_
 .. note:: 
 	"serial" might be seen in the list when doing the "ls" command. But it is not the name we are looking for, so you can ignore it.
 
-* Once the name of the device is found run the following command in the /dev folder:
+* Once the name of the device is found run the following command in the /dev folder (replacing ttyUSB0 by the name you had in previous steps):
   
 .. code-block:: shell 
 
@@ -371,7 +371,7 @@ It is advised to read everything in the `manufacturer's tutorial on the Reach M2
 
 * `First setup <https://docs.emlid.com/reachm2/quickstart/first-setup>`__ Follow the same steps as for the Reach RS2 (connection to internet via router, update firmware).
 
-* `Base and Rover setup <https://docs.emlid.com/reachm2/quickstart/base-rover-setup>`__  In the ReachView3 app, change the default name *reach* to *reachM2-rover-id*, where *id* is the id of the on-board computer (e.g. $id=3$ for Nuc3). This is to ensure all Reach M2 devices in the multi-robot system have different names when connected to Wi-Fi network of the router. In the ReachView3 app, select the device and open the Reach Panel. For the Reach RS2 **base** setup use the following settings: change the RTK Positioning mode from the default Kinematic to Static, select all GNSS, increase the update rate from 1Hz to maximum of 10Hz (will even not always work the 10Hz). All the latter setings can be seen in the pictures contained in `this issue on RTK setup of the MRS UAV system <https://github.com/ctu-mrs/mrs_uav_system/issues/77>`__ . More info about `RTK settings <https://docs.emlid.com/reachrs/reach-panel/rtk-settings/>` can be found in the link.
+* `Base and Rover setup <https://docs.emlid.com/reachm2/quickstart/base-rover-setup>`__  In the ReachView3 app, change the default name *reach* to *reachM2-rover-id*, where *id* is the id of the on-board computer (e.g. $id=3$ for Nuc3). This is to ensure all Reach M2 devices in the multi-robot system have different names when connected to Wi-Fi network of the router. In the ReachView3 app, select the device and open the Reach Panel. For the Reach RS2 **base** setup use the following settings: change the RTK Positioning mode from the default Kinematic to Static, select all GNSS, increase the update rate from 1Hz to maximum of 10Hz (will even not always work the 10Hz). All the latter setings can be seen in the pictures contained in `this issue on RTK setup of the MRS UAV system <https://github.com/ctu-mrs/mrs_uav_system/issues/77>`__ . More info about `RTK settings <https://docs.emlid.com/reachrs/reach-panel/rtk-settings/>`__ can be found in the link.
 
 * `Connecting Reach to Internet via Wi-Fi <https://docs.emlid.com/reachrs2/quickstart/connecting-to-wifi>`__ .
 
@@ -382,9 +382,14 @@ It is advised to read everything in the `manufacturer's tutorial on the Reach M2
 
 ..  \rn{Try putting the frequency from 1 Hz to 10 Hz! \href{https://docs.emlid.com/reachrs/reach-panel/rtk-settings/}{ update rate!} set emlid reach m2 also at 10 Hz! \href{https://docs.emlid.com/reachm2/reach-panel/rtk-settings/}{Data reach m2} \rn{SET POSITION OUTPUT FROM THE REACH ROVER GGA TO 10 Hz SEE ISSUE RTK SETTINGS \#77! CHANGES A LOT! ALL the correct settings are also shown in pictures in the issue!}}
 
+.. note::
 
-The only point to emphasize here is, when configuring the Reach M2 (the small black), be sure to choose in *Position output* tab, "USB-To-PC" and format of messages as "NMEA". If you don't, the MRS system won't be able to read to messages.\rn{Select output one serial and there you can select usb to pc and then format NMEA, the second output should be sett to off + do all the changes from the video} \rn{CHANGE ALSO THE BAUDRATE TO 112000 something! This should be the same as the base.}
+  The only point to emphasize here is, when configuring the Reach M2 (the small black), be sure to choose in *Position output* tab, "USB-To-PC" and format of messages as "NMEA". If you don't, the MRS system won't be able to read to messages.\rn{Select output one serial and there you can select usb to pc and then format NMEA, the second output should be sett to off + do all the changes from the video}
+  Bryan : Here is the comment I mentioned in my email of saturday \rn{CHANGE ALSO THE BAUDRATE TO 112000 something! This should be the same as the base.} [This was set to 9600 for the rover, but not for the base in following pictures. (and also in the RTK when we got it)]RB
+  
+  
 You should obtain a ReachView tab in the browser (or in the app) like this (don't mind the "no connection" message), the grey bars represents the GPS data from the base. 
+
 
 .. figure:: _static/baserover.png
    :width: 800
@@ -458,14 +463,16 @@ Here are the correct parameters for the Base :
 .. admonition:: todo
 
   Update this part on how you bind the reach modules to the router, how you update their firmware via your phone, ... Done
-  Github issue : https://github.com/ctu-mrs/mrs_uav_system/issues/77 we kept gga to 1hz instead of 10 as explained in the issue. 
-  Figure 4.33 is showing different parameters from what has been stated above. (POSITION OUTPUT)
+  Figure 4.33 is showing different parameters from what has been stated above. (POSITION OUTPUT) (see mail)
 
 
 Create launch scripts and configure the MRS code
 ------------------------------------------------
 This section will cover the different files and parameters that must be configured prior to launching a test on hardware. Might be good to print this and the next section "Autonomous flight procedure" to have it easilly available on site, and to check each point before lauching any test (i.e. as a check list before takeoff).
-Before doing anything, check that all the workspaces build correctly and that the code are up to date. Additionnal advices can be found `here <https://ctu-mrs.github.io/docs/system/preparing_for_a_real-world_experiment.html>`__, in MRS tutorial. Always use this tutorial when something seems unclear and update this one with the additionnal informations you needed.
+Before doing anything, check that all the workspaces build correctly and that the code are up to date. Additionnal advices can be found `here <https://ctu-mrs.github.io/docs/system/preparing_for_a_real-world_experiment.html>`__, in MRS tutorial. Always refer to this tutorial when something seems unclear and update this one with the additionnal informations you needed.
+
+Adapt MRS code
+^^^^^^^^^^^^^^
 
 Several things have to be modified in the default code from MRS to work with the hardware presented here. Except indication, all the files are in packages from MRS, located in *~/mrs_workspace/src/uav_core/ros_packages*
 
@@ -487,7 +494,7 @@ Several things have to be modified in the default code from MRS to work with the
   and correct you can obtain an error when launching the rtk launch file. This error says that your
   baudrate is unsupported and gives you a random number. If you want to bypass this error you will
   have to impose your baudrate in the `nmea_parser.cpp <https://github.com/ctu-mrs/mrs_serial/blob/master/src/nmea_parser.cpp>`__ file and add this line after the parameters are
-  loaded;
+  loaded; [I did not had this issue]RB
 
     .. figure:: _static/BaudrateRTK.png
       :width: 600
@@ -495,11 +502,17 @@ Several things have to be modified in the default code from MRS to work with the
       :align: center
 
 
+* **Bashrc configuration** : 
 
-* **Bashrc configuration** : The name of the UAV has to be changed. This variable defines the UAV’s namespace, all the ROS nodes of the MRS UAV System will run under the namespace /$UAV_NAME/node_name. The UAV_NAME should match the /etc/hostname of the onboard computer.
-  In our case this is looks like ""nuc3-NUC10i7FNK". This should be changed in the *~/.basrc* in home folder of the nuc. Then it must be changed as well in `config file <https://github.com/ctu-mrs/mrs_uav_general/blob/master/config/uav_names.yaml>`__ of the uav names. Delete all the names present in the robot_names list and 
-  put the names of all the drones you are using. For more informations about the bashrc file and its parameters, checkout this part of the `tutorial <https://ctu-mrs.github.io/docs/system/bashrc_configuration.html#what-is-basrc>`__ of MRS.
-  The mass of the UAV must also be changed to fit the one of your UAV. Same comment for the type of UAV and odometry type. Here is the correct looking section of the Bashrc file :
+  * The name of the UAV has to be changed. This variable defines the UAV’s namespace, all the ROS nodes of the MRS UAV System will run under the namespace /$UAV_NAME/node_name. The UAV_NAME should match the /etc/hostname of the onboard computer.
+    In our case this is looks like "nuc3-NUC10i7FNK". This should be changed in the *~/.basrc* in home folder of the nuc. Then it must be changed as well in `config file <https://github.com/ctu-mrs/mrs_uav_general/blob/master/config/uav_names.yaml>`__ of the uav names. Delete all the names present in the robot_names list and 
+    put the names of all the drones you are using. For more informations about the bashrc file and its parameters, checkout this part of the `tutorial <https://ctu-mrs.github.io/docs/system/bashrc_configuration.html#what-is-basrc>`__ of MRS.
+  
+  * The mass of the UAV must also be changed to fit the one of your UAV. 
+  
+  * Same comment for the type of UAV and odometry type. 
+  
+  Here is the correct looking section of the Bashrc file :
 
   .. figure:: _static/BashrcConfigAutonomous.png
     :width: 800
@@ -512,17 +525,22 @@ Several things have to be modified in the default code from MRS to work with the
 
     source ~/.bashrc
 
-  Otherwise you'll get an error related to an invalid ns (i.e. namespace). This is because the namespace used in our launch script is the UAV_NAME defined in this bashrc file. So if it is not sourced correctly, it can be found by ros. 
+  Otherwise you could get an error related to an invalid ns (i.e. namespace). This is because the namespace used in our launch script is the UAV_NAME defined in this bashrc file. 
+  So if it is not sourced correctly, it cannot be found by ROS. 
 
 .. admonition:: todo
 
-  Bryan : Do you prefer to use uav1(2,3,..) as name and change hostname of the nuc (as they need to be the same). Or should we use the current default hostname of the nuc (nuc3-NUC10i7FNK) straight away ? Looks cleaner to use uav1 but dont know if it can create other problems to change the PC name. (By changing it in etc/hostname)
+  Bryan : Do you prefer to use uav1(2,3,..) as name and change hostname of the nuc (as they need to be the same). Or should we use the current default hostname of the nuc (nuc3-NUC10i7FNK) straight away ? 
+  Looks cleaner to use uav1 but dont know if it can create other problems to change the PC name. (By changing it in etc/hostname).
+  Update : I tried to keep the hostname of the PC (nuc3-NUC10i7FNK) as UAVNAME, but it displayed an error when launching scripts, because of the "-". So I changed it to uav1 and it seemed to work eventhought this is not the same as the hostname. 
+  If it's working I guess I don't have to change the hostname of the PC ?
 
 .. note:: 
 
-  Before launching any script, double check that every .bashrc file is correct for every drone. This is very important as contrary to the simulation, no environmental variable will be overwritten in Session.yalm files. 
-  In addition to that, a precise planning of each test that are going to be made must be done BEFORE the test day. Each different test folder must be prepared, the code reviewed and ready. Simulations must work perfectly as well before doing hardware test. This is essential to not waste time on site changing parameters and trying to debug software issues. 
-
+  Before launching any script, double check that every .bashrc file is correct for every drone. 
+  In addition to that, a precise planning of each test that are going to be made must be done BEFORE the test day. 
+  Each different test folder must be prepared, the code reviewed and ready. 
+  Simulations must work perfectly as well before doing hardware test. This is essential to not waste time on site changing parameters and trying to debug software issues. 
 
 
 * **Shell script to lauch a test:** Create your custom tmux shell script in your test folder or use the simple `just_flying.sh <https://github.com/ctu-mrs/uav_core/blob/master/tmux_scripts/just_flying.sh>`__ script from MRS as a start. This is the equivalent of the Session file for the simulation part.
@@ -544,6 +562,12 @@ Several things have to be modified in the default code from MRS to work with the
   .. admonition:: todo
 
     I guess it solves the issue with the baudrate without having to manually modify it as explained above ?
+
+  .. admonition:: todo
+    
+    When launching the shell script on Sunday, I got an error about a missing RTK.yaml config file. Turns out this was named rtk.yaml and not RTK.yaml. 
+    Its location was : "~/mrs_workspace/src/uav_core/ros_packages/mrs_uav_odometry/config/uav$ ". By copy pasting and renaming one of the two copy to RTK.yaml it seemd to work. I don't know why it's not coherent with the other scripts as it seems it's only in the MRS files/workspace.
+
 
   Indicate the name of the project, e.g "One_drone_validation_encoder" and also indicate the MAIN_DIR where the bag files of the test will be saved.
   
@@ -584,10 +608,9 @@ Several things have to be modified in the default code from MRS to work with the
       'start_challenge' 'waitForRos; history -s rosservice call /'"$UAV_NAME"'/control_manager/start_trajectory_tracking
     '
   
-  As "history -s" is present, you'll have to navigate to the correct tmux tab to launch this trajectory when needed. To generate these .txt files, follow : TODO ADD EXPLANATIONS FOR THIS.
-  Does this trajectory must be relative to the RTK, or to the take-off/initial position of the drone ??
-  
-When your shell script is ready, try to launch it (remotely to test as well the network) without making the drone take-off to see if no error is displayed. Errors can easilly happens if indentation and spaces are not consistent, so this must be checked several times to ensure that no problem will occur during a real take-off.
+  As "history -s" is present, you'll have to navigate to the correct tmux tab to launch this trajectory when needed. To generate these .txt files, follow the next section.
+
+When your shell script is ready, try to launch it (remotely to test as well the network) without making the drone take-off (not toggle the take off switch of the transmitter) to see if no error is displayed. Errors can easilly happens if indentation and spaces are not consistent, so this must be checked several times to ensure that no problem will occur during a real take-off.
 
 
 * **Custom configurations** In your folder where the just_flying.sh template is pasted, create a folder custom_configs where you will put your yaml files to overwrite
@@ -597,8 +620,9 @@ When your shell script is ready, try to launch it (remotely to test as well the 
       part. This will ensure the right computation of the baseline. Be as precise as you can on the lat
       long value. This has to be done everytime you move the RTK base, and to be double checked everytime before making the drone take off, as it might be dangerous. 
 
-    * `rtk_republisher.yaml <https://github.com/ctu-mrs/mrs_uav_odometry/blob/master/config/rtk_republisher.yaml>`__ : not necessary but if you plan to use all the topics related to the rtk, the
-      offset x-y should be the latlong coordinates of the base CONVERTED in UTM coordinates. Useless ? Not done in Bryan's folder.
+    * `rtk_republisher.yaml <https://github.com/ctu-mrs/mrs_uav_odometry/blob/master/config/rtk_republisher.yaml>`__ : not necessary but if you plan to use all the topics related to the rtk (that's what they said in the overleaf), the
+      offset x-y should be the latlong coordinates of the base CONVERTED in UTM coordinates (what does it change to use directly the UTM values of the StatusTab of the base ? instead of converting the x y value back to this ?). 
+      Useless ? Not done in Bryan's folder. I did not do it on sunday, maybe it caused issues with the position. I'll try to add it thuesday?
 
     * Odometry.yalm should contain all the changes made to your odometry parameters (w.r.t the default values set by MRS here `mrs_uav_odometry/config <https://github.com/ctu-mrs/mrs_uav_odometry/blob/master/config/>`__ and 
       more particularly in *default_config.yaml* where you can choose the estimator you want. 
@@ -657,6 +681,15 @@ When your shell script is ready, try to launch it (remotely to test as well the 
   add an 66.75 offset in the odometry.cpp.] See if it will be necessary to do the same this year or if we do not have this issue.)
 
 
+How to generate trajectory files
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+In this subsection, the procedure to follow in order to generate the correct trajectory text file for hardware test will be presented.
+Note that you must create a new trajectory adapted to each test you do and double check that it is coherent with the drone's position and the topology of your terrain. (You don't want the drone to go unstable if the start of the trajectory is 9m away from the actual position of your UAV.)
+
+`This MRS package <https://github.com/ctu-mrs/mrs_uav_trajectory_generation>`__ provides a method for generation a time-parametrized trajectory out of a path (a sequence of waypoints). The resulting trajectory satisfies the current dynamics constraints of the UAV and completes the path in minimum possible time. The maximum deviation of the resulting trajectory from the supplied path is a user-configurable parameter.
+
+We did not do it yet. Not sure where to specify waypoints. I guess just need to run the `launch file <https://github.com/ctu-mrs/mrs_uav_trajectory_generation/blob/master/launch/trajectory_generation.launch>`__ of the package, after having checked in the `config file <https://github.com/ctu-mrs/mrs_uav_trajectory_generation/blob/master/config/default.yaml>`__ if the parameters are okay. (what param should I put ? )
+
 .. admonition:: todo
 
   following part is redundant with what is written in the next part "Autonomous flight procedure". Delete it as soon as the part is validated and complete. 
@@ -673,7 +706,7 @@ With this all done, follow those steps when your UAV is outside:
 * Wait for the convergence to the current altitude of the drone. It takes more or less 10 seconds
 
 * Arm the drone with the C switch (down position) and put it the the desired flight mode with the A
-  switch (UP = manual, Middle = ALTCTL, DOWN = POSCTL)
+  switch (UP = manual, Middle = ALTCTL, DOWN = POSCTL) MAXIME : This is not how we defined the switch : Need to be adapted in " autonomous flight procedure" section
 
 * Put the drone in offboard mode with the B switch (down position). The drone will takeoff automatically.
 
@@ -683,12 +716,13 @@ With this all done, follow those steps when your UAV is outside:
   close to 14 V, it is better to not take off in order to avoid damage to the batteries. This can be changed
   in the px4_config.yaml BUT you definitely shouldn’t change this value.
 
+
 Cable-Suspended Payload Module
 ------------------------------
 
 .. admonition:: todo
 
-   Raphael: Explain all you need to configure the module.
+   Raphael: Explain all you need to configure the module. Done
 
 Arduino setup
 ^^^^^^^^^^^^^^^
