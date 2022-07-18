@@ -410,7 +410,7 @@ In this section you will learn how to fix all the components on their (custom-ma
 
 .. admonition:: todo
 
-   I have difficulties understandign what you mean with these 2 categories of parts. Can you give a list of parts (see names above) that need which drill size? 
+I have difficulties understandign what you mean with these 2 categories of parts. Can you give a list of parts (see names above) that need which drill size? 
 
 
   .. figure:: _static/material_motor.jpg
@@ -684,7 +684,7 @@ Now follow these steps :
 	* PX4 TX - FTDI RX
 	* PX4 RX - FTDI TX
 	* PX4 GND - FTDI GND
-	
+
 
     .. figure:: _static/cables_soldered_ftdi_3.jpg
        :width: 800
@@ -693,7 +693,7 @@ Now follow these steps :
 
        Final circuit step 18
 
-If the connection is done properly you can plug the FTDI board in one of the USB entries of the NUC and the Telecom connector on the Telem2 port of the Pixhawk. When the NUC is powered on, a LED should light up.
+If the connection is made properly, you can plug the FTDI board in one of the USB entries of the NUC and the Telecom connector on the Telem2 port of the Pixhawk. When the NUC is powered on, a LED should light up.
 
 19. Fix the Pixhawk case to the "main piece" by help of 4x M2.5 bolts, on the middle stage (use the holes on the edges of the Pixhawk case). The arrow on the Pixhawk must go toward the front of the drone. Try to have the Pixhawk as horizontal as possible in the drone. Put the other side of the wires for the GPS and the Optima by the back of the drone. For the FTDI, do it by the front (as in the picture below).
 
@@ -967,6 +967,7 @@ If the connection is done properly you can plug the FTDI board in one of the USB
      Step 36
 
 37. Connect the GNSS antenna to the Reach M2, using its "ant" port and the sma cable previously screwed to the antenna. 
+
   .. figure:: _static/m2_antenna_connection01.jpg
      :width: 800
      :alt: alternate text
@@ -982,7 +983,7 @@ If the connection is done properly you can plug the FTDI board in one of the USB
 38. Connect the USB-micro USB cable provided with the Reach M2 to it and to a USB port of the Nuc. Connect the FTDI to another USB port of the Nuc and the output port (111160) of the converter circuit to its power port.
 
 
-  .. figure:: _static/nuc_connections01.jpg
+  .. figure:: _static/nuc_rear.jpg
      :width: 800
      :alt: alternate text
      :align: center
