@@ -412,6 +412,7 @@ In this section you will learn how to fix all the components on their (custom-ma
 
    I have difficulties understandign what you mean with these 2 categories of parts. Can you give a list of parts (see names above) that need which drill size? 
 
+
   .. figure:: _static/material_motor.jpg
      :width: 800
      :alt: alternate text
@@ -492,28 +493,28 @@ In this section you will learn how to fix all the components on their (custom-ma
 
 9. Fix the "Motor top fixation" on the "Motor bottom fixation" with the help of 4x M2.5 bolts (holes on the corner of the parts). Repeat the last four steps for each motor. If you've taken the same motors as ours, based on the welds between the motors and the ESCs, try to put clockwise spinning motors for front left and back right arms and the other anticlockwise.
 
-.. figure:: _static/motort_motorb.jpg
-   :width: 800
-   :alt: alternate text
-   :align: center
+  .. figure:: _static/motort_motorb.jpg
+     :width: 800
+     :alt: alternate text
+     :align: center
 
-   Step 9
+     Step 9
 
 10. Take four pairs of power supply cables (more or less 18cm long, thick red and black cables, a single pair per motor). Make sure that the four pairs can reach the ESCs starting from the middle of the frame. Solder all the pairs on the power distribution board (PDB). The position of each pair is shown in the picture below. As the UAV requires four motors but the PDB can supply up to eight motors, you can solder each red cable to both B+ connections available on each corner of the PDB. In each corner, where the red cables are, choose one of the two GND connection to solder the black cables.
 
-.. figure:: _static/material_step11.jpg
-   :width: 800
-   :alt: alternate text
-   :align: center
+  .. figure:: _static/material_step11.jpg
+     :width: 800
+     :alt: alternate text
+     :align: center
 
-   Material for step 10
+     Material for step 10
 
-.. figure:: _static/pdb_soldering_2.jpg
-   :width: 800
-   :alt: alternate text
-   :align: center
+  .. figure:: _static/pdb_soldering_2.jpg
+     :width: 800
+     :alt: alternate text
+     :align: center
 
-   Step 10
+     Step 10
 
 11. Fix the PDB to the "Main piece" by help of 4x M3 bolts (head on bottom), use the 4 holes in the middle of the "Main piece". As you can see in the picture below the holes are off-centered. Put the cables with the XT connector on the side with the biggest space (on the right in the picture below) and put them out of the piece thanks to the hole on that side (see second picture). In between the main piece and the PDB, put a nut on each bolt that serve as spacers.
 
@@ -655,40 +656,40 @@ Now follow these steps :
 * Prepare shrink tubes on the 3 useful wires (highlighted in green in picture below, cables 2,3 and 6 starting from red one, see documentation `here <http://www.holybro.com/manual/Pixhawk4-Pinouts.pdf>`__) and solder them to the jump wires. Heat the shrink tubes on the welds.
 * Put some non-conductive tape at the end of each other wires from the picoblade wire (NOT highlighted in green) in order to avoid short circuit.
 
-  .. figure:: _static/cables_soldered_ftdi_1.jpg
-     :width: 800
-     :alt: alternate text
-     :align: center
+    .. figure:: _static/cables_soldered_ftdi_1.jpg
+       :width: 800
+       :alt: alternate text
+       :align: center
 
-     Wires soldered together.
+       Wires soldered together.
 
 * Put some non-conductive tape on top of the welds and the 3 non used wires, to stick everything together.
 
-  .. figure:: _static/cables_soldered_ftdi_2.jpg
-     :width: 800
-     :alt: alternate text
-     :align: center
+    .. figure:: _static/cables_soldered_ftdi_2.jpg
+       :width: 800
+       :alt: alternate text
+       :align: center
 
-     Wires taped together.
+       Wires taped together.
 
-  .. figure:: _static/telem2_ports.jpg
-     :width: 800
-     :alt: alternate text
-     :align: center
+    .. figure:: _static/telem2_ports.jpg
+       :width: 800
+       :alt: alternate text
+       :align: center
 
-     Pixhawk "TELEM2" port pins information.
+       Pixhawk "TELEM2" port pins information.
 
 * With help of the picture above (or the documentation provided previously) and the labels on the FTDI board, connect them together as follow :
 	* PX4 TX - FTDI RX
 	* PX4 RX - FTDI TX
 	* PX4 GND - FTDI GND
 	
-  .. figure:: _static/cables_soldered_ftdi_3.jpg
-     :width: 800
-     :alt: alternate text
-     :align: center
+    .. figure:: _static/cables_soldered_ftdi_3.jpg
+       :width: 800
+       :alt: alternate text
+       :align: center
 
-     Final circuit step 18
+       Final circuit step 18
 
 If the connection is done properly you can plug the FTDI board in one of the USB entries of the NUC and the Telecom connector on the Telem2 port of the Pixhawk. When the NUC is powered on, a LED should light up.
 
@@ -722,28 +723,28 @@ If the connection is done properly you can plug the FTDI board in one of the USB
 
 21. Screw the sma cable provided with the Reach M2 to the GNSS antenna. Pass the wire through the hole on the top of the "upper case". Screw the antenna to the "upper case" with 2x M2.5 bolts.
 
-.. figure:: _static/sma_cable.jpg
-   :width: 800
-   :alt: alternate text
-   :align: center
+  .. figure:: _static/sma_cable.jpg
+     :width: 800
+     :alt: alternate text
+     :align: center
 
-   sma cable
+     sma cable
 
-.. figure:: _static/antenna_upper.jpg
-   :width: 800
-   :alt: alternate text
-   :align: center
+  .. figure:: _static/antenna_upper.jpg
+     :width: 800
+     :alt: alternate text
+     :align: center
 
-   Step 21
+     Step 21
 
 22. Put the LoRa radio module of the Reach M2 in the "upper case", below the antenna. The terminal for its own antenna must be on the same side as the round shaped part of the "upper case".
 
-.. figure:: _static/lora_upper.jpg
-   :width: 800
-   :alt: alternate text
-   :align: center
+  .. figure:: _static/lora_upper.jpg
+     :width: 800
+     :alt: alternate text
+     :align: center
 
-   Step 22
+     Step 22
 
 23. Fix the "upper case" to the cover of the NUC case, by help of 3x M2.5 bolts (heads facing downard).
 
@@ -832,51 +833,52 @@ If the connection is done properly you can plug the FTDI board in one of the USB
 * Unscrew with hands the 11116 plug to separate the metalic and plastic parts.
 * Cut the narrow end of the plastic part and, if needed, increase a bit the size of the hole with a scalpel (see picture below). You must be able to pass the 2 wires through it.
 
-.. figure:: _static/111160_cut.jpg
-   :width: 800
-   :alt: alternate text
-   :align: center
+  .. figure:: _static/111160_cut.jpg
+     :width: 800
+     :alt: alternate text
+     :align: center
 
-   111160 plastic part before and after being cutted
+     111160 plastic part before and after being cutted
 
 * Solder the remaining pair of wires to the 11116 plug (+ and - ports shown on picture below).
 
-.. figure:: _static/1116_signe.jpg
-   :width: 800
-   :alt: alternate text
-   :align: center
+  .. figure:: _static/1116_signe.jpg
+     :width: 800
+     :alt: alternate text
+     :align: center
 
-   Polarity of the 111160 terminal
+     Polarity of the 111160 terminal
 
 * Put some shrink tubes on the solderings.
 * Screw back the metalic and plastic parts of the 11116 plug.
 
-.. figure:: _static/cables_soldered_converter.jpg
-   :width: 800
-   :alt: alternate text
-   :align: center
+  .. figure:: _static/cables_soldered_converter.jpg
+     :width: 800
+     :alt: alternate text
+     :align: center
 
-   Wires soldered
+     Wires soldered
 
 * Fix the free side of the wires to the screw connectors. The ones weld to the XT60 goes on the input side of the converter (input ports on the left of the converter when the potentiometer is directed toward you), the other (with 111160 terminal) to the output. The polarities of the I/O ports of the converter are indicated on it.
 
-.. figure:: _static/converter_complete_circuit.jpg
-   :width: 800
-   :alt: alternate text
-   :align: center
+  .. figure:: _static/converter_complete_circuit.jpg
+     :width: 800
+     :alt: alternate text
+     :align: center
 
-   Final converter circuit
+     Final converter circuit
 
 * Connect the battery to the XT60 port. Using a voltmeter measure the output voltage of the converter and change it to reach 18.5V-19V more or less (by help of the potentiometer).
 
+
 29. Fix the converter circuit to the right side of the battery using 4x M2.5 bolts. The potentiometer must face upward.
 
-.. figure:: _static/converter_battery.jpg
-   :width: 800
-   :alt: alternate text
-   :align: center
+  .. figure:: _static/converter_battery.jpg
+     :width: 800
+     :alt: alternate text
+     :align: center
 
-   Step 29
+     Step 29
 
 30. Assemble the battery case by assembling the sides to the main part of the case by using 5x M2.5 bolts on each side (do not use the 3 holes in the middle of the bottom of the battery case sides). No need to add the front part to it for now.
 
