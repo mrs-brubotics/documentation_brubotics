@@ -444,8 +444,7 @@ In this section you will learn how to fix all the components on their (custom-ma
      Step 4 
 
 
-5. Solder the three motor cables to the ESC in arbitrary order. Repeat for all ESCs.
-
+5. Solder the three motor cables to the ESC. For 2 motors, solder the wires "in parallel" (as in the pictre below). For the 2 others, intervert 2 wires. It is needed as 2 motors will spin clockwise and 2 anticlockwise. For the motors we had, when the wires where parallel, the motor spin in a clockwise fashion.
   .. figure:: _static/motor_esc_soldering.jpg
      :width: 800
      :alt: alternate text
@@ -466,7 +465,7 @@ In this section you will learn how to fix all the components on their (custom-ma
      :alt: alternate text
      :align: center
 
-      Step 6
+     Step 6
 
 7. Put 2 straps in it through the side windows. The loops will be done downward.
 
@@ -475,7 +474,7 @@ In this section you will learn how to fix all the components on their (custom-ma
      :alt: alternate text
      :align: center
 
-      Step 7
+     Step 7
 
 8. Fix the assembly to the end of an arm, using the bolts and parts (orange and blue) provided with the frame. With the help of a level, try to put it as horizontal as possible.
 
@@ -491,72 +490,66 @@ In this section you will learn how to fix all the components on their (custom-ma
 
      orange part is not clear on the picture. there is only blue.
 
-9. Fix the "Motor top fixation" on the "Motor bottom fixation" with the help of 4x M2.5 bolts (holes on the corner of the parts). Repeat the last four steps for each motor.
+9. Fix the "Motor top fixation" on the "Motor bottom fixation" with the help of 4x M2.5 bolts (holes on the corner of the parts). Repeat the last four steps for each motor. If you've taken the same motors as ours, based on the welds between the motors and the ESCs, try to put clockwise spinning motors for front left and back right arms and the other anticlockwise.
 
-  .. figure:: _static/motort_motorb.jpg
-     :width: 800
-     :alt: alternate text
-     :align: center
+.. figure:: _static/motort_motorb.jpg
+   :width: 800
+   :alt: alternate text
+   :align: center
 
-     Step 9
+   Step 9
 
-10. You could now attach the propellors to the motors. However, for safety you should only do this when preparing for a real flight.
+10. Take four pairs of power supply cables (more or less 18cm long, thick red and black cables, a single pair per motor). Make sure that the four pairs can reach the ESCs starting from the middle of the frame. Solder all the pairs on the power distribution board (PDB). The position of each pair is shown in the picture below. As the UAV requires four motors but the PDB can supply up to eight motors, you can solder each red cable to both B+ connections available on each corner of the PDB. In each corner, where the red cables are, choose one of the two GND connection to solder the black cables.
 
-  .. admonition:: todo
+.. figure:: _static/material_step11.jpg
+   :width: 800
+   :alt: alternate text
+   :align: center
 
-     Take picture
+   Material for step 10
 
-11. Take four pairs of power supply cables (more or less 18cm long, thick red and black cables, a single pair per motor). Make sure that the four pairs can reach the ESCs starting from the middle of the frame. Solder all the pairs on the power distribution board (PDB). The position of each pair is shown in the picture below. As the UAV requires four motors but the PDB can supply up to eight motors, you can solder each red cable to both B+ connections available on each corner of the PDB. In each corner, where the red cables are, choose one of the two GND connection to solder the black cables.
+.. figure:: _static/pdb_soldering_2.jpg
+   :width: 800
+   :alt: alternate text
+   :align: center
 
-  .. figure:: _static/material_step11.jpg
-     :width: 800
-     :alt: alternate text
-     :align: center
+   Step 10
 
-     Material for step 11
-
-  .. figure:: _static/pdb_soldering_2.jpg
-     :width: 800
-     :alt: alternate text
-     :align: center
-
-     Step 11
-
-12. Fix the PDB to the "Main piece" by help of 4x M3 bolts (head on bottom), use the 4 holes in the middle of the "Main piece". As you can see in the picture below the holes are off-centered. Put the cables with the XT connector on the side with the biggest space (on the right in the picture below) and put them out of the piece thanks to the hole on that side (see second picture). In between the main piece and the PDB, put a nut on each bolt that serve as spacers.
+11. Fix the PDB to the "Main piece" by help of 4x M3 bolts (head on bottom), use the 4 holes in the middle of the "Main piece". As you can see in the picture below the holes are off-centered. Put the cables with the XT connector on the side with the biggest space (on the right in the picture below) and put them out of the piece thanks to the hole on that side (see second picture). In between the main piece and the PDB, put a nut on each bolt that serve as spacers.
 
   .. figure:: _static/main_piece_spacer.jpg
      :width: 800
      :alt: alternate text
      :align: center
 
-     Step 12
+     Step 11
 
   .. figure:: _static/pdb_mp_1.jpg
      :width: 800
      :alt: alternate text
      :align: center
 
-     Step 12
+     Step 11
 
-13. Put the free end of each of the eight power supply cables outside the "main piece" with help of the holes in the corners.
+12. Put the free end of each of the eight power supply cables outside the "main piece" with help of the holes in the corners.
 
   .. figure:: _static/pdb_mp_2.jpg
      :width: 800
      :alt: alternate text
      :align: center
 
-     Step 13
+     Step 12
 
-14. Fix the "Main piece" on the upper plate of the frame, by help of 8x M3 bolts. Put the cables with the XT connector toward the front of your drone.
+13. Fix the "Main piece" on the upper plate of the frame, by help of 8x M3 bolts. Put the cables with the XT connector toward the front of your drone.
 
   .. figure:: _static/mp_frame_1_bis.jpg
      :width: 800
      :alt: alternate text
      :align: center
 
-     Step 14
+     Step 13
 
-15. Connect the signal cables of the ESCs (by passing them through the windows of the "main piece") to the "FMU-PWM-out" port of the PDB. Use the pins labeled 1 to 4 (1 = front left, 2 = back right, 3 = front right, 4 = back left). Considering the colors of the wires from the ESC, connect the orange ones to the "S" pins, the blue ones to the "+" pins and the brown ones to the "-" pins (on top the orange wires, in the middle the blue cables and at the bottom the brown ones).
+14. Connect the signal cables of the ESCs (by passing them through the windows of the "main piece") to the "FMU-PWM-out" port of the PDB. Use the pins labeled 1 to 4 (1 = front left, 2 = back right, 3 = front right, 4 = back left). Considering the colors of the wires from the ESC, connect the orange ones to the "S" pins, the blue ones to the "+" pins and the brown ones to the "-" pins (on top the orange wires, in the middle the blue cables and at the bottom the brown ones).
 
   .. figure:: _static/pin_number02.jpg
      :width: 800
@@ -570,16 +563,16 @@ In this section you will learn how to fix all the components on their (custom-ma
      :alt: alternate text
      :align: center
 
-     Step 15
+     Step 14
 
-16. Solder the battery cables coming from the PDB to each pair coming from the ESCs (black on black, red on red). Don't forget to put beforhand a piece of shrink tube on the cables.
+15. Solder the battery cables coming from the PDB to each pair coming from the ESCs (black on black, red on red). Don't forget to put beforhand a piece of shrink tube on the cables.
 
   .. figure:: _static/esc_pdb02.jpg
      :width: 800
      :alt: alternate text
      :align: center
 
-     Step 16
+     Step 15
 
   .. admonition:: todo
 
@@ -590,7 +583,7 @@ In this section you will learn how to fix all the components on their (custom-ma
      todo: caption
 
 
-17. Put the Pixhawk in its case, connect the cables provided with the Pixhawk to the ports "FMU-PWM-in" (10 pins picoblade wire), "PWR1" and "PWR2" (6 pins picoblade wire for each) of the PDB. Connect the wires to the Pixhawk respectively to ports "I/O PWM OUT", "POWER1" and "POWER2".
+16. Put the Pixhawk in its case, connect the cables provided with the Pixhawk to the ports "FMU-PWM-in" (10 pins picoblade wire), "PWR1" and "PWR2" (6 pins picoblade wire for each) of the PDB. Connect the wires to the Pixhawk respectively to ports "I/O PWM OUT", "POWER1" and "POWER2".
 
   .. figure:: _static/px_case.jpg
      :width: 800
@@ -604,14 +597,14 @@ In this section you will learn how to fix all the components on their (custom-ma
      :alt: alternate text
      :align: center
 
-     Wires needed for step 17
+     Wires needed for step 16
 
   .. figure:: _static/pdb_px_connection.jpg
      :width: 800
      :alt: alternate text
      :align: center
 
-     Step 17
+     Step 16
 
      todo: caption
 
@@ -620,14 +613,14 @@ In this section you will learn how to fix all the components on their (custom-ma
      be more specific about which cables and how you attach them.
 
 
-18.  Put the 3 pins wires (yellow, red and black) provided with the Pixhawk on its "DSM/SBUS RC" port (it will be used with the Optima, the RC receiver). Connect also the GPS to the Pixhawk using the "GPS MODULE" port. Finally, connect the USB-micro USB cable, provided with the Pixhawk, to the micro USB port on its side.
+17.  Put the 3 pins wires (yellow, red and black) provided with the Pixhawk on its "DSM/SBUS RC" port (it will be used with the Optima, the RC receiver). Connect also the GPS to the Pixhawk using the "GPS MODULE" port. Finally, connect the USB-micro USB cable, provided with the Pixhawk, to the micro USB port on its side.
 
   .. figure:: _static/wires_optima.jpg
      :width: 800
      :alt: alternate text
      :align: center
 
-     wire for step 18
+     wire for step 17
 
   .. figure:: _static/usb_cable.jpg
      :width: 800
@@ -641,12 +634,12 @@ In this section you will learn how to fix all the components on their (custom-ma
      :alt: alternate text
      :align: center
 
-     Step 18
+     Step 17
 
   .. admonition:: todo
 
      Take picture
-19. To exchange data between the NUC and the Pixhawk, the connection between them will be done via one of the USB ports of the NUC, through a FTDI board.
+18. To exchange data between the NUC and the Pixhawk, the connection between them will be done via one of the USB ports of the NUC, through a FTDI board.
 To realize the connection, you'll need an FTDI board, a 6 pins picoblade cable provided with the Pixhawk (that can go to the "TELEM2" port of the Pixhawk), 3 jumper wires of 20cm (Female-X), shrink tubes and non-conductive tape.
 
   .. figure:: _static/material_ftdi.jpg
@@ -654,7 +647,7 @@ To realize the connection, you'll need an FTDI board, a 6 pins picoblade cable p
      :alt: alternate text
      :align: center
 
-     Material needed for step 19.
+     Material needed for step 18
 
 Now follow these steps : 
 
@@ -695,37 +688,39 @@ Now follow these steps :
      :alt: alternate text
      :align: center
 
-     Final circuit step 19
+     Final circuit step 18
 
 If the connection is done properly you can plug the FTDI board in one of the USB entries of the NUC and the Telecom connector on the Telem2 port of the Pixhawk. When the NUC is powered on, a LED should light up.
 
-20. Fix the Pixhawk case to the "main piece" by help of 4x M2.5 bolts, on the middle stage (use the holes on the edges of the Pixhawk case). The arrow on the Pixhawk must go toward the front of the drone. Try to have the Pixhawk as horizontal as possible in the drone. Put the other side of the wires for the GPS and the Optima by the back of the drone. For the FTDI, do it by the front (as in the picture below).
+19. Fix the Pixhawk case to the "main piece" by help of 4x M2.5 bolts, on the middle stage (use the holes on the edges of the Pixhawk case). The arrow on the Pixhawk must go toward the front of the drone. Try to have the Pixhawk as horizontal as possible in the drone. Put the other side of the wires for the GPS and the Optima by the back of the drone. For the FTDI, do it by the front (as in the picture below).
 
-.. figure:: _static/px_mp_02.jpg
-   :width: 800
-   :alt: alternate text
-   :align: center
+  .. figure:: _static/px_mp_02.jpg
+     :width: 800
+     :alt: alternate text
+     :align: center
 
-   Step 20
+     Step 19
 
-  .. admonition:: todo
-
-     Take picture
-
-21. On top of the "main piece", fix the NUC case (using the holes outside the box) by help of 3x M2.5 bolts.
-
-.. figure:: _static/nc_mp01.jpg
-   :width: 800
-   :alt: alternate text
-   :align: center
-
-   Step 21
 
   .. admonition:: todo
 
      Take picture
 
-22. Screw the sma cable provided with the Reach M2 to the GNSS antenna. Pass the wire through the hole on the top of the "upper case". Screw the antenna to the "upper case" with 2x M2.5 bolts.
+20. On top of the "main piece", fix the NUC case (using the holes outside the box) by help of 3x M2.5 bolts.
+
+  .. figure:: _static/nc_mp01.jpg
+     :width: 800
+     :alt: alternate text
+     :align: center
+
+     Step 20
+
+
+  .. admonition:: todo
+
+     Take picture
+
+21. Screw the sma cable provided with the Reach M2 to the GNSS antenna. Pass the wire through the hole on the top of the "upper case". Screw the antenna to the "upper case" with 2x M2.5 bolts.
 
 .. figure:: _static/sma_cable.jpg
    :width: 800
@@ -739,25 +734,25 @@ If the connection is done properly you can plug the FTDI board in one of the USB
    :alt: alternate text
    :align: center
 
-   Step 22
+   Step 21
 
-23. Put the LoRa radio module of the Reach M2 in the "upper case", below the antenna. The terminal for its own antenna must be on the same side as the round shaped part of the "upper case".
+22. Put the LoRa radio module of the Reach M2 in the "upper case", below the antenna. The terminal for its own antenna must be on the same side as the round shaped part of the "upper case".
 
 .. figure:: _static/lora_upper.jpg
    :width: 800
    :alt: alternate text
    :align: center
 
-   Step 23
+   Step 22
 
-24. Fix the "upper case" to the cover of the NUC case, by help of 3x M2.5 bolts (heads facing downard).
+23. Fix the "upper case" to the cover of the NUC case, by help of 3x M2.5 bolts (heads facing downard).
 
   .. figure:: _static/upper_ncover.jpg
      :width: 800
      :alt: alternate text
      :align: center
 
-     Step 24
+     Step 23
 
   .. admonition:: todo
 
@@ -767,31 +762,44 @@ If the connection is done properly you can plug the FTDI board in one of the USB
 
      todo: caption
 
-25. Put the Nuc in its case (with the power terminal toward the front of the drone) and fix the Nuc case cover to the Nuc case by help of 3x M2.5 bolts. 
+24. Put the Nuc in its case (with the power terminal toward the front of the drone) and fix the Nuc case cover to the Nuc case by help of 3x M2.5 bolts. 
 
   .. figure:: _static/ncover_nc.jpg
      :width: 800
      :alt: alternate text
      :align: center
 
-     Step 25
+     Step 24
 
   .. admonition:: todo
 
      Take picture
 
-26. Connect the wires you previously connected to the Pixhawk (yellow, red and black) to the Optima, using its SL port. Facing the SL terminal, put the yellow wire to its left.
+25. Connect the wires you previously connected to the Pixhawk (yellow, red and black) to the Optima, using its SL port. Facing the SL terminal, put the yellow wire to its left.
 
   .. figure:: _static/connection_optima.jpg
      :width: 800
      :alt: alternate text
      :align: center
 
-     Step 26
+     Step 25
 
-27. Put the GPS, and the Optima (RC receiver) in their respectives cases in the "upper case". The arrow on the GPS must indicate the front of the drone. Screw the LoRa radio module antenna on the module.
+26. Put the GPS, and the Optima (RC receiver) in their respectives cases in the "upper case". The arrow on the GPS must indicate the front of the drone. Screw the LoRa radio module antenna on the module.
 
   .. figure:: _static/optima_gps_upper.jpg
+     :width: 800
+     :alt: alternate text
+     :align: center
+
+     Step 26
+
+  .. admonition:: todo
+
+     Take picture
+
+27. Use the straps on the motor fixation parts to fix the legs on each arm. Pass the straps through the rectangular holes on the legs and tighten well.
+
+  .. figure:: _static/leg_motor_fixation.jpg
      :width: 800
      :alt: alternate text
      :align: center
@@ -802,29 +810,15 @@ If the connection is done properly you can plug the FTDI board in one of the USB
 
      Take picture
 
-28. Use the straps on the motor fixation parts to fix the legs on each arm. Pass the straps through the rectangular holes on the legs and tighten well.
-
-  .. figure:: _static/leg_motor_fixation.jpg
-     :width: 800
-     :alt: alternate text
-     :align: center
-
-     Step 28
-
-  .. admonition:: todo
-
-     Take picture
-
-29. Normally, the NUC is supplied by a 19V battery through its charger. In reality it can work fine with a voltage going from 12-19V DC.
-As the battery provides a DC voltage of 22.2V, a buck converter is needed to connect the NUC to it.
-*Take : The Wingoneer XL4016E1 buck converter, a DC plug 11116 to connect the circuit to the NUC, an XT60 male plug to connect the circuit to the battery, 2 pairs of wires red and black, shrink tubes and non-conductive tape.
+28. Normally, the NUC is supplied by a 19V battery through its charger. In reality it can work fine with a voltage going from 12-19V DC. As the battery provides a DC voltage of 22.2V, a buck converter is needed to connect the NUC to it.
+* Take : The Wingoneer XL4016E1 buck converter, a DC plug 11116 to connect the circuit to the NUC, an XT60 male plug to connect the circuit to the battery, 2 pairs of wires red and black, shrink tubes and non-conductive tape.
 
   .. figure:: _static/cables_converter.jpg
      :width: 800
      :alt: alternate text
      :align: center
 
-     Wires and terminals needed for step 29
+     Wires and terminals needed for step 28
 
   .. figure:: _static/converter01.jpg
      :width: 800
@@ -875,18 +869,31 @@ As the battery provides a DC voltage of 22.2V, a buck converter is needed to con
 
 * Connect the battery to the XT60 port. Using a voltmeter measure the output voltage of the converter and change it to reach 18.5V-19V more or less (by help of the potentiometer).
 
-30. Fix the converter circuit to the right side of the battery using 4x M2.5 bolts. The potentiometer must face upward.
+29. Fix the converter circuit to the right side of the battery using 4x M2.5 bolts. The potentiometer must face upward.
 
 .. figure:: _static/converter_battery.jpg
    :width: 800
    :alt: alternate text
    :align: center
 
-   Step 30
+   Step 29
 
-31. Assemble the battery case by assembling the sides to the main part of the case by using 5x M2.5 bolts on each side (do not use the 3 holes in the middle of the bottom of the battery case sides). No need to add the front part to it for now.
+30. Assemble the battery case by assembling the sides to the main part of the case by using 5x M2.5 bolts on each side (do not use the 3 holes in the middle of the bottom of the battery case sides). No need to add the front part to it for now.
 
   .. figure:: _static/battery_case_assembly02.jpg
+     :width: 800
+     :alt: alternate text
+     :align: center
+
+     Step 30
+
+  .. admonition:: todo
+
+     Take picture
+
+31. Fix the battery case to the bottom plate of the frame with 12x M3 bolts (heads facing downard).
+
+  .. figure:: _static/battery_case_frame02.jpg
      :width: 800
      :alt: alternate text
      :align: center
@@ -897,9 +904,9 @@ As the battery provides a DC voltage of 22.2V, a buck converter is needed to con
 
      Take picture
 
-32. Fix the battery case to the bottom plate of the frame with 12x M3 bolts (heads facing downard).
+32. When needed, put the battery in its case (wires facing the wires hanging from the PDB) and add its front part (with 2x M2.5 bolts) to disable the movements of the battery.
 
-  .. figure:: _static/battery_case_frame02.jpg
+  .. figure:: _static/battery_front_hw.jpg
      :width: 800
      :alt: alternate text
      :align: center
@@ -910,20 +917,7 @@ As the battery provides a DC voltage of 22.2V, a buck converter is needed to con
 
      Take picture
 
-33. When needed, put the battery in its case (wires facing the wires hanging from the PDB) and add its front part (with 2x M2.5 bolts) to disable the movements of the battery.
-
-  .. figure:: _static/battery_front_hw.jpg
-     :width: 800
-     :alt: alternate text
-     :align: center
-
-     Step 33
-
-  .. admonition:: todo
-
-     Take picture
-
-34. Connect the XT60 ports of the PDB and the converter circuit to a XT60 splitter (2 females, 1 male ports). To power the drone, connect the XT60 port of the battery to the male port of the splitter.
+33. Connect the XT60 ports of the PDB and the converter circuit to a XT60 splitter (2 females, 1 male ports). To power the drone, connect the XT60 port of the battery to the male port of the splitter.
 
 
   .. figure:: _static/splitter_connection.jpg
@@ -931,27 +925,27 @@ As the battery provides a DC voltage of 22.2V, a buck converter is needed to con
      :alt: alternate text
      :align: center
 
-     Step 34
+     Step 33
 
-35. With help of tape, fix the ESCs and their wires to the frame such that none of them are hanging.
+34. With help of tape, fix the ESCs and their wires to the frame such that none of them are hanging.
 
   .. figure:: _static/esc_taped.jpg
      :width: 800
      :alt: alternate text
      :align: center
 
-     Step 35
+     Step 34
 
-36. Put the Reach M2 to the small case on the side of the Nuc case (upside down).
+35. Put the Reach M2 to the small case on the side of the Nuc case (upside down).
 
   .. figure:: _static/m2_nc01.jpg
      :width: 800
      :alt: alternate text
      :align: center
 
-     Step 36
+     Step 35
 
-37. Connect the Reach M2 to its LoRa radio module with the 6 pins picoblade cable provided with it. Use the "S2" port of the Reach M2.
+36. Connect the Reach M2 to its LoRa radio module with the 6 pins picoblade cable provided with it. Use the "S2" port of the Reach M2.
 
 
   .. figure:: _static/m2_lora_connection01.jpg
@@ -959,30 +953,30 @@ As the battery provides a DC voltage of 22.2V, a buck converter is needed to con
      :alt: alternate text
      :align: center
 
-     Step 37
+     Step 36
 
-38. Connect the GNSS antenna to the Reach M2, using its "ant" port and the sma cable previously screwed to the antenna. 
+37. Connect the GNSS antenna to the Reach M2, using its "ant" port and the sma cable previously screwed to the antenna. 
   .. figure:: _static/m2_antenna_connection01.jpg
      :width: 800
      :alt: alternate text
      :align: center
 
-     Step 38
+     Step 37
 
   .. admonition:: todo
 
      redo picture
 
-39. Connect the USB-micro USB cable provided with the Reach M2 to it and to a USB port of the Nuc. Connect the FTDI to another USB port of the Nuc and the output port (111160) of the converter circuit to its power port.
+38. Connect the USB-micro USB cable provided with the Reach M2 to it and to a USB port of the Nuc. Connect the FTDI to another USB port of the Nuc and the output port (111160) of the converter circuit to its power port.
 
   .. figure:: _static/nuc_connections01.jpg
      :width: 800
      :alt: alternate text
      :align: center
 
-     Step 39
+     Step 38
 
-40. Screw the propellers to the motors with the 2 screws provided with the motors. Pay attention to match the spinning direction between the motor and its propeller. Put the propellers only right before flying, always remove them when working on the drone or doing calibration steps !!!
+39. Screw the propellers to the motors with the 2 screws provided with the motors. Pay attention to match the spinning direction between the motor and its propeller. Put the propellers only right before flying, always remove them when working on the drone or doing calibration steps !!!
 
 
   .. figure:: _static/propeller_spin_direction.jpg
@@ -997,7 +991,7 @@ As the battery provides a DC voltage of 22.2V, a buck converter is needed to con
      :alt: alternate text
      :align: center
 
-     step 40
+     step 39
 
 
 
