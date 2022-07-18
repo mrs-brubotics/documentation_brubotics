@@ -399,11 +399,6 @@ In this section you will learn how to fix all the components on their (custom-ma
 
 **Steps**
 
-.. admonition:: todo
-
-   When building the second drone you need to add the steps of "Connecting the NUC on the drone" in this section in a logical order. 
-   This should not be a seperate section as you need to explain the build procedure of how to build the autonomous drone (as you design is made for that one).
-
 1. Mount the frame as explained `in this tutorial <https://www.youtube.com/watch?v=Ddvgs200OaY&ab_channel=MultiCopterBuild>`__. You only need to attach the arms to the body and you can skip the assembly of the legs and the top part.
 
 2. Drill the holes of all the 3D printed pieces to deal with imperfections due to shrinkage. Use a drill bit of size 2.5mm for every hole **NOT** directly touching the frame. For the holes used to fix the parts on the frame itself, use a 3mm drill bit.
@@ -412,6 +407,10 @@ In this section you will learn how to fix all the components on their (custom-ma
 
    I have difficulties understandign what you mean with these 2 categories of parts. Can you give a list of parts (see names above) that need which drill size? 
 
+  
+
+3. Put the motor on the "Motor top fixation" piece (cables go through the elliptical hole), with the help of the screws provided with the motor. Repeat for all motors.
+
   .. figure:: _static/material_motor.jpg
      :width: 800
      :alt: alternate text
@@ -419,7 +418,6 @@ In this section you will learn how to fix all the components on their (custom-ma
      
      Material for steps 3, 4 and 6 to 9
 
-3. Put the motor on the "Motor top fixation" piece (cables go through the elliptical hole), with the help of the screws provided with the motor. Repeat for all motors.
 
   .. figure:: _static/motor_top.jpg
      :width: 800
@@ -427,10 +425,6 @@ In this section you will learn how to fix all the components on their (custom-ma
      :align: center
      
      Step 3
-
-.. admonition:: todo
-
-   Take picture on white background (use a clean white sheet of paper, you can find those at the printer up the stairs in front of you). Make sure there are no unnecessary things (noise) in the picture. In this case we do not need to see the soldering yet. Crop the image to what is actually useful. **these comments applies to all pictures below you take of the prototype**
 
 
 4. Take 3 jumper wires (more or less 30cm) with at least one female connector, remove the other connector and solder them to the three signal cables from the ESC (blue, brown and orange). Try to keep the same colors for all the ESCs. Repeat for all ESCs.
@@ -466,7 +460,7 @@ In this section you will learn how to fix all the components on their (custom-ma
      :alt: alternate text
      :align: center
 
-      Step 6
+     Step 6
 
 7. Put 2 straps in it through the side windows. The loops will be done downward.
 
@@ -475,7 +469,7 @@ In this section you will learn how to fix all the components on their (custom-ma
      :alt: alternate text
      :align: center
 
-      Step 7
+     Step 7
 
 8. Fix the assembly to the end of an arm, using the bolts and parts (orange and blue) provided with the frame. With the help of a level, try to put it as horizontal as possible.
 
@@ -581,14 +575,6 @@ In this section you will learn how to fix all the components on their (custom-ma
 
      Step 16
 
-  .. admonition:: todo
-
-     add picture
-
-
-
-     todo: caption
-
 
 17. Put the Pixhawk in its case, connect the cables provided with the Pixhawk to the ports "FMU-PWM-in" (10 pins picoblade wire), "PWR1" and "PWR2" (6 pins picoblade wire for each) of the PDB. Connect the wires to the Pixhawk respectively to ports "I/O PWM OUT", "POWER1" and "POWER2".
 
@@ -612,12 +598,6 @@ In this section you will learn how to fix all the components on their (custom-ma
      :align: center
 
      Step 17
-
-     todo: caption
-
-  .. admonition:: todo
-
-     be more specific about which cables and how you attach them.
 
 
 18.  Put the 3 pins wires (yellow, red and black) provided with the Pixhawk on its "DSM/SBUS RC" port (it will be used with the Optima, the RC receiver). Connect also the GPS to the Pixhawk using the "GPS MODULE" port. Finally, connect the USB-micro USB cable, provided with the Pixhawk, to the micro USB port on its side.
@@ -643,9 +623,7 @@ In this section you will learn how to fix all the components on their (custom-ma
 
      Step 18
 
-  .. admonition:: todo
 
-     Take picture
 19. To exchange data between the NUC and the Pixhawk, the connection between them will be done via one of the USB ports of the NUC, through a FTDI board.
 To realize the connection, you'll need an FTDI board, a 6 pins picoblade cable provided with the Pixhawk (that can go to the "TELEM2" port of the Pixhawk), 3 jumper wires of 20cm (Female-X), shrink tubes and non-conductive tape.
 
@@ -708,11 +686,7 @@ If the connection is done properly you can plug the FTDI board in one of the USB
 
    Step 20
 
-  .. admonition:: todo
-
-     Take picture
-
-21. On top of the "main piece", fix the NUC case (using the holes outside the box) by help of 3x M2.5 bolts.
+21.  On top of the "main piece", fix the NUC case (using the holes outside the box) by help of 3x M2.5 bolts.
 
 .. figure:: _static/nc_mp01.jpg
    :width: 800
@@ -721,9 +695,6 @@ If the connection is done properly you can plug the FTDI board in one of the USB
 
    Step 21
 
-  .. admonition:: todo
-
-     Take picture
 
 22. Screw the sma cable provided with the Reach M2 to the GNSS antenna. Pass the wire through the hole on the top of the "upper case". Screw the antenna to the "upper case" with 2x M2.5 bolts.
 
@@ -759,14 +730,6 @@ If the connection is done properly you can plug the FTDI board in one of the USB
 
      Step 24
 
-  .. admonition:: todo
-
-     redo picture
-
-
-
-     todo: caption
-
 25. Put the Nuc in its case (with the power terminal toward the front of the drone) and fix the Nuc case cover to the Nuc case by help of 3x M2.5 bolts. 
 
   .. figure:: _static/ncover_nc.jpg
@@ -776,9 +739,6 @@ If the connection is done properly you can plug the FTDI board in one of the USB
 
      Step 25
 
-  .. admonition:: todo
-
-     Take picture
 
 26. Connect the wires you previously connected to the Pixhawk (yellow, red and black) to the Optima, using its SL port. Facing the SL terminal, put the yellow wire to its left.
 
@@ -798,9 +758,6 @@ If the connection is done properly you can plug the FTDI board in one of the USB
 
      Step 27
 
-  .. admonition:: todo
-
-     Take picture
 
 28. Use the straps on the motor fixation parts to fix the legs on each arm. Pass the straps through the rectangular holes on the legs and tighten well.
 
@@ -811,13 +768,9 @@ If the connection is done properly you can plug the FTDI board in one of the USB
 
      Step 28
 
-  .. admonition:: todo
+29. Normally, the NUC is supplied by a 19V battery through its charger. In reality it can work fine with a voltage going from 12-19V DC. As the battery provides a DC voltage of 22.2V, a buck converter is needed to connect the NUC to it.
 
-     Take picture
-
-29. Normally, the NUC is supplied by a 19V battery through its charger. In reality it can work fine with a voltage going from 12-19V DC.
-As the battery provides a DC voltage of 22.2V, a buck converter is needed to connect the NUC to it.
-*Take : The Wingoneer XL4016E1 buck converter, a DC plug 11116 to connect the circuit to the NUC, an XT60 male plug to connect the circuit to the battery, 2 pairs of wires red and black, shrink tubes and non-conductive tape.
+  * Take: The Wingoneer XL4016E1 buck converter, a DC plug 11116 to connect the circuit to the NUC, an XT60 male plug to connect the circuit to the battery, 2 pairs of wires red and black, shrink tubes and non-conductive tape.
 
   .. figure:: _static/cables_converter.jpg
      :width: 800
@@ -893,10 +846,6 @@ As the battery provides a DC voltage of 22.2V, a buck converter is needed to con
 
      Step 31
 
-  .. admonition:: todo
-
-     Take picture
-
 32. Fix the battery case to the bottom plate of the frame with 12x M3 bolts (heads facing downard).
 
   .. figure:: _static/battery_case_frame02.jpg
@@ -906,9 +855,6 @@ As the battery provides a DC voltage of 22.2V, a buck converter is needed to con
 
      Step 32
 
-  .. admonition:: todo
-
-     Take picture
 
 33. When needed, put the battery in its case (wires facing the wires hanging from the PDB) and add its front part (with 2x M2.5 bolts) to disable the movements of the battery.
 
@@ -919,9 +865,6 @@ As the battery provides a DC voltage of 22.2V, a buck converter is needed to con
 
      Step 33
 
-  .. admonition:: todo
-
-     Take picture
 
 34. Connect the XT60 ports of the PDB and the converter circuit to a XT60 splitter (2 females, 1 male ports). To power the drone, connect the XT60 port of the battery to the male port of the splitter.
 
@@ -962,6 +905,7 @@ As the battery provides a DC voltage of 22.2V, a buck converter is needed to con
      Step 37
 
 38. Connect the GNSS antenna to the Reach M2, using its "ant" port and the sma cable previously screwed to the antenna. 
+
   .. figure:: _static/m2_antenna_connection01.jpg
      :width: 800
      :alt: alternate text
@@ -969,13 +913,9 @@ As the battery provides a DC voltage of 22.2V, a buck converter is needed to con
 
      Step 38
 
-  .. admonition:: todo
-
-     redo picture
-
 39. Connect the USB-micro USB cable provided with the Reach M2 to it and to a USB port of the Nuc. Connect the FTDI to another USB port of the Nuc and the output port (111160) of the converter circuit to its power port.
 
-  .. figure:: _static/nuc_connections01.jpg
+  .. figure:: _static/Nuc_connections01.jpg
      :width: 800
      :alt: alternate text
      :align: center
@@ -1001,17 +941,14 @@ As the battery provides a DC voltage of 22.2V, a buck converter is needed to con
 
 
 
-Your drone is built !
+Your UAV is built!
 
   .. figure:: _static/drone_complete02.jpg
      :width: 800
      :alt: alternate text
      :align: center
 
-     Entire drone assembled.
-
-     todo: caption
-
+     Finilized T650 assembly
 
 
 Cable-Suspended Payload Module
@@ -1033,7 +970,7 @@ This module is installed at the bottom of the UAV and allows to measure the stat
 
 
 Components
-^^^^^^^^^^
+^^^^^^^^^^^^^^
 This section lists all the components required to build the Suspended Payload Module for a UAV.
 This is currently only compatible with the T650 UAV.
 

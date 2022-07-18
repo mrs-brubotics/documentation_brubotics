@@ -37,7 +37,7 @@ RTK Field setup
   * In the above process you only need to repeat the steps concerning the rover (not the base if it is not powered off) each time you plug out the drone's batteries.
   
   
-17.3.2 Run an Experiment
+Run an Experiment
 -----------------------
   * At each new test moment, follow the steps below but first always run the basic examples i.e. just_flying_rtk.sh and the last script you tested before.
   * From the ground station computer ssh on the on-board computer (i.e. ssh nuc5@<hostname or ip>).

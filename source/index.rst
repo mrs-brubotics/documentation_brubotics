@@ -12,6 +12,7 @@ DroneSwarmTutorial
    Prerequisites
    Information_for_Internal_Collaborators
    Building_the_Hardware
+   Connecting the NUC on the drone
    Configuration_for_Manual_Flight
    Manual_Flight_Procedures
    Configuration_for_Autonomous_Flight
