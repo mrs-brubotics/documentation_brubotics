@@ -134,80 +134,114 @@ To bind both RC devices, follow these steps (which come from `this video <https:
 Pixhawk configuration via QGroundControl
 ------------------------------------------
 
-In this section, you'll learn how to set up the software in order to :
+In this section, you will learn how to set up the software in order to:
 
 * Calibrate the Pixhawk, ESCs and transmitter
 
 * Define the role of each channel of the transmitter
 
-* Configure the safety modes 
+* Configure the safety modes
 
-Installation
-^^^^^^^^^^^^^^^^
 
-Before doing all of this, you should first setup the SD card of the pixhawk otherwise the communication between the pixhawk and NUC will not be done 
-(no blue light on FTDI, see section "Implementation of NUC" ). For the setup see section "SD card setup" of `this tuto <https://ctu-mrs.github.io/docs/hardware/px4_configuration.html>`__.
-As a note: the etc folder does not get removed when flashing new firmware.
+Pixhawk SD card setup
+^^^^^^^^^^^^^^^^^^^^^^^
 
-* Instal QGroundControl, on Windows or Ubuntu. On Ubuntu make sure you follow `these steps <https://docs.qgroundcontrol.com/master/en/getting_started/download_and_install.html>`__ for linux and copy the lines in the terminal from the Download folder.
-  You can place the QGroundControl installer icon in a folder were you store later also logs files etc. Always open it from there by double clicking. 
-  Do that on the ground station PC, no need to do these steps on the NUCs.
+You should first setup the SD card of the pixhawk otherwise the communication between the pixhawk and the NUC will not be made (i.e., no blue light on the FTDI connector, see "Configuration for Autonomous Flight". Although for some tty modules the light is less/more bright.). For the setup see section "SD card setup" of `this tutorial <https://ctu-mrs.github.io/docs/hardware/px4_configuration.html#sd-card-setup>`__. Insert the SD card with its connectors facing up.
 
-* Connect the PixHawk 4 to your computer with a USB cable and run QGroundControl.
+.. admonition:: note
 
-* Update the PixHawk firmware using `the tweaked firmware <https://ctu-mrs.github.io/docs/hardware/px4_firmware.html>`__ of the CTU Prague.
-  If you get a build error, try to refer to the "General Build Errors" of `this link <https://docs.px4.io/master/en/dev_setup/building_px4.html>`__ and follow the steps of `this video <https://docs.px4.io/master/en/dev_setup/dev_env_linux_ubuntu.html>`__.
-  You can directly do it for the px4 firmware of CTU.
-  It is important that, as explained in the video, you install the ubuntu.sh such that you have everything. Also, when you have already build (make)
-  beforehand, delete the build folder as it might give problemes if the previous one was not build well. Always to this when rebuilding.
+  The etc folder does not get removed when flashing new firmware. So this step should only be done once. Currently the extras.txt file one the Pixhawk SD cards are up to date with the following commits:
+
+  * Pixhawk of F450 with nuc1: 
+  * Pixhawk of F450 with nuc2: 
+  * Pixhawk of F450 with nuc3: 
+  * Pixhawk of F450 with nuc4: 
+  * Pixhawk of F450 with nuc5: `check this commit <https://github.com/ctu-mrs/uav_core/commit/826c77c2c942b273a3e8b19ff5a062edfd23d294>`__;
+  * Pixhawk of T650 with nuc2: 
+  * Pixhawk of T650 with nuc3: 
 
 
 .. admonition:: todo
 
-  The firmware of ctu is continuously beging upgraded https://github.com/ctu-mrs/px4_firmware.
-  Therefor it is important to keep track of the firmware version on each pixhawk.
-  So make a note below in wich you say:
-  UAV# has firmware of link to commit in https://github.com/ctu-mrs/px4_firmware.
-  Make sure both UAVs you use are configred with the same firware
+  fill in the above list for your pixhawk, uav type and nuc id
+
+
+Installation of QGroundControl
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+* We advise to take the ground station PC on which you will install QGroundControl next. This can be a Windows (tested and works) or an Ubuntu (recommended) machine. However, this can be installed on any machine, it is not mandatory to install it on the on-board UAV computers.
+* Install QGroundControl on that machine. On Ubuntu make sure you follow `the steps for Ubuntu Linux <https://docs.qgroundcontrol.com/master/en/getting_started/download_and_install.html#ubuntu>`__ , cd to ~/Downloads and copy the lines in the terminal. You can then place the QGroundControl installer icon in a folder were you store later also logs files etc. Always open it from the chosen installation path or by double clicking on the app.
+* Use QGroundControl to update the PixHawk firmware using `this tweaked firmware <https://ctu-mrs.github.io/docs/hardware/px4_firmware.html>`__. If you get a build error, try to refer to the "General Build Errors" of `this link <https://docs.px4.io/master/en/dev_setup/building_px4.html>`__ and follow the steps of `this video <https://docs.px4.io/master/en/dev_setup/dev_env_linux_ubuntu.html>`__. You can directly do it for the px4 firmware of CTU which slighly adapted the default px4 fimware. It is important that, as explained in the video, you install the ubuntu.sh such that you have everything. Also, when you have already build (make) beforehand, delete the build folder as it might give problems if the previous one was not built well. Always do this when rebuilding.
+
+.. admonition:: note
+  
+  Fill in the version(s) of QGroundControl installed on your machines. You can do this by opening QGroundControl, clicking on the icon on the top left and the version number is displayed below.
+
+  Ground station machines with QGroundControl:
+
+  * Lenovo laptop Bryan: v4.2.3 (used), Development HEAD:78cf9bbe6 2021-05-06 10:49:59 -0700;
+  * nuc6: TODO;
+
+  The QGroundControl version and the `ctu-mrs/px4_firmware version <https://github.com/ctu-mrs/px4_firmware>`__ used to upgrade the firmware on each pixhawk:
+
+  * Pixhawk of F450 with nuc1: 
+  * Pixhawk of F450 with nuc2: 
+  * Pixhawk of F450 with nuc3: 
+  * Pixhawk of F450 with nuc4: 
+  * Pixhawk of F450 with nuc5: GQC v4.2.3 used for `px4_firmware 7c37433 <https://github.com/ctu-mrs/px4_firmware/commit/7c374335db9ae7479f7fe2587a8e64fb9f0df3d5>`__;
+  * Pixhawk of T650 with nuc2: 
+  * Pixhawk of T650 with nuc3: 
+
+  Make sure all UAVs are configured with the same px4 firmware versions.
+
+.. admonition:: todo
+
+  fill in the lists above.
+
+* in QGroundControl, select vehicle setup, firmware, plug and unplug pixhawk,Flight Stack PX4 Pro some version, check Advanced Settings, choose custom firmware file, click OK, and select in the build folder the .px4 file. Wait untill the upgrade is complete and then you will go to summary tab automatically while the pixhawk reboots. Once the gps is connected, you will hear a beep.
 
 Calibrations
 ^^^^^^^^^^^^^^
 
-* in QGroundControl, select vehicle setup, custom firmware file and select in the build folder the .px4 file. 
-  Wait till upgrade is complete and then you will go to summary tab automatically. Once the gps is connected, you will hear a beep and it will reboot.
+.. admonition:: note
 
-* Set the airframe type to quadcopter X, "Generic Quadrotor".
+  You can slide  vertically by left clicking and scrolling.
 
-* Make sure that the Pixhawk is installed in the drone frame, doesn't move and is levelled as much as possible.
+* In the Airframe tab, set the airframe type to quadrotor x, "Generic Quadrotor". 
 
-* In "sensors", calibrate the compass, gyroscope, accelerometer and level horizon. To do so, follow the steps asked by QGroundControl.
-  Make sure to keep the front of the drone as shown by QGroundControl.
+* Make sure that the Pixhawk is firmly installed in the UAV frame, does not move relative to the UAV, and is leveled (i.e., parallel with the ground) as good as possible.
 
-* Setup the channels on the transmitter (press both back button and scroller and select ’Channels’) such that each channel is paired with the correct function, according to the next figures.
+* In the "sensors" tab, calibrate the compass, gyroscope, accelerometer and level horizon. To do so, follow the steps asked by QGroundControl. 
 
-.. admonition:: todo
+.. admonition:: note
 
-  The figures below are directly taken from CTU. No need to do that, you can refer to them. It is better to make a picture on white background of our transmitter and indicate the namings on the figure. Also make sure you have tested this before planning experiments.
+  It is adviced use a long usb cable to connect the pixhawk to the nuc and ensure there is leveled ground and enough space to move the UAV.
+  Make sure to keep the front of the UAV (i.e., in the front direction of the pixhawk which is typically indicated on the UAV by the red legs, arms or tape) as shown by QGroundControl.
 
+* Power on your transmitter, select yes for ready to transmit, and assign the channels on the transmitter (i.e., press both back button and scroller and select ’Channels’) such that each channel is paired with the correct function, according to the next figures taken from `this tutorial <https://ctu-mrs.github.io/docs/hardware/px4_configuration.html#sw-setup>`__. You always want to joystick channels without a return spring to be assigned to the throttle and yaw, the other two with a return spring to the roll and pitch.
 
 .. figure:: _static/channels_functions.jpg
    :width: 800
    :alt: alternate text
    :align: center
 
+   Table summarizing the required channels to functions assignments
+
 .. figure:: _static/switch_indication.jpg
    :width: 800
    :alt: alternate text
    :align: center
+
+   Transmitter channels and thei functions. The HitecFlash 8 looks similar.
 
 .. figure:: _static/channels_screen.jpg
    :width: 800
    :alt: alternate text
    :align: center
 
-* In the "Radio" section, calibrate your transmitter with the Calibrate button in QGroundControl in Mode 2 (not mode 1).
-  You need to use mode 2 for this transmitter since the throttle and yaw are on the left stick.
-  If the transmitter is correctly bind with the receiver and the receiver correctly connected with the Pixhawk, you should see the channel monitor on the left, with the channels moving while playing with the joysticks and switches, see next figure.
+   channels to functions assignments on Hitec Flash 8 transmitter 
+
+* In the "Radio" section, calibrate your transmitter with the Calibrate button in QGroundControl in Mode 2 (not mode 1). You need to use mode 2 for this transmitter since the throttle and yaw are on the left stick. If the transmitter is correctly binded with the receiver and the receiver correctly connected with the Pixhawk, you should see the channel monitor on the left, with the channels moving while playing with the joysticks and switches, see next figure.
   Make sure that each joystick toggle the right motion (left joystick : up-down = thrust and left-right = yaw; right joystick : up-down = pitch and left-right = roll).
 
 .. figure:: _static/radio_QGC.png
@@ -216,31 +250,23 @@ Calibrations
    :align: center
 
 
-* Setup the flight modes as in next figure. Play with the joysticks and switches and see if it moves the right channels on QGroundControl.
-  Same remark as before for the appearance of the channel monitor.
+* Setup the flight modes as in the next figure. Play with the joysticks and switches and see if it moves the right channels on QGroundControl. Same remark as before for the appearance of the channel monitor.
 
 .. figure:: _static/flight_mode_QGC.png
    :width: 800
    :alt: alternate text
    :align: center
 
-* In the "Power" section set the number of cells of your battery (e.g. 6 for the T650 drone). 
-  Set the empty voltage to 3.7V (= nominal 22.2V for 6s) and 4.20V as full voltage (= 25.2V for fully charged 6S battery).
+* In the "Power" section set the number of cells of your battery (e.g., 6 for the T650 UAV, 4 for the F450 UAV). Set the empty voltage to 3.7V (= nominal 6*3.7V=22.2V for 6s) and 4.20V as full voltage (= 25.2V for fully charged 6S battery).
 
 .. figure:: _static/power_QGC.png
    :width: 800
    :alt: alternate text
    :align: center
 
-* Calibrate your ESCs in the "Power" section. You can also configure the battery there but it is not
-  needed. The "Power" icon may stay red, but this can be ignored.
-  Make sure the battery is charged and rightly placed on the drone. Begin with the battery disconnected and connect it when asked by QGroundControl.
+* Calibrate your ESCs in the "Power" section. The "Power" icon may stay red, but this can be ignored. Make sure the battery is charged and correctly placed on the UAV. Begin with the battery disconnected and connect it when asked by QGroundControl.
 
-* In the "Motors" section, test the motors. Make sure the propellers are NOT on the motors. Make sure the GPS is connected to the Pixhawk and click the switch button on the GPS module.
-  If you encounter problems, try the steps explained `here <https://discuss.px4.io/t/motor-test-command-denied/19168/16>`__.
-  Check if the motor order and spinning direction are the same than in next figure (refer to number on motor and not the A,B,C,D). 
-  To easily check the spinning direction, attach some tape on the rotation axes of the motors.
-  For motor spinning in wrong direction, swap 2 phases (cables between the motor and its ESC).
+* In the "Motors" section, test the motors. Make sure the propellers are NOT attached to the motors. Make sure the GPS is connected to the Pixhawk and click the switch button on the GPS module or the motors will not start spinning. If you encounter problems, try the steps explained `here <https://discuss.px4.io/t/motor-test-command-denied/19168/16>`__. Check if the motor order and spinning direction are the same than in next figure (refer to number on motor and not the A,B,C,D). To easily check the spinning direction, attach some tape on the rotation axes of the motors. For motors spinning in the wrong direction, swap 2 phases of the motors (i.e.,cables between the motor and its ESC).
 
 .. figure:: _static/motor_order.jpg
    :width: 800
@@ -254,7 +280,7 @@ Calibrations
 Safety setup
 ^^^^^^^^^^^^^
 
-In "Safety" section, configure the following failsafe actions : 
+In "Safety" section, configure the following failsafe actions: 
 
 * Low Battery Failsafe Trigger, select "Warning".
 
@@ -274,7 +300,7 @@ In "Safety" section, configure the following failsafe actions :
    :alt: alternate text
    :align: center
 
-The last thing to do is to setup the RC loss failsafe. This failsafe is activated when the drone is flying manually and the RC signal is lost, which is detected by PixHawk.
+The last thing to do is to setup the RC loss failsafe. This failsafe is activated when the UAV is flying manually and the RC signal is lost, which is detected by the PixHawk.
 
 * Turn the RC transmitter and receiver on.
 
@@ -293,17 +319,13 @@ The last thing to do is to setup the RC loss failsafe. This failsafe is activate
    :align: center
 
 
-* Restart the PixHawk. Now when you turn off the RC transmitter, QGroundControl should report
-  "manual control lost" and when you turn your RC back on, either it reports "manual control regained" or not.
-  In both case you should however see it working again (for example by playing with the joysticks and check if the channel monitor moves in radio).
+* Restart the PixHawk. Now when you turn off the RC transmitter, QGroundControl should report "manual control lost" and when you turn your RC back on, either it reports "manual control regained" or not. In both case you should however see it is working again (for example by playing with the joysticks and check if the channel monitor moves in radio).
 
-In the "Summary" section, you should see the same parameters as the next figure :
+In the "Summary" section, you should see the same parameters as the next figure:
 
 .. figure:: _static/summary_QGC.png
    :width: 800
    :alt: alternate text
    :align: center
 
-Now you can attach the propellers to the drone. You are now ready to manually teleoperate the drone via the transmitter !
-
-
+Now you can attach the propellers to the UAV. You are now ready to manually teleoperate the UAV via the transmitter!
