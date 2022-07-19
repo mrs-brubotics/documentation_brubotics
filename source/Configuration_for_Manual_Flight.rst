@@ -275,6 +275,14 @@ Calibrations
    :alt: alternate text
    :align: center
 
+
+.. figure:: _static/motor_order02.png
+   :width: 800
+   :alt: alternate text
+   :align: center
+
+   Motor order
+
 .. admonition:: todo
 
   improve above figure quality
