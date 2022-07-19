@@ -270,7 +270,7 @@ Calibrations
 
 * In the "Motors" section, test the motors. Make sure the propellers are NOT attached to the motors. Make sure the GPS is connected to the Pixhawk and click the switch button on the GPS module or the motors will not start spinning. If you encounter problems, try the steps explained `here <https://discuss.px4.io/t/motor-test-command-denied/19168/16>`__. Check if the motor order and spinning direction are the same than in next figure (refer to number on motor and not the A,B,C,D). To easily check the spinning direction, attach some tape on the rotation axes of the motors. For motors spinning in the wrong direction, swap 2 phases of the motors (i.e.,cables between the motor and its ESC).
 
-.. figure:: _static/motor_order02.png
+.. figure:: _static/motor_order03.jpg
    :width: 800
    :alt: alternate text
    :align: center
