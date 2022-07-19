@@ -158,7 +158,7 @@ You should first setup the SD card of the pixhawk otherwise the communication be
   * Pixhawk of F450 with nuc4: 
   * Pixhawk of F450 with nuc5: `check this commit <https://github.com/ctu-mrs/uav_core/commit/826c77c2c942b273a3e8b19ff5a062edfd23d294>`__;
   * Pixhawk of T650 with nuc2: 
-  * Pixhawk of T650 with nuc3: 
+  * Pixhawk of T650 with nuc3: `check this commit <https://github.com/ctu-mrs/uav_core/commit/826c77c2c942b273a3e8b19ff5a062edfd23d294>`__;
 
 
 .. admonition:: todo
@@ -190,7 +190,7 @@ Installation of QGroundControl
   * Pixhawk of F450 with nuc4: 
   * Pixhawk of F450 with nuc5: GQC v4.2.3 used for `px4_firmware 7c37433 <https://github.com/ctu-mrs/px4_firmware/commit/7c374335db9ae7479f7fe2587a8e64fb9f0df3d5>`__;
   * Pixhawk of T650 with nuc2: 
-  * Pixhawk of T650 with nuc3: 
+  * Pixhawk of T650 with nuc3: QGC v4.2.3 used for `px4_firmware 7c37433 <https://github.com/ctu-mrs/px4_firmware/commit/7c374335db9ae7479f7fe2587a8e64fb9f0df3d5>`__;
 
   Make sure all UAVs are configured with the same px4 firmware versions.
 
