@@ -18,6 +18,8 @@ A drawback of these batteries is their chance to catch fire. To use them correct
 
 Charging:
 ^^^^^^^^^^^
+Computing charging current : Firstly check the warning notice, that should have come with your battery, for an indication of the maximum rate of charge, expressed in xC, where x is a number (corresponding to x times the capacity of the battery). If the information is not provided, consider a maximal 1C rate. For our batteries ( `these <https://hobbyking.com/en_us/turnigy-graphene-professional-12000mah-6s-15c-lipo-pack-w-xt90.html?___store=en_us>`__ ), as the maximum rate given by the manufacturer is 1C and the capacity is 12000 mAh, the maximal charging current will then be 1C*12Ah = 12A. However, your charger has a maximal output wattage that may not be able to handle such a current. Our charger is rated 80W so, considering the maximal voltage of the battery (6S LiPo so 4.2*6 = 25.2V), the maximal current that the charger will be able to provide at that voltage is 80/25.2 = 3.17A. In conclusion, the battery can take a current of 12A for charging but the charger can only provide 3.17A for this battery so you'll have to set the current to 3.17A. For more information, please check `this documentation <http://www.tjinguytech.com/charging-how-tos/wattage-for-charging>`__ and `this documentation <https://www.rcgroups.com/forums/showthread.php?3092219-Lipo-22-2v-recommended-charging-settings>`__ .
+
 * Put the red/black plug connectors in the battery charger. For the main lead beware of the polarity! Red on red, black on black; 
 * Power on the battery charger;
 * Set the mode to Lipo CHARGE;
