@@ -220,7 +220,7 @@ Calibrations
   It is adviced use a long usb cable to connect the pixhawk to the nuc and ensure there is leveled ground and enough space to move the UAV.
   Make sure to keep the front of the UAV (i.e., in the front direction of the pixhawk which is typically indicated on the UAV by the red legs, arms or tape) as shown by QGroundControl.
 
-* Power on your transmitter, select yes for ready to transmit, and assign the channels on the transmitter (i.e., press both back button and scroller and select ’Channels’) such that each channel is paired with the correct function, according to the next figures taken from `this tutorial <https://ctu-mrs.github.io/docs/hardware/px4_configuration.html#sw-setup>`__. You always want to joystick channels without a return spring to be assigned to the throttle and yaw, the other two with a return spring to the roll and pitch.
+* Power on your transmitter, select yes for ready to transmit, and assign the channels on the transmitter (i.e., press both back button and scroller and select ’Channels’) such that each channel is paired with the correct function, according to the next figures taken from `this tutorial <https://ctu-mrs.github.io/docs/hardware/px4_configuration.html#sw-setup>`__. You always want to joystick channels without a return spring to be assigned to the throttle and yaw, the other two with a return spring to the roll and pitch. For example, for channel 5, click on it, select "AUX1" in the menu then scroll clockwise and select "B" there.
 
 .. figure:: _static/channels_functions.jpg
    :width: 800
@@ -269,12 +269,6 @@ Calibrations
 * Calibrate your ESCs in the "Power" section. The "Power" icon may stay red, but this can be ignored. Make sure the battery is charged and correctly placed on the UAV. Begin with the battery disconnected and connect it when asked by QGroundControl.
 
 * In the "Motors" section, test the motors. Make sure the propellers are NOT attached to the motors. Make sure the GPS is connected to the Pixhawk and click the switch button on the GPS module or the motors will not start spinning. If you encounter problems, try the steps explained `here <https://discuss.px4.io/t/motor-test-command-denied/19168/16>`__. Check if the motor order and spinning direction are the same than in next figure (refer to number on motor and not the A,B,C,D). To easily check the spinning direction, attach some tape on the rotation axes of the motors. For motors spinning in the wrong direction, swap 2 phases of the motors (i.e.,cables between the motor and its ESC).
-
-.. figure:: _static/motor_order.jpg
-   :width: 800
-   :alt: alternate text
-   :align: center
-
 
 .. figure:: _static/motor_order02.png
    :width: 800
