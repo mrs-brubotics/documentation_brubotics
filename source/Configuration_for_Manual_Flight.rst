@@ -18,6 +18,8 @@ A drawback of these batteries is their chance to catch fire. To use them correct
 
 Charging:
 ^^^^^^^^^^^
+Computing charging current : Firstly check the warning notice, that should have come with your battery, for an indication of the maximum rate of charge, expressed in xC, where x is a number (corresponding to x times the capacity of the battery). If the information is not provided, consider a maximal 1C rate. For our batteries ( `these <https://hobbyking.com/en_us/turnigy-graphene-professional-12000mah-6s-15c-lipo-pack-w-xt90.html?___store=en_us>`__ ), as the maximum rate given by the manufacturer is 1C and the capacity is 12000 mAh, the maximal charging current will then be 1C*12Ah = 12A. However, your charger has a maximal output wattage that may not be able to handle such a current. Our charger is rated 80W so, considering the maximal voltage of the battery (6S LiPo so 4.2*6 = 25.2V), the maximal current that the charger will be able to provide at that voltage is 80/25.2 = 3.17A. In conclusion, the battery can take a current of 12A for charging but the charger can only provide 3.17A for this battery so you'll have to set the current to 3.17A. For more information, please check `this documentation <http://www.tjinguytech.com/charging-how-tos/wattage-for-charging>`__ and `this documentation <https://www.rcgroups.com/forums/showthread.php?3092219-Lipo-22-2v-recommended-charging-settings>`__ .
+
 * Put the red/black plug connectors in the battery charger. For the main lead beware of the polarity! Red on red, black on black; 
 * Power on the battery charger;
 * Set the mode to Lipo CHARGE;
@@ -158,7 +160,7 @@ You should first setup the SD card of the pixhawk otherwise the communication be
   * Pixhawk of F450 with nuc4: 
   * Pixhawk of F450 with nuc5: `check this commit <https://github.com/ctu-mrs/uav_core/commit/826c77c2c942b273a3e8b19ff5a062edfd23d294>`__;
   * Pixhawk of T650 with nuc2: 
-  * Pixhawk of T650 with nuc3: 
+  * Pixhawk of T650 with nuc3: `check this commit <https://github.com/ctu-mrs/uav_core/commit/826c77c2c942b273a3e8b19ff5a062edfd23d294>`__;
 
 
 .. admonition:: todo
@@ -190,7 +192,7 @@ Installation of QGroundControl
   * Pixhawk of F450 with nuc4: 
   * Pixhawk of F450 with nuc5: GQC v4.2.3 used for `px4_firmware 7c37433 <https://github.com/ctu-mrs/px4_firmware/commit/7c374335db9ae7479f7fe2587a8e64fb9f0df3d5>`__;
   * Pixhawk of T650 with nuc2: 
-  * Pixhawk of T650 with nuc3: 
+  * Pixhawk of T650 with nuc3: QGC v4.2.3 used for `px4_firmware 7c37433 <https://github.com/ctu-mrs/px4_firmware/commit/7c374335db9ae7479f7fe2587a8e64fb9f0df3d5>`__;
 
   Make sure all UAVs are configured with the same px4 firmware versions.
 
@@ -218,7 +220,7 @@ Calibrations
   It is adviced use a long usb cable to connect the pixhawk to the nuc and ensure there is leveled ground and enough space to move the UAV.
   Make sure to keep the front of the UAV (i.e., in the front direction of the pixhawk which is typically indicated on the UAV by the red legs, arms or tape) as shown by QGroundControl.
 
-* Power on your transmitter, select yes for ready to transmit, and assign the channels on the transmitter (i.e., press both back button and scroller and select ’Channels’) such that each channel is paired with the correct function, according to the next figures taken from `this tutorial <https://ctu-mrs.github.io/docs/hardware/px4_configuration.html#sw-setup>`__. You always want to joystick channels without a return spring to be assigned to the throttle and yaw, the other two with a return spring to the roll and pitch.
+* Power on your transmitter, select yes for ready to transmit, and assign the channels on the transmitter (i.e., press both back button and scroller and select ’Channels’) such that each channel is paired with the correct function, according to the next figures taken from `this tutorial <https://ctu-mrs.github.io/docs/hardware/px4_configuration.html#sw-setup>`__. You always want to joystick channels without a return spring to be assigned to the throttle and yaw, the other two with a return spring to the roll and pitch. For example, for channel 5, click on it, select "AUX1" in the menu then scroll clockwise and select "B" there.
 
 .. figure:: _static/channels_functions.jpg
    :width: 800
@@ -268,10 +270,12 @@ Calibrations
 
 * In the "Motors" section, test the motors. Make sure the propellers are NOT attached to the motors. Make sure the GPS is connected to the Pixhawk and click the switch button on the GPS module or the motors will not start spinning. If you encounter problems, try the steps explained `here <https://discuss.px4.io/t/motor-test-command-denied/19168/16>`__. Check if the motor order and spinning direction are the same than in next figure (refer to number on motor and not the A,B,C,D). To easily check the spinning direction, attach some tape on the rotation axes of the motors. For motors spinning in the wrong direction, swap 2 phases of the motors (i.e.,cables between the motor and its ESC).
 
-.. figure:: _static/motor_order.jpg
+.. figure:: _static/motor_order03.jpg
    :width: 800
    :alt: alternate text
    :align: center
+
+   Motor order
 
 .. admonition:: todo
 
