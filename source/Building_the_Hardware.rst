@@ -404,8 +404,8 @@ In this section you will learn how to fix all the components on their (custom-ma
 2. Drill the holes of all the 3D printed pieces to deal with imperfections due to shrinkage. Use a drill bit of size 2.5mm for every hole **NOT** directly touching the frame. For the holes used to fix the parts on the frame itself, use a 3mm drill bit.
 
 .. admonition:: todo
-
-I have difficulties understandign what you mean with these 2 categories of parts. Can you give a list of parts (see names above) that need which drill size? 
+   
+   I have difficulties understandign what you mean with these 2 categories of parts. Can you give a list of parts (see names above) that need which drill size? 
 
 
   
@@ -440,6 +440,7 @@ I have difficulties understandign what you mean with these 2 categories of parts
 
 
 5. Solder the three motor cables to the ESC. For 2 motors, solder the wires "in parallel" (as in the pictre below). For the 2 others, intervert 2 wires. It is needed as 2 motors will spin clockwise and 2 anticlockwise. For the motors we had, when the wires where parallel, the motor spin in a clockwise fashion.
+  
   .. figure:: _static/motor_esc_soldering.jpg
      :width: 800
      :alt: alternate text

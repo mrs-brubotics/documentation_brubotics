@@ -18,7 +18,7 @@ A drawback of these batteries is their chance to catch fire. To use them correct
 
 Charging:
 ^^^^^^^^^^^
-Computing charging current : Firstly check the warning notice, that should have come with your battery, for an indication of the maximum rate of charge, expressed in xC, where x is a number (corresponding to x times the capacity of the battery). If the information is not provided, consider a maximal 1C rate. For our batteries ( `these <https://hobbyking.com/en_us/turnigy-graphene-professional-12000mah-6s-15c-lipo-pack-w-xt90.html?___store=en_us>`__ ), as the maximum rate given by the manufacturer is 1C and the capacity is 12000 mAh, the maximal charging current will then be 1C*12Ah = 12A. However, your charger has a maximal output wattage that may not be able to handle such a current. Our charger is rated 80W so, considering the maximal voltage of the battery (6S LiPo so 4.2*6 = 25.2V), the maximal current that the charger will be able to provide at that voltage is 80/25.2 = 3.17A. In conclusion, the battery can take a current of 12A for charging but the charger can only provide 3.17A for this battery so you'll have to set the current to 3.17A. For more information, please check `this documentation <http://www.tjinguytech.com/charging-how-tos/wattage-for-charging>`__ and `this documentation <https://www.rcgroups.com/forums/showthread.php?3092219-Lipo-22-2v-recommended-charging-settings>`__ .
+Computing the charging current: Firstly check the warning notice, that should have come with your battery, for an indication of the maximum rate of charge, expressed in xC, where x is a number (corresponding to x times the capacity of the battery). If the information is not provided, consider a maximal 1C rate. For our 6S batteries (i.e., `these <https://hobbyking.com/en_us/turnigy-graphene-professional-12000mah-6s-15c-lipo-pack-w-xt90.html?___store=en_us>`__ ), as the maximum rate given by the manufacturer is 1C and the capacity is 12000 mAh, the maximal charging current will then be 1C*12Ah = 12A. However, the charger has a maximal output wattage that may not be able to handle such a current. Our charger is rated 80W so, considering the maximal voltage of the battery (6S LiPo so 4.2*6 = 25.2V), the maximal current that the charger will be able to provide at that voltage is 80/25.2 = 3.17A. In conclusion, the battery can take a current of 12A for charging but the charger can only provide 3.17A for this battery so you will have to set the current to 3.17A or less as to not overpower the charger. For more information, please check `this documentation <http://www.tjinguytech.com/charging-how-tos/wattage-for-charging>`__ and `this documentation <https://www.rcgroups.com/forums/showthread.php?3092219-Lipo-22-2v-recommended-charging-settings>`__.
 
 * Put the red/black plug connectors in the battery charger. For the main lead beware of the polarity! Red on red, black on black; 
 * Power on the battery charger;
@@ -271,15 +271,11 @@ Calibrations
 * In the "Motors" section, test the motors. Make sure the propellers are NOT attached to the motors. Make sure the GPS is connected to the Pixhawk and click the switch button on the GPS module or the motors will not start spinning. If you encounter problems, try the steps explained `here <https://discuss.px4.io/t/motor-test-command-denied/19168/16>`__. Check if the motor order and spinning direction are the same than in next figure (refer to number on motor and not the A,B,C,D). To easily check the spinning direction, attach some tape on the rotation axes of the motors. For motors spinning in the wrong direction, swap 2 phases of the motors (i.e.,cables between the motor and its ESC).
 
 .. figure:: _static/motor_order03.jpg
-   :width: 800
+   :width: 400
    :alt: alternate text
    :align: center
 
-   Motor order
-
-.. admonition:: todo
-
-  improve above figure quality
+   Motor order in clockwise direction: 1, 4, 2 and 3
 
 Safety setup
 ^^^^^^^^^^^^^

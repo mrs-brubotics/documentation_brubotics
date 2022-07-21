@@ -1,6 +1,6 @@
-Project Certified Correct Control of UAVs
+Project Learning-based Control of UAVs
 ===========================================
 
 .. admonition:: todo
 
-   todo Bryan
+   todo Maxime

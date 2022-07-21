@@ -19,8 +19,8 @@ DroneSwarmTutorial
    Autonomous_Flight_Procedures
    Project_Certified_Correct_Control_of_UAVs
    Project_Certified_Correct_Control_of_UAVs_with_Cable_Suspended_Payload
+   Project_Learning-based_Control_of_UAVs
 
-.. Connecting the NUC on the drone
 .. Hardware_config
 .. Introduction_to_MRS_Software_Extensions
 .. MRS_code_Documentation
