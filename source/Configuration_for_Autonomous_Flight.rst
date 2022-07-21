@@ -3,12 +3,12 @@ Configuration for Autonomous Flight
 .. admonition:: todo
 
   Update this chapter as you indicate yourself it is not completed yet. 
-  I will most probably have several comments on this part, but I first need the time to check all the tutorial steps on the other f450 nucs. Will do it next week. In the meantime it is best Raphael and Maxime try the whole field exp procedure at pleinlaan (without actually flying) and let me know up to where it works. Which nodes crash and what do you see in the mrs_uav_status window when putting the drone in the start of the trajectory you designed. Is the position stable for a long time, show by someone walking around with the drone and if the position changes are realistic. E.g. walking the world x axis or pure y axis and checking those values. Make a movie of the status window.
+  I will most probably have several comments on this part, but I first need the time to check all the tutorial steps on the other f450 nucs. Will do it next week. In the meantime it is best Raphael and Maxime try the whole field exp procedure at pleinlaan (without actually flying) and let me know up to where it works. Which nodes crash and what do you see in the mrs_uav_status window when putting the UAV in the start of the trajectory you designed. Is the position stable for a long time, show by someone walking around with the UAV and if the position changes are realistic. E.g. walking the world x axis or pure y axis and checking those values. Make a movie of the status window.
 
 
 .. admonition:: todo
 
-  The motor paramters etc need to be set correctly and needs to be explained as this requires some changes in ctu code. It is s now explained in the main readme of droneswarm brubotics.
+  The motor paramters etc need to be set correctly and needs to be explained as this requires some changes in ctu code. It is s now explained in the main readme of UAVswarm brubotics.
 
 .. admonition:: todo
 
@@ -26,62 +26,49 @@ Configuration for Autonomous Flight
 Configure the default system
 -------------------------------
 
-The assumption in this section is that the NUC is brand new, in order to make the explanation easier. If it is already used it is not that big of a problem but make sure you have enough space available on the
-SSD of the NUC.
-
-Prerequist
+Prerequisite
 ^^^^^^^^^^^^^
 
-* The first thing to do is to download Ubuntu 20.04 on your NUC. This can be easily done with a bootable USB. For more details we refer to the `tutorial <https://ubuntu.com/tutorials/install-ubuntu-desktop#1-overview>`__ written by Ubuntu;
-
-* Next, download the workspace provided by CTU-MRS by pasting the code under `I have a fresh Ubuntu install and want it quick and easy <https://github.com/ctu-mrs/mrs_uav_system#i-have-a-fresh-ubuntu-1804-and-want-it-quick-and-easy>`__ inside a terminal;
-
-* Download the Brubotics software by following this `README.md <https://github.com/mrs-brubotics/droneswarm_brubotics/blob/master/README.md>`__.
-
-Before proceeding make sure you are able to run simulation scripts from CTU workspace (e.g. *~/mrs_workspace/src/simulation/example_tmux_scripts/one_drone_pendulum*) and the brubotics workspace (*~/workspace/src/droneswarm_brubotics/ros_packages/testing_brubotics/tmux_scripts/Raphael/0_One_Drone_f450_BruboticsDampingController*)
+* A fully assembled UAV with an on-board computer (e.g., intel NUC) is available and has succeeded the manual flgiht test;
+* The on-board computer runs Ubuntu 20.04 LTS Desktop;
+* The ctu_mrs and UAVswarm_brubotics system have been installed as explained in `this README <https://github.com/mrs-brubotics/UAVswarm_brubotics/blob/master/README.md#installation>`__;
+* You are able to run simulation scripts from CTU and/or brubotics workspace (e.g. ~/mrs_workspace/src/simulation/example_tmux_scripts/one_UAV_pendulum*) and the brubotics workspace (*~/workspace/src/UAVswarm_brubotics/ros_packages/testing_brubotics/tmux_scripts/Raphael/0_One_UAV_f450_BruboticsDampingController*)
  
 
-Connection with the Pixhawk
-^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Connection between the on-board computer and the Pixhawk
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Once this is done the basic setup of the NUC is done. The steps that will follow next will make that there
-is a clear connection between the NUC and the PixHawk 4, and that the NUC recognises the PixHawk 4
-when it is connected to it (using always the same usb ports).
+The following steps will enable a connection between the NUC and the PixHawk 4 via the FTDI board or tll cable (i.e., USB to serial device). Moreover we will configure the NUC such that it recognises the PixHawk 4 automatically whenever it is connected to it (using always the same usb ports).
 
-These steps will be based on `this <https://ctu-mrs.github.io/docs/hardware/px4_configuration.html>`__ tutorial written by CTU-MRS.
+These steps will be based on `this tutorial <https://ctu-mrs.github.io/docs/hardware/px4_configuration.html>`__.
 
-* Connect a mouse, keyboard and the PixHawk 4 to the Intel NUC (**Use the FTDI board (TLL cable)** and **not the standart USB cable** of the PixHawk, see section on FTDI REF TO PUT HERE). There are 3 USB connections and you can chose
-  where to put each device, but then not change after configuration is done. In our case, the Pixhawk was connected through the front USB port of the NUC.
+* Connect a mouse, keyboard and the PixHawk 4 to the Intel NUC (**Use the FTDI board (TLL cable)** and **not the standard USB cable** of the PixHawk). There are 3 USB connections on the NUC and you can choose where to put each device, but then not change this order after configuration is done. In our case, the Pixhawk was connected through the front USB port of the NUC (where the power switch is located).
   
+* Once the device is powered on (by the wall power supply or by the battery) and you are logged in, open a terminal and go to 
+  
+  .. code-block:: shell
 
-* Once the device is powered on (by the battery) and you are logged in, open a terminal and go to cd ../../dev or by
-  clicking first on "other locations" in Files. If you type "ls" you will get a list of every connection that
-  is made between the NUC and other devices or modules;
+    cd ~/../../dev
+    
+  If you type "ls" you will get a list of every connection that is made between the NUC and other devices or modules;
 
-* Find which device name is associated to the PixHawk 4. You can do this by first plugging in the
-  PixHawk 4, running "ls" inside the /dev folder, unplugging the PixHawk 4, running "ls" again and
-  comparing both results to see which device is missing. Only look at the "tty" names, others are not
-  for the PixHawk 4, (it can also be 'ttyUSB0'for the front USB of the NUC).
+* Find which device name is associated to the PixHawk 4. You can do this by first plugging in the PixHawk 4, running "ls" inside the /dev folder, unplugging the PixHawk 4, running "ls" again and comparing both results to see which device is missing. Only look at the "tty" names, others are not for the PixHawk 4. It can be 'ttyUSB0' for the front USB of the NUC.
 
 .. note:: 
-	"serial" might be seen in the list when doing the "ls" command. But it is not the name we are looking for, so you can ignore it.
+	"serial" might be also be seen in the list when doing the "ls" command with pixhawk plugged in. But it is not the name we are looking for (needs to start with tty), so you can ignore it.
 
-* Once the name of the device is found run the following command in the /dev folder (replacing ttyUSB0 by the name you had in previous steps):
+* Once the name of the device is found run the following command in the /dev folder but replace '/dev/ttyUSB0' by the device name associated to your PixHawk 4:
   
 .. code-block:: shell 
 
    udevadm info -p $(udevadm info -q path -n /dev/ttyUSB0) | grep 'SERIAL_SHORT\|VENDOR_ID\|MODEL_ID'
 
-* Here is what it should looks like :
+* You should get similar result (likely with different numbers):
 
 .. figure:: _static/PixHawkPortDevLs.png
    :width: 800
    :alt: alternate text
-   :align: center
-
-
-* Replace '/dev/ttyUSB0' by the device name associated to your PixHawk 4. If you typed it correctly you should get
-  a similar result (with different numbers as mine):
+   :align: center  
 
 .. code-block:: shell
 
@@ -90,43 +77,57 @@ These steps will be based on `this <https://ctu-mrs.github.io/docs/hardware/px4_
 	E: ID_VENDOR_ID=0403
 
 
-* In your terminal, go to "/etc/udev/rules.d/"" and create a new file called "99-usb-serial.rules" by using
-  the following command in the terminal (Skip this command if the file is already there):
+* In another terminal, go to 
+
+ .. code-block:: shell
+
+    cd ~/../../etc/udev/rules.d/
+    
+ and create a new file called "99-usb-serial.rules" by using the following command in the terminal (but skip this command if the file is already there):
 
 .. code-block:: shell
 
 	sudo touch 99-usb-serial.rules
 
-* Edit the file (using sudo nano 99-usb-serial.rules) and paste the following line into the file, while changing the values according 
-  to what you had at the previous step : Replace idVendor, idProduct and serial with your values, and change the OWNER name to the user
-  name of your ubuntu session (or you can leave user on "mrs"). Make sure the quotation
-  marks are present in the file, if they are not present the connection won't work!
+* Edit the file with
+
+  .. code-block:: shell
+
+    sudo nano 99-usb-serial.rules
+  
+  and paste the following line into the file, while changing the values according 
+  to what you obtained at the previous step: replace idVendor, idProduct (i.e.,model) and serial with your values, and change the OWNER name to the user name of your ubuntu session (or you can leave user on "mrs"). Make sure the quotation
+  marks are present in the file, if they are not present the connection will not work!
 
 .. code-block:: shell 
 
-	SUBSYSTEM=="tty", ATTRS{idVendor}=="0403", ATTRS{idProduct}=="6001", ATTRS{serial}=="A50285BI", 
-	SYMLINK+="pixhawk",OWNER="mrs",MODE="0666"
+	SUBSYSTEM=="tty", ATTRS{idVendor}=="0403", ATTRS{idProduct}=="6001", ATTRS{serial}=="A50285BI", SYMLINK+="pixhawk",OWNER="mrs",MODE="0666"
   
-* Go back to /dev. Unplug the PixHawk 4 and plug it back into the NUC, when you list all the
-  devices available, you should see "pixhawk" now. If you do not, try to reboot the NUC, this should
-  normally solve the issue.
+* Go back to /dev. Unplug the PixHawk 4 and plug it back into the NUC, when you list all the devices available, you should see "pixhawk" now. If you do not, try to reboot the NUC, this should normally solve the issue.
 
-* Now you should be able to run mavros on a new terminal:
+* Now you should be able to run mavros in a new terminal:
 
 .. code-block:: shell
 
 	roslaunch mrs_uav_general mavros_uav.launch
 
-If you have no processes that died and a long list of blacklisted and loaded items, then the setup is successfull.
+If you have no processes that died and a long list of blacklisted and loaded items, then the setup is successfull. On the FTDI board you should now see a blue ligh blinking on its TX channel.
 
 .. figure:: _static/CorrectlySetupMavlink.png
    :width: 800
    :alt: alternate text
    :align: center
 
+
+
+.. admonition:: todo
+
+  Why do you have 2* arduino in there? I woudl say there si only one required? Make sure you indicate which arduino belongs to which nuc.
+  Make sure there is a section under the payload module with arduino where you refer to this section
+
 You have to repeat this procedure for the Arduino's and the RTK GPS M2reach module. 
 Always make sure to use the same USB port when doing this. 
-On the NUC3 the file will looks like : 
+On the NUC3 the file contains:
 
 .. code-block:: shell
   
@@ -136,14 +137,16 @@ On the NUC3 the file will looks like :
   SUBSYSTEM=="tty", ATTRS{idVendor}=="2341", ATTRS{idProduct}=="0043", ATTRS{serial}=="7593231393835130E061", SYMLINK+="arduino",OWNER="vub",MODE="0666"
 
 
-SSH Configuration
-^^^^^^^^^^^^^^^^^
+Automatic SSH configuration on boot
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Another problem that needs to be solved is what concerns the ssh service of the
-NUC. As a safety measure, this service is disabled each time the NUC reboots so we need to enable
-it again before flying, otherwise it would not be possible to remotely login into the NUC and start the
-shell script for the experiment. When typing ’sudo systemctl status ssh’ and you get the same results
-as in 
+Another problem that needs to be solved is the ssh service of the NUC. As a safety measure, this service is disabled each time the NUC reboots. So this means we would need to enable it again before each flight, otherwise it would not be possible to remotely login into the NUC and start the shell script for the experiment. When opening an new terminal and typing 
+
+.. code-block:: shell
+
+  sudo systemctl status ssh
+
+and you get the same results as in
 
 .. figure:: _static/SSHCouldnotbefound.png
    :width: 800
@@ -151,13 +154,13 @@ as in
    :align: center
 
 
-You first have to do :
+You first have to do:
 
 .. code-block:: shell
 
   sudo apt-get install ssh
 
-If get the same result as the following pictures **after** rebooting completeley the nuc and running the same command, you can skip the next parts as the SSH is already launched automatically.
+If get the same result as the following pictures **after** rebooting the nuc and running the same command, you can skip the next parts as this means the SSH is already launched automatically.
 
 .. figure:: _static/SShActiveAfterBoot.png
    :width: 800
@@ -165,7 +168,7 @@ If get the same result as the following pictures **after** rebooting completeley
    :align: center
   
 
-But if you get the same result as there : 
+But if you get the same result as below: 
 
 .. figure:: _static/SSHExpectedBootProblem.png
    :width: 800
@@ -173,13 +176,12 @@ But if you get the same result as there :
    :align: center
 
 
-In order to enable the ssh again a monitor, mouse and keyboard is needed and of course it is not very handy to do on the drone's NUC each time you want to make a test. 
-To address this issue a shell script is created that will start the ssh service automatically when the NUC is turned on. 
-Here is the procedure to follow to correct this : 
+this issue is solved by creating a shell script that will start the ssh service automatically when the NUC is turned on.
+Here is the procedure to follow to correct this: 
 
-* Follow the steps of How to install SSH server in Ubuntu (only the top parts before step 1) of this link.
+* Follow the steps of How to install SSH server in Ubuntu (only the top parts before step 1) of `this link <https://www.cyberciti.biz/faq/ubuntu-linux-install-openssh-server/>`__.
 
-* Create a new file in */etc/* using :
+* Create a new file in */etc/* using:
 
 .. code-block:: shell
   
@@ -191,7 +193,7 @@ Here is the procedure to follow to correct this :
 
   sudo nano /etc/rc.local
 
-* Paste the following in that file : 
+* Paste the following in that file: 
 
 .. code-block:: shell
   
@@ -201,60 +203,74 @@ Here is the procedure to follow to correct this :
 
 .. note::
 
-  If it doesn't work it may be due to the second line. Change it to "sudo service ssh start".
+  If it does not work it may be due to the second line. Change it to "sudo service ssh start".
 
-* Make the script executable by running :
+* Make the script executable by running:
 
 .. code-block:: shell
 
   sudo chmod +x /etc/rc.local
 
-* Reboot to see if it worked. Now when you open a terminal and type :
+* Reboot to see if it worked. Now when you open a terminal and type:
 
 .. code-block:: shell
   
   sudo systemctl status ssh
 
-You should now get the same result as on the following figure :
-
+You should now get the same result as on the following figure:
 
 .. figure:: _static/SShActiveAfterBoot.png
    :width: 800
    :alt: alternate text
    :align: center
 
+Before we will shh into the NUC from another ground station device, we will setup the WiFi.
 
-Wireless Connection to the onboard NUCs
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Wireless connection between base station device and on-board NUCs
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-To be able to remotely control the nuc by SSH into it from a base computer, one needs to configure a wifi router.
+To be able to remotely control the NUC by SSHing into it from a base/ground-station computer, one needs to configure the WiFi router.
 
-**Connect to internet with the router**
+Connect to internet with the router
+***************************************
 
+The first essential thing is to have internet access when a machine is connected to the router via Wifi.
+To do so, one must follow these steps:
 
-The first essential things is to have internet access when connected to the router via Wifi. 
-
-To do so, one must follow these steps :
-
-* Power on the router and plug an Ethernet cable in the router’s Internet port. If you are at the Lab in the building Z these are located on the walls. 
-* Connect your device to the router’s Wi-Fi network. Use the 2.4Gz only as the 5Gz gives problems later on with the GPS. (The password of the wifi is written at the back of the router)
-* Go on the router’s website http://192.168.0.1 (usrname and psw: "admin")
+* Power on the router and plug an Ethernet cable in the router’s Internet port.
+* Connect your device to the router’s Wi-Fi network. Use the 2.4Gz band only as the 5Gz band gives problems later on with the RTK GPS. The password of the wifi is written at the back of the router.
+* Go on the router’s website http://192.168.0.1 (username and psw: "admin" or "admin1" for the new router). Make sure there is no https but just http.
 * Go to Quick Setup, Wireless Router, Static Ip and fill in all required information of your network.
  
-If you are at VUB, here are the settings you have to put to connect to the network :
+ 
+.. admonition:: todo
+
+  maybe info below should be put in info for internal collaborators to which we refer here
+
+If you are at VUB, building Z, R&MM lab, here are the settings you have to put to connect to the network:
 
 .. figure:: _static/RouterIPconfigVUB.png
    :width: 800
    :alt: alternate text
    :align: center
-   
 
-You should now have internet over the router's wifi with your NUC. If it's not the case check if the ethernet port of the wall is working fine (or just test another one.)
 
-**Configure the static IP of each connected device**
+If you are at VUB, Pleinlaan 9, -1, here are the settings (of Bryan Convens) you have to put to connect to the network:  
+
+.. admonition:: todo
+
+  test ethernet connection at Pleinlaan (see email helpdesk) and add settings
+
+
+You should now have internet over the router's wifi with your on-board computers and ground station computer. If it is not the case check if the ethernet port of the wall is working fine (or just test another one).
+
+Now check that all devices are set to connect automatically to the routers network (check the box in the details tab of the network). Each UAV will need to connect automatically to this network (and not to any other available networks) when it reboots.
+
+Configure the static IP of each connected device
+****************************************************
 
 Once every PC can access internet on router rename all IP addresses as follows and set Netmask to 255.255.255.0.
-The ip of the ground station must be 192.168.0.100, while the IP of the NUC's must be 192.168.0.10X, with X being the number of the NUC.
+The IP of the ground station must be 192.168.0.100, while the IP of the NUC's must be 192.168.0.10X, with X being the one digit number of the NUC.
 
 * Go to WiFi settings, connect to the routers network
 * select the router network and under "Details" you find the IPv4 address and the Hardware address corresponds to the MAC address. 
@@ -265,210 +281,354 @@ The ip of the ground station must be 192.168.0.100, while the IP of the NUC's mu
    :alt: alternate text
    :align: center
 
-Note that the DNS server is on automatic but with a certain value. It works without the automatic switch, but if no number is put we lose internet. 
+   IPv4 of nuc3
 
-Then check via ifconfig if the ip adress is set now correctly:
+Note that the DNS server is on automatic but with a certain value. It works without the automatic switch, but if no number is put you might lose internet. 
 
-You can find back the device IP address and MAC address on Ubuntu by typing ifconfig and get as output the **inet (IPv4)** and the **ether (Mac
-address)** (make sure you connected to the router network) :
+.. admonition:: todo
+
+  test the above
+
+
+Then check via ifconfig if the ip adress is set now correctly. You can find back the device IP address and MAC address on Ubuntu by typing "ifconfig" and get as output the **inet (IPv4)** and the **ether (Mac address)**, but make sure you are connected to the router's network:
 
 .. figure:: _static/ifconfigCorrectIP.png
    :width: 800
    :alt: alternate text
    :align: center
 
-The last one is the information corresponding to the NUC, as you can see by its ip adresse that correspond to what we just configured (meaning that it's configured correctly). If for some reason the ip adress is not the new configured one, just disconnect and reconnect to the router's wifi and it should be fine.
+The last one is the information corresponding to the NUC, as you can see by its IP address that corresponds to what we just configured (meaning that it is configured correctly). If for some reason the IP address is not the new configured one, just disconnect and reconnect to the router's wifi and it should be fine.
 
-One also might need to change the MAC adress of each computer in the router's website itself. To do so, go to the IP/MAC adress binding tab :
+You can also very that this information can be found in the details tab of the network settings.
+
+.. admonition:: todo
+
+  add picture of same device as above
+
+In order to ensure that each WiFi-enabled device connects always with the same IP address to the router's network, one also needs to link the MAC address of that device to its chosen static IP. This can be done in the router's configuration website. To do so, go to the IP & MAC Binding tab:
 
 .. figure:: _static/IPMACBinding.png
    :width: 800
    :alt: alternate text
    :align: center
 
-and search for the ip of your NUC (for the drone as well as for the ground station). Check that the MAC adress associated with the IP of each NUC is coherent with what ifconfig is giving you (on the NUC you investigate).
-If this is not, as some NUC can be used for a while as a UAV and then be used for ground station, meaning that the ground station IP will be used with another MAC adress, one can click on edit and enter the correct one : 
+and search for the IP of the UAV's on-board computer as well as for the ground station computer. Check that the MAC adress associated with the IP of each device is coherent with what ifconfig was returning.
+If this is not, as some NUC can be used for a while as a UAV's on-board computer and then be used for ground station, meaning that the ground station IP will be used with another MAC address, one can click on edit and enter the correct one or delete and just enter a new one: 
 
 .. figure:: _static/BindingSettingsNUC6.png
    :width: 800
    :alt: alternate text
    :align: center
 
-Normally you should still be able to access internet (always check), but also to PING and SSH between the NUCS : 
+.. admonition:: note
+
+  The latest list of MAC & IP bindings can be found `here <https://docs.google.com/spreadsheets/d/1OeYaRcWuatpoextDXPVYNa4SpufYrAW9z_JnPSXWZe0/edit?usp=sharing>`__.
+
+.. admonition:: todo
+
+  check if we can add multiple deives with same ip but dofferent MAC? E.g. 2 ground station devices. Deos ti still work?
+
+
+Normally you should still be able to access internet (always check), but also you should be able to PING and SSH between the devices.
+For example for nuc3:
+
+.. code-block:: shell
+  
+  ssh  ping 192.168.0.103
 
 .. figure:: _static/pingNUC6toNUC3.png
    :width: 800
    :alt: alternate text
    :align: center
 
+   ping to nuc3
+
+
+.. code-block:: shell
+  
+  ssh  nuc3@192.168.0.103
+
+
 .. figure:: _static/sshnuc.png
    :width: 800
    :alt: alternate text
    :align: center
 
-Once you are in the onboard nuc with the ground station, thanks to the SSH, you can navigate to a test folder and launch any script, for example a simulation :
+   ssh into nuc3
+
+
+.. admonition:: note
+
+  If SHH returns the warning "REMOTE HOST IDENTIFICATION HAS CHANGED!", consider editing or delting the /.ssh/known_hosts file as explained `here <https://kinsta.com/knowledgebase/warning-remote-host-identification-has-changed/>`__.
+
+
+Once you have SSHed in the on-board computer from the ground station computer, you can navigate to a test folder and launch any script, for example a simulation script and verify if it works:
 
 .. figure:: _static/SSHworking.png
    :width: 800
    :alt: alternate text
    :align: center
 
+To exit the device you SSHed into, type the following in the terminal:
+
+.. code-block:: shell
+  
+  exit shh
+
 
 Configure the RTK system
-------------------------
+--------------------------
 
-The Real-Time Kinematic (RTK) system is composed of the Emlid Reach RS2 as the ’base’ an the Emlid
-Reach M2 attached to the drone as the ’rover’. To the latter is connected the Multi-band GNSS antenna.
-The RTK is a GPS-based positioning system that allows to get cm-precise XYZ position from Global
-Navigation Satellite System (GNSS) measurements. The base and rover setup will help to get the RTK
-precision. Simply explained, the RTK system consists of the base (i.e. Reach RS2), the device that doesn’t
-move, and the rover (i.e. Reach M2), the device attached to the UAV. Both devices individually can get
-GNSS measurements with usual GPS precision. The RTK system computes the baseline, the difference
-between both measurements, which gives the rover’s position relative to the base.
+The Real-Time Kinematic (RTK) GPS system is composed of the Emlid Reach RS2 as the ’base’ an the Emlid Reach M2 attached to the UAV as the ’rover’. To the latter is connected the Multi-band GNSS antenna. The RTK is a GPS-based positioning system that allows to get cm-precise XYZ position from Global
+Navigation Satellite System (GNSS) measurements. The base and rover setup will help to get the RTK precision. Simply explained, the RTK system consists of the base (i.e., Reach RS2), the device that does not move, and the rover (i.e., Reach M2), the device attached to the UAV. Both devices individually can get
+GNSS measurements with usual GPS precision. The RTK system computes the baseline, the difference between both measurements, which gives the rover’s position relative to the base.
 
 .. figure:: _static/mappingkit.jpg
    :width: 800
    :alt: alternate text
    :align: center
 
+
+.. admonition:: note
+
+  Regularly reinstall the ReachView3 app on your phone. This can be a cause of not finding the WiFi hotspot of the reach device.
+
+.. admonition:: note
+
+  Regularly update the firmware version of both the Reach RS2 and Reach M2 devices.
+  In order to find newest available firmware version, make sure you connected the reach device to the router with internet access, otherwise it will always tell it is up to date with the latest firmware although it is not the case.
+  The current firmware versions are:
+    * Reach RS2: v27
+    * Reach M2 uav1:
+    * Reach M2 uav2:
+    * Reach M2 uav3:
+    * Reach M2 uav4:
+    * Reach M2 uav5: v27
+
+
+
+.. admonition:: todo
+
+  fill in above list
+
+
 .. note::
 
-  Regularly update the firmware of both the Reach RS2 and Reach M2 devices.
+  If there is (another) router powered on that was previously already configured and to which the reach RS2 or reach M2 is automatically connected on boot to the router's network, you have to power off the router first to see the Wi-Fi hotspot of the emlid device.
 
 
-
-Reach RS2 base configuration
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Basic Reach RS2 base configuration
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 It is advised to read everything in the `manufacturer's tutorial on the Reach RS2 <https://docs.emlid.com/reachrs2/>`__. It contains a `QuickStart procedure <https://docs.emlid.com/reachrs2/quickstart>`__ that should be followed for the setup on the actual Reach RS2 hardware. Follow these Sections:
 
-* `Getting started with Reach RS2: <https://emlid.com/reachrs2/rs2/>`__ First connect the router via ethernet cable to the internet. On your smartphone, download the `ReachView3 App <https://docs.emlid.com/reachrs2/common/quickstart/first-setup/>`__ , available on iOS and Android; and connect your device to the WiFi Hotspot of the Reach RS2 *reach\_m2\_xx* and password *emlidreach*). Connect your phone to the Reach RS2 Wi-Fi network and in the ReachView3 app, then connect the Reach RS2 to your router (on the ReachView3 app go to Settings, Wi-Fi, and connect to the router, enter the router's password that you find on the bottom of the router). You will be disconnected on your phone, since the Reach RS2 is now connected to the router. Now connect also your smartphone to the same router that had internet access. In the ReachView3 app (Settings, General, Device and hotspot name) change the default name *reachRS2* to *reachRS2-base*.
-
-.. note::
-
-  If there is another router that was previously already configured and is now also connected to the device (reach RS2 or reach M2), you have to power off the router first to see the Wi-Fi hotspot of the emlid device.
-
+* `Getting started with Reach RS2: <https://emlid.com/reachrs2/rs2/>`__ First connect the router via ethernet cable to the internet. On your smartphone, download the `ReachView3 App <https://play.google.com/store/apps/details?id=com.emlid.reachview3>`__ , available on iOS and Android; and connect your device to the WiFi Hotspot of the Reach RS2 *reach\_m2\_xx* and password *emlidreach*. Connect your phone to the Reach RS2 Wi-Fi hotspot and in the ReachView3 app, then connect the Reach RS2 to your router (on the ReachView3 app go to Settings, Wi-Fi, and connect to the router, enter the router's password that you find on the bottom of the router). You will be disconnected on your phone, since the Reach RS2 is now connected to the router. Now connect also your smartphone to the same router that had internet access. In the ReachView3 app (Settings, General, Device and hotspot name) change the default name *reachRS2* to *reachRS2-base*.
 
 * `First setup: <https://docs.emlid.com/reachrs2/quickstart/first-setup>`__ When the router is connected to internet, the Reach RS2 firmware can be updated. The router can now be disconnected from the internet. When restarting Reach RS2, it now connects automatically to the router and the bars moving in the Reach Panel show Reach RS2 is ready for work.
 
-* `Base and Rover setup <https://docs.emlid.com/reachrs2/quickstart/base-rover-setup>`__ (cannot be executed since we don't use two Reach RS2 and only one for the base).
+* `Base and Rover setup <https://docs.emlid.com/reachrs2/quickstart/base-rover-setup>`__ (cannot be executed since we do not use two Reach RS2 and only one for the base).
 
 * `Connecting Reach to Internet via Wi-Fi <https://docs.emlid.com/reachrs2/quickstart/connecting-to-wifi>`__.
 
-* `Working with NTRIP service <https://docs.emlid.com/reachrs2/quickstart/ntrip-workflow>`__ (only follow Update Reach, and Provide Reach with a clear sky view Section).
+* `Working with NTRIP service <https://docs.emlid.com/reachrs2/rtk-quickstart/ntrip-workflow>`__ (only follow Update Reach, and Provide Reach with a clear sky view Section).
 
 
-The Reach device is now initialized and ready for custom set-up.
+The Reach RS2 device is now initialized and ready for custom set-up.
+
+Basic Reach M2 rover configuration
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+It is advised to read everything in the `manufacturer's tutorial on the Reach M2 <https://docs.emlid.com/reachm2/>`__. It contains a `QuickStart procedure <https://docs.emlid.com/reach/quickstart>`__ that should be followed for the setup on the actual Reach M2 hardware. Follow these Sections:
 
 
-.. \bc{TODO test it}Note: Instead of using a smarthpone with the ReachView3 App, all steps can be done also from your PC browser. You can access your emlid device by connecting your PC to its WiFi hotspot by typing in your browser the emlid device IP address `http://192.168.0.104 <http://192.168.0.104>`__. After connecting the Reach to your router, scan your router with AdvancedIPScanner as mentioned before or look for the Reach IP address in the router's login tab, and type its IP address in the browser. Perform the last point as mentioned above \rn{For me it is: 192.168.0.104}.
+* `First setup <https://docs.emlid.com/reachm2/quickstart/first-setup>`__ Follow the same steps as for the Reach RS2 (connection to internet via router, update its firmware).
 
-Reach M2 rover configuration
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-It is advised to read everything in the `manufacturer's tutorial on the Reach M2 <https://docs.emlid.com/reachm2/>`__. It contains a `QuickStart procedure <https://docs.emlid.com/reachm2/quickstart>`__ that should be followed for the setup on the actual Reach M2 hardware. Follow these Sections:
-
-
-* `First setup <https://docs.emlid.com/reachm2/quickstart/first-setup>`__ Follow the same steps as for the Reach RS2 (connection to internet via router, update firmware).
-
-* `Base and Rover setup <https://docs.emlid.com/reachm2/quickstart/base-rover-setup>`__  In the ReachView3 app, change the default name *reach* to *reachM2-rover-id*, where *id* is the id of the on-board computer (e.g. $id=3$ for Nuc3). This is to ensure all Reach M2 devices in the multi-robot system have different names when connected to Wi-Fi network of the router. In the ReachView3 app, select the device and open the Reach Panel. For the Reach RS2 **base** setup use the following settings: change the RTK Positioning mode from the default Kinematic to Static, select all GNSS, increase the update rate from 1Hz to maximum of 10Hz (will even not always work the 10Hz). All the latter setings can be seen in the pictures contained in `this issue on RTK setup of the MRS UAV system <https://github.com/ctu-mrs/mrs_uav_system/issues/77>`__ . More info about `RTK settings <https://docs.emlid.com/reachrs/reach-panel/rtk-settings/>`__ can be found in the link.
+* `Base and Rover setup <https://docs.emlid.com/reach/before-you-start/first-setup>`__  In the ReachView3 app, change the default name *reach* to *reachM2-rover-id*, where *id* is the id of the on-board computer (e.g. *id*=3 for nuc3). This is to ensure all Reach M2 devices in the multi-robot system have different names when connected to the Wi-Fi network of the router. In the ReachView3 app, select the device and open the Reach Panel. 
 
 * `Connecting Reach to Internet via Wi-Fi <https://docs.emlid.com/reachrs2/quickstart/connecting-to-wifi>`__ .
 
-* `Working with NTRIP service <https://docs.emlid.com/reachrs2/quickstart/ntrip-workflow>`__ (only follow Update Reach, and Provide Reach with a clear sky view Section).
+* `Working with NTRIP service <https://docs.emlid.com/reachrs2/rtk-quickstart/ntrip-workflow>`__ (only follow Update Reach, and Provide Reach with a clear sky view Section).
+
+The Reach M2 device is now initialized and ready for custom set-up.
+
+Configure the IP & MAC binding of all reach devices
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Log in to the `router's confuration page <http://192.168.0.1/>`__ and update the following settings by binding the MAC address with a chosen static IP for each reach base and rover device:
+
+* In the DHCP tab, Address Reservation, add or edit the MAC and IP and enable all. If you would enter the same IP for different devices (with different MAC) an error code will be returned.
+* In the IP & MAC Binding tab, Binding Settings, add or edit the MAC and IP and enable all. If you would enter the same IP for different devices (with different MAC) an error code will be returned.
+
+.. admonition:: note
+
+  The latest list of MAC & IP bindings can be found `here <https://docs.google.com/spreadsheets/d/1OeYaRcWuatpoextDXPVYNa4SpufYrAW9z_JnPSXWZe0/edit?usp=sharing>`__.
+
+.. admonition:: note
+
+  In order to identify the MAC address of a device, connect the device to the router's network. Then under DHCP, DHCP Clients List, take a look at which MAC disappears when you power off the device or at least disconnect it from the network. Use this tab to check wether the device that has a unique MAC has the correct IP address.
+
+.. admonition:: note
+
+  Make sure that all on-board computers ONLY automatically connect to the network of the configured router(s) and disable automatic connections to ANY other known networks (see Details tab of the network settings). On the ground station it does not matter to which the device automatically connects, as long as the user manually connects to the network of the router he/she wants to use.
+
+Now that all reach devices are known to the router's network always with the same static IP, we advice now to save bookmarks on the ground station machine for all reach devices so they can be accessed quickly. Then in the browser go to `http://192.168.0.200 <http://192.168.0.200>`__ for the base and `http://192.168.0.203 <http://192.168.0.203>`__ for rover 3 (again without an s in http!).
+
+Specific Reach RS2 & M2 settings
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+In the pictures below the settings of both reach devices are detailed. All the latter settings can also be seen in the pictures contained in `this issue on RTK setup of the MRS UAV system <https://github.com/ctu-mrs/mrs_uav_system/issues/77>`__, but these are outdated as they were taken with an older firmware version. More info about `RTK settings <https://docs.emlid.com/reachrs/reach-panel/rtk-settings/>`__ can be found in the link. 
+
+We advise to enable these settings via the ground station machine that is connected to the router's WiFi network. 
+
+For the Reach RS2 **base** setup use the following settings: 
+
+* In RTK settings tab, change the RTK positioning mode from the default Kinematic to Static;
+* In RTK settings tab, select all GNSS; 
+* In RTK settings tab, increase the update rate from 1Hz to maximum of 10Hz (will even not always work at 10Hz). 
 
 
+For the Reach M2 **rover** setup use the following settings:
 
-
-..  \rn{Try putting the frequency from 1 Hz to 10 Hz! \href{https://docs.emlid.com/reachrs/reach-panel/rtk-settings/}{ update rate!} set emlid reach m2 also at 10 Hz! \href{https://docs.emlid.com/reachm2/reach-panel/rtk-settings/}{Data reach m2} \rn{SET POSITION OUTPUT FROM THE REACH ROVER GGA TO 10 Hz SEE ISSUE RTK SETTINGS \#77! CHANGES A LOT! ALL the correct settings are also shown in pictures in the issue!}}
-
-.. note::
-
-  The only point to emphasize here is, when configuring the Reach M2 (the small black), be sure to choose in *Position output* tab, "USB-To-PC" and format of messages as "NMEA". If you don't, the MRS system won't be able to read to messages.\rn{Select output one serial and there you can select usb to pc and then format NMEA, the second output should be sett to off + do all the changes from the video}
-  Bryan : Here is the comment I mentioned in my email of saturday \rn{CHANGE ALSO THE BAUDRATE TO 112000 something! This should be the same as the base.} [This was set to 9600 for the rover, but not for the base in following pictures. (and also in the RTK when we got it)]RB
+* The only point to emphasize here is, when configuring the Reach M2 rover, be sure to choose in *Position output* tab, "USB-To-PC" and format of messages as "NMEA". If you do not, the system will not be able to read to messages. Select output 1 serial, Device USB-to-PC and then format NMEA. Output 2 should be sett to off 
   
   
-You should obtain a ReachView tab in the browser (or in the app) like this (don't mind the "no connection" message), the grey bars represents the GPS data from the base. 
+You should obtain a ReachView tab in the browser (or in the app) like this (do not mind the "no connection" message), the grey bars represents the GPS data from the base. 
 
 
 .. figure:: _static/baserover.png
    :width: 800
    :alt: alternate text
    :align: center
+
+   EMLID ReachView - Reach M2 (rover) with base correction from Reach RS2 
    
 
-.. \fm{GCP points procedure for better precision can be done but this has to be done only when everything works AND if it is required}
-.. \subsubsection{Additional Notes}
 
-.. \fm{Quick explanation of the NMEA protocol, XYZ-UTM coordonates system, just to be able to debug and understand everything}
-
-
-
-Here are the correct parameters for the Rover :
-
-.. figure:: _static/rover/Base-mode.png
-   :width: 800
-   :alt: alternate text
-   :align: center
-   
-.. figure:: _static/rover/Correction-input.png
-   :width: 800
-   :alt: alternate text
-   :align: center
-
-.. figure:: _static/rover/Position-output.png
-   :width: 800
-   :alt: alternate text
-   :align: center
-
-.. figure:: _static/rover/RTK-Settings.png
-   :width: 800
-   :alt: alternate text
-   :align: center
-
-.. figure:: _static/rover/Status.png
-   :width: 800
-   :alt: alternate text
-   :align: center
-
-Here are the correct parameters for the Base :
+Here are the correct parameters for the *Base*:
 
 .. figure:: _static/base/Base-mode.png
    :width: 800
    :alt: alternate text
    :align: center
 
+   Base mode tab
+
 .. figure:: _static/base/Correction-input.png
    :width: 800
    :alt: alternate text
    :align: center
+
+   Correction input tab
 
 .. figure:: _static/base/Position-output.png
    :width: 800
    :alt: alternate text
    :align: center
 
+   Position output tab TODO!!!!!!!!!!!!!!!!!!!!!!!!!
+
+.. admonition:: todo
+
+  As there is some confusion of the baadrate required in rober and base: try the settings of the tutorial (base 115200 and rover 9600) which should be how you received base and rover and the settings how the base is currently configured(base 9600 rover 9600). Indicate here what works and what not. Also indicate if both would work. 
+
+
 .. figure:: _static/base/RTK-Settings.png
    :width: 800
    :alt: alternate text
    :align: center
+
+   RTK settings tab
 
 .. figure:: _static/base/Status.png
    :width: 800
    :alt: alternate text
    :align: center
 
+   Status tab
+
+.. admonition:: todo
+
+  Make new picture of status tab when on the field with good reception (fix)
+
+
+Here are the correct settings for each *Rover*:
+
+.. figure:: _static/rover/Base-mode.png
+   :width: 800
+   :alt: alternate text
+   :align: center
+
+   Base mode tab
+   
+.. figure:: _static/rover/Correction-input.png
+   :width: 800
+   :alt: alternate text
+   :align: center
+
+   Correction input tab
+
+.. figure:: _static/rover/Position-output.png
+   :width: 800
+   :alt: alternate text
+   :align: center
+
+   Position output tab
+
+.. figure:: _static/rover/RTK-Settings.png
+   :width: 800
+   :alt: alternate text
+   :align: center
+
+   RTK settings tab
+
+.. figure:: _static/rover/Status.png
+   :width: 800
+   :alt: alternate text
+   :align: center
+
+   Status tab
 
 
 .. admonition:: todo
 
-  Update this part on how you bind the reach modules to the router, how you update their firmware via your phone, ... Done
-  Figure 4.33 is showing different parameters from what has been stated above. (POSITION OUTPUT) (see mail)
+  Make new picture of status tab when on the field with good reception (fix)
 
 
-Create launch scripts and configure the MRS code
+
+Connection between the on-board computer and the Reach M2
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Follow the same steps as explained under *Connection between the on-board computer and the Pixhawk* to connect each Reach M2 with its on-board computer. When replugging the reach M2, wait sufficiently long before calling the udevadm info command. It could be "ttyACM0". Call these modules "rtk" under SYMLINK. Note that when you did not update firmware of reach M2 module yet, the udevadm command does not return ID_SERIAL_SHORT. So update first the firmware as explained before!
+
+
+Example of a good configuration of the Reach devices before an experiment
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. admonition:: todo
+
+  show via text and pictures before you launch a simple autonomoustest, how it should look like. better to move this after the paramter configs as that should be done first.
+
+
+Additional tips when using reach devices
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+* Due to a damaged antenna cable which was not well connected (the gold pin did not come far enough out), the reach M2 was sometimes not accessible up to a point that even the ReachView 3 app did not show its WiFi hotspot anymore. Although it was visible under WiFi of phone or router, it could not be seen in the app. We saw the green LED was always blinking once a second and nnever got solid green. We replaced the cable and it worked fine again. But note that for it to make the hotspot you need good satelite visiblity (go outside!), otherwise in the app it is not visible! Some additional info can be found on `the LED status <https://docs.emlid.com/reach/led-status/>`__, on `hotspot not visible in the app <https://community.emlid.com/t/reach-m2-unable-to-access-reach-view-hot-spot-as-well/20015>`__, on `Reach M2 not found in the app <https://community.emlid.com/t/m2-does-not-open-reachview-2-26/24872/13>`__, and on `reach rs green status light blinks <https://community.emlid.com/t/reach-rs-green-status-light-continually-blinks/20536/5>`__.
+* In case very strange situations occur you could consider firmware reflashing of the reach device as explained in `this link <https://docs.emlid.com/reachm2/tutorials/firmware-reflashing>`__. 
+* The mac address of the reach modules is not written somewhere on the device itself but shows up under the router's DHPC setting together with its IP address. Some guide to finding mac address can be found `here <ttps://quasiengineer.dev/tech/guides/three-simple-ways-to-find-mac-address/>`__.
+* Only as a last resolution to unsolved issues, one could reset the router configration back to default. Note that you will ahve to configure all IP & MAC binding again.
+* Rebooting a reach device via the app helps if the IP address is not corresponding to the MAC address. It is only configured correctly if you see for the connected devices a Lease time "permanent" without giving a time in minutes and seconds it was connected before.
+
+
+
+Configure the Nimbro network
+-------------------------------
+
+.. admonition:: todo
+
+  TODO
+
+Configure the CTU MRS and brubotics sytems
 ------------------------------------------------
-This section will cover the different files and parameters that must be configured prior to launching a test on hardware. Might be good to print this and the next section "Autonomous flight procedure" to have it easilly available on site, and to check each point before lauching any test (i.e. as a check list before takeoff).
+This section will cover the different files and parameters that must be configured prior to launching a test on hardware. Might be good to print this and the next section "Autonomous flight procedure" to have it easilly available on site, and to check each point before lauching any test (i.e., as a check list before takeoff).
 Before doing anything, check that all the workspaces build correctly and that the code are up to date. Additionnal advices can be found `here <https://ctu-mrs.github.io/docs/system/preparing_for_a_real-world_experiment.html>`__, in MRS tutorial. Always refer to this tutorial when something seems unclear and update this one with the additionnal informations you needed.
 
 Adapt MRS code
@@ -506,7 +666,7 @@ Several things have to be modified in the default code from MRS to work with the
 
   * The name of the UAV has to be changed. This variable defines the UAV’s namespace, all the ROS nodes of the MRS UAV System will run under the namespace /$UAV_NAME/node_name. The UAV_NAME should match the /etc/hostname of the onboard computer.
     In our case this is looks like "nuc3-NUC10i7FNK". This should be changed in the *~/.basrc* in home folder of the nuc. Then it must be changed as well in `config file <https://github.com/ctu-mrs/mrs_uav_general/blob/master/config/uav_names.yaml>`__ of the uav names. Delete all the names present in the robot_names list and 
-    put the names of all the drones you are using. For more informations about the bashrc file and its parameters, checkout this part of the `tutorial <https://ctu-mrs.github.io/docs/system/bashrc_configuration.html#what-is-basrc>`__ of MRS.
+    put the names of all the UAVs you are using. For more informations about the bashrc file and its parameters, checkout this part of the `tutorial <https://ctu-mrs.github.io/docs/system/bashrc_configuration.html#what-is-basrc>`__ of MRS.
   
   * The mass of the UAV must also be changed to fit the one of your UAV. 
   
@@ -537,7 +697,7 @@ Several things have to be modified in the default code from MRS to work with the
 
 .. note:: 
 
-  Before launching any script, double check that every .bashrc file is correct for every drone. 
+  Before launching any script, double check that every .bashrc file is correct for every UAV. 
   In addition to that, a precise planning of each test that are going to be made must be done BEFORE the test day. 
   Each different test folder must be prepared, the code reviewed and ready. 
   Simulations must work perfectly as well before doing hardware test. This is essential to not waste time on site changing parameters and trying to debug software issues. 
@@ -569,7 +729,7 @@ Several things have to be modified in the default code from MRS to work with the
     Its location was : "~/mrs_workspace/src/uav_core/ros_packages/mrs_uav_odometry/config/uav$ ". By copy pasting and renaming one of the two copy to RTK.yaml it seemd to work. I don't know why it's not coherent with the other scripts as it seems it's only in the MRS files/workspace.
 
 
-  Indicate the name of the project, e.g "One_drone_validation_encoder" and also indicate the MAIN_DIR where the bag files of the test will be saved.
+  Indicate the name of the project, e.g "One_UAV_validation_encoder" and also indicate the MAIN_DIR where the bag files of the test will be saved.
   
   .. figure:: _static/ShellScriptNAmeAndMainDir.png
     :width: 500
@@ -598,19 +758,19 @@ Several things have to be modified in the default code from MRS to work with the
     'encoder' 'waitForRos; roslaunch testing_brubotics arduino.launch
     '
 
-* **Add trajectory**: In order to ask a trajectory to the drone (e.g. a step in all 3 directions), one must create a txt file with the trajectory encoded in it. 
+* **Add trajectory**: In order to ask a trajectory to the UAV (e.g. a step in all 3 directions), one must create a txt file with the trajectory encoded in it. 
   This can be done by adding the following lines in the input of the tmux session (Always change the name of the folders accordingly to your folders and files):
 
   .. code-block:: shell
 
-      'goto_start' 'WaitForRos; roslaunch testing_brubotics load_trajectory.launch file:=tmux_scripts/load_transportation/1_one_drone_validation_encoder/trajectories/movement1_uav1.txt; rosservice call /'"$UAV_NAME"'/control_manager/goto_trajectory_start
+      'goto_start' 'WaitForRos; roslaunch testing_brubotics load_trajectory.launch file:=tmux_scripts/load_transportation/1_one_UAV_validation_encoder/trajectories/movement1_uav1.txt; rosservice call /'"$UAV_NAME"'/control_manager/goto_trajectory_start
     '
       'start_challenge' 'waitForRos; history -s rosservice call /'"$UAV_NAME"'/control_manager/start_trajectory_tracking
     '
   
   As "history -s" is present, you'll have to navigate to the correct tmux tab to launch this trajectory when needed. To generate these .txt files, follow the next section.
 
-When your shell script is ready, try to launch it (remotely to test as well the network) without making the drone take-off (not toggle the take off switch of the transmitter) to see if no error is displayed. Errors can easilly happens if indentation and spaces are not consistent, so this must be checked several times to ensure that no problem will occur during a real take-off.
+When your shell script is ready, try to launch it (remotely to test as well the network) without making the UAV take-off (not toggle the take off switch of the transmitter) to see if no error is displayed. Errors can easilly happens if indentation and spaces are not consistent, so this must be checked several times to ensure that no problem will occur during a real take-off.
 
 
 * **Custom configurations** In your folder where the just_flying.sh template is pasted, create a folder custom_configs where you will put your yaml files to overwrite
@@ -618,7 +778,7 @@ When your shell script is ready, try to launch it (remotely to test as well the 
 
     * `world_hardware.yaml <https://github.com/ctu-mrs/mrs_uav_general/blob/master/config/worlds/world_simulation.yaml>`__ : add the actual lat-long coordinates of the BASE in the utm_origin_lat-long
       part. This will ensure the right computation of the baseline. Be as precise as you can on the lat
-      long value. This has to be done everytime you move the RTK base, and to be double checked everytime before making the drone take off, as it might be dangerous. 
+      long value. This has to be done everytime you move the RTK base, and to be double checked everytime before making the UAV take off, as it might be dangerous. 
 
     * `rtk_republisher.yaml <https://github.com/ctu-mrs/mrs_uav_odometry/blob/master/config/rtk_republisher.yaml>`__ : not necessary but if you plan to use all the topics related to the rtk (that's what they said in the overleaf), the
       offset x-y should be the latlong coordinates of the base CONVERTED in UTM coordinates (what does it change to use directly the UTM values of the StatusTab of the base ? instead of converting the x y value back to this ?). 
@@ -684,7 +844,7 @@ When your shell script is ready, try to launch it (remotely to test as well the 
 How to generate trajectory files
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 In this subsection, the procedure to follow in order to generate the correct trajectory text file for hardware test will be presented.
-Note that you must create a new trajectory adapted to each test you do and double check that it is coherent with the drone's position and the topology of your terrain. (You don't want the drone to go unstable if the start of the trajectory is 9m away from the actual position of your UAV.)
+Note that you must create a new trajectory adapted to each test you do and double check that it is coherent with the UAV's position and the topology of your terrain. (You don't want the UAV to go unstable if the start of the trajectory is 9m away from the actual position of your UAV.)
 
 `This MRS package <https://github.com/ctu-mrs/mrs_uav_trajectory_generation>`__ provides a method for generation a time-parametrized trajectory out of a path (a sequence of waypoints). The resulting trajectory satisfies the current dynamics constraints of the UAV and completes the path in minimum possible time. The maximum deviation of the resulting trajectory from the supplied path is a user-configurable parameter.
 
@@ -703,12 +863,12 @@ With this all done, follow those steps when your UAV is outside:
 
 * Launch the .sh script
 
-* Wait for the convergence to the current altitude of the drone. It takes more or less 10 seconds
+* Wait for the convergence to the current altitude of the UAV. It takes more or less 10 seconds
 
-* Arm the drone with the C switch (down position) and put it the the desired flight mode with the A
+* Arm the UAV with the C switch (down position) and put it the the desired flight mode with the A
   switch (UP = manual, Middle = ALTCTL, DOWN = POSCTL) MAXIME : This is not how we defined the switch : Need to be adapted in " autonomous flight procedure" section
 
-* Put the drone in offboard mode with the B switch (down position). The drone will takeoff automatically.
+* Put the UAV in offboard mode with the B switch (down position). The UAV will takeoff automatically.
 
 * Now you can send it to a setpoint with a rosservice command or through the status tab
   Note that each battery can withstand more or less 2 flights. So prepare well your experiment. Make
@@ -959,7 +1119,7 @@ Here are the steps to reproduce to validate the good working of the encoder syst
     '
       'rtk_serial' 'waitForRos; roslaunch mrs_serial rtk.launch baudrate:=9600
     '
-    #   'load_trajectory' 'waitForRos; history -s roslaunch testing_brubotics trajectory_bryan.launch file:=tmux_scripts/bryan/regulation_control_predictions_one_drone_rtk/trajectories/'"$STEP_SIZE"'
+    #   'load_trajectory' 'waitForRos; history -s roslaunch testing_brubotics trajectory_bryan.launch file:=tmux_scripts/bryan/regulation_control_predictions_one_UAV_rtk/trajectories/'"$STEP_SIZE"'
     # '
     #   'goto_trajectory_start' 'waitForRos; history -s rosservice call /'"$UAV_NAME"'/control_manager/goto_trajectory_start
     # '
@@ -971,7 +1131,7 @@ Here are the steps to reproduce to validate the good working of the encoder syst
     '
     )
 
-  Note that the trajectory related lines have been commented as the drone will only be hovering while validating this part.
+  Note that the trajectory related lines have been commented as the UAV will only be hovering while validating this part.
   The data will be logged in the folder you gave (by default bag_files) above, and then you can proceed with the standard procedure to generate matlab plots.
   The function allowing to plot these values can be found `here <https://github.com/mrs-brubotics/testing_brubotics/blob/master/generic_matlab_plots/add_your_custom_plot_functions_here/ThesisB/plot_encoder_validation.m>`__
 
@@ -980,12 +1140,12 @@ Here are the steps to reproduce to validate the good working of the encoder syst
 .. admonition:: todo
 
   In the controller and trackers code, one can subscribe to the topic : "/*UAVNAME$/serial/received_message" to get the data coming from the BACA protocol. 
-  This has not been tested more yet, a test will probably be made at VUB asap. I think the folder *https://github.com/mrs-brubotics/testing_brubotics/tree/master/tmux_scripts/load_transportation/1_one_drone_validation_encoder*
-  was made for this by last year students, but it is probably already flying. There is probably a way to launch the BACA protocol without having to fly the drone (even with the standard non-damping controller). 
+  This has not been tested more yet, a test will probably be made at VUB asap. I think the folder *https://github.com/mrs-brubotics/testing_brubotics/tree/master/tmux_scripts/load_transportation/1_one_UAV_validation_encoder*
+  was made for this by last year students, but it is probably already flying. There is probably a way to launch the BACA protocol without having to fly the UAV (even with the standard non-damping controller). 
 
   record.sh how do we chosse which topic? MRS says it's easier to exclude topics rather than specifying which to record but Where to do that ? Is it not better do ask a similar command as in the session-sim.yml ? With all the topics listed?
 
-Raphael : Remaining parts to transpose are "4.14.4 Modifying the MRS code", "4.15 Making the drone take off and fly", "4.16 Set up the Nimbro parameters according to MRS" 
+Raphael : Remaining parts to transpose are "4.14.4 Modifying the MRS code", "4.15 Making the UAV take off and fly", "4.16 Set up the Nimbro parameters according to MRS" 
 maybe the part about take off and fly is redundant with the Hardware.rst written already in this tutorial. Check before doing it.
-Done except Nimbro as I'll do it when working on two drones. 
+Done except Nimbro as I'll do it when working on two UAVs. 
 

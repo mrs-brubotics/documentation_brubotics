@@ -977,6 +977,9 @@ This module is installed at the bottom of the UAV and allows to measure the stat
 
    Raphael todo: put captrions below each figure (see examples UAV). If there is 1 part from 3 views then tell this in caption as now maybe these are 3 different parts we cannot know. For each part tell how many we need e.g., x2, x1, x5. If a part consists out of different subparts also mention their names in the caption.
 
+.. admonition:: todo
+
+   Raphael todo: this section should include the CAD pictures of 1 uav with payload up to 2 uav with payload. I want to see the exact payload yuo use for exps and you should draw it with the correct properties (mass, geometry, inertia, ...) and mention these 
 
 Components
 ^^^^^^^^^^^^^^
