@@ -70,6 +70,9 @@ These steps will be based on `this tutorial <https://ctu-mrs.github.io/docs/hard
    :alt: alternate text
    :align: center  
 
+   ID's that are displayed when doing the above steps for the Pixhawk.
+
+
 .. code-block:: shell
 
 	E: ID_MODEL_ID=6001
@@ -118,12 +121,20 @@ If you have no processes that died and a long list of blacklisted and loaded ite
    :alt: alternate text
    :align: center
 
+   Mavlink node launched correctly after the setup of the port on which the PixHawk will be connected.
+
 
 
 .. admonition:: todo
 
   Why do you have 2* arduino in there? I woudl say there si only one required? Make sure you indicate which arduino belongs to which nuc.
   Make sure there is a section under the payload module with arduino where you refer to this section
+
+
+.. note:: 
+  Answer to the todo : This was already configured like that on the last year's drone. And I think it make sense to be compatible with both arduino as the module may be swapped easilly if reprinted/modified or just disassembled. 
+  I don't think it matters to know which one is for which nuc if they both work. This is less the case with the M2 and pixhawk as they will for sure stay attached to the drone. (don't need to unmount them to reprint a part for example as they are off the shelf product)
+
 
 You have to repeat this procedure for the Arduino's and the RTK GPS M2reach module. 
 Always make sure to use the same USB port when doing this. 
@@ -153,6 +164,8 @@ and you get the same results as in
    :alt: alternate text
    :align: center
 
+   Missing SSH service error.
+
 
 You first have to do:
 
@@ -160,12 +173,14 @@ You first have to do:
 
   sudo apt-get install ssh
 
-If get the same result as the following pictures **after** rebooting the nuc and running the same command, you can skip the next parts as this means the SSH is already launched automatically.
+If get the same result as the following pictures **after** rebooting the nuc and running the same command that gave the previous error, you can skip the next parts as this means the SSH is already launched automatically.
 
 .. figure:: _static/SShActiveAfterBoot.png
    :width: 800
    :alt: alternate text
    :align: center
+
+   Command window saying that SSH is launched automatically when booting.
   
 
 But if you get the same result as below: 
@@ -174,6 +189,8 @@ But if you get the same result as below:
    :width: 800
    :alt: alternate text
    :align: center
+
+   SSH not launched after booting.
 
 
 this issue is solved by creating a shell script that will start the ssh service automatically when the NUC is turned on.
@@ -224,6 +241,9 @@ You should now get the same result as on the following figure:
    :alt: alternate text
    :align: center
 
+   Command window of the SSH working when booting the NUC.
+
+
 Before we will shh into the NUC from another ground station device, we will setup the WiFi.
 
 Wireless connection between base station device and on-board NUCs
@@ -254,6 +274,8 @@ If you are at VUB, building Z, R&MM lab, here are the settings you have to put t
    :alt: alternate text
    :align: center
 
+   Settings to put inside router's quick setup tab to connect to the VUB network when at building Z.
+
 
 If you are at VUB, Pleinlaan 9, -1, here are the settings (of Bryan Convens) you have to put to connect to the network:  
 
@@ -281,7 +303,8 @@ The IP of the ground station must be 192.168.0.100, while the IP of the NUC's mu
    :alt: alternate text
    :align: center
 
-   IPv4 of nuc3
+   IPv4 configuration of nuc3
+
 
 Note that the DNS server is on automatic but with a certain value. It works without the automatic switch, but if no number is put you might lose internet. 
 
@@ -296,6 +319,9 @@ Then check via ifconfig if the ip adress is set now correctly. You can find back
    :width: 800
    :alt: alternate text
    :align: center
+
+   ifconfig result to find the IP and mac adress of the NUC on UBUNTU.
+
 
 The last one is the information corresponding to the NUC, as you can see by its IP address that corresponds to what we just configured (meaning that it is configured correctly). If for some reason the IP address is not the new configured one, just disconnect and reconnect to the router's wifi and it should be fine.
 
@@ -312,6 +338,9 @@ In order to ensure that each WiFi-enabled device connects always with the same I
    :alt: alternate text
    :align: center
 
+   IP and Mac adress displayed in the Binding tab. Should contains all the devices you will used and their correct MAC Adress alongside the IPV4 you just configured.
+
+
 and search for the IP of the UAV's on-board computer as well as for the ground station computer. Check that the MAC adress associated with the IP of each device is coherent with what ifconfig was returning.
 If this is not, as some NUC can be used for a while as a UAV's on-board computer and then be used for ground station, meaning that the ground station IP will be used with another MAC address, one can click on edit and enter the correct one or delete and just enter a new one: 
 
@@ -320,9 +349,13 @@ If this is not, as some NUC can be used for a while as a UAV's on-board computer
    :alt: alternate text
    :align: center
 
+   IP and MAC adress are set there. 
+
+
 .. admonition:: note
 
   The latest list of MAC & IP bindings can be found `here <https://docs.google.com/spreadsheets/d/1OeYaRcWuatpoextDXPVYNa4SpufYrAW9z_JnPSXWZe0/edit?usp=sharing>`__.
+  [Cannot access the link from nuc3]rb 
 
 .. admonition:: todo
 
@@ -341,7 +374,7 @@ For example for nuc3:
    :alt: alternate text
    :align: center
 
-   ping to nuc3
+   Ping to nuc3
 
 
 .. code-block:: shell
@@ -354,7 +387,7 @@ For example for nuc3:
    :alt: alternate text
    :align: center
 
-   ssh into nuc3
+   SSH into nuc3
 
 
 .. admonition:: note
@@ -368,6 +401,8 @@ Once you have SSHed in the on-board computer from the ground station computer, y
    :width: 800
    :alt: alternate text
    :align: center
+
+   Launch of a simulation on nuc3 from the ground station through an SSH. 
 
 To exit the device you SSHed into, type the following in the terminal:
 
@@ -388,6 +423,8 @@ GNSS measurements with usual GPS precision. The RTK system computes the baseline
    :alt: alternate text
    :align: center
 
+   RS2 reach (base), the M2 reach (rover) and its antenna and cables.
+
 
 .. admonition:: note
 
@@ -398,6 +435,7 @@ GNSS measurements with usual GPS precision. The RTK system computes the baseline
   Regularly update the firmware version of both the Reach RS2 and Reach M2 devices.
   In order to find newest available firmware version, make sure you connected the reach device to the router with internet access, otherwise it will always tell it is up to date with the latest firmware although it is not the case.
   The current firmware versions are:
+
     * Reach RS2: v27
     * Reach M2 uav1:
     * Reach M2 uav2:
@@ -443,9 +481,9 @@ It is advised to read everything in the `manufacturer's tutorial on the Reach M2
 
 * `First setup <https://docs.emlid.com/reachm2/quickstart/first-setup>`__ Follow the same steps as for the Reach RS2 (connection to internet via router, update its firmware).
 
-* `Base and Rover setup <https://docs.emlid.com/reach/before-you-start/first-setup>`__  In the ReachView3 app, change the default name *reach* to *reachM2-rover-id*, where *id* is the id of the on-board computer (e.g. *id*=3 for nuc3). This is to ensure all Reach M2 devices in the multi-robot system have different names when connected to the Wi-Fi network of the router. In the ReachView3 app, select the device and open the Reach Panel. 
+* `Base and Rover setup <https://docs.emlid.com/reach/before-you-start/first-setup>`__ In the ReachView3 app, change the default name *reach* to *reachM2-rover-id*, where *id* is the id of the on-board computer (e.g. *id* =3 for nuc3). This is to ensure all Reach M2 devices in the multi-robot system have different names when connected to the Wi-Fi network of the router. In the ReachView3 app, select the device and open the Reach Panel. 
 
-* `Connecting Reach to Internet via Wi-Fi <https://docs.emlid.com/reachrs2/quickstart/connecting-to-wifi>`__ .
+* `Connecting Reach to Internet via Wi-Fi <https://docs.emlid.com/reachrs2/quickstart/connecting-to-wifi>`__
 
 * `Working with NTRIP service <https://docs.emlid.com/reachrs2/rtk-quickstart/ntrip-workflow>`__ (only follow Update Reach, and Provide Reach with a clear sky view Section).
 
@@ -530,6 +568,7 @@ Here are the correct parameters for the *Base*:
 .. admonition:: todo
 
   As there is some confusion of the baadrate required in rober and base: try the settings of the tutorial (base 115200 and rover 9600) which should be how you received base and rover and the settings how the base is currently configured(base 9600 rover 9600). Indicate here what works and what not. Also indicate if both would work. 
+  The one presented above works. Still need to try with both at 9600. But I expect it works as well.
 
 
 .. figure:: _static/base/RTK-Settings.png
@@ -644,6 +683,8 @@ Several things have to be modified in the default code from MRS to work with the
    :alt: alternate text
    :align: center
 
+   Change active estimator to RTK.
+
 .. admonition:: todo
 
   Looks like RTK was already in the available parameters, so this step might be useless. but to be sure it started with the RTK I changed it anyway.
@@ -660,6 +701,8 @@ Several things have to be modified in the default code from MRS to work with the
       :width: 600
       :alt: alternate text
       :align: center
+
+      Manually set baudrate of the RTK in its config file.
 
 
 * **Bashrc configuration** : 
@@ -678,6 +721,8 @@ Several things have to be modified in the default code from MRS to work with the
     :width: 800
     :alt: alternate text
     :align: center
+
+    Correct configuration of the bash.rc file. See Nimbro parameters as the UAV_NAME might change. 
 
   When modifying the bashrc file, you need to execute the following command before launching some scripts : 
 
@@ -735,6 +780,8 @@ Several things have to be modified in the default code from MRS to work with the
     :width: 500
     :alt: alternate text
     :align: center
+
+    Name of the project and the location where the ROSbag will be logged.
 
 
 
@@ -818,6 +865,8 @@ When your shell script is ready, try to launch it (remotely to test as well the 
         :width: 800
         :alt: alternate text
         :align: center
+
+        UAV manager config file.
 
       Be sure to allow the overwriting by adding in your custom scripts the config and link it to the right
       custom config file :
@@ -1084,6 +1133,8 @@ Here are the steps to reproduce to validate the good working of the encoder syst
     :width: 800
     :alt: alternate text
     :align: center
+
+    Arduino node launched correctly.
   
 * **Create shell file for hardware test** : As the data coming from the arduino is only the angle, but also some reference number (to identify which encoder angle it is) and a the value of the checksum is received, 
   one must process these messages. This is done in the controller's callback that is called everytime a new message comes from the serial port. 

@@ -992,7 +992,7 @@ Off-the-shelf
 
 * **Encoders x2**: Sensor used to measure the actual orientation of the cable, fit inside the universal joint.
 
-  *Choice*: `EMS22A <https://www.bourns.com/docs/product-datasheets/EMS22A.pdf>`__ because of its absolute nature, making it suitable to measure an absolute angle. It has a good resolution and its plain shaft makes it lightweight and compact, which is perfect to fit in the joint.  
+  *Choice*: `EMS22A <https://www.bourns.com/docs/product-datasheets/EMS22A.pdf>`__ because of its absolute nature, making it suitable to measure an absolute angle. It has a good resolution (1024) and its plain shaft makes it lightweight and compact, which is perfect to fit in the joint.  
 
   .. figure:: _static/RotaryEncoderEMS22A.png
      :width: 400
@@ -1014,6 +1014,8 @@ Off-the-shelf
      :alt: alternate text
      :align: center
 
+     RS PRO Deep Groove Ball Bearing
+
 
 * **Collar clamp screw x2**: To fix the shaft of the encoders to axis of the joint.
 
@@ -1023,6 +1025,8 @@ Off-the-shelf
      :width: 400
      :alt: alternate text
      :align: center
+
+     Huco Shaft Collar One Piece Clamp Screw
 
 
 * **Arduino**: To process the data coming from the sensors and communicate with the on-board computer.
@@ -1048,6 +1052,8 @@ Optional:
      :width: 400
      :alt: alternate text
      :align: center
+
+     FSR04CE Force sensor
    
   .. admonition:: todo
 
@@ -1076,20 +1082,32 @@ All the following parts need to be 3D printed with PLA and infill of 10 to 15%.
      :alt: alternate text
      :align: center
 
+     Front of the first half of the center piece
+
+
   .. figure:: _static/Centerpiecepart1back.png
      :width: 400
      :alt: alternate text
      :align: center
+
+     Back of the first part of the center piece
+
 
   .. figure:: _static/Centerpiecepart2front.png
      :width: 400
      :alt: alternate text
      :align: center
 
+     Front of the second part of the center piece
+
+
   .. figure:: _static/Centerpiecepart2back.png
      :width: 400
      :alt: alternate text
      :align: center
+
+     Back of the second part of the center piece
+
 
 * **Upper arms**: Will be attached to the battery by its support. Must fit an encoder.
 
@@ -1098,15 +1116,21 @@ All the following parts need to be 3D printed with PLA and infill of 10 to 15%.
      :alt: alternate text
      :align: center
 
+     Front view of the first upper arm
+
   .. figure:: _static/UpperArm1Front.png
      :width: 100
      :alt: alternate text
      :align: center
 
+     Back view of the first upper arm. Note the cavity made to fit an encoder.
+
   .. figure:: _static/UpperArm2.png
      :width: 100
      :alt: alternate text
      :align: center
+
+     Front view of the second upper arm. No encoder will be contained in it.
 
 
 * **Lower arms**: Same purpose as upper arm. 
@@ -1118,15 +1142,23 @@ All the following parts need to be 3D printed with PLA and infill of 10 to 15%.
      :alt: alternate text
      :align: center
 
+     Assembly of the two lower arms, secured togheter with a bolt and nut. 
+
+   .. note::
+
+      A cavity has been kept in these arms to allow the cables of a force sensor to pass. 
 
 
-* **Attachment for the cable**: Must fit on the lower arm (And on the force sensor if there is one).
+* **Attachment for the cable**: Must fit on the lower arm (on top of the force sensor, if there is one).
 
 
    .. figure:: _static/AttachmentCable.png
      :width: 100
      :alt: alternate text
      :align: center
+
+     Attachment for the cable
+
 
 * **Support attached to the battery case**: Link the battery of the UAV to the upper arm of the encoder module.
 
@@ -1135,17 +1167,22 @@ All the following parts need to be 3D printed with PLA and infill of 10 to 15%.
      :alt: alternate text
      :align: center
 
-* **Arduino plate**: Support to screw the arduino and the stripboard on the side of the battery case.
+     Support linking the bottom of the battery case with the upper arms of the encoder module.
 
-   .. figure:: _static/AttachmentArduino.png
-     :width: 300
-     :alt: alternate text
-     :align: center
+.. * **Arduino plate**: Support to screw the arduino and the stripboard on the side of the battery case.
 
-   
-   .. admonition:: todo
+..    .. figure:: _static/AttachmentArduino.png
+..      :width: 300
+..      :alt: alternate text
+..      :align: center
 
-     Raphael: make sure the arduino and electronics board are put in a casing that you attach to UAV. Make sure the cables cannot be pulled out eaily as there will be vibrations, shocks,.. It is very dangerous to leave it open as this is too close to ground and like that cables can be pulled out when landing or taking off or when manually changing batteries. 
+..      We do not use one anymore. 
+
+.. admonition:: todo
+
+   Raphael: make sure the arduino and electronics board are put in a casing that you attach to UAV. Make sure the cables cannot be pulled out eaily as there will be vibrations, shocks,.. It is very dangerous to leave it open as this is too close to ground and like that cables can be pulled out when landing or taking off or when manually changing batteries. 
+   Maxime is doing it soon. 
+
 
 Step-by-step assembly instructions
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -1161,13 +1198,23 @@ On the following figure, one can see the correct circuit to reproduce.
    :alt: alternate text
    :align: center
 
+   Electronic circuit to reproduce in order to power and read the values of the sensors with an Arduino UNO.
+
+
 .. note::
 
   It is better to use flexible cables as rigid cables might disconnect more easily in case they are pulled a bit.
 
+ 
+The pull down resistor is present to use with the previously chosen force sensor. Make sure it is adapted in case you chose another sensor.
 5 cables are needed per encoders. 2 are for the power (V+ and ground) and 3 are for the signal. To solder these correctly, put a small amount of tin on both the pin of the encoder and the cable. Then put the cable on the pin and heat up the two with the soldering iron. Both preapplied tin layers should melt easilly and fuse togheter on the pin. Once the shape of the weld is looking regular and well spreaded over the pin, just take out the iron and wait.
 Don't hesitate to redo some of the weldings if they don't look strong enough, as it is very important that the cables stay in place. Also, the welds must not touch each other of course.
 Once all the cables are welded to the encoder, cables from the same encoder can be attached togheter with tape to keep a readable circuit and avoid mistakes. 
+
+.. admonition:: todo
+
+   Add picture of the resulting circuit.
+
 
 Mechanical assembly 
 *******************
@@ -1188,12 +1235,18 @@ Mechanical assembly
    :alt: alternate text
    :align: center
 
+   Press fit the collar in position inside the center piece of the module.
+
+
 * **Add the bearings** also by doing press fit. Less tension needed as the arm will naturally keep them in place.
 
 .. figure:: _static/BallBearing.png
    :width: 400
    :alt: alternate text
    :align: center
+
+   Bearing being put in correct position.
+
 
 * **Assemble the lower arms** using bolt and adding already the attachment piece for the cable. 
 
@@ -1205,8 +1258,13 @@ Mechanical assembly
 
 * **Screw the arduino on its support plate and screw the plate on the battery case**
 
+Calibration 
+***********
+
   
 
+Additionnal assembly for 2UAV and a beam payload
+************************************************
 
 
 
