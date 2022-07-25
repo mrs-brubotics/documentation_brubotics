@@ -894,36 +894,68 @@ How to generate trajectory files
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 In this subsection, the procedure to follow in order to generate the correct trajectory text file for hardware test will be presented.
 Note that you must create a new trajectory adapted to each test you do and double check that it is coherent with the UAV's position and the topology of your terrain. (You don't want the UAV to go unstable if the start of the trajectory is 9m away from the actual position of your UAV.)
-
+Also never use the "goto" services from the Status tab when doing real experiments. As you need to type the positions manually, it is very dangerous in case a typo is entered there. Always use predefined trajectory text files.
 `This MRS package <https://github.com/ctu-mrs/mrs_uav_trajectory_generation>`__ provides a method for generation a time-parametrized trajectory out of a path (a sequence of waypoints). The resulting trajectory satisfies the current dynamics constraints of the UAV and completes the path in minimum possible time. The maximum deviation of the resulting trajectory from the supplied path is a user-configurable parameter.
+To actually generate these "path" text files, you need to use this Matlab function, and call it throught another matlab file, placed in your own test script folder. You can use this script as a template, and modify it according to your needs.
+You need to specify the following parameters :
 
-We did not do it yet. Not sure where to specify waypoints. I guess just need to run the `launch file <https://github.com/ctu-mrs/mrs_uav_trajectory_generation/blob/master/launch/trajectory_generation.launch>`__ of the package, after having checked in the `config file <https://github.com/ctu-mrs/mrs_uav_trajectory_generation/blob/master/config/default.yaml>`__ if the parameters are okay. (what param should I put ? )
+* Sampling time dt : Must not be changed as MRS package uses 0.01 in its launch scripts.
 
-.. admonition:: todo
+* The number of samples you want for each steps. To compute it, specify the period (in secondes) you want for each step. This will specify if the step will be aggressive or very slow. 
+  
+  .. admonition:: todo
+      
+      For now is put on : int64([1.0, 6.0, 6.0, 6.0, 6.0]/dt); Does it's okay for our first non too aggressive steps ? I guess checking what it does in simulation is a good indicator. 
 
-  following part is redundant with what is written in the next part "Autonomous flight procedure". Delete it as soon as the part is validated and complete. 
 
-With this all done, follow those steps when your UAV is outside: 
+* The initial position at which the UAV will start its trajectory. In practice, the UAV must be close to that point, when it take off. Then it will be first ask to the UAV to go towards this start point, before launching the full trajectory.
 
-* First wait for the RTK FIX. You can see it in the EMLID ReachView of the Reach M2. Just access
-  it by typing its IP address on your browser
-  Figure 4.36: Look at the RTK Status at the top right corner in the EMLID ReachView App on your
-  browser (possible in the app also)
+* The length of the step.
 
-* Launch the .sh script
+  .. note::
 
-* Wait for the convergence to the current altitude of the UAV. It takes more or less 10 seconds
+    It is always good practice to generate different trajectories when testing things on real hardware. For example, when doing steps tests, it is good to first test out very small tests, then do a larger one, and then a even larger one.
 
-* Arm the UAV with the C switch (down position) and put it the the desired flight mode with the A
-  switch (UP = manual, Middle = ALTCTL, DOWN = POSCTL) MAXIME : This is not how we defined the switch : Need to be adapted in " autonomous flight procedure" section
 
-* Put the UAV in offboard mode with the B switch (down position). The UAV will takeoff automatically.
+* Specify the name you want for the text file that will be generated. 
 
-* Now you can send it to a setpoint with a rosservice command or through the status tab
-  Note that each battery can withstand more or less 2 flights. So prepare well your experiment. Make
-  sure the batteries are at 16.8V (fully charged for 4S) before you start to fly. When the battery voltage is
-  close to 14 V, it is better to not take off in order to avoid damage to the batteries. This can be changed
-  in the px4_config.yaml BUT you definitely shouldn’t change this value.
+Then a plot will generate to allow you to see the waypoints you generated. Check that it's what you wanted, and then move the .txt file to your testing folder, in a trajectory subfolder where you'll put all the trajectories related to that test.
+
+.. figure:: _static/TrajectoryGenerationExample.png
+  :width: 800
+  :alt: alternate text
+  :align: center
+
+  Example of a trajectory generated from position (5,5). Step size is 1m.
+
+.. `This MRS package <https://github.com/ctu-mrs/mrs_uav_trajectory_generation>`__ provides a method for generation a time-parametrized trajectory out of a path (a sequence of waypoints). The resulting trajectory satisfies the current dynamics constraints of the UAV and completes the path in minimum possible time. The maximum deviation of the resulting trajectory from the supplied path is a user-configurable parameter.
+
+
+.. .. admonition:: todo
+
+..   following part is redundant with what is written in the next part "Autonomous flight procedure". Delete it as soon as the part is validated and complete. 
+
+.. With this all done, follow those steps when your UAV is outside: 
+
+.. * First wait for the RTK FIX. You can see it in the EMLID ReachView of the Reach M2. Just access
+..   it by typing its IP address on your browser
+..   Figure 4.36: Look at the RTK Status at the top right corner in the EMLID ReachView App on your
+..   browser (possible in the app also)
+
+.. * Launch the .sh script
+
+.. * Wait for the convergence to the current altitude of the UAV. It takes more or less 10 seconds
+
+.. * Arm the UAV with the C switch (down position) and put it the the desired flight mode with the A
+..   switch (UP = manual, Middle = ALTCTL, DOWN = POSCTL) MAXIME : This is not how we defined the switch : Need to be adapted in " autonomous flight procedure" section
+
+.. * Put the UAV in offboard mode with the B switch (down position). The UAV will takeoff automatically.
+
+.. * Now you can send it to a setpoint with a rosservice command or through the status tab
+..   Note that each battery can withstand more or less 2 flights. So prepare well your experiment. Make
+..   sure the batteries are at 16.8V (fully charged for 4S) before you start to fly. When the battery voltage is
+..   close to 14 V, it is better to not take off in order to avoid damage to the batteries. This can be changed
+..   in the px4_config.yaml BUT you definitely shouldn’t change this value.
 
 
 Cable-Suspended Payload Module
