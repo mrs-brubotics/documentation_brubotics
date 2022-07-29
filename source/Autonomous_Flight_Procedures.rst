@@ -86,4 +86,4 @@ Run an autonomous hardware experiment
 * When the odometry is correct the safety pilot can takeoff the UAV. 
       * The same procedure as for manual flight with some differences.
       * After the UAV is ARMED and the props start spinning, toggle the OFFBOARD switch. Immediately set the throttle to a value of the hover thrust (e.g. 57%). The latter is important when taking back manual control so the UAV does not fall down. After a few sconds the thrust will increase and the UAV will takeoff. 
-
+* before closing the session, ctrl+c on the rosbag tab, to close the bagfile. If you forget it'll be active and an additionnal step will be required to access those data before plotting them.

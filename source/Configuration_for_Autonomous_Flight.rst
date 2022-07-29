@@ -928,6 +928,47 @@ Then a plot will generate to allow you to see the waypoints you generated. Check
 
   Example of a trajectory generated from position (5,5). Step size is 1m.
 
+
+How to estimate the motor parameters
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. admonition:: todo
+
+  I moved the motor parameters here (taken from *Project Certified Correct Control of UAVs with Cable-Suspended-Payload* as I think it's needed for all experiments, with or without payload. So makes more sense to put it with the rest here. 
+  
+
+Since the UAV build presented in previous sections is not the same as the one built by CTU-MRS, the motor parameters might be differents. These parameters are important when converting the force vector (computed in the controller) into a thrust value.
+Indeed, CTU MRS provides function that will link the physical force that is required into a throttle value between 0 and 1 that can be given as instruction to the Pixhawk autopilot. 
+But to translate this information correctly, the motors parameters must be evaluated. 
+This can be done following this steps : 
+
+   * I assume your controller has an integrator in the height active with sufficient gain (use same value as default integral gains of the Se3Controller of ctu) and is configured using the motor params determined for the T650 hardware estimated by (`see ctu <https://github.com/ctu-mrs/mrs_uav_controllers/blob/master/config/uav/t650/motor_params_default.yaml>`__). Always use feedforward term to compensate total mass of uav and payload.
+   * Make sure you have fully charged batteries from which you start each experiment.
+   * Attach a load of mass m_l to the UAV of mass m_uav. 
+   * To know the whole thrust (or mass) range you should have tested before (with small steps what the max payload is the UAV can still takeoff safely, be carefull). Always stay 20% below when you see full throttle is not able to takeoff the UAV. Write down the last total mass for which it could takeoff and the one for which it just could not. This is the physical total thrust constraint.
+     Can this be done with manual flight ? As we control the throttle manually. When the joystick all the way up do not take off we know it's at the limit. 
+   * write down m_l and m_uav and compute the total m_total = m_m + m_uav.
+   * Do a test where you let the UAV with a load attached hover at a fixed position, far enough from the ground (avoid ground effect, e.g. 3m high). Make sure the load is not swinging so either tape it (strongly) to the frame or use a sufficiently long cable.
+   * You log (rosbag) over time (each exp about same length, e.g. 10 minutes of flight data) the battery voltage (starting from fully charged), the thrust command your controller produces (value between 0 and 1) and the UAV position in xyz. 
+   * Repeat this process for increasing masses m_l (and m_l + m_uav) within (the full range of) the thrust capabilities of the UAV. Take about 4-5 total masses over the whole range (above nominal weight), one can be without any additional payload. 
+   * See which thrust constant you found for the UAV by computing it as (`in ctu's file <https://github.com/ctu-mrs/uav_core/tree/master/miscellaneous/thrust_constants/uav_thrust_curve_estimation>`__). Show me using the max, avg and min value of trust you logged to compensate the same mass (because battery voltage drops over time). 
+   * Plot the data voltage, pos, trust over time and a line that corresponds to hover thrust = totalmass*g.
+   * Push matlab file on github and wetransfer me the matlab and rosbags. 
+   * Repeat this process for both UAVs.
+   * Are the min, max, avg thrust constants different from what ctu obtained (they have 2 models for T650, so check both)? How far are is the min to max for each UAV? How different is it between 2 UAVs?
+   * Based on the above answers we have to make them a function of the motor voltage (as this decreases during operation).
+
+To record the voltage, probably look at Mavros/battery topic. Check when pixhawk running.
+
+
+
+
+
+
+
+
+
+
 .. `This MRS package <https://github.com/ctu-mrs/mrs_uav_trajectory_generation>`__ provides a method for generation a time-parametrized trajectory out of a path (a sequence of waypoints). The resulting trajectory satisfies the current dynamics constraints of the UAV and completes the path in minimum possible time. The maximum deviation of the resulting trajectory from the supplied path is a user-configurable parameter.
 
 
