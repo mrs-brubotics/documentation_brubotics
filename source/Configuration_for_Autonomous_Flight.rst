@@ -1049,6 +1049,10 @@ To validate that this link has been done correctly, connect the arduino to its U
 In the mrs serial package a new launch file should be created for example arduino.launch
 with the correct baudrate and port:
 
+.. admonition:: todo
+
+   Raphael: you say to create such a launch file in the serial package, but I see this file in our testing package. Please be specific on what should be done. Also specify on which original launch file of ctu this was based. See `Communication between arduino and ROS using mrs_serial package <https://github.com/ctu-mrs/mrs_uav_system/issues/48>`__.
+
 .. code-block:: xml
 
   <launch>
@@ -1123,8 +1127,14 @@ BACA Protocol in Arduino code
 
 To use the encoder among the ROS framework, one has to use the `BACA protocol <https://github.com/ctu-mrs/mrs_serial>`__ to send the relevant data via the USB port of the arduino, to the NUC.
 The following function is implemented in the Arduino to correctly transform the data and send it to ROS.
+
+.. note::
+
+    More info can be found in these issues: `Communication between arduino and ROS using mrs_serial package <https://github.com/ctu-mrs/mrs_uav_system/issues/48>`__ and `Convert BACA to int in ROS <https://github.com/ctu-mrs/mrs_uav_system/issues/53>`__
+
+
 Then a node will be able to subscribe to a specific topic to read this data flow, and use it for measuring the load's position.
-Here is the full function used :
+Here is the full function used:
 
 .. code-block:: arduino
 

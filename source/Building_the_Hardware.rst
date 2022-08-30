@@ -1190,7 +1190,7 @@ Once everypart is ready, one can proceed with the assembly of the encoder system
 
 Electronic circuit
 ******************
-First, the electronic components can be assembled. This will require a soldring station as everything will be connected via the stripboard.
+First, the electronic components can be assembled. This will require a soldering station as everything will be connected via the stripboard.
 On the following figure, one can see the correct circuit to reproduce. 
 
 .. figure:: _static/ElectronicCircuit.png
@@ -1200,6 +1200,9 @@ On the following figure, one can see the correct circuit to reproduce.
 
    Electronic circuit to reproduce in order to power and read the values of the sensors with an Arduino UNO.
 
+.. admonition:: todo
+
+   the circuit ports do not correspond the the arduino code as other ports are used. So make a comment that 12,11,10 should be connected to 4,3,2
 
 .. note::
 
