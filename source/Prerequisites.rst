@@ -1,6 +1,6 @@
 Prerequisites
 ====================
-
+    
 This section gives an overview of the main scientific concepts and engineering tools used this project.
 We suggest some useful sources for both beginners (more general) and for more advanced audience (more sepcific).
 Depending on the features you are interested in, not all prior knowledge will be required.
