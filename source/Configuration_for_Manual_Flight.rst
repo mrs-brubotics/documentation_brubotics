@@ -74,7 +74,7 @@ The button "Jog Dial Scroll/Enter" in the picture above will be referenced as "s
 Take the UAV and detach all propellors.
 To bind both RC devices, follow these steps (which come from `this video <https://www.youtube.com/watch?v=SzZXjZMq_po>`__):
 
-* Connect the SL port of the Optima SL (horizontal port below) with the DSM/SBUS RC port of the Pixhawk. The orientation of the cables (from left to right: yellow, red, black) nees to be respected or the Optima SL will not turn on.
+* Connect the SL port of the Optima SL (horizontal port below) with the DSM/SBUS RC port of the Pixhawk. The orientation of the cables (from left to right: yellow, red, black) needs to be respected or the Optima SL will not turn on.
 
 .. figure:: _static/optima_cable_order.jpg
    :width: 800
