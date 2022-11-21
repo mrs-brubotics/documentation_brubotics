@@ -119,7 +119,7 @@ To bind both RC devices, follow these steps (which come from `this video <https:
   * Press and hold both buttons (back button and scroller) of the Flash 8. A new menu with a ’System.List’ will open;
   * Go to "MDL Type";
   * Make sure you have the Airplane (ACRO) mode on, with 1 wing (1 AILE) and normal tail (see picture below). The Airplane (ACRO) mode is the only mode correct for this UAV, as it is also able to control quadcopters;
-  * Go back to the main menu;
+  * Go back to the main menu (by pressing back button).;
   * If you press and hold a bit on only the scroller, Acro.List opens;
   * Scroll all the way down till "monitor" and you will have a screen with all the different channels;
   * When you move (i.e., make circles) the joysticks and with the Airplane (ACRO) mode previously selected, you will see that each joystick affects only two channels.
