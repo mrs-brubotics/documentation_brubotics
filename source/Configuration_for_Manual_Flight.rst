@@ -107,7 +107,7 @@ To bind both RC devices, follow these steps (which come from `this video <https:
 
 * The screen on the transmitter should automatically go from "Press and hold the link button..." to "Reboot RX check all functions...". When this happens, turn the power from the receiver off and turn it back on.
 
-* Press "finish". Normally you should see the battery voltage of the receiver on the lower part of the main screen of the transmitter (more or less 5V if you are using the Pixhawk (4.7V)). It oscillates at a high frequency. When you would power off the receiver, the value is fronze, turn on again and it oscillates. This means it is working.
+* Press "finish". Normally you should see the battery voltage of the receiver on the lower part of the main screen of the transmitter (more or less 5V if you are using the Pixhawk (4.7V)). It oscillates at a high frequency. When you would power off the receiver, the value is frozen, turn on again and it oscillates. This means it is working.
 
 * (Optional, if you attached ESCs to Optima SL) WITH THE PROPELLERS DETACHED FROM THE MOTORS AND THE BATTERY CONNECTED, raise the throttle stick of the transmitter. If the motor starts spinning, then the binding process is successful. Keep in the mind that the RC calibration is not done yet, so it is possible that the motor will only start spinning at 50% throttle or more.
 
