@@ -191,7 +191,7 @@ Installation of QGroundControl
   * Pixhawk of F450 with nuc3: 
   * Pixhawk of F450 with nuc4: 
   * Pixhawk of F450 with nuc5: GQC v4.2.3 used for `px4_firmware 7c37433 <https://github.com/ctu-mrs/px4_firmware/commit/7c374335db9ae7479f7fe2587a8e64fb9f0df3d5>`__;
-  * Pixhawk of T650 with nuc2: 
+  * Pixhawk of T650 with nuc2: QGC v4.2.4
   * Pixhawk of T650 with nuc3: QGC v4.2.3 used for `px4_firmware 7c37433 <https://github.com/ctu-mrs/px4_firmware/commit/7c374335db9ae7479f7fe2587a8e64fb9f0df3d5>`__;
 
   Make sure all UAVs are configured with the same px4 firmware versions.
