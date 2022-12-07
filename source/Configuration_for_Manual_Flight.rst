@@ -237,9 +237,9 @@ Calibrations
    :alt: alternate text
    :align: center
 
-   Transmitter channels and thei functions. The HitecFlash 8 looks similar.
+   Transmitter channels and there functions. The HitecFlash 8 looks similar, but the two joysticks are inverted and the emergency switch is on the other side. 
 
-.. figure:: _static/channels_screen.jpg
+.. figure:: _static/channels_screen_new.jpg
    :width: 800
    :alt: alternate text
    :align: center
