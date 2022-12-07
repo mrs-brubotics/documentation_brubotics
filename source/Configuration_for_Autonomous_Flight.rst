@@ -284,6 +284,8 @@ If you are at VUB, Pleinlaan 9, -1, here are the settings (of Bryan Convens) you
   test ethernet connection at Pleinlaan (see email helpdesk) and add settings
 
 
+tp-link 2 (TP-LINK_F404) is already configured and WI-FI works at pleinlaan when connected with the "PL9.-1.54  F8H10" ethernet port.
+
 You should now have internet over the router's wifi with your on-board computers and ground station computer. If it is not the case check if the ethernet port of the wall is working fine (or just test another one).
 
 Now check that all devices are set to connect automatically to the routers network (check the box in the details tab of the network). Each UAV will need to connect automatically to this network (and not to any other available networks) when it reboots.
