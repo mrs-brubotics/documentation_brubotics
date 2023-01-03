@@ -109,6 +109,10 @@ Once you decided on a machine to use:
          * In lab there is R&MM network with password "nietholonoom". The range is very limited.
          * Note: if this machine is an onboard computer of a drone, make sure that the device is set to never automatically connect to a network (except the main router's network). So on yuor network Detail, uncheck the box "Connect automatically".
          
+    * Fill in the right username & password for your machine:
+            username/hostname: nucID (nuc + ID of that nuc)
+            password: nuc
+         
     * Regularly update Ubuntu. Do this at least once a week.
     
          .. code-block:: shell
