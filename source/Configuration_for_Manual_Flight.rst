@@ -163,7 +163,7 @@ You should first setup the SD card of the pixhawk otherwise the communication be
   * Pixhawk of F450 with nuc4: 
   * Pixhawk of F450 with nuc5: `check this commit <https://github.com/ctu-mrs/uav_core/commit/826c77c2c942b273a3e8b19ff5a062edfd23d294>`__;
   * Pixhawk of T650 with nuc2: 
-  * Pixhawk of T650 with nuc3: `check this commit <https://github.com/ctu-mrs/uav_core/commit/826c77c2c942b273a3e8b19ff5a062edfd23d294>`__;
+  * Pixhawk of T650 with nuc3: v1.13.2
 
 
 .. admonition:: todo
