@@ -369,7 +369,7 @@ For example for nuc3:
 
 .. code-block:: shell
   
-  ssh  ping 192.168.0.103
+  ping 192.168.0.103
 
 .. figure:: _static/pingNUC6toNUC3.png
    :width: 800
