@@ -723,25 +723,18 @@ on all the computers that will be part of your swarm!:
 Once your device has the right name you can start to modify features related to the network itself:
 
 
-* **The next step is to enable multicasting on your device**, for this you will have to run
-the **install/install.sh** script in the nimbro_network repository. When asking you should allow multicasting, permanently or temporarily according to
-your needs. Be careful that if you only allow it temporarily, you will have to run this script after
-each time you boot up your computer. We strongly recommend to set it permanently.
+* **The next step is to enable multicasting on your device**, for this you will have to run the **install/install.sh** script in the nimbro_network repository. When asking you should allow multicasting, permanently or temporarily according to your needs. Be careful that if you only allow it temporarily, you will have to run this script after each time you boot up your computer. We strongly recommend to set it permanently.
 
-	Once you allowed multicasting, you can verify if everything went as expected by opening a terminal
-and run the following command:
+	Once you allowed multicasting, you can verify if everything went as expected by opening a terminal and run the following command:
 
 	.. code-block:: shell
 		
 		cat /proc/sys/net/ipv4/icmp_echo_ignore_broadcasts
 		
-	If this returns 0, then the multicast feature is indeed enabled.Indeed, before enabling multicasting,
-it returned 1 as it was disabled by the default. Note that even after deleting and reinstalling the
-nimbro_network package, this will be set still set to 0. So no need to rerun the install script each
-time you install the nimbro_network package.
+	If this returns 0, then the multicast feature is indeed enabled.Indeed, before enabling multicasting, it returned 1 as it was disabled by the default. Note that even after deleting and reinstalling the nimbro_network package, this will be set still set to 0. So no need to rerun the install script each time you install the nimbro_network package.
 
 
-* **Now you have to add the IP adresses, of each nuc in the nimbro network, in the "/etc/hosts" file.
+* **Now you have to add the IP adresses, of each nuc in the nimbro network, in the "/etc/hosts" file.**
 	
 	Connect to the router’s WiFi network. Connect to the router's website and verify that each nuc you will use in the nimbro network has its correct IP adress in the Address reservation in the DHCP tab.
 	
@@ -787,12 +780,10 @@ every device connected to the network.
 		# compress: true # enable bz2 compression
 		# rate: 20.0
 		
-	Check if the above communicated topics, services and thieir rates are set the same for
-all uavs.
+	Check if the above communicated topics, services and thieir rates are set the same for all uavs.
 
 	Note:
-	The last topic, odometry/uav_state/pose/position, Zakaria and Frank just used for testing the nimbro and is not used for the ERG. We had problems with this one to rostopic echo it. It work for odometry/uav_state. But this is not required for collision
-avoidance to work. Note that putting the rate of the predicted_trajectory on 20Hz is too high for proper operation. We saw for 2 nucs that 10Hz is the limit. The other topics (i.e. uav_position and uav_applied_ref) can be send easily at 20Hz. You will see under the UDP protocol that with too high rates a lot of messages will be lost in the Nimbro tab of your tmux session. Avoid this since this introduces a delay of the multi-drone synchronization up to 5s (they are not synchronized at all anymore then)!. So we advice to keep the predicted_trajctory at 1 Hz instead of 20Hz and only if necessary put it
+	The last topic, odometry/uav_state/pose/position, Zakaria and Frank just used for testing the nimbro and is not used for the ERG. We had problems with this one to rostopic echo it. It work for odometry/uav_state. But this is not required for collision avoidance to work. Note that putting the rate of the predicted_trajectory on 20Hz is too high for proper operation. We saw for 2 nucs that 10Hz is the limit. The other topics (i.e. uav_position and uav_applied_ref) can be send easily at 20Hz. You will see under the UDP protocol that with too high rates a lot of messages will be lost in the Nimbro tab of your tmux session. Avoid this since this introduces a delay of the multi-drone synchronization up to 5s (they are not synchronized at all anymore then)!. So we advice to keep the predicted_trajctory at 1 Hz instead of 20Hz and only if necessary put it
 higher.
 
 	
