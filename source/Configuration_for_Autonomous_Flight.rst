@@ -681,7 +681,7 @@ Open a terminal and type the following command:
 
 .. code-block:: shell
 
-sudo nano /etc/hostname
+	sudo nano /etc/hostname
 
 Comment the old name (e.g. nuc2-NUC10i7FNK) and set up a new name of the form uavID.
 
@@ -689,31 +689,31 @@ Next, edit the /etc/hosts file by typing:
 
 .. code-block:: shell
 
-sudo nano /etc/hosts
+	sudo nano /etc/hosts
 
 The following line should be replaced from
 
 .. code-block:: shell
 
-127.0.1.1 old-host-name
+	127.0.1.1 old-host-name
 
 to
 
 .. code-block:: shell
 
-127.0.1.1 uavID
+	127.0.1.1 uavID
 
 Reboot your computer:
 
 .. code-block:: shell
 
-sudo reboot
+	sudo reboot
 
 if you type the following command you should be able to see the new hostname:
 
 .. code-block:: shell
 
-hostname
+	hostname
 
 You will also see that your terminal starts with nucID@uavID.
 Once your device has the right name you can start to modify features related to the network itself:
@@ -722,7 +722,7 @@ Once your device has the right name you can start to modify features related to 
 
 .. admonition:: todo
 
-Is changing the hostname only requied for simulation (as explained in the overleaf tutorial), or is it also for hardware ?
+	Is changing the hostname only requied for simulation (as explained in the overleaf tutorial), or is it also for hardware ?
 
 
 ""
