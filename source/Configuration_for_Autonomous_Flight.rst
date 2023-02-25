@@ -678,51 +678,50 @@ on all the computers that will be part of your swarm!:
 * The first step is to change the hostname of the nuc. For the communication between the UAVs to be possible, the hostname of each nuc should be uavID (ID being the number of the nuc/UAV. So hostname = uav2 for nuc2). 
 Open a terminal and type the following command:
 
+	.. code-block:: shell
 
-.. code-block:: shell
+		sudo nano /etc/hostname
 
-	sudo nano /etc/hostname
+	Comment the old name (e.g. nuc2-NUC10i7FNK) and set up a new name of the form uavID.
 
-Comment the old name (e.g. nuc2-NUC10i7FNK) and set up a new name of the form uavID.
+	Next, edit the /etc/hosts file by typing:
 
-Next, edit the /etc/hosts file by typing:
+	.. code-block:: shell
 
-.. code-block:: shell
+		sudo nano /etc/hosts
 
-	sudo nano /etc/hosts
+	The following line should be replaced from
 
-The following line should be replaced from
+	.. code-block:: shell
 
-.. code-block:: shell
+		127.0.1.1 old-host-name
 
-	127.0.1.1 old-host-name
+	to
 
-to
+	.. code-block:: shell
 
-.. code-block:: shell
+		127.0.1.1 uavID
 
-	127.0.1.1 uavID
+	Reboot your computer:
 
-Reboot your computer:
+	.. code-block:: shell
 
-.. code-block:: shell
+		sudo reboot
 
-	sudo reboot
+	if you type the following command you should be able to see the new hostname:
 
-if you type the following command you should be able to see the new hostname:
+	.. code-block:: shell
 
-.. code-block:: shell
+		hostname
 
-	hostname
-
-You will also see that your terminal starts with nucID@uavID.
-Once your device has the right name you can start to modify features related to the network itself:
-
+	You will also see that your terminal starts with nucID@uavID.
+	Once your device has the right name you can start to modify features related to the network itself:
 
 
-.. admonition:: todo
 
-	Is changing the hostname only requied for simulation (as explained in the overleaf tutorial), or is it also for hardware ?
+	.. admonition:: todo
+
+		Is changing the hostname only requied for simulation (as explained in the overleaf tutorial), or is it also for hardware ?
 
 
 ""
