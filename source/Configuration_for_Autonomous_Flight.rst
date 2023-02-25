@@ -665,10 +665,70 @@ Configure the Nimbro network
 
 This section will describe the different steps you have to follow in order to set up the Nimbro network.
 This network will allow you to share the required information between 2 or more UAVs in simulation and olsa in hardware tests.
-First of all we suggest to just read (without doing) through the following files: `Nimbro Network - ROS transport for high-latency <https://github.com/ctu-mrs/nimbro_network>`__' , `nimbro_topic_transport <https://github.com/ctu-mrs/nimbro_network/tree/master/nimbro_topic_transport>`__ ("The
+First of all we suggest to just read (without doing) through the following files: `Nimbro Network - ROS transport for high-latency <https://github.com/ctu-mrs/nimbro_network>`__ , `nimbro_topic_transport <https://github.com/ctu-mrs/nimbro_network/tree/master/nimbro_topic_transport>`__ ("The
 fundamental choice you have is whether you want to use the TCP or the UDP protocol. They explain
-for what each is used." 
+for what each is used." As explained `here <https://github.com/ctu-mrs/nimbro_network/blob/master/nimbro_topic_transport/doc/configuration.md>`__
+the UDP protocol is used for most topics (default of ctu as
+can be seen in nimbro_launch file) and is limited to 20Hz (5 times lower than the tracker and controller
+rate.)), `nimbro_service_transport <https://github.com/ctu-mrs/nimbro_network/tree/master/nimbro_service_transport>`__ , `nimbro_log_transport <https://github.com/ctu-mrs/nimbro_network/tree/master/nimbro_log_transport>`__ (interesting for logs), `nimbro_cam_transport <https://github.com/ctu-mrs/nimbro_network/tree/master/nimbro_cam_transport>`__ . The nimbro_network repository is automatically cloned when installing the droneswarm_brubotics system.
 
+From now on you should perform the following steps
+on all the computers that will be part of your swarm!:
+
+* The first step is to change the hostname of the nuc. For the communication between the UAVs to be possible, the hostname of each nuc should be uavID (ID being the number of the nuc/UAV. So hostname = uav2 for nuc2). 
+Open a terminal and type the following command:
+
+
+.. code-block:: shell
+
+sudo nano /etc/hostname
+
+Comment the old name (e.g. nuc2-NUC10i7FNK) and set up a new name of the form uavID.
+
+Next, edit the /etc/hosts file by typing:
+
+.. code-block:: shell
+
+sudo nano /etc/hosts
+
+The following line should be replaced from
+
+.. code-block:: shell
+
+127.0.1.1 old-host-name
+
+to
+
+.. code-block:: shell
+
+127.0.1.1 uavID
+
+Reboot your computer:
+
+.. code-block:: shell
+
+sudo reboot
+
+if you type the following command you should be able to see the new hostname:
+
+.. code-block:: shell
+
+hostname
+
+You will also see that your terminal starts with nucID@uavID.
+Once your device has the right name you can start to modify features related to the network itself:
+
+
+
+.. admonition:: todo
+
+Is changing the hostname only requied for simulation (as explained in the overleaf tutorial), or is it also for hardware ?
+
+
+""
+` <>`__
+
+""
 
 Configure the CTU MRS and brubotics sytems
 ------------------------------------------------
