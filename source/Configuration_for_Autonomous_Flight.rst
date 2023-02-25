@@ -753,8 +753,7 @@ Once your device has the right name you can start to modify features related to 
 
    		/etc/hosts for nimbro network on nuc2.
 
-	If you did this on all computers, and you ping the broadcast (via ping 192.168.0.255 -b to enforce broadcast), you should see a response from
-every device connected to the network.
+	If you did this on all computers, and you ping the broadcast (via ping 192.168.0.255 -b to enforce broadcast), you should see a response from every device connected to the network.
 
 * **Add the topics you want to communicate in your network** Open or create nimbro.yaml (in the custom_config folder of your test folder) and add the topics you want to communicate in your network. You can also set up the rate at which the data is sent (note that the maximum rate of communication allowed by the Nimbro network under UDP protocol is limited to 20Hz).
 
@@ -783,8 +782,7 @@ every device connected to the network.
 	Check if the above communicated topics, services and thieir rates are set the same for all uavs.
 
 	Note:
-	The last topic, odometry/uav_state/pose/position, Zakaria and Frank just used for testing the nimbro and is not used for the ERG. We had problems with this one to rostopic echo it. It work for odometry/uav_state. But this is not required for collision avoidance to work. Note that putting the rate of the predicted_trajectory on 20Hz is too high for proper operation. We saw for 2 nucs that 10Hz is the limit. The other topics (i.e. uav_position and uav_applied_ref) can be send easily at 20Hz. You will see under the UDP protocol that with too high rates a lot of messages will be lost in the Nimbro tab of your tmux session. Avoid this since this introduces a delay of the multi-drone synchronization up to 5s (they are not synchronized at all anymore then)!. So we advice to keep the predicted_trajctory at 1 Hz instead of 20Hz and only if necessary put it
-higher.
+	The last topic, odometry/uav_state/pose/position, Zakaria and Frank just used for testing the nimbro and is not used for the ERG. We had problems with this one to rostopic echo it. It work for odometry/uav_state. But this is not required for collision avoidance to work. Note that putting the rate of the predicted_trajectory on 20Hz is too high for proper operation. We saw for 2 nucs that 10Hz is the limit. The other topics (i.e. uav_position and uav_applied_ref) can be send easily at 20Hz. You will see under the UDP protocol that with too high rates a lot of messages will be lost in the Nimbro tab of your tmux session. Avoid this since this introduces a delay of the multi-drone synchronization up to 5s (they are not synchronized at all anymore then)!. So we advice to keep the predicted_trajctory at 1 Hz instead of 20Hz and only if necessary put it higher.
 
 	
 
