@@ -663,9 +663,12 @@ Additional tips when using reach devices
 Configure the Nimbro network
 -------------------------------
 
-.. admonition:: todo
+This section will describe the different steps you have to follow in order to set up the Nimbro network.
+This network will allow you to share the required information between 2 or more UAVs in simulation and olsa in hardware tests.
+First of all we suggest to just read (without doing) through the following files: `Nimbro Network - ROS transport for high-latency <https://github.com/ctu-mrs/nimbro_network>' , 'nimbro_topic_transport <https://github.com/ctu-mrs/nimbro_network/tree/master/nimbro_topic_transport>' ("The
+fundamental choice you have is whether you want to use the TCP or the UDP protocol. They explain
+for what each is used." 
 
-  TODO
 
 Configure the CTU MRS and brubotics sytems
 ------------------------------------------------
