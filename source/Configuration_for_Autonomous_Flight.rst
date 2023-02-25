@@ -850,6 +850,11 @@ Adapt MRS code
 
 Several things have to be modified in the default code from MRS to work with the hardware presented here. Except indication, all the files are in packages from MRS, located in *~/mrs_workspace/src/uav_core/ros_packages*
 
+* **Configure the mass of the UAV**
+	Open ```~/mrs_workspace/src/uav_core/ros_packages/mrs_uav_managers/config/simulation/t650/mass.yaml``` and adjust the mass: ```uav_mass: 4.55 [kg]```. This ensures that the controllers and trackers that use mass (e.g., for feedforward actions) use th hardware mass.
+	
+	Open ```~/mrs_workspace/src/simulation/ros_packages/mrs_simulation/models/mrs_robots_description/sdf/t650.sdf.jinja``` and adjust the mass: ```{%- set mass = 4.55 -%} {# [kg] #}```. This ensures that Gazebo simulates a UAV model with the hardware mass. 
+
 * **Configuration file for the RTK** Go to the `config file <https://github.com/ctu-mrs/mrs_uav_odometry/blob/master/config/uav/rtk.yaml>`__ of the rtk and change "altitude_estimator: "HEIGHT" to "altitude_estimator:
   "RTK"; 
 
