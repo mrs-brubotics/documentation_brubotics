@@ -785,12 +785,60 @@ Once your device has the right name you can start to modify features related to 
 	The last topic, odometry/uav_state/pose/position, Zakaria and Frank just used for testing the nimbro and is not used for the ERG. We had problems with this one to rostopic echo it. It work for odometry/uav_state. But this is not required for collision avoidance to work. Note that putting the rate of the predicted_trajectory on 20Hz is too high for proper operation. We saw for 2 nucs that 10Hz is the limit. The other topics (i.e. uav_position and uav_applied_ref) can be send easily at 20Hz. You will see under the UDP protocol that with too high rates a lot of messages will be lost in the Nimbro tab of your tmux session. Avoid this since this introduces a delay of the multi-drone synchronization up to 5s (they are not synchronized at all anymore then)!. So we advice to keep the predicted_trajctory at 1 Hz instead of 20Hz and only if necessary put it higher.
 
 	
+* **Once this is done you can try to see if your network is created successfully.**
 
+	For this you will have to open the `control_two_drones_rtk_DERG_collision_avoidance <https://github.com/mrs-brubotics/testing_brubotics/tree/master/tmux_scripts/bryan/control_two_drones_rtk_DERG_collision_avoidance>`__ test and check the next points.
+	
+	Set up the name (i.e. uavID) of all the swarm members (this robot and other robots) into the uav_names.yaml file of your custom configs. Only the name of the UAVs present in each /etc/hosts files can be listed in the file.
+	
+	In the spawn_location.yaml make sure you have the names and IDs correctly corresponding to all uavs in the swarm. Also make sure each machine is set to different spawn locations far enough from each other. (Best also to be close to their trajectory start location if doing a trajectory)
+	
+	Make sure that in the pre_window section of the session.yaml file of the different computers are exporting the UAV_NAME that is the same as the device name of this robot:
+	
+	One of both UAVs will be the master and the other one the slave. (For now, uav3 is the master and uav2 the slave)
+	
+	.. code-block:: shell
+	
+		export UAV_NAME=uavID;
+		
+	In your session.yaml file, make sure the  `run_nimbro.py <https://github.com/ctu-mrs/mrs_uav_general/blob/master/scripts/run_nimbro.py>`__ script is started and that the custom uav_names.yaml and uav_names.yaml files are mentioned in the nimbro tab
+	
+	.. code-block:: shell
+	
+		  - nimbro:
+      			layout: tiled
+     		      	panes:
+        	      		- waitForRos; rosrun mrs_uav_general run_nimbro.py custom_configs/nimbro.yaml custom_configs/uav_names.yaml
+				
+	Only spawn this drone (not the other drones) in the respective session.yaml by only putting the id number of this uav (e.g. 2) in the spawn command.
+	
+	
+	Once this is done on every computer of your swarm, you can run the nimbro-sim-start-uavID.sh script of the experiment on 2 of your computers. Both should be of course connected to the TP_link wifi. When this is done you should go to the nimbro tab and see something similar as in Figure below.
+	
+	.. admonition:: todo
+	
+		Add figure
+		
+	As you can see, there is an acknowledgement saying that uav2 got a message from uav3. Below, you see which topics and services were communicated. You can also go to the echo tabs of the tmux session to echo the position of the other UAV.
+	
+	.. admonition:: todo
+	
+		Add figure
+		
+	To be sure all topics (present in nimbro.yaml) are send successfully, you can  open a terminal on one of your 2 devices and run the following command:
+	
+	.. code-block:: shell
+	
+		rostopic echo /uavID_second_computer/topic_you_want_to_verify
+		
+		
+* **start trajectory collision avoidance**  
 
-""
-` <>`__
+	Go to the load_trajectory tab on each nuc en load their trajectory. Then you can go to the goto_trajectory_start_alluavs, that is only present on the master nuc, to make both UAVs go to the start of their trajectory. Finally go to rosbag_start_trajectory_tracking_alluavs on the master nuc to then start the trajectory of both UAVs. Only the master can start the trajectory of both UAVs so that they start simultaneously. 
+	
+.. admonition:: todo
 
-""
+	Continue documentation nimbro for hardware tests.
 
 Configure the CTU MRS and brubotics sytems
 ------------------------------------------------
