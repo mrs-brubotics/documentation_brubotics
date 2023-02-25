@@ -675,7 +675,7 @@ rate.)), `nimbro_service_transport <https://github.com/ctu-mrs/nimbro_network/tr
 From now on you should perform the following steps
 on all the computers that will be part of your swarm!:
 
-* The first step is to change the hostname of the nuc. For the communication between the UAVs to be possible, the hostname of each nuc should be uavID (ID being the number of the nuc/UAV. So hostname = uav2 for nuc2). 
+* **The first step is to change the hostname of the nuc** For the communication between the UAVs to be possible, the hostname of each nuc should be uavID (ID being the number of the nuc/UAV. So hostname = uav2 for nuc2). 
 	Open a terminal and type the following command:
 
 	.. code-block:: shell
@@ -715,13 +715,87 @@ on all the computers that will be part of your swarm!:
 		hostname
 
 	You will also see that your terminal starts with nucID@uavID.
-	Once your device has the right name you can start to modify features related to the network itself:
-
-
-
+	
 	.. admonition:: todo
 
 		Is changing the hostname only requied for simulation (as explained in the overleaf tutorial), or is it also for hardware ?
+	
+Once your device has the right name you can start to modify features related to the network itself:
+
+
+* **The next step is to enable multicasting on your device**, for this you will have to run
+the **install/install.sh** script in the nimbro_network repository. When asking you should allow multicasting, permanently or temporarily according to
+your needs. Be careful that if you only allow it temporarily, you will have to run this script after
+each time you boot up your computer. We strongly recommend to set it permanently.
+
+	Once you allowed multicasting, you can verify if everything went as expected by opening a terminal
+and run the following command:
+
+	.. code-block:: shell
+		
+		cat /proc/sys/net/ipv4/icmp_echo_ignore_broadcasts
+		
+	If this returns 0, then the multicast feature is indeed enabled.Indeed, before enabling multicasting,
+it returned 1 as it was disabled by the default. Note that even after deleting and reinstalling the
+nimbro_network package, this will be set still set to 0. So no need to rerun the install script each
+time you install the nimbro_network package.
+
+
+* **Now you have to add the IP adresses, of each nuc in the nimbro network, in the "/etc/hosts" file.
+	
+	Connect to the router’s WiFi network. Connect to the router's website and verify that each nuc you will use in the nimbro network has its correct IP adress in the Address reservation in the DHCP tab.
+	
+	Open the hosts file of your computer with the following command:
+	
+	.. code-block:: shell
+		
+		sudo nano /etc/hosts
+		
+	And add the device names and static IP addresses of every computer part of the network (Own nuc should be present twice. Once with IP adress 127.0.1.1 and once with its IP adress in the network.
+
+	.. figure:: hosts_nimbro_nuc2.png
+   		:width: 350
+   		:alt: alternate text
+   		:align: center
+
+   		/etc/hosts for nimbro network on nuc2.
+
+	If you did this on all computers, and you ping the broadcast (via ping 192.168.0.255 -b to enforce broadcast), you should see a response from
+every device connected to the network.
+
+* **Add the topics you want to communicate in your network** Open or create nimbro.yaml (in the custom_config folder of your test folder) and add the topics you want to communicate in your network. You can also set up the rate at which the data is sent (note that the maximum rate of communication allowed by the Nimbro network under UDP protocol is limited to 20Hz).
+
+	The default content for this file (enough to allow collision avoidance when the mpc_tracker is used) is the same as `here <https://github.com/ctu-mrs/mrs_uav_general/blob/master/config/communication_config.yaml>`__ .	
+	
+	For the derg_tracker, you should add the following topics:
+	
+	.. code-block:: shell
+	
+		- name: "control_manager/dergbryan_tracker/uav_position"
+		compress: true # enable bz2 compression
+		rate: 20.0
+		# - name: "control_manager/dergbryan_tracker/predicted_trajectory"
+		# compress: true # enable bz2 compression
+		# rate: 20.0
+		- name: "control_manager/dergbryan_tracker/uav_applied_ref"
+		compress: true # enable bz2 compression
+		rate: 20.0
+		- name: "control_manager/dergbryan_tracker/future_trajectory_tube"
+		compress: true # enable bz2 compression
+		rate: 20.0 #20.0 #20.0
+		#- name: "odometry/uav_state/pose/position"
+		# compress: true # enable bz2 compression
+		# rate: 20.0
+		
+	Check if the above communicated topics, services and thieir rates are set the same for
+all uavs.
+
+	Note:
+	The last topic, odometry/uav_state/pose/position, Zakaria and Frank just used for testing the nimbro and is not used for the ERG. We had problems with this one to rostopic echo it. It work for odometry/uav_state. But this is not required for collision
+avoidance to work. Note that putting the rate of the predicted_trajectory on 20Hz is too high for proper operation. We saw for 2 nucs that 10Hz is the limit. The other topics (i.e. uav_position and uav_applied_ref) can be send easily at 20Hz. You will see under the UDP protocol that with too high rates a lot of messages will be lost in the Nimbro tab of your tmux session. Avoid this since this introduces a delay of the multi-drone synchronization up to 5s (they are not synchronized at all anymore then)!. So we advice to keep the predicted_trajctory at 1 Hz instead of 20Hz and only if necessary put it
+higher.
+
+	
 
 
 ""
