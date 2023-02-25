@@ -676,7 +676,7 @@ From now on you should perform the following steps
 on all the computers that will be part of your swarm!:
 
 * The first step is to change the hostname of the nuc. For the communication between the UAVs to be possible, the hostname of each nuc should be uavID (ID being the number of the nuc/UAV. So hostname = uav2 for nuc2). 
-Open a terminal and type the following command:
+	Open a terminal and type the following command:
 
 	.. code-block:: shell
 
