@@ -47,7 +47,7 @@ RTK system setup
 
   .. code-block:: shell 
 
-    sudo nano world_simulation.yaml
+    sudo nano world_hardware.yaml
 
 
 * Change the coordinates utm_origin_long and utm_origin_lat to the value of the base position you see inside the rover tab. This should be the about same value as the one in the base mode of the base tab. Do not move the base from now on or you will have to change the coordinates.
