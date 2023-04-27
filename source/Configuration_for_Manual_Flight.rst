@@ -222,6 +222,15 @@ Calibrations
 
   It is adviced use a long usb cable to connect the pixhawk to the nuc and ensure there is leveled ground and enough space to move the UAV.
   Make sure to keep the front of the UAV (i.e., in the front direction of the pixhawk which is typically indicated on the UAV by the red legs, arms or tape) as shown by QGroundControl.
+  
+* Interferences produce spikes on the heading measurements of the internal compass during hardware tests. To avoid these, Go to the ’Parameters’ section of QGroundControl, disable the internal compass by changing the CAL_MAG0_PRIO parameter to disable. 
+
+.. figure:: _static/compass_parameters.jpg
+   :width: 800
+   :alt: alternate text
+   :align: center
+
+   Compass paremeters to avoid spikes
 
 * Power on your transmitter, select yes for ready to transmit, and assign the channels on the transmitter (i.e., press both back button and scroller and select ’Channels’) such that each channel is paired with the correct function, according to the next figures taken from `this tutorial <https://ctu-mrs.github.io/docs/hardware/px4_configuration.html#sw-setup>`__. You always want to joystick channels without a return spring to be assigned to the throttle and yaw, the other two with a return spring to the roll and pitch. For example, for channel 5, click on it, select "AUX1" in the menu then scroll clockwise and select "B" there.
 
