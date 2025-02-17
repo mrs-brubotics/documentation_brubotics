@@ -19,12 +19,12 @@ This repo is automatically cloned when you install droneswarm_brubotics.
   ``` bash
   sudo apt install python3-sphinx
   ```
-* To use ReadTheDocs, install the following sphinx extension:
+* To use ReadTheDocs, install the following Sphinx extension:
   ``` bash
   python3 -m pip install sphinx_rtd_theme
   ```
 
-  * In order to use copy buttoms on code blocks:
+  * To use copy buttons on code blocks:
   ```bash
   pip install sphinx-copybutton
   ```
